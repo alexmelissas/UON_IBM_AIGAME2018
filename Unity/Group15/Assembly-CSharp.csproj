@@ -67,6 +67,7 @@
     <Compile Include="Assets\Scripts\registerButton.cs" />
     <Compile Include="Assets\Scripts\showSliderValue.cs" />
     <Compile Include="Assets\Scripts\submitPersonality.cs" />
+    <Compile Include="Assets\Scripts\updateRanksView.cs" />
     <Reference Include="UnityEditor.StandardEvents">
       <HintPath>C:/Users/alexa/Desktop/UON_IBM_AIGAME2018/Unity/Group15/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
     </Reference>
