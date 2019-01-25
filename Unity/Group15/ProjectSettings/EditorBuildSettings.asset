@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/TwitterLogin.unity
     guid: ab3f4579843b7b7498d14a121e73f504
+  - enabled: 1
+    path: Assets/Scenes/CharacterCreatedView.unity
+    guid: c4405889022b6f844ba4cdeeb5424430
   m_configObjects: {}
