@@ -10,13 +10,13 @@ Technical:
 
 TODO
 - [x] Access user tweets
-- [] Load tweets to IBM Personality Insight
-- [] Transfer the result of analysis to character attributes:
+- [ ] Load tweets to IBM Personality Insight
+- [ ] Transfer the result of analysis to character attributes:
 	- user choose the personality
 	- compare the similarity
 	- generate the attributes
 	
-- [] Improve the security of database connection
+- [ ] Improve the security of database connection
 
 API reference:
 - TBD
