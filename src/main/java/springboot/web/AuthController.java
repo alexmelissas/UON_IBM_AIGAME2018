@@ -8,7 +8,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import twitter4j.Twitter;
@@ -24,10 +23,14 @@ public class AuthController {
 	
 	@RequestMapping("/auth")
 	protected void auth(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// Get twitter intance
 		ConfigurationBuilder config = new ConfigurationBuilder();
-		config.setDebugEnabled(true).setOAuthConsumerKey("kLdFjFhJkiiWMb2SU4ZNtpGlf")
-				.setOAuthConsumerSecret("VUXAlVuDbdOYDGhbImgYOfbX91xqtvSdFnXn3kzM6ZNoOWv6fa").setOAuthAccessToken(null)
+		config.setDebugEnabled(true)
+				.setOAuthConsumerKey("kLdFjFhJkiiWMb2SU4ZNtpGlf")
+				.setOAuthConsumerSecret("VUXAlVuDbdOYDGhbImgYOfbX91xqtvSdFnXn3kzM6ZNoOWv6fa")
+				.setOAuthAccessToken(null)
 				.setOAuthAccessTokenSecret(null);
+		
 		TwitterFactory twitterFactory = new TwitterFactory(config.build());
 		Twitter twitter = twitterFactory.getInstance();
 
@@ -35,13 +38,16 @@ public class AuthController {
 
 		// Get the request token
 		RequestToken requestToken = null;
+		
 		try {
 			requestToken = twitter.getOAuthRequestToken();
 			request.getSession().setAttribute("requestToken", requestToken);
 			String token = requestToken.getToken();
 			String tokenSecret = requestToken.getTokenSecret();
-			System.out.println(request.getSession());
-			System.out.println(request.getSession().getAttribute("twitter"));
+			System.out.println("Request Token:" + token);
+			System.out.println("Request Token Secret:" + tokenSecret);
+//			System.out.println(request.getSession());
+//			System.out.println(request.getSession().getAttribute("twitter"));
 		} catch (TwitterException e) {
 			e.printStackTrace();
 		}
@@ -54,29 +60,27 @@ public class AuthController {
 
 	@RequestMapping("/success")
 	public @ResponseBody String success(HttpServletRequest request) {
-//		oauth_token=2zTZ3gAAAAAA9WQ8AAABaIeSDEU&oauth_verifier=f96Ems3z7czYk5YscvKQ6WKlxlgXaFNy
-		ConfigurationBuilder config = new ConfigurationBuilder();
-		config.setDebugEnabled(true).setOAuthConsumerKey("kLdFjFhJkiiWMb2SU4ZNtpGlf")
-				.setOAuthConsumerSecret("VUXAlVuDbdOYDGhbImgYOfbX91xqtvSdFnXn3kzM6ZNoOWv6fa").setOAuthAccessToken(null)
-				.setOAuthAccessTokenSecret(null);
-		TwitterFactory twitterFactory = new TwitterFactory(config.build());
-		Twitter twitter = twitterFactory.getInstance();
+		// Get twitter and request token from session
+		Twitter twitter = (Twitter) request.getSession().getAttribute("twitter");
+		RequestToken requestToken = (RequestToken) request.getSession().getAttribute("requestToken");
+		String verifier = request.getParameter("oauth_verifier");
 		
+		System.out.println("Twitter:" + twitter);
+		System.out.println("Request Token:" + requestToken.getToken());
+		System.out.println("Request Token Secret:" + requestToken.getTokenSecret());
+		
+		// Get access token
 		try {
-			String verifier = request.getParameter("oauth_verifier");
-			AccessToken accessToken = twitter.getOAuthAccessToken(twitter.getOAuthRequestToken(), verifier);
 			request.getSession().removeAttribute("requestToken");
-			ConfigurationBuilder builder = new ConfigurationBuilder();
-			builder.setOAuthConsumerKey("ipp4zV5GKKUncWGmbRAFeV3Yb");
-			builder.setOAuthConsumerSecret("OZmBI2ZdJaqGMXwE46QI0RnrSUJj7h2WRTMWuENCn2Mm9Hh0OZ");
-			builder.setOAuthAccessToken(accessToken.getToken());
-			builder.setOAuthAccessTokenSecret(accessToken.getTokenSecret());
-			builder.setIncludeEmailEnabled(true);
+			AccessToken accessToken = twitter.getOAuthAccessToken(requestToken, verifier);
+			System.out.println("Access Token:" + accessToken.getToken());
+			System.out.println("Access Token Secret:" + accessToken.getTokenSecret());
 			User user = twitter.verifyCredentials();
 			System.out.print(user);
-			// User user = twitter.showUser(accessToken.getUserId());
+			user = twitter.showUser(accessToken.getUserId());
 			System.out.println(user);
 		} catch (TwitterException e) {
+			e.printStackTrace();
 		}
 		return "Hello";
 	}
