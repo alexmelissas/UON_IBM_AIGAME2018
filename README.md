@@ -9,13 +9,17 @@ Technical:
 - oauth 1.0
 
 TODO
-- Access user tweets
-- Transfer the result of analysis to character attributes:
+- [x] Access user tweets
+- [] Load tweets to IBM Personality Insight
+- [] Transfer the result of analysis to character attributes:
 	- user choose the personality
 	- compare the similarity
 	- generate the attributes
 	
-- Improve the security of database connection
+- [] Improve the security of database connection
 
 API reference:
 - TBD
+
+Helpful material:
+- https://developer.twitter.com/en/docs/twitter-for-websites/log-in-with-twitter/guides/implementing-sign-in-with-twitter
