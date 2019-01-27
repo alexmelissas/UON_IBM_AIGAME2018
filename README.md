@@ -9,17 +9,18 @@ Backend of the AI_Game
 - oauth 1.0
 
 **TODO**
+- [x] Twitter authorization
 - [x] Access user tweets
-- [ ] Load tweets to IBM Personality Insight
+- [x] Load tweets to IBM Personality Insight
 - [ ] Store access token into datatbase
 - [ ] User sign up and login API
 - [ ] Add error page
+- [ ] Deal with insufficient words on twitter
 - [ ] Transfer the result of analysis to character attributes:
 	- user choose the personality
 	- compare the similarity
 	- generate the attributes
-	
-- [ ] Improve the security of database connection
+- [ ] Improve the security of database
 
 **API reference**
 - TBD

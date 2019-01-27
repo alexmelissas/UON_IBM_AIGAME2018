@@ -1,11 +1,24 @@
 package springboot.web;
 
+import java.io.IOException;
+import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import springboot.service.PersonalityInsightService;
 import springboot.util.AnalysisResult;
+import springboot.util.ContentLoader;
+import twitter4j.Status;
+import twitter4j.Twitter;
+import twitter4j.TwitterException;
+import twitter4j.User;
+import twitter4j.auth.AccessToken;
+import twitter4j.auth.RequestToken;
 
 @RestController
 public class AnalysisController {
@@ -13,7 +26,43 @@ public class AnalysisController {
 	private PersonalityInsightService piService; 
 	
     @RequestMapping("/analysis")
-    public AnalysisResult anlysis() {
-    	return new AnalysisResult(piService.analysis());
+    public AnalysisResult anlysis(HttpServletRequest request) {
+    	ContentLoader contentLoader = (ContentLoader) request.getSession().getAttribute("content");
+    	return new AnalysisResult(piService.analysis(contentLoader));
     }
+    
+    // Authorization callback
+    @RequestMapping("/success")
+	public void success(HttpServletRequest request, HttpServletResponse response) throws IOException {
+		Twitter twitter = (Twitter) request.getSession().getAttribute("twitter");
+		RequestToken requestToken = (RequestToken) request.getSession().getAttribute("requestToken");
+		String verifier = request.getParameter("oauth_verifier");
+		
+		try {
+			AccessToken accessToken = twitter.getOAuthAccessToken(requestToken, verifier);
+			System.out.println("Access Token:" + accessToken.getToken());
+			System.out.println("Access Token Secret:" + accessToken.getTokenSecret());
+			User user = twitter.verifyCredentials();
+			System.out.println(user);
+			
+//			user = twitter.showUser(accessToken.getUserId());
+//			System.out.println(user);
+			
+			// Get tweets and add text into ContentLoader
+			ContentLoader contentLoader = new ContentLoader();
+			List<Status> statuses = twitter.getUserTimeline();			
+			System.out.println("Showing @" + user.getScreenName() + "'s home timeline.");
+            for (Status status : statuses) {
+                System.out.println("@" + status.getUser().getScreenName() + " - " + status.getText());
+                contentLoader.addInput(status.getText());
+            }
+            
+            request.getSession().setAttribute("content", contentLoader);
+		} catch (TwitterException e) {
+			e.printStackTrace();
+		}
+		
+		response.sendRedirect(request.getContextPath() + "/analysis");
+		return;
+	}
 }

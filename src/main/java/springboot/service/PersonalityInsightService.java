@@ -24,29 +24,19 @@ public class PersonalityInsightService {
 		 * token-based Identity and Access Management(IAM) 
 		 */
 		IamOptions options = new IamOptions.Builder().apiKey(config.getApiKey()).build();
-
 		personalityInsights = new PersonalityInsights(config.getVersion(), options);
-
 		personalityInsights.setEndPoint(config.getUrl());
 	}
 	
-	public Profile analysis() {
-		this.loadInput();
+	public Profile analysis(ContentLoader contentLoader) {
+		// Load content from ContentLoader
+		ContentItem contentItem = new ContentItem.Builder().content(contentLoader.getInput()).build();
+		content = new Content.Builder().addContentItem(contentItem).build();
 		
 		ProfileOptions profileOptions = new ProfileOptions.Builder().content(content).consumptionPreferences(true).rawScores(true).build();
-		
 		Profile profile = personalityInsights.profile(profileOptions).execute();
 		
 		// result profile in JSON
 		return profile;
-	}
-	
-	public void loadInput() {
-		// Load input content
-		ContentLoader contentLoader = new ContentLoader();
-		
-		ContentItem contentItem = new ContentItem.Builder().content(contentLoader.getInput()).build();
-		
-		content = new Content.Builder().addContentItem(contentItem).build();
 	}
 }
