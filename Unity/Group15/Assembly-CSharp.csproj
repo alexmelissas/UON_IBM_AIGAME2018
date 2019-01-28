@@ -65,6 +65,7 @@
     <Compile Include="Assets\Scripts\calculatePersonalityTotals.cs" />
     <Compile Include="Assets\Scripts\changeSceneButton.cs" />
     <Compile Include="Assets\Scripts\registerButton.cs" />
+    <Compile Include="Assets\Scripts\setDifficulty.cs" />
     <Compile Include="Assets\Scripts\showSliderValue.cs" />
     <Compile Include="Assets\Scripts\submitPersonality.cs" />
     <Compile Include="Assets\Scripts\updateRanksView.cs" />

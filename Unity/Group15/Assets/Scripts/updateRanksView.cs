@@ -7,7 +7,6 @@ public class updateRanksView : MonoBehaviour {
 
     public GameObject display;
     
-
     private List<string> getPlayers(string rank) {
         List<string> players = new List<string>();
         players.Clear();
