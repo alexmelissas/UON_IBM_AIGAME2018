@@ -1,5 +1,4 @@
-# game_backend
-Backend of the AI_Game
+### Game_backend
 
 **Technical**
 - Spring Boot
@@ -14,15 +13,26 @@ Backend of the AI_Game
 - [x] Load tweets to IBM Personality Insight
 - [ ] Store access token into datatbase
 - [ ] User sign up and login API
-- [ ] Add error page
+- [x] Add error page
 - [ ] Deal with insufficient words on twitter
 - [ ] Transfer the result of analysis to character attributes:
 	- user choose the personality
 	- compare the similarity
 	- generate the attributes
 - [ ] Improve the security of database
+- [ ] REST API
+- [ ] Logger
+- [ ] Exception handle
 
 **API reference**
+- `/auth`: go to the authorization page
+- `/user`:
+	- `"/add"`: add new user
+	- `"/all"`: get all the users
+	- `"/find"`: find user by id
+	- `"/update"`: update user information
+	- `"/delete"`: delete user
+- `/analysis`: IBM personality insight service
 - TBD
 
 **Helpful material**
