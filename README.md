@@ -22,7 +22,7 @@ More details can be found in our Game Concept folders in documentation. Please s
 ## Useful Links:
 - Project Trello Board: https://trello.com/b/E747Qbxe
 - Project Documentation: OneDrive - *No link provided here for public access restriction* - Please contact Alexandros if you need a link to OneDrive.
-- Blog: https://theaitwitterarenagame.wordpress.com
+- Blog: https://uonaigame.wordpress.com
 - Prototype 1: https://marvelapp.com/390dg85
 
 ### Game Requirements:
