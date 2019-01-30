@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class registerButton : MonoBehaviour
+public class registerUser : MonoBehaviour
 {
 
     public InputField username_field;
