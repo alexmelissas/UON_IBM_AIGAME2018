@@ -1,6 +1,6 @@
 # UON_IBM_AIGAME2018
 UoN Students' 2nd Year Project building an AI-centric Self-Improvement Game with IBM. The game will focus on helping the player work towards making their personality better, according to their own perception of what a 'good' personality will be. 
-More details can be found in our Game Concept folders in documentation. Please see the "Interim Activity Marking" section below for more information on how to go through this project's documentation.
+More details can be found in our Game Concept folders in documentation. Please see the "Tracking the Project" section below for more information on how to go through this project development process.
 
 ## People Involved
 - Students:
