@@ -7,17 +7,16 @@ More details can be found in our Game Concept folders in documentation. Please s
   - Alexandros Melissas (**Team Leader**) **psyam19**
   - Yu Chen (**Administrator**) **psyyc6**
   - Aaron Mathe **psyapm**
-  - Qingyang Liu **psyql2*
+  - Qingyang Liu **psyql2**
   - Samuel Adejumo **eeysaad**
-  - George Lowe **psygl**
 - Supervisor:
   - Gail Hopkins
 - Sponsor:
   - John McNamara
   
-## Interim Activity Marking
+## Tracking the Project
 - Please look at the Overview document which will guide you through our entire process up to this point with respects to our documentation.
-- You can look at our documentation on OneDrive, but if for any reason you cannot, there are copies of those documents posted on this repo at mirrored locations.
+- You can also follow our Blog for more information about each step.
 
 ## Useful Links:
 - Project Trello Board: https://trello.com/b/E747Qbxe
