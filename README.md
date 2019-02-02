@@ -11,7 +11,7 @@
 - [x] Twitter authorization
 - [x] Access user tweets
 - [x] Load tweets to IBM Personality Insight
-- [ ] Store access token into datatbase
+- [x] Store access token into datatbase
 - [ ] User sign up and login API
 - [x] Add error page
 - [ ] Deal with insufficient words on twitter
