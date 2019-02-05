@@ -14,10 +14,19 @@ public class registerUser : MonoBehaviour
     {
         string username = username_field.text;
         string password = password_field.text;
-        if (username == "" || password == "")
+        if (username == "" || password == "") 
         {
-            Debug.Log("THEY'RE EMPTY... MY PRECIOUSSS"); //this would pass it to the server and check if available, and save
+            Debug.Log("EMPTY");
             return;
+        }
+        if(username.Length>25)
+        {
+            Debug.Log("TOO LONG");
+            return;
+        }
+        else
+        {
+            // request with post
         }
 
         Debug.Log(username + " " + password); //this would pass it to the server and check if available, and save
