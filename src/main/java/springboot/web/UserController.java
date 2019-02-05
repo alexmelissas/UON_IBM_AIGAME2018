@@ -26,6 +26,8 @@ public class UserController {
 	 */
 	@GetMapping(path = "/users")
 	public @ResponseBody Iterable<User> getAllUsers() {
+		//TODO safety of access
+		//Maybe unnecessary
 		return userService.getAllUsers();
 	}
 	
@@ -36,6 +38,9 @@ public class UserController {
 	 */
 	@PostMapping(path = "/users")
 	public @ResponseBody String addUser(@RequestBody User user) {
+		if(userService.isExist(user.getUsername())) {
+			return "Username has been taken";
+		}
 		userService.addUser(user);
 		return "Saved";
 	}

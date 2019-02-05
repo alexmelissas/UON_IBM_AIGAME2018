@@ -50,4 +50,8 @@ public class UserService {
 							return userRepository.save(user);
 						});
 	}
+
+	public boolean isExist(String username) {
+		return userRepository.existsByUsername(username);
+	}
 }

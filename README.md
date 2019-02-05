@@ -23,6 +23,9 @@
 - [ ] REST API
 - [ ] Logger
 - [ ] Exception handle
+- [ ] Safety of API (what attributes can be accessed?)
+	- Get the top five players (username, id)
+	- Check if the username is repeat
 
 **API reference**
 - `/auth`: go to the authorization page
