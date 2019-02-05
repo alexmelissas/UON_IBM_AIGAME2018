@@ -1,0 +1,95 @@
+DROP TABLE IF EXISTS `users`;
+
+CREATE TABLE `users` (
+  `id` varchar(36) DEFAULT NULL,
+  `username` varchar(32) DEFAULT NULL,
+  `password` varchar(60) DEFAULT NULL,
+  `email` text,
+  
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+
+DROP TABLE IF EXISTS `attributes`;
+
+CREATE TABLE `attributes` (
+`id` varchar(36) DEFAULT NULL,
+`adventurousness` int(11) unsigned NOT NULL,
+`artistic_interests` int(11) unsigned NOT NULL,
+`emotionality` int(11) unsigned NOT NULL,
+`imagination` int(11) unsigned NOT NULL,
+`intellect` int(11) unsigned NOT NULL,
+`liberalism` int(11) unsigned NOT NULL,
+`conscientiousness` int(11) unsigned NOT NULL,
+`achievement_striving` int(11) unsigned NOT NULL,
+`cautiousness` int(11) unsigned NOT NULL,
+`dutifulness` int(11) unsigned NOT NULL,
+`orderliness` int(11) unsigned NOT NULL,
+`self_discipline` int(11) unsigned NOT NULL,
+`self_efficacy` int(11) unsigned NOT NULL,
+`extraversion` int(11) unsigned NOT NULL,
+`activity_level` int(11) unsigned NOT NULL,
+`assertiveness` int(11) unsigned NOT NULL,
+`cheerfulness` int(11) unsigned NOT NULL,
+`excitement_seeking` int(11) unsigned NOT NULL,
+`friendliness` int(11) unsigned NOT NULL,
+`gregariousness` int(11) unsigned NOT NULL,
+`agreeableness` int(11) unsigned NOT NULL,
+`altruism` int(11) unsigned NOT NULL,
+`cooperation` int(11) unsigned NOT NULL,
+`modesty` int(11) unsigned NOT NULL,
+`morality` int(11) unsigned NOT NULL,
+`sympathy` int(11) unsigned NOT NULL,
+`trust` int(11) unsigned NOT NULL,
+`neuroticism` int(11) unsigned NOT NULL,
+`anger` int(11) unsigned NOT NULL,
+`anxiety` int(11) unsigned NOT NULL,
+`depression` int(11) unsigned NOT NULL,
+`immoderation` int(11) unsigned NOT NULL,
+`self_consciousness` int(11) unsigned NOT NULL,
+`vulnerability` int(11) unsigned NOT NULL,
+
+
+`challenge` int(11) unsigned NOT NULL,
+`closeness` int(11) unsigned NOT NULL,
+`curiosity` int(11) unsigned NOT NULL,
+`excitement` int(11) unsigned NOT NULL,
+`harmony` int(11) unsigned NOT NULL,
+`ideal` int(11) unsigned NOT NULL,
+`love` int(11) unsigned NOT NULL,
+`practicality` int(11) unsigned NOT NULL,
+`self_expression` int(11) unsigned NOT NULL,
+`stability` int(11) unsigned NOT NULL,
+`need_structure` int(11) unsigned NOT NULL,
+
+
+`conservation` int(11) unsigned NOT NULL,
+`openness_to_change` int(11) unsigned NOT NULL,
+`hedonism` int(11) unsigned NOT NULL,
+`self_enhancement` int(11) unsigned NOT NULL,
+`self_transcendence` int(11) unsigned NOT NULL,
+
+CONSTRAINT `attributess` FOREIGN KEY (`id`) REFERENCES `users` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+
+DROP TABLE IF EXISTS `login_tokens`;
+
+CREATE TABLE `login_tokens` (
+  `id` varchar(36) DEFAULT NULL,
+  `token` char(64) NOT NULL DEFAULT '',
+`secret` char(64) NOT NULL DEFAULT '',
+ `password` varchar(60) DEFAULT NULL,
+ `username` varchar(60) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `token` (`token`),
+ 
+  CONSTRAINT `login_tokens_ibfk_1` FOREIGN KEY (`id`) REFERENCES `users` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+
+
+
+
+
+
