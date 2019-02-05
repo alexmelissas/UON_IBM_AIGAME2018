@@ -11,7 +11,7 @@
 - [x] Twitter authorization
 - [x] Access user tweets
 - [x] Load tweets to IBM Personality Insight
-- [ ] Store access token into datatbase
+- [x] Store access token into datatbase
 - [ ] User sign up and login API
 - [x] Add error page
 - [ ] Deal with insufficient words on twitter
@@ -23,6 +23,9 @@
 - [ ] REST API
 - [ ] Logger
 - [ ] Exception handle
+- [ ] Safety of API (what attributes can be accessed?)
+	- Get the top five players (username, id)
+	- Check if the username is repeat
 
 **API reference**
 - `/auth`: go to the authorization page

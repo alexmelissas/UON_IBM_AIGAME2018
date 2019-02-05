@@ -1,7 +1,10 @@
 package springboot.domain;
 
-import org.springframework.data.repository.CrudRepository;
+import java.util.Optional;
 
-public interface UserRepository extends CrudRepository<User, Integer>{
-	
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface UserRepository extends JpaRepository<User, Integer>{
+	public Optional<User> findById(String id);
+	public boolean existsByUsername(String username);
 }
