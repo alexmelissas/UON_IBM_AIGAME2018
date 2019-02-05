@@ -22,7 +22,7 @@ public class registerUser : MonoBehaviour
 
         Debug.Log(username + " " + password); //this would pass it to the server and check if available, and save
         if (true) // this would check if they're ok
-            SceneManager.LoadScene("Overworld");
+            SceneManager.LoadScene("TwitterLogin");
         return;
     }
 }

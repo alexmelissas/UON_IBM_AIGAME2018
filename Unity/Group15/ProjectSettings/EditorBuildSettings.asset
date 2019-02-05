@@ -12,17 +12,20 @@ EditorBuildSettings:
     path: Assets/Scenes/Start_Login.unity
     guid: 5c3761b3e596bd94e9ed293e6a89a7c9
   - enabled: 1
-    path: Assets/Scenes/CharacterCreation.unity
-    guid: d64aa3d053001114eac453d8a11b31d8
-  - enabled: 1
-    path: Assets/Scenes/Settings.unity
-    guid: affcb6f8ed5ddf84aa952eaebed4886c
+    path: Assets/Scenes/CreateAccount.unity
+    guid: c4405889022b6f844ba4cdeeb5424430
   - enabled: 1
     path: Assets/Scenes/TwitterLogin.unity
     guid: ab3f4579843b7b7498d14a121e73f504
   - enabled: 1
-    path: Assets/Scenes/CharacterCreatedView.unity
-    guid: c4405889022b6f844ba4cdeeb5424430
+    path: Assets/Scenes/CharacterCreation.unity
+    guid: d64aa3d053001114eac453d8a11b31d8
+  - enabled: 1
+    path: Assets/Scenes/ModelCreated.unity
+    guid: d52011b800db169459c61e46b0c00342
+  - enabled: 1
+    path: Assets/Scenes/Settings.unity
+    guid: affcb6f8ed5ddf84aa952eaebed4886c
   - enabled: 1
     path: Assets/Scenes/Overworld.unity
     guid: 30d0e80c1d1ba5441acf51381106866b
