@@ -28,14 +28,18 @@
 	- Check if the username is repeat
 
 **API reference**
-- `/auth`: go to the authorization page
-- `/user`:
-	- `"/add"`: add new user
-	- `"/all"`: get all the users
-	- `"/find"`: find user by id
-	- `"/update"`: update user information
-	- `"/delete"`: delete user
-- `/analysis`: IBM personality insight service
+- ip: `132.232.30.215`
+- port: `8080`
+- `/auth/{id}`:
+	- GET: go to the authorization page
+- `/users`:
+	- GET: get all the users
+	- POST: create new user account
+		- example: `curl -X POST 132.232.30.215:8080/users -H 'Content-type:application/json' -d '{"username": "char", "password": "1234"}'`
+- `/users/{id}`:
+	- GET: get the user by id
+	- POST: update the use's information
+		- example: `curl -X PUT 132.232.30.215:8080/users/{id} -H 'Content-type:application/json' -d '{"username": "char", "password": "1234"}'`
 - TBD
 
 **Helpful material**
