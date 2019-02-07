@@ -63,6 +63,7 @@ public class UserController {
 	 */
 	@PutMapping(path = "/users/{id}")
 	public @ResponseBody String updateUser(@PathVariable String id, @RequestBody User user) {
+		// TODO update wont change the information
 		userService.updateUser(id, user);
 		return "Updated";
 	}

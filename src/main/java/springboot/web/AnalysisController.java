@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.ibm.watson.developer_cloud.personality_insights.v3.model.Profile;
+
 import springboot.service.PersonalityInsightService;
 import springboot.service.UserService;
 import springboot.util.AnalysisResult;
@@ -31,9 +33,17 @@ public class AnalysisController {
 	
     @RequestMapping("/result")
     public AnalysisResult result(HttpServletRequest request) {
-    	// TODO handle the situation: less 100 words
     	ContentLoader contentLoader = (ContentLoader) request.getSession().getAttribute("content");
-    	return new AnalysisResult(piService.analysis(contentLoader));
+    	Profile profile = piService.analysis(contentLoader);
+    	AnalysisResult analysisResult;
+    	
+    	if(profile.getWordCount() == null) {
+    		// tweets less than 100 words
+    		analysisResult = null;
+    	} else {
+    		analysisResult = new AnalysisResult(profile);
+    	}
+    	return analysisResult;
     }
     
     // Authorization callback
