@@ -12,7 +12,7 @@
 - [x] Access user tweets
 - [x] Load tweets to IBM Personality Insight
 - [x] Store access token into datatbase
-- [ ] User sign up and login API
+- [x] User sign up and login API
 - [x] Add error page
 - [ ] Deal with insufficient words on twitter
 - [ ] Transfer the result of analysis to character attributes:
@@ -40,6 +40,8 @@
 	- GET: get the user by id
 	- POST: update the use's information
 		- example: `curl -X PUT 132.232.30.215:8080/users/{id} -H 'Content-type:application/json' -d '{"username": "char", "password": "1234"}'`
+- `/users/login`:
+	- POST: login
 - TBD
 
 **Helpful material**

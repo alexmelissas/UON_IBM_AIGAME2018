@@ -31,14 +31,14 @@ public class UserService {
 		userRepository.save(user);
 	}
 	
-	public void deleteUserById(int uid) {
-		userRepository.deleteById(uid);
+	public void deleteUserByUid(String uid) {
+		userRepository.deleteByUid(uid);
 	}
 
 	public void updateUser(String uid, User newUser) {
-		User temp = userRepository.findByUid(uid).get();
-		System.out.println(temp);
-		System.out.println(newUser);
+//		User temp = userRepository.findByUid(uid).get();
+//		System.out.println(temp);
+//		System.out.println(newUser);
 		userRepository.findByUid(uid)
 						.map(user -> {
 							user.setUsername(newUser.getUsername());
@@ -56,5 +56,18 @@ public class UserService {
 
 	public boolean isExist(String username) {
 		return userRepository.existsByUsername(username);
+	}
+
+	public User login(User loginUser) {
+		Optional<User> refUser = userRepository.findByUsername(loginUser.getUsername());
+		User user = null;
+		if(!refUser.isPresent()) {
+		} else {
+			user = refUser.get();
+			if(!user.getPassword().equals(loginUser.getPassword())) {
+				user = null;
+			}
+		}
+		return user;
 	}
 }

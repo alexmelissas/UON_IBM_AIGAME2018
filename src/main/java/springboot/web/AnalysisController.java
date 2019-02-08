@@ -59,7 +59,6 @@ public class AnalysisController {
 			// Twitter User
 			User user = twitter.verifyCredentials();
 			
-			// TODO UID
 			// Update user information
 			springboot.domain.User newUser = userService.getUserByUid(uid).get();
 			newUser.setAccessToken(accessToken.getToken());
