@@ -14,8 +14,8 @@ public class User {
 	@Id
 	@GeneratedValue(generator = "uuid2")
 	@GenericGenerator(name = "uuid2", strategy = "org.hibernate.id.UUIDGenerator")
-	@Column(name = "id", columnDefinition = "VARCHAR(36)")
-	private String id;
+	@Column(name = "uid", columnDefinition = "VARCHAR(36)")
+	private String uid;
 	
 	@NotNull(message = "Username cannot be null")
 	@Length(min = 1, max = 15, message = "Username should be 1-15 characters")
@@ -41,26 +41,26 @@ public class User {
 		this.password = password;
 	}
 
-	public User(String id, String username, String password) {
-		this.id = id;
+	public User(String uid, String username, String password) {
+		this.uid = uid;
 		this.username = username;
 		this.password = password;
 	}
 	
-	public User(String id, String username, String password, String accessToken, String accessTokenSecret) {
-		this.id = id;
+	public User(String uid, String username, String password, String accessToken, String accessTokenSecret) {
+		this.uid = uid;
 		this.username = username;
 		this.password = password;
 		this.accessToken = accessToken;
 		this.accessTokenSecret = accessTokenSecret;
 	}
 
-	public String getId() {
-		return id;
+	public String getUid() {
+		return uid;
 	}
 
-	public void setId(String id) {
-		this.id = id;
+	public void setId(String uid) {
+		this.uid = uid;
 	}
 
 	public String getUsername() {
@@ -93,5 +93,11 @@ public class User {
 
 	public void setAccessTokenSecret(String accessTokenSecret) {
 		this.accessTokenSecret = accessTokenSecret;
+	}
+
+	@Override
+	public String toString() {
+		return "User [uid=" + uid + ", username=" + username + ", password=" + password + ", accessToken=" + accessToken
+				+ ", accessTokenSecret=" + accessTokenSecret + "]";
 	}
 }

@@ -49,7 +49,7 @@ public class AnalysisController {
     // Authorization callback
     @GetMapping("/analysis")
 	public void analysis(HttpServletRequest request, HttpServletResponse response) throws IOException {
-		String id = (String) request.getSession().getAttribute("id");
+		String uid = (String) request.getSession().getAttribute("uid");
     	Twitter twitter = (Twitter) request.getSession().getAttribute("twitter");
 		RequestToken requestToken = (RequestToken) request.getSession().getAttribute("requestToken");
 		String verifier = request.getParameter("oauth_verifier");
@@ -59,11 +59,12 @@ public class AnalysisController {
 			// Twitter User
 			User user = twitter.verifyCredentials();
 			
+			// TODO UID
 			// Update user information
-			springboot.domain.User newUser = userService.getUserById(id).get();
+			springboot.domain.User newUser = userService.getUserByUid(uid).get();
 			newUser.setAccessToken(accessToken.getToken());
 			newUser.setAccessTokenSecret(accessToken.getTokenSecret());
-			userService.updateUser(id, newUser);
+			userService.updateUser(uid, newUser);
 			
 //			System.out.println("Access Token:" + accessToken.getToken());
 //			System.out.println("Access Token Secret:" + accessToken.getTokenSecret());

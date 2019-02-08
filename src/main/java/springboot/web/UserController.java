@@ -50,9 +50,9 @@ public class UserController {
 	 * @param id
 	 * @return
 	 */
-	@GetMapping(path = "/users/{id}")
-	public @ResponseBody Optional<User> getUserById(@PathVariable String id) {
-		return userService.getUserById(id);
+	@GetMapping(path = "/users/{uid}")
+	public @ResponseBody Optional<User> getUserById(@PathVariable String uid) {
+		return userService.getUserByUid(uid);
 	}
 	
 	/**
@@ -61,10 +61,10 @@ public class UserController {
 	 * @param user
 	 * @return
 	 */
-	@PutMapping(path = "/users/{id}")
-	public @ResponseBody String updateUser(@PathVariable String id, @RequestBody User user) {
+	@PutMapping(path = "/users/{uid}")
+	public @ResponseBody String updateUser(@PathVariable String uid, @RequestBody User user) {
 		// TODO update wont change the information
-		userService.updateUser(id, user);
+		userService.updateUser(uid, user);
 		return "Updated";
 	}
 	
@@ -73,9 +73,9 @@ public class UserController {
 	 * @param id
 	 * @return
 	 */
-	@DeleteMapping(path = "/users/{id}")
-	public @ResponseBody String deleteUser(@PathVariable int id) {
-		userService.deleteUserById(id);
+	@DeleteMapping(path = "/users/{uid}")
+	public @ResponseBody String deleteUser(@PathVariable int uid) {
+		userService.deleteUserById(uid);
 		return "Deleted";
 	}
 }
