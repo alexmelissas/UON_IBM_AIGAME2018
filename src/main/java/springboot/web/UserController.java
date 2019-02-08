@@ -63,6 +63,11 @@ public class UserController {
 	 */
 	@PutMapping(path = "/users/{uid}")
 	public @ResponseBody String updateUser(@PathVariable String uid, @RequestBody User user) {
+		User previousUser = userService.getUserByUid(uid).get();
+		// check if modified username is exist
+		if(userService.isExist(user.getUsername()) && !previousUser.getUsername().equals(user.getUsername())) {
+			return "Username has been taken";
+		}
 		userService.updateUser(uid, user);
 		return "Updated";
 	}
