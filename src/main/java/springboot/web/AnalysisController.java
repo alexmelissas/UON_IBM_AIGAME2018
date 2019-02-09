@@ -17,6 +17,8 @@ import springboot.service.PersonalityInsightService;
 import springboot.service.UserService;
 import springboot.util.AnalysisResult;
 import springboot.util.ContentLoader;
+import springboot.domain.Character;
+
 import twitter4j.Status;
 import twitter4j.Twitter;
 import twitter4j.TwitterException;
@@ -32,18 +34,19 @@ public class AnalysisController {
 	private UserService userService;
 	
     @RequestMapping("/result")
-    public AnalysisResult result(HttpServletRequest request) {
+    public Character result(HttpServletRequest request) {
+    	// TODO return character in JSON type
     	ContentLoader contentLoader = (ContentLoader) request.getSession().getAttribute("content");
     	Profile profile = piService.analysis(contentLoader);
     	AnalysisResult analysisResult;
-    	
+//    	System.out.println(profile.toString());
     	if(profile.getWordCount() == null) {
     		// tweets less than 100 words
-    		analysisResult = null;
+    		analysisResult = new AnalysisResult(new Profile());
     	} else {
     		analysisResult = new AnalysisResult(profile);
     	}
-    	return analysisResult;
+    	return analysisResult.getCharacter();
     }
     
     // Authorization callback
@@ -64,10 +67,6 @@ public class AnalysisController {
 			newUser.setAccessToken(accessToken.getToken());
 			newUser.setAccessTokenSecret(accessToken.getTokenSecret());
 			userService.updateUser(uid, newUser);
-			
-//			System.out.println("Access Token:" + accessToken.getToken());
-//			System.out.println("Access Token Secret:" + accessToken.getTokenSecret());
-//			System.out.println(user);
 			
 //			user = twitter.showUser(accessToken.getUserId());
 //			System.out.println(user);
