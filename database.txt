@@ -88,6 +88,29 @@ CREATE TABLE `login_tokens` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 
+DROP TABLE IF EXISTS `Items`;
+CREATE TABLE `Items` (
+  `Itemid` varchar(36) DEFAULT NULL,
+`ItemName` varchar(36) DEFAULT NULL,
+`ItemInfo` varchar(36) DEFAULT NULL,
+PRIMARY KEY (`Itemid`),
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+
+
+DROP TABLE IF EXISTS `CharItems`;
+CREATE TABLE `CharItems` (
+  `Charid` varchar(36) DEFAULT NULL,
+`Item` varchar(36) DEFAULT NULL,
+CONSTRAINT `CharItems_ibfk_1` FOREIGN KEY (`Charid`) REFERENCES `users` (`id`)
+
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+
+
+
+
+
 
 
 
