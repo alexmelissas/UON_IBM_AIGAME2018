@@ -1,9 +1,9 @@
 DROP TABLE IF EXISTS `users`;
 
 CREATE TABLE `users` (
-  `id` varchar(36) DEFAULT NULL,
-  `username` varchar(32) DEFAULT NULL,
-  `password` varchar(60) DEFAULT NULL,
+  `id` varchar(36) NOT NULL,
+  `username` varchar(32) NOT NULL,
+  `password` varchar(60) NOT NULL,
   `email` text,
   
   PRIMARY KEY (`id`)
@@ -76,7 +76,7 @@ CONSTRAINT `attributess` FOREIGN KEY (`id`) REFERENCES `users` (`id`)
 DROP TABLE IF EXISTS `login_tokens`;
 
 CREATE TABLE `login_tokens` (
-  `id` varchar(36) DEFAULT NULL,
+  `id` varchar(36) NOT NULL,
   `token` char(64) NOT NULL DEFAULT '',
 `secret` char(64) NOT NULL DEFAULT '',
  `password` varchar(60) DEFAULT NULL,
@@ -86,6 +86,29 @@ CREATE TABLE `login_tokens` (
  
   CONSTRAINT `login_tokens_ibfk_1` FOREIGN KEY (`id`) REFERENCES `users` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+
+DROP TABLE IF EXISTS `Items`;
+CREATE TABLE `Items` (
+  `Itemid` varchar(36) DEFAULT NULL,
+`ItemName` varchar(36) DEFAULT NULL,
+`ItemInfo` varchar(36) DEFAULT NULL,
+PRIMARY KEY (`Itemid`),
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+
+
+DROP TABLE IF EXISTS `CharItems`;
+CREATE TABLE `CharItems` (
+  `Charid` varchar(36) DEFAULT NULL,
+`Item` varchar(36) DEFAULT NULL,
+CONSTRAINT `CharItems_ibfk_1` FOREIGN KEY (`Charid`) REFERENCES `users` (`id`)
+
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+
+
+
 
 
 
