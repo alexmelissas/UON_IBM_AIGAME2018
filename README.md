@@ -14,7 +14,7 @@
 - [x] Store access token into datatbase
 - [x] User sign up and login API
 - [x] Add error page
-- [ ] Deal with insufficient words on twitter
+- [x] Deal with insufficient words on twitter
 - [ ] Transfer the result of analysis to character attributes:
 	- user choose the personality
 	- compare the similarity
@@ -26,9 +26,11 @@
 - [ ] Safety of API (what attributes can be accessed?)
 	- Get the top five players (username, id)
 	- Check if the username is repeat
+- [ ] Create Robot role
+- [ ] Create table for Ideal personality
 
 **API reference**
-- ip: `132.232.30.215`
+- ip: `3.8.137.254`
 - port: `8080`
 - `/auth/{id}`:
 	- GET: go to the authorization page

@@ -15,7 +15,6 @@ public class AnalysisResult {
     public AnalysisResult(Profile profile) {
     	this.profile = profile;
     	jsonObject = new JsonParser().parse(profile.toString()).getAsJsonObject();
-    	System.out.println(jsonObject);
     }
 
     public void generateRole() {
