@@ -24,10 +24,10 @@ public class AuthController {
 	@Autowired
 	private UserService userService;
 	
-	@GetMapping("/auth/{uid}")
-	protected void auth(HttpServletRequest request, HttpServletResponse response, @PathVariable String uid) throws IOException {
+	@GetMapping("/auth/{id}")
+	protected void auth(HttpServletRequest request, HttpServletResponse response, @PathVariable String id) throws IOException {
 		// Get the user
-		Optional<User> user = userService.getUserByUid(uid);
+		Optional<User> user = userService.getUserById(id);
 		if(user == null || !user.isPresent()) {
 			try {
 				request.getRequestDispatcher("/404").forward(request, response);
@@ -48,7 +48,7 @@ public class AuthController {
 		try {
 			requestToken = twitter.getOAuthRequestToken();
 			// Store twitter and request token in session
-			request.getSession().setAttribute("uid", uid);
+			request.getSession().setAttribute("id", id);
 			request.getSession().setAttribute("twitter", twitter);
 			request.getSession().setAttribute("requestToken", requestToken);
 		} catch (TwitterException e) {

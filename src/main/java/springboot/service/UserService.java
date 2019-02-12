@@ -17,29 +17,29 @@ public class UserService {
 		userRepository.save(user);
 	}
 	
-	public Optional<User> getUserByUid(String uid) {
-		return userRepository.findByUid(uid);
+	public Optional<User> getUserById(String id) {
+		return userRepository.findById(id);
 	}
 	
 	public Iterable<User> getAllUsers() {
 		return userRepository.findAll();
 	}
 	
-	public void updateUser(String uid, String username, String password) {
-		User user = new User(uid, username, password);
+	public void updateUser(String id, String username, String password) {
+		User user = new User(id, username, password);
 		
 		userRepository.save(user);
 	}
 	
-	public void deleteUserByUid(String uid) {
-		userRepository.deleteByUid(uid);
+	public void deleteUserById(String id) {
+		userRepository.deleteById(id);
 	}
 
-	public void updateUser(String uid, User newUser) {
-//		User temp = userRepository.findByUid(uid).get();
+	public void updateUser(String id, User newUser) {
+//		User temp = userRepository.findByid(id).get();
 //		System.out.println(temp);
 //		System.out.println(newUser);
-		userRepository.findByUid(uid)
+		userRepository.findById(id)
 						.map(user -> {
 							user.setUsername(newUser.getUsername());
 							user.setPassword(newUser.getPassword());

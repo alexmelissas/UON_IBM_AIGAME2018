@@ -17,7 +17,7 @@ import springboot.service.PersonalityInsightService;
 import springboot.service.UserService;
 import springboot.util.AnalysisResult;
 import springboot.util.ContentLoader;
-import springboot.domain.Character;
+import springboot.domain.Role;
 
 import twitter4j.Status;
 import twitter4j.Twitter;
@@ -34,7 +34,7 @@ public class AnalysisController {
 	private UserService userService;
 	
     @RequestMapping("/result")
-    public Character result(HttpServletRequest request) {
+    public Role result(HttpServletRequest request) {
     	// TODO return character in JSON type
     	ContentLoader contentLoader = (ContentLoader) request.getSession().getAttribute("content");
     	Profile profile = piService.analysis(contentLoader);
@@ -46,13 +46,13 @@ public class AnalysisController {
     	} else {
     		analysisResult = new AnalysisResult(profile);
     	}
-    	return analysisResult.getCharacter();
+    	return analysisResult.getRole();
     }
     
     // Authorization callback
     @GetMapping("/analysis")
 	public void analysis(HttpServletRequest request, HttpServletResponse response) throws IOException {
-		String uid = (String) request.getSession().getAttribute("uid");
+		String id = (String) request.getSession().getAttribute("id");
     	Twitter twitter = (Twitter) request.getSession().getAttribute("twitter");
 		RequestToken requestToken = (RequestToken) request.getSession().getAttribute("requestToken");
 		String verifier = request.getParameter("oauth_verifier");
@@ -63,10 +63,10 @@ public class AnalysisController {
 			User user = twitter.verifyCredentials();
 			
 			// Update user information
-			springboot.domain.User newUser = userService.getUserByUid(uid).get();
+			springboot.domain.User newUser = userService.getUserById(id).get();
 			newUser.setAccessToken(accessToken.getToken());
 			newUser.setAccessTokenSecret(accessToken.getTokenSecret());
-			userService.updateUser(uid, newUser);
+			userService.updateUser(id, newUser);
 			
 //			user = twitter.showUser(accessToken.getUserId());
 //			System.out.println(user);

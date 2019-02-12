@@ -2517,10 +2517,10 @@ public class CharacterTest {
 				"";
 //		System.out.println(analysisResult.getJsonObject());
 		
-		analysisResult.generateCharacter();
+		analysisResult.generateRole();
 		analysisResult.setJsonObject(str);
-		analysisResult.generateCharacter();
+		analysisResult.generateRole();
 		analysisResult.setJsonObject(str2);
-		analysisResult.generateCharacter();
+		analysisResult.generateRole();
 	}
 }

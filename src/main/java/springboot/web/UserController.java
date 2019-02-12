@@ -50,9 +50,9 @@ public class UserController {
 	 * @param id
 	 * @return
 	 */
-	@GetMapping(path = "/users/{uid}")
-	public @ResponseBody Optional<User> getUserById(@PathVariable String uid) {
-		return userService.getUserByUid(uid);
+	@GetMapping(path = "/users/{id}")
+	public @ResponseBody Optional<User> getUserById(@PathVariable String id) {
+		return userService.getUserById(id);
 	}
 	
 	/**
@@ -61,14 +61,14 @@ public class UserController {
 	 * @param user
 	 * @return
 	 */
-	@PutMapping(path = "/users/{uid}")
-	public @ResponseBody String updateUser(@PathVariable String uid, @RequestBody User user) {
-		User previousUser = userService.getUserByUid(uid).get();
+	@PutMapping(path = "/users/{id}")
+	public @ResponseBody String updateUser(@PathVariable String id, @RequestBody User user) {
+		User previousUser = userService.getUserById(id).get();
 		// check if modified username is exist
 		if(userService.isExist(user.getUsername()) && !previousUser.getUsername().equals(user.getUsername())) {
 			return "Username has been taken";
 		}
-		userService.updateUser(uid, user);
+		userService.updateUser(id, user);
 		return "Updated";
 	}
 	
@@ -77,9 +77,9 @@ public class UserController {
 	 * @param id
 	 * @return
 	 */
-	@DeleteMapping(path = "/users/{uid}")
-	public @ResponseBody String deleteUser(@PathVariable String uid) {
-		userService.deleteUserByUid(uid);
+	@DeleteMapping(path = "/users/{id}")
+	public @ResponseBody String deleteUser(@PathVariable String id) {
+		userService.deleteUserById(id);
 		return "Deleted";
 	}
 	

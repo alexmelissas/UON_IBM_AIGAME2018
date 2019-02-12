@@ -1,0 +1,90 @@
+package springboot.domain;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
+public class Role {
+	@Id
+	@Column(name = "id", columnDefinition = "VARCHAR(36)")
+	public String id;
+	
+//	@Column(name = "hp", columnDefinition = "INT")
+	public int hp;
+	
+//	@Column(name = "attack", columnDefinition = "INT")
+	public int attack;
+	
+//	@Column(name = "defence", columnDefinition = "INT")
+	public int defence;
+	
+//	@Column(name = "agility", columnDefinition = "INT")
+	public int agility;
+	
+//	@Column(name = "intelligence", columnDefinition = "INT")
+	public int intelligence;
+	
+//	@Column(name = "jsonresult", columnDefinition = "TEXT")
+	public String jsonResult;
+	
+	public Role() {
+	}
+
+	public Role(String id, int hp, int attack, int defence, int aqiliyt, int intelligence) {
+		this.id = id;
+		this.hp = hp;
+		this.attack = attack;
+		this.defence = defence;
+		this.agility = aqiliyt;
+		this.intelligence = intelligence;
+	}
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public int getHp() {
+		return hp;
+	}
+
+	public void setHp(int hp) {
+		this.hp = hp;
+	}
+
+	public int getAttack() {
+		return attack;
+	}
+
+	public void setAttack(int attack) {
+		this.attack = attack;
+	}
+
+	public int getDefence() {
+		return defence;
+	}
+
+	public void setDefence(int defence) {
+		this.defence = defence;
+	}
+
+	public int getAqiliyt() {
+		return agility;
+	}
+
+	public void setAqiliyt(int aqiliyt) {
+		this.agility = aqiliyt;
+	}
+
+	public int getIntelligence() {
+		return intelligence;
+	}
+
+	public void setIntelligence(int intelligence) {
+		this.intelligence = intelligence;
+	}
+}
