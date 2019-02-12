@@ -10,33 +10,33 @@ public class Role {
 	@Column(name = "id", columnDefinition = "VARCHAR(36)")
 	public String id;
 	
-//	@Column(name = "hp", columnDefinition = "INT")
+	@Column(name = "hp", columnDefinition = "INT")
 	public int hp;
 	
-//	@Column(name = "attack", columnDefinition = "INT")
+	@Column(name = "attack", columnDefinition = "INT")
 	public int attack;
 	
-//	@Column(name = "defence", columnDefinition = "INT")
+	@Column(name = "defence", columnDefinition = "INT")
 	public int defence;
 	
-//	@Column(name = "agility", columnDefinition = "INT")
+	@Column(name = "agility", columnDefinition = "INT")
 	public int agility;
 	
-//	@Column(name = "intelligence", columnDefinition = "INT")
+	@Column(name = "intelligence", columnDefinition = "INT")
 	public int intelligence;
 	
-//	@Column(name = "jsonresult", columnDefinition = "TEXT")
+	@Column(name = "jsonresult", columnDefinition = "TEXT")
 	public String jsonResult;
 	
 	public Role() {
 	}
 
-	public Role(String id, int hp, int attack, int defence, int aqiliyt, int intelligence) {
+	public Role(String id, int hp, int attack, int defence, int aqility, int intelligence) {
 		this.id = id;
 		this.hp = hp;
 		this.attack = attack;
 		this.defence = defence;
-		this.agility = aqiliyt;
+		this.agility = aqility;
 		this.intelligence = intelligence;
 	}
 
@@ -72,19 +72,27 @@ public class Role {
 		this.defence = defence;
 	}
 
-	public int getAqiliyt() {
-		return agility;
-	}
-
-	public void setAqiliyt(int aqiliyt) {
-		this.agility = aqiliyt;
-	}
-
 	public int getIntelligence() {
 		return intelligence;
 	}
 
 	public void setIntelligence(int intelligence) {
 		this.intelligence = intelligence;
+	}
+
+	public int getAgility() {
+		return agility;
+	}
+
+	public void setAgility(int agility) {
+		this.agility = agility;
+	}
+
+	public String getJsonResult() {
+		return jsonResult;
+	}
+
+	public void setJsonResult(String jsonResult) {
+		this.jsonResult = jsonResult;
 	}
 }

@@ -25,12 +25,6 @@ public class UserService {
 		return userRepository.findAll();
 	}
 	
-	public void updateUser(String id, String username, String password) {
-		User user = new User(id, username, password);
-		
-		userRepository.save(user);
-	}
-	
 	public void deleteUserById(String id) {
 		userRepository.deleteById(id);
 	}
