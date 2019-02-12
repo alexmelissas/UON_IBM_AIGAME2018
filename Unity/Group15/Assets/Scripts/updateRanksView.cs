@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -6,24 +7,47 @@ using UnityEngine.UI;
 public class updateRanksView : MonoBehaviour {
 
     public GameObject display;
-    
-    private List<string> getPlayers(string rank) {
-        List<string> players = new List<string>();
-        players.Clear();
+    List<User> Players;
+    string oldRank = "";
+    string newRank = "";
 
-        for(int i=0;i<5;i++) {    //here it would GET the top5 from server and add to list.
-            players.Add(rank); 
+    void Update()
+    {
+        if (newRank != oldRank)
+        {
+            while (Players == null) ;
+            int i = 0;
+            foreach (User current in Players)
+            {
+                string currentslot = "Slot" + (++i);
+                display.transform.Find(currentslot).gameObject.GetComponentInChildren<Text>().text = current.username;
+            }
+            StopCoroutine(GetPlayers(newRank));
+            oldRank = newRank;
         }
-        //players.Sort -- by points.
+    }
 
-        return players;
+    IEnumerator GetPlayers(string rank)
+    {
+        string url = "http://3.8.137.254:8080/users";
+        WWW www = new WWW(url);
+        yield return www;
+        string all = www.text.Trim(new char[]{'[', ']'});
+        string[] separators = {"},","}"};
+        string[] entries = all.Split(separators, System.StringSplitOptions.RemoveEmptyEntries);
+        for (int i=0; i<entries.Length; i++) {
+            if (i == 5) break;
+            string newPlayerJson = entries[i] + "}";
+            Debug.Log("" + newPlayerJson);
+            User newplayer = JsonUtility.FromJson<User>(newPlayerJson);         
+            Players.Add(newplayer);
+            Debug.Log("" + newplayer.username);
+        }
     }
 
     public void displayTopPlayers(string rank) {
-        int i = 0;
-        foreach (string current in getPlayers(rank)){
-            string currentslot = "Slot" + (++i);
-            display.transform.Find(currentslot).gameObject.GetComponentInChildren<Text>().text = current;
-        }
+        Players = new List<User>();
+        StartCoroutine(GetPlayers(rank));
+        newRank = rank;
     }
 }
