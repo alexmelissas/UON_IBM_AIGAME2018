@@ -1,9 +1,9 @@
 DROP TABLE IF EXISTS `users`;
 
 CREATE TABLE `users` (
-  `id` varchar(36) DEFAULT NULL,
-  `username` varchar(32) DEFAULT NULL,
-  `password` varchar(60) DEFAULT NULL,
+  `id` varchar(36) NOT NULL,
+  `username` varchar(32) NOT NULL,
+  `password` varchar(60) NOT NULL,
   `email` text,
   
   PRIMARY KEY (`id`)
@@ -76,7 +76,7 @@ CONSTRAINT `attributess` FOREIGN KEY (`id`) REFERENCES `users` (`id`)
 DROP TABLE IF EXISTS `login_tokens`;
 
 CREATE TABLE `login_tokens` (
-  `id` varchar(36) DEFAULT NULL,
+  `id` varchar(36) NOT NULL,
   `token` char(64) NOT NULL DEFAULT '',
 `secret` char(64) NOT NULL DEFAULT '',
  `password` varchar(60) DEFAULT NULL,
