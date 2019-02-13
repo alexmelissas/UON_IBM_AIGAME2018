@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.ibm.watson.developer_cloud.personality_insights.v3.model.Profile;
 
 import springboot.service.PersonalityInsightService;
+import springboot.service.RoleService;
 import springboot.service.UserService;
 import springboot.util.AnalysisResult;
 import springboot.util.ContentLoader;
@@ -32,21 +33,33 @@ public class AnalysisController {
 	private PersonalityInsightService piService;
 	@Autowired
 	private UserService userService;
+	@Autowired
+	private RoleService roleService;
 	
     @RequestMapping("/result")
     public Role result(HttpServletRequest request) {
     	// TODO return character in JSON type
+    	// Store Json result to database
     	ContentLoader contentLoader = (ContentLoader) request.getSession().getAttribute("content");
     	Profile profile = piService.analysis(contentLoader);
-    	AnalysisResult analysisResult;
-//    	System.out.println(profile.toString());
-    	if(profile.getWordCount() == null) {
-    		// tweets less than 100 words
-    		analysisResult = new AnalysisResult(new Profile());
-    	} else {
-    		analysisResult = new AnalysisResult(profile);
-    	}
-    	return analysisResult.getRole();
+    	
+    	String id = (String) request.getSession().getAttribute("id");
+    	Role role = new Role();
+    	role.setId(id);
+    	role.setJsonResult(profile.toString());
+    	roleService.addRole(role);
+
+    	// TODO
+//    	AnalysisResult analysisResult;
+////    	System.out.println(profile.toString());
+//    	if(profile.getWordCount() == null) {
+//    		// tweets less than 100 words
+//    		analysisResult = new AnalysisResult(new Profile());
+//    	} else {
+//    		analysisResult = new AnalysisResult(profile);
+//    	}
+//    	return analysisResult.getRole();
+    	return role;
     }
     
     // Authorization callback
@@ -84,8 +97,6 @@ public class AnalysisController {
 		} catch (TwitterException e) {
 			e.printStackTrace();
 		}
-		
-		// TODO related to the failure?
 		
 		response.sendRedirect(request.getContextPath() + "/result");
 		return;

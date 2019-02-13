@@ -29,4 +29,7 @@ public class RoleController {
 	public int getRankById(@PathVariable String id) {
 		return roleService.getRankById(id);
 	}
+	
+	// TODO interval to check twitter 
+	
 }
