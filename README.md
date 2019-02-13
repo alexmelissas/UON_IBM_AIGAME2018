@@ -28,6 +28,7 @@
 	- Check if the username is repeat
 - [ ] Create Robot role
 - [ ] Create table for Ideal personality
+- [ ] Interval to check Twitter
 
 **API reference**
 - ip: `3.8.137.254`

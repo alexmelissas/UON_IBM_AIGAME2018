@@ -25,6 +25,9 @@ public class Role {
 	@Column(name = "intelligence", columnDefinition = "INT")
 	public int intelligence;
 	
+	@Column(name = "score", columnDefinition = "INT")
+	public int score = 0;
+	
 	@Column(name = "jsonresult", columnDefinition = "TEXT")
 	public String jsonResult;
 	
@@ -38,6 +41,17 @@ public class Role {
 		this.defence = defence;
 		this.agility = aqility;
 		this.intelligence = intelligence;
+	}
+	
+	public Role(String id, int hp, int attack, int defence, int agility, int intelligence, int score) {
+		super();
+		this.id = id;
+		this.hp = hp;
+		this.attack = attack;
+		this.defence = defence;
+		this.agility = agility;
+		this.intelligence = intelligence;
+		this.score = score;
 	}
 
 	public String getId() {
@@ -94,5 +108,13 @@ public class Role {
 
 	public void setJsonResult(String jsonResult) {
 		this.jsonResult = jsonResult;
+	}
+
+	public int getScore() {
+		return score;
+	}
+
+	public void setScore(int score) {
+		this.score = score;
 	}
 }

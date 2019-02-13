@@ -30,9 +30,6 @@ public class UserService {
 	}
 
 	public void updateUser(String id, User newUser) {
-//		User temp = userRepository.findByid(id).get();
-//		System.out.println(temp);
-//		System.out.println(newUser);
 		userRepository.findById(id)
 						.map(user -> {
 							user.setUsername(newUser.getUsername());
