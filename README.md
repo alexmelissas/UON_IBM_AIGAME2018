@@ -1,6 +1,6 @@
 ### Game_backend
 
-**Technical**
+**Technic**
 - Spring Boot
 - MySQL
 - IBM Personality Insight
