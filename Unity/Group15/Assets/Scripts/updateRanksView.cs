@@ -7,47 +7,43 @@ using UnityEngine.UI;
 public class updateRanksView : MonoBehaviour {
 
     public GameObject display;
-    List<User> Players;
+    private List<User> Users;
     string oldRank = "";
-    string newRank = "";
-
-    void Update()
+    
+    IEnumerator GetPlayers(string newRank)
     {
-        if (newRank != oldRank)
-        {
-            while (Players == null) ;
-            int i = 0;
-            foreach (User current in Players)
-            {
-                string currentslot = "Slot" + (++i);
-                display.transform.Find(currentslot).gameObject.GetComponentInChildren<Text>().text = current.username;
+        if (newRank != oldRank) { // Only update when different rank is clicked.
+
+            // Here would need to get users of THAT RANK. Now just all people.
+            // Also need to get top 5 - server-side implementation.
+
+            string url = Server.Address("view_users");
+            WWW www = new WWW(url);
+            yield return www;
+            string all = www.text.Trim(new char[]{'[', ']'}); // Split the entire huge all-player JSON into individual-user JSONs.
+            string[] separators = {"},","}"};
+            string[] entries = all.Split(separators, System.StringSplitOptions.RemoveEmptyEntries);
+            for (int i=0; i<entries.Length; i++) {
+                if (i == 5) break;
+                string newUserJson = entries[i] + "}";
+                User newuser = User.CreateUserFromJSON(newUserJson);      
+                Users.Add(newuser);
             }
-            StopCoroutine(GetPlayers(newRank));
+            // Users.Sort(); //Need to sort based on Points (top 5).
+       
+            int s = 0;
+            foreach (User current in Users) {
+                string name = current.getUsername();
+                string currentslot = "Slot" + (++s);
+                display.transform.Find(currentslot).gameObject.GetComponentInChildren<Text>().text = name;
+            }
             oldRank = newRank;
-        }
-    }
-
-    IEnumerator GetPlayers(string rank)
-    {
-        string url = "http://3.8.137.254:8080/users";
-        WWW www = new WWW(url);
-        yield return www;
-        string all = www.text.Trim(new char[]{'[', ']'});
-        string[] separators = {"},","}"};
-        string[] entries = all.Split(separators, System.StringSplitOptions.RemoveEmptyEntries);
-        for (int i=0; i<entries.Length; i++) {
-            if (i == 5) break;
-            string newPlayerJson = entries[i] + "}";
-            Debug.Log("" + newPlayerJson);
-            User newplayer = JsonUtility.FromJson<User>(newPlayerJson);         
-            Players.Add(newplayer);
-            Debug.Log("" + newplayer.username);
+            StopCoroutine(GetPlayers(newRank));
         }
     }
 
     public void displayTopPlayers(string rank) {
-        Players = new List<User>();
+        Users = new List<User>();
         StartCoroutine(GetPlayers(rank));
-        newRank = rank;
     }
 }

@@ -9,8 +9,8 @@ using System.Net;
 
 public class registerUser : MonoBehaviour
 {
-    public InputField username_field;
-    public InputField password_field;
+    public InputField usernameInput;
+    public InputField passwordInput;
 
     IEnumerator TryRegister(string url, string json)
     {
@@ -28,14 +28,18 @@ public class registerUser : MonoBehaviour
         }
         else
         {
-            Debug.Log("Received: " + uwr.downloadHandler.text);
+            if(Server.CheckRegistration(uwr.downloadHandler.text)){
+                SceneManager.LoadScene("TwitterLogin");
+            }
         }
+
+        StopCoroutine(TryRegister(url, json));
     }
 
     public void checkUserPass()
     {
-        string username = username_field.text;
-        string password = password_field.text;
+        string username = usernameInput.text;
+        string password = passwordInput.text;
         if (username == "" || password == "")
         {
             Debug.Log("EMPTY");
@@ -46,10 +50,11 @@ public class registerUser : MonoBehaviour
         }
         else
         {
-            string url = "http://132.232.30.215:8080/users/";
+            string url = Server.Address("register_user");
             string json = JsonUtility.ToJson(new User(username, password));
             StartCoroutine(TryRegister(url, json));
         }
+        //DontDestroyOnLoad(GameObject.Find("username"));
         return;       
     }
 }
