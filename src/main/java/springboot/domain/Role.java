@@ -34,23 +34,22 @@ public class Role {
 	public Role() {
 	}
 
-	public Role(String id, int hp, int attack, int defence, int aqility, int intelligence) {
-		this.id = id;
-		this.hp = hp;
-		this.attack = attack;
-		this.defence = defence;
-		this.agility = aqility;
-		this.intelligence = intelligence;
-	}
 	
-	public Role(String id, int hp, int attack, int defence, int agility, int intelligence, int score) {
-		super();
-		this.id = id;
+	public Role(int hp, int attack, int defence, int agility, int intelligence) {
 		this.hp = hp;
 		this.attack = attack;
 		this.defence = defence;
 		this.agility = agility;
 		this.intelligence = intelligence;
+	}
+
+	public Role(String id, int hp, int attack, int defence, int agility, int intelligence) {
+		this(hp, attack, defence, agility, intelligence);
+		this.id = id;
+	}
+	
+	public Role(String id, int hp, int attack, int defence, int agility, int intelligence, int score) {
+		this(id, hp, attack, defence, agility, intelligence);
 		this.score = score;
 	}
 

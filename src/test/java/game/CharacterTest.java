@@ -6,7 +6,7 @@ import springboot.util.AnalysisResult;
 
 public class CharacterTest {
 	public static void main(String[] args) {
-		AnalysisResult analysisResult = new AnalysisResult(new Profile());
+		AnalysisResult analysisResult = new AnalysisResult();
 		analysisResult.setJsonObject("{\n" + 
 				"  \"word_count\": 165,\n" + 
 				"  \"word_count_message\": \"There were 165 words in the input. We need a minimum of 600, preferably 1,200 or more, to compute statistically significant estimates\",\n" + 
@@ -2517,10 +2517,10 @@ public class CharacterTest {
 				"";
 //		System.out.println(analysisResult.getJsonObject());
 		
-		analysisResult.generateRole();
+//		analysisResult.generateRole();
 		analysisResult.setJsonObject(str);
-		analysisResult.generateRole();
+//		analysisResult.generateRole();
 		analysisResult.setJsonObject(str2);
-		analysisResult.generateRole();
+//		analysisResult.generateRole();
 	}
 }

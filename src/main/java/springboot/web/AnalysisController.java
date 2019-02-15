@@ -36,34 +36,27 @@ public class AnalysisController {
 	@Autowired
 	private RoleService roleService;
 	
-    @RequestMapping("/result")
+    @RequestMapping("/analysis")
     public Role result(HttpServletRequest request) {
-    	// TODO return character in JSON type
     	// Store Json result to database
     	ContentLoader contentLoader = (ContentLoader) request.getSession().getAttribute("content");
     	Profile profile = piService.analysis(contentLoader);
-    	
-    	String id = (String) request.getSession().getAttribute("id");
     	Role role = new Role();
+    	String id = (String) request.getSession().getAttribute("id");
     	role.setId(id);
-    	role.setJsonResult(profile.toString());
+    	
+    	if(profile.getWordCount() == null || profile.getWordCount() <= 100) {
+    		// TODO handle the insufficient words
+    	} else {
+        	role.setJsonResult(profile.toString().replace("\n", "").replace("      ", " "));
+    	}
+    	
     	roleService.addRole(role);
-
-    	// TODO
-//    	AnalysisResult analysisResult;
-////    	System.out.println(profile.toString());
-//    	if(profile.getWordCount() == null) {
-//    		// tweets less than 100 words
-//    		analysisResult = new AnalysisResult(new Profile());
-//    	} else {
-//    		analysisResult = new AnalysisResult(profile);
-//    	}
-//    	return analysisResult.getRole();
     	return role;
     }
     
     // Authorization callback
-    @GetMapping("/analysis")
+    @GetMapping("/tweets")
 	public void analysis(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		String id = (String) request.getSession().getAttribute("id");
     	Twitter twitter = (Twitter) request.getSession().getAttribute("twitter");
@@ -98,7 +91,7 @@ public class AnalysisController {
 			e.printStackTrace();
 		}
 		
-		response.sendRedirect(request.getContextPath() + "/result");
+		response.sendRedirect(request.getContextPath() + "/analysis");
 		return;
 	}
 }

@@ -3,23 +3,24 @@ package springboot.util;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-import com.ibm.watson.developer_cloud.personality_insights.v3.model.Profile;
 
+import springboot.domain.Ideal;
 import springboot.domain.Role;
 
 public class AnalysisResult {
-    private final Profile profile;
     private JsonObject jsonObject;
     private Role role = null;
     
-    public AnalysisResult(Profile profile) {
-    	this.profile = profile;
-    	jsonObject = new JsonParser().parse(profile.toString()).getAsJsonObject();
+    public AnalysisResult() {
+    }
+    
+    public AnalysisResult(String jsonResult) {
+    	jsonObject = new JsonParser().parse(jsonResult).getAsJsonObject();
     }
 
-    public void generateRole() {
+    public Role generateRole(Ideal ideal) {
     	// TODO transfer json data into attributes
-    	role = new Role();
+    	// Compare the similarity
     	JsonArray personality = jsonObject.getAsJsonArray("personality");
     	JsonArray needs = jsonObject.getAsJsonArray("needs");
     	JsonArray values = jsonObject.getAsJsonArray("values");
@@ -66,6 +67,19 @@ public class AnalysisResult {
 					+ values.get(4).getAsJsonObject().get("percentile").getAsDouble())
 					- neuroticism.get(0).getAsJsonObject().get("percentile").getAsDouble();
     	System.out.println("intelligence: " + intelligence);
+    	
+    	// TODO compare similarity
+    	role = new Role(1, 1, 1, 1, 1);
+    	role.setJsonResult(jsonObject.toString());
+    	
+    	return role;
+    }
+    
+    public Role generateNormalRole() {
+    	role = new Role(1, 1, 1, 1, 1);
+    	role.setJsonResult(jsonObject.toString());
+    	
+    	return role;
     }
     
     public Character balanceRole(double hp, double attack, double defence, double agility, double intelligence) {
@@ -73,10 +87,6 @@ public class AnalysisResult {
     	return null;
     }
     
-	public Profile getProfile() {
-		return profile;
-	}
-
 	public JsonObject getJsonObject() {
 		return jsonObject;
 	}
