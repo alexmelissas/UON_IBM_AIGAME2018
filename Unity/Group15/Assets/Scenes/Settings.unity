@@ -205,6 +205,7 @@ GameObject:
   - component: {fileID: 91461915}
   - component: {fileID: 91461914}
   - component: {fileID: 91461913}
+  - component: {fileID: 91461917}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -293,6 +294,25 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &91461917
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 91461912}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a1ccc57d8c57ce41b88c5981701620a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  musicSlider: {fileID: 2139502070}
+  fxSlider: {fileID: 1880008122}
+  challengeToggle: {fileID: 631248670}
+  winToggle: {fileID: 36196880}
+  loseToggle: {fileID: 949980884}
+  currentloginLabel: {fileID: 1026191701}
+  notyouLabel: {fileID: 855695604}
+  logoutButton: {fileID: 1817723877}
 --- !u!1 &152645954
 GameObject:
   m_ObjectHideFlags: 0
@@ -304,7 +324,7 @@ GameObject:
   - component: {fileID: 152645957}
   - component: {fileID: 152645956}
   m_Layer: 5
-  m_Name: twitterLabel
+  m_Name: accountLabel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -363,7 +383,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Twitter
+  m_Text: 'Account
 
 '
 --- !u!222 &152645957
@@ -1551,7 +1571,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: You are logged in as <sk8techboy>
+  m_Text: 'You are logged in as '
 --- !u!222 &1026191702
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2667,8 +2687,9 @@ GameObject:
   - component: {fileID: 1817723881}
   - component: {fileID: 1817723880}
   - component: {fileID: 1817723879}
+  - component: {fileID: 1817723882}
   m_Layer: 5
-  m_Name: twitter_logoutButton
+  m_Name: logoutButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2731,7 +2752,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1817723880}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1817723882}
+        m_MethodName: Logout
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1817723880
@@ -2768,6 +2800,17 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1817723877}
   m_CullTransparentMesh: 0
+--- !u!114 &1817723882
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1817723877}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5287bd593925904f8c1e02d2bca6cbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1829211081
 GameObject:
   m_ObjectHideFlags: 0

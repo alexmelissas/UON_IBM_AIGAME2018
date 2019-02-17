@@ -9,9 +9,9 @@ public class loginTwitter : MonoBehaviour {
 
 	public void openTwitter()
     {
-        //string username = GameObject.Find("username").GetComponentInChildren<Text>().text;
+        // get id from username on server
         string url = Server.Address("login_twitter");
-        //Need to keep username from previous scene and add it to a GET request
+        // url += id;
         Application.OpenURL(url);
         // then need to check if user did log in, if not disable next button
     }

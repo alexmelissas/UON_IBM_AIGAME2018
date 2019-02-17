@@ -43,7 +43,7 @@ public class authUser : MonoBehaviour {
                 if (Server.CheckLogin(uwr.downloadHandler.text))
                 {
                     UserSession.us.user = user;
-                    new ChangeScene().Forward("Overworld");
+                    gameObject.AddComponent<ChangeScene>().Forward("Overworld");
                     string message = "Welcome back, " + user.getUsername();
                     NPBinding.UI.ShowToast(message, eToastMessageLength.SHORT);
                 }
@@ -59,7 +59,7 @@ public class authUser : MonoBehaviour {
                 if (response == 1)
                 {
                     UserSession.us.user = user;
-                    new ChangeScene().Forward("TwitterLogin");
+                    gameObject.AddComponent<ChangeScene>().Forward("TwitterLogin");
                     NPBinding.UI.ShowToast("Account Created.", eToastMessageLength.SHORT);
                 }
                 else
@@ -108,7 +108,6 @@ public class authUser : MonoBehaviour {
             string json = JsonUtility.ToJson(user);
             StartCoroutine(TryRegister(auth_type,url,json,user));
         }
-        //DontDestroyOnLoad(GameObject.Find("username"));
         return;
     }
 }

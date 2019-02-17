@@ -6,7 +6,7 @@ public class ChangeScene : MonoBehaviour {
 
     public void Forward(String next_scene){        
         SceneHistory.sh.scenes.Add(SceneManager.GetActiveScene().name);
-        if (next_scene == "Overworld")
+        if (next_scene == "Overworld" || next_scene == "StartSceen")
             SceneHistory.sh.scenes.Clear(); //to not go back to login/register after in game
         SceneManager.LoadScene(next_scene);
         return;

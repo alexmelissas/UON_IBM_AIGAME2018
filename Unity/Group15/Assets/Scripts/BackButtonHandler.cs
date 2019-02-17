@@ -26,7 +26,7 @@ public class BackButtonHandler : MonoBehaviour
         {
             if (Input.GetKey(KeyCode.Escape))
             {
-                new ChangeScene().Back();
+                gameObject.AddComponent<ChangeScene>().Back();
                 return;
             }
         }
