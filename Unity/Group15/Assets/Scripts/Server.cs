@@ -15,6 +15,9 @@ public class Server {
             case "register_user":
                 path = "/users/";
                 break;
+            case "login_user":
+                path = "/users/login";
+                break;
             case "view_users":
                 path = "/users";
                 break;
@@ -28,10 +31,16 @@ public class Server {
         return address + path;
     }
 
-    public static bool CheckRegistration(string output)
+    public static int CheckRegistration(string output)
     {
-        if (output == register_success) return true;
-        else if (output == username_taken) { Debug.Log(username_taken); return false; }
-        else { Debug.Log("" + output); return false;}
+        if (output == register_success) return 1;
+        else if (output == username_taken) return 0;
+        else return 2;
+    }
+
+    public static bool CheckLogin(string output)
+    {
+        if (output == null || output == "") return false;
+        else return true;
     }
 }
