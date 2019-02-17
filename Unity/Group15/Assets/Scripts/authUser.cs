@@ -12,7 +12,19 @@ public class authUser : MonoBehaviour {
     public InputField passwordInput;
     public string auth_type;
 
-    IEnumerator TryRegister(string auth_type, string url, string json)
+    void Start()
+    {
+        usernameInput.onEndEdit.AddListener(delegate { endInput("username"); });
+        passwordInput.onEndEdit.AddListener(delegate { endInput("password"); });
+    }
+
+    public void endInput(string input)
+    {
+        if (input=="username") passwordInput.Select();
+        else if (input=="password") checkUserPass();
+    }
+
+    IEnumerator TryRegister(string auth_type, string url, string json, User user)
     {
         UnityWebRequest uwr = new UnityWebRequest(url, "POST");
         byte[] jsonToSend = new System.Text.UTF8Encoding().GetBytes(json);
@@ -30,21 +42,24 @@ public class authUser : MonoBehaviour {
             if (auth_type == "login") {
                 if (Server.CheckLogin(uwr.downloadHandler.text))
                 {
-                    SceneManager.LoadScene("Overworld");
-                    NPBinding.UI.ShowToast("Welcome back.", eToastMessageLength.SHORT);
+                    UserSession.us.user = user;
+                    new ChangeScene().Forward("Overworld");
+                    string message = "Welcome back, " + user.getUsername();
+                    NPBinding.UI.ShowToast(message, eToastMessageLength.SHORT);
                 }
                 else
                 {
                     NPBinding.UI.ShowToast("Invalid Credentials.", eToastMessageLength.SHORT);
                     passwordInput.text = "";
-                    usernameInput.Select();
+                    passwordInput.Select();
                 }
             }
             else if (auth_type == "register") {
                 int response = Server.CheckRegistration(uwr.downloadHandler.text);
                 if (response == 1)
                 {
-                    SceneManager.LoadScene("TwitterLogin");
+                    UserSession.us.user = user;
+                    new ChangeScene().Forward("TwitterLogin");
                     NPBinding.UI.ShowToast("Account Created.", eToastMessageLength.SHORT);
                 }
                 else
@@ -56,7 +71,7 @@ public class authUser : MonoBehaviour {
                 }
             }
         }
-        StopCoroutine(TryRegister(auth_type, url, json));
+        StopCoroutine(TryRegister(auth_type, url, json, user));
     }
 
     public void checkUserPass()
@@ -89,8 +104,9 @@ public class authUser : MonoBehaviour {
                 url = Server.Address("register_user");
             else if (auth_type == "login")
                 url = Server.Address("login_user");
-            string json = JsonUtility.ToJson(new User(username, password));
-            StartCoroutine(TryRegister(auth_type,url, json));
+            User user = new User(username, password);
+            string json = JsonUtility.ToJson(user);
+            StartCoroutine(TryRegister(auth_type,url,json,user));
         }
         //DontDestroyOnLoad(GameObject.Find("username"));
         return;

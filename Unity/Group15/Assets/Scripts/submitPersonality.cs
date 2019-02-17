@@ -13,6 +13,6 @@ public class submitPersonality : MonoBehaviour {
         if (trait_total != 15)
             Debug.Log("ERROR with totals.");
         else
-            SceneManager.LoadScene("ModelCreated");
+            new ChangeScene().Forward("ModelCreated");
     }
 }

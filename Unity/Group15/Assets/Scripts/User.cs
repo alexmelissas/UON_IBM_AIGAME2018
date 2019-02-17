@@ -29,4 +29,24 @@ public class User{
     {
         return username;
     }
+
+    public string getPassword()
+    {
+        return password;
+    }
+
+    public string getID()
+    {
+        return id;
+    }
+
+    public object getAT()
+    {
+        return accessToken;
+    }
+
+    public object getATS()
+    {
+        return accessTokenSecret;
+    }
 }
