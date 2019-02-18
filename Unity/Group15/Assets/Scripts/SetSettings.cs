@@ -16,22 +16,19 @@ public class SetSettings : MonoBehaviour {
 
     private void Start()
     {
-        if(Settings.set!=null)
-        {
-            musicSlider.normalizedValue = Settings.set.music; //issue with numbering i guess
-            fxSlider.normalizedValue = Settings.set.soundfx;
-            challengeToggle.isOn = Settings.set.challenged;
-            winToggle.isOn = Settings.set.wonbattle;
-            loseToggle.isOn = Settings.set.lostbattle;
-        }
+        musicSlider.normalizedValue = PlayerPrefs.GetFloat("music");
+        fxSlider.normalizedValue = PlayerPrefs.GetFloat("fx");
+        challengeToggle.isOn = (PlayerPrefs.GetInt("challenged") != 0);
+        winToggle.isOn = (PlayerPrefs.GetInt("winbattle") != 0);
+        loseToggle.isOn = (PlayerPrefs.GetInt("losebattle") != 0);
     }
 
     void Update () {
-        Settings.set.music = musicSlider.value;
-        Settings.set.soundfx = fxSlider.value;
-        Settings.set.challenged = challengeToggle.isOn;
-        Settings.set.wonbattle = winToggle.isOn;
-        Settings.set.lostbattle = loseToggle.isOn;
+        PlayerPrefs.SetFloat("music",musicSlider.value);
+        PlayerPrefs.SetFloat("fx", fxSlider.value);
+        PlayerPrefs.SetInt("challenged", challengeToggle.isOn ? 1 : 0);
+        PlayerPrefs.SetInt("winbattle", winToggle.isOn ? 1 : 0);
+        PlayerPrefs.SetInt("losebattle", loseToggle.isOn ? 1 : 0);
 
         if (UserSession.us != null)
         {
