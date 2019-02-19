@@ -21,8 +21,17 @@ public class Server {
             case "view_users":
                 path = "/users";
                 break;
+            case "read_user":
+                path = "/users/";
+                break;
             case "login_twitter":
                 path = "/auth/";
+                break;
+            case "submit_ideals":
+                path = "/ideals/";
+                break;
+            case "manage_roles":
+                path = "/roles/";
                 break;
             default:
                 path = "";
@@ -41,6 +50,12 @@ public class Server {
     public static bool CheckLogin(string output)
     {
         if (output == null || output == "") return false;
-        else return true;
+        else UserSession.us.user = User.CreateUserFromJSON(output);
+        return true;
+    }
+
+    public static bool CheckTwitter()
+    {
+        return (UserSession.us.user.getAT()!="" && UserSession.us.user.getATS()!="") ? true : false;
     }
 }

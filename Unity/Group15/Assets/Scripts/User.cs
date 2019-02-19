@@ -6,11 +6,11 @@ using UnityEngine;
 [Serializable]
 public class User{
 
-    public string id;// { get; set; }
-    public string username;// { get; set; }
-    public string password;// { get; set; }
-    public object accessToken;// { get; set; }
-    public object accessTokenSecret;// { get; set; }
+    public string id;
+    public string username;
+    public string password;
+    public string accessToken;
+    public string accessTokenSecret;
 
     public User(string name, string pass)
     {
@@ -40,12 +40,12 @@ public class User{
         return id;
     }
 
-    public object getAT()
+    public string getAT()
     {
         return accessToken;
     }
 
-    public object getATS()
+    public string getATS()
     {
         return accessTokenSecret;
     }

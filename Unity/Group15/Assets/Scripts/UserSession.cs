@@ -25,8 +25,8 @@ public class UserSession : MonoBehaviour {
         string id = user.getID();
         string username = user.getUsername();
         string password = user.getPassword();
-        string at = (string)user.getAT();
-        string ats = (string)user.getATS();
+        string at = user.getAT();
+        string ats = user.getATS();
         Debug.Log("ID: " + id + ", Username: " + username + ", Password: "
             + password + ", AccessToken: " + at + ", AccessTokenSecret: " + ats);
     }
