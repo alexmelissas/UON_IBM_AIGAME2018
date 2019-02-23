@@ -42,11 +42,11 @@ public class AnalysisResult {
     	
     	// TODO FIX  THE SIMILARITY
     	// COMPARE THE SIMILARITY
-    	double openessSimilarity = Math.abs((openessIdeal - openess) / openessIdeal);
-    	double conscientiousnessSimilarity = Math.abs((conscientiousnessIdeal - conscientiousness) / conscientiousnessIdeal);
-    	double extraversionSimilarity = Math.abs((extraversionIdeal - extraversion) / extraversionIdeal);
-    	double agreeablenessSimilarity = Math.abs((agreeablenessIdeal - agreeableness) / agreeablenessIdeal);
-    	double neuroticismSmililarity = Math.abs((neuroticismIdeal - neuroticism) / neuroticismIdeal);
+    	double openessSimilarity = (1 - Math.abs(openessIdeal - openess));
+    	double conscientiousnessSimilarity = (1 - Math.abs(conscientiousnessIdeal - conscientiousness));
+    	double extraversionSimilarity = (1 - Math.abs(extraversionIdeal - extraversion));
+    	double agreeablenessSimilarity = (1 - Math.abs(agreeablenessIdeal - agreeableness));
+    	double neuroticismSmililarity = (1 - Math.abs(neuroticismIdeal - neuroticism));
     	
     	System.out.println("openess: " + openessSimilarity);
     	System.out.println("conscientiousness: " + conscientiousnessSimilarity);
