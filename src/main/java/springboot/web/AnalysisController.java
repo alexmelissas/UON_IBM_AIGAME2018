@@ -13,11 +13,13 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.ibm.watson.developer_cloud.personality_insights.v3.model.Profile;
 
+import springboot.service.IdealService;
 import springboot.service.PersonalityInsightService;
 import springboot.service.RoleService;
 import springboot.service.UserService;
 import springboot.util.AnalysisResult;
 import springboot.util.ContentLoader;
+import springboot.domain.Ideal;
 import springboot.domain.Role;
 
 import twitter4j.Status;
@@ -34,30 +36,33 @@ public class AnalysisController {
 	@Autowired
 	private UserService userService;
 	@Autowired
-	private RoleService roleService;
+	private IdealService idealService;
+	
 	
     @RequestMapping("/analysis")
-    public Role result(HttpServletRequest request) {
+    public String result(HttpServletRequest request) {
     	// Store Json result to database
     	ContentLoader contentLoader = (ContentLoader) request.getSession().getAttribute("content");
     	Profile profile = piService.analysis(contentLoader);
-    	Role role = new Role();
+    	
     	String id = (String) request.getSession().getAttribute("id");
-    	role.setId(id);
+    	Ideal ideal = new Ideal(id);
     	
     	if(profile.getWordCount() == null || profile.getWordCount() <= 100) {
     		// TODO handle the insufficient words
     	} else {
-        	role.setJsonResult(profile.toString().replace("\n", "").replace("      ", " "));
+        	ideal.setJsonResult(profile.toString().replace("\n", "").replace("      ", " "));
     	}
-    	
-    	roleService.addRole(role);
-    	return role;
+
+    	idealService.addIdeal(ideal);
+    	// TODO exception handling
+    	return "Saved";
     }
     
     // Authorization callback
     @GetMapping("/tweets")
 	public void analysis(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    	// Get the tweets of user
 		String id = (String) request.getSession().getAttribute("id");
     	Twitter twitter = (Twitter) request.getSession().getAttribute("twitter");
 		RequestToken requestToken = (RequestToken) request.getSession().getAttribute("requestToken");
@@ -68,7 +73,7 @@ public class AnalysisController {
 			// Twitter User
 			User user = twitter.verifyCredentials();
 			
-			// Update user information
+			// STORE TOKEN
 			springboot.domain.User newUser = userService.getUserById(id).get();
 			newUser.setAccessToken(accessToken.getToken());
 			newUser.setAccessTokenSecret(accessToken.getTokenSecret());

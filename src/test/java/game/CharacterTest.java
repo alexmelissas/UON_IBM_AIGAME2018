@@ -2,6 +2,7 @@ package game;
 
 import com.ibm.watson.developer_cloud.personality_insights.v3.model.Profile;
 
+import springboot.domain.Ideal;
 import springboot.util.AnalysisResult;
 
 public class CharacterTest {
@@ -2516,11 +2517,12 @@ public class CharacterTest {
 				"}\n" + 
 				"";
 //		System.out.println(analysisResult.getJsonObject());
+		Ideal ideal = new Ideal(0.5, 0.5, 0.5, 0.5, 0.5);
 		
-//		analysisResult.generateRole();
+		analysisResult.generateRole(ideal);
 		analysisResult.setJsonObject(str);
-//		analysisResult.generateRole();
+		analysisResult.generateRole(ideal);
 		analysisResult.setJsonObject(str2);
-//		analysisResult.generateRole();
+		analysisResult.generateRole(ideal);
 	}
 }

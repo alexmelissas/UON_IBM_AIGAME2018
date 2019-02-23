@@ -19,75 +19,107 @@ public class AnalysisResult {
     }
 
     public Role generateRole(Ideal ideal) {
-    	// TODO transfer json data into attributes
-    	// Compare the similarity
     	JsonArray personality = jsonObject.getAsJsonArray("personality");
-    	JsonArray needs = jsonObject.getAsJsonArray("needs");
-    	JsonArray values = jsonObject.getAsJsonArray("values");
 
-    	JsonArray openess = personality.get(0).getAsJsonObject().getAsJsonArray("children");
-    	JsonArray conscientiousness = personality.get(1).getAsJsonObject().getAsJsonArray("children");
-    	JsonArray extraversion = personality.get(2).getAsJsonObject().getAsJsonArray("children");
-    	JsonArray agreeableness = personality.get(3).getAsJsonObject().getAsJsonArray("children");
-    	JsonArray neuroticism = personality.get(4).getAsJsonObject().getAsJsonArray("children");
+    	double openess = personality.get(0).getAsJsonObject().get("percentile").getAsDouble();
+    	double conscientiousness = personality.get(1).getAsJsonObject().get("percentile").getAsDouble();
+    	double extraversion = personality.get(2).getAsJsonObject().get("percentile").getAsDouble();
+    	double agreeableness = personality.get(3).getAsJsonObject().get("percentile").getAsDouble();
+    	double neuroticism = personality.get(4).getAsJsonObject().get("percentile").getAsDouble();
 
-    	double hp = (conscientiousness.get(4).getAsJsonObject().get("percentile").getAsDouble()
-    				+ conscientiousness.get(5).getAsJsonObject().get("percentile").getAsDouble()
-    				+ extraversion.get(2).getAsJsonObject().get("percentile").getAsDouble()
-    				+ needs.get(2).getAsJsonObject().get("percentile").getAsDouble()
-    				+ values.get(2).getAsJsonObject().get("percentile").getAsDouble())
-    				- neuroticism.get(2).getAsJsonObject().get("percentile").getAsDouble();
-    	System.out.println("hp: " + hp);
+//    	System.out.println("openess: " + openess);
+//    	System.out.println("conscientiousness: " + conscientiousness);
+//    	System.out.println("extraversion: " + extraversion);
+//    	System.out.println("agreeableness: " + agreeableness);
+//    	System.out.println("neuroticism: " + neuroticism);
+//    	
+    	double openessIdeal = ideal.getOpeness();
+    	double conscientiousnessIdeal = ideal.getConscientiousness();
+    	double extraversionIdeal = ideal.getExtraversion();
+    	double agreeablenessIdeal = ideal.getAgreeableness();
+    	double neuroticismIdeal = ideal.getEmotionalrange();
     	
-    	double attack = (openess.get(5).getAsJsonObject().get("percentile").getAsDouble()
-					+ conscientiousness.get(0).getAsJsonObject().get("percentile").getAsDouble()
-					+ needs.get(0).getAsJsonObject().get("percentile").getAsDouble()
-					+ values.get(3).getAsJsonObject().get("percentile").getAsDouble())
-					- agreeableness.get(4).getAsJsonObject().get("percentile").getAsDouble();
-    	System.out.println("attack: " + attack);
     	
-    	double defence = (conscientiousness.get(1).getAsJsonObject().get("percentile").getAsDouble()
-					+ agreeableness.get(3).getAsJsonObject().get("percentile").getAsDouble()
-					+ needs.get(1).getAsJsonObject().get("percentile").getAsDouble()
-					+ values.get(0).getAsJsonObject().get("percentile").getAsDouble())
-					- neuroticism.get(1).getAsJsonObject().get("percentile").getAsDouble();
-    	System.out.println("defence: " + defence);
+    	// TODO FIX  THE SIMILARITY
+    	// COMPARE THE SIMILARITY
+    	double openessSimilarity = Math.abs((openessIdeal - openess) / openessIdeal);
+    	double conscientiousnessSimilarity = Math.abs((conscientiousnessIdeal - conscientiousness) / conscientiousnessIdeal);
+    	double extraversionSimilarity = Math.abs((extraversionIdeal - extraversion) / extraversionIdeal);
+    	double agreeablenessSimilarity = Math.abs((agreeablenessIdeal - agreeableness) / agreeablenessIdeal);
+    	double neuroticismSmililarity = Math.abs((neuroticismIdeal - neuroticism) / neuroticismIdeal);
     	
-    	double agility = (openess.get(0).getAsJsonObject().get("percentile").getAsDouble()
-					+ extraversion.get(0).getAsJsonObject().get("percentile").getAsDouble()
-					+ needs.get(6).getAsJsonObject().get("percentile").getAsDouble()
-					+ values.get(1).getAsJsonObject().get("percentile").getAsDouble())
-					- neuroticism.get(5).getAsJsonObject().get("percentile").getAsDouble();
-    	System.out.println("aqility: " + agility);
+    	System.out.println("openess: " + openessSimilarity);
+    	System.out.println("conscientiousness: " + conscientiousnessSimilarity);
+    	System.out.println("extraversion: " + extraversionSimilarity);
+    	System.out.println("agreeableness: " + agreeablenessSimilarity);
+    	System.out.println("neuroticism: " + neuroticismSmililarity);
     	
-    	double intelligence = (openess.get(4).getAsJsonObject().get("percentile").getAsDouble()
-					+ conscientiousness.get(3).getAsJsonObject().get("percentile").getAsDouble()
-					+ extraversion.get(1).getAsJsonObject().get("percentile").getAsDouble()
-					+ needs.get(11).getAsJsonObject().get("percentile").getAsDouble()
-					+ values.get(4).getAsJsonObject().get("percentile").getAsDouble())
-					- neuroticism.get(0).getAsJsonObject().get("percentile").getAsDouble();
-    	System.out.println("intelligence: " + intelligence);
+    	double averageSimilarity = (openessSimilarity + conscientiousnessSimilarity + extraversionSimilarity + 
+    								agreeablenessSimilarity + neuroticismSmililarity) / 5;
     	
-    	// TODO compare similarity
-    	role = new Role(1, 1, 1, 1, 1);
-    	role.setJsonResult(jsonObject.toString());
+    	// balance the benefit of similarity of personality
+    	if(averageSimilarity < 0.3) {
+    		averageSimilarity = 0.3;
+    	} else if(averageSimilarity > 0.7) {
+    		averageSimilarity = 0.7;
+    	}
+    	
+    	System.out.println("------AVERAGE VALUE------");
+    	System.out.println(averageSimilarity);
+//    	double hp = (conscientiousness.get(4).getAsJsonObject().get("percentile").getAsDouble()
+//    				+ conscientiousness.get(5).getAsJsonObject().get("percentile").getAsDouble()
+//    				+ extraversion.get(2).getAsJsonObject().get("percentile").getAsDouble()
+//    				+ needs.get(2).getAsJsonObject().get("percentile").getAsDouble()
+//    				+ values.get(2).getAsJsonObject().get("percentile").getAsDouble())
+//    				- neuroticism.get(2).getAsJsonObject().get("percentile").getAsDouble();
+//    	System.out.println("hp: " + hp);
+//    	
+//    	double attack = (openess.get(5).getAsJsonObject().get("percentile").getAsDouble()
+//					+ conscientiousness.get(0).getAsJsonObject().get("percentile").getAsDouble()
+//					+ needs.get(0).getAsJsonObject().get("percentile").getAsDouble()
+//					+ values.get(3).getAsJsonObject().get("percentile").getAsDouble())
+//					- agreeableness.get(4).getAsJsonObject().get("percentile").getAsDouble();
+//    	System.out.println("attack: " + attack);
+//    	
+//    	double defence = (conscientiousness.get(1).getAsJsonObject().get("percentile").getAsDouble()
+//					+ agreeableness.get(3).getAsJsonObject().get("percentile").getAsDouble()
+//					+ needs.get(1).getAsJsonObject().get("percentile").getAsDouble()
+//					+ values.get(0).getAsJsonObject().get("percentile").getAsDouble())
+//					- neuroticism.get(1).getAsJsonObject().get("percentile").getAsDouble();
+//    	System.out.println("defence: " + defence);
+//    	
+//    	double agility = (openess.get(0).getAsJsonObject().get("percentile").getAsDouble()
+//					+ extraversion.get(0).getAsJsonObject().get("percentile").getAsDouble()
+//					+ needs.get(6).getAsJsonObject().get("percentile").getAsDouble()
+//					+ values.get(1).getAsJsonObject().get("percentile").getAsDouble())
+//					- neuroticism.get(5).getAsJsonObject().get("percentile").getAsDouble();
+//    	System.out.println("aqility: " + agility);
+//    	
+//    	double intelligence = (openess.get(4).getAsJsonObject().get("percentile").getAsDouble()
+//					+ conscientiousness.get(3).getAsJsonObject().get("percentile").getAsDouble()
+//					+ extraversion.get(1).getAsJsonObject().get("percentile").getAsDouble()
+//					+ needs.get(11).getAsJsonObject().get("percentile").getAsDouble()
+//					+ values.get(4).getAsJsonObject().get("percentile").getAsDouble())
+//					- neuroticism.get(0).getAsJsonObject().get("percentile").getAsDouble();
+//    	System.out.println("intelligence: " + intelligence);
+    	
+    	// TODO Multiple the basic value
+    	// basic status for each level and the experience of level needed.
+    	
+    	role = new Role(100, 10, 5, 10, 5);
+    	role.setFactor(averageSimilarity + 1);
+    	role.applyPersonality();
     	
     	return role;
     }
     
     public Role generateNormalRole() {
-    	role = new Role(1, 1, 1, 1, 1);
-    	role.setJsonResult(jsonObject.toString());
-    	
+    	role = new Role(100, 10, 5, 10, 5);
+    	role.setFactor(1);
     	return role;
     }
-    
-    public Character balanceRole(double hp, double attack, double defence, double agility, double intelligence) {
-    	
-    	return null;
-    }
-    
-	public JsonObject getJsonObject() {
+
+    public JsonObject getJsonObject() {
 		return jsonObject;
 	}
 

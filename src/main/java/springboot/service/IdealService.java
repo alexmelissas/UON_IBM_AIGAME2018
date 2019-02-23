@@ -29,9 +29,20 @@ public class IdealService {
 		return idealRepository.findById(id);
 	}
 	
-	// TODO If the user can change ideal personality?
-	public void updateIdeal() {
+	public void updateIdeal(String id, Ideal newIdeal) {
+		// This method will only be called once when the user submit the ideal personality
 		
+		idealRepository.findById(id)
+						.map(ideal -> {
+							ideal.setAgreeableness(newIdeal.getAgreeableness());
+							ideal.setConscientiousness(newIdeal.getConscientiousness());
+							ideal.setEmotionalrange(newIdeal.getEmotionalrange());
+							ideal.setExtraversion(newIdeal.getExtraversion());
+							ideal.setOpeness(newIdeal.getOpeness());
+							
+							this.generateRole(ideal);
+							return idealRepository.save(ideal);
+						});
 	}
 	
 	public void deleteIdealById(String id) {
@@ -41,18 +52,18 @@ public class IdealService {
 	public void generateRole(Ideal ideal) {
 		AnalysisResult analysisResult;
     	String id = ideal.getId();
-    	String jsonResult = roleService.getRoleById(id).get().getJsonResult();
+    	String jsonResult = this.getIdealById(id).get().getJsonResult();
  
     	analysisResult = new AnalysisResult(jsonResult);
-    	Role newRole;
+    	Role role;
     	
     	if(jsonResult != null) {
-    		newRole = analysisResult.generateRole(ideal);
+    		role = analysisResult.generateRole(ideal);
     	} else {
-    		// TODO generate the normal role
-    		newRole = analysisResult.generateNormalRole();
+    		role = analysisResult.generateNormalRole();
     	}
     	
-    	roleService.updateRole(id, newRole);
+    	role.setId(id);
+    	roleService.addRole(role);
 	}
 }

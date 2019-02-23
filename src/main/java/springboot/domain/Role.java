@@ -10,6 +10,9 @@ public class Role {
 	@Column(name = "id", columnDefinition = "VARCHAR(36)")
 	public String id;
 	
+	@Column(name = "level", columnDefinition = "INT")
+	public int level = 1;
+	
 	@Column(name = "hp", columnDefinition = "INT")
 	public int hp;
 	
@@ -28,12 +31,20 @@ public class Role {
 	@Column(name = "score", columnDefinition = "INT")
 	public int score = 0;
 	
-	@Column(name = "jsonresult", columnDefinition = "TEXT")
-	public String jsonResult;
+	@Column(name = "experience", columnDefinition = "INT")
+	public int experience = 0;
+	
+	@Column(name = " factor", columnDefinition = "DOUBLE")
+	public double factor = 0;
 	
 	public Role() {
 	}
 
+	// TODO Update function which update the status of role
+	// Constructor to generate the level 1 role
+	// Level up function
+	// QUESTION - How to calculate the value after own items??? --- further discussion
+	// WHAT IS THE STRUCTURE OF INVENTORY?
 	
 	public Role(int hp, int attack, int defence, int agility, int intelligence) {
 		this.hp = hp;
@@ -51,6 +62,18 @@ public class Role {
 	public Role(String id, int hp, int attack, int defence, int agility, int intelligence, int score) {
 		this(id, hp, attack, defence, agility, intelligence);
 		this.score = score;
+	}
+	
+	public void applyPersonality() {
+		this.hp *= factor;
+		this.attack *= factor;
+		this.defence *= factor;
+		this.agility *= factor;
+		this.intelligence *= factor;
+	}
+	
+	public void levelUp() {
+		// TODO
 	}
 
 	public String getId() {
@@ -101,19 +124,19 @@ public class Role {
 		this.agility = agility;
 	}
 
-	public String getJsonResult() {
-		return jsonResult;
-	}
-
-	public void setJsonResult(String jsonResult) {
-		this.jsonResult = jsonResult;
-	}
-
 	public int getScore() {
 		return score;
 	}
 
 	public void setScore(int score) {
 		this.score = score;
+	}
+
+	public double getFactor() {
+		return factor;
+	}
+
+	public void setFactor(double factor) {
+		this.factor = factor;
 	}
 }

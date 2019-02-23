@@ -29,6 +29,7 @@
 - [ ] Create Robot role
 - [ ] Create table for Ideal personality
 - [ ] Interval to check Twitter
+- [ ] Check twitter regularly
 
 **API reference**
 - ip: `3.8.137.254`

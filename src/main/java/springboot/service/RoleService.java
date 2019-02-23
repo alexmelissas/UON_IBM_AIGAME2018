@@ -65,10 +65,9 @@ public class RoleService {
 							role.setDefence(newRole.getDefence());
 							role.setAgility(newRole.getAgility());
 							role.setIntelligence(newRole.getIntelligence());
-							
-							if(!newRole.getJsonResult().equals("")) {
-								role.setJsonResult(newRole.getJsonResult());
-							}
+
+							// TODO check the update of role
+							// long way to go :(
 							return roleRepository.save(role);
 						});
 	}
