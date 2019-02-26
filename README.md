@@ -26,7 +26,7 @@
 - [ ] Safety of API (what attributes can be accessed?)
 	- Get the top five players (username, id)
 	- Check if the username is repeat
-- [ ] Create Robot role
+- [ ] Create Robot player
 - [ ] Create table for Ideal personality
 - [ ] Interval to check Twitter
 - [ ] Check twitter regularly
@@ -46,8 +46,8 @@
 		- example: `curl -X PUT 132.232.30.215:8080/users/{id} -H 'Content-type:application/json' -d '{"username": "char", "password": "1234"}'`
 - `/users/login`:
 	- POST: login
-- `/roles`:
-	- GET: get all the roles
+- `/players`:
+	- GET: get all the players
 - `/ideals`:
 	- GET: get all the ideal personality of users
 - TBC

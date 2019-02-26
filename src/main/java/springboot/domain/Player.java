@@ -5,7 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 
 @Entity
-public class Role{
+public class Player{
 	@Id
 	@Column(name = "id", columnDefinition = "VARCHAR(36)")
 	public String id;
@@ -37,16 +37,16 @@ public class Role{
 	@Column(name = " factor", columnDefinition = "DOUBLE")
 	public double factor = 0;
 	
-	public Role() {
+	public Player() {
 	}
 
-	// TODO Update function which update the status of role
-	// Constructor to generate the level 1 role
+	// TODO Update function which update the status of player
+	// Constructor to generate the level 1 player
 	// Level up function
 	// QUESTION - How to calculate the value after own items??? --- further discussion
 	// WHAT IS THE STRUCTURE OF INVENTORY?
 	
-	public Role(int hp, int attack, int defence, int agility, int intelligence) {
+	public Player(int hp, int attack, int defence, int agility, int intelligence) {
 		this.hp = hp;
 		this.attack = attack;
 		this.defence = defence;
@@ -54,12 +54,12 @@ public class Role{
 		this.intelligence = intelligence;
 	}
 
-	public Role(String id, int hp, int attack, int defence, int agility, int intelligence) {
+	public Player(String id, int hp, int attack, int defence, int agility, int intelligence) {
 		this(hp, attack, defence, agility, intelligence);
 		this.id = id;
 	}
 	
-	public Role(String id, int hp, int attack, int defence, int agility, int intelligence, int score) {
+	public Player(String id, int hp, int attack, int defence, int agility, int intelligence, int score) {
 		this(id, hp, attack, defence, agility, intelligence);
 		this.score = score;
 	}

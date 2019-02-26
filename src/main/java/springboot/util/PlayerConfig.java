@@ -1,6 +1,6 @@
 package springboot.util;
 
-public class RoleConfig {
+public class PlayerConfig {
 // TODO define basic status for each level
 // win = 20; lose = 5
 // 1 - 5: 10 * (level)

@@ -15,12 +15,9 @@ import com.ibm.watson.developer_cloud.personality_insights.v3.model.Profile;
 
 import springboot.service.IdealService;
 import springboot.service.PersonalityInsightService;
-import springboot.service.RoleService;
 import springboot.service.UserService;
-import springboot.util.AnalysisResult;
 import springboot.util.ContentLoader;
 import springboot.domain.Ideal;
-import springboot.domain.Role;
 
 import twitter4j.Status;
 import twitter4j.Twitter;

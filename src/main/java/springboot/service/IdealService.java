@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 
 import springboot.domain.Ideal;
 import springboot.domain.IdealRepository;
-import springboot.domain.Role;
+import springboot.domain.Player;
 import springboot.util.AnalysisResult;
 
 @Service("idealService")
@@ -15,7 +15,7 @@ public class IdealService {
 	@Autowired
 	private IdealRepository idealRepository;
 	@Autowired
-	private RoleService roleService;
+	private PlayerService PlayerService;
 	
 	public void addIdeal(Ideal ideal) {
 		idealRepository.save(ideal);
@@ -40,7 +40,7 @@ public class IdealService {
 							ideal.setExtraversion(newIdeal.getExtraversion());
 							ideal.setOpeness(newIdeal.getOpeness());
 							
-							this.generateRole(ideal);
+							this.generatePlayer(ideal);
 							return idealRepository.save(ideal);
 						});
 	}
@@ -49,24 +49,24 @@ public class IdealService {
 		idealRepository.deleteById(id);
 	}
 	
-	public void generateRole(Ideal ideal) {
+	public void generatePlayer(Ideal ideal) {
 		AnalysisResult analysisResult;
     	String id = ideal.getId();
     	String jsonResult = this.getIdealById(id).get().getJsonResult();
  
     	analysisResult = new AnalysisResult();
-    	Role role;
+    	Player player;
     	
     	System.out.println("------" + analysisResult);
     	
     	if(jsonResult != null) {
     		analysisResult.setJsonObject(jsonResult);
-    		role = analysisResult.generateRole(ideal);
+    		player = analysisResult.generatePlayer(ideal);
     	} else {
-    		role = analysisResult.generateNormalRole();
+    		player = analysisResult.generateNormalPlayer();
     	}
     	
-    	role.setId(id);
-    	roleService.addRole(role);
+    	player.setId(id);
+    	PlayerService.addPlayer(player);
 	}
 }

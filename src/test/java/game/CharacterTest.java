@@ -2519,10 +2519,10 @@ public class CharacterTest {
 //		System.out.println(analysisResult.getJsonObject());
 		Ideal ideal = new Ideal(0.5, 0.5, 0.5, 0.5, 0.5);
 		
-		analysisResult.generateRole(ideal);
+		analysisResult.generatePlayer(ideal);
 		analysisResult.setJsonObject(str);
-		analysisResult.generateRole(ideal);
+		analysisResult.generatePlayer(ideal);
 		analysisResult.setJsonObject(str2);
-		analysisResult.generateRole(ideal);
+		analysisResult.generatePlayer(ideal);
 	}
 }

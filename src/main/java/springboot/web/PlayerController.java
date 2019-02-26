@@ -7,27 +7,27 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import springboot.domain.Role;
-import springboot.service.RoleService;
+import springboot.domain.Player;
+import springboot.service.PlayerService;
 
 @RestController
-public class RoleController {
+public class PlayerController {
 	@Autowired
-	private RoleService roleService;
+	private PlayerService playerService;
 	
-	@GetMapping("/roles")
-	public Iterable<Role> getTopRoles() {
-		return roleService.getTopRoles();
+	@GetMapping("/players")
+	public Iterable<Player> getTopPlayers() {
+		return playerService.getTopPlayers();
 	}
 	
-	@PutMapping("/roles/{id}")
-	public void updateRole(@PathVariable String id, @RequestBody Role role) {
+	@PutMapping("/players/{id}")
+	public void updatePlayer(@PathVariable String id, @RequestBody Player player) {
 		
 	}
 	
-	@GetMapping("roles/{id}")
+	@GetMapping("players/{id}")
 	public int getRankById(@PathVariable String id) {
-		return roleService.getRankById(id);
+		return playerService.getRankById(id);
 	}
 	
 	// TODO interval to check twitter 

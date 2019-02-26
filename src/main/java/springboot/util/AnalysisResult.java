@@ -5,16 +5,16 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
 import springboot.domain.Ideal;
-import springboot.domain.Role;
+import springboot.domain.Player;
 
 public class AnalysisResult {
     private JsonObject jsonObject;
-    private Role role = null;
+    private Player player = null;
     
     public AnalysisResult() {
     }
 
-    public Role generateRole(Ideal ideal) {
+    public Player generatePlayer(Ideal ideal) {
     	JsonArray personality = jsonObject.getAsJsonArray("personality");
 
     	double openess = personality.get(0).getAsJsonObject().get("percentile").getAsDouble();
@@ -102,17 +102,17 @@ public class AnalysisResult {
     	// TODO Multiple the basic value
     	// basic status for each level and the experience of level needed.
     	
-    	role = new Role(100, 10, 5, 10, 5);
-    	role.setFactor(averageSimilarity + 1);
-    	role.applyPersonality();
+    	player = new Player(100, 10, 5, 10, 5);
+    	player.setFactor(averageSimilarity + 1);
+    	player.applyPersonality();
     	
-    	return role;
+    	return player;
     }
     
-    public Role generateNormalRole() {
-    	role = new Role(100, 10, 5, 10, 5);
-    	role.setFactor(1);
-    	return role;
+    public Player generateNormalPlayer() {
+    	player = new Player(100, 10, 5, 10, 5);
+    	player.setFactor(1);
+    	return player;
     }
 
     public JsonObject getJsonObject() {
@@ -123,11 +123,11 @@ public class AnalysisResult {
 		jsonObject = new JsonParser().parse(jsonResult).getAsJsonObject();
 	}
 
-	public Role getRole() {
-		return role;
+	public Player getPlayer() {
+		return player;
 	}
 
-	public void setRole(Role role) {
-		this.role = role;
+	public void setPlayer(Player player) {
+		this.player = player;
 	}
 }
