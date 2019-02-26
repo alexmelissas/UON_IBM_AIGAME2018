@@ -25,18 +25,12 @@ public class UserService {
 		return userRepository.findAll();
 	}
 	
-	public void updateUser(String id, String username, String password) {
-		User user = new User(id, username, password);
-		
-		userRepository.save(user);
-	}
-	
-	public void deleteUserById(int id) {
+	public void deleteUserById(String id) {
 		userRepository.deleteById(id);
 	}
 
 	public void updateUser(String id, User newUser) {
-		userRepository.findById(newUser.getId())
+		userRepository.findById(id)
 						.map(user -> {
 							user.setUsername(newUser.getUsername());
 							user.setPassword(newUser.getPassword());
@@ -53,5 +47,18 @@ public class UserService {
 
 	public boolean isExist(String username) {
 		return userRepository.existsByUsername(username);
+	}
+
+	public User login(User loginUser) {
+		Optional<User> refUser = userRepository.findByUsername(loginUser.getUsername());
+		User user = null;
+		if(!refUser.isPresent()) {
+		} else {
+			user = refUser.get();
+			if(!user.getPassword().equals(loginUser.getPassword())) {
+				user = null;
+			}
+		}
+		return user;
 	}
 }

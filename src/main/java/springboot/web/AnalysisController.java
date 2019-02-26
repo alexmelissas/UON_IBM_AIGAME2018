@@ -2,7 +2,6 @@ package springboot.web;
 
 import java.io.IOException;
 import java.util.List;
-import java.util.Optional;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -12,10 +11,14 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.ibm.watson.developer_cloud.personality_insights.v3.model.Profile;
+
+import springboot.service.IdealService;
 import springboot.service.PersonalityInsightService;
 import springboot.service.UserService;
-import springboot.util.AnalysisResult;
 import springboot.util.ContentLoader;
+import springboot.domain.Ideal;
+
 import twitter4j.Status;
 import twitter4j.Twitter;
 import twitter4j.TwitterException;
@@ -29,17 +32,34 @@ public class AnalysisController {
 	private PersonalityInsightService piService;
 	@Autowired
 	private UserService userService;
+	@Autowired
+	private IdealService idealService;
 	
-    @RequestMapping("/result")
-    public AnalysisResult result(HttpServletRequest request) {
-    	// TODO handle the situation: less 100 words
+	
+    @RequestMapping("/analysis")
+    public String result(HttpServletRequest request) {
+    	// Store Json result to database
     	ContentLoader contentLoader = (ContentLoader) request.getSession().getAttribute("content");
-    	return new AnalysisResult(piService.analysis(contentLoader));
+    	Profile profile = piService.analysis(contentLoader);
+    	
+    	String id = (String) request.getSession().getAttribute("id");
+    	Ideal ideal = new Ideal(id);
+    	
+    	if(profile.getWordCount() == null || profile.getWordCount() <= 100) {
+    		// TODO handle the insufficient words
+    	} else {
+        	ideal.setJsonResult(profile.toString().replace("\n", "").replace("      ", " "));
+    	}
+
+    	idealService.addIdeal(ideal);
+    	// TODO exception handling
+    	return "Saved";
     }
     
     // Authorization callback
-    @GetMapping("/analysis")
+    @GetMapping("/tweets")
 	public void analysis(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    	// Get the tweets of user
 		String id = (String) request.getSession().getAttribute("id");
     	Twitter twitter = (Twitter) request.getSession().getAttribute("twitter");
 		RequestToken requestToken = (RequestToken) request.getSession().getAttribute("requestToken");
@@ -50,15 +70,11 @@ public class AnalysisController {
 			// Twitter User
 			User user = twitter.verifyCredentials();
 			
-			// Update user information
+			// STORE TOKEN
 			springboot.domain.User newUser = userService.getUserById(id).get();
 			newUser.setAccessToken(accessToken.getToken());
 			newUser.setAccessTokenSecret(accessToken.getTokenSecret());
 			userService.updateUser(id, newUser);
-			
-//			System.out.println("Access Token:" + accessToken.getToken());
-//			System.out.println("Access Token Secret:" + accessToken.getTokenSecret());
-//			System.out.println(user);
 			
 //			user = twitter.showUser(accessToken.getUserId());
 //			System.out.println(user);
@@ -77,7 +93,7 @@ public class AnalysisController {
 			e.printStackTrace();
 		}
 		
-		response.sendRedirect(request.getContextPath() + "/result");
+		response.sendRedirect(request.getContextPath() + "/analysis");
 		return;
 	}
 }

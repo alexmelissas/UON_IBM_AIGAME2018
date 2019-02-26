@@ -340,7 +340,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 950680140}
-        m_MethodName: changeScene
+        m_MethodName: Forward
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -472,6 +472,10 @@ GameObject:
   - component: {fileID: 1387472603}
   - component: {fileID: 1387472602}
   - component: {fileID: 1387472601}
+  - component: {fileID: 1387472605}
+  - component: {fileID: 1387472608}
+  - component: {fileID: 1387472606}
+  - component: {fileID: 1387472607}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -559,6 +563,58 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &1387472605
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1387472600}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e39944d589a55df4e9400757f0d5d068, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  user:
+    id: 
+    username: 
+    password: 
+    accessToken: 
+    accessTokenSecret: 
+--- !u!114 &1387472606
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1387472600}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f660738835d4e4f46b9b014be15cf14e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scenes: []
+--- !u!114 &1387472607
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1387472600}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85d32b35cb6857d4f80b0496793af8c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1387472608
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1387472600}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 771fdcc5d7cadd741b1ccd2f3e9e6dbf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
 --- !u!1 &1569234646
 GameObject:
   m_ObjectHideFlags: 0
@@ -856,7 +912,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2035692320}
-        m_MethodName: changeScene
+        m_MethodName: Forward
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1002,7 +1058,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2124478831}
-        m_MethodName: changeScene
+        m_MethodName: Forward
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

@@ -247,7 +247,7 @@ PlayerSettings:
   AndroidKeystoreName: 
   AndroidKeyaliasName: 
   AndroidBuildApkPerCpuArchitecture: 0
-  AndroidTVCompatibility: 1
+  AndroidTVCompatibility: 0
   AndroidIsGame: 1
   AndroidEnableTango: 0
   androidEnableBanner: 1
@@ -639,7 +639,12 @@ PlayerSettings:
   webGLUseEmbeddedResources: 0
   webGLCompressionFormat: 1
   webGLLinkerTarget: 1
-  scriptingDefineSymbols: {}
+  scriptingDefineSymbols:
+    1: NATIVE_PLUGINS_LITE_VERSION;USES_ADDRESS_BOOK;USES_NETWORK_CONNECTIVITY;USES_SHARING
+    4: NATIVE_PLUGINS_LITE_VERSION;USES_ADDRESS_BOOK;USES_NETWORK_CONNECTIVITY;USES_SHARING
+    7: NATIVE_PLUGINS_LITE_VERSION;USES_ADDRESS_BOOK;USES_NETWORK_CONNECTIVITY;USES_SHARING
+    14: NATIVE_PLUGINS_LITE_VERSION;USES_ADDRESS_BOOK;USES_NETWORK_CONNECTIVITY;USES_SHARING
+    25: NATIVE_PLUGINS_LITE_VERSION;USES_ADDRESS_BOOK;USES_NETWORK_CONNECTIVITY;USES_SHARING
   platformArchitecture: {}
   scriptingBackend: {}
   il2cppCompilerConfiguration: {}
@@ -647,7 +652,10 @@ PlayerSettings:
   allowUnsafeCode: 0
   additionalIl2CppArgs: 
   scriptingRuntimeVersion: 0
-  apiCompatibilityLevelPerPlatform: {}
+  apiCompatibilityLevelPerPlatform:
+    Android: 1
+    Standalone: 1
+    WebGL: 1
   m_RenderingPath: 1
   m_MobileRenderingPath: 1
   metroPackageName: Template_2D

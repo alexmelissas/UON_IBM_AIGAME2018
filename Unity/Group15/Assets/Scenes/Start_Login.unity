@@ -549,7 +549,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 429529889}
-        m_MethodName: changeScene
+        m_MethodName: Forward
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -608,7 +608,7 @@ GameObject:
   - component: {fileID: 489836321}
   - component: {fileID: 489836320}
   m_Layer: 5
-  m_Name: checkCredentialsButton
+  m_Name: loginButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -641,11 +641,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 489836318}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a25d219ed0223c42b4d546d3874c3a9, type: 3}
+  m_Script: {fileID: 11500000, guid: a0aa2fabfc7255e43a44ae1de58baea2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  username_field: {fileID: 345035649}
-  password_field: {fileID: 1689793733}
+  usernameInput: {fileID: 345035649}
+  passwordInput: {fileID: 1689793733}
+  auth_type: login
 --- !u!114 &489836321
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -799,7 +800,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Back to Start Screen
+  m_Text: Back
 --- !u!222 &513045164
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -896,8 +897,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 550426277}
-        m_MethodName: changeScene
-        m_Mode: 5
+        m_MethodName: Back
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
