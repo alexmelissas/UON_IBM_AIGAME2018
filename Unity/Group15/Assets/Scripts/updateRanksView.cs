@@ -1,29 +1,49 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class updateRanksView : MonoBehaviour {
+public class UpdateRanksView : MonoBehaviour {
 
     public GameObject display;
+    private List<User> Users;
+    string oldRank = "";
     
-    private List<string> getPlayers(string rank) {
-        List<string> players = new List<string>();
-        players.Clear();
+    IEnumerator GetPlayers(string newRank)
+    {
+        if (newRank != oldRank) { // Only update when different rank is clicked.
 
-        for(int i=0;i<5;i++) {    //here it would GET the top5 from server and add to list.
-            players.Add(rank); 
+            // Here would need to get users of THAT RANK. Now just all people.
+            // Also need to get top 5 - server-side implementation.
+
+            string url = Server.Address("view_users");
+            WWW www = new WWW(url);
+            yield return www;
+            string all = www.text.Trim(new char[]{'[', ']'}); // Split the entire huge all-player JSON into individual-user JSONs.
+            string[] separators = {"},","}"};
+            string[] entries = all.Split(separators, System.StringSplitOptions.RemoveEmptyEntries);
+            for (int i=0; i<entries.Length; i++) {
+                if (i == 5) break;
+                string newUserJson = entries[i] + "}";
+                User newuser = User.CreateUserFromJSON(newUserJson);      
+                Users.Add(newuser);
+            }
+            // Users.Sort(); //Need to sort based on Points (top 5).
+       
+            int s = 0;
+            foreach (User current in Users) {
+                string name = current.getUsername();
+                string currentslot = "Slot" + (++s);
+                display.transform.Find(currentslot).gameObject.GetComponentInChildren<Text>().text = name;
+            }
+            oldRank = newRank;
+            StopCoroutine(GetPlayers(newRank));
         }
-        //players.Sort -- by points.
-
-        return players;
     }
 
     public void displayTopPlayers(string rank) {
-        int i = 0;
-        foreach (string current in getPlayers(rank)){
-            string currentslot = "Slot" + (++i);
-            display.transform.Find(currentslot).gameObject.GetComponentInChildren<Text>().text = current;
-        }
+        Users = new List<User>();
+        StartCoroutine(GetPlayers(rank));
     }
 }

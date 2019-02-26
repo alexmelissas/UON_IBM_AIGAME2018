@@ -1,9 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
-public class agreeTwitter : MonoBehaviour {
+public class AgreeTwitter : MonoBehaviour {
 
     public Toggle toggle;
     public Button button;
