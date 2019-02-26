@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class UserSession : MonoBehaviour {
 
@@ -19,16 +17,4 @@ public class UserSession : MonoBehaviour {
             Destroy(gameObject);
         }
 	}
-
-    public void getUserData()
-    {
-        string id = user.getID();
-        string username = user.getUsername();
-        string password = user.getPassword();
-        string at = user.getAT();
-        string ats = user.getATS();
-        Debug.Log("ID: " + id + ", Username: " + username + ", Password: "
-            + password + ", AccessToken: " + at + ", AccessTokenSecret: " + ats);
-    }
-
 }

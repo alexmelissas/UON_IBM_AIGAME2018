@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class setDifficulty : MonoBehaviour {
+public class SetBotDifficulty : MonoBehaviour {
 
     public GameObject selected_easy, selected_medium, selected_hard;
     public static string difficulty;

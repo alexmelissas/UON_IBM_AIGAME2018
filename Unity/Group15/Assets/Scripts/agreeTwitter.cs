@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
-public class agreeTwitter : MonoBehaviour {
+public class AgreeTwitter : MonoBehaviour {
 
     public Toggle toggle;
     public Button button;
