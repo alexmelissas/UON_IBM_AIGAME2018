@@ -54,10 +54,13 @@ public class IdealService {
     	String id = ideal.getId();
     	String jsonResult = this.getIdealById(id).get().getJsonResult();
  
-    	analysisResult = new AnalysisResult(jsonResult);
+    	analysisResult = new AnalysisResult();
     	Role role;
     	
+    	System.out.println("------" + analysisResult);
+    	
     	if(jsonResult != null) {
+    		analysisResult.setJsonObject(jsonResult);
     		role = analysisResult.generateRole(ideal);
     	} else {
     		role = analysisResult.generateNormalRole();

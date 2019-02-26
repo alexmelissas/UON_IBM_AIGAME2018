@@ -13,10 +13,6 @@ public class AnalysisResult {
     
     public AnalysisResult() {
     }
-    
-    public AnalysisResult(String jsonResult) {
-    	jsonObject = new JsonParser().parse(jsonResult).getAsJsonObject();
-    }
 
     public Role generateRole(Ideal ideal) {
     	JsonArray personality = jsonObject.getAsJsonArray("personality");
@@ -123,8 +119,8 @@ public class AnalysisResult {
 		return jsonObject;
 	}
 
-	public void setJsonObject(String jsonData) {
-		jsonObject = new JsonParser().parse(jsonData).getAsJsonObject();
+	public void setJsonObject(String jsonResult) {
+		jsonObject = new JsonParser().parse(jsonResult).getAsJsonObject();
 	}
 
 	public Role getRole() {

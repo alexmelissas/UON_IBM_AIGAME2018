@@ -46,7 +46,12 @@
 		- example: `curl -X PUT 132.232.30.215:8080/users/{id} -H 'Content-type:application/json' -d '{"username": "char", "password": "1234"}'`
 - `/users/login`:
 	- POST: login
-- TBD
+- `/roles`:
+	- GET: get all the roles
+- `/ideals`:
+	- GET: get all the ideal personality of users
+- TBC
+
 
 **Helpful material**
 - https://developer.twitter.com/en/docs/twitter-for-websites/log-in-with-twitter/guides/implementing-sign-in-with-twitter

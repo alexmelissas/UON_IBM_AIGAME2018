@@ -107,4 +107,11 @@ public class Ideal {
 	public void setJsonResult(String jsonResult) {
 		this.jsonResult = jsonResult;
 	}
+
+	@Override
+	public String toString() {
+		return "Ideal [id=" + id + ", openess=" + openess + ", conscientiousness=" + conscientiousness
+				+ ", extraversion=" + extraversion + ", agreeableness=" + agreeableness + ", emotionalrange="
+				+ emotionalrange + ", jsonResult=" + jsonResult + "]";
+	}
 }

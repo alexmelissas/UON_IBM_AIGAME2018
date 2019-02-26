@@ -5,7 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 
 @Entity
-public class Role {
+public class Role{
 	@Id
 	@Column(name = "id", columnDefinition = "VARCHAR(36)")
 	public String id;

@@ -28,6 +28,7 @@ public class IdealController {
 		// TODO exception handle
 		ideal.setId(id);
 		idealService.updateIdeal(id, ideal);
+		System.out.println(ideal);
 		return "Updated";
 	}
 }
