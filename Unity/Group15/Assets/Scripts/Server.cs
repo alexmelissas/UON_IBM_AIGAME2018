@@ -31,8 +31,8 @@ public class Server {
             case "submit_ideals":
                 path = "/ideals/";
                 break;
-            case "manage_roles":
-                path = "/roles/";
+            case "players":
+                path = "/players/";
                 break;
             default:
                 path = "";

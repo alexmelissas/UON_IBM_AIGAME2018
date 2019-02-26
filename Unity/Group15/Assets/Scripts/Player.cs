@@ -1,33 +1,33 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System;
 using UnityEngine;
 
-public class Role : MonoBehaviour {
+[Serializable]
+public class Player {
 
     public string id;
     public int hp;
     public int attack;
-    public int defence; //ask yu to rename it :p
+    public int defense; //ask yu to rename it :p
     public int agility;
-    public int intelligence;
+    public int critical_strike;
     public int score;
     public int experience;
 
-    public Role(string i, int healthpoints, int atk, int def, int agl, int intl, int sc, int exp)
+    public Player(string i, int healthpoints, int atk, int def, int agl, int intl, int sc, int exp)
     {
         id = i;
         hp = healthpoints;
         attack = atk;
-        defence = def;
+        defense = def;
         agility = agl;
-        intelligence = intl;
+        critical_strike = intl;
         score = sc;
         experience = exp;
     }
 
-    public static Ideals CreateIdealsFromJSON(string json)
+    public static Player CreatePlayerFromJSON(string json)
     {
-        Ideals temp = new Ideals("", 0, 0, 0, 0, 0);
+        Player temp = new Player("", 0, 0, 0, 0, 0, 0, 0);
         JsonUtility.FromJsonOverwrite(json, temp);
         return temp;
     }

@@ -29,7 +29,7 @@ public class PersonalityCreation : MonoBehaviour {
         trait5 = HandleAttribute(trait5slider, t5out);
     }
 
-    IEnumerator PostIdeals(string json)
+    IEnumerator PutIdeals(string json)
     {
         UnityWebRequest uwr = new UnityWebRequest(Server.Address("submit_ideals") + UserSession.us.user.getID(), "PUT");
         byte[] jsonToSend = new System.Text.UTF8Encoding().GetBytes(json);
@@ -53,16 +53,18 @@ public class PersonalityCreation : MonoBehaviour {
             }
             else
             {
-                NPBinding.UI.ShowToast("Ideal Personality Submitted.", eToastMessageLength.SHORT);
+                PlayerSession.ps.player = Player.CreatePlayerFromJSON(uwr.downloadHandler.text);
+                // create the model here somehow 
+                NPBinding.UI.ShowToast("Ideal Personality Submitted. Player created.", eToastMessageLength.SHORT);
                 gameObject.AddComponent<ChangeScene>().Forward("ModelCreated");
             }
         }
-        StopCoroutine(PostIdeals(json));
+        StopCoroutine(PutIdeals(json));
     }
 
     public void Submit () {                                             
         string json = JsonUtility.ToJson(new Ideals(UserSession.us.user.getID(), trait1, trait2, trait3, trait4, trait5));
         Debug.Log("Ideal Personality: " + json);
-        StartCoroutine(PostIdeals(json));
+        StartCoroutine(PutIdeals(json));
     }
 }

@@ -24,6 +24,22 @@ public class AuthenticateUser : MonoBehaviour {
         else if (input=="password") checkUserPass();
     }
 
+    IEnumerator GetPlayer()
+    {
+        string url = Server.Address("players") + UserSession.us.user.getID();
+        UnityWebRequest uwr = new UnityWebRequest(url, "GET");
+        byte[] jsonToSend = new System.Text.UTF8Encoding().GetBytes(JsonUtility.ToJson(UserSession.us.user));
+        uwr.uploadHandler = (UploadHandler)new UploadHandlerRaw(jsonToSend);
+        uwr.downloadHandler = (DownloadHandler)new DownloadHandlerBuffer();
+        uwr.SetRequestHeader("Content-Type", "application/json");
+
+        yield return uwr.SendWebRequest();
+
+        Debug.Log("" + uwr.downloadHandler.text);
+        PlayerSession.ps.player = Player.CreatePlayerFromJSON(uwr.downloadHandler.text);
+        StopCoroutine(GetPlayer());
+    }
+
     IEnumerator TryLogin(bool first_login, string json, User user)
     {
         if (first_login && UserSession.us.user.getUsername() == "") yield break;
@@ -44,6 +60,7 @@ public class AuthenticateUser : MonoBehaviour {
         {
             if (Server.CheckLogin(uwr.downloadHandler.text))
             {
+                if (!first_login) yield return StartCoroutine(GetPlayer());  
                 string next_scene = "Overworld";
                 if (first_login) next_scene = "TwitterLogin";
                 gameObject.AddComponent<ChangeScene>().Forward(next_scene);
