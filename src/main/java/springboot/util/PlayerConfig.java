@@ -9,6 +9,14 @@ public class PlayerConfig {
 // 21 - 30: 40 * (level / 2)
 	
 // basic status:
+/**
+//	hp = 150
+//	attack = 30
+//	defence = 15
+//	agility = 10
+//	intelligence = 15 
+**/
+	
 /** 1 - 5:
 //	hp = 150 + 20 * (level - 1)
 //	attack = 30 + 10 * (level - 1)

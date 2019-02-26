@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import springboot.domain.Player;
@@ -26,10 +27,14 @@ public class PlayerController {
 	}
 	
 	@GetMapping("players/{id}")
-	public int getRankById(@PathVariable String id) {
-		return playerService.getRankById(id);
+	public @ResponseBody Player getPlayerById(@PathVariable String id) {
+		return playerService.getPlayerById(id).get();
 	}
 	
+	@GetMapping("players/rank/{id}")
+	public int getPlayerRankById(@PathVariable String id) {
+		return playerService.getRankById(id);
+	}
 	// TODO interval to check twitter 
 	
 }

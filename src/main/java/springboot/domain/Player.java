@@ -19,14 +19,14 @@ public class Player{
 	@Column(name = "attack", columnDefinition = "INT")
 	public int attack;
 	
-	@Column(name = "defence", columnDefinition = "INT")
-	public int defence;
+	@Column(name = "defense", columnDefinition = "INT")
+	public int defense;
 	
 	@Column(name = "agility", columnDefinition = "INT")
 	public int agility;
 	
-	@Column(name = "intelligence", columnDefinition = "INT")
-	public int intelligence;
+	@Column(name = "critical_strike", columnDefinition = "INT")
+	public int criticalStrike;
 	
 	@Column(name = "score", columnDefinition = "INT")
 	public int score = 0;
@@ -46,30 +46,30 @@ public class Player{
 	// QUESTION - How to calculate the value after own items??? --- further discussion
 	// WHAT IS THE STRUCTURE OF INVENTORY?
 	
-	public Player(int hp, int attack, int defence, int agility, int intelligence) {
+	public Player(int hp, int attack, int defense, int agility, int criticalStrike) {
 		this.hp = hp;
 		this.attack = attack;
-		this.defence = defence;
+		this.defense = defense;
 		this.agility = agility;
-		this.intelligence = intelligence;
+		this.criticalStrike = criticalStrike;
 	}
 
-	public Player(String id, int hp, int attack, int defence, int agility, int intelligence) {
-		this(hp, attack, defence, agility, intelligence);
+	public Player(String id, int hp, int attack, int defense, int agility, int criticalStrike) {
+		this(hp, attack, defense, agility, criticalStrike);
 		this.id = id;
 	}
 	
-	public Player(String id, int hp, int attack, int defence, int agility, int intelligence, int score) {
-		this(id, hp, attack, defence, agility, intelligence);
+	public Player(String id, int hp, int attack, int defense, int agility, int criticalStrike, int score) {
+		this(id, hp, attack, defense, agility, criticalStrike);
 		this.score = score;
 	}
 	
 	public void applyPersonality() {
 		this.hp *= factor;
 		this.attack *= factor;
-		this.defence *= factor;
+		this.defense *= factor;
 		this.agility *= factor;
-		this.intelligence *= factor;
+		this.criticalStrike *= factor;
 	}
 	
 	public void levelUp() {
@@ -100,20 +100,20 @@ public class Player{
 		this.attack = attack;
 	}
 
-	public int getDefence() {
-		return defence;
+	public int getDefense() {
+		return defense;
 	}
 
-	public void setDefence(int defence) {
-		this.defence = defence;
+	public void setDefense(int defense) {
+		this.defense = defense;
 	}
 
-	public int getIntelligence() {
-		return intelligence;
+	public int getCriticalStrike() {
+		return criticalStrike;
 	}
 
-	public void setIntelligence(int intelligence) {
-		this.intelligence = intelligence;
+	public void setCriticalStrike(int criticalStrike) {
+		this.criticalStrike = criticalStrike;
 	}
 
 	public int getAgility() {

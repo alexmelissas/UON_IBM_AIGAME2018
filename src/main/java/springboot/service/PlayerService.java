@@ -62,9 +62,9 @@ public class PlayerService {
 						.map(player -> {
 							player.setHp(newPlayer.getHp());
 							player.setAttack(newPlayer.getAttack());
-							player.setDefence(newPlayer.getDefence());
+							player.setDefense(newPlayer.getDefense());
 							player.setAgility(newPlayer.getAgility());
-							player.setIntelligence(newPlayer.getIntelligence());
+							player.setCriticalStrike(newPlayer.getCriticalStrike());
 
 							// TODO check the update of player
 							// long way to go :(
