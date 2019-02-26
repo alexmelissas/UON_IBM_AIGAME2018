@@ -7,6 +7,7 @@ import com.ibm.watson.developer_cloud.personality_insights.v3.model.Content;
 import com.ibm.watson.developer_cloud.personality_insights.v3.model.ContentItem;
 import com.ibm.watson.developer_cloud.personality_insights.v3.model.Profile;
 import com.ibm.watson.developer_cloud.personality_insights.v3.model.ProfileOptions;
+import com.ibm.watson.developer_cloud.service.exception.BadRequestException;
 import com.ibm.watson.developer_cloud.service.security.IamOptions;
 
 import springboot.util.AnalysisConfig;
@@ -33,10 +34,22 @@ public class PersonalityInsightService {
 		ContentItem contentItem = new ContentItem.Builder().content(contentLoader.getInput()).build();
 		content = new Content.Builder().addContentItem(contentItem).build();
 		
-		ProfileOptions profileOptions = new ProfileOptions.Builder().content(content).consumptionPreferences(true).rawScores(true).build();
-		Profile profile = personalityInsights.profile(profileOptions).execute();
+		ProfileOptions profileOptions = new ProfileOptions.Builder()
+															.content(content)
+															.consumptionPreferences(true)
+															.rawScores(true)
+															.build();
+		Profile profile;
+		try {
+			profile = personalityInsights.profile(profileOptions).execute();
+		} catch (BadRequestException badRequestException) {
+			// tweets is less than 100 words
+			profile = new Profile();
+			return profile;
+		}
 		
 		// result profile in JSON
 		return profile;
 	}
+	
 }

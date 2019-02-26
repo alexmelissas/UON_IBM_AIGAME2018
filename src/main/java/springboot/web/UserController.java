@@ -63,6 +63,11 @@ public class UserController {
 	 */
 	@PutMapping(path = "/users/{id}")
 	public @ResponseBody String updateUser(@PathVariable String id, @RequestBody User user) {
+		User previousUser = userService.getUserById(id).get();
+		// check if modified username is exist
+		if(userService.isExist(user.getUsername()) && !previousUser.getUsername().equals(user.getUsername())) {
+			return "Username has been taken";
+		}
 		userService.updateUser(id, user);
 		return "Updated";
 	}
@@ -73,8 +78,18 @@ public class UserController {
 	 * @return
 	 */
 	@DeleteMapping(path = "/users/{id}")
-	public @ResponseBody String deleteUser(@PathVariable int id) {
+	public @ResponseBody String deleteUser(@PathVariable String id) {
 		userService.deleteUserById(id);
 		return "Deleted";
+	}
+	
+	/**
+	 * Login
+	 * @param user
+	 * @return
+	 */
+	@PostMapping(path = "/users/login")
+	public User login(@RequestBody User user) { 
+		return userService.login(user);
 	}
 }
