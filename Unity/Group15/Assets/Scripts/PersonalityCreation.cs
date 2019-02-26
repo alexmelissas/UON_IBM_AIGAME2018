@@ -31,7 +31,7 @@ public class PersonalityCreation : MonoBehaviour {
 
     IEnumerator PostIdeals(string json)
     {
-        UnityWebRequest uwr = new UnityWebRequest(Server.Address("submit_ideals") + UserSession.us.user.getID(), "POST");
+        UnityWebRequest uwr = new UnityWebRequest(Server.Address("submit_ideals") + UserSession.us.user.getID(), "PUT");
         byte[] jsonToSend = new System.Text.UTF8Encoding().GetBytes(json);
         uwr.uploadHandler = (UploadHandler)new UploadHandlerRaw(jsonToSend);
         uwr.downloadHandler = (DownloadHandler)new DownloadHandlerBuffer();
@@ -47,8 +47,15 @@ public class PersonalityCreation : MonoBehaviour {
         else
         {
             Debug.Log("" + uwr.downloadHandler.text);
-            NPBinding.UI.ShowToast("Ideal Personality Submitted.", eToastMessageLength.SHORT);
-            gameObject.AddComponent<ChangeScene>().Forward("ModelCreated");
+            if (uwr.downloadHandler.text == Server.fail_auth)
+            {
+                //error
+            }
+            else
+            {
+                NPBinding.UI.ShowToast("Ideal Personality Submitted.", eToastMessageLength.SHORT);
+                gameObject.AddComponent<ChangeScene>().Forward("ModelCreated");
+            }
         }
         StopCoroutine(PostIdeals(json));
     }
