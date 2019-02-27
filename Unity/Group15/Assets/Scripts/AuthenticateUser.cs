@@ -1,8 +1,6 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using VoxelBusters.NativePlugins;
 
@@ -26,17 +24,15 @@ public class AuthenticateUser : MonoBehaviour {
 
     IEnumerator GetPlayer()
     {
-        string url = Server.Address("players") + UserSession.us.user.getID();
-        UnityWebRequest uwr = new UnityWebRequest(url, "GET");
-        byte[] jsonToSend = new System.Text.UTF8Encoding().GetBytes(JsonUtility.ToJson(UserSession.us.user));
-        uwr.uploadHandler = (UploadHandler)new UploadHandlerRaw(jsonToSend);
-        uwr.downloadHandler = (DownloadHandler)new DownloadHandlerBuffer();
-        uwr.SetRequestHeader("Content-Type", "application/json");
-
+        UnityWebRequest uwr = UnityWebRequest.Get(Server.Address("players") + UserSession.us.user.getID());
         yield return uwr.SendWebRequest();
-
-        Debug.Log("" + uwr.downloadHandler.text);
-        PlayerSession.ps.player = Player.CreatePlayerFromJSON(uwr.downloadHandler.text);
+        if (uwr.isNetworkError)
+        {
+            Debug.Log("Error While Sending: " + uwr.error);
+            NPBinding.UI.ShowToast("Communication Error. Please try again later.", eToastMessageLength.SHORT);
+        }
+        else
+            UpdateSessions.JSON_Session("player", uwr.downloadHandler.text);
         StopCoroutine(GetPlayer());
     }
 
@@ -60,12 +56,15 @@ public class AuthenticateUser : MonoBehaviour {
         {
             if (Server.CheckLogin(uwr.downloadHandler.text))
             {
-                if (!first_login) yield return StartCoroutine(GetPlayer());  
                 string next_scene = "Overworld";
+                if (!first_login) yield return StartCoroutine(GetPlayer());
                 if (first_login) next_scene = "TwitterLogin";
                 gameObject.AddComponent<ChangeScene>().Forward(next_scene);
-                string message = "Welcome back, " + user.getUsername();
-                NPBinding.UI.ShowToast(message, eToastMessageLength.SHORT);
+                if (!first_login)
+                {
+                    string message = "Welcome back, " + user.getUsername();
+                    NPBinding.UI.ShowToast(message, eToastMessageLength.SHORT);
+                }
             }
             else
             {

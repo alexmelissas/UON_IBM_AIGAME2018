@@ -9,7 +9,7 @@ public class viewUserOW : MonoBehaviour {
     public Text usernameLabel;
 
 	void Update () {
-        if (UserSession.us != null)
+        if (UserSession.us != null && UserSession.us.user.getUsername()!="")
             usernameLabel.GetComponentInChildren<Text>().text = UserSession.us.user.getUsername();
         else
             usernameLabel.GetComponentInChildren<Text>().text = "<Invalid Session>";

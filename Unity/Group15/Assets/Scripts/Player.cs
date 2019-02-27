@@ -2,7 +2,8 @@
 using UnityEngine;
 
 [Serializable]
-public class Player {
+public class Player
+{
 
     public string id;
     public int hp;
@@ -37,4 +38,14 @@ public class Player {
         return id;
     }
 
+    public bool ComparePlayer(Player other)
+    {
+        if (id != other.id || attack != other.attack || defense != other.defense || agility != other.agility
+            || critical_strike != other.critical_strike || score != other.score || experience != other.experience)
+            return false;
+        return true;
+    }
+
 }
+    
+              

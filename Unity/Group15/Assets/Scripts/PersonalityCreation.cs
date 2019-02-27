@@ -31,7 +31,8 @@ public class PersonalityCreation : MonoBehaviour {
 
     IEnumerator PutIdeals(string json)
     {
-        UnityWebRequest uwr = new UnityWebRequest(Server.Address("submit_ideals") + UserSession.us.user.getID(), "PUT");
+        string id = (UserSession.us.user.getID() == "") ? PlayerPrefs.GetString("id") : UserSession.us.user.getID();
+        UnityWebRequest uwr = new UnityWebRequest(Server.Address("submit_ideals") + id, "PUT");
         byte[] jsonToSend = new System.Text.UTF8Encoding().GetBytes(json);
         uwr.uploadHandler = (UploadHandler)new UploadHandlerRaw(jsonToSend);
         uwr.downloadHandler = (DownloadHandler)new DownloadHandlerBuffer();
@@ -53,7 +54,7 @@ public class PersonalityCreation : MonoBehaviour {
             }
             else
             {
-                PlayerSession.ps.player = Player.CreatePlayerFromJSON(uwr.downloadHandler.text);
+                UpdateSessions.JSON_Session("player",uwr.downloadHandler.text);
                 // create the model here somehow 
                 NPBinding.UI.ShowToast("Ideal Personality Submitted. Player created.", eToastMessageLength.SHORT);
                 gameObject.AddComponent<ChangeScene>().Forward("ModelCreated");

@@ -51,7 +51,7 @@ public class Server {
     public static bool CheckLogin(string output)
     {
         if (output == null || output == "") return false;
-        else UserSession.us.user = User.CreateUserFromJSON(output);
+        else UpdateSessions.JSON_Session("user",output);
         return true;
     }
 

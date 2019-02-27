@@ -9,16 +9,12 @@ public class LoginTwitter : MonoBehaviour {
 
     IEnumerator TryTwitter()
     {
+        // need to make twitter sequence not have a timer or something else whatever
         int repeats = 0;
         while (repeats < 12) //wait 60 sec, check for login every 5 sec
         {
-            string url = Server.Address("read_user") + UserSession.us.user.getID();
-            UnityWebRequest uwr = new UnityWebRequest(url, "GET");
-            byte[] jsonToSend = new System.Text.UTF8Encoding().GetBytes(JsonUtility.ToJson(UserSession.us.user));
-            uwr.uploadHandler = (UploadHandler)new UploadHandlerRaw(jsonToSend);
-            uwr.downloadHandler = (DownloadHandler)new DownloadHandlerBuffer();
-            uwr.SetRequestHeader("Content-Type", "application/json");
-        
+            string id = (UserSession.us.user.getID()=="") ? PlayerPrefs.GetString("id") : UserSession.us.user.getID();
+            UnityWebRequest uwr = UnityWebRequest.Get(Server.Address("read_user") + id);
             yield return uwr.SendWebRequest();
 
             if (uwr.isNetworkError)
@@ -29,7 +25,7 @@ public class LoginTwitter : MonoBehaviour {
             }
             else
             {
-                UserSession.us.user = User.CreateUserFromJSON(uwr.downloadHandler.text);
+                UpdateSessions.JSON_Session("user", uwr.downloadHandler.text);
                 if(Server.CheckTwitter())
                 {
                     yield break;
