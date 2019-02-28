@@ -311,6 +311,7 @@ MonoBehaviour:
   winToggle: {fileID: 36196880}
   loseToggle: {fileID: 949980884}
   currentloginLabel: {fileID: 1026191701}
+  usernameLabel: {fileID: 118609833}
   notyouLabel: {fileID: 855695604}
   logoutButton: {fileID: 1817723877}
 --- !u!1 &118609831
@@ -345,7 +346,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 123.000015, y: -46.999996}
+  m_AnchoredPosition: {x: 128.9, y: -47.005}
   m_SizeDelta: {x: 187.08, y: 31.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &118609833
@@ -1434,7 +1435,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.Toggle+ToggleEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  m_IsOn: 1
+  m_IsOn: 0
 --- !u!1 &986593835
 GameObject:
   m_ObjectHideFlags: 0
@@ -3001,7 +3002,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0
+  m_Value: 0.7
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -3157,7 +3158,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0
+  m_Value: 0.7
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
