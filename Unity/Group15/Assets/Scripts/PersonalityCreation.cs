@@ -31,8 +31,7 @@ public class PersonalityCreation : MonoBehaviour {
 
     IEnumerator PutIdeals(string json)
     {
-        string id = (UserSession.us.user.getID() == "") ? PlayerPrefs.GetString("id") : UserSession.us.user.getID();
-        UnityWebRequest uwr = new UnityWebRequest(Server.Address("submit_ideals") + id, "PUT");
+        UnityWebRequest uwr = new UnityWebRequest(Server.Address("submit_ideals") + UserSession.us.user.getID(), "PUT");
         byte[] jsonToSend = new System.Text.UTF8Encoding().GetBytes(json);
         uwr.uploadHandler = (UploadHandler)new UploadHandlerRaw(jsonToSend);
         uwr.downloadHandler = (DownloadHandler)new DownloadHandlerBuffer();

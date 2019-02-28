@@ -11,6 +11,7 @@ public class SetSettings : MonoBehaviour {
     public Toggle winToggle;
     public Toggle loseToggle;
     public Text currentloginLabel;
+    public Text usernameLabel;
     public GameObject notyouLabel;
     public GameObject logoutButton;
 
@@ -34,20 +35,23 @@ public class SetSettings : MonoBehaviour {
         {
             if (UserSession.us.user.getUsername() == "")
             {
-                currentloginLabel.GetComponentInChildren<Text>().text = "You are not logged in yet.";
+                usernameLabel.GetComponentInChildren<Text>().text = "";
+                currentloginLabel.GetComponentInChildren<Text>().text = "You are not logged in yet.";                
                 logoutButton.SetActive(false);
                 notyouLabel.SetActive(false);
             }
             else
             {
-                currentloginLabel.GetComponentInChildren<Text>().text = "You are logged in as: " + UserSession.us.user.getUsername();
+                currentloginLabel.GetComponentInChildren<Text>().text = "You are logged in as: ";
+                usernameLabel.GetComponentInChildren<Text>().text = UserSession.us.user.getUsername();
                 logoutButton.SetActive(true);
                 notyouLabel.SetActive(true);
             }
         }
         else
         {
-            currentloginLabel.GetComponentInChildren<Text>().text = "You are not logged in yet.";
+            usernameLabel.GetComponentInChildren<Text>().text = "";
+            currentloginLabel.GetComponentInChildren<Text>().text = "You are not logged in yet.";            
             logoutButton.SetActive(false);
             notyouLabel.SetActive(false);
         }

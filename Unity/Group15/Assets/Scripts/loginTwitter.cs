@@ -13,8 +13,8 @@ public class LoginTwitter : MonoBehaviour {
         int repeats = 0;
         while (repeats < 12) //wait 60 sec, check for login every 5 sec
         {
-            string id = (UserSession.us.user.getID()=="") ? PlayerPrefs.GetString("id") : UserSession.us.user.getID();
-            UnityWebRequest uwr = UnityWebRequest.Get(Server.Address("read_user") + id);
+            //string id = (UserSession.us.user.getID()=="") ? ZPlayerPrefs.GetString("id") : UserSession.us.user.getID();
+            UnityWebRequest uwr = UnityWebRequest.Get(Server.Address("read_user") + UserSession.us.user.getID());
             yield return uwr.SendWebRequest();
 
             if (uwr.isNetworkError)

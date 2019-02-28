@@ -47,7 +47,7 @@ public class UpdateSessions : MonoBehaviour{
 
     IEnumerator GetUser(bool all)
     {        
-        UnityWebRequest uwr = UnityWebRequest.Get(Server.Address("read_user") + PlayerPrefs.GetString("id"));
+        UnityWebRequest uwr = UnityWebRequest.Get(Server.Address("read_user") + ZPlayerPrefs.GetString("id"));
         yield return uwr.SendWebRequest();
         if (uwr.isNetworkError)
         {

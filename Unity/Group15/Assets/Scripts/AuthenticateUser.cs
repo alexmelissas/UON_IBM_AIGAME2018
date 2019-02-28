@@ -60,11 +60,7 @@ public class AuthenticateUser : MonoBehaviour {
                 if (!first_login) yield return StartCoroutine(GetPlayer());
                 if (first_login) next_scene = "TwitterLogin";
                 gameObject.AddComponent<ChangeScene>().Forward(next_scene);
-                if (!first_login)
-                {
-                    string message = "Welcome back, " + user.getUsername();
-                    NPBinding.UI.ShowToast(message, eToastMessageLength.SHORT);
-                }
+                if (!first_login) NPBinding.UI.ShowToast("Welcome back, " + user.getUsername(), eToastMessageLength.SHORT);
             }
             else
             {
