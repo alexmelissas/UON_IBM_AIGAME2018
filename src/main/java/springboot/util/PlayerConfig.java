@@ -8,16 +8,32 @@ public class PlayerConfig {
 		// 11 - 20: 35 * level / 2)
 		// 21 - 30: 40 * level / 2)
 		
+		// 1 - 5: 0 - 0.5 days to level up
+		// 5 - 10: 0.5 -> 1 days to level up
+		// 11 - 20: 1 -> 1.5 days to level up
+		// 21 - 30: 1.5 -> 2 days to level up
 		int experience = 0;
-		if(level <= 5) {
-			experience = 10 * level;
-		} else if(level <= 10) {
-			experience = 15 * level;
-		} else if(level <= 20) {
-			experience = 35 * level / 2;
-		} else if(level <= 30) {
-			experience = 40 * level / 2;
+		double a = 0;
+		double b = 15;
+		double c = 40;
+		int x = level;
+		if(x <= 5) {
+			
+		} else if(x <= 10) {
+			a = 1;
+			b = 10;
+			c = 20;
+		} else if(x <= 20) {
+			a = 0.7;
+			b = 10;
+			c = 30;
+		} else {
+			a = 0.5;
+			b = 8;
+			c = 120;
 		}
+		experience = (int) (a * x * x + b * x + c);
+
 		return experience;
 	}
 	
@@ -29,18 +45,29 @@ public class PlayerConfig {
 		int agility = 0; // rate
 		int criticalStrike = 0; // rate 
 
-		double[] rates = getRates(level);
-		hp = (int) (150 + 20 * rates[0] * (level - 1));
-		attack = (int) (30 + 10 * rates[1] * (level - 1));
-		defence = (int) (15 + 8 * rates[2] * (level - 1));
-		agility = (int) (10 + 5 * rates[3] * (level - 1));
-		criticalStrike = (int) (15 + 5 * rates[4] * (level - 1)); 
+		double a = 1.2;
+		double b = 1;
+		double c = 200;
+		int x = level + 14;
+		hp = (int) (a * x * x + b * x + c);
+		a = 0.2;
+		b = 0.2;
+		c = 30;
+		attack = (int) (a * x * x + b * x + c);
+		a = 0.15;
+		b = 0.15;
+		c = 15;
+		defence = (int) (a * x * x + b * x + c);
+		a = 0.05;
+		b = 0.5;
+		c = 5;
+		agility = (int) (a * x * x + b * x + c);
+		a = 0.1;
+		b = 0.1;
+		c = 10;
+		criticalStrike = (int) (a * x * x + b * x + c);		
 		
-		System.out.println(level + "   " + hp + "  " + attack + "  " + defence + "  " + agility + "  " + criticalStrike);
-	}
-	
-	private static double[] getRates(int level) {
-		double[] rates = {1 + level / 2.5, 1 + level / 7.5, 1 + level / 7.5, 1 + level / 12.5, 1 + level / 12.5};
-		return rates;
+		// TODO actual attack * 1.5
+		System.out.println(level + "   " + hp + "  " + attack + "  " + defence + "  " + agility + "  " + criticalStrike + " number: " + hp / (attack-defence * 0.5));
 	}
 }
