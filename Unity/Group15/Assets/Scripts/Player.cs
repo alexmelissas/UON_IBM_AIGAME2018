@@ -4,7 +4,6 @@ using UnityEngine;
 [Serializable]
 public class Player
 {
-
     public string id;
     public int hp;
     public int attack;
