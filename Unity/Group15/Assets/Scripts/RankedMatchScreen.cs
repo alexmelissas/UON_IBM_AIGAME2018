@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UpdateRanksView : MonoBehaviour {
+public class RankedMatchScreen : MonoBehaviour {
 
     public GameObject display;
     private List<User> Users;
@@ -42,8 +42,19 @@ public class UpdateRanksView : MonoBehaviour {
         }
     }
 
-    public void displayTopPlayers(string rank) {
+    public void DisplayTopPlayers(string rank) {
         Users = new List<User>();
         StartCoroutine(GetPlayers(rank));
+    }
+
+    public void OpenInventory()
+    {
+        //gameObject.AddComponent<ChangeScene>().Forward("Inventory");
+    }
+
+    public void Play()
+    {
+        PlayerPrefs.SetInt("battle_type", 1);
+        gameObject.AddComponent<ChangeScene>().Forward("Battle");
     }
 }

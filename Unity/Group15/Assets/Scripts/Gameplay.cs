@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using System.Linq;
 using System;
 using UnityEngine.SceneManagement;
+using VoxelBusters.NativePlugins;
 
 public class Gameplay : MonoBehaviour {
 
@@ -41,27 +42,42 @@ public class Gameplay : MonoBehaviour {
 
     private void Start()
     {
-        //player = PlayerSession.ps.player;
+        player = PlayerSession.ps.player;
         //ItemsSession.its.items.AddItemsToStats(player);
-        //if(pve match) enemy = new Bot(player,ItemsSession.its.items,PlayerPrefs.GetInt("bot_difficulty"));
-        //else {(GET Enemy by ID - also username -ask Yu to change Player to return username too) ; (GET Enemy items by id)}
 
-        /* TESTING: */
+        /* Testing */
         player = new Player("Player", 90, 37, 4, 1, 1, 2, 0);
         Items player_items = new Items(new ServerItems("", 1, 1, 1));
         player_items.AddItemsToStats(player);
-        enemy = new Bot(player, player_items, PlayerPrefs.GetInt("bot_difficulty"));
-        /************/
+        ////////////
+
+        
+        if (!PlayerPrefs.HasKey("battle_type")){ gameObject.AddComponent<ChangeScene>().Forward("Overworld"); Destroy(gameObject);}; //Error
+        int battle_type = PlayerPrefs.GetInt("battle_type");
+        if (battle_type == 0) { Debug.Log("Playing PvE"); enemy = new Bot(player, player_items, PlayerPrefs.GetInt("bot_difficulty")); } //PvE
+        else if (battle_type == 1) // PvP
+        {
+            Debug.Log("Playing PvP");
+            //(GET Enemy by ID - also username - ask Yu to change Player to return username too) ; 
+            //(GET Enemy items by id)}
+            /* Temp: enemy is bot anyway: */ enemy = new Bot(player, player_items, PlayerPrefs.GetInt("bot_difficulty"));
+        }
+        else { gameObject.AddComponent<ChangeScene>().Forward("Overworld"); Destroy(gameObject); } //Error
 
         turns = new List<Turn>();
         player_max_hp = player.hp;
         enemy_max_hp = enemy.hp;
         
-        if (PlayerPrefs.HasKey("skip_battles")) if (PlayerPrefs.GetInt("skip_battles") == 1) skip = true;
         playerName.text = "" + player.id; // would need to get username.
         playerLevel.text = ""+player.score;
         enemyName.text = "" + enemy.id; // need to make server give username with player pls
         enemyLevel.text = "" + enemy.score;
+
+        playerDmgLabel.enabled = false;
+        enemyDmgLabel.enabled = false;
+        playerDmgLabel.GetComponentInParent<Image>().enabled = false;
+        enemyDmgLabel.GetComponentInParent<Image>().enabled = false;
+
         playerHP.normalizedValue = 1f;
         enemyHP.normalizedValue = 1f;
         CalculateTurns();
@@ -69,9 +85,17 @@ public class Gameplay : MonoBehaviour {
 
     private void Update()
     {
-        if (PlayerPrefs.HasKey("skip_battles")) if (PlayerPrefs.GetInt("skip_battles") == 1) skip = true;
-        if (skip) { StopAllCoroutines(); Debug.Log((result == 1) ? "Enemy wins. Too bad." : "You won! Congrats!"); result = 0; gameObject.AddComponent<ChangeScene>().Forward("Overworld");  }// Destroy(gameObject); }
-
+        if (PlayerPrefs.HasKey("skip")) if (PlayerPrefs.GetInt("skip") == 1) skip = true;
+        if (skip)
+        {
+            StopAllCoroutines();
+            string announce = (result == 1) ? "Enemy wins. Too bad." : "You won! Congrats!";
+                Debug.Log(announce);
+            NPBinding.UI.ShowToast("announce", eToastMessageLength.SHORT);
+            result = 0;
+            gameObject.AddComponent<ChangeScene>().Forward("Overworld");
+            Destroy(gameObject);
+        }
         actualPlayerHP.text = "" + /*new_hp_player + "/" +*/ player_max_hp;
         actualEnemyHP.text = "" + /*new_hp_enemy + "/" + */ enemy_max_hp;
 
@@ -105,6 +129,7 @@ public class Gameplay : MonoBehaviour {
 
     IEnumerator PlayTurns(List<Turn> turns)
     {
+        yield return new WaitForSeconds(1f);
         foreach (Turn turn in turns)
         {
             string attacker = turn.player_turn ? "player" : "enemy";
@@ -145,6 +170,7 @@ public class Gameplay : MonoBehaviour {
                 dmgLabel.color = Color.grey;
             }
             dmgLabel.enabled = true;
+            dmgLabel.GetComponentInParent<Image>().enabled = true;
             yield return new WaitForSeconds(0.3f);
 
             // 3) Update HP of victim
@@ -158,6 +184,7 @@ public class Gameplay : MonoBehaviour {
             }
             yield return new WaitForSeconds(1.2f);
             dmgLabel.enabled = false;
+            dmgLabel.GetComponentInParent<Image>().enabled = false;
             
             // 4) Wait a bit and go to next turn
             yield return new WaitForSeconds(0.5f);

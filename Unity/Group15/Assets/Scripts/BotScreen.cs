@@ -52,8 +52,14 @@ public class BotScreen : MonoBehaviour {
         difficulty = given_difficulty;        
     }
 
+    public void OpenInventory()
+    {
+        //gameObject.AddComponent<ChangeScene>().Forward("Inventory");
+    }
+
     public void Play()
     {
-       gameObject.AddComponent<ChangeScene>().Forward("Battle");
+        PlayerPrefs.SetInt("battle_type", 0);
+        gameObject.AddComponent<ChangeScene>().Forward("Battle");
     }
 }
