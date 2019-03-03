@@ -20,9 +20,10 @@ public class Turn {
     public int PlayTurn()
     {
         damage = PlaysNow(player_turn).attack - PlaysNow(!player_turn).defense /* * hp multiplier */;
+        if (damage < 1) damage = 1;
         int low_crit = 10; //* PlaysNow(player_turn).critical_strike; // not sure about multiplying it?
-        int med_crit = 5; //* PlaysNow(player_turn).critical_strike;
-        int high_crit = 1; //* PlaysNow(player_turn).critical_strike;
+        int med_crit = 5;
+        int high_crit = 1;
         int miss = 10; //PlaysNow(!player_turn).agility; //aka your miss = the other player's agility/dodge chance
         
         int crit = Random.Range(0, 100);
@@ -32,12 +33,11 @@ public class Turn {
         else crit_landed = 0;
         int misschance = Random.Range(0, 100);
         if (misschance < miss) damage = 0;
-
-        PlaysNow(player_turn).hp -= Mathf.RoundToInt(damage);
-
+        
+        PlaysNow(!player_turn).hp -= Mathf.RoundToInt(damage);
+        
         if (player.hp <= 0) return 1; //player lost
         else if (enemy.hp <= 0) return 2; //player won
         else return 0; //no death yet
     }
-
 }
