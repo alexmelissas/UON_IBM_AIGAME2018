@@ -15,19 +15,17 @@
 - [x] User sign up and login API
 - [x] Add error page
 - [x] Deal with insufficient words on twitter
-- [ ] Transfer the result of analysis to character attributes:
+- [x] Transfer the result of analysis to character attributes:
 	- user choose the personality
 	- compare the similarity
 	- generate the attributes
-- [ ] Improve the security of database
-- [ ] REST API
 - [ ] Logger
 - [ ] Exception handle
 - [ ] Safety of API (what attributes can be accessed?)
 	- Get the top five players (username, id)
 	- Check if the username is repeat
 - [ ] Create Robot player
-- [ ] Create table for Ideal personality
+- [x] Create table for Ideal personality
 - [ ] Interval to check Twitter
 - [ ] Check twitter regularly
 

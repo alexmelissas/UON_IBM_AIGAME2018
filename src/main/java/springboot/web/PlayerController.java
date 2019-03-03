@@ -26,12 +26,12 @@ public class PlayerController {
 		
 	}
 	
-	@GetMapping("players/{id}")
+	@GetMapping("/players/{id}")
 	public @ResponseBody Player getPlayerById(@PathVariable String id) {
 		return playerService.getPlayerById(id).get();
 	}
 	
-	@GetMapping("players/rank/{id}")
+	@GetMapping("/players/rank/{id}")
 	public int getPlayerRankById(@PathVariable String id) {
 		return playerService.getRankById(id);
 	}
