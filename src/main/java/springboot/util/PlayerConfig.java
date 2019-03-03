@@ -38,7 +38,7 @@ public class PlayerConfig {
 	}
 	
 	// basic status
-	public static void getBasicStatus(int level) {
+	public static int[] getBasicStatus(int level) {
 		int hp = 0;
 		int attack = 0;
 		int defence = 0;
@@ -69,5 +69,7 @@ public class PlayerConfig {
 		
 		// TODO actual attack * 1.5
 		System.out.println(level + "   " + hp + "  " + attack + "  " + defence + "  " + agility + "  " + criticalStrike + " number: " + hp / (attack-defence * 0.5));
+		int[] array = {hp, attack, defence, agility, criticalStrike};
+		return array;
 	}
 }

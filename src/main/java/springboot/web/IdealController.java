@@ -19,20 +19,26 @@ public class IdealController {
 	private IdealService idealService;
 	@Autowired
 	private PlayerService playerService;
-	
+
 	@GetMapping("/ideals")
 	public @ResponseBody Iterable<Ideal> getIdeals() {
 		return idealService.getIdeals();
 	}
-	
+
+	@GetMapping("/ideas/{id}")
+	public boolean isExistIdeal(@PathVariable String id) {
+		return idealService.getIdealById(id) != null;
+	}
+
 	@PutMapping("/ideals/{id}")
-	public @ResponseBody Player updateIdeal(@PathVariable String id, @RequestBody Ideal ideal) {
+	public @ResponseBody Player updateIdeal(@PathVariable String id, @RequestBody Ideal newIdeal) {
 		// UPDATE IDEAL PERSONALITY
-		
+
 		// TODO exception handle
-		ideal.setId(id);
-		idealService.updateIdeal(id, ideal);
-		System.out.println(ideal);
-		return playerService.getPlayerById(id).get();
+		newIdeal.setId(id);
+		// UPDATE IDEAL AND PLAYER
+		idealService.updateIdeal(id, newIdeal);
+		System.out.println(newIdeal);
+		return playerService.getPlayerById(id);
 	}
 }

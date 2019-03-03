@@ -5,6 +5,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import springboot.domain.IdealRepository;
 import springboot.domain.User;
 import springboot.domain.UserRepository;
 
@@ -12,13 +13,20 @@ import springboot.domain.UserRepository;
 public class UserService {
 	@Autowired
 	private UserRepository userRepository;
+	@Autowired
+	private IdealRepository idealRepository;
 	
 	public void addUser(User user) {
 		userRepository.save(user);
 	}
 	
-	public Optional<User> getUserById(String id) {
-		return userRepository.findById(id);
+	public User getUserById(String id) {
+		User user = null;
+		Optional<User> refUser = userRepository.findById(id);
+		if(refUser.isPresent()) {
+			user = refUser.get();
+		}
+		return user;
 	}
 	
 	public Iterable<User> getAllUsers() {

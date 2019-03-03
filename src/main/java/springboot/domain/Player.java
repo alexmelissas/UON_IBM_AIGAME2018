@@ -46,12 +46,13 @@ public class Player{
 	// QUESTION - How to calculate the value after own items??? --- further discussion
 	// WHAT IS THE STRUCTURE OF INVENTORY?
 	
+	public Player(String id) {
+		this.id = id;
+	}
+	
 	public Player(int hp, int attack, int defense, int agility, int criticalStrike) {
-		this.hp = hp;
-		this.attack = attack;
-		this.defense = defense;
-		this.agility = agility;
-		this.criticalStrike = criticalStrike;
+		int[] array = {hp, attack, defense, agility, criticalStrike};
+		this.setAttributes(array);
 	}
 
 	public Player(String id, int hp, int attack, int defense, int agility, int criticalStrike) {
@@ -60,7 +61,7 @@ public class Player{
 	}
 	
 	public Player(String id, int hp, int attack, int defense, int agility, int criticalStrike, int score) {
-		this(id, hp, attack, defense, agility, criticalStrike);
+		this(hp, attack, defense, agility, criticalStrike);
 		this.score = score;
 	}
 	
@@ -138,5 +139,30 @@ public class Player{
 
 	public void setFactor(double factor) {
 		this.factor = factor;
+	}
+
+	public int getLevel() {
+		return level;
+	}
+
+	public void setLevel(int level) {
+		this.level = level;
+		
+	}
+
+	public int getExperience() {
+		return experience;
+	}
+
+	public void setExperience(int experience) {
+		this.experience = experience;
+	}
+	
+	public void setAttributes(int[] array) {
+		this.hp = array[0];
+		this.attack = array[1];
+		this.defense = array[2];
+		this.agility = array[3];
+		this.criticalStrike = array[4];
 	}
 }

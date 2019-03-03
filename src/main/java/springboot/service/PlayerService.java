@@ -16,26 +16,32 @@ import springboot.domain.PlayerRepository;
 public class PlayerService {
 	@Autowired
 	private PlayerRepository playerRepository;
-	
+
 	public void addPlayer(Player player) {
 		playerRepository.save(player);
 	}
-	
+
 	public Iterable<Player> getPlayers() {
 		return playerRepository.findAll();
 	}
-	
-	public Optional<Player> getPlayerById(String id) {
-		return playerRepository.findById(id); 
+
+	public Player getPlayerById(String id) {
+		Player player = null;
+		Optional<Player> refPlayer = playerRepository.findById(id);
+		if (refPlayer.isPresent()) {
+			player = refPlayer.get();
+		} else {
+		}
+		return player;
 	}
-	
+
 	public List<Player> getTopPlayers() {
 		Sort sort = new Sort(Direction.DESC, "score");
 		List<Player> players = playerRepository.findAll(sort);
-		ArrayList<Player> topPlayers = new ArrayList<Player>(); 
+		ArrayList<Player> topPlayers = new ArrayList<Player>();
 		int count = 0;
-		for(Player p : players) {
-			if(count >= 5) {
+		for (Player p : players) {
+			if (count >= 5) {
 				break;
 			}
 			topPlayers.add(p);
@@ -43,37 +49,36 @@ public class PlayerService {
 		}
 		return topPlayers;
 	}
-	
+
 	public int getRankById(String id) {
 		Sort sort = new Sort(Direction.DESC, "score");
 		List<Player> players = playerRepository.findAll(sort);
 		int count = 0;
-		for(Player p : players) {
-			if(p.getId().equals(id)) {
+		for (Player p : players) {
+			if (p.getId().equals(id)) {
 				break;
 			}
 			count++;
 		}
 		return count;
 	}
-	
-	public void updatePlayer(String id, Player newPlayer) {
-		playerRepository.findById(id)
-						.map(player -> {
-							player.setHp(newPlayer.getHp());
-							player.setAttack(newPlayer.getAttack());
-							player.setDefense(newPlayer.getDefense());
-							player.setAgility(newPlayer.getAgility());
-							player.setCriticalStrike(newPlayer.getCriticalStrike());
 
-							// TODO check the update of player
-							// long way to go :(
-							return playerRepository.save(player);
-						});
+	public void updatePlayer(String id, Player newPlayer) {
+		playerRepository.findById(id).map(player -> {
+			player.setHp(newPlayer.getHp());
+			player.setAttack(newPlayer.getAttack());
+			player.setDefense(newPlayer.getDefense());
+			player.setAgility(newPlayer.getAgility());
+			player.setCriticalStrike(newPlayer.getCriticalStrike());
+
+			// TODO check the update of player
+			// long way to go :(
+			return playerRepository.save(player);
+		});
 	}
-	
+
 	public void deletePlayerById(String id) {
 		playerRepository.deleteById(id);
-		
+
 	}
 }

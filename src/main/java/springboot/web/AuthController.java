@@ -27,8 +27,8 @@ public class AuthController {
 	@GetMapping("/auth/{id}")
 	protected void auth(HttpServletRequest request, HttpServletResponse response, @PathVariable String id) throws IOException {
 		// Get the user
-		Optional<User> user = userService.getUserById(id);
-		if(user == null || !user.isPresent()) {
+		User user = userService.getUserById(id);
+		if(user == null) {
 			try {
 				request.getRequestDispatcher("/404").forward(request, response);
 			} catch (ServletException e) {

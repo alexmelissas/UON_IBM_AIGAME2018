@@ -15,10 +15,12 @@ import com.ibm.watson.developer_cloud.personality_insights.v3.model.Profile;
 
 import springboot.service.IdealService;
 import springboot.service.PersonalityInsightService;
+import springboot.service.PlayerService;
 import springboot.service.UserService;
 import springboot.util.ContentLoader;
+import springboot.util.PlayerConfig;
 import springboot.domain.Ideal;
-
+import springboot.domain.Player;
 import twitter4j.Status;
 import twitter4j.Twitter;
 import twitter4j.TwitterException;
@@ -34,6 +36,8 @@ public class AnalysisController {
 	private UserService userService;
 	@Autowired
 	private IdealService idealService;
+	@Autowired
+	private PlayerService playerService;
 	
 	
     @RequestMapping("/analysis")
@@ -44,14 +48,17 @@ public class AnalysisController {
     	
     	String id = (String) request.getSession().getAttribute("id");
     	Ideal ideal = new Ideal(id);
+    	Player player = new Player(id);
+    	player.setAttributes(PlayerConfig.getBasicStatus(1));
     	
     	if(profile.getWordCount() == null || profile.getWordCount() <= 100) {
-    		// TODO handle the insufficient words
     	} else {
         	ideal.setJsonResult(profile.toString().replace("\n", "").replace("      ", " "));
     	}
 
     	idealService.addIdeal(ideal);
+    	playerService.addPlayer(player);
+    	
     	// TODO exception handling
     	return "Saved";
     }
@@ -71,7 +78,7 @@ public class AnalysisController {
 			User user = twitter.verifyCredentials();
 			
 			// STORE TOKEN
-			springboot.domain.User newUser = userService.getUserById(id).get();
+			springboot.domain.User newUser = userService.getUserById(id);
 			newUser.setAccessToken(accessToken.getToken());
 			newUser.setAccessTokenSecret(accessToken.getTokenSecret());
 			userService.updateUser(id, newUser);

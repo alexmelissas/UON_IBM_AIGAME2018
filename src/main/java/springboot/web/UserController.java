@@ -24,7 +24,7 @@ public class UserController {
 	 * Get all the users
 	 * @return
 	 */
-	@GetMapping(path = "/users")
+	@GetMapping("/users")
 	public @ResponseBody Iterable<User> getAllUsers() {
 		//TODO safety of access
 		//Maybe unnecessary
@@ -36,7 +36,7 @@ public class UserController {
 	 * @param user
 	 * @return
 	 */
-	@PostMapping(path = "/users")
+	@PostMapping("/users")
 	public @ResponseBody String addUser(@RequestBody User user) {
 		if(userService.isExist(user.getUsername())) {
 			return "Username has been taken";
@@ -50,8 +50,8 @@ public class UserController {
 	 * @param id
 	 * @return
 	 */
-	@GetMapping(path = "/users/{id}")
-	public @ResponseBody Optional<User> getUserById(@PathVariable String id) {
+	@GetMapping("/users/{id}")
+	public @ResponseBody User getUserById(@PathVariable String id) {
 		return userService.getUserById(id);
 	}
 	
@@ -61,9 +61,9 @@ public class UserController {
 	 * @param user
 	 * @return
 	 */
-	@PutMapping(path = "/users/{id}")
+	@PutMapping("/users/{id}")
 	public @ResponseBody String updateUser(@PathVariable String id, @RequestBody User user) {
-		User previousUser = userService.getUserById(id).get();
+		User previousUser = userService.getUserById(id);
 		// check if modified username is exist
 		if(userService.isExist(user.getUsername()) && !previousUser.getUsername().equals(user.getUsername())) {
 			return "Username has been taken";
@@ -77,7 +77,7 @@ public class UserController {
 	 * @param id
 	 * @return
 	 */
-	@DeleteMapping(path = "/users/{id}")
+	@DeleteMapping("/users/{id}")
 	public @ResponseBody String deleteUser(@PathVariable String id) {
 		userService.deleteUserById(id);
 		return "Deleted";
@@ -88,8 +88,9 @@ public class UserController {
 	 * @param user
 	 * @return
 	 */
-	@PostMapping(path = "/users/login")
-	public User login(@RequestBody User user) { 
+	@PostMapping("/users/login")
+	public User login(@RequestBody User user) {
+		// TODO check auth => check ideal => check player => check username & password
 		return userService.login(user);
 	}
 }

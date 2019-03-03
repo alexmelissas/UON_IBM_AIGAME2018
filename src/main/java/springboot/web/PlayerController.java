@@ -28,7 +28,8 @@ public class PlayerController {
 	
 	@GetMapping("/players/{id}")
 	public @ResponseBody Player getPlayerById(@PathVariable String id) {
-		return playerService.getPlayerById(id).get();
+		Player player = playerService.getPlayerById(id);
+		return player;
 	}
 	
 	@GetMapping("/players/rank/{id}")
