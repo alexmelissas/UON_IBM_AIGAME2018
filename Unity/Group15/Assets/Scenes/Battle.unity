@@ -702,7 +702,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: MISS
+  m_Text: 
 --- !u!222 &365734869
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -759,7 +759,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: MISS
+  m_Text: 
 --- !u!222 &378990184
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1607,12 +1607,6 @@ GameObject:
   - component: {fileID: 1221351471}
   - component: {fileID: 1221351470}
   - component: {fileID: 1221351469}
-  - component: {fileID: 1221351468}
-  - component: {fileID: 1221351467}
-  - component: {fileID: 1221351466}
-  - component: {fileID: 1221351465}
-  - component: {fileID: 1221351464}
-  - component: {fileID: 1221351463}
   - component: {fileID: 1221351473}
   m_Layer: 5
   m_Name: Canvas
@@ -1621,88 +1615,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1221351463
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1221351462}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b6b0131fba8d23c489490eb2c22ad2d0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1221351464
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1221351462}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a997bbf8ade14814587659d957175463, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1221351465
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1221351462}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 85d32b35cb6857d4f80b0496793af8c2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1221351466
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1221351462}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f660738835d4e4f46b9b014be15cf14e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  scenes: []
---- !u!114 &1221351467
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1221351462}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 771fdcc5d7cadd741b1ccd2f3e9e6dbf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player:
-    id: 
-    hp: 0
-    attack: 0
-    defense: 0
-    agility: 0
-    critical_strike: 0
-    score: 0
-    experience: 0
---- !u!114 &1221351468
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1221351462}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e39944d589a55df4e9400757f0d5d068, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  user:
-    id: 
-    username: 
-    password: 
-    accessToken: 
-    accessTokenSecret: 
 --- !u!114 &1221351469
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1954,7 +1866,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1221351473}
-        m_MethodName: press_skip
+        m_MethodName: Press_Skip
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

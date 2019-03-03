@@ -4,10 +4,9 @@ using UnityEngine.SceneManagement;
 
 public class ChangeScene : MonoBehaviour {
 
-    public void Forward(String next_scene){        
+    public void Forward(String next_scene){
         SceneHistory.sh.scenes.Add(SceneManager.GetActiveScene().name);
-        if (next_scene == "Overworld" || next_scene == "StartScreen")
-            SceneHistory.sh.scenes.Clear(); //to not go back to login/register after in game
+        if (next_scene == "Overworld" || next_scene == "StartScreen") SceneHistory.sh.scenes.Clear(); //to not go back to login/register after in game
         SceneManager.LoadScene(next_scene);
         return;
     }

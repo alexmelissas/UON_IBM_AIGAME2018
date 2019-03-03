@@ -8,8 +8,7 @@ public class SetSettings : MonoBehaviour {
     public Slider musicSlider;
     public Slider fxSlider;
     public Toggle challengeToggle;
-    public Toggle winToggle;
-    public Toggle loseToggle;
+    public Toggle skipToggle;
     public Text currentloginLabel;
     public Text usernameLabel;
     public GameObject notyouLabel;
@@ -20,16 +19,14 @@ public class SetSettings : MonoBehaviour {
         musicSlider.normalizedValue = PlayerPrefs.GetFloat("music");
         fxSlider.normalizedValue = PlayerPrefs.GetFloat("fx");
         challengeToggle.isOn = (PlayerPrefs.GetInt("challenged") != 0);
-        winToggle.isOn = (PlayerPrefs.GetInt("winbattle") != 0);
-        loseToggle.isOn = (PlayerPrefs.GetInt("losebattle") != 0);
+        skipToggle.isOn = (PlayerPrefs.GetInt("skip") != 0);
     }
 
     void Update () {
         PlayerPrefs.SetFloat("music",musicSlider.value);
         PlayerPrefs.SetFloat("fx", fxSlider.value);
         PlayerPrefs.SetInt("challenged", challengeToggle.isOn ? 1 : 0);
-        PlayerPrefs.SetInt("winbattle", winToggle.isOn ? 1 : 0);
-        PlayerPrefs.SetInt("losebattle", loseToggle.isOn ? 1 : 0);
+        PlayerPrefs.SetInt("skip", skipToggle.isOn ? 1 : 0);
 
         if (UserSession.us != null)
         {

@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Linq;
 using System;
+using UnityEngine.SceneManagement;
 
 public class Gameplay : MonoBehaviour {
 
@@ -42,20 +43,20 @@ public class Gameplay : MonoBehaviour {
     {
         //player = PlayerSession.ps.player;
         //ItemsSession.its.items.AddItemsToStats(player);
-        // GET enemy Player by id
-        // GET enemy ServerItems by id
-        
+        //if(pve match) enemy = new Bot(player,ItemsSession.its.items,PlayerPrefs.GetInt("bot_difficulty"));
+        //else {(GET Enemy by ID - also username -ask Yu to change Player to return username too) ; (GET Enemy items by id)}
+
         /* TESTING: */
-        player = new Player("Player", 230, 37, 4, 1, 1, 2, 0);
-        new Items(new ServerItems(1, 1, 1)).AddItemsToStats(player);
-        enemy = new Player("Enemy", 250, 12, 3, 1, 1, 3, 0); 
-        new Items(new ServerItems(1, 1, 1)).AddItemsToStats(enemy);
+        player = new Player("Player", 90, 37, 4, 1, 1, 2, 0);
+        Items player_items = new Items(new ServerItems("", 1, 1, 1));
+        player_items.AddItemsToStats(player);
+        enemy = new Bot(player, player_items, PlayerPrefs.GetInt("bot_difficulty"));
         /************/
 
         turns = new List<Turn>();
         player_max_hp = player.hp;
         enemy_max_hp = enemy.hp;
-
+        
         if (PlayerPrefs.HasKey("skip_battles")) if (PlayerPrefs.GetInt("skip_battles") == 1) skip = true;
         playerName.text = "" + player.id; // would need to get username.
         playerLevel.text = ""+player.score;
@@ -68,16 +69,19 @@ public class Gameplay : MonoBehaviour {
 
     private void Update()
     {
-        if (skip) { StopAllCoroutines(); Debug.Log((result == 1) ? "Enemy wins. Too bad." : "You won! Congrats!"); gameObject.AddComponent<ChangeScene>().Forward("Overworld"); Destroy(gameObject); }
-        //actualPlayerHP.text = new_hp_player + "/" + player_max_hp; - oops
-        //actualEnemyHP.text = new_hp_enemy + "/" + enemy_max_hp;
+        if (PlayerPrefs.HasKey("skip_battles")) if (PlayerPrefs.GetInt("skip_battles") == 1) skip = true;
+        if (skip) { StopAllCoroutines(); Debug.Log((result == 1) ? "Enemy wins. Too bad." : "You won! Congrats!"); result = 0; gameObject.AddComponent<ChangeScene>().Forward("Overworld");  }// Destroy(gameObject); }
+
+        actualPlayerHP.text = "" + /*new_hp_player + "/" +*/ player_max_hp;
+        actualEnemyHP.text = "" + /*new_hp_enemy + "/" + */ enemy_max_hp;
+
         if (new_hp_player > -1) if(playerHP.value>new_hp_player)playerHP.normalizedValue -= 0.005f; //need to think about scaling and speed
+        if (playerHP.value == 0) playerHPcolour.enabled = false; else if (playerHP.value < 0.25) playerHPcolour.color = Color.red; else if (playerHP.value < 0.5) playerHPcolour.color = Color.yellow;
         if (new_hp_enemy>-1) if (enemyHP.value > new_hp_enemy) enemyHP.normalizedValue -= 0.005f;
-        if (playerHP.value < 0.25) playerHPcolour.color = Color.red; else if (playerHP.value < 0.5) playerHPcolour.color = Color.yellow;
-        if (enemyHP.value < 0.25) enemyHPcolour.color = Color.red; else if (enemyHP.value < 0.5) enemyHPcolour.color = Color.yellow;
+        if (enemyHP.value == 0) enemyHPcolour.enabled = false; else if (enemyHP.value < 0.25) enemyHPcolour.color = Color.red; else if (enemyHP.value < 0.5) enemyHPcolour.color = Color.yellow;
     }
 
-    public void press_skip()
+    public void Press_Skip()
     {
         skip = true;
     }
@@ -91,15 +95,13 @@ public class Gameplay : MonoBehaviour {
             Turn turn = new Turn(player_turn, player, enemy);
             turns.Add(turn);
             result = turn.PlayTurn();
-            player = Player.DeepClone<Player>(turn.player);
+            player = Player.DeepClone<Player>(turn.player); // get a new Player object with updated HP to pass to the next turn
             enemy = Player.DeepClone<Player>(turn.enemy);
             if (result==0) player_turn = player_turn ? false : true;
         }
         // POST(PlayerSession.ps.player.getID(),(result==1 ? false : true);
-        if (!skip) StartCoroutine(PlayTurns(turns));
-        else Debug.Log("This guy won! whatever"); // jump to result notification
+        StartCoroutine(PlayTurns(turns));
     }
-    
 
     IEnumerator PlayTurns(List<Turn> turns)
     {

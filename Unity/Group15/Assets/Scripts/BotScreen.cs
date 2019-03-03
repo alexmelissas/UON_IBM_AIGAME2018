@@ -1,46 +1,59 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class SetBotDifficulty : MonoBehaviour {
+public class BotScreen : MonoBehaviour {
 
     public GameObject selected_easy, selected_medium, selected_hard;
     public static string difficulty;
 
-    public void Start()
+    private void Start()
     {
-        difficulty = "easy";
+        int difficultynumber = PlayerPrefs.GetInt("bot_difficulty");
+        switch (difficultynumber)
+        {
+            case 0: difficulty = "easy"; break;
+            case 1: difficulty = "medium"; break;
+            case 2: difficulty = "hard"; break;
+            default: break;
+        }
     }
 
-    public void Update()
+    private void Update()
     {
         string selected = "selected_" + difficulty;
         switch (selected)
         {
             case "selected_easy":
+                PlayerPrefs.SetInt("bot_difficulty", 0);
                 selected_easy.SetActive(true);
                 selected_medium.SetActive(false);
                 selected_hard.SetActive(false);
                 break;
             case "selected_medium":
+                PlayerPrefs.SetInt("bot_difficulty", 1);
                 selected_easy.SetActive(false);
                 selected_medium.SetActive(true);
                 selected_hard.SetActive(false);
                 break;
             case "selected_hard":
+                PlayerPrefs.SetInt("bot_difficulty", 2);
                 selected_easy.SetActive(false);
                 selected_medium.SetActive(false);
                 selected_hard.SetActive(true);
                 break;
         }
-
     }
 
-    public void changeDifficulty(string given_difficulty)
+    public void ChangeDifficulty(string given_difficulty)
     {
-        difficulty = given_difficulty;
-        Debug.Log("Difficulty set to "+difficulty);
+        difficulty = given_difficulty;        
     }
 
+    public void Play()
+    {
+       gameObject.AddComponent<ChangeScene>().Forward("Battle");
+    }
 }

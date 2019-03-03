@@ -47,6 +47,7 @@ public class Player
         return true;
     }
 
+    // find different syntax that's more understandable
     public static T DeepClone<T>(T obj)
     {
         using (var ms = new MemoryStream())
