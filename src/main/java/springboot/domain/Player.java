@@ -4,6 +4,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
+import springboot.util.PlayerConfig;
+
 @Entity
 public class Player{
 	@Id
@@ -28,14 +30,33 @@ public class Player{
 	@Column(name = "critical_strike", columnDefinition = "INT")
 	public int criticalStrike;
 	
-	@Column(name = "score", columnDefinition = "INT")
-	public int score = 0;
+	@Column(name = "money", columnDefinition = "INT")
+	public int money = 0;
 	
 	@Column(name = "experience", columnDefinition = "INT")
 	public int experience = 0;
 	
+	@Column(name = "exptolevel", columnDefinition = "INT")
+	public int exptolevel = PlayerConfig.getLevelUpExperience(this.level);
+	
 	@Column(name = " factor", columnDefinition = "DOUBLE")
 	public double factor = 0;
+	
+	@Column(name = "sword", columnDefinition = "INT")
+	public int sword = 1;
+	
+	@Column(name = "shield", columnDefinition = "INT")
+	public int shield = 1;
+	
+	@Column(name = "armour", columnDefinition = "INT")
+	public int armour = 1;
+	
+	@Column(name = "win", columnDefinition = "INT")
+	public int win = 0;
+	
+	@Column(name = "lose", columnDefinition = "INT")
+	public int lose = 0;
+	
 	
 	public Player() {
 	}
@@ -60,11 +81,21 @@ public class Player{
 		this.id = id;
 	}
 	
-	public Player(String id, int hp, int attack, int defense, int agility, int criticalStrike, int score) {
-		this(hp, attack, defense, agility, criticalStrike);
-		this.score = score;
-	}
 	
+	public Player(String id, int level, int hp, int attack, int defense, int agility, int criticalStrike, int money,
+			int experience, int exptolevel, double factor, int sword, int shield, int armour, int win, int lose) {
+		this(id, hp, attack, defense, agility, criticalStrike);
+		this.money = money;
+		this.experience = experience;
+		this.exptolevel = exptolevel;
+		this.factor = factor;
+		this.sword = sword;
+		this.shield = shield;
+		this.armour = armour;
+		this.win = win;
+		this.lose = lose;
+	}
+
 	public void applyPersonality() {
 		this.hp *= factor;
 		this.attack *= factor;
@@ -74,7 +105,19 @@ public class Player{
 	}
 	
 	public void levelUp() {
-		// TODO
+		if(this.level >= 30) {
+			// MAX LEVEL
+			return;
+		}
+		
+		if(this.exptolevel <= this.experience) {
+			int exceed = this.experience - this.exptolevel;
+			this.setLevel(this.getLevel() + 1);
+			this.setAttributes(PlayerConfig.getBasicStatus(this.level));
+			this.setExptolevel(PlayerConfig.getLevelUpExperience(this.level));
+			System.out.println("---" + exceed);
+			this.setExperience(exceed > 0 ? exceed : 0);
+		}
 	}
 
 	public String getId() {
@@ -125,14 +168,6 @@ public class Player{
 		this.agility = agility;
 	}
 
-	public int getScore() {
-		return score;
-	}
-
-	public void setScore(int score) {
-		this.score = score;
-	}
-
 	public double getFactor() {
 		return factor;
 	}
@@ -164,5 +199,61 @@ public class Player{
 		this.defense = array[2];
 		this.agility = array[3];
 		this.criticalStrike = array[4];
+	}
+
+	public int getMoney() {
+		return money;
+	}
+
+	public void setMoney(int money) {
+		this.money = money;
+	}
+
+	public int getExptolevel() {
+		return exptolevel;
+	}
+
+	public void setExptolevel(int exptolevel) {
+		this.exptolevel = exptolevel;
+	}
+
+	public int getSword() {
+		return sword;
+	}
+
+	public void setSword(int sword) {
+		this.sword = sword;
+	}
+
+	public int getShield() {
+		return shield;
+	}
+
+	public void setShield(int shield) {
+		this.shield = shield;
+	}
+
+	public int getArmour() {
+		return armour;
+	}
+
+	public void setArmour(int armour) {
+		this.armour = armour;
+	}
+
+	public int getWin() {
+		return win;
+	}
+
+	public void setWin(int win) {
+		this.win = win;
+	}
+
+	public int getLose() {
+		return lose;
+	}
+
+	public void setLose(int lose) {
+		this.lose = lose;
 	}
 }

@@ -17,8 +17,8 @@ public class PlayerController {
 	private PlayerService playerService;
 	
 	@GetMapping("/players")
-	public Iterable<Player> getTopPlayers() {
-		return playerService.getTopPlayers();
+	public Iterable<Player> getPlayers() {
+		return playerService.getPlayers();
 	}
 	
 	@PutMapping("/players/{id}")
