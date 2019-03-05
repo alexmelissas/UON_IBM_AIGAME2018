@@ -5,28 +5,22 @@ using UnityEngine;
 public class Items {
 
     public Item sword;
-    public int sword_level;
     public Item shield;
-    public int shield_level;
     public Item armour;
-    public int armour_level;
 
-	public Items(ServerItems si)
+    public Items(Player p)
     {
-        sword_level = si.sword;
-        shield_level = si.shield;
-        armour_level = si.armour;
-        sword = Item.NewItem("sword", sword_level);
-        shield = Item.NewItem("shield", shield_level);
-        armour = Item.NewItem("armour", armour_level);
+        sword = Item.NewItem("sword", p.sword);
+        shield = Item.NewItem("shield", p.shield);
+        armour = Item.NewItem("armour", p.armour);
     }
 
-    public void AddItemsToStats(Player player)
+    public static void AttachItemsToPlayer(Items i, Player p) //also make this put the item icons onto player
     {
         if (PlayerSession.ps.player == null) return;
-        player.hp += this.armour.hp;
-        player.attack += this.sword.attack;
-        player.defense += (this.shield.defense + this.armour.defense);
+        p.hp += i.armour.hp;
+        p.attack += i.sword.attack;
+        p.defense += (i.shield.defense + i.armour.defense);
         return;
     }
 }

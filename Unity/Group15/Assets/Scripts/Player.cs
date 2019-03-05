@@ -7,29 +7,39 @@ using UnityEngine;
 public class Player
 {
     public string id;
+    public int level;
     public int hp;
     public int attack;
-    public int defense; //ask yu to rename it :p
+    public int defense;
     public int agility;
     public int critical_strike;
-    public int score;
+    public int money;
     public int experience;
+    public int exptolevel;
+    public double factor;
+    public int sword;
+    public int shield;
+    public int armour;
+    public int win;
+    public int lose;
 
-    public Player(string i, int healthpoints, int atk, int def, int agl, int intl, int sc, int exp)
+    public Player(string i, int lvl, int h_p, int atk, int def, int agl, int crit, int mn, int exp, 
+        int exp2lvl, double ftr, int sw, int sh, int ar, int w, int l)
     {
-        id = i;
-        hp = healthpoints;
-        attack = atk;
-        defense = def;
-        agility = agl;
-        critical_strike = intl;
-        score = sc;
-        experience = exp;
+        id = i; level = lvl; hp = h_p; attack = atk; defense = def; agility = agl; critical_strike = crit;
+        money = mn; experience = exp; exptolevel = exp2lvl; factor = ftr;
+        sword = sw; shield = sh; armour = ar; win = w; lose = l;
+    }
+
+    public Player()
+    {
+        id = ""; level = 0; hp = 0; attack = 0; defense = 0; agility = 0; critical_strike = 0; money = 0;
+        experience = 0; exptolevel = 0; factor = 0; sword = 0; shield = 0; armour = 0; win = 0; lose = 0;
     }
 
     public static Player CreatePlayerFromJSON(string json)
     {
-        Player temp = new Player("", 0, 0, 0, 0, 0, 0, 0);
+        Player temp = new Player();
         JsonUtility.FromJsonOverwrite(json, temp);
         return temp;
     }
@@ -41,9 +51,11 @@ public class Player
 
     public bool ComparePlayer(Player other)
     {
-        if (id != other.id || attack != other.attack || defense != other.defense || agility != other.agility
-            || critical_strike != other.critical_strike || score != other.score || experience != other.experience)
-            return false;
+        if (id != other.id || level != other.level || hp!=other.hp || attack != other.attack || defense != other.defense 
+            || agility != other.agility || critical_strike != other.critical_strike || money != other.money 
+            || experience != other.experience || exptolevel != other.exptolevel || factor != other.factor
+            || sword != other.sword || shield != other.shield || armour != other.armour || win != other.win 
+            || lose != other.lose) return false;
         return true;
     }
 

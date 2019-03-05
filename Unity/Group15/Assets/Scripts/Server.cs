@@ -34,6 +34,9 @@ public class Server {
             case "players":
                 path = "/players/";
                 break;
+            case "battle":
+                path = "/battle";
+                break;
             default:
                 path = "";
                 break;

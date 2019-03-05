@@ -6,6 +6,7 @@ using System.Linq;
 using System;
 using UnityEngine.SceneManagement;
 using VoxelBusters.NativePlugins;
+using UnityEngine.Networking;
 
 public class Gameplay : MonoBehaviour {
 
@@ -26,6 +27,11 @@ public class Gameplay : MonoBehaviour {
     public Text actualEnemyHP;
     public Text playerDmgLabel;
     public Text enemyDmgLabel;
+    public AudioSource soundfx;
+    public AudioClip hit;
+    public AudioClip crit;
+    public AudioClip miss;
+    public AudioClip drop_sword;
 
     private List<Turn> turns;
     private Player player;
@@ -43,35 +49,29 @@ public class Gameplay : MonoBehaviour {
     private void Start()
     {
         player = PlayerSession.ps.player;
-        //ItemsSession.its.items.AddItemsToStats(player);
-
-        /* Testing */
-        player = new Player("Player", 90, 37, 4, 1, 1, 2, 0);
-        Items player_items = new Items(new ServerItems("", 1, 1, 1));
-        player_items.AddItemsToStats(player);
-        ////////////
-
+        /* Testing */ //player = new Player("Player", 1, 90, 37, 4, 1, 1, 100, 0, 0, 0, 1, 1, 1, 0, 0);
+        Items.AttachItemsToPlayer(new Items(player),player);
         
-        if (!PlayerPrefs.HasKey("battle_type")){ gameObject.AddComponent<ChangeScene>().Forward("Overworld"); Destroy(gameObject);}; //Error
+        if (!PlayerPrefs.HasKey("battle_type")){ gameObject.AddComponent<ChangeScene>().Forward("Overworld"); }; //Error
         int battle_type = PlayerPrefs.GetInt("battle_type");
-        if (battle_type == 0) { Debug.Log("Playing PvE"); enemy = new Bot(player, player_items, PlayerPrefs.GetInt("bot_difficulty")); } //PvE
+        if (battle_type == 0) { Debug.Log("Playing PvE"); enemy = new Bot(player, PlayerPrefs.GetInt("bot_difficulty")); } //PvE
         else if (battle_type == 1) // PvP
         {
             Debug.Log("Playing PvP");
             //(GET Enemy by ID - also username - ask Yu to change Player to return username too) ; 
             //(GET Enemy items by id)}
-            /* Temp: enemy is bot anyway: */ enemy = new Bot(player, player_items, PlayerPrefs.GetInt("bot_difficulty"));
+            /* Temp: enemy is bot anyway: */ enemy = new Bot(player, PlayerPrefs.GetInt("bot_difficulty"));
         }
-        else { gameObject.AddComponent<ChangeScene>().Forward("Overworld"); Destroy(gameObject); } //Error
+        else { gameObject.AddComponent<ChangeScene>().Forward("Overworld");} //Error
 
         turns = new List<Turn>();
         player_max_hp = player.hp;
         enemy_max_hp = enemy.hp;
         
         playerName.text = "" + player.id; // would need to get username.
-        playerLevel.text = ""+player.score;
+        playerLevel.text = ""+player.level;
         enemyName.text = "" + enemy.id; // need to make server give username with player pls
-        enemyLevel.text = "" + enemy.score;
+        enemyLevel.text = "" + enemy.level;
 
         playerDmgLabel.enabled = false;
         enemyDmgLabel.enabled = false;
@@ -91,7 +91,7 @@ public class Gameplay : MonoBehaviour {
             StopAllCoroutines();
             string announce = (result == 1) ? "Enemy wins. Too bad." : "You won! Congrats!";
                 Debug.Log(announce);
-            NPBinding.UI.ShowToast("announce", eToastMessageLength.SHORT);
+            NPBinding.UI.ShowToast(announce, eToastMessageLength.SHORT);
             result = 0;
             gameObject.AddComponent<ChangeScene>().Forward("Overworld");
             Destroy(gameObject);
@@ -100,9 +100,11 @@ public class Gameplay : MonoBehaviour {
         actualEnemyHP.text = "" + /*new_hp_enemy + "/" + */ enemy_max_hp;
 
         if (new_hp_player > -1) if(playerHP.value>new_hp_player)playerHP.normalizedValue -= 0.005f; //need to think about scaling and speed
-        if (playerHP.value == 0) playerHPcolour.enabled = false; else if (playerHP.value < 0.25) playerHPcolour.color = Color.red; else if (playerHP.value < 0.5) playerHPcolour.color = Color.yellow;
+        if (playerHP.value == 0) { /*soundfx.PlayOneShot(drop_sword, PlayerPrefs.GetFloat("fx"));*/playerHPcolour.enabled = false; }
+            else if (playerHP.value < 0.25) playerHPcolour.color = Color.red; else if (playerHP.value < 0.5) playerHPcolour.color = Color.yellow;
         if (new_hp_enemy>-1) if (enemyHP.value > new_hp_enemy) enemyHP.normalizedValue -= 0.005f;
-        if (enemyHP.value == 0) enemyHPcolour.enabled = false; else if (enemyHP.value < 0.25) enemyHPcolour.color = Color.red; else if (enemyHP.value < 0.5) enemyHPcolour.color = Color.yellow;
+        if (enemyHP.value == 0) { /*soundfx.PlayOneShot(drop_sword, PlayerPrefs.GetFloat("fx")); */enemyHPcolour.enabled = false; }
+            else if (enemyHP.value < 0.25) enemyHPcolour.color = Color.red; else if (enemyHP.value < 0.5) enemyHPcolour.color = Color.yellow;
     }
 
     public void Press_Skip()
@@ -123,8 +125,32 @@ public class Gameplay : MonoBehaviour {
             enemy = Player.DeepClone<Player>(turn.enemy);
             if (result==0) player_turn = player_turn ? false : true;
         }
-        // POST(PlayerSession.ps.player.getID(),(result==1 ? false : true);
+        PassResult(player,enemy,result==1 ? false : true);
         StartCoroutine(PlayTurns(turns));
+    }
+
+    IEnumerator PassResult(Player player, Player enemy, bool win)
+    {
+        UnityWebRequest uwr = UnityWebRequest.Post(Server.Address("battle"),"how to pass 2 objects and a bool?");
+        byte[] jsonToSend = new System.Text.UTF8Encoding().GetBytes("jsonhere");
+        uwr.uploadHandler = (UploadHandler)new UploadHandlerRaw(jsonToSend);
+        uwr.downloadHandler = (DownloadHandler)new DownloadHandlerBuffer();
+        uwr.SetRequestHeader("Content-Type", "application/json");
+
+        yield return uwr.SendWebRequest();
+
+        if (uwr.isNetworkError)
+        {
+            Debug.Log("Error While Sending: " + uwr.error);
+            NPBinding.UI.ShowToast("Communication Error. Please try again later.", eToastMessageLength.SHORT);
+        }
+        else
+        {
+            // do animations for gain exp / level up 
+                Debug.Log(uwr.downloadHandler.text);
+            PlayerSession.ps.player = Player.CreatePlayerFromJSON(uwr.downloadHandler.text);
+        }
+        StopCoroutine(PassResult(player, enemy, win));
     }
 
     IEnumerator PlayTurns(List<Turn> turns)
@@ -153,24 +179,29 @@ public class Gameplay : MonoBehaviour {
 
             // 2) Display damage
             Text dmgLabel = attacker == "player" ? enemyDmgLabel : playerDmgLabel;
+            Image bam = attacker == "player" ? enemyDmgLabel.GetComponentInParent<Image>() : playerDmgLabel.GetComponentInParent<Image>();
+            AudioClip sound;
             if (turn.damage != 0)
             {
                 dmgLabel.text = "" + turn.damage;
+                sound = crit;
                 switch (turn.crit_landed)
                 {
                     case 1: dmgLabel.color = Color.green; break;
                     case 2: dmgLabel.color = Color.yellow; break;
                     case 3: dmgLabel.color = Color.red; break;
-                    default: dmgLabel.color = Color.black; break;
+                    default: dmgLabel.color = Color.black; sound = hit; break;
                 }                
             }
             else
             {
                 dmgLabel.text = "MISS";
                 dmgLabel.color = Color.grey;
+                sound = miss;
             }
+            soundfx.PlayOneShot(sound, PlayerPrefs.GetFloat("fx"));
             dmgLabel.enabled = true;
-            dmgLabel.GetComponentInParent<Image>().enabled = true;
+            bam.enabled = true;
             yield return new WaitForSeconds(0.3f);
 
             // 3) Update HP of victim
@@ -182,9 +213,9 @@ public class Gameplay : MonoBehaviour {
                 if (attacker == "player") new_hp_enemy = hp_bar_value;
                 else new_hp_player = hp_bar_value;
             }
-            yield return new WaitForSeconds(1.2f);
+            yield return new WaitForSeconds(0.75f);
             dmgLabel.enabled = false;
-            dmgLabel.GetComponentInParent<Image>().enabled = false;
+            bam.enabled = false;
             
             // 4) Wait a bit and go to next turn
             yield return new WaitForSeconds(0.5f);

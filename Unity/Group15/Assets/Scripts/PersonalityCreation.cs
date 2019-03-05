@@ -9,7 +9,7 @@ public class PersonalityCreation : MonoBehaviour {
     public Slider trait1slider, trait2slider, trait3slider, trait4slider, trait5slider;
     public Button submitButton;
     public Text t1out, t2out, t3out, t4out, t5out;
-    public float trait1, trait2, trait3, trait4, trait5;
+    private float trait1, trait2, trait3, trait4, trait5;
 
     private float HandleAttribute(Slider slider, Text display)
     {
@@ -20,7 +20,7 @@ public class PersonalityCreation : MonoBehaviour {
         return slider_value /10;
     }
 
-    void Update()
+    private void Update()
     {
         trait1 = HandleAttribute(trait1slider, t1out);
         trait2 = HandleAttribute(trait2slider, t2out);
@@ -29,7 +29,7 @@ public class PersonalityCreation : MonoBehaviour {
         trait5 = HandleAttribute(trait5slider, t5out);
     }
 
-    IEnumerator PutIdeals(string json)
+    private IEnumerator PutIdeals(string json)
     {
         UnityWebRequest uwr = new UnityWebRequest(Server.Address("submit_ideals") + UserSession.us.user.getID(), "PUT");
         byte[] jsonToSend = new System.Text.UTF8Encoding().GetBytes(json);

@@ -7,11 +7,11 @@ using VoxelBusters.NativePlugins;
 
 public class LoginTwitter : MonoBehaviour {
 
-    IEnumerator TryTwitter()
+    private IEnumerator TryTwitter()
     {
         // need to make twitter sequence not have a timer or something else whatever
         int repeats = 0;
-        while (repeats < 12) //wait 60 sec, check for login every 5 sec
+        while (repeats < 5)
         {
             //string id = (UserSession.us.user.getID()=="") ? ZPlayerPrefs.GetString("id") : UserSession.us.user.getID();
             UnityWebRequest uwr = UnityWebRequest.Get(Server.Address("read_user") + UserSession.us.user.getID());
@@ -34,19 +34,34 @@ public class LoginTwitter : MonoBehaviour {
                 {
                     Debug.Log("Not registered yet: "+uwr.downloadHandler.text);
                     repeats++;
-                    yield return new WaitForSeconds(5);
+                    yield return new WaitForSeconds(2);
                 }
             }
             uwr.Dispose();
-            if(repeats==12) NPBinding.UI.ShowToast("Twitter connection failed. Please try again.", eToastMessageLength.SHORT);
+            if (repeats == 5)// NPBinding.UI.ShowToast("Twitter connection failed. Please try again, or play without Twitter.", eToastMessageLength.SHORT);
+            {
+                string[] _buttons = new string[] { "Retry", "Play Without Twitter"};
+                NPBinding.UI.ShowAlertDialogWithMultipleButtons("Personality bot is sad", "Twitter Connection wasn't happy :(.", _buttons, OnButtonPressed);
+            }
         }
         StopCoroutine(TryTwitter());
     }
     
-    public void openTwitter()
+    public void OpenTwitter()
     {
         string url = Server.Address("login_twitter") + UserSession.us.user.getID();
         Application.OpenURL(url); // need nicer way -eg window in app
-        StartCoroutine(TryTwitter());        
+        StartCoroutine(TryTwitter());
+    }
+
+    public void SkipTwitter()
+    {
+        gameObject.AddComponent<ChangeScene>().Forward("CharacterCreation");
+    }
+
+    private void OnButtonPressed(string _buttonPressed)
+    {
+        if (_buttonPressed == "Retry") OpenTwitter();
+        else if (_buttonPressed == "Play Without Twitter") SkipTwitter();
     }
 }

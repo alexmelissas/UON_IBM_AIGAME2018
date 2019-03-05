@@ -11,7 +11,7 @@ public class PauseManager : MonoBehaviour {
         ZPlayerPrefs.Initialize("small fluffy puppies", "I'mASaltySalter");
     }
 
-    public void Save()
+    private void Save()
     {
         if (UserSession.us.user != null && UserSession.us.user.getID() != "")
         {
@@ -20,15 +20,15 @@ public class PauseManager : MonoBehaviour {
         }
     }
 
-    public void Load()
+    private void Load()
     {
         if (!start)
         {
             if (PlayerPrefs.HasKey("id") && ZPlayerPrefs.GetRowString("id") != "")
             {
-                NPBinding.UI.ShowToast("id: "+ZPlayerPrefs.GetString("id"), eToastMessageLength.SHORT);
                 string scene = SceneManager.GetActiveScene().name;
-                if (scene == "StartScreen" || scene == "Start_Login" || scene == "TwitterLogin" || scene == "ModelCreated" || scene == "CharacterCreation" || scene == "CreateAccount") //need other solution for settings
+                if (scene == "StartScreen" || scene == "Start_Login" || scene == "TwitterLogin" 
+                    || scene == "ModelCreated" || scene == "CharacterCreation" || scene == "CreateAccount") //need other solution for settings
                     gameObject.AddComponent<UpdateSessions>().U_User();
                 else
                     gameObject.AddComponent<UpdateSessions>().U_All();
@@ -36,7 +36,7 @@ public class PauseManager : MonoBehaviour {
         }         
     }
 
-    void OnApplicationPause(bool pauseStatus)
+    private void OnApplicationPause(bool pauseStatus)
     {
         if (pauseStatus)
         {
