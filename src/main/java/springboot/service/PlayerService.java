@@ -5,6 +5,9 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Example;
+import org.springframework.data.domain.ExampleMatcher;
+import org.springframework.data.domain.ExampleMatcher.GenericPropertyMatchers;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
@@ -35,6 +38,7 @@ public class PlayerService {
 		return player;
 	}
 
+	// TODO think about the rank
 	public List<Player> getTopPlayers() {
 		Sort sort = new Sort(Direction.DESC, "score");
 		List<Player> players = playerRepository.findAll(sort);
@@ -63,6 +67,10 @@ public class PlayerService {
 		return count;
 	}
 
+	public List<Player> getPlayersByLevel(int level) {
+		return playerRepository.findAllByLevel(level);
+	}
+
 	public void updatePlayer(String id, Player newPlayer) {
 		playerRepository.findById(id).map(player -> {
 			player.setHp(newPlayer.getHp());
@@ -72,10 +80,16 @@ public class PlayerService {
 			player.setCriticalStrike(newPlayer.getCriticalStrike());
 
 			// TODO check the update of player
-			// long way to go :(
 			return playerRepository.save(player);
 		});
 	}
+
+	// TODO update items level
+	public void updateItemsOfPlayer(String id, Player newPlayer) {
+
+	}
+
+	// TODO update factor
 
 	public void deletePlayerById(String id) {
 		playerRepository.deleteById(id);

@@ -31,13 +31,14 @@ public class IdealController {
 	}
 
 	@PutMapping("/ideals/{id}")
-	public @ResponseBody Player updateIdeal(@PathVariable String id, @RequestBody Ideal newIdeal) {
+	public @ResponseBody Player initialIdeal(@PathVariable String id, @RequestBody Ideal newIdeal) {
 		// UPDATE IDEAL PERSONALITY
-
+		// THIS METHOD WILL BE CALLED ONLY ONCE
+		
 		// TODO exception handle
 		newIdeal.setId(id);
 		// UPDATE IDEAL AND PLAYER
-		idealService.updateIdeal(id, newIdeal);
+		idealService.initialIdeal(id, newIdeal);
 		System.out.println(newIdeal);
 		return playerService.getPlayerById(id);
 	}

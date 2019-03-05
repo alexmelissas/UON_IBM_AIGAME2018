@@ -36,6 +36,7 @@ public class PlayerController {
 	public int getPlayerRankById(@PathVariable String id) {
 		return playerService.getRankById(id);
 	}
+	
 	// TODO interval to check twitter 
 	
 }

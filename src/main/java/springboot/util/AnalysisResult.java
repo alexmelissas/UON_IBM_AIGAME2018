@@ -61,7 +61,6 @@ public class AnalysisResult {
 		System.out.println(averageSimilarity);
 
 		player.setFactor(averageSimilarity + 1);
-		player.applyPersonality();
 	}
 
 	public void generateNormalFactor(Player player) {

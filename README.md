@@ -28,6 +28,7 @@
 - [x] Create table for Ideal personality
 - [ ] Interval to check Twitter
 - [ ] Check twitter regularly
+- [ ] Check twitter immediately
 - [ ] API to upgrade items
 - [x] Handle result of battle and update data
 - [x] Additional experience after battle

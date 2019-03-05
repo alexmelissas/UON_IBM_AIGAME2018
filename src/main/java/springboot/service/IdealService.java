@@ -9,6 +9,7 @@ import springboot.domain.Ideal;
 import springboot.domain.IdealRepository;
 import springboot.domain.Player;
 import springboot.util.AnalysisResult;
+import springboot.util.PlayerConfig;
 
 @Service("idealService")
 public class IdealService {
@@ -34,7 +35,7 @@ public class IdealService {
 		return ideal;
 	}
 
-	public void updateIdeal(String id, Ideal newIdeal) {
+	public void initialIdeal(String id, Ideal newIdeal) {
 		// This method will only be called once when the user submit the ideal
 		// personality
 
@@ -45,7 +46,7 @@ public class IdealService {
 			ideal.setExtraversion(newIdeal.getExtraversion());
 			ideal.setOpeness(newIdeal.getOpeness());
 
-			this.updatePlayer(id, ideal);
+			this.initialPlayer(id, ideal);
 			return idealRepository.save(ideal);
 		});
 	}
@@ -54,7 +55,7 @@ public class IdealService {
 		idealRepository.deleteById(id);
 	}
 
-	public void updatePlayer(String id, Ideal ideal) {
+	public void initialPlayer(String id, Ideal ideal) {
 		AnalysisResult analysisResult = new AnalysisResult();
 		String jsonResult = ideal.getJsonResult();
 
@@ -69,6 +70,10 @@ public class IdealService {
 		} else {
 			analysisResult.generateNormalFactor(player);
 		}
+		
+		player.setAttributes(PlayerConfig.getBasicStatus(player.level));
+		player.applyPersonality();
+		System.out.println(">>>>>>" + player);
 
 		playerService.updatePlayer(id, player);
 	}

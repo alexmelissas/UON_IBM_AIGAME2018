@@ -1,21 +1,29 @@
 package springboot.service;
 
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Random;
+import java.util.Set;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import springboot.domain.Bot;
 import springboot.domain.Player;
 
 @Service("battleService")
 public class BattleService {
 	@Autowired
 	private PlayerService playerService;
-	
+	private Random random = new Random();
+
 	public Player handleResult(String id1, String id2, boolean result, int additionalExp, int additionalMoney) {
 		Player player1 = playerService.getPlayerById(id1);
 		int exp = additionalExp;
 		int money = additionalMoney;
-		
-		if(result) {
+
+		if (result) {
 			// player win
 			exp += 20;
 			money += 50;
@@ -28,10 +36,76 @@ public class BattleService {
 		}
 		player1.setExperience(exp + player1.getExperience());
 		player1.setMoney(money + player1.getMoney());
-		
-		player1.levelUp();
+
+		player1.checklevelUp();
 		playerService.updatePlayer(id1, player1);
-		
+
 		return player1;
+	}
+
+	public Player getRandomPlayer(String id) {
+		int level = playerService.getPlayerById(id).getLevel();
+		List<Player> players = playerService.getPlayersByLevel(level - 1);
+		players.addAll(playerService.getPlayersByLevel(level));
+		players.addAll(playerService.getPlayersByLevel(level + 1));
+
+		Set<Player> playerSet = new HashSet<>(players);
+		List<Player> playerList = new ArrayList<Player>(playerSet);
+
+		int randomIndex = random.nextInt(playerSet.size());
+		Player player = playerList.get(randomIndex);
+
+		while (id.equals(player.getId())) {
+			randomIndex = random.nextInt(playerSet.size());
+			player = playerList.get(randomIndex);
+		}
+
+		return player;
+	}
+
+	public Bot getBot(String id, String difficult) {
+		int level = playerService.getPlayerById(id).getLevel();
+
+		// Generate level for bot randomly according to difficult
+		double randomDouble = random.nextDouble();
+		System.out.println("randomDouble:" + randomDouble);
+		if ("easy".equals(difficult)) {
+			if (randomDouble < 0.666666) {
+				level--;
+			} else {
+			}
+		} else if ("medium".equals(difficult)) {
+			System.out.println("medium");
+			if (randomDouble < 0.233333) {
+				level--;
+			} else if (randomDouble > 0.766666) {
+				level++;
+			} else {
+			}
+		} else {
+			System.out.println("hard");
+			if (randomDouble < 0.233333) {
+			} else {
+				level++;
+			}
+		}
+
+		// Generate factor for bot according to difficult
+		double randomFactor = 0;
+		double randomInt = random.nextInt(4);
+		if ("easy".equals(difficult)) {
+			// 0.9 -1.2
+			randomFactor = randomInt / 10 + 0.9;
+		} else if ("medium".equals(difficult)) {
+			// 1.2 - 1.5
+			randomFactor = randomInt / 10 + 1.2;
+		} else {
+			// 1.5 - 1.8
+			randomFactor = randomInt / 10 + 1.5;
+		}
+
+		Bot bot = new Bot(level, randomFactor);
+		bot.applyPersonality();
+		return bot;
 	}
 }
