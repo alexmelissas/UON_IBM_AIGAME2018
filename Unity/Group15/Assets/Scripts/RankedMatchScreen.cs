@@ -33,7 +33,7 @@ public class RankedMatchScreen : MonoBehaviour {
        
             int s = 0;
             foreach (User current in Users) {
-                string name = current.getUsername();
+                string name = current.GetUsername();
                 string currentslot = "Slot" + (++s);
                 display.transform.Find(currentslot).gameObject.GetComponentInChildren<Text>().text = name;
             }

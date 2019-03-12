@@ -25,27 +25,27 @@ public class User{
         return temp;
     }
 
-    public string getUsername()
+    public string GetUsername()
     {
         return username;
     }
 
-    public string getPassword()
+    public string GetPassword()
     {
         return password;
     }
 
-    public string getID()
+    public string GetID()
     {
         return id;
     }
 
-    public string getAT()
+    public string GetAT()
     {
         return accessToken;
     }
 
-    public string getATS()
+    public string GetATS()
     {
         return accessTokenSecret;
     }

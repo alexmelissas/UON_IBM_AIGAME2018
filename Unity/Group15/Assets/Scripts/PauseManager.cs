@@ -13,9 +13,9 @@ public class PauseManager : MonoBehaviour {
 
     private void Save()
     {
-        if (UserSession.us.user != null && UserSession.us.user.getID() != "")
+        if (UserSession.us.user != null && UserSession.us.user.GetID() != "")
         {
-            ZPlayerPrefs.SetString("id", UserSession.us.user.getID());
+            ZPlayerPrefs.SetString("id", UserSession.us.user.GetID());
             ZPlayerPrefs.Save();
         }
     }

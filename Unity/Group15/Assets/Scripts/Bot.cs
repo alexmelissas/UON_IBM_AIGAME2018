@@ -4,7 +4,7 @@ using System;
 [Serializable]
 public class Bot : Player {
 
-    public Bot(Player player, int difficulty) : base("", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+    public Bot(Player player, int difficulty) : base("", "", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
     {
         //Set the multipliers
         float hpx, atkx, defx, agx, critx = 0;

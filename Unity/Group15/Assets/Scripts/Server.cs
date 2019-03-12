@@ -1,4 +1,8 @@
-﻿using UnityEngine;
+﻿using System;
+using System.Collections;
+using UnityEngine;
+using UnityEngine.Networking;
+using VoxelBusters.NativePlugins;
 
 public class Server {
 
@@ -37,6 +41,9 @@ public class Server {
             case "battle":
                 path = "/battle";
                 break;
+            case "get_battle":
+                path = "/battle/";
+                break;
             default:
                 path = "";
                 break;
@@ -60,6 +67,26 @@ public class Server {
 
     public static bool CheckTwitter()
     {
-        return (UserSession.us.user.getAT()!="" && UserSession.us.user.getATS()!="") ? true : false;
+        return (UserSession.us.user.GetAT()!="" && UserSession.us.user.GetATS()!="") ? true : false;
+    }
+
+    public static IEnumerator GetEnemy(Action<Player> playerCallback)
+    {
+        using (UnityWebRequest uwr = UnityWebRequest.Get(Server.Address("get_battle") + PlayerSession.ps.player.id))
+        {
+            yield return uwr.SendWebRequest();
+            if (uwr.isNetworkError)
+            {
+                Debug.Log("Error While Sending: " + uwr.error);
+                NPBinding.UI.ShowToast("Communication Error. Please try again later.", eToastMessageLength.SHORT);
+                yield break; //return error
+            }
+            else
+            {
+                Player enemy = Player.CreatePlayerFromJSON(uwr.downloadHandler.text);
+                playerCallback(enemy);
+                yield break;
+            }
+        }
     }
 }

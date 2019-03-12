@@ -30,7 +30,7 @@ public class SetSettings : MonoBehaviour {
 
         if (UserSession.us != null)
         {
-            if (UserSession.us.user.getUsername() == "")
+            if (UserSession.us.user.GetUsername() == "")
             {
                 usernameLabel.GetComponentInChildren<Text>().text = "";
                 currentloginLabel.GetComponentInChildren<Text>().text = "Not logged in yet.";                
@@ -40,7 +40,7 @@ public class SetSettings : MonoBehaviour {
             else
             {
                 currentloginLabel.GetComponentInChildren<Text>().text = "You are logged in as: ";
-                usernameLabel.GetComponentInChildren<Text>().text = UserSession.us.user.getUsername();
+                usernameLabel.GetComponentInChildren<Text>().text = UserSession.us.user.GetUsername();
                 logoutButton.SetActive(true);
                 notyouLabel.SetActive(true);
             }

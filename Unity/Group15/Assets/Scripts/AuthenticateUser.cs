@@ -12,19 +12,19 @@ public class AuthenticateUser : MonoBehaviour {
 
     void Start()
     {
-        usernameInput.onEndEdit.AddListener(delegate { endInput("username"); });
-        passwordInput.onEndEdit.AddListener(delegate { endInput("password"); });
+        usernameInput.onEndEdit.AddListener(delegate { EndInput("username"); });
+        passwordInput.onEndEdit.AddListener(delegate { EndInput("password"); });
     }
 
-    public void endInput(string input)
+    public void EndInput(string input)
     {
         if (input=="username") passwordInput.Select();
-        else if (input=="password") checkUserPass();
+        else if (input=="password") CheckUserPass();
     }
 
     IEnumerator GetPlayer()
     {
-        UnityWebRequest uwr = UnityWebRequest.Get(Server.Address("players") + UserSession.us.user.getID());
+        UnityWebRequest uwr = UnityWebRequest.Get(Server.Address("players") + UserSession.us.user.GetID());
         yield return uwr.SendWebRequest();
         if (uwr.isNetworkError)
         {
@@ -38,7 +38,7 @@ public class AuthenticateUser : MonoBehaviour {
 
     IEnumerator TryLogin(bool first_login, string json, User user)
     {
-        if (first_login && UserSession.us.user.getUsername() == "") yield break;
+        if (first_login && UserSession.us.user.GetUsername() == "") yield break;
         UnityWebRequest uwr = new UnityWebRequest(Server.Address("login_user"), "POST");
         byte[] jsonToSend = new System.Text.UTF8Encoding().GetBytes(json);
         uwr.uploadHandler = (UploadHandler)new UploadHandlerRaw(jsonToSend);
@@ -60,10 +60,11 @@ public class AuthenticateUser : MonoBehaviour {
                 if (!first_login) yield return StartCoroutine(GetPlayer());
                 if (first_login) next_scene = "TwitterLogin";
                 gameObject.AddComponent<ChangeScene>().Forward(next_scene);
-                if (!first_login) NPBinding.UI.ShowToast("Welcome back, " + user.getUsername(), eToastMessageLength.SHORT);
+                if (!first_login) NPBinding.UI.ShowToast("Welcome back, " + user.GetUsername(), eToastMessageLength.SHORT);
             }
             else
             {
+                Debug.Log("Invalid Credentials");
                 NPBinding.UI.ShowToast("Invalid Credentials.", eToastMessageLength.SHORT);
                 passwordInput.text = "";
                 passwordInput.Select();
@@ -92,12 +93,14 @@ public class AuthenticateUser : MonoBehaviour {
             if (response == 1)
             {
                 UserSession.us.user = user;
+                Debug.Log("Account created");
                 NPBinding.UI.ShowToast("Account Created.", eToastMessageLength.SHORT);
             }
             else
             {
                 UserSession.us.user = new User("","");
                 if (response == 0) NPBinding.UI.ShowToast("Sorry, that username is taken. Please try something else.", eToastMessageLength.SHORT);
+                if (response == 0) Debug.Log("Username taken.");
                 usernameInput.text = "";
                 usernameInput.Select();
             }
@@ -106,7 +109,7 @@ public class AuthenticateUser : MonoBehaviour {
         StopCoroutine(TryRegister(json, user));
     }
 
-    public void checkUserPass()
+    public void CheckUserPass()
     {
         string username = usernameInput.text;
         string password = passwordInput.text;

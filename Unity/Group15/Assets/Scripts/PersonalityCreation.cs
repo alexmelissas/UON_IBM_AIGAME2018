@@ -31,7 +31,7 @@ public class PersonalityCreation : MonoBehaviour {
 
     private IEnumerator PutIdeals(string json)
     {
-        UnityWebRequest uwr = new UnityWebRequest(Server.Address("submit_ideals") + UserSession.us.user.getID(), "PUT");
+        UnityWebRequest uwr = new UnityWebRequest(Server.Address("submit_ideals") + UserSession.us.user.GetID(), "PUT");
         byte[] jsonToSend = new System.Text.UTF8Encoding().GetBytes(json);
         uwr.uploadHandler = (UploadHandler)new UploadHandlerRaw(jsonToSend);
         uwr.downloadHandler = (DownloadHandler)new DownloadHandlerBuffer();
@@ -63,7 +63,7 @@ public class PersonalityCreation : MonoBehaviour {
     }
 
     public void Submit () {                                             
-        string json = JsonUtility.ToJson(new Ideals(UserSession.us.user.getID(), trait1, trait2, trait3, trait4, trait5));
+        string json = JsonUtility.ToJson(new Ideals(UserSession.us.user.GetID(), trait1, trait2, trait3, trait4, trait5));
         Debug.Log("Ideal Personality: " + json);
         StartCoroutine(PutIdeals(json));
     }

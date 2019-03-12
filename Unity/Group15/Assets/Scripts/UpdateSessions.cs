@@ -33,7 +33,7 @@ public class UpdateSessions : MonoBehaviour{
 
     IEnumerator GetPlayer()
     {
-        UnityWebRequest uwr = UnityWebRequest.Get(Server.Address("players") + UserSession.us.user.getID());
+        UnityWebRequest uwr = UnityWebRequest.Get(Server.Address("players") + UserSession.us.user.GetID());
         yield return uwr.SendWebRequest();
         if (uwr.isNetworkError)
         {
@@ -56,7 +56,7 @@ public class UpdateSessions : MonoBehaviour{
         }
         else
         {
-            if (User.CreateUserFromJSON(uwr.downloadHandler.text).getID() == "") yield break;
+            if (User.CreateUserFromJSON(uwr.downloadHandler.text).GetID() == "") yield break;
             UpdateSessions.JSON_Session("user", uwr.downloadHandler.text);          
             if (all) yield return StartCoroutine(GetPlayer());
         }

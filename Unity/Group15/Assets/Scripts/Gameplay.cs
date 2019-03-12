@@ -55,22 +55,23 @@ public class Gameplay : MonoBehaviour {
         if (!PlayerPrefs.HasKey("battle_type")){ gameObject.AddComponent<ChangeScene>().Forward("Overworld"); }; //Error
         int battle_type = PlayerPrefs.GetInt("battle_type");
         if (battle_type == 0) { Debug.Log("Playing PvE"); enemy = new Bot(player, PlayerPrefs.GetInt("bot_difficulty")); } //PvE
+        //update the bot to be read from server too
         else if (battle_type == 1) // PvP
         {
             Debug.Log("Playing PvP");
-            //(GET Enemy by ID - also username - ask Yu to change Player to return username too) ; 
-            //(GET Enemy items by id)}
-            /* Temp: enemy is bot anyway: */ enemy = new Bot(player, PlayerPrefs.GetInt("bot_difficulty"));
+            //enemy = new Bot(player, PlayerPrefs.GetInt("bot_difficulty"));
+            enemy = new Player();
+            StartCoroutine(Server.GetEnemy(result => enemy = result));
         }
         else { gameObject.AddComponent<ChangeScene>().Forward("Overworld");} //Error
 
         turns = new List<Turn>();
         player_max_hp = player.hp;
         enemy_max_hp = enemy.hp;
-        
-        playerName.text = "" + player.id; // would need to get username.
+
+        playerName.text = "" + player.character_name;
         playerLevel.text = ""+player.level;
-        enemyName.text = "" + enemy.id; // need to make server give username with player pls
+        enemyName.text = "" + enemy.character_name;
         enemyLevel.text = "" + enemy.level;
 
         playerDmgLabel.enabled = false;
@@ -80,8 +81,9 @@ public class Gameplay : MonoBehaviour {
 
         playerHP.normalizedValue = 1f;
         enemyHP.normalizedValue = 1f;
-        CalculateTurns();
+        RunBattle();
     }
+
 
     private void Update()
     {
@@ -112,7 +114,7 @@ public class Gameplay : MonoBehaviour {
         skip = true;
     }
 
-    public void CalculateTurns()
+    public void RunBattle()
     {
         result = 0;
         bool player_turn = true; // think about who goes first
@@ -125,20 +127,15 @@ public class Gameplay : MonoBehaviour {
             enemy = Player.DeepClone<Player>(turn.enemy);
             if (result==0) player_turn = player_turn ? false : true;
         }
-        PassResult(player,enemy,result==1 ? false : true);
+        StartCoroutine(PassResult(BattleResult.GetJSON(player, enemy, (result == 1) ? false : true)));
         StartCoroutine(PlayTurns(turns));
     }
 
-    IEnumerator PassResult(Player player, Player enemy, bool win)
+    IEnumerator PassResult(string battle_result)
     {
-        UnityWebRequest uwr = UnityWebRequest.Post(Server.Address("battle"),"how to pass 2 objects and a bool?");
-        byte[] jsonToSend = new System.Text.UTF8Encoding().GetBytes("jsonhere");
-        uwr.uploadHandler = (UploadHandler)new UploadHandlerRaw(jsonToSend);
-        uwr.downloadHandler = (DownloadHandler)new DownloadHandlerBuffer();
-        uwr.SetRequestHeader("Content-Type", "application/json");
-
-        yield return uwr.SendWebRequest();
-
+        Debug.Log("Sending: " + battle_result);
+        byte[] jsonToSend = System.Text.Encoding.UTF8.GetBytes(battle_result);
+        using (UnityWebRequest uwr = UnityWebRequest.Put(Server.Address("battle"), jsonToSend))   
         if (uwr.isNetworkError)
         {
             Debug.Log("Error While Sending: " + uwr.error);
@@ -150,7 +147,8 @@ public class Gameplay : MonoBehaviour {
                 Debug.Log(uwr.downloadHandler.text);
             PlayerSession.ps.player = Player.CreatePlayerFromJSON(uwr.downloadHandler.text);
         }
-        StopCoroutine(PassResult(player, enemy, win));
+        StopCoroutine(PassResult(battle_result));
+        yield break;
     }
 
     IEnumerator PlayTurns(List<Turn> turns)

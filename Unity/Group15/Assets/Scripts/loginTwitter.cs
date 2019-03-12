@@ -14,7 +14,7 @@ public class LoginTwitter : MonoBehaviour {
         while (repeats < 5)
         {
             //string id = (UserSession.us.user.getID()=="") ? ZPlayerPrefs.GetString("id") : UserSession.us.user.getID();
-            UnityWebRequest uwr = UnityWebRequest.Get(Server.Address("read_user") + UserSession.us.user.getID());
+            UnityWebRequest uwr = UnityWebRequest.Get(Server.Address("read_user") + UserSession.us.user.GetID());
             yield return uwr.SendWebRequest();
 
             if (uwr.isNetworkError)
@@ -49,7 +49,7 @@ public class LoginTwitter : MonoBehaviour {
     
     public void OpenTwitter()
     {
-        string url = Server.Address("login_twitter") + UserSession.us.user.getID();
+        string url = Server.Address("login_twitter") + UserSession.us.user.GetID();
         Application.OpenURL(url); // need nicer way -eg window in app
         StartCoroutine(TryTwitter());
     }
