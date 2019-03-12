@@ -71,13 +71,13 @@ public class BattleService {
 		System.out.println("randomDouble:" + randomDouble);
 		if ("easy".equals(difficult)) {
 			if (randomDouble < 0.666666) {
-				level--;
+				level = level > 1 ? level-- : level;
 			} else {
 			}
 		} else if ("medium".equals(difficult)) {
 			System.out.println("medium");
 			if (randomDouble < 0.233333) {
-				level--;
+				level = level > 1 ? level-- : level;
 			} else if (randomDouble > 0.766666) {
 				level++;
 			} else {
