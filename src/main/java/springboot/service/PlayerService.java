@@ -71,23 +71,33 @@ public class PlayerService {
 		return playerRepository.findAllByLevel(level);
 	}
 
+	// update the neitre 
 	public void updatePlayer(String id, Player newPlayer) {
+		System.out.println("Try to update player:");
+		System.out.println("new: " + newPlayer);
+		
+		// TODO can update the entire player status
+		// BUG battle can update but request cannot
+		// need to sepcific => items/status (including battle information)
 		playerRepository.findById(id).map(player -> {
-			player.setHp(newPlayer.getHp());
-			player.setAttack(newPlayer.getAttack());
-			player.setDefense(newPlayer.getDefense());
-			player.setAgility(newPlayer.getAgility());
-			player.setCriticalStrike(newPlayer.getCriticalStrike());
-
+//			player.setHp(newPlayer.getHp());
+//			player.setAttack(newPlayer.getAttack());
+//			player.setDefense(newPlayer.getDefense());
+//			player.setAgility(newPlayer.getAgility());
+//			player.setCriticalStrike(newPlayer.getCriticalStrike());
+//			player.setShield(newPlayer.getShield());
+//			player.setArmour(newPlayer.getArmour());
+//			player.setSword(newPlayer.getSword());
 			// TODO check the update of player
 			return playerRepository.save(player);
 		});
 	}
 
 	// TODO update items level
-	public void updateItemsOfPlayer(String id, Player newPlayer) {
+	public void updateItems(String id, Player newPlayer) {
 
 	}
+	
 
 	// TODO update factor
 
