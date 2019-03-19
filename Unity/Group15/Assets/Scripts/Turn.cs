@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 
+//! Calculate all data of each turn until victory/defeat
 public class Turn {
 
     public Player player;
@@ -8,6 +9,7 @@ public class Turn {
     public float damage;
     public int crit_landed;
 
+    //! Constructor
     public Turn(bool turn, Player p, Player e)
     {
         player_turn = turn;
@@ -15,8 +17,10 @@ public class Turn {
         enemy = e;
     }
 
+    //! Choose whose Turn this is, alternating every Turn
     private Player PlaysNow(bool playerPlays) { return playerPlays ? player : enemy; }
 
+    //! Calculate the result of this Turn, including damage dealth, each Player's remaining HP etc
     public int PlayTurn()
     {
         Player attacker = PlaysNow(player_turn);

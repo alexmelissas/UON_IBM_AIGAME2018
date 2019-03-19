@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
+//! Display player stats in Profile screen
 public class ShowPlayerStats : MonoBehaviour {
 
     public Text hp_lbl;
@@ -24,7 +25,6 @@ public class ShowPlayerStats : MonoBehaviour {
         if (!(p.ComparePlayer(PlayerSession.ps.player)))
         {
             p = PlayerSession.ps.player;
-            //p = new Player("Player", 10, 90, 37, 4, 1, 1, 100, 195, 1300, 0.39, 1, 1, 1, 10, 2);
             hp_lbl.text = "" + p.hp;
             atk_lbl.text = "" + p.attack;
             def_lbl.text = "" + p.defense;

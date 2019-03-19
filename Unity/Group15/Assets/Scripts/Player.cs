@@ -4,6 +4,7 @@ using System.Runtime.Serialization.Formatters.Binary;
 using UnityEngine;
 
 [Serializable]
+//! JSON-able object with all Player-related attributes (eg. id, winrate, level, stats ...)
 public class Player
 {
     public string id;
@@ -24,6 +25,7 @@ public class Player
     public int win;
     public int lose;
 
+    //! Fully specific constructor
     public Player(string i, string cn, int lvl, int h_p, int atk, int def, int agl, int crit, int mn, int exp, 
         int exp2lvl, double ftr, int sw, int sh, int ar, int w, int l)
     {
@@ -32,12 +34,14 @@ public class Player
         sword = sw; shield = sh; armour = ar; win = w; lose = l;
     }
 
+    //! Default constructor
     public Player()
     {
         id = ""; character_name = ""; level = 0; hp = 0; attack = 0; defense = 0; agility = 0; critical_strike = 0; money = 0;
         experience = 0; exptolevel = 0; factor = 0; sword = 0; shield = 0; armour = 0; win = 0; lose = 0;
     }
 
+    //! Create a Player object from JSON
     public static Player CreatePlayerFromJSON(string json)
     {
         Player temp = new Player();
@@ -45,6 +49,7 @@ public class Player
         return temp;
     }
 
+    //! Check if two Player objects have identical attributes
     public bool ComparePlayer(Player other)
     {
         if (id != other.id || character_name != other.character_name || level != other.level || hp!=other.hp 
@@ -55,18 +60,17 @@ public class Player
         return true;
     }
 
-    // find different syntax that's more understandable
-    public static T DeepClone<T>(T obj)
+    //! Fully clone the Player object to a new one - needed in GamePlay for Turn calculation
+    public static Player DeepClone<Player>(Player obj)
     {
         using (var ms = new MemoryStream())
         {
             var formatter = new BinaryFormatter();
             formatter.Serialize(ms, obj);
             ms.Position = 0;
-            return (T)formatter.Deserialize(ms);
+            return (Player)formatter.Deserialize(ms);
         }
     }
-
+    // Code modified from https://stackoverflow.com/questions/129389/how-do-you-do-a-deep-copy-of-an-object-in-net-c-specifically
 }
-    
-              
+

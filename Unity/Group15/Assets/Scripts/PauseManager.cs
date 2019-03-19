@@ -2,6 +2,7 @@
 using UnityEngine.SceneManagement;
 using VoxelBusters.NativePlugins;
 
+//! Keep User/Player data stored when exiting app, reload them when coming back
 public class PauseManager : MonoBehaviour {
 
     private bool start = true;

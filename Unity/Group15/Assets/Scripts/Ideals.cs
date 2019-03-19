@@ -2,6 +2,7 @@
 using UnityEngine;
 
 [Serializable]
+//! JSON-able object to pass to server to submit Ideal personality traits
 public class Ideals {
 
     public string id;
@@ -19,42 +20,5 @@ public class Ideals {
         extraversion = ex;
         agreeableness = a;
         emotionalrange = em;
-    }
-
-    public static Ideals CreateIdealsFromJSON(string json)
-    {
-        Ideals temp = new Ideals("",0,0,0,0,0);
-        JsonUtility.FromJsonOverwrite(json, temp);
-        return temp;
-    }
-
-    public string getID()
-    {
-        return id;
-    }
-    
-    public float getO()
-    {
-        return openess;
-    }
-
-    public float getC()
-    {
-        return conscientiousness;
-    }
-
-    public float getEX()
-    {
-        return extraversion;
-    }
-
-    public float getA()
-    {
-        return agreeableness;
-    }
-
-    public float getEM()
-    {
-        return emotionalrange;
     }
 }

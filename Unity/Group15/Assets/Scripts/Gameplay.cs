@@ -2,12 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using System.Linq;
-using System;
-using UnityEngine.SceneManagement;
 using VoxelBusters.NativePlugins;
 using UnityEngine.Networking;
 
+//! Entire Gameplay and Battle Screen management
 public class Gameplay : MonoBehaviour {
 
     /* 1. Calculate and store Turns until one dies (List<Turn> turns)
@@ -46,11 +44,9 @@ public class Gameplay : MonoBehaviour {
     float new_hp_enemy = -1;
     private bool skip = false;
 
-    private static bool foundEnemy = false;
-
-    public IEnumerator GetEnemy(int battletype)
+    //! Get either random player as enemy (PvP) or a bot (PvE) from server
+    public static IEnumerator GetEnemy(int battletype)
     {
-        foundEnemy = false;
         PlayerSession.ps.enemy = new Player();
 
         string address = Server.Address("get_battle");
@@ -76,6 +72,7 @@ public class Gameplay : MonoBehaviour {
 
     }
 
+    //! Setup the battle screen, including HP bars, Models, Damage Labels etc.
     private void Start()
     {
         player = PlayerSession.ps.player;
@@ -83,14 +80,11 @@ public class Gameplay : MonoBehaviour {
 
         if (!PlayerPrefs.HasKey("battle_type")) { gameObject.AddComponent<ChangeScene>().Forward("Overworld"); }; //Error
         int battle_type = PlayerPrefs.GetInt("battle_type");
-        if (battle_type == 0 || battle_type == 1) StartCoroutine(GetEnemy(battle_type)); //GET bot or player as enemy
-        else { gameObject.AddComponent<ChangeScene>().Forward("Overworld"); } //Error
-
-        Invoke("SetupBattleScreen", 0.5f);        
-    }
-
-    public void SetupBattleScreen()
-    {
+        if(battle_type!=0 || battle_type!=1) gameObject.AddComponent<ChangeScene>().Forward("Overworld"); // Handle error better
+        //if (battle_type == 0 || battle_type == 1) StartCoroutine(GetEnemy(battle_type)); //GET bot or player as enemy
+        //else { gameObject.AddComponent<ChangeScene>().Forward("Overworld"); } //Error
+        //Invoke("SetupBattleScreen", 0.5f);  // do the getenemy in the bot and pvp screens 
+    
         enemy = PlayerSession.ps.enemy;
 
         turns = new List<Turn>();
@@ -112,6 +106,7 @@ public class Gameplay : MonoBehaviour {
         RunBattle();
     }
 
+    //! Check if animation should be displayed: If not skipped, and if nobody won yet
     private void Update()
     {
         if(PlayerSession.ps.enemy.id != "")
@@ -140,11 +135,13 @@ public class Gameplay : MonoBehaviour {
         }
     }
 
+    //! Skip button handler
     public void Press_Skip()
     {
         skip = true;
     }
 
+    //! Run the battle, calculate all Turns and result
     public void RunBattle()
     {
         result = 0;
@@ -162,6 +159,7 @@ public class Gameplay : MonoBehaviour {
         StartCoroutine(PlayTurns(turns));
     }
 
+    //! Pass the BattleResult object of this battle to the server
     IEnumerator PassResult(string battle_result)
     {
         Debug.Log("Sending: " + battle_result);
@@ -182,6 +180,7 @@ public class Gameplay : MonoBehaviour {
         yield break;
     }
 
+    //! Animate the battle, including Player animations, HP bars, Damage Labels etc.
     IEnumerator PlayTurns(List<Turn> turns)
     {
         yield return new WaitForSeconds(1f);

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+//! View username on the overworld
 public class ViewUserOverworld : MonoBehaviour {
 
     public Text usernameLabel;

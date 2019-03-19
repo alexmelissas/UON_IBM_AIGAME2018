@@ -4,6 +4,7 @@ using UnityEngine.Networking;
 using UnityEngine.UI;
 using VoxelBusters.NativePlugins;
 
+//! Login and Registration processing.
 public class AuthenticateUser : MonoBehaviour {
 
     public InputField usernameInput;
@@ -22,6 +23,7 @@ public class AuthenticateUser : MonoBehaviour {
         else if (input=="password") CheckUserPass();
     }
 
+    //! Update the Player object based on the User that logged in.
     IEnumerator GetPlayer()
     {
         UnityWebRequest uwr = UnityWebRequest.Get(Server.Address("players") + UserSession.us.user.GetID());
@@ -36,6 +38,7 @@ public class AuthenticateUser : MonoBehaviour {
         StopCoroutine(GetPlayer());
     }
 
+    //! Try to login with given credentials.
     IEnumerator TryLogin(bool first_login, string json, User user)
     {
         if (first_login && UserSession.us.user.GetUsername() == "") yield break;
@@ -73,7 +76,7 @@ public class AuthenticateUser : MonoBehaviour {
         }
     }
 
-
+    //! Try to register an account with given credentials.
     IEnumerator TryRegister(string json, User user)
     {
         UnityWebRequest uwr = new UnityWebRequest(Server.Address("register_user"), "POST");
@@ -109,6 +112,7 @@ public class AuthenticateUser : MonoBehaviour {
         StopCoroutine(TryRegister(json, user));
     }
 
+    //! Check format of username/password, pass them to Login/Register if valid
     public void CheckUserPass()
     {
         string username = usernameInput.text;

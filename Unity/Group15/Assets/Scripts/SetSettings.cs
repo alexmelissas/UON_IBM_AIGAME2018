@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+//! Handle the Settings screen
 public class SetSettings : MonoBehaviour {
 
     public Slider musicSlider;
@@ -14,6 +15,7 @@ public class SetSettings : MonoBehaviour {
     public GameObject notyouLabel;
     public GameObject logoutButton;
 
+    //! Display the currently selected settings properly
     private void Start()
     {
         musicSlider.normalizedValue = PlayerPrefs.GetFloat("music");
@@ -22,6 +24,7 @@ public class SetSettings : MonoBehaviour {
         skipToggle.isOn = (PlayerPrefs.GetInt("skip") != 0);
     }
 
+    //! Update the settings based on changes made to the sliders/checkboxes
     void Update () {
         PlayerPrefs.SetFloat("music",musicSlider.value);
         PlayerPrefs.SetFloat("fx", fxSlider.value);

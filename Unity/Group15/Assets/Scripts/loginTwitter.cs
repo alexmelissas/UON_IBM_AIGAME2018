@@ -5,8 +5,10 @@ using UnityEngine.Networking;
 using UnityEngine.UI;
 using VoxelBusters.NativePlugins;
 
+//! Twitter login handler
 public class LoginTwitter : MonoBehaviour {
 
+    //! Keep checking if twitter linkage was OK - until timeout (10s after they return from twitter page)
     private IEnumerator TryTwitter()
     {
         // need to make twitter sequence not have a timer or something else whatever
@@ -47,6 +49,7 @@ public class LoginTwitter : MonoBehaviour {
         StopCoroutine(TryTwitter());
     }
     
+    //! Open link to twitter linkage page
     public void OpenTwitter()
     {
         string url = Server.Address("login_twitter") + UserSession.us.user.GetID();
@@ -54,11 +57,13 @@ public class LoginTwitter : MonoBehaviour {
         StartCoroutine(TryTwitter());
     }
 
+    //! Skip twitter login entirely
     public void SkipTwitter()
     {
         gameObject.AddComponent<ChangeScene>().Forward("CharacterCreation");
     }
 
+    //! Error dialogue upon timeout
     private void OnButtonPressed(string _buttonPressed)
     {
         if (_buttonPressed == "Retry") OpenTwitter();

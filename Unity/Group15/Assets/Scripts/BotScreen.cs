@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
+//! PvE screen and difficulty management
 public class BotScreen : MonoBehaviour {
 
     public GameObject selected_easy, selected_medium, selected_hard;
@@ -47,6 +48,7 @@ public class BotScreen : MonoBehaviour {
         }
     }
 
+    //! Update the difficulty to the selected one.
     public void ChangeDifficulty(string given_difficulty)
     {
         difficulty = given_difficulty;        
@@ -57,9 +59,16 @@ public class BotScreen : MonoBehaviour {
         //gameObject.AddComponent<ChangeScene>().Forward("Inventory");
     }
 
+    //! Initiate the PvE match
     public void Play()
     {
         PlayerPrefs.SetInt("battle_type", 0);
+        StartCoroutine(Gameplay.GetEnemy(0));
+        Invoke("ActuallyPlay", 0.5f);
+    }
+
+    public void ActuallyPlay()
+    {
         gameObject.AddComponent<ChangeScene>().Forward("Battle");
     }
 }

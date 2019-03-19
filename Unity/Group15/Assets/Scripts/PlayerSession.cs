@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.Networking;
 using VoxelBusters.NativePlugins;
 
+//! Singleton - Store the Player objects for the user and the enemy
 public class PlayerSession : MonoBehaviour
 {
 

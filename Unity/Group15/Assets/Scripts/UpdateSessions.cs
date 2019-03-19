@@ -4,26 +4,28 @@ using UnityEngine;
 using UnityEngine.Networking;
 using VoxelBusters.NativePlugins;
 
+//! Keep User and Player objects up to date with the server, keep data consistent when exiting app
 public class UpdateSessions : MonoBehaviour{
 
-    /* Helper with methods to keep User and Player objects up to date with the server, in case user exits app
-     * and objects are deleted */
-
-    public void U_All() // Update all singleton objects
+    //! Update all singleton objects in the app
+    public void U_All()
     {
         StartCoroutine(GetUser(true));
     }
 
-    public void U_User() // Update user object
+    //! Update just the User object
+    public void U_User()
     {
         StartCoroutine(GetUser(false));
     }
 
-    public void U_Player() // Update player stats
+    //! Update just the Player object
+    public void U_Player()
     {
         StartCoroutine(GetPlayer());
     }
 
+    //! Update a User/Player object from JSON
     public static void JSON_Session(string session, string json)
     {
         if (session == "user") UserSession.us.user = User.CreateUserFromJSON(json);
@@ -31,6 +33,7 @@ public class UpdateSessions : MonoBehaviour{
         else return;
     }
 
+    //! GET JSON for Player
     IEnumerator GetPlayer()
     {
         UnityWebRequest uwr = UnityWebRequest.Get(Server.Address("players") + UserSession.us.user.GetID());
@@ -45,6 +48,7 @@ public class UpdateSessions : MonoBehaviour{
         StopCoroutine(GetPlayer());
     }
 
+    //! Get JSON for User
     IEnumerator GetUser(bool all)
     {        
         UnityWebRequest uwr = UnityWebRequest.Get(Server.Address("read_user") + ZPlayerPrefs.GetString("id"));
