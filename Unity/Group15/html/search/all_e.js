@@ -1,7 +1,12 @@
 var searchData=
 [
-  ['trylogin',['TryLogin',['../class_authenticate_user.html#a58f46eb506b0a535158891c9ed85b991',1,'AuthenticateUser']]],
-  ['tryregister',['TryRegister',['../class_authenticate_user.html#a1243f9482a71212db33a555534a1bc97',1,'AuthenticateUser']]],
-  ['trytwitter',['TryTwitter',['../class_login_twitter.html#a45104792188cdefa496e01daf069a9e9',1,'LoginTwitter']]],
-  ['turn',['Turn',['../class_turn.html',1,'Turn'],['../class_turn.html#ae863308aef7857255f43a318d154b8f1',1,'Turn.Turn()']]]
+  ['scenehistory',['SceneHistory',['../class_scene_history.html',1,'']]],
+  ['server',['Server',['../class_server.html',1,'']]],
+  ['setsettings',['SetSettings',['../class_set_settings.html',1,'']]],
+  ['shield',['Shield',['../class_shield.html',1,'']]],
+  ['showplayerstats',['ShowPlayerStats',['../class_show_player_stats.html',1,'']]],
+  ['skiptwitter',['SkipTwitter',['../class_login_twitter.html#abdf7428a606be0f96ea4f7db15dc5f22',1,'LoginTwitter']]],
+  ['start',['Start',['../class_gameplay.html#a3262248fce4aeecf5de2486bb3305de3',1,'Gameplay.Start()'],['../class_set_settings.html#a7d405e56dc6123768fac6fdd6e70ab0f',1,'SetSettings.Start()']]],
+  ['submit',['Submit',['../class_personality_creation.html#a464be274e82be75bab0899f8756c9562',1,'PersonalityCreation']]],
+  ['sword',['Sword',['../class_sword.html',1,'']]]
 ];

@@ -1,8 +1,6 @@
 var searchData=
 [
-  ['u_5fall',['U_All',['../class_update_sessions.html#a0ea698e5b708671e7ba25a160b325833',1,'UpdateSessions']]],
-  ['u_5fplayer',['U_Player',['../class_update_sessions.html#a888b2a028e131e41ea7e34607c0a5d45',1,'UpdateSessions']]],
-  ['u_5fuser',['U_User',['../class_update_sessions.html#adf570975af9bca48413a5d6b0cbf24b1',1,'UpdateSessions']]],
-  ['update',['Update',['../class_gameplay.html#a0b4601bd58b54a27d9c4d3c6c9b72d8c',1,'Gameplay.Update()'],['../class_personality_creation.html#a42a823afe83e0b59d3c4119a9a58574c',1,'PersonalityCreation.Update()'],['../class_set_settings.html#a73e6df43190f0b5494a4b66328fa9d12',1,'SetSettings.Update()']]],
-  ['user',['User',['../class_user.html#a340ae260388cc9beadce82a506e3fe39',1,'User']]]
+  ['skiptwitter',['SkipTwitter',['../class_login_twitter.html#abdf7428a606be0f96ea4f7db15dc5f22',1,'LoginTwitter']]],
+  ['start',['Start',['../class_gameplay.html#a3262248fce4aeecf5de2486bb3305de3',1,'Gameplay.Start()'],['../class_set_settings.html#a7d405e56dc6123768fac6fdd6e70ab0f',1,'SetSettings.Start()']]],
+  ['submit',['Submit',['../class_personality_creation.html#a464be274e82be75bab0899f8756c9562',1,'PersonalityCreation']]]
 ];

@@ -60,7 +60,7 @@ public class LoginTwitter : MonoBehaviour {
     //! Skip twitter login entirely
     public void SkipTwitter()
     {
-        gameObject.AddComponent<ChangeScene>().Forward("CharacterCreation");
+        gameObject.AddComponent<ChangeScene>().Forward("PersonaSelect");
     }
 
     //! Error dialogue upon timeout

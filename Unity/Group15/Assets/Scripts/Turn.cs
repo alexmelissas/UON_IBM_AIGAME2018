@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-//! Calculate all data of each turn until victory/defeat
+//! Calculate damage, who plays and outcome of one Turn
 public class Turn {
 
     public Player player;

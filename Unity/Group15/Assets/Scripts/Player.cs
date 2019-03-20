@@ -71,6 +71,6 @@ public class Player
             return (Player)formatter.Deserialize(ms);
         }
     }
-    // Code modified from https://stackoverflow.com/questions/129389/how-do-you-do-a-deep-copy-of-an-object-in-net-c-specifically
+    // Code  modified from https://stackoverflow.com/questions/129389/how-do-you-do-a-deep-copy-of-an-object-in-net-c-specifically
 }
 
