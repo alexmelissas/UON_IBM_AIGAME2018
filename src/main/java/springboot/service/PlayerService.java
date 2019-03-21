@@ -12,6 +12,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
 
+import ch.qos.logback.core.net.SyslogOutputStream;
 import springboot.domain.Player;
 import springboot.domain.PlayerRepository;
 
@@ -71,33 +72,31 @@ public class PlayerService {
 		return playerRepository.findAllByLevel(level);
 	}
 
-	// update the neitre 
+	// update the player
 	public void updatePlayer(String id, Player newPlayer) {
-		System.out.println("Try to update player:");
-		System.out.println("new: " + newPlayer);
+		System.out.println("Update Plyer:" + newPlayer);
 		
-		// TODO can update the entire player status
-		// BUG battle can update but request cannot
-		// need to sepcific => items/status (including battle information)
 		playerRepository.findById(id).map(player -> {
-//			player.setHp(newPlayer.getHp());
-//			player.setAttack(newPlayer.getAttack());
-//			player.setDefense(newPlayer.getDefense());
-//			player.setAgility(newPlayer.getAgility());
-//			player.setCriticalStrike(newPlayer.getCriticalStrike());
-//			player.setShield(newPlayer.getShield());
-//			player.setArmour(newPlayer.getArmour());
-//			player.setSword(newPlayer.getSword());
-			// TODO check the update of player
+			// update the basic status
+			if (newPlayer.getHp() != 0 && newPlayer.getAttack() != 0 && newPlayer.getDefense() != 0
+					&& newPlayer.getAgility() != 0 && newPlayer.getCriticalStrike() != 0) {
+				player.setHp(newPlayer.getHp());
+				player.setAttack(newPlayer.getAttack());
+				player.setDefense(newPlayer.getDefense());
+				player.setAgility(newPlayer.getAgility());
+				player.setCriticalStrike(newPlayer.getCriticalStrike());
+			}
+
+			// update the items level
+			if (newPlayer.getArmour() > player.getArmour() || newPlayer.getShield() > player.getSword()
+					|| newPlayer.getSword() > player.getSword()) {
+				player.setArmour(newPlayer.getArmour());
+				player.setShield(newPlayer.getShield());
+				player.setSword(newPlayer.getSword());
+			}
 			return playerRepository.save(player);
 		});
 	}
-
-	// TODO update items level
-	public void updateItems(String id, Player newPlayer) {
-
-	}
-	
 
 	// TODO update factor
 

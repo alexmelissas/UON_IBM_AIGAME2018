@@ -15,29 +15,29 @@ import springboot.service.PlayerService;
 public class PlayerController {
 	@Autowired
 	private PlayerService playerService;
-	
+
 	@GetMapping("/players")
 	public Iterable<Player> getPlayers() {
 		return playerService.getPlayers();
 	}
-	
+
 	@PutMapping("/players/{id}")
 	public String updatePlayer(@PathVariable String id, @RequestBody Player player) {
 		playerService.updatePlayer(id, player);
 		return "Updated";
 	}
-	
+
 	@GetMapping("/players/{id}")
 	public @ResponseBody Player getPlayerById(@PathVariable String id) {
 		Player player = playerService.getPlayerById(id);
 		return player;
 	}
-	
+
 	@GetMapping("/players/rank/{id}")
 	public int getPlayerRankById(@PathVariable String id) {
 		return playerService.getRankById(id);
 	}
-	
-	// TODO interval to check twitter 
-	
+
+	// TODO interval to check twitter
+
 }
