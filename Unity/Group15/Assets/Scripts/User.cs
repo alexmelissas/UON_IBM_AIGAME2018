@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [Serializable]
+//! JSON-able object storing the user's account information
 public class User{
 
     public string id;
@@ -12,12 +13,14 @@ public class User{
     public string accessToken;
     public string accessTokenSecret;
 
+    //! Basic constructor
     public User(string name, string pass)
     {
         username = name;
         password = pass;
     }
 
+    //! JSON constructor
     public static User CreateUserFromJSON (string json)
     {
         User temp = new User(" ", " ");
@@ -25,27 +28,27 @@ public class User{
         return temp;
     }
 
-    public string getUsername()
+    public string GetUsername()
     {
         return username;
     }
 
-    public string getPassword()
+    public string GetPassword()
     {
         return password;
     }
 
-    public string getID()
+    public string GetID()
     {
         return id;
     }
 
-    public string getAT()
+    public string GetAT()
     {
         return accessToken;
     }
 
-    public string getATS()
+    public string GetATS()
     {
         return accessTokenSecret;
     }

@@ -4,13 +4,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class viewUserOW : MonoBehaviour {
+//! View username on the overworld
+public class ViewUserOverworld : MonoBehaviour {
 
     public Text usernameLabel;
 
 	void Update () {
-        if (UserSession.us != null)
-            usernameLabel.GetComponentInChildren<Text>().text = UserSession.us.user.getUsername();
+        if (UserSession.us != null && UserSession.us.user.GetUsername()!="")
+            usernameLabel.GetComponentInChildren<Text>().text = UserSession.us.user.GetUsername();
         else
             usernameLabel.GetComponentInChildren<Text>().text = "<Invalid Session>";
     }

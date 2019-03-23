@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//! Singleton - Store list of scene viewing hierarchy
 public class SceneHistory : MonoBehaviour
 {
 

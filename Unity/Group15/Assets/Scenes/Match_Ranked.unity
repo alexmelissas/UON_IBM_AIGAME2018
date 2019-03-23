@@ -308,8 +308,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1119984305}
-        m_MethodName: displayTopPlayers
+      - m_Target: {fileID: 209987854}
+        m_MethodName: DisplayTopPlayers
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -366,6 +366,7 @@ GameObject:
   - component: {fileID: 209987852}
   - component: {fileID: 209987851}
   - component: {fileID: 209987850}
+  - component: {fileID: 209987854}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -458,6 +459,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &209987854
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 209987849}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6fed9fe479aff984d90a5b1d68ee897f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  display: {fileID: 1119984302}
 --- !u!1 &291073447
 GameObject:
   m_ObjectHideFlags: 0
@@ -609,8 +622,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1119984305}
-        m_MethodName: displayTopPlayers
+      - m_Target: {fileID: 209987854}
+        m_MethodName: DisplayTopPlayers
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1180,9 +1193,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1119984303}
   - component: {fileID: 1119984304}
-  - component: {fileID: 1119984305}
   m_Layer: 5
-  m_Name: RankingsDisplay
+  m_Name: rankingsDisplay
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1233,18 +1245,6 @@ MonoBehaviour:
   m_ChildForceExpandHeight: 0
   m_ChildControlWidth: 0
   m_ChildControlHeight: 0
---- !u!114 &1119984305
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1119984302}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6fed9fe479aff984d90a5b1d68ee897f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  display: {fileID: 1119984302}
 --- !u!1 &1124517356
 GameObject:
   m_ObjectHideFlags: 0
@@ -1490,7 +1490,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1255356561}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 209987854}
+        m_MethodName: OpenInventory
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1255356561
@@ -2199,8 +2210,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1119984305}
-        m_MethodName: displayTopPlayers
+      - m_Target: {fileID: 209987854}
+        m_MethodName: DisplayTopPlayers
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2321,7 +2332,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2087932650}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 209987854}
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &2087932650

@@ -3,140 +3,232 @@ package springboot.domain;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 
+import springboot.util.PlayerConfig;
+
+/**
+ * <p>
+ * The Player class represents the real character of the player. It extends the
+ * {@link BasicCharacter} class.
+ * </p>
+ * <p>
+ * This class class contains more information about the player.
+ * </p>
+ * 
+ * @author Yu Chen
+ *
+ */
 @Entity
-public class Player{
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+public class Player extends BasicCharacter {
+	/**
+	 * id
+	 */
 	@Id
 	@Column(name = "id", columnDefinition = "VARCHAR(36)")
 	public String id;
-	
-	@Column(name = "level", columnDefinition = "INT")
-	public int level = 1;
-	
-	@Column(name = "hp", columnDefinition = "INT")
-	public int hp;
-	
-	@Column(name = "attack", columnDefinition = "INT")
-	public int attack;
-	
-	@Column(name = "defense", columnDefinition = "INT")
-	public int defense;
-	
-	@Column(name = "agility", columnDefinition = "INT")
-	public int agility;
-	
-	@Column(name = "critical_strike", columnDefinition = "INT")
-	public int criticalStrike;
-	
-	@Column(name = "score", columnDefinition = "INT")
-	public int score = 0;
-	
+
+	/**
+	 * money
+	 */
+	@Column(name = "money", columnDefinition = "INT")
+	public int money = 0;
+
+	/**
+	 * experience
+	 */
 	@Column(name = "experience", columnDefinition = "INT")
 	public int experience = 0;
-	
-	@Column(name = " factor", columnDefinition = "DOUBLE")
-	public double factor = 0;
-	
+
+	/**
+	 * experience needed to level up
+	 */
+	@Column(name = "exptolevel", columnDefinition = "INT")
+	public int exptolevel = PlayerConfig.getLevelUpExperience(this.level);
+
+	/**
+	 * the number of wins
+	 */
+	@Column(name = "win", columnDefinition = "INT")
+	public int win = 0;
+
+	/**
+	 * the number of loses
+	 */
+	@Column(name = "lose", columnDefinition = "INT")
+	public int lose = 0;
+
+	/**
+	 * Constructor
+	 */
 	public Player() {
 	}
 
 	// TODO Update function which update the status of player
 	// Constructor to generate the level 1 player
 	// Level up function
-	// QUESTION - How to calculate the value after own items??? --- further discussion
+	// QUESTION - How to calculate the value after own items??? --- further
+	// discussion
 	// WHAT IS THE STRUCTURE OF INVENTORY?
-	
-	public Player(int hp, int attack, int defense, int agility, int criticalStrike) {
-		this.hp = hp;
-		this.attack = attack;
-		this.defense = defense;
-		this.agility = agility;
-		this.criticalStrike = criticalStrike;
-	}
 
-	public Player(String id, int hp, int attack, int defense, int agility, int criticalStrike) {
-		this(hp, attack, defense, agility, criticalStrike);
+	/**
+	 * Constructor
+	 * 
+	 * @param id
+	 */
+	public Player(String id) {
 		this.id = id;
 	}
-	
-	public Player(String id, int hp, int attack, int defense, int agility, int criticalStrike, int score) {
-		this(id, hp, attack, defense, agility, criticalStrike);
-		this.score = score;
-	}
-	
-	public void applyPersonality() {
-		this.hp *= factor;
-		this.attack *= factor;
-		this.defense *= factor;
-		this.agility *= factor;
-		this.criticalStrike *= factor;
-	}
-	
-	public void levelUp() {
-		// TODO
+
+	/**
+	 * Constructor
+	 * 
+	 * @param id             id
+	 * @param characterName  character name
+	 * @param level          level
+	 * @param hp             hp
+	 * @param attack         attack
+	 * @param defense        defense
+	 * @param agility        agility
+	 * @param criticalStrike critical strike
+	 * @param money          money
+	 * @param experience     experience
+	 * @param exptolevel     experience needed to level up
+	 * @param factor         similarity
+	 * @param sword          sword level
+	 * @param shield         shield level
+	 * @param armour         armour level
+	 * @param win            number of wins
+	 * @param lose           number of loses
+	 */
+	public Player(String id, String characterName, int level, int hp, int attack, int defense, int agility,
+			int criticalStrike, int money, int experience, int exptolevel, double factor, int sword, int shield,
+			int armour, int win, int lose) {
+		super(characterName, level, hp, attack, defense, agility, criticalStrike, factor, sword, shield, armour);
+		this.id = id;
+		this.money = money;
+		this.experience = experience;
+		this.exptolevel = exptolevel;
+		this.win = win;
+		this.lose = lose;
 	}
 
+	/**
+	 * Check if the player can level up If so, update the information of the player
+	 */
+	public void checklevelUp() {
+		if (this.level >= 30) {
+			// MAX LEVEL
+			return;
+		}
+
+		if (this.exptolevel <= this.experience) {
+			int exceed = this.experience - this.exptolevel;
+			this.setLevel(this.getLevel() + 1);
+			this.setAttributes(PlayerConfig.getBasicStatus(this.level));
+			this.setExptolevel(PlayerConfig.getLevelUpExperience(this.level));
+			this.applyPersonality();
+			this.setExperience(exceed > 0 ? exceed : 0);
+		}
+	}
+
+	/**
+	 * @return the id
+	 */
 	public String getId() {
 		return id;
 	}
 
+	/**
+	 * @param id the id to set
+	 */
 	public void setId(String id) {
 		this.id = id;
 	}
 
-	public int getHp() {
-		return hp;
+	/**
+	 * @return the money
+	 */
+	public int getMoney() {
+		return money;
 	}
 
-	public void setHp(int hp) {
-		this.hp = hp;
+	/**
+	 * @param money the money to set
+	 */
+	public void setMoney(int money) {
+		this.money = money;
 	}
 
-	public int getAttack() {
-		return attack;
+	/**
+	 * @return the experience
+	 */
+	public int getExperience() {
+		return experience;
 	}
 
-	public void setAttack(int attack) {
-		this.attack = attack;
+	/**
+	 * @param experience the experience to set
+	 */
+	public void setExperience(int experience) {
+		this.experience = experience;
 	}
 
-	public int getDefense() {
-		return defense;
+	/**
+	 * @return the experience needed
+	 */
+	public int getExptolevel() {
+		return exptolevel;
 	}
 
-	public void setDefense(int defense) {
-		this.defense = defense;
+	/**
+	 * @param exptolevel the needed experience to set
+	 */
+	public void setExptolevel(int exptolevel) {
+		this.exptolevel = exptolevel;
 	}
 
-	public int getCriticalStrike() {
-		return criticalStrike;
+	/**
+	 * @return the win
+	 */
+	public int getWin() {
+		return win;
 	}
 
-	public void setCriticalStrike(int criticalStrike) {
-		this.criticalStrike = criticalStrike;
+	/**
+	 * @param win the number of wins to set
+	 */
+	public void setWin(int win) {
+		this.win = win;
 	}
 
-	public int getAgility() {
-		return agility;
+	/**
+	 * @return the lose
+	 */
+	public int getLose() {
+		return lose;
 	}
 
-	public void setAgility(int agility) {
-		this.agility = agility;
+	/**
+	 * @param lose the number of loses to set
+	 */
+	public void setLose(int lose) {
+		this.lose = lose;
 	}
 
-	public int getScore() {
-		return score;
-	}
-
-	public void setScore(int score) {
-		this.score = score;
-	}
-
-	public double getFactor() {
-		return factor;
-	}
-
-	public void setFactor(double factor) {
-		this.factor = factor;
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "Player [id=" + id + ", money=" + money + ", experience=" + experience + ", exptolevel=" + exptolevel
+				+ ", win=" + win + ", lose=" + lose + ", characterName=" + characterName + ", level=" + level + ", hp="
+				+ hp + ", attack=" + attack + ", defense=" + defense + ", agility=" + agility + ", criticalStrike="
+				+ criticalStrike + ", factor=" + factor + ", sword=" + sword + ", shield=" + shield + ", armour="
+				+ armour + "]";
 	}
 }

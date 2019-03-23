@@ -1,11 +1,10 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using VoxelBusters.NativePlugins;
 
+//! Login and Registration processing.
 public class AuthenticateUser : MonoBehaviour {
 
     public InputField usernameInput;
@@ -14,35 +13,35 @@ public class AuthenticateUser : MonoBehaviour {
 
     void Start()
     {
-        usernameInput.onEndEdit.AddListener(delegate { endInput("username"); });
-        passwordInput.onEndEdit.AddListener(delegate { endInput("password"); });
+        usernameInput.onEndEdit.AddListener(delegate { EndInput("username"); });
+        passwordInput.onEndEdit.AddListener(delegate { EndInput("password"); });
     }
 
-    public void endInput(string input)
+    public void EndInput(string input)
     {
         if (input=="username") passwordInput.Select();
-        else if (input=="password") checkUserPass();
+        else if (input=="password") CheckUserPass();
     }
 
+    //! Update the Player object based on the User that logged in.
     IEnumerator GetPlayer()
     {
-        string url = Server.Address("players") + UserSession.us.user.getID();
-        UnityWebRequest uwr = new UnityWebRequest(url, "GET");
-        byte[] jsonToSend = new System.Text.UTF8Encoding().GetBytes(JsonUtility.ToJson(UserSession.us.user));
-        uwr.uploadHandler = (UploadHandler)new UploadHandlerRaw(jsonToSend);
-        uwr.downloadHandler = (DownloadHandler)new DownloadHandlerBuffer();
-        uwr.SetRequestHeader("Content-Type", "application/json");
-
+        UnityWebRequest uwr = UnityWebRequest.Get(Server.Address("players") + UserSession.us.user.GetID());
         yield return uwr.SendWebRequest();
-
-        Debug.Log("" + uwr.downloadHandler.text);
-        PlayerSession.ps.player = Player.CreatePlayerFromJSON(uwr.downloadHandler.text);
+        if (uwr.isNetworkError)
+        {
+            Debug.Log("Error While Sending: " + uwr.error);
+            NPBinding.UI.ShowToast("Communication Error. Please try again later.", eToastMessageLength.SHORT);
+        }
+        else
+            UpdateSessions.JSON_Session("player", uwr.downloadHandler.text);
         StopCoroutine(GetPlayer());
     }
 
+    //! Try to login with given credentials.
     IEnumerator TryLogin(bool first_login, string json, User user)
     {
-        if (first_login && UserSession.us.user.getUsername() == "") yield break;
+        if (first_login && UserSession.us.user.GetUsername() == "") yield break;
         UnityWebRequest uwr = new UnityWebRequest(Server.Address("login_user"), "POST");
         byte[] jsonToSend = new System.Text.UTF8Encoding().GetBytes(json);
         uwr.uploadHandler = (UploadHandler)new UploadHandlerRaw(jsonToSend);
@@ -60,15 +59,15 @@ public class AuthenticateUser : MonoBehaviour {
         {
             if (Server.CheckLogin(uwr.downloadHandler.text))
             {
-                if (!first_login) yield return StartCoroutine(GetPlayer());  
                 string next_scene = "Overworld";
+                if (!first_login) yield return StartCoroutine(GetPlayer());
                 if (first_login) next_scene = "TwitterLogin";
                 gameObject.AddComponent<ChangeScene>().Forward(next_scene);
-                string message = "Welcome back, " + user.getUsername();
-                NPBinding.UI.ShowToast(message, eToastMessageLength.SHORT);
+                if (!first_login) NPBinding.UI.ShowToast("Welcome back, " + user.GetUsername(), eToastMessageLength.SHORT);
             }
             else
             {
+                Debug.Log("Invalid Credentials");
                 NPBinding.UI.ShowToast("Invalid Credentials.", eToastMessageLength.SHORT);
                 passwordInput.text = "";
                 passwordInput.Select();
@@ -77,7 +76,7 @@ public class AuthenticateUser : MonoBehaviour {
         }
     }
 
-
+    //! Try to register an account with given credentials.
     IEnumerator TryRegister(string json, User user)
     {
         UnityWebRequest uwr = new UnityWebRequest(Server.Address("register_user"), "POST");
@@ -97,12 +96,14 @@ public class AuthenticateUser : MonoBehaviour {
             if (response == 1)
             {
                 UserSession.us.user = user;
+                Debug.Log("Account created");
                 NPBinding.UI.ShowToast("Account Created.", eToastMessageLength.SHORT);
             }
             else
             {
                 UserSession.us.user = new User("","");
                 if (response == 0) NPBinding.UI.ShowToast("Sorry, that username is taken. Please try something else.", eToastMessageLength.SHORT);
+                if (response == 0) Debug.Log("Username taken.");
                 usernameInput.text = "";
                 usernameInput.Select();
             }
@@ -111,7 +112,8 @@ public class AuthenticateUser : MonoBehaviour {
         StopCoroutine(TryRegister(json, user));
     }
 
-    public void checkUserPass()
+    //! Check format of username/password, pass them to Login/Register if valid
+    public void CheckUserPass()
     {
         string username = usernameInput.text;
         string password = passwordInput.text;
