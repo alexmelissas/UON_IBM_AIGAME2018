@@ -41,21 +41,23 @@ More details can be found in our Game Concept folders in documentation. Please s
 - [x] User sign up and login API
 - [x] Add error page
 - [x] Deal with insufficient words on twitter
-- [ ] Transfer the result of analysis to character attributes:
+- [x] Transfer the result of analysis to character attributes:
 	- user choose the personality
 	- compare the similarity
 	- generate the attributes
-- [ ] Improve the security of database
-- [ ] REST API
 - [ ] Logger
 - [ ] Exception handle
 - [ ] Safety of API (what attributes can be accessed?)
 	- Get the top five players (username, id)
 	- Check if the username is repeat
-- [ ] Create Robot player
-- [ ] Create table for Ideal personality
+- [x] Create Robot player
+- [x] Create table for Ideal personality
 - [ ] Interval to check Twitter
 - [ ] Check twitter regularly
+- [ ] Check twitter immediately
+- [ ] API to upgrade items
+- [x] Handle result of battle and update data
+- [x] Additional experience after battle
 
 **API reference**
 - ip: `3.8.137.254`
@@ -66,16 +68,22 @@ More details can be found in our Game Concept folders in documentation. Please s
 	- GET: get all the users
 	- POST: create new user account
 		- example: `curl -X POST 132.232.30.215:8080/users -H 'Content-type:application/json' -d '{"username": "char", "password": "1234"}'`
-- `/users/{id}`:
-	- GET: get the user by id
-	- POST: update the use's information
-		- example: `curl -X PUT 132.232.30.215:8080/users/{id} -H 'Content-type:application/json' -d '{"username": "char", "password": "1234"}'`
-- `/users/login`:
-	- POST: login
+	- `/users/{id}`:
+		- GET: get the user by id
+		- POST: update the use's information
+			- example: `curl -X PUT 132.232.30.215:8080/users/{id} -H 'Content-type:application/json' -d '{"username": "char", "password": "1234"}'`
+	- `/users/login`:
+		- POST: login
 - `/players`:
 	- GET: get all the players
 - `/ideals`:
 	- GET: get all the ideal personality of users
+- `/battle`:
+	- PUT: upload the result of battle
+	- `/battle/{difficult}/{id}`:
+		- GET: get the bot
+	- `/battle/{id}`:
+		- GET: get the random player
 - TBC
 
 

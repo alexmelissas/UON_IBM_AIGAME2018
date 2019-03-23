@@ -15,26 +15,29 @@ import springboot.service.PlayerService;
 public class PlayerController {
 	@Autowired
 	private PlayerService playerService;
-	
+
 	@GetMapping("/players")
-	public Iterable<Player> getTopPlayers() {
-		return playerService.getTopPlayers();
+	public Iterable<Player> getPlayers() {
+		return playerService.getPlayers();
 	}
-	
+
 	@PutMapping("/players/{id}")
-	public void updatePlayer(@PathVariable String id, @RequestBody Player player) {
-		
+	public String updatePlayer(@PathVariable String id, @RequestBody Player player) {
+		playerService.updatePlayer(id, player);
+		return "Updated";
 	}
-	
-	@GetMapping("players/{id}")
+
+	@GetMapping("/players/{id}")
 	public @ResponseBody Player getPlayerById(@PathVariable String id) {
-		return playerService.getPlayerById(id).get();
+		Player player = playerService.getPlayerById(id);
+		return player;
 	}
-	
-	@GetMapping("players/rank/{id}")
+
+	@GetMapping("/players/rank/{id}")
 	public int getPlayerRankById(@PathVariable String id) {
 		return playerService.getRankById(id);
 	}
-	// TODO interval to check twitter 
-	
+
+	// TODO interval to check twitter
+
 }
