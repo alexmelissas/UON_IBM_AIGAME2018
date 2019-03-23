@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//! Singleton - Maintain the one screen history list.
 public class BackButtonHandler : MonoBehaviour
 {
 
