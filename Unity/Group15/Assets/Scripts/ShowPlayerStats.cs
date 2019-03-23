@@ -16,6 +16,12 @@ public class ShowPlayerStats : MonoBehaviour {
     public Slider exp_slider;
     private Player p;
 
+
+    private void Awake()
+    {
+       // gameObject.AddComponent<UpdateSessions>().U_All(); // NOT SURE
+    }
+
     void Start()
     {
         p = new Player();

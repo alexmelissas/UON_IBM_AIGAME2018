@@ -43,34 +43,8 @@ public class Gameplay : MonoBehaviour {
     float new_hp_player = -1;
     float new_hp_enemy = -1;
     private bool skip = false;
-
-    //! Get either random player as enemy (PvP) or a bot (PvE) from server
-    public static IEnumerator GetEnemy(int battletype)
-    {
-        PlayerSession.ps.enemy = new Player();
-
-        string address = Server.Address("get_battle");
-        if (battletype == 0) address += BotScreen.difficulty + "/";
-        address += PlayerSession.ps.player.id;
-
-        using (UnityWebRequest uwr = UnityWebRequest.Get(address))
-        {
-            yield return uwr.SendWebRequest();
-            if (uwr.isNetworkError)
-            {
-                Debug.Log("Error While Sending: " + uwr.error);
-                NPBinding.UI.ShowToast("Communication Error. Please try again later.", eToastMessageLength.SHORT);
-                // handle player not found gracefully
-            }
-            else
-            {
-                PlayerSession.ps.enemy = Player.CreatePlayerFromJSON(uwr.downloadHandler.text);
-
-            }
-        } 
-        yield break;
-
-    }
+    private bool death = false;
+    private string updatedPlayerJSON = "";
 
     //! Setup the battle screen, including HP bars, Models, Damage Labels etc.
     private void Start()
@@ -80,10 +54,7 @@ public class Gameplay : MonoBehaviour {
 
         if (!PlayerPrefs.HasKey("battle_type")) { gameObject.AddComponent<ChangeScene>().Forward("Overworld"); }; //Error
         int battle_type = PlayerPrefs.GetInt("battle_type");
-        if(battle_type!=0 || battle_type!=1) gameObject.AddComponent<ChangeScene>().Forward("Overworld"); // Handle error better
-        //if (battle_type == 0 || battle_type == 1) StartCoroutine(GetEnemy(battle_type)); //GET bot or player as enemy
-        //else { gameObject.AddComponent<ChangeScene>().Forward("Overworld"); } //Error
-        //Invoke("SetupBattleScreen", 0.5f);  // do the getenemy in the bot and pvp screens 
+        if(battle_type!=0 && battle_type!=1) gameObject.AddComponent<ChangeScene>().Forward("Overworld"); // Handle error better
     
         enemy = PlayerSession.ps.enemy;
 
@@ -106,40 +77,75 @@ public class Gameplay : MonoBehaviour {
         RunBattle();
     }
 
+    //! Get either random player as enemy (PvP) or a bot (PvE) from server
+    public static IEnumerator GetEnemy(int battletype)
+    {
+        PlayerSession.ps.enemy = new Player();
+
+        string address = Server.Address("get_battle");
+        if (battletype == 0) address += BotScreen.difficulty + "/";
+        address += PlayerSession.ps.player.id;
+
+        using (UnityWebRequest uwr = UnityWebRequest.Get(address))
+        {
+            yield return uwr.SendWebRequest();
+            if (uwr.isNetworkError)
+            {
+                Debug.Log("Error While Sending: " + uwr.error);
+                NPBinding.UI.ShowToast("Communication Error. Please try again later.", eToastMessageLength.SHORT);
+                // handle player not found gracefully
+            }
+            else
+            {
+                PlayerSession.ps.enemy = Player.CreatePlayerFromJSON(uwr.downloadHandler.text);
+                Debug.Log("Enemy found: id = " + PlayerSession.ps.enemy.id);
+            }
+        }
+        yield break;
+
+    }
+
+    //! End the battle animations etc
+    private void EndMatch()
+    {
+        StopAllCoroutines();
+        PlayerSession.ps.player = Player.CreatePlayerFromJSON(updatedPlayerJSON);
+        // do animations for gain exp / level up
+        string announce = (result == 1) ? "Enemy wins. Too bad." : "You won! Congrats!";
+        Debug.Log(announce);
+        NPBinding.UI.ShowToast(announce, eToastMessageLength.SHORT);
+        result = 0;
+        gameObject.AddComponent<ChangeScene>().Forward("Overworld");
+        Destroy(gameObject);
+    }
+
     //! Check if animation should be displayed: If not skipped, and if nobody won yet
     private void Update()
     {
         if(PlayerSession.ps.enemy.id != "")
         {
-
             if (PlayerPrefs.HasKey("skip")) if (PlayerPrefs.GetInt("skip") == 1) skip = true;
             if (skip)
             {
-                StopAllCoroutines();
-                string announce = (result == 1) ? "Enemy wins. Too bad." : "You won! Congrats!";
-                Debug.Log(announce);
-                NPBinding.UI.ShowToast(announce, eToastMessageLength.SHORT);
-                result = 0;
-                gameObject.AddComponent<ChangeScene>().Forward("Overworld");
-                Destroy(gameObject);
+                Invoke("EndMatch", 0.5f);
             }
+
+            //Update HP bars
             actualPlayerHP.text = "" + /*new_hp_player + "/" +*/ player_max_hp;
             actualEnemyHP.text = "" + /*new_hp_enemy + "/" + */ enemy_max_hp;
 
-            if (new_hp_player > -1) if (playerHP.value > new_hp_player) playerHP.normalizedValue -= 0.005f; //need to think about scaling and speed
-            if (playerHP.value == 0) { /*soundfx.PlayOneShot(drop_sword, PlayerPrefs.GetFloat("fx"));*/playerHPcolour.enabled = false; }
+            if (new_hp_player > -1) if (playerHP.value > new_hp_player) playerHP.normalizedValue -= 0.005f;
+            if (playerHP.value == 0 && !death) { soundfx.PlayOneShot(drop_sword, PlayerPrefs.GetFloat("fx"));playerHPcolour.enabled = false; death = true; }
             else if (playerHP.value < 0.25) playerHPcolour.color = Color.red; else if (playerHP.value < 0.5) playerHPcolour.color = Color.yellow;
+
             if (new_hp_enemy > -1) if (enemyHP.value > new_hp_enemy) enemyHP.normalizedValue -= 0.005f;
-            if (enemyHP.value == 0) { /*soundfx.PlayOneShot(drop_sword, PlayerPrefs.GetFloat("fx")); */enemyHPcolour.enabled = false; }
+            if (enemyHP.value == 0 && !death) { soundfx.PlayOneShot(drop_sword, PlayerPrefs.GetFloat("fx")); enemyHPcolour.enabled = false; death = true; }
             else if (enemyHP.value < 0.25) enemyHPcolour.color = Color.red; else if (enemyHP.value < 0.5) enemyHPcolour.color = Color.yellow;
         }
     }
 
     //! Skip button handler
-    public void Press_Skip()
-    {
-        skip = true;
-    }
+    public void Press_Skip() { skip = true; }
 
     //! Run the battle, calculate all Turns and result
     public void RunBattle()
@@ -162,7 +168,7 @@ public class Gameplay : MonoBehaviour {
     //! Pass the BattleResult object of this battle to the server
     IEnumerator PassResult(string battle_result)
     {
-        Debug.Log("Sending: " + battle_result);
+        Debug.Log("Sent battle result: " + battle_result);
         byte[] jsonToSend = System.Text.Encoding.UTF8.GetBytes(battle_result);
         using (UnityWebRequest uwr = UnityWebRequest.Put(Server.Address("battle"), jsonToSend))   
         if (uwr.isNetworkError)
@@ -172,9 +178,8 @@ public class Gameplay : MonoBehaviour {
         }
         else
         {
-            // do animations for gain exp / level up 
-                Debug.Log(uwr.downloadHandler.text);
-            PlayerSession.ps.player = Player.CreatePlayerFromJSON(uwr.downloadHandler.text);
+            updatedPlayerJSON = uwr.downloadHandler.text;
+            Debug.Log("Updated player: " + updatedPlayerJSON);
         }
         StopCoroutine(PassResult(battle_result));
         yield break;

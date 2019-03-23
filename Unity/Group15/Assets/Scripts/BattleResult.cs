@@ -6,11 +6,11 @@ using System;
 public class BattleResult {
 
     //! Player ID
-    private readonly string id1;
+    public string id1;
     //! Enemy ID
-    private readonly string id2;
+    public string id2;
     //! True = Player win | False = Enemy win
-    private readonly bool result;
+    public bool result;
     //! Extra EXP gained/lost by defeating higher/lower level enemy
     public int additionalExp;
     //! Extra money gained/lost by defeating higher/lower level enemy
@@ -41,7 +41,7 @@ public class BattleResult {
     //! Get a JSON equivalent of this object
     public static string GetJSON(Player p1, Player p2, bool win)
     {
-        return JsonUtility.ToJson(new BattleResult(p1, p2, win));
+       return JsonUtility.ToJson(new BattleResult(p1, p2, win));
     }
 
 

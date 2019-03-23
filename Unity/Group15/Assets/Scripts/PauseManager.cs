@@ -6,6 +6,7 @@ using VoxelBusters.NativePlugins;
 public class PauseManager : MonoBehaviour {
 
     private bool start = true;
+    private bool skipSelected;
 
     private void Awake()
     {
@@ -17,6 +18,8 @@ public class PauseManager : MonoBehaviour {
         if (UserSession.us.user != null && UserSession.us.user.GetID() != "")
         {
             ZPlayerPrefs.SetString("id", UserSession.us.user.GetID());
+            skipSelected = (PlayerPrefs.GetInt("skip")) == 1 ? true : false;
+            if(!skipSelected && SceneManager.GetActiveScene().name=="Battle") PlayerPrefs.SetInt("skip", 1);
             ZPlayerPrefs.Save();
         }
     }
@@ -25,6 +28,7 @@ public class PauseManager : MonoBehaviour {
     {
         if (!start)
         {
+            if (skipSelected == false) PlayerPrefs.SetInt("skip", 0);
             if (PlayerPrefs.HasKey("id") && ZPlayerPrefs.GetRowString("id") != "")
             {
                 string scene = SceneManager.GetActiveScene().name;
@@ -33,6 +37,7 @@ public class PauseManager : MonoBehaviour {
                     gameObject.AddComponent<UpdateSessions>().U_User();
                 else
                     gameObject.AddComponent<UpdateSessions>().U_All();
+                
             }                          
         }         
     }
@@ -46,4 +51,5 @@ public class PauseManager : MonoBehaviour {
         }
         else Load();
     }
+
 }

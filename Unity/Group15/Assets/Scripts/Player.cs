@@ -9,21 +9,9 @@ public class Player
 {
     public string id;
     public string character_name;
-    public int level;
-    public int hp;
-    public int attack;
-    public int defense;
-    public int agility;
-    public int critical_strike;
-    public int money;
-    public int experience;
-    public int exptolevel;
+    public int level, hp, attack, defense, agility, critical_strike ,money, experience, exptolevel;
+    public int sword, shield, armour, win, lose;
     public double factor;
-    public int sword;
-    public int shield;
-    public int armour;
-    public int win;
-    public int lose;
 
     //! Fully specific constructor
     public Player(string i, string cn, int lvl, int h_p, int atk, int def, int agl, int crit, int mn, int exp, 
@@ -61,14 +49,14 @@ public class Player
     }
 
     //! Fully clone the Player object to a new one - needed in GamePlay for Turn calculation
-    public static Player DeepClone<Player>(Player obj)
+    public static T DeepClone<T>(T obj)
     {
         using (var ms = new MemoryStream())
         {
             var formatter = new BinaryFormatter();
             formatter.Serialize(ms, obj);
             ms.Position = 0;
-            return (Player)formatter.Deserialize(ms);
+            return (T)formatter.Deserialize(ms);
         }
     }
     // Code  modified from https://stackoverflow.com/questions/129389/how-do-you-do-a-deep-copy-of-an-object-in-net-c-specifically
