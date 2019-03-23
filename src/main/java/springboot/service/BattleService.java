@@ -22,17 +22,18 @@ public class BattleService {
 		Player player1 = playerService.getPlayerById(id1);
 		int exp = additionalExp;
 		int money = additionalMoney;
-
+		boolean isBot = "bot".equals(id2);
+		
 		if (result) {
 			// player win
-			exp += 20;
-			money += 50;
-			player1.setWin(player1.getWin() + 1);
+			exp += isBot ? 10 : 20; 
+			money += isBot ? 20 : 50;
+			player1.setWin(player1.getWin() + (isBot ? 0 : 1));
 		} else {
 			// player lose
-			exp += 5;
-			money += 10;
-			player1.setLose(player1.getLose() + 1);
+			exp += isBot ? 3 : 6;
+			money += isBot ? 6 : 15;
+			player1.setLose(player1.getLose() + (isBot ? 0 : 1));
 		}
 		player1.setExperience(exp + player1.getExperience());
 		player1.setMoney(money + player1.getMoney());

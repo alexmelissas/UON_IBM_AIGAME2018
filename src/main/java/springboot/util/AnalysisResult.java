@@ -2,13 +2,10 @@ package springboot.util;
 
 import java.util.Arrays;
 
-import org.hibernate.dialect.identity.SybaseAnywhereIdentityColumnSupport;
-
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
-import ch.qos.logback.core.net.SyslogOutputStream;
 import springboot.domain.Ideal;
 import springboot.domain.Player;
 
@@ -48,7 +45,7 @@ public class AnalysisResult {
 
 		// set the personality which is less similar with higher weight
 		// 0.1 0.1 0.2 0.3 0.3
-		double[] weight = {0.05, 0.05, 0.25, 0.3, 0.35};
+		double[] weight = { 0.05, 0.05, 0.25, 0.3, 0.35 };
 		double[] similarity = { openessSimilarity, conscientiousnessSimilarity, extraversionSimilarity,
 				agreeablenessSimilarity, neuroticismSmililarity };
 		Arrays.sort(similarity);
@@ -56,24 +53,24 @@ public class AnalysisResult {
 		for (int i = 0; i < similarity.length; i++) {
 			averageSimilarity += weight[4 - i] * similarity[i];
 		}
-		
+
 		System.out.println("Similarity");
 		System.out.println("openess: " + openessSimilarity);
 		System.out.println("conscientiousness: " + conscientiousnessSimilarity);
 		System.out.println("extraversion: " + extraversionSimilarity);
 		System.out.println("agreeableness: " + agreeablenessSimilarity);
 		System.out.println("neuroticism: " + neuroticismSmililarity);
-		
+
 		for (int i = 0; i < similarity.length; i++) {
 			System.out.println("sorted: " + similarity[i]);
 		}
-		
+
 		System.out.println("Final similarity: " + averageSimilarity);
 		// balance the benefit of similarity of personality
 		if (averageSimilarity < 0.1) {
 			averageSimilarity = 0.1;
-		} else if (averageSimilarity > 0.8) {
-			averageSimilarity = 0.8;
+		} else if (averageSimilarity > 0.6) {
+			averageSimilarity = 0.6;
 		}
 
 		System.out.println("------AVERAGE VALUE------");

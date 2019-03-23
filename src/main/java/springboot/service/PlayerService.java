@@ -5,14 +5,10 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Example;
-import org.springframework.data.domain.ExampleMatcher;
-import org.springframework.data.domain.ExampleMatcher.GenericPropertyMatchers;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
 
-import ch.qos.logback.core.net.SyslogOutputStream;
 import springboot.domain.Player;
 import springboot.domain.PlayerRepository;
 
@@ -75,7 +71,7 @@ public class PlayerService {
 	// update the player
 	public void updatePlayer(String id, Player newPlayer) {
 		System.out.println("Update Plyer:" + newPlayer);
-		
+
 		playerRepository.findById(id).map(player -> {
 			// update the basic status
 			if (newPlayer.getHp() != 0 && newPlayer.getAttack() != 0 && newPlayer.getDefense() != 0

@@ -47,9 +47,11 @@ public class AnalysisController {
     	Profile profile = piService.analysis(contentLoader);
     	
     	String id = (String) request.getSession().getAttribute("id");
+    	String characterName = userService.getUserById(id).getUsername();
     	Ideal ideal = new Ideal(id);
     	Player player = new Player(id);
     	player.setAttributes(PlayerConfig.getBasicStatus(1));
+    	player.setCharacterName(characterName);
     	
     	if(profile.getWordCount() == null || profile.getWordCount() <= 100) {
     	} else {

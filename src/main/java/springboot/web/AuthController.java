@@ -1,7 +1,6 @@
 package springboot.web;
 
 import java.io.IOException;
-import java.util.Optional;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -23,12 +22,13 @@ import twitter4j.auth.RequestToken;
 public class AuthController {
 	@Autowired
 	private UserService userService;
-	
+
 	@GetMapping("/auth/{id}")
-	protected void auth(HttpServletRequest request, HttpServletResponse response, @PathVariable String id) throws IOException {
+	protected void auth(HttpServletRequest request, HttpServletResponse response, @PathVariable String id)
+			throws IOException {
 		// Get the user
 		User user = userService.getUserById(id);
-		if(user == null) {
+		if (user == null) {
 			try {
 				request.getRequestDispatcher("/404").forward(request, response);
 			} catch (ServletException e) {
@@ -36,15 +36,15 @@ public class AuthController {
 			}
 			return;
 		}
-		
+
 		String consumerKey = "kLdFjFhJkiiWMb2SU4ZNtpGlf";
 		String consumerSecret = "VUXAlVuDbdOYDGhbImgYOfbX91xqtvSdFnXn3kzM6ZNoOWv6fa";
-		
+
 		// Get request token and token secret
 		Twitter twitter = new TwitterFactory().getInstance();
-    	twitter.setOAuthConsumer(consumerKey, consumerSecret);
-    	RequestToken requestToken = null;
-    	
+		twitter.setOAuthConsumer(consumerKey, consumerSecret);
+		RequestToken requestToken = null;
+
 		try {
 			requestToken = twitter.getOAuthRequestToken();
 			// Store twitter and request token in session
@@ -54,16 +54,16 @@ public class AuthController {
 		} catch (TwitterException e) {
 			e.printStackTrace();
 		}
-		
+
 //		String token = requestToken.getToken();
 //		String tokenSecret = requestToken.getTokenSecret();
 //		System.out.println("---Request Token:" + token);
 //		System.out.println("---Request Token Secret:" + tokenSecret);
 
 		// Redirect to authorization page
-    	response.sendRedirect(requestToken.getAuthorizationURL());
-    	return;
-    	
+		response.sendRedirect(requestToken.getAuthorizationURL());
+		return;
+
 //    	twitter = (Twitter) request.getSession().getAttribute("twitter");
 //		requestToken = (RequestToken) request.getSession().getAttribute("requestToken");
 //		
