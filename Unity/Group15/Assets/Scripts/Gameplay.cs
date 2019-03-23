@@ -13,38 +13,21 @@ public class Gameplay : MonoBehaviour {
      * 3. POST result to server (id, result)
      * 4. while(!skip) ShowGameplay() - displays all the animations;
     */
-    public Slider playerHP;
-    public Image playerHPcolour;
-    public Slider enemyHP;
-    public Image enemyHPcolour;
-    public Text playerName;
-    public Text enemyName;
-    public Text playerLevel;
-    public Text enemyLevel;
-    public Text actualPlayerHP;
-    public Text actualEnemyHP;
-    public Text playerDmgLabel;
-    public Text enemyDmgLabel;
+    public Slider playerHP, enemyHP;
+    public Image playerHPcolour, enemyHPcolour;
+    public Text playerName, enemyName, playerLevel, enemyLevel;
+    public Text actualPlayerHP, actualEnemyHP, playerDmgLabel, enemyDmgLabel;
     public AudioSource soundfx;
-    public AudioClip hit;
-    public AudioClip crit;
-    public AudioClip miss;
-    public AudioClip drop_sword;
-
+    public AudioClip hit, crit, miss, drop_sword;
     private List<Turn> turns;
-    private Player player;
-    private Player enemy;
-    private PlayerModel player_model;
-    private PlayerModel enemy_model;
-
+    private Player player, enemy;
+    private PlayerModel player_model, enemy_model;
     private int result;
-    private int player_max_hp; //for HP bar scaling
-    private int enemy_max_hp;
+    private int player_max_hp, enemy_max_hp; //HP bar scaling
     float new_hp_player = -1;
     float new_hp_enemy = -1;
     private bool skip = false;
     private bool death = false;
-    private string updatedPlayerJSON = "";
 
     //! Setup the battle screen, including HP bars, Models, Damage Labels etc.
     private void Start()
@@ -55,8 +38,12 @@ public class Gameplay : MonoBehaviour {
         if (!PlayerPrefs.HasKey("battle_type")) { gameObject.AddComponent<ChangeScene>().Forward("Overworld"); }; //Error
         int battle_type = PlayerPrefs.GetInt("battle_type");
         if(battle_type!=0 && battle_type!=1) gameObject.AddComponent<ChangeScene>().Forward("Overworld"); // Handle error better
-    
         enemy = PlayerSession.ps.enemy;
+        if (battle_type == 0)
+        {
+            enemy.id = "bot";
+            enemy.character_name = BotScreen.difficulty + "Bot";
+        }
 
         turns = new List<Turn>();
         player_max_hp = player.hp;
@@ -67,13 +54,10 @@ public class Gameplay : MonoBehaviour {
         enemyName.text = "" + enemy.character_name;
         enemyLevel.text = "" + enemy.level;
 
-        playerDmgLabel.enabled = false;
-        enemyDmgLabel.enabled = false;
-        playerDmgLabel.GetComponentInParent<Image>().enabled = false;
-        enemyDmgLabel.GetComponentInParent<Image>().enabled = false;
+        playerDmgLabel.enabled = enemyDmgLabel.enabled = false;
+        playerDmgLabel.GetComponentInParent<Image>().enabled = enemyDmgLabel.GetComponentInParent<Image>().enabled = false;
 
-        playerHP.normalizedValue = 1f;
-        enemyHP.normalizedValue = 1f;
+        playerHP.normalizedValue = enemyHP.normalizedValue = 1f;
         RunBattle();
     }
 
@@ -109,7 +93,7 @@ public class Gameplay : MonoBehaviour {
     private void EndMatch()
     {
         StopAllCoroutines();
-        PlayerSession.ps.player = Player.CreatePlayerFromJSON(updatedPlayerJSON);
+        PlayerSession.ps.player = Player.DeepClone<Player>(PlayerSession.ps.updatedPlayer);
         // do animations for gain exp / level up
         string announce = (result == 1) ? "Enemy wins. Too bad." : "You won! Congrats!";
         Debug.Log(announce);
@@ -131,8 +115,8 @@ public class Gameplay : MonoBehaviour {
             }
 
             //Update HP bars
-            actualPlayerHP.text = "" + /*new_hp_player + "/" +*/ player_max_hp;
-            actualEnemyHP.text = "" + /*new_hp_enemy + "/" + */ enemy_max_hp;
+            actualPlayerHP.text = "" + new_hp_player*player_max_hp + "/" + player_max_hp;
+            actualEnemyHP.text = "" + new_hp_enemy*enemy_max_hp + "/" + enemy_max_hp;
 
             if (new_hp_player > -1) if (playerHP.value > new_hp_player) playerHP.normalizedValue -= 0.005f;
             if (playerHP.value == 0 && !death) { soundfx.PlayOneShot(drop_sword, PlayerPrefs.GetFloat("fx"));playerHPcolour.enabled = false; death = true; }
@@ -168,9 +152,14 @@ public class Gameplay : MonoBehaviour {
     //! Pass the BattleResult object of this battle to the server
     IEnumerator PassResult(string battle_result)
     {
-        Debug.Log("Sent battle result: " + battle_result);
-        byte[] jsonToSend = System.Text.Encoding.UTF8.GetBytes(battle_result);
-        using (UnityWebRequest uwr = UnityWebRequest.Put(Server.Address("battle"), jsonToSend))   
+        UnityWebRequest uwr = new UnityWebRequest(Server.Address("battle"), "PUT");
+        byte[] jsonToSend = new System.Text.UTF8Encoding().GetBytes(battle_result);
+        uwr.uploadHandler = (UploadHandler)new UploadHandlerRaw(jsonToSend);
+        uwr.downloadHandler = (DownloadHandler)new DownloadHandlerBuffer();
+        uwr.SetRequestHeader("Content-Type", "application/json");
+
+        yield return uwr.SendWebRequest();
+        
         if (uwr.isNetworkError)
         {
             Debug.Log("Error While Sending: " + uwr.error);
@@ -178,8 +167,8 @@ public class Gameplay : MonoBehaviour {
         }
         else
         {
-            updatedPlayerJSON = uwr.downloadHandler.text;
-            Debug.Log("Updated player: " + updatedPlayerJSON);
+                Debug.Log(uwr.downloadHandler.text);
+            PlayerSession.ps.updatedPlayer = Player.CreatePlayerFromJSON(uwr.downloadHandler.text);
         }
         StopCoroutine(PassResult(battle_result));
         yield break;

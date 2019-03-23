@@ -7,7 +7,7 @@ using VoxelBusters.NativePlugins;
 //! Collection of server-side responses and path URLs.
 public class Server {
     //! Server's home directory IP address/URL.
-    private static readonly string address = "http://3.8.137.254:8080";
+    private static readonly string address = "http://10.154.169.104:8080";
     //! General success response (eg. For confirming Twitter linkage)
     private static readonly string register_success = "Saved";
     //! Username taken response

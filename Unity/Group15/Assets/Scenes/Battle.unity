@@ -1113,7 +1113,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -1646,8 +1646,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerHP: {fileID: 1906663756}
-  playerHPcolour: {fileID: 380914375}
   enemyHP: {fileID: 2140931699}
+  playerHPcolour: {fileID: 380914375}
   enemyHPcolour: {fileID: 175308737}
   playerName: {fileID: 571925982}
   enemyName: {fileID: 904313117}

@@ -10,6 +10,7 @@ public class PlayerSession : MonoBehaviour
     public static PlayerSession ps;
 
     public Player player;
+    public Player updatedPlayer;
     public Player enemy;
 
     void Awake()
