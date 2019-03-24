@@ -56,7 +56,7 @@ public class BotScreen : MonoBehaviour {
 
     public void OpenInventory()
     {
-        //gameObject.AddComponent<ChangeScene>().Forward("Inventory");
+        gameObject.AddComponent<ChangeScene>().Forward("Inventory");
     }
 
     //! Initiate the PvE match

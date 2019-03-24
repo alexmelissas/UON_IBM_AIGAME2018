@@ -57,7 +57,7 @@ public class RankedMatchScreen : MonoBehaviour
 
     public void OpenInventory()
     {
-        //gameObject.AddComponent<ChangeScene>().Forward("Inventory");
+        gameObject.AddComponent<ChangeScene>().Forward("Inventory");
     }
 
     //! Initiate the PvP match
