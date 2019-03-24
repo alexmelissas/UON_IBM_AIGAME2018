@@ -1204,12 +1204,12 @@ MonoBehaviour:
   m_Script: {fileID: 1980459831, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0
+  m_MatchWidthOrHeight: 0.5
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
@@ -1285,10 +1285,10 @@ MonoBehaviour:
   agility_lbl: {fileID: 618456413}
   crit_lbl: {fileID: 1334145692}
   factor_lbl: {fileID: 1847577332}
-  exp_slider: {fileID: 1269458800}
-  next_lvl_lbl: {fileID: 334148588}
   lvl_lbl: {fileID: 394767177}
+  next_lvl_lbl: {fileID: 334148588}
   exp_lbl: {fileID: 317466063}
+  exp_slider: {fileID: 1269458800}
 --- !u!1 &1334145690
 GameObject:
   m_ObjectHideFlags: 0
