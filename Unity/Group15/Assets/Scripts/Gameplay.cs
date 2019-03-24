@@ -18,7 +18,7 @@ public class Gameplay : MonoBehaviour {
     public Text playerName, enemyName, playerLevel, enemyLevel;
     public Text actualPlayerHP, actualEnemyHP, playerDmgLabel, enemyDmgLabel;
     public AudioSource soundfx;
-    public AudioClip hit, crit, miss, drop_sword;
+    public AudioClip playerhit, enemyhit, crit, miss, drop_sword;
     private List<Turn> turns;
     private Player player, enemy;
     private PlayerModel player_model, enemy_model;
@@ -28,6 +28,7 @@ public class Gameplay : MonoBehaviour {
     float new_hp_enemy = -1;
     private bool skip = false;
     private bool death = false;
+    private bool ended = false;
 
     //! Setup the battle screen, including HP bars, Models, Damage Labels etc.
     private void Start()
@@ -92,6 +93,9 @@ public class Gameplay : MonoBehaviour {
     //! End the battle animations etc
     private void EndMatch()
     {
+        if (ended) return;
+
+        ended = true;
         StopAllCoroutines();
         PlayerSession.ps.player = Player.DeepClone<Player>(PlayerSession.ps.updatedPlayer);
         // do animations for gain exp / level up
@@ -212,7 +216,9 @@ public class Gameplay : MonoBehaviour {
                     case 1: dmgLabel.color = Color.green; break;
                     case 2: dmgLabel.color = Color.yellow; break;
                     case 3: dmgLabel.color = Color.red; break;
-                    default: dmgLabel.color = Color.black; sound = hit; break;
+                    default: dmgLabel.color = Color.black;
+                        sound = (attacker=="player") ? playerhit : enemyhit;
+                        break;
                 }                
             }
             else

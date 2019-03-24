@@ -1658,7 +1658,8 @@ MonoBehaviour:
   playerDmgLabel: {fileID: 2038534134}
   enemyDmgLabel: {fileID: 378990183}
   soundfx: {fileID: 1221351463}
-  hit: {fileID: 8300000, guid: 4e694a1e00b04ae45b894cf57e60fc65, type: 3}
+  playerhit: {fileID: 8300000, guid: 52566793d8dde8944afb8a40c76b840a, type: 3}
+  enemyhit: {fileID: 8300000, guid: 34c8ec301fbe48c458e76bd3b31205b3, type: 3}
   crit: {fileID: 8300000, guid: 4c4c380b41ae72a4894d27f1bc973bbd, type: 3}
   miss: {fileID: 8300000, guid: 1ce16c40b51880b41a16a5791f5378d7, type: 3}
   drop_sword: {fileID: 8300000, guid: ec6c4c615db73dd49b2cb7dbd96819fa, type: 3}

@@ -36,10 +36,14 @@ public class ShowPlayerStats : MonoBehaviour {
             def_lbl.text = "" + p.defense;
             agility_lbl.text = "" + p.agility;
             crit_lbl.text = "" + p.critical_strike;
-            factor_lbl.text = "" + (p.factor * 100) + "%";
+
+            double max_factor = 0.8f;
+            double factor_percent = (p.factor - 1) / max_factor;
+            factor_lbl.text = "" + factor_percent + "%";
+
             exp_lbl.text = "" + p.experience + "/" + p.exptolevel;
             lvl_lbl.text = "" + p.level;
-            next_lvl_lbl.text = "" + (p.level==30 ? p.level : p.level + 1); //max level 30?
+            next_lvl_lbl.text = "" + (p.level + 1);
             float expBarValue = (float)p.experience / (float)p.exptolevel;
             exp_slider.normalizedValue = expBarValue;
 

@@ -41,7 +41,4 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Profile.unity
     guid: b6678551e91852744a9e73ef74ce0bc6
-  - enabled: 1
-    path: Assets/Scenes/PersonaSelect.unity
-    guid: bf53758a90e56094baf71d7da80cf569
   m_configObjects: {}
