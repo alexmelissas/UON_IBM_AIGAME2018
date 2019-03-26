@@ -9,7 +9,7 @@ public class LT_Confirm : MonoBehaviour {
     public GameObject consent;
     
 	void Update () {
-        if (Server.CheckTwitter()) consent.SetActive(true);        
+        if (Server.CheckTwitter()) consent.SetActive(true);
         else consent.SetActive(false);
 	}
 }

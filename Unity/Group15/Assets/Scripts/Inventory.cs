@@ -14,7 +14,7 @@ public class Inventory : MonoBehaviour {
 
     private void Awake()
     {
-        // gameObject.AddComponent<UpdateSessions>().U_All(); // NOT SURE
+        gameObject.AddComponent<UpdateSessions>().U_All(); // NOT SURE
     }
 
     void Start()

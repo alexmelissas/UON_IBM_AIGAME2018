@@ -7,7 +7,7 @@ using VoxelBusters.NativePlugins;
 //! Collection of server-side responses and path URLs.
 public class Server {
     //! Server's home directory IP address/URL.
-    private static readonly string address = "http://3.8.137.254:8080"; //"http://10.154.169.104:8080";
+    private static readonly string address = "http://35.178.2.5:8080";
     //! General success response (eg. For confirming Twitter linkage)
     private static readonly string register_success = "Saved";
     //! Username taken response
@@ -54,7 +54,11 @@ public class Server {
     public static bool CheckLogin(string output)
     {
         if (output == null || output == "") return false;
-        else UpdateSessions.JSON_Session("user",output);
+        else
+        {
+            UpdateSessions.JSON_Session("user", output);
+            ZPlayerPrefs.SetString("id", UserSession.us.user.GetID());
+        }
         return true;
     }
 

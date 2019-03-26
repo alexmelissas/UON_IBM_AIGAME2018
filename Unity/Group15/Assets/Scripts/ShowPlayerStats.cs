@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.UI;
 
 //! Display player stats in Profile screen
@@ -19,7 +20,7 @@ public class ShowPlayerStats : MonoBehaviour {
 
     private void Awake()
     {
-       // gameObject.AddComponent<UpdateSessions>().U_All(); // NOT SURE
+       gameObject.AddComponent<UpdateSessions>().U_All(); // NOT SURE
     }
 
     void Start()
@@ -37,8 +38,10 @@ public class ShowPlayerStats : MonoBehaviour {
             agility_lbl.text = "" + p.agility;
             crit_lbl.text = "" + p.critical_strike;
 
-            double max_factor = 0.8f;
-            double factor_percent = (p.factor - 1) / max_factor;
+            double max_factor = 0.8f; //keep updated!
+
+            double factor = (p.factor - 1) / max_factor;
+            double factor_percent = Math.Round(factor, 2) * 100;
             factor_lbl.text = "" + factor_percent + "%";
 
             exp_lbl.text = "" + p.experience + "/" + p.exptolevel;

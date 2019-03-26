@@ -36,7 +36,7 @@ public class UpdateSessions : MonoBehaviour{
     //! GET JSON for Player
     IEnumerator GetPlayer()
     {
-        UnityWebRequest uwr = UnityWebRequest.Get(Server.Address("players") + UserSession.us.user.GetID());
+        UnityWebRequest uwr = UnityWebRequest.Get(Server.Address("players") + ZPlayerPrefs.GetString("id"));
         yield return uwr.SendWebRequest();
         if (uwr.isNetworkError)
         {
