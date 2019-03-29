@@ -10,6 +10,7 @@ import springboot.domain.IdealRepository;
 import springboot.domain.Player;
 import springboot.util.AnalysisResult;
 import springboot.util.PlayerConfig;
+import springboot.util.ResultRedis;
 
 @Service("idealService")
 public class IdealService {
@@ -17,6 +18,8 @@ public class IdealService {
 	private IdealRepository idealRepository;
 	@Autowired
 	private PlayerService playerService;
+	@Autowired
+	private ResultRedis resultRedis;
 
 	public void addIdeal(Ideal ideal) {
 		idealRepository.save(ideal);
@@ -57,7 +60,16 @@ public class IdealService {
 
 	public void initialPlayer(String id, Ideal ideal) {
 		AnalysisResult analysisResult = new AnalysisResult();
-		String jsonResult = ideal.getJsonResult();
+		String jsonResult = resultRedis.get(id).getJsonResult();
+		
+		// TODO exceed the time
+		/*
+		 * if token:
+		 *     if !json:
+		 *         reget
+		 * else: 
+		 *     no auth
+		 */
 
 		System.out.println("------" + analysisResult);
 

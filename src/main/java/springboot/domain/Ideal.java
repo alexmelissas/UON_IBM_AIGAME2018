@@ -33,9 +33,6 @@ public class Ideal {
 	@Column(name = "emotionalrange", columnDefinition = "DOUBLE")
 	private double emotionalrange = 0; // neuroticism
 
-	@Column(name = "jsonresult", columnDefinition = "TEXT")
-	private String jsonResult = null;
-
 	/**
 	 * Constructor
 	 */
@@ -169,20 +166,6 @@ public class Ideal {
 		this.emotionalrange = emotionalrange;
 	}
 
-	/**
-	 * @return the jsonResult
-	 */
-	public String getJsonResult() {
-		return jsonResult;
-	}
-
-	/**
-	 * @param jsonResult the jsonResult to set
-	 */
-	public void setJsonResult(String jsonResult) {
-		this.jsonResult = jsonResult;
-	}
-
 	/*
 	 * (non-Javadoc)
 	 * 
@@ -192,6 +175,6 @@ public class Ideal {
 	public String toString() {
 		return "Ideal [id=" + id + ", openess=" + openess + ", conscientiousness=" + conscientiousness
 				+ ", extraversion=" + extraversion + ", agreeableness=" + agreeableness + ", emotionalrange="
-				+ emotionalrange + ", jsonResult=" + jsonResult + "]";
+				+ emotionalrange + "]";
 	}
 }

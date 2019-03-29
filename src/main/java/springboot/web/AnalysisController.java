@@ -19,8 +19,10 @@ import springboot.service.PlayerService;
 import springboot.service.UserService;
 import springboot.util.ContentLoader;
 import springboot.util.PlayerConfig;
+import springboot.util.ResultRedis;
 import springboot.domain.Ideal;
 import springboot.domain.Player;
+import springboot.domain.Result;
 import twitter4j.Status;
 import twitter4j.Twitter;
 import twitter4j.TwitterException;
@@ -38,7 +40,8 @@ public class AnalysisController {
 	private IdealService idealService;
 	@Autowired
 	private PlayerService playerService;
-	
+	@Autowired
+	private ResultRedis resultRedis;
 	
     @RequestMapping("/analysis")
     public String result(HttpServletRequest request) {
@@ -55,7 +58,11 @@ public class AnalysisController {
     	
     	if(profile.getWordCount() == null || profile.getWordCount() <= 100) {
     	} else {
-        	ideal.setJsonResult(profile.toString().replace("\n", "").replace("      ", " "));
+    		Result result = new Result();
+    		result.setId(id);
+    		result.setJsonResult(profile.toString());
+    		// Store in cache for one hour
+    		resultRedis.add(id, 1, result);
     	}
 
     	idealService.addIdeal(ideal);
