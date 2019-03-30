@@ -33,6 +33,9 @@ public class Ideal {
 	@Column(name = "emotionalrange", columnDefinition = "DOUBLE")
 	private double emotionalrange = 0; // neuroticism
 
+	@Column(name = "auth", columnDefinition = "BOOLEAN")
+	private boolean auth = false;
+	
 	/**
 	 * Constructor
 	 */
@@ -166,15 +169,27 @@ public class Ideal {
 		this.emotionalrange = emotionalrange;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
+	/**
+	 * @return the auth
+	 */
+	public boolean isAuth() {
+		return auth;
+	}
+
+	/**
+	 * @param auth the auth to set
+	 */
+	public void setAuth(boolean auth) {
+		this.auth = auth;
+	}
+
+	/* (non-Javadoc)
 	 * @see java.lang.Object#toString()
 	 */
 	@Override
 	public String toString() {
 		return "Ideal [id=" + id + ", openess=" + openess + ", conscientiousness=" + conscientiousness
 				+ ", extraversion=" + extraversion + ", agreeableness=" + agreeableness + ", emotionalrange="
-				+ emotionalrange + "]";
+				+ emotionalrange + ", auth=" + auth + "]";
 	}
 }

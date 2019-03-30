@@ -1,6 +1,6 @@
 package util.test;
 
-import org.apache.tomcat.jni.Time;
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -10,40 +10,43 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import redis.clients.jedis.Jedis;
+import redis.clients.jedis.JedisPool;
 import springboot.domain.Result;
-import springboot.util.ResultRedis;
+import springboot.service.RedisService;
 import springboot.util.RedisConfig;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = {RedisConfig.class, ResultRedis.class})
+@ContextConfiguration(classes = { RedisConfig.class })
 public class RedisTest {
 	private static Logger logger = LoggerFactory.getLogger(RedisTest.class);
-	
+
 	@Autowired
-	ResultRedis resultRedis;
-	
+	private JedisPool jedisPool;
+
 	@Before
 	public void setup() {
 		Result result = new Result();
 		result.setId("fake_id");
 		result.setJsonResult("Just for test");
-		
-		resultRedis.add(result.getId(), 1, result);
+		Jedis jedis = jedisPool.getResource();
+		jedis.set(result.getId(), result.getJsonResult());
 	}
-	
+
 	@Test
 	public void get() throws InterruptedException {
-		Result result = resultRedis.get("fake_id");
-		logger.info("======Result====== id:{}, result:{}", result.getId(), result.getJsonResult());
-		Thread.sleep(5000);
-		result = resultRedis.get("fake_id");
-		System.out.println("Result: " + result);
+		String id = "fake_id";
+		Jedis jedis = jedisPool.getResource();
+		String jsonResult = jedis.get("fake_id");
+		logger.info("======Result====== id:{}, result:{}", id, jsonResult);
 	}
-	
-	@Test
+
+	@After
 	public void delete() {
-		resultRedis.delete("fake_id");
-		Result result = resultRedis.get("fake_id");
-		System.out.println("Result: " + result);
+		String id = "fake_id";
+		Jedis jedis = jedisPool.getResource();
+		jedis.del("fake_id");
+		String jsonResult = jedis.get("fake_id");
+		logger.info("======Result====== id:{}, result:{}", id, jsonResult);
 	}
 }

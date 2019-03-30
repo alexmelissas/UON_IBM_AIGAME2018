@@ -10,7 +10,6 @@ import springboot.domain.IdealRepository;
 import springboot.domain.Player;
 import springboot.util.AnalysisResult;
 import springboot.util.PlayerConfig;
-import springboot.util.ResultRedis;
 
 @Service("idealService")
 public class IdealService {
@@ -19,7 +18,7 @@ public class IdealService {
 	@Autowired
 	private PlayerService playerService;
 	@Autowired
-	private ResultRedis resultRedis;
+	private RedisService redisService;
 
 	public void addIdeal(Ideal ideal) {
 		idealRepository.save(ideal);
@@ -32,7 +31,7 @@ public class IdealService {
 	public Ideal getIdealById(String id) {
 		Ideal ideal = null;
 		Optional<Ideal> refIdeal = idealRepository.findById(id);
-		if(refIdeal.isPresent()) {
+		if (refIdeal.isPresent()) {
 			ideal = refIdeal.get();
 		}
 		return ideal;
@@ -60,20 +59,28 @@ public class IdealService {
 
 	public void initialPlayer(String id, Ideal ideal) {
 		AnalysisResult analysisResult = new AnalysisResult();
-		String jsonResult = resultRedis.get(id).getJsonResult();
+		String jsonResult = redisService.getResult(id);
+		Player player = playerService.getPlayerById(id);
 		
+		if (ideal.isAuth()) {
+			if (jsonResult == null) {
+				// Get the tweets again
+				
+			} else {
+
+				
+			}
+		} else {
+			
+		}
+
 		// TODO exceed the time
 		/*
-		 * if token:
-		 *     if !json:
-		 *         reget
-		 * else: 
-		 *     no auth
+		 * if token: if !json: reget else: no auth
 		 */
 
 		System.out.println("------" + analysisResult);
 
-		Player player = playerService.getPlayerById(id);
 		if (player == null) {
 			// Player do not exist
 		} else if (jsonResult != null) {
@@ -82,7 +89,7 @@ public class IdealService {
 		} else {
 			analysisResult.generateNormalFactor(player);
 		}
-		
+
 		player.setAttributes(PlayerConfig.getBasicStatus(player.level));
 		player.applyPersonality();
 		System.out.println(">>>>>>" + player);

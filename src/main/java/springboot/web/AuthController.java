@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
 import springboot.domain.User;
+import springboot.service.TwitterService;
 import springboot.service.UserService;
 import twitter4j.Twitter;
 import twitter4j.TwitterException;
@@ -22,18 +23,15 @@ import twitter4j.auth.RequestToken;
 public class AuthController {
 	@Autowired
 	private UserService userService;
+	@Autowired
+	private TwitterService twitterService;
 
+	// TODO furthur auth or unauth
+	
 	@GetMapping("/auth/{id}")
 	protected void auth(HttpServletRequest request, HttpServletResponse response, @PathVariable String id)
 			throws IOException {
-		// Get the user
-		User user = userService.getUserById(id);
-		if (user == null) {
-			try {
-				request.getRequestDispatcher("/404").forward(request, response);
-			} catch (ServletException e) {
-				e.printStackTrace();
-			}
+		if (!checkUser(request, response, id)) {
 			return;
 		}
 
@@ -55,22 +53,38 @@ public class AuthController {
 			e.printStackTrace();
 		}
 
-//		String token = requestToken.getToken();
-//		String tokenSecret = requestToken.getTokenSecret();
-//		System.out.println("---Request Token:" + token);
-//		System.out.println("---Request Token Secret:" + tokenSecret);
-
 		// Redirect to authorization page
 		response.sendRedirect(requestToken.getAuthorizationURL());
 		return;
+	}
 
-//    	twitter = (Twitter) request.getSession().getAttribute("twitter");
-//		requestToken = (RequestToken) request.getSession().getAttribute("requestToken");
-//		
-//		System.out.println("Twitter:" + twitter);
-//		token = requestToken.getToken();
-//		tokenSecret = requestToken.getTokenSecret();
-//		System.out.println("Request Token:" + token);
-//		System.out.println("Request Token Secret:" + tokenSecret);
+	@GetMapping("/noauth/{id}")
+	public void noauth(HttpServletRequest request, HttpServletResponse response, @PathVariable String id) {
+		if (!checkUser(request, response, id)) {
+			return;
+		}
+		
+		User user = userService.getUserById(id);
+		if (user.getAccessToken() != null || user.getAccessTokenSecret() != null) {
+			user.setAccessToken(null);
+			user.setAccessTokenSecret(null);
+			userService.updateUser(id, user);
+		}
+		
+		twitterService.withoutTwitter(id);
+	}
+
+	public boolean checkUser(HttpServletRequest request, HttpServletResponse response, String id) {
+		// check the user
+		User user = userService.getUserById(id);
+		if (user == null) {
+			try {
+				request.getRequestDispatcher("/404").forward(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			return false;
+		}
+		return true;
 	}
 }
