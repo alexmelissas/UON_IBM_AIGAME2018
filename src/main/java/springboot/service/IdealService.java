@@ -19,6 +19,8 @@ public class IdealService {
 	private PlayerService playerService;
 	@Autowired
 	private RedisService redisService;
+	@Autowired
+	private TwitterService twitterService;
 
 	public void addIdeal(Ideal ideal) {
 		idealRepository.save(ideal);
@@ -47,7 +49,7 @@ public class IdealService {
 			ideal.setEmotionalrange(newIdeal.getEmotionalrange());
 			ideal.setExtraversion(newIdeal.getExtraversion());
 			ideal.setOpeness(newIdeal.getOpeness());
-
+			
 			this.initialPlayer(id, ideal);
 			return idealRepository.save(ideal);
 		});
@@ -61,23 +63,11 @@ public class IdealService {
 		AnalysisResult analysisResult = new AnalysisResult();
 		String jsonResult = redisService.getResult(id);
 		Player player = playerService.getPlayerById(id);
-		
-		if (ideal.isAuth()) {
-			if (jsonResult == null) {
-				// Get the tweets again
-				
-			} else {
 
-				
-			}
-		} else {
-			
+		if (ideal.isAuth() && jsonResult == null) {
+			twitterService.reAnalysisTweets(id);
+			jsonResult = redisService.getResult(id);
 		}
-
-		// TODO exceed the time
-		/*
-		 * if token: if !json: reget else: no auth
-		 */
 
 		System.out.println("------" + analysisResult);
 

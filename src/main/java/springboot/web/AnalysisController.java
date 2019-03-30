@@ -21,6 +21,7 @@ public class AnalysisController {
 	@GetMapping("/tweets")
 	public String analysis(HttpServletRequest request, HttpServletResponse response) {
 		// Get the tweets of user
+		// TODO 404 page
 		String id = (String) request.getSession().getAttribute("id");
 		Twitter twitter = (Twitter) request.getSession().getAttribute("twitter");
 		RequestToken requestToken = (RequestToken) request.getSession().getAttribute("requestToken");

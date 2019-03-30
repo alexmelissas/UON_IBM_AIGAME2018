@@ -12,8 +12,6 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
-import springboot.domain.Result;
-import springboot.service.RedisService;
 import springboot.util.RedisConfig;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -26,11 +24,10 @@ public class RedisTest {
 
 	@Before
 	public void setup() {
-		Result result = new Result();
-		result.setId("fake_id");
-		result.setJsonResult("Just for test");
+		String id = "fake_id";
+		String jsonResult = "Just for test";
 		Jedis jedis = jedisPool.getResource();
-		jedis.set(result.getId(), result.getJsonResult());
+		jedis.set(id, jsonResult);
 	}
 
 	@Test
