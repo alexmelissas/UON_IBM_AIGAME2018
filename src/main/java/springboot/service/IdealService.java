@@ -2,6 +2,8 @@ package springboot.service;
 
 import java.util.Optional;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,9 +23,11 @@ public class IdealService {
 	private RedisService redisService;
 	@Autowired
 	private TwitterService twitterService;
-
+	private static Logger logger = LoggerFactory.getLogger(IdealService.class);
+	
 	public void addIdeal(Ideal ideal) {
 		idealRepository.save(ideal);
+		logger.info(">>>Create new ideal [ideal:{}]", ideal);
 	}
 
 	public Iterable<Ideal> getIdeals() {
@@ -42,7 +46,7 @@ public class IdealService {
 	public void initialIdeal(String id, Ideal newIdeal) {
 		// This method will only be called once when the user submit the ideal
 		// personality
-
+		logger.info(">>>Init the ideal [id:{}]", id);
 		idealRepository.findById(id).map(ideal -> {
 			ideal.setAgreeableness(newIdeal.getAgreeableness());
 			ideal.setConscientiousness(newIdeal.getConscientiousness());
@@ -51,6 +55,7 @@ public class IdealService {
 			ideal.setOpeness(newIdeal.getOpeness());
 			
 			this.initialPlayer(id, ideal);
+			
 			return idealRepository.save(ideal);
 		});
 	}
@@ -60,6 +65,7 @@ public class IdealService {
 	}
 
 	public void initialPlayer(String id, Ideal ideal) {
+		logger.info(">>>Init the player");
 		AnalysisResult analysisResult = new AnalysisResult();
 		String jsonResult = redisService.getResult(id);
 		Player player = playerService.getPlayerById(id);
@@ -68,8 +74,6 @@ public class IdealService {
 			twitterService.reAnalysisTweets(id);
 			jsonResult = redisService.getResult(id);
 		}
-
-		System.out.println("------" + analysisResult);
 
 		if (player == null) {
 			// Player do not exist
@@ -82,7 +86,6 @@ public class IdealService {
 
 		player.setAttributes(PlayerConfig.getBasicStatus(player.level));
 		player.applyPersonality();
-		System.out.println(">>>>>>" + player);
 
 		playerService.updatePlayer(id, player);
 	}

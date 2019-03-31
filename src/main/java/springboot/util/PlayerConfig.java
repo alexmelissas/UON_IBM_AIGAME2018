@@ -68,7 +68,6 @@ public class PlayerConfig {
 		criticalStrike = (int) (a * x * x + b * x + c);		
 		
 		// TODO actual attack * 1.5
-		System.out.println(level + "   " + hp + "  " + attack + "  " + defence + "  " + agility + "  " + criticalStrike + " number: " + hp / (attack-defence * 0.5));
 		int[] array = {hp, attack, defence, agility, criticalStrike};
 		return array;
 	}

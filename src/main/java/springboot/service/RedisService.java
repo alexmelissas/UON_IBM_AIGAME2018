@@ -17,7 +17,7 @@ public class RedisService implements InitializingBean {
 	private Jedis jedis;
 	
 	public void setResult(String id, String result) {
-		jedis.set("result_" + id, result, "NX", "EX", 60 * 60);
+		jedis.set("result_" + id, result, "NX", "EX", 30);
 	}
 	
 	public String getResult(String id) {

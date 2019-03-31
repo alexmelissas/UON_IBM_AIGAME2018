@@ -1,5 +1,7 @@
 package springboot.service;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import com.ibm.watson.developer_cloud.personality_insights.v3.PersonalityInsights;
@@ -18,6 +20,7 @@ public class PersonalityInsightService {
 	private AnalysisConfig config = new AnalysisConfig();
 	private PersonalityInsights personalityInsights;
 	private Content content;
+	private static Logger logger = LoggerFactory.getLogger(PersonalityInsightService.class); 
 	
 	public PersonalityInsightService() {
 		/*
@@ -42,9 +45,11 @@ public class PersonalityInsightService {
 		Profile profile;
 		try {
 			profile = personalityInsights.profile(profileOptions).execute();
+			logger.info(">>>Valid analysis");
 		} catch (BadRequestException badRequestException) {
 			// tweets is less than 100 words
 			profile = new Profile();
+			logger.info(">>>Invalid analysis caused by insufficient words");
 			return profile;
 		}
 		

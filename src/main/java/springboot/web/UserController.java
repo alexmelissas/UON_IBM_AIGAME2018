@@ -1,5 +1,7 @@
 package springboot.web;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,7 +19,8 @@ import springboot.service.UserService;
 public class UserController {
 	@Autowired
 	private UserService userService;
-
+	private static Logger logger = LoggerFactory.getLogger(UserController.class);
+	
 	/**
 	 * Get all the users
 	 * 
@@ -41,7 +44,9 @@ public class UserController {
 		if (userService.isExist(user.getUsername())) {
 			return "Username has been taken";
 		}
+		logger.info("======Account Creation======");
 		userService.addUser(user);
+		logger.info("======Account Creation Finished======");
 		return "Saved";
 	}
 
@@ -70,7 +75,9 @@ public class UserController {
 		if (userService.isExist(user.getUsername()) && !previousUser.getUsername().equals(user.getUsername())) {
 			return "Username has been taken";
 		}
+		logger.info("======Account Update======");
 		userService.updateUser(id, user);
+		logger.info("======Account Update Finished======");
 		return "Updated";
 	}
 
@@ -95,6 +102,9 @@ public class UserController {
 	@PostMapping("/users/login")
 	public User login(@RequestBody User user) {
 		// TODO check auth => check ideal => check player => check username & password
-		return userService.login(user);
+		logger.info("======User Login======");
+		User result = userService.login(user);
+		logger.info("======User Login End======");
+		return result;
 	}
 }

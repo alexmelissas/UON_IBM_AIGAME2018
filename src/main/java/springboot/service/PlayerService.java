@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.domain.Sort.Direction;
@@ -16,9 +18,11 @@ import springboot.domain.PlayerRepository;
 public class PlayerService {
 	@Autowired
 	private PlayerRepository playerRepository;
-
+	private static Logger logger = LoggerFactory.getLogger(PlayerService.class);
+	
 	public void addPlayer(Player player) {
 		playerRepository.save(player);
+		logger.info(">>>Create new player [player:{}]", player);
 	}
 
 	public Iterable<Player> getPlayers() {
@@ -70,8 +74,7 @@ public class PlayerService {
 
 	// update the player
 	public void updatePlayer(String id, Player newPlayer) {
-		System.out.println("Update Plyer:" + newPlayer);
-
+		logger.info(">>>Update the player");
 		playerRepository.findById(id).map(player -> {
 			// update the basic status
 			if (newPlayer.getHp() != 0 && newPlayer.getAttack() != 0 && newPlayer.getDefense() != 0
@@ -81,6 +84,7 @@ public class PlayerService {
 				player.setDefense(newPlayer.getDefense());
 				player.setAgility(newPlayer.getAgility());
 				player.setCriticalStrike(newPlayer.getCriticalStrike());
+				logger.info(">>>Update statuses of [player:{}]", player);
 			}
 
 			// update the items level
@@ -89,7 +93,9 @@ public class PlayerService {
 				player.setArmour(newPlayer.getArmour());
 				player.setShield(newPlayer.getShield());
 				player.setSword(newPlayer.getSword());
+				logger.info(">>>Update items of [player:{}]", player);
 			}
+			
 			return playerRepository.save(player);
 		});
 	}

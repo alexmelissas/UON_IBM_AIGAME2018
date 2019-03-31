@@ -69,7 +69,6 @@ public class BattleService {
 
 		// Generate level for bot randomly according to difficult
 		double randomDouble = random.nextDouble();
-		System.out.println("randomDouble:" + randomDouble);
 		if ("easy".equals(difficult)) {
 			if (randomDouble < 0.666666) {
 				level = level > 1 ? level-- : level;

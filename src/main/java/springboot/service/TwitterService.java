@@ -3,6 +3,8 @@ package springboot.service;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -33,10 +35,13 @@ public class TwitterService {
 	private PlayerService playerService;
 	@Autowired
 	private RedisService redisService;
+	private static Logger logger = LoggerFactory.getLogger(TwitterService.class);
 
 	// Analysis tweets
 	public String analysisTweets(String id, Twitter twitter, String verifier, RequestToken requestToken) {
 		try {
+			
+			logger.info(">>>Store access token");
 			AccessToken accessToken = twitter.getOAuthAccessToken(requestToken, verifier);
 
 			// Store access token
@@ -45,29 +50,39 @@ public class TwitterService {
 			newUser.setAccessTokenSecret(accessToken.getTokenSecret());
 			userService.updateUser(id, newUser);
 
-			return loadTweets(id, twitter);
+			String result = loadTweets(id, twitter);
+			logger.info(">>>Analysis successed");
+			return result;
 		} catch (TwitterException e) {
 			e.printStackTrace();
+			logger.info(">>>Analysis failed");
 			return "Authorization fail.";
 		}
 	}
 
 	// Reanalysis tweets
 	public String reAnalysisTweets(String id) {
+		// TODO call this function to check twitter again
+		
+		logger.info(">>>Re-Analysis tweets");
 		User user = userService.getUserById(id);
 		AccessToken accessToken = new AccessToken(user.getAccessToken(), user.getAccessTokenSecret());
 		Twitter twitter = AuthConfig.getTwitter();
 		twitter.setOAuthAccessToken(accessToken);
 
 		try {
-			return loadTweets(id, twitter);
+			String result = loadTweets(id, twitter);
+			logger.info(">>>Re-Analysis tweets successed");
+			return result;
 		} catch (TwitterException e) {
+			logger.info(">>>Re-Analysis tweets failed");
 			return "Authorization fail.";
 		}
 	}
 
 	// Load tweets and analysis them
 	public String loadTweets(String id, Twitter twitter) throws TwitterException {
+		logger.info(">>>Loading tweets from [name:{}]", twitter.getScreenName());
 		// Get all tweets
 		List<Status> statuses = new ArrayList<Status>();
 		int pageno = 1;
@@ -84,9 +99,7 @@ public class TwitterService {
 
 		// Add text into ContentLoader
 		ContentLoader contentLoader = new ContentLoader();
-		System.out.println("Showing @" + twitter.getScreenName() + "'s home timeline.");
 		for (Status status : statuses) {
-			System.out.println("@" + status.getUser().getScreenName() + " - " + status.getText());
 			contentLoader.addInput(status.getText());
 		}
 
@@ -96,7 +109,7 @@ public class TwitterService {
 
 	// analysis
 	public String analysisResult(ContentLoader contentLoader, String id) {
-		// Store Json result to database
+		logger.info(">>>Analysis tweets");
 		Profile profile = piService.analysis(contentLoader);
 
 		if (profile.getWordCount() == null || profile.getWordCount() <= 100) {
@@ -108,14 +121,13 @@ public class TwitterService {
 
 		// create the ideal and player for new user
 		initialize(id, true);
-
 		return "Authorization success.";
 	}
 
 	// without twitter
 	public String withoutTwitter(String id) {
+		logger.info(">>>Initializing the character", id);
 		initialize(id, false);
-
 		return "Account creation succss.";
 	}
 
@@ -124,6 +136,8 @@ public class TwitterService {
 			// Ideal and Player already exist
 			return;
 		}
+		
+		logger.info(">>>Initializing the character");
 		String characterName = userService.getUserById(id).getUsername();
 		Ideal ideal = new Ideal(id);
 		ideal.setAuth(auth);

@@ -38,14 +38,14 @@ public class RedisConfig {
 
 	@Bean
 	public JedisPool redisPoolFactory() {
-		logger.info("----------hello redis----------");
+		logger.info("======Loading Redis Config======");
 		JedisPoolConfig jedisPoolConfig = new JedisPoolConfig();
 		jedisPoolConfig.setMaxIdle(maxIdle);
 		jedisPoolConfig.setMaxWaitMillis(maxWaitMillis);
 		jedisPoolConfig.setMaxTotal(maxActive);
 		jedisPoolConfig.setMinIdle(minIdle);
 		JedisPool jedisPool = new JedisPool(jedisPoolConfig, host, port, timeout, null);
-
+		logger.info("======Loading Redis Config End======");
 		return jedisPool;
 	}
 }

@@ -1,5 +1,7 @@
 package springboot.web;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -19,7 +21,8 @@ public class IdealController {
 	private IdealService idealService;
 	@Autowired
 	private PlayerService playerService;
-
+	private static Logger logger = LoggerFactory.getLogger(IdealController.class);
+	
 	@GetMapping("/ideals")
 	public @ResponseBody Iterable<Ideal> getIdeals() {
 		return idealService.getIdeals();
@@ -32,6 +35,7 @@ public class IdealController {
 
 	@PutMapping("/ideals/{id}")
 	public @ResponseBody Player initialIdeal(@PathVariable String id, @RequestBody Ideal newIdeal) {
+		logger.info("======Initialize Ideal======");
 		// UPDATE IDEAL PERSONALITY
 		// THIS METHOD WILL BE CALLED ONLY ONCE
 		
@@ -39,7 +43,7 @@ public class IdealController {
 		newIdeal.setId(id);
 		// UPDATE IDEAL AND PLAYER
 		idealService.initialIdeal(id, newIdeal);
-		System.out.println(newIdeal);
+		logger.info("======Initialize Ideal End======");
 		return playerService.getPlayerById(id);
 	}
 }

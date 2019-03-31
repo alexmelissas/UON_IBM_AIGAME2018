@@ -5,6 +5,8 @@ import java.io.IOException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -24,7 +26,8 @@ public class AuthController {
 	private UserService userService;
 	@Autowired
 	private TwitterService twitterService;
-
+	private static Logger logger = LoggerFactory.getLogger(AuthController.class);
+	
 	// TODO furthur auth or unauth
 	
 	@GetMapping("/auth/{id}")
@@ -34,6 +37,7 @@ public class AuthController {
 			return;
 		}
 
+		logger.info("======Authorization======");
 		// Get request token and token secret
 		Twitter twitter = AuthConfig.getTwitter();
 		RequestToken requestToken = null;
@@ -59,6 +63,7 @@ public class AuthController {
 			return;
 		}
 		
+		logger.info("======Without Authorization======");
 		User user = userService.getUserById(id);
 		if (user.getAccessToken() != null || user.getAccessTokenSecret() != null) {
 			user.setAccessToken(null);
@@ -67,7 +72,7 @@ public class AuthController {
 		}
 		
 		twitterService.withoutTwitter(id);
-		
+		logger.info("======Without Authorization End======");
 	}
 
 	public boolean checkUser(HttpServletRequest request, HttpServletResponse response, String id) {

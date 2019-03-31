@@ -19,33 +19,31 @@
 	- user choose the personality
 	- compare the similarity
 	- generate the attributes
-- [ ] Logger
+- [x] Logger
 - [ ] Exception handle
 - [ ] Safety of API (what attributes can be accessed?)
 	- Get the top five players (username, id)
 	- Check if the username is repeat
 - [x] Create Robot player
 - [x] Create table for Ideal personality
-- [ ] Interval to check Twitter
-- [ ] Check twitter regularly
-- [ ] Check twitter immediately
-- [ ] API to upgrade items
+- [x] Check twitter immediately
+- [x] API to upgrade items
 - [x] Handle result of battle and update data
 - [x] Additional experience after battle
+- TBC
 
 **API reference**
-- ip: `3.8.137.254`
 - port: `8080`
 - `/auth/{id}`:
 	- GET: go to the authorization page
 - `/users`:
 	- GET: get all the users
 	- POST: create new user account
-		- example: `curl -X POST 132.232.30.215:8080/users -H 'Content-type:application/json' -d '{"username": "char", "password": "1234"}'`
+		- example: `curl -X POST ip:8080/users -H 'Content-type:application/json' -d '{"username": "char", "password": "1234"}'`
 	- `/users/{id}`:
 		- GET: get the user by id
 		- POST: update the use's information
-			- example: `curl -X PUT 132.232.30.215:8080/users/{id} -H 'Content-type:application/json' -d '{"username": "char", "password": "1234"}'`
+			- example: `curl -X PUT ip:8080/users/{id} -H 'Content-type:application/json' -d '{"username": "char", "password": "1234"}'`
 	- `/users/login`:
 		- POST: login
 - `/players`:
@@ -58,7 +56,6 @@
 		- GET: get the bot
 	- `/battle/{id}`:
 		- GET: get the random player
-- TBC
 
 
 **Helpful material**

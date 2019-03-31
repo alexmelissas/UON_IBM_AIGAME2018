@@ -2,6 +2,8 @@ package springboot.service;
 
 import java.util.Optional;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,9 +14,11 @@ import springboot.domain.UserRepository;
 public class UserService {
 	@Autowired
 	private UserRepository userRepository;
+	private static Logger logger = LoggerFactory.getLogger(UserService.class);
 
 	public void addUser(User user) {
 		userRepository.save(user);
+		logger.info(">>>Create new user [id:{}, username:{}]", user.getId(), user.getUsername());
 	}
 
 	public User getUserById(String id) {
@@ -45,6 +49,7 @@ public class UserService {
 				user.setAccessToken(newUser.getAccessToken());
 				user.setAccessTokenSecret(newUser.getAccessTokenSecret());
 			}
+			logger.info(">>>Update user information [id:{}, username:{}]", user.getId(), user.getUsername());
 			return userRepository.save(user);
 		});
 	}
@@ -63,6 +68,7 @@ public class UserService {
 				user = null;
 			}
 		}
+		logger.info(">>>User has logged in [id:{}, username:{}]", user.getId(), user.getUsername());
 		return user;
 	}
 }
