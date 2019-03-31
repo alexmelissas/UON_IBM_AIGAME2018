@@ -7,8 +7,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RestController;
-
 
 import springboot.service.TwitterService;
 import twitter4j.Twitter;
@@ -19,7 +20,7 @@ public class AnalysisController {
 	@Autowired
 	private TwitterService twitterService;
 	private static Logger logger = LoggerFactory.getLogger(AnalysisController.class);
-	
+
 	// Authorization callback
 	@GetMapping("/tweets")
 	public String analysis(HttpServletRequest request, HttpServletResponse response) {
@@ -31,10 +32,18 @@ public class AnalysisController {
 		RequestToken requestToken = (RequestToken) request.getSession().getAttribute("requestToken");
 		String verifier = request.getParameter("oauth_verifier");
 
-		logger.info(">>>User information [id:{}]", id);
-		String result = twitterService.analysisTweets(id, twitter, verifier, requestToken); 
+		String result = twitterService.analysisTweets(id, twitter, verifier, requestToken);
 		logger.info("======Analysis Tweets End======");
 		logger.info("======Authorization End======");
 		return result;
 	}
+
+	@PutMapping("/reanalysis/{id}")
+	public String reanalysis(@PathVariable String id) {
+		logger.info("======Reanalysis Tweets======");
+		String result = twitterService.reAnalysisTweets(id);
+		logger.info("======Reanalysis Tweets End======");
+		return result;
+	}
+
 }

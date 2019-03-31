@@ -43,10 +43,8 @@ public class BattleController {
 		int additionalExp = jsonObject.get("additionalExp").getAsInt();
 		int additionalMoney = jsonObject.get("additionalMoney").getAsInt();
 
-		logger.info(">>>Player {} {}s {}", id1, (result ? "win" : "lose"), id2);
-		logger.info(">>>Additional reward [experience:{}, money:{}]", additionalExp, additionalMoney );
-		
-		// TODO update the result of player
-		return battleService.handleResult(id1, id2, result, additionalExp, additionalMoney);
+		Player player = battleService.handleResult(id1, id2, result, additionalExp, additionalMoney);		
+		logger.info("======Battle Result End======");
+		return player;
 	}
 }

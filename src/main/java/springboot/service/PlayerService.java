@@ -19,7 +19,7 @@ public class PlayerService {
 	@Autowired
 	private PlayerRepository playerRepository;
 	private static Logger logger = LoggerFactory.getLogger(PlayerService.class);
-	
+
 	public void addPlayer(Player player) {
 		playerRepository.save(player);
 		logger.info(">>>Create new player [player:{}]", player);
@@ -95,12 +95,15 @@ public class PlayerService {
 				player.setSword(newPlayer.getSword());
 				logger.info(">>>Update items of [player:{}]", player);
 			}
-			
+
 			return playerRepository.save(player);
 		});
 	}
 
 	// TODO update factor
+	public void update(String id, Player newPlayer) {
+
+	}
 
 	public void deletePlayerById(String id) {
 		playerRepository.deleteById(id);

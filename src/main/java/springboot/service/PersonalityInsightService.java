@@ -49,7 +49,7 @@ public class PersonalityInsightService {
 		} catch (BadRequestException badRequestException) {
 			// tweets is less than 100 words
 			profile = new Profile();
-			logger.info(">>>Invalid analysis caused by insufficient words");
+			logger.info(">>>Insufficient word count");
 			return profile;
 		}
 		

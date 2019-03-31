@@ -13,6 +13,7 @@ import com.ibm.watson.developer_cloud.personality_insights.v3.model.Profile;
 import springboot.domain.Ideal;
 import springboot.domain.Player;
 import springboot.domain.User;
+import springboot.util.AnalysisResult;
 import springboot.util.AuthConfig;
 import springboot.util.ContentLoader;
 import springboot.util.PlayerConfig;
@@ -40,7 +41,7 @@ public class TwitterService {
 	// Analysis tweets
 	public String analysisTweets(String id, Twitter twitter, String verifier, RequestToken requestToken) {
 		try {
-			
+			logger.info(">>>User information [id:{}]", id);
 			logger.info(">>>Store access token");
 			AccessToken accessToken = twitter.getOAuthAccessToken(requestToken, verifier);
 
@@ -104,23 +105,32 @@ public class TwitterService {
 		}
 
 		// Analysis
-		return analysisResult(contentLoader, id);
+		return analysis(contentLoader, id);
 	}
 
 	// analysis
-	public String analysisResult(ContentLoader contentLoader, String id) {
+	public String analysis(ContentLoader contentLoader, String id) {
 		logger.info(">>>Analysis tweets");
 		Profile profile = piService.analysis(contentLoader);
 
+		boolean isSufficient = true;
 		if (profile.getWordCount() == null || profile.getWordCount() <= 100) {
 			// insufficient words
+			isSufficient = false;
+			logger.info(">>>Invalid analysis result caused by insufficient word count");
 		} else {
 			// Store result in cache for one hour
 			redisService.setResult(id, profile.toString());
 		}
 
 		// create the ideal and player for new user
-		initialize(id, true);
+		if (idealService.getIdealById(id) == null) {
+			initialize(id, true);
+		} else {
+			// TODO 
+			// Update the similarity of twitter
+			updateSimilarity(id, profile.toString(), isSufficient);
+		}
 		return "Authorization success.";
 	}
 
@@ -132,11 +142,6 @@ public class TwitterService {
 	}
 
 	public void initialize(String id, boolean auth) {
-		if (idealService.getIdealById(id) != null) {
-			// Ideal and Player already exist
-			return;
-		}
-		
 		logger.info(">>>Initializing the character");
 		String characterName = userService.getUserById(id).getUsername();
 		Ideal ideal = new Ideal(id);
@@ -147,5 +152,22 @@ public class TwitterService {
 
 		idealService.addIdeal(ideal);
 		playerService.addPlayer(player);
+	}
+	
+	public void updateSimilarity(String id, String jsonResult, boolean isSufficient) {
+		logger.info(">>>Update the similarity");
+		
+		if (!isSufficient) {
+			return;
+		}
+		
+		Ideal ideal = idealService.getIdealById(id);
+		Player player = playerService.getPlayerById(id);
+		
+		System.out.println(player);
+		AnalysisResult analysisResult = new AnalysisResult();
+		analysisResult.setJsonObject(jsonResult);
+		analysisResult.generateFactor(ideal, player);
+		System.out.println(player);
 	}
 }
