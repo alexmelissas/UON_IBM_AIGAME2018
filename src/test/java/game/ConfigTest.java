@@ -1,6 +1,6 @@
 package game;
 
-import springboot.util.PlayerConfig;
+import springboot.config.PlayerConfig;
 
 public class ConfigTest {
 	public static void main(String[] args) {

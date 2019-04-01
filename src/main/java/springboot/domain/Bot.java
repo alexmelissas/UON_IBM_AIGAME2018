@@ -1,6 +1,6 @@
 package springboot.domain;
 
-import springboot.util.PlayerConfig;
+import springboot.config.PlayerConfig;
 
 /**
  * <p>

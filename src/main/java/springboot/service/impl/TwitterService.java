@@ -1,4 +1,4 @@
-package springboot.service;
+package springboot.service.impl;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,13 +10,16 @@ import org.springframework.stereotype.Service;
 
 import com.ibm.watson.developer_cloud.personality_insights.v3.model.Profile;
 
+import springboot.config.AuthConfig;
+import springboot.config.PlayerConfig;
 import springboot.domain.Ideal;
 import springboot.domain.Player;
 import springboot.domain.User;
+import springboot.service.IdealService;
+import springboot.service.PlayerService;
+import springboot.service.UserService;
 import springboot.util.AnalysisResult;
-import springboot.util.AuthConfig;
 import springboot.util.ContentLoader;
-import springboot.util.PlayerConfig;
 import twitter4j.Paging;
 import twitter4j.Status;
 import twitter4j.Twitter;
@@ -65,7 +68,7 @@ public class TwitterService {
 	public String reAnalysisTweets(String id) {
 		// TODO call this function to check twitter again
 		
-		logger.info(">>>Re-Analysis tweets");
+		logger.info(">>>Re-Analysis tweets of [id:{}]", id);
 		User user = userService.getUserById(id);
 		AccessToken accessToken = new AccessToken(user.getAccessToken(), user.getAccessTokenSecret());
 		Twitter twitter = AuthConfig.getTwitter();
@@ -164,10 +167,8 @@ public class TwitterService {
 		Ideal ideal = idealService.getIdealById(id);
 		Player player = playerService.getPlayerById(id);
 		
-		System.out.println(player);
 		AnalysisResult analysisResult = new AnalysisResult();
 		analysisResult.setJsonObject(jsonResult);
 		analysisResult.generateFactor(ideal, player);
-		System.out.println(player);
 	}
 }

@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import springboot.service.TwitterService;
+import springboot.service.impl.TwitterService;
 import twitter4j.Twitter;
 import twitter4j.auth.RequestToken;
 

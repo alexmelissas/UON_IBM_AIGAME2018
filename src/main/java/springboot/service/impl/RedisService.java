@@ -1,4 +1,4 @@
-package springboot.service;
+package springboot.service.impl;
 
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;

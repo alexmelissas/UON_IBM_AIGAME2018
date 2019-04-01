@@ -12,10 +12,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
+import springboot.config.AuthConfig;
 import springboot.domain.User;
-import springboot.service.TwitterService;
 import springboot.service.UserService;
-import springboot.util.AuthConfig;
+import springboot.service.impl.TwitterService;
 import twitter4j.Twitter;
 import twitter4j.TwitterException;
 import twitter4j.auth.RequestToken;

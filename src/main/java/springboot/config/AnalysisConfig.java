@@ -1,4 +1,4 @@
-package springboot.util;
+package springboot.config;
 
 public class AnalysisConfig {
 	/*

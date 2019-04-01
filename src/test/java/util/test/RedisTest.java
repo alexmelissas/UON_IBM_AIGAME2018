@@ -12,7 +12,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
-import springboot.util.RedisConfig;
+import springboot.config.RedisConfig;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = { RedisConfig.class })

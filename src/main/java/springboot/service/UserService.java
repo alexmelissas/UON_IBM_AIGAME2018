@@ -1,74 +1,19 @@
 package springboot.service;
 
-import java.util.Optional;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
 import springboot.domain.User;
-import springboot.domain.UserRepository;
 
-@Service("userService")
-public class UserService {
-	@Autowired
-	private UserRepository userRepository;
-	private static Logger logger = LoggerFactory.getLogger(UserService.class);
+public interface UserService {
+	public void addUser(User user);
 
-	public void addUser(User user) {
-		userRepository.save(user);
-		logger.info(">>>Create new user [id:{}, username:{}]", user.getId(), user.getUsername());
-	}
+	public User getUserById(String id);
 
-	public User getUserById(String id) {
-		User user = null;
-		Optional<User> refUser = userRepository.findById(id);
-		if (refUser.isPresent()) {
-			user = refUser.get();
-		}
-		return user;
-	}
+	public Iterable<User> getAllUsers();
 
-	public Iterable<User> getAllUsers() {
-		return userRepository.findAll();
-	}
+	public void deleteUserById(String id);
 
-	public void deleteUserById(String id) {
-		userRepository.deleteById(id);
-	}
+	public void updateUser(String id, User newUser);
 
-	public void updateUser(String id, User newUser) {
-		userRepository.findById(id).map(user -> {
-			user.setUsername(newUser.getUsername());
-			user.setPassword(newUser.getPassword());
+	public boolean isExist(String username);
 
-			// Use to store the authorization information after create account
-			// Modification of username/password do not need to contains token info
-			if (newUser.getAccessToken() != null && newUser.getAccessTokenSecret() != null) {
-				user.setAccessToken(newUser.getAccessToken());
-				user.setAccessTokenSecret(newUser.getAccessTokenSecret());
-			}
-			logger.info(">>>Update user information [id:{}, username:{}]", user.getId(), user.getUsername());
-			return userRepository.save(user);
-		});
-	}
-
-	public boolean isExist(String username) {
-		return userRepository.existsByUsername(username);
-	}
-
-	public User login(User loginUser) {
-		Optional<User> refUser = userRepository.findByUsername(loginUser.getUsername());
-		User user = null;
-		if (!refUser.isPresent()) {
-		} else {
-			user = refUser.get();
-			if (!user.getPassword().equals(loginUser.getPassword())) {
-				user = null;
-			}
-		}
-		logger.info(">>>User has logged in [id:{}, username:{}]", user.getId(), user.getUsername());
-		return user;
-	}
+	public User login(User loginUser);
 }

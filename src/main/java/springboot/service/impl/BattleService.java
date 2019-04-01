@@ -1,4 +1,4 @@
-package springboot.service;
+package springboot.service.impl;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 
 import springboot.domain.Bot;
 import springboot.domain.Player;
+import springboot.service.PlayerService;
 
 @Service("battleService")
 public class BattleService {

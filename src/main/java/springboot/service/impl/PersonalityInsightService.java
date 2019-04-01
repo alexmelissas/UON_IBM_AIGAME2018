@@ -1,4 +1,4 @@
-package springboot.service;
+package springboot.service.impl;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -12,7 +12,7 @@ import com.ibm.watson.developer_cloud.personality_insights.v3.model.ProfileOptio
 import com.ibm.watson.developer_cloud.service.exception.BadRequestException;
 import com.ibm.watson.developer_cloud.service.security.IamOptions;
 
-import springboot.util.AnalysisConfig;
+import springboot.config.AnalysisConfig;
 import springboot.util.ContentLoader;
 
 @Service("piService")

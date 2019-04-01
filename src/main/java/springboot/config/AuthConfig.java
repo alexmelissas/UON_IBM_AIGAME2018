@@ -1,4 +1,4 @@
-package springboot.util;
+package springboot.config;
 
 import twitter4j.Twitter;
 import twitter4j.TwitterFactory;

@@ -2,10 +2,10 @@ package game;
 
 import com.ibm.watson.developer_cloud.personality_insights.v3.model.Profile;
 
+import springboot.config.PlayerConfig;
 import springboot.domain.Ideal;
 import springboot.domain.Player;
 import springboot.util.AnalysisResult;
-import springboot.util.PlayerConfig;
 
 public class CharacterTest {
 	public static void main(String[] args) {

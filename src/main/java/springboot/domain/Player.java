@@ -6,7 +6,7 @@ import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 
-import springboot.util.PlayerConfig;
+import springboot.config.PlayerConfig;
 
 /**
  * <p>
