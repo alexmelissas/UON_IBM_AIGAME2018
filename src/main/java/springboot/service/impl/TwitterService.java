@@ -66,8 +66,6 @@ public class TwitterService {
 
 	// Reanalysis tweets
 	public String reAnalysisTweets(String id) {
-		// TODO call this function to check twitter again
-		
 		logger.info(">>>Re-Analysis tweets of [id:{}]", id);
 		User user = userService.getUserById(id);
 		AccessToken accessToken = new AccessToken(user.getAccessToken(), user.getAccessTokenSecret());
@@ -130,7 +128,6 @@ public class TwitterService {
 		if (idealService.getIdealById(id) == null) {
 			initialize(id, true);
 		} else {
-			// TODO 
 			// Update the similarity of twitter
 			updateSimilarity(id, profile.toString(), isSufficient);
 		}
@@ -156,17 +153,17 @@ public class TwitterService {
 		idealService.addIdeal(ideal);
 		playerService.addPlayer(player);
 	}
-	
+
 	public void updateSimilarity(String id, String jsonResult, boolean isSufficient) {
 		logger.info(">>>Update the similarity");
-		
+
 		if (!isSufficient) {
 			return;
 		}
-		
+
 		Ideal ideal = idealService.getIdealById(id);
 		Player player = playerService.getPlayerById(id);
-		
+
 		AnalysisResult analysisResult = new AnalysisResult();
 		analysisResult.setJsonObject(jsonResult);
 		analysisResult.generateFactor(ideal, player);

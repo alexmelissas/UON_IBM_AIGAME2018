@@ -119,4 +119,9 @@ public class PlayerServiceImpl implements PlayerService {
 		playerRepository.deleteById(id);
 
 	}
+	
+	@Override
+	public boolean isExist(String id) {
+		return playerRepository.existsById(id);
+	}
 }

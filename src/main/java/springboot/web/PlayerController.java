@@ -1,5 +1,11 @@
 package springboot.web;
 
+import java.io.IOException;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +24,7 @@ public class PlayerController {
 	@Autowired
 	private PlayerService playerService;
 	private static Logger logger = LoggerFactory.getLogger(PlayerController.class);
-	
+
 	@GetMapping("/players")
 	public Iterable<Player> getPlayers() {
 		return playerService.getPlayers();
@@ -33,7 +39,15 @@ public class PlayerController {
 	}
 
 	@GetMapping("/players/{id}")
-	public @ResponseBody Player getPlayerById(@PathVariable String id) {
+	public @ResponseBody Player getPlayerById(HttpServletRequest request, HttpServletResponse response,
+			@PathVariable String id) {
+		if (!playerService.isExist(id)) {
+			try {
+				request.getRequestDispatcher("/404").forward(request, response);
+			} catch (ServletException | IOException e) {
+				e.printStackTrace();
+			}
+		}
 		Player player = playerService.getPlayerById(id);
 		return player;
 	}

@@ -21,4 +21,6 @@ public interface PlayerService {
 	public void update(String id, Player newPlayer);
 
 	public void deletePlayerById(String id);
+
+	boolean isExist(String id);
 }

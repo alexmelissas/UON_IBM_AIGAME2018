@@ -56,5 +56,4 @@ public class PersonalityInsightService {
 		// result profile in JSON
 		return profile;
 	}
-	
 }

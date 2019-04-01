@@ -77,8 +77,7 @@ public class AuthController {
 
 	public boolean checkUser(HttpServletRequest request, HttpServletResponse response, String id) {
 		// check the user
-		User user = userService.getUserById(id);
-		if (user == null) {
+		if (!userService.isExistById(id)) {
 			try {
 				request.getRequestDispatcher("/404").forward(request, response);
 			} catch (Exception e) {

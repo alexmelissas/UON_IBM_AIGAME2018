@@ -115,4 +115,8 @@ public class BattleService {
 		bot.applyPersonality();
 		return bot;
 	}
+	
+	public boolean isExist(String id) {
+		return playerService.isExist(id);
+	}
 }

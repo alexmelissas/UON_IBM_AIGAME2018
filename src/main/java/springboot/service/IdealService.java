@@ -14,4 +14,6 @@ public interface IdealService {
 	public void deleteIdealById(String id);
 
 	public void initialPlayer(String id, Ideal ideal);
+
+	boolean isExist(String id);
 }

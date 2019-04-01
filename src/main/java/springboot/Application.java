@@ -24,6 +24,7 @@ public class Application {
         return new WebServerFactoryCustomizer<ConfigurableWebServerFactory>() {
             @Override
             public void customize(ConfigurableWebServerFactory factory) {
+            	factory.addErrorPages(new ErrorPage(HttpStatus.METHOD_NOT_ALLOWED, "/404"));
                 factory.addErrorPages(new ErrorPage(HttpStatus.NOT_FOUND, "/404"));
                 factory.addErrorPages(new ErrorPage(HttpStatus.INTERNAL_SERVER_ERROR, "/500"));
             }

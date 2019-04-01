@@ -16,4 +16,6 @@ public interface UserService {
 	public boolean isExist(String username);
 
 	public User login(User loginUser);
+
+	boolean isExistById(String id);
 }

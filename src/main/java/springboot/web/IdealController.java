@@ -28,7 +28,7 @@ public class IdealController {
 		return idealService.getIdeals();
 	}
 
-	@GetMapping("/ideas/{id}")
+	@GetMapping("/ideals/{id}")
 	public boolean isExistIdeal(@PathVariable String id) {
 		return idealService.getIdealById(id) != null;
 	}
@@ -39,7 +39,6 @@ public class IdealController {
 		// UPDATE IDEAL PERSONALITY
 		// THIS METHOD WILL BE CALLED ONLY ONCE
 		
-		// TODO exception handle
 		newIdeal.setId(id);
 		// UPDATE IDEAL AND PLAYER
 		idealService.initialIdeal(id, newIdeal);

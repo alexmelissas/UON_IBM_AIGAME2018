@@ -97,4 +97,9 @@ public class IdealServiceImpl implements IdealService {
 
 		playerService.updatePlayer(id, player);
 	}
+	
+	@Override
+	public boolean isExist(String id) {
+		return idealRepository.existsById(id);
+	}
 }

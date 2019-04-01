@@ -1,5 +1,8 @@
 package springboot.web;
 
+import java.io.IOException;
+
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -23,16 +26,21 @@ public class AnalysisController {
 
 	// Authorization callback
 	@GetMapping("/tweets")
-	public String analysis(HttpServletRequest request, HttpServletResponse response) {
+	public String analysis(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		logger.info("======Analysis Tweets======");
 		// Get the tweets of user
-		// TODO 404 page
-		String id = (String) request.getSession().getAttribute("id");
-		Twitter twitter = (Twitter) request.getSession().getAttribute("twitter");
-		RequestToken requestToken = (RequestToken) request.getSession().getAttribute("requestToken");
-		String verifier = request.getParameter("oauth_verifier");
+		String result = null;
+		try {
+			String id = (String) request.getSession().getAttribute("id");
+			Twitter twitter = (Twitter) request.getSession().getAttribute("twitter");
+			RequestToken requestToken = (RequestToken) request.getSession().getAttribute("requestToken");
+			String verifier = request.getParameter("oauth_verifier");
 
-		String result = twitterService.analysisTweets(id, twitter, verifier, requestToken);
+			result = twitterService.analysisTweets(id, twitter, verifier, requestToken);
+		} catch (RuntimeException e) {
+			request.getRequestDispatcher("/404").forward(request, response);
+		}
+
 		logger.info("======Analysis Tweets End======");
 		logger.info("======Authorization End======");
 		return result;

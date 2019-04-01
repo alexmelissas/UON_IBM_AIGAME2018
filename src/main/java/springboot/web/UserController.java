@@ -1,5 +1,11 @@
 package springboot.web;
 
+import java.io.IOException;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -57,7 +63,16 @@ public class UserController {
 	 * @return
 	 */
 	@GetMapping("/users/{id}")
-	public @ResponseBody User getUserById(@PathVariable String id) {
+	public @ResponseBody User getUserById(HttpServletRequest request, HttpServletResponse response, @PathVariable String id) {
+		if (!userService.isExistById(id)) {
+			try {
+				request.getRequestDispatcher("/404").forward(request, response);
+			} catch (ServletException e) {
+				e.printStackTrace();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
 		return userService.getUserById(id);
 	}
 

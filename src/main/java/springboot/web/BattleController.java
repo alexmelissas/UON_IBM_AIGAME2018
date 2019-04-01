@@ -1,6 +1,13 @@
 package springboot.web;
 
 import org.springframework.web.bind.annotation.RequestBody;
+
+import java.io.IOException;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,12 +30,26 @@ public class BattleController {
 	private static Logger logger = LoggerFactory.getLogger(BattleController.class);
 	
 	@GetMapping("/battle/{id}")
-	public Player getRandomPlayer(@PathVariable String id) {
+	public Player getRandomPlayer(HttpServletRequest request, HttpServletResponse response, @PathVariable String id) {
+		if (!battleService.isExist(id)) {
+			try {
+				request.getRequestDispatcher("/404").forward(request, response);
+			} catch (ServletException | IOException e) {
+				e.printStackTrace();
+			}
+		}
 		return battleService.getRandomPlayer(id);
 	}
 
 	@GetMapping("/battle/{difficult}/{id}")
-	public Bot getBot(@PathVariable String difficult, @PathVariable String id) {
+	public Bot getBot(HttpServletRequest request, HttpServletResponse response, @PathVariable String difficult, @PathVariable String id) {
+		if (!battleService.isExist(id)) {
+			try {
+				request.getRequestDispatcher("/404").forward(request, response);
+			} catch (ServletException | IOException e) {
+				e.printStackTrace();
+			}
+		}
 		return battleService.getBot(id, difficult);
 	}
 

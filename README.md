@@ -30,6 +30,10 @@
 - [x] API to upgrade items
 - [x] Handle result of battle and update data
 - [x] Additional experience after battle
+- [ ] Java doc
+- [ ] Hash algorithm
+- [ ] Https
+- [ ] Encryption/Firewall/VPN
 - TBC
 
 **API reference**
