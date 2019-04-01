@@ -28,8 +28,6 @@ public class AuthController {
 	private TwitterService twitterService;
 	private static Logger logger = LoggerFactory.getLogger(AuthController.class);
 	
-	// TODO furthur auth or unauth
-	
 	@GetMapping("/auth/{id}")
 	protected void auth(HttpServletRequest request, HttpServletResponse response, @PathVariable String id)
 			throws IOException {

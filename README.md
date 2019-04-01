@@ -34,6 +34,10 @@
 - [ ] Hash algorithm
 - [ ] Https
 - [ ] Encryption/Firewall/VPN
+- [ ] Test case
+- [ ] level of items
+- [ ] auth/cancel auth
+- [ ] check auth/ideal after login  
 - TBC
 
 **API reference**

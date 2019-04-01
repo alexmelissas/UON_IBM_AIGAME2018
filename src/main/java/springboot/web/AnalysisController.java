@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import ch.qos.logback.core.net.SyslogOutputStream;
 import springboot.service.impl.TwitterService;
 import twitter4j.Twitter;
 import twitter4j.auth.RequestToken;
@@ -26,23 +27,27 @@ public class AnalysisController {
 
 	// Authorization callback
 	@GetMapping("/tweets")
-	public String analysis(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public String analysis(HttpServletRequest request, HttpServletResponse response) {
 		logger.info("======Analysis Tweets======");
 		// Get the tweets of user
 		String result = null;
-		try {
-			String id = (String) request.getSession().getAttribute("id");
+		String id = (String) request.getSession().getAttribute("id");
+		if (id == null) {
+			try {
+				request.getRequestDispatcher("/404").forward(request, response);
+			} catch (ServletException | IOException e) {
+				e.printStackTrace();
+			}
+			logger.info("======Analysis Tweets End======");
+		} else {
 			Twitter twitter = (Twitter) request.getSession().getAttribute("twitter");
 			RequestToken requestToken = (RequestToken) request.getSession().getAttribute("requestToken");
 			String verifier = request.getParameter("oauth_verifier");
-
 			result = twitterService.analysisTweets(id, twitter, verifier, requestToken);
-		} catch (RuntimeException e) {
-			request.getRequestDispatcher("/404").forward(request, response);
+			logger.info("======Analysis Tweets End======");
+			logger.info("======Authorization End======");
 		}
 
-		logger.info("======Analysis Tweets End======");
-		logger.info("======Authorization End======");
 		return result;
 	}
 

@@ -18,8 +18,6 @@ public interface PlayerService {
 
 	public void updatePlayer(String id, Player newPlayer);
 
-	public void update(String id, Player newPlayer);
-
 	public void deletePlayerById(String id);
 
 	boolean isExist(String id);

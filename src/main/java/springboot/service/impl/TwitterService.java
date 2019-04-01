@@ -156,16 +156,21 @@ public class TwitterService {
 
 	public void updateSimilarity(String id, String jsonResult, boolean isSufficient) {
 		logger.info(">>>Update the similarity");
-
-		if (!isSufficient) {
-			return;
-		}
-
-		Ideal ideal = idealService.getIdealById(id);
-		Player player = playerService.getPlayerById(id);
-
 		AnalysisResult analysisResult = new AnalysisResult();
 		analysisResult.setJsonObject(jsonResult);
-		analysisResult.generateFactor(ideal, player);
+		Ideal ideal = idealService.getIdealById(id);
+		Player player = playerService.getPlayerById(id);
+		System.out.println(player);
+		
+		player.setAttributes(PlayerConfig.getBasicStatus(player.level));
+		if (!isSufficient) {
+			analysisResult.generateNormalFactor(player);
+		} else {
+			analysisResult.generateFactor(ideal, player);
+		}
+		
+		player.applyPersonality();
+		playerService.updatePlayer(id, player);
+		System.out.println(player);
 	}
 }

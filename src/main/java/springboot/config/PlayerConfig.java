@@ -67,7 +67,6 @@ public class PlayerConfig {
 		c = 10;
 		criticalStrike = (int) (a * x * x + b * x + c);		
 		
-		// TODO actual attack * 1.5
 		int[] array = {hp, attack, defence, agility, criticalStrike};
 		return array;
 	}

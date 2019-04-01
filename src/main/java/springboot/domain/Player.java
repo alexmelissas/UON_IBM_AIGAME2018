@@ -66,13 +66,6 @@ public class Player extends BasicCharacter {
 	public Player() {
 	}
 
-	// TODO Update function which update the status of player
-	// Constructor to generate the level 1 player
-	// Level up function
-	// QUESTION - How to calculate the value after own items??? --- further
-	// discussion
-	// WHAT IS THE STRUCTURE OF INVENTORY?
-
 	/**
 	 * Constructor
 	 * 

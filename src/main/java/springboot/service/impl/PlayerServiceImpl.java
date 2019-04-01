@@ -103,15 +103,14 @@ public class PlayerServiceImpl implements PlayerService {
 				player.setSword(newPlayer.getSword());
 				logger.info(">>>Update items of [player:{}]", player);
 			}
+			
+			if (newPlayer.getFactor() != player.getFactor()) {
+				player.setFactor(newPlayer.getFactor());
+				logger.info(">>>Update factor of [player:{}]", player);
+			}
 
 			return playerRepository.save(player);
 		});
-	}
-
-	// TODO update factor
-	@Override
-	public void update(String id, Player newPlayer) {
-
 	}
 
 	@Override

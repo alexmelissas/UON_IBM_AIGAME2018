@@ -26,7 +26,7 @@ public class UserController {
 	@Autowired
 	private UserService userService;
 	private static Logger logger = LoggerFactory.getLogger(UserController.class);
-	
+
 	/**
 	 * Get all the users
 	 * 
@@ -34,8 +34,6 @@ public class UserController {
 	 */
 	@GetMapping("/users")
 	public @ResponseBody Iterable<User> getAllUsers() {
-		// TODO safety of access
-		// Maybe unnecessary
 		return userService.getAllUsers();
 	}
 
@@ -63,13 +61,12 @@ public class UserController {
 	 * @return
 	 */
 	@GetMapping("/users/{id}")
-	public @ResponseBody User getUserById(HttpServletRequest request, HttpServletResponse response, @PathVariable String id) {
+	public @ResponseBody User getUserById(HttpServletRequest request, HttpServletResponse response,
+			@PathVariable String id) {
 		if (!userService.isExistById(id)) {
 			try {
 				request.getRequestDispatcher("/404").forward(request, response);
-			} catch (ServletException e) {
-				e.printStackTrace();
-			} catch (IOException e) {
+			} catch (ServletException | IOException e) {
 				e.printStackTrace();
 			}
 		}
@@ -116,7 +113,6 @@ public class UserController {
 	 */
 	@PostMapping("/users/login")
 	public User login(@RequestBody User user) {
-		// TODO check auth => check ideal => check player => check username & password
 		logger.info("======User Login======");
 		User result = userService.login(user);
 		logger.info("======User Login End======");
