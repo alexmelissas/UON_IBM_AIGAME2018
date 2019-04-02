@@ -1,5 +1,8 @@
 package springboot.service.impl;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -20,28 +23,28 @@ public class PersonalityInsightService {
 	private AnalysisConfig config = new AnalysisConfig();
 	private PersonalityInsights personalityInsights;
 	private Content content;
-	private static Logger logger = LoggerFactory.getLogger(PersonalityInsightService.class); 
-	
+	private static Logger logger = LoggerFactory.getLogger(PersonalityInsightService.class);
+
 	public PersonalityInsightService() {
 		/*
-		 * authentication
-		 * token-based Identity and Access Management(IAM) 
+		 * authentication token-based Identity and Access Management(IAM)
 		 */
 		IamOptions options = new IamOptions.Builder().apiKey(config.getApiKey()).build();
 		personalityInsights = new PersonalityInsights(config.getVersion(), options);
+		// Prevent the IBM to store the data for the request
+		Map<String, String> headers = new HashMap<String, String>();
+		headers.put("X-Watson-Learning-Opt-Out", "true");
+		personalityInsights.setDefaultHeaders(headers);
 		personalityInsights.setEndPoint(config.getUrl());
 	}
-	
+
 	public Profile analysis(ContentLoader contentLoader) {
 		// Load content from ContentLoader
 		ContentItem contentItem = new ContentItem.Builder().content(contentLoader.getInput()).build();
 		content = new Content.Builder().addContentItem(contentItem).build();
-		
-		ProfileOptions profileOptions = new ProfileOptions.Builder()
-															.content(content)
-															.consumptionPreferences(true)
-															.rawScores(true)
-															.build();
+
+		ProfileOptions profileOptions = new ProfileOptions.Builder().content(content).consumptionPreferences(true)
+				.rawScores(true).build();
 		Profile profile;
 		try {
 			profile = personalityInsights.profile(profileOptions).execute();
@@ -52,7 +55,7 @@ public class PersonalityInsightService {
 			logger.info(">>>Insufficient word count");
 			return profile;
 		}
-		
+
 		// result profile in JSON
 		return profile;
 	}

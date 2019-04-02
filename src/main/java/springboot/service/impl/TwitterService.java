@@ -160,7 +160,6 @@ public class TwitterService {
 		analysisResult.setJsonObject(jsonResult);
 		Ideal ideal = idealService.getIdealById(id);
 		Player player = playerService.getPlayerById(id);
-		System.out.println(player);
 		
 		player.setAttributes(PlayerConfig.getBasicStatus(player.level));
 		if (!isSufficient) {
@@ -171,6 +170,5 @@ public class TwitterService {
 		
 		player.applyPersonality();
 		playerService.updatePlayer(id, player);
-		System.out.println(player);
 	}
 }

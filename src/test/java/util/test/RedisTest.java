@@ -10,40 +10,54 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import redis.clients.jedis.Jedis;
-import redis.clients.jedis.JedisPool;
 import springboot.config.RedisConfig;
+import springboot.service.impl.RedisService;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = { RedisConfig.class })
+@ContextConfiguration(classes = { RedisConfig.class, RedisService.class})
 public class RedisTest {
 	private static Logger logger = LoggerFactory.getLogger(RedisTest.class);
 
 	@Autowired
-	private JedisPool jedisPool;
+	private RedisService redisService;
 
 	@Before
 	public void setup() {
 		String id = "fake_id";
 		String jsonResult = "Just for test";
-		Jedis jedis = jedisPool.getResource();
-		jedis.set(id, jsonResult);
+		redisService.setResult(id, jsonResult);
 	}
 
 	@Test
 	public void get() throws InterruptedException {
 		String id = "fake_id";
-		Jedis jedis = jedisPool.getResource();
-		String jsonResult = jedis.get("fake_id");
+		String jsonResult = redisService.getResult(id);
 		logger.info("======Result====== id:{}, result:{}", id, jsonResult);
+	}
+	
+	@Test
+	public void countTest() {
+		String id = "123";
+		System.out.println(">>>" + redisService.getBattleCount(id));
+		id = "test_id";
+		System.out.println(">>>" + redisService.getBattleCount(id));
+		
+		id = "123";
+		redisService.addBattleCount(id);
+		System.out.println(">>>" + redisService.getBattleCount(id));
+		id = "test_id";
+		redisService.addBattleCount(id);
+		System.out.println(">>>" + redisService.getBattleCount(id));
+		id = "1233";
+		redisService.addBattleCount(id);
+		System.out.println(">>>" + redisService.getBattleCount(id));
 	}
 
 	@After
 	public void delete() {
 		String id = "fake_id";
-		Jedis jedis = jedisPool.getResource();
-		jedis.del("fake_id");
-		String jsonResult = jedis.get("fake_id");
+		String jsonResult = redisService.getResult(id);
 		logger.info("======Result====== id:{}, result:{}", id, jsonResult);
 	}
 }
+

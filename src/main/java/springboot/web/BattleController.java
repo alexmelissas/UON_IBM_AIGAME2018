@@ -1,6 +1,7 @@
 package springboot.web;
 
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.io.IOException;
 
@@ -22,11 +23,14 @@ import com.google.gson.JsonParser;
 import springboot.domain.Bot;
 import springboot.domain.Player;
 import springboot.service.impl.BattleService;
+import springboot.service.impl.RedisService;
 
 @RestController
 public class BattleController {
 	@Autowired
 	private BattleService battleService;
+	@Autowired
+	private RedisService redisService;
 	private static Logger logger = LoggerFactory.getLogger(BattleController.class);
 	
 	@GetMapping("/battle/{id}")
@@ -51,6 +55,18 @@ public class BattleController {
 			}
 		}
 		return battleService.getBot(id, difficult);
+	}
+	
+	@GetMapping("/battle/count/{id}")
+	public @ResponseBody int getBattleCount(HttpServletRequest request, HttpServletResponse response, @PathVariable String id) {
+		if (!battleService.isExist(id)) {
+			try {
+				request.getRequestDispatcher("/404").forward(request, response);
+			} catch (ServletException | IOException e) {
+				e.printStackTrace();
+			}
+		}
+		return redisService.getBattleCount(id);
 	}
 
 	@PutMapping("/battle")

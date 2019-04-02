@@ -1,43 +1,60 @@
 package springboot.service.impl;
 
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.temporal.ChronoUnit;
+import java.util.Date;
+
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.google.gson.Gson;
-
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
-import twitter4j.Twitter;
 
 @Service("redisService")
 public class RedisService implements InitializingBean {
 	@Autowired
 	private JedisPool jedisPool;
 	private Jedis jedis;
-	
+
 	public void setResult(String id, String result) {
-		jedis.set("result_" + id, result, "NX", "EX", 30);
+		jedis.set("result_" + id, result, "NX", "EX", 60 * 10);
 	}
-	
+
 	public String getResult(String id) {
 		return jedis.get("result_" + id);
 	}
-	
-	public void setTwitter(String id, Twitter twitter) {
-		Gson gson = new Gson();
-		jedis.set("twitter_" + id, gson.toJson(twitter));
+
+	public void addBattleCount(String id) {
+		int count = this.getBattleCount(id);
+		if (count >= 10) {
+			return;
+		}
+		count++;
+		this.setBattleCount(id, count);
 	}
 	
-	public Twitter getTwitter(String id) {
-		Gson gson = new Gson();
-		return gson.fromJson(jedis.get("twitter_" + id), Twitter.class);
+	public void setBattleCount(String id, int count) {
+		String str = Integer.toString(count);
+		jedis.set("count_" + id, str);
+		Date currentDate = new Date();
+		LocalDateTime midnight = LocalDateTime.ofInstant(currentDate.toInstant(), ZoneId.systemDefault()).plusDays(1)
+				.withHour(0).withMinute(0).withSecond(0).withNano(0);
+		LocalDateTime currentDateTime = LocalDateTime.ofInstant(currentDate.toInstant(), ZoneId.systemDefault());
+		long seconds = ChronoUnit.SECONDS.between(currentDateTime, midnight);
+		jedis.expire("count_" + id, (int) seconds);
 	}
-	
-	public void delTwitter(String id) {
-		jedis.del("twitter_" + id);
+
+	public int getBattleCount(String id) {
+		int count = 0;
+		if (jedis.exists("count_" + id)) {
+			String str = jedis.get("count_" + id);
+			count = Integer.parseInt(str);
+		}
+		return count;
 	}
-	
+
 	@Override
 	public void afterPropertiesSet() throws Exception {
 		this.jedis = jedisPool.getResource();
