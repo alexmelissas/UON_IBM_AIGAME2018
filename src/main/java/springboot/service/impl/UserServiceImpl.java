@@ -59,6 +59,17 @@ public class UserServiceImpl implements UserService {
 			return userRepository.save(user);
 		});
 	}
+	
+	@Override
+	public void deleteToken(String id) {
+		userRepository.findById(id).map(user -> {
+			user.setAccessToken(null);
+			user.setAccessTokenSecret(null);
+			logger.info(">>>Delete the token");
+			
+			return userRepository.save(user);
+		});
+	}
 
 	@Override
 	public boolean isExist(String username) {

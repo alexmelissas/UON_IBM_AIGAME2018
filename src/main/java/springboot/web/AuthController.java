@@ -79,9 +79,7 @@ public class AuthController {
 			return;
 		}
 		logger.info("======Cancel Authorization======");
-
-		// TODO
-
+		twitterService.cancelAuth(id);
 		logger.info("======Cancel Authorization End======");
 	}
 }

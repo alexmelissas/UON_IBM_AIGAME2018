@@ -161,6 +161,10 @@ public class TwitterService {
 		Ideal ideal = idealService.getIdealById(id);
 		Player player = playerService.getPlayerById(id);
 		
+		if (!ideal.isAuth()) {
+			idealService.reAuth(ideal.getId());
+		}
+		
 		player.setAttributes(PlayerConfig.getBasicStatus(player.level));
 		if (!isSufficient) {
 			analysisResult.generateNormalFactor(player);
@@ -168,6 +172,19 @@ public class TwitterService {
 			analysisResult.generateFactor(ideal, player);
 		}
 		
+		player.applyPersonality();
+		playerService.updatePlayer(id, player);
+	}
+
+	public void cancelAuth(String id) {
+		logger.info(">>>Unlink the Twitter");
+		// factor
+		// ideal
+		Player player = playerService.getPlayerById(id);
+		userService.deleteToken(id);
+		idealService.unAuth(id);
+		player.setAttributes(PlayerConfig.getBasicStatus(player.level));
+		player.setFactor(1);
 		player.applyPersonality();
 		playerService.updatePlayer(id, player);
 	}

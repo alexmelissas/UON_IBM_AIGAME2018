@@ -17,5 +17,7 @@ public interface UserService {
 
 	public User login(User loginUser);
 
-	boolean isExistById(String id);
+	public boolean isExistById(String id);
+
+	public void deleteToken(String id);
 }

@@ -15,5 +15,9 @@ public interface IdealService {
 
 	public void initialPlayer(String id, Ideal ideal);
 
-	boolean isExist(String id);
+	public boolean isExist(String id);
+
+	public void unAuth(String id);
+
+	public void reAuth(String id);
 }

@@ -102,4 +102,24 @@ public class IdealServiceImpl implements IdealService {
 	public boolean isExist(String id) {
 		return idealRepository.existsById(id);
 	}
+	
+	@Override
+	public void unAuth(String id) {
+		idealRepository.findById(id).map(ideal -> {
+			ideal.setAuth(false);
+			logger.info(">>>Set the ideal as unauthorized");
+			
+			return idealRepository.save(ideal);
+		});
+	}
+	
+	@Override
+	public void reAuth(String id) {
+		idealRepository.findById(id).map(ideal -> {
+			ideal.setAuth(true);
+			logger.info(">>>Set the ideal as authorized");
+			
+			return idealRepository.save(ideal);
+		});
+	}
 }
