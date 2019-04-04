@@ -81,7 +81,12 @@ public class UserServiceImpl implements UserService {
 				user = null;
 			}
 		}
-		logger.info(">>>User has logged in [id:{}, username:{}]", user.getId(), user.getUsername());
+		
+		if (user != null) {
+			logger.info(">>>User has logged in [id:{}, username:{}]", user.getId(), user.getUsername());
+		} else {
+			logger.info(">>>User login failed");
+		}
 		return user;
 	}
 }

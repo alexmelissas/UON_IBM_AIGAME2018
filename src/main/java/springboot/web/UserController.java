@@ -1,11 +1,5 @@
 package springboot.web;
 
-import java.io.IOException;
-
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -61,16 +55,9 @@ public class UserController {
 	 * @return
 	 */
 	@GetMapping("/users/{id}")
-	public @ResponseBody User getUserById(HttpServletRequest request, HttpServletResponse response,
-			@PathVariable String id) {
-		if (!userService.isExistById(id)) {
-			try {
-				request.getRequestDispatcher("/404").forward(request, response);
-			} catch (ServletException | IOException e) {
-				e.printStackTrace();
-			}
-		}
-		return userService.getUserById(id);
+	public @ResponseBody User getUserById(@PathVariable String id) {
+		User user = userService.getUserById(id);
+		return user;
 	}
 
 	/**
@@ -82,6 +69,9 @@ public class UserController {
 	 */
 	@PutMapping("/users/{id}")
 	public @ResponseBody String updateUser(@PathVariable String id, @RequestBody User user) {
+		if (!userService.isExistById(id)) {
+			return "Failed";
+		}
 		User previousUser = userService.getUserById(id);
 		// check if modified username is exist
 		if (userService.isExist(user.getUsername()) && !previousUser.getUsername().equals(user.getUsername())) {
@@ -102,6 +92,7 @@ public class UserController {
 	@DeleteMapping("/users/{id}")
 	public @ResponseBody String deleteUser(@PathVariable String id) {
 		userService.deleteUserById(id);
+		// TODO delete players & ideals
 		return "Deleted";
 	}
 

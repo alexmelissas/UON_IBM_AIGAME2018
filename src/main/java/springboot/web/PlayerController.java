@@ -1,11 +1,5 @@
 package springboot.web;
 
-import java.io.IOException;
-
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,26 +26,22 @@ public class PlayerController {
 
 	@PutMapping("/players/{id}")
 	public String updatePlayer(@PathVariable String id, @RequestBody Player player) {
-		logger.info("======Update User======");
+		if (!playerService.isExist(id)) {
+			return "Failed";
+		}
+		logger.info("======Update Player======");
 		playerService.updatePlayer(id, player);
-		logger.info("======Update User End======");
+		logger.info("======Update Player End======");
 		return "Updated";
 	}
 
 	@GetMapping("/players/{id}")
-	public @ResponseBody Player getPlayerById(HttpServletRequest request, HttpServletResponse response,
-			@PathVariable String id) {
-		if (!playerService.isExist(id)) {
-			try {
-				request.getRequestDispatcher("/404").forward(request, response);
-			} catch (ServletException | IOException e) {
-				e.printStackTrace();
-			}
-		}
+	public @ResponseBody Player getPlayerById(@PathVariable String id) {
 		Player player = playerService.getPlayerById(id);
 		return player;
 	}
 
+	// TODO keep?
 	@GetMapping("/players/rank/{id}")
 	public int getPlayerRankById(@PathVariable String id) {
 		return playerService.getRankById(id);

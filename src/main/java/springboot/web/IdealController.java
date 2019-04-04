@@ -35,6 +35,9 @@ public class IdealController {
 
 	@PutMapping("/ideals/{id}")
 	public @ResponseBody Player initialIdeal(@PathVariable String id, @RequestBody Ideal newIdeal) {
+		if (!idealService.isExist(id)) {
+			return null;
+		}
 		logger.info("======Initialize Ideal======");
 		// UPDATE IDEAL PERSONALITY
 		// THIS METHOD WILL BE CALLED ONLY ONCE

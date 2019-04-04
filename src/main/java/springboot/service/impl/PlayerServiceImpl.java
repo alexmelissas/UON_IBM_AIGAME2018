@@ -92,7 +92,7 @@ public class PlayerServiceImpl implements PlayerService {
 				player.setDefense(newPlayer.getDefense());
 				player.setAgility(newPlayer.getAgility());
 				player.setCriticalStrike(newPlayer.getCriticalStrike());
-				logger.info(">>>Update statuses of [player:{}]", player);
+				logger.info(">>>Update the statuses of [player:{}]", player);
 			}
 
 			// update the items level
@@ -101,12 +101,12 @@ public class PlayerServiceImpl implements PlayerService {
 				player.setArmour(newPlayer.getArmour());
 				player.setShield(newPlayer.getShield());
 				player.setSword(newPlayer.getSword());
-				logger.info(">>>Update items of [player:{}]", player);
+				logger.info(">>>Update the items of [player:{}]", player);
 			}
 			
 			if (newPlayer.getFactor() != player.getFactor()) {
 				player.setFactor(newPlayer.getFactor());
-				logger.info(">>>Update factor of [player:{}]", player);
+				logger.info(">>>Update the factor of [player:{}]", player);
 			}
 
 			return playerRepository.save(player);

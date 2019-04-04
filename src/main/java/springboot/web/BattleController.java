@@ -80,7 +80,9 @@ public class BattleController {
 		int additionalExp = jsonObject.get("additionalExp").getAsInt();
 		int additionalMoney = jsonObject.get("additionalMoney").getAsInt();
 
-		Player player = battleService.handleResult(id1, id2, result, additionalExp, additionalMoney);		
+		Player player = battleService.handleResult(id1, id2, result, additionalExp, additionalMoney);
+		redisService.addBattleCount(id1);
+		logger.info(">>>Left number of battles: {}", 10 - redisService.getBattleCount(id1));
 		logger.info("======Battle Result End======");
 		return player;
 	}

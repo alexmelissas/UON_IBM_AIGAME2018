@@ -20,7 +20,7 @@
 	- compare the similarity
 	- generate the attributes
 - [x] Logger
-- [ ] Exception handle
+- [x] Exception handle
 - [ ] Safety of API (what attributes can be accessed?)
 	- Get the top five players (username, id)
 	- Check if the username is repeat

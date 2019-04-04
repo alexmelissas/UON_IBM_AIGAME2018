@@ -8,9 +8,9 @@ import javax.servlet.http.HttpServletResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RestController;
 
 import springboot.config.AuthConfig;
 import springboot.domain.User;
@@ -20,18 +20,18 @@ import twitter4j.Twitter;
 import twitter4j.TwitterException;
 import twitter4j.auth.RequestToken;
 
-@Controller
+@RestController
 public class AuthController {
 	@Autowired
 	private UserService userService;
 	@Autowired
 	private TwitterService twitterService;
 	private static Logger logger = LoggerFactory.getLogger(AuthController.class);
-	
+
 	@GetMapping("/auth/{id}")
 	protected void auth(HttpServletRequest request, HttpServletResponse response, @PathVariable String id)
 			throws IOException {
-		if (!checkUser(request, response, id)) {
+		if (!userService.isExistById(id)) {
 			return;
 		}
 
@@ -56,11 +56,11 @@ public class AuthController {
 	}
 
 	@GetMapping("/noauth/{id}")
-	public void noauth(HttpServletRequest request, HttpServletResponse response, @PathVariable String id) {
-		if (!checkUser(request, response, id)) {
+	public void noauth(@PathVariable String id) {
+		if (!userService.isExistById(id)) {
 			return;
 		}
-		
+
 		logger.info("======Without Authorization======");
 		User user = userService.getUserById(id);
 		if (user.getAccessToken() != null || user.getAccessTokenSecret() != null) {
@@ -68,21 +68,20 @@ public class AuthController {
 			user.setAccessTokenSecret(null);
 			userService.updateUser(id, user);
 		}
-		
+
 		twitterService.withoutTwitter(id);
 		logger.info("======Without Authorization End======");
 	}
 
-	public boolean checkUser(HttpServletRequest request, HttpServletResponse response, String id) {
-		// check the user
+	@GetMapping("/auth/cancel/{id}")
+	public void cancelAuth(@PathVariable String id) {
 		if (!userService.isExistById(id)) {
-			try {
-				request.getRequestDispatcher("/404").forward(request, response);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-			return false;
+			return;
 		}
-		return true;
+		logger.info("======Cancel Authorization======");
+
+		// TODO
+
+		logger.info("======Cancel Authorization End======");
 	}
 }
