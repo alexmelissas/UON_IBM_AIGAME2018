@@ -1,5 +1,7 @@
 package springboot.domain;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -11,14 +13,16 @@ import org.hibernate.validator.constraints.Length;
 
 /**
  * <p>
- * The User class represents the account of the user
+ * The User class represents the account of the user.
  * </p>
  * 
- * @author Yu Chen
+ * @author chenyu
  *
  */
 @Entity
-public class User {
+public class User implements Serializable{
+	private static final long serialVersionUID = -3379221727473467553L;
+
 	@Id
 	@GeneratedValue(generator = "uuid2")
 	@GenericGenerator(name = "uuid2", strategy = "org.hibernate.id.UUIDGenerator")

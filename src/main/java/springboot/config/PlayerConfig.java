@@ -1,13 +1,28 @@
 package springboot.config;
 
+/**
+ * <p>
+ * The PlayerConfig class is used to configure the experience and attributes of
+ * players for each level.
+ * </p>
+ * 
+ * @author chenyu
+ *
+ */
 public class PlayerConfig {
+	/**
+	 * Get the experience needed to next level
+	 * 
+	 * @param level the goal level
+	 * @return the experience needed
+	 */
 	public static int getLevelUpExperience(int level) {
 		// win = 20; lose = 5
 		// 1 - 5: 10 * level)
 		// 6 - 10: 15 * level)
 		// 11 - 20: 35 * level / 2)
 		// 21 - 30: 40 * level / 2)
-		
+
 		// 1 - 5: 0 - 0.5 days to level up
 		// 5 - 10: 0.5 -> 1 days to level up
 		// 11 - 20: 1 -> 1.5 days to level up
@@ -17,13 +32,13 @@ public class PlayerConfig {
 		double b = 15;
 		double c = 40;
 		int x = level;
-		if(x <= 5) {
-			
-		} else if(x <= 10) {
+		if (x <= 5) {
+
+		} else if (x <= 10) {
 			a = 1;
 			b = 10;
 			c = 20;
-		} else if(x <= 20) {
+		} else if (x <= 20) {
 			a = 0.7;
 			b = 10;
 			c = 30;
@@ -36,14 +51,19 @@ public class PlayerConfig {
 
 		return experience;
 	}
-	
-	// basic status
+
+	/**
+	 * Get the basic attributes of player according to the level
+	 * 
+	 * @param level the level of player
+	 * @return the array contains the basic value of attributes
+	 */
 	public static int[] getBasicStatus(int level) {
 		int hp = 0;
 		int attack = 0;
 		int defence = 0;
 		int agility = 0; // rate
-		int criticalStrike = 0; // rate 
+		int criticalStrike = 0; // rate
 
 		double a = 1.2;
 		double b = 1;
@@ -65,9 +85,9 @@ public class PlayerConfig {
 		a = 0.1;
 		b = 0.1;
 		c = 10;
-		criticalStrike = (int) (a * x * x + b * x + c);		
-		
-		int[] array = {hp, attack, defence, agility, criticalStrike};
+		criticalStrike = (int) (a * x * x + b * x + c);
+
+		int[] array = { hp, attack, defence, agility, criticalStrike };
 		return array;
 	}
 }

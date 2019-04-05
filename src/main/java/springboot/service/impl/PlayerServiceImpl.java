@@ -1,6 +1,7 @@
 package springboot.service.impl;
 
 import java.util.ArrayList;
+
 import java.util.List;
 import java.util.Optional;
 
@@ -15,23 +16,46 @@ import springboot.domain.Player;
 import springboot.repository.PlayerRepository;
 import springboot.service.PlayerService;
 
+/**
+ * <p>
+ * Implementation of {@link PlayerService}
+ * </p>
+ * 
+ * @author chenyu
+ *
+ */
 @Service("playerService")
 public class PlayerServiceImpl implements PlayerService {
 	@Autowired
 	private PlayerRepository playerRepository;
 	private static Logger logger = LoggerFactory.getLogger(PlayerServiceImpl.class);
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see springboot.service.PlayerService#addPlayer(springboot.domain.Player)
+	 */
 	@Override
 	public void addPlayer(Player player) {
 		playerRepository.save(player);
 		logger.info(">>>Create new player [player:{}]", player);
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see springboot.service.PlayerService#getPlayers()
+	 */
 	@Override
 	public Iterable<Player> getPlayers() {
 		return playerRepository.findAll();
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see springboot.service.PlayerService#getPlayerById(java.lang.String)
+	 */
 	@Override
 	public Player getPlayerById(String id) {
 		Player player = null;
@@ -43,6 +67,11 @@ public class PlayerServiceImpl implements PlayerService {
 		return player;
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see springboot.service.PlayerService#getTopPlayers()
+	 */
 	// TODO think about the rank
 	@Override
 	public List<Player> getTopPlayers() {
@@ -60,6 +89,11 @@ public class PlayerServiceImpl implements PlayerService {
 		return topPlayers;
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see springboot.service.PlayerService#getRankById(java.lang.String)
+	 */
 	@Override
 	public int getRankById(String id) {
 		Sort sort = new Sort(Direction.DESC, "score");
@@ -74,12 +108,22 @@ public class PlayerServiceImpl implements PlayerService {
 		return count;
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see springboot.service.PlayerService#getPlayersByLevel(int)
+	 */
 	@Override
 	public List<Player> getPlayersByLevel(int level) {
 		return playerRepository.findAllByLevel(level);
 	}
 
-	// update the player
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see springboot.service.PlayerService#updatePlayer(java.lang.String,
+	 * springboot.domain.Player)
+	 */
 	@Override
 	public void updatePlayer(String id, Player newPlayer) {
 		logger.info(">>>Update the player");
@@ -103,7 +147,7 @@ public class PlayerServiceImpl implements PlayerService {
 				player.setSword(newPlayer.getSword());
 				logger.info(">>>Update the items of [player:{}]", player);
 			}
-			
+
 			if (newPlayer.getFactor() != player.getFactor()) {
 				player.setFactor(newPlayer.getFactor());
 				logger.info(">>>Update the factor of [player:{}]", player);
@@ -113,12 +157,22 @@ public class PlayerServiceImpl implements PlayerService {
 		});
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see springboot.service.PlayerService#deletePlayerById(java.lang.String)
+	 */
 	@Override
 	public void deletePlayerById(String id) {
 		playerRepository.deleteById(id);
 
 	}
-	
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see springboot.service.PlayerService#isExist(java.lang.String)
+	 */
 	@Override
 	public boolean isExist(String id) {
 		return playerRepository.existsById(id);

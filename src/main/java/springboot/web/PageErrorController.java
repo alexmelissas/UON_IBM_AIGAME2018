@@ -9,6 +9,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+/**
+ * <p>
+ * The PageErrorController is used to handle error page.
+ * </p>
+ * 
+ * @author chenyu
+ *
+ */
 @RestController
 public class PageErrorController {
 	private static Logger logger = LoggerFactory.getLogger(PageErrorController.class);

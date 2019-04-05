@@ -1,19 +1,23 @@
 package springboot.domain;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
 /**
  * <p>
- * The Ideal class represents the ideal personality of the player
+ * The Ideal class represents the ideal personality of the player.
  * </p>
  * 
- * @author Yu Chen
+ * @author chenyu
  *
  */
 @Entity
-public class Ideal {
+public class Ideal implements Serializable{
+	private static final long serialVersionUID = -162671173711901751L;
+
 	@Id
 	@Column(name = "id", columnDefinition = "VARCHAR(36)")
 	private String id;

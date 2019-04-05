@@ -19,7 +19,6 @@ import springboot.service.IdealService;
 import springboot.service.PlayerService;
 import springboot.service.UserService;
 import springboot.util.AnalysisResult;
-import springboot.util.ContentLoader;
 import twitter4j.Paging;
 import twitter4j.Status;
 import twitter4j.Twitter;
@@ -27,6 +26,14 @@ import twitter4j.TwitterException;
 import twitter4j.auth.AccessToken;
 import twitter4j.auth.RequestToken;
 
+/**
+ * <p>
+ * The TwitterService provide authorization of Twitter and access of tweets
+ * </p>
+ * 
+ * @author chenyu
+ *
+ */
 @Service("twitterService")
 public class TwitterService {
 	@Autowired
@@ -41,7 +48,15 @@ public class TwitterService {
 	private RedisService redisService;
 	private static Logger logger = LoggerFactory.getLogger(TwitterService.class);
 
-	// Analysis tweets
+	/**
+	 * Analysis tweets
+	 * 
+	 * @param id           the id
+	 * @param twitter      the twitter
+	 * @param verifier     the verifier
+	 * @param requestToken the request token
+	 * @return
+	 */
 	public String analysisTweets(String id, Twitter twitter, String verifier, RequestToken requestToken) {
 		try {
 			logger.info(">>>User information [id:{}]", id);
@@ -64,7 +79,12 @@ public class TwitterService {
 		}
 	}
 
-	// Reanalysis tweets
+	/**
+	 * Reanalysis tweets
+	 * 
+	 * @param id the id
+	 * @return the result of analysis
+	 */
 	public String reAnalysisTweets(String id) {
 		logger.info(">>>Re-Analysis tweets of [id:{}]", id);
 		User user = userService.getUserById(id);
@@ -82,7 +102,14 @@ public class TwitterService {
 		}
 	}
 
-	// Load tweets and analysis them
+	/**
+	 * Load tweets and analysis them
+	 * 
+	 * @param id      the id
+	 * @param twitter the twitter
+	 * @return the result of analysis
+	 * @throws TwitterException exception
+	 */
 	public String loadTweets(String id, Twitter twitter) throws TwitterException {
 		logger.info(">>>Loading tweets from [name:{}]", twitter.getScreenName());
 		// Get all tweets
@@ -99,20 +126,25 @@ public class TwitterService {
 			pageno++;
 		}
 
-		// Add text into ContentLoader
-		ContentLoader contentLoader = new ContentLoader();
+		StringBuilder content = new StringBuilder();
 		for (Status status : statuses) {
-			contentLoader.addInput(status.getText());
+			content.append(status.getText());
 		}
 
 		// Analysis
-		return analysis(contentLoader, id);
+		return analysis(content, id);
 	}
 
-	// analysis
-	public String analysis(ContentLoader contentLoader, String id) {
+	/**
+	 * Analysis
+	 * 
+	 * @param content the analysis content
+	 * @param id      the id
+	 * @return the result of analysis
+	 */
+	public String analysis(StringBuilder content, String id) {
 		logger.info(">>>Analysis tweets");
-		Profile profile = piService.analysis(contentLoader);
+		Profile profile = piService.analysis(content);
 
 		boolean isSufficient = true;
 		if (profile.getWordCount() == null || profile.getWordCount() <= 100) {
@@ -134,13 +166,24 @@ public class TwitterService {
 		return "Authorization success.";
 	}
 
-	// without twitter
-	public String withoutTwitter(String id) {
+	/**
+	 * Without twitter
+	 * 
+	 * @param id the id
+	 * @return the result of
+	 */
+	public void withoutTwitter(String id) {
 		logger.info(">>>Initializing the character", id);
 		initialize(id, false);
-		return "Account creation succss.";
+
 	}
 
+	/**
+	 * Initialize the ideal and player for a new user
+	 * 
+	 * @param id   the id
+	 * @param auth whether the user has authorized with Twitter
+	 */
 	public void initialize(String id, boolean auth) {
 		logger.info(">>>Initializing the character");
 		String characterName = userService.getUserById(id).getUsername();
@@ -154,28 +197,40 @@ public class TwitterService {
 		playerService.addPlayer(player);
 	}
 
+	/**
+	 * Update the similarity with ideal personality
+	 * 
+	 * @param id           the id
+	 * @param jsonResult   the json result of analysis
+	 * @param isSufficient whether the word is enough
+	 */
 	public void updateSimilarity(String id, String jsonResult, boolean isSufficient) {
 		logger.info(">>>Update the similarity");
 		AnalysisResult analysisResult = new AnalysisResult();
 		analysisResult.setJsonObject(jsonResult);
 		Ideal ideal = idealService.getIdealById(id);
 		Player player = playerService.getPlayerById(id);
-		
+
 		if (!ideal.isAuth()) {
 			idealService.reAuth(ideal.getId());
 		}
-		
-		player.setAttributes(PlayerConfig.getBasicStatus(player.level));
+
+		player.setAttributes(PlayerConfig.getBasicStatus(player.getLevel()));
 		if (!isSufficient) {
 			analysisResult.generateNormalFactor(player);
 		} else {
 			analysisResult.generateFactor(ideal, player);
 		}
-		
+
 		player.applyPersonality();
 		playerService.updatePlayer(id, player);
 	}
 
+	/**
+	 * Cancel the authorization of Twitter
+	 * 
+	 * @param id the id
+	 */
 	public void cancelAuth(String id) {
 		logger.info(">>>Unlink the Twitter");
 		// factor
@@ -183,7 +238,7 @@ public class TwitterService {
 		Player player = playerService.getPlayerById(id);
 		userService.deleteToken(id);
 		idealService.unAuth(id);
-		player.setAttributes(PlayerConfig.getBasicStatus(player.level));
+		player.setAttributes(PlayerConfig.getBasicStatus(player.getLevel()));
 		player.setFactor(1);
 		player.applyPersonality();
 		playerService.updatePlayer(id, player);

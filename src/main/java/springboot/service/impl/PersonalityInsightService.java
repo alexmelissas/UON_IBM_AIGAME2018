@@ -16,32 +16,48 @@ import com.ibm.watson.developer_cloud.service.exception.BadRequestException;
 import com.ibm.watson.developer_cloud.service.security.IamOptions;
 
 import springboot.config.AnalysisConfig;
-import springboot.util.ContentLoader;
 
+/**
+ * <p>
+ * The PersonalityInsightService provide the analysis of tweets based on IBM
+ * Personality Insights API
+ * </p>
+ * 
+ * @author chenyu
+ *
+ */
 @Service("piService")
 public class PersonalityInsightService {
-	private AnalysisConfig config = new AnalysisConfig();
 	private PersonalityInsights personalityInsights;
 	private Content content;
 	private static Logger logger = LoggerFactory.getLogger(PersonalityInsightService.class);
 
+	/**
+	 * The personality insight analysis service
+	 */
 	public PersonalityInsightService() {
 		/*
 		 * authentication token-based Identity and Access Management(IAM)
 		 */
-		IamOptions options = new IamOptions.Builder().apiKey(config.getApiKey()).build();
-		personalityInsights = new PersonalityInsights(config.getVersion(), options);
+		IamOptions options = new IamOptions.Builder().apiKey(AnalysisConfig.getApiKey()).build();
+		personalityInsights = new PersonalityInsights(AnalysisConfig.getVersion(), options);
 		// Prevent the IBM to store the data for the request
 		Map<String, String> headers = new HashMap<String, String>();
 		headers.put("X-Watson-Learning-Opt-Out", "true");
 		personalityInsights.setDefaultHeaders(headers);
-		personalityInsights.setEndPoint(config.getUrl());
+		personalityInsights.setEndPoint(AnalysisConfig.getUrl());
 	}
 
-	public Profile analysis(ContentLoader contentLoader) {
+	/**
+	 * Analysis the input text
+	 * 
+	 * @param tweetsContent the tweets
+	 * @return the profile
+	 */
+	public Profile analysis(StringBuilder tweetsContent) {
 		// Load content from ContentLoader
-		ContentItem contentItem = new ContentItem.Builder().content(contentLoader.getInput()).build();
-		content = new Content.Builder().addContentItem(contentItem).build();
+		ContentItem contentItem = new ContentItem.Builder().content(tweetsContent.toString()).build();
+		this.content = new Content.Builder().addContentItem(contentItem).build();
 
 		ProfileOptions profileOptions = new ProfileOptions.Builder().content(content).consumptionPreferences(true)
 				.rawScores(true).build();

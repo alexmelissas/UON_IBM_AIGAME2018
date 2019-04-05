@@ -6,10 +6,10 @@ import springboot.domain.Ideal;
 
 /**
  * <p>
- * The repository of Ideal which extends {@link JpaRepository}
+ * The repository of Ideal which extends {@link JpaRepository}.
  * </p>
  * 
- * @author Yu Chen
+ * @author chenyu
  *
  */
 public interface IdealRepository extends JpaRepository<Ideal, String> {

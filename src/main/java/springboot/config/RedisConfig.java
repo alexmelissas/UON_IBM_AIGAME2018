@@ -10,6 +10,14 @@ import org.springframework.context.annotation.PropertySource;
 import redis.clients.jedis.JedisPool;
 import redis.clients.jedis.JedisPoolConfig;
 
+/**
+ * <p>
+ * This RedisConfig class is used to configure the Redis.
+ * </p>
+ * 
+ * @author chenyu
+ *
+ */
 @Configuration
 @PropertySource("classpath:application.properties")
 public class RedisConfig {
@@ -36,6 +44,10 @@ public class RedisConfig {
 	@Value("${spring.redis.pool.max-wait}")
 	private long maxWaitMillis;
 
+	/**
+	 * Generate the JedisPool
+	 * @return a JedisPool bean
+	 */
 	@Bean
 	public JedisPool redisPoolFactory() {
 		logger.info("======Loading Redis Config======");

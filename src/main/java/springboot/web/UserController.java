@@ -15,6 +15,14 @@ import org.springframework.web.bind.annotation.RestController;
 import springboot.domain.User;
 import springboot.service.UserService;
 
+/**
+ * <p>
+ * The UserController class is used to handle the user related requests.
+ * </p>
+ * 
+ * @author chenyu
+ *
+ */
 @RestController
 public class UserController {
 	@Autowired

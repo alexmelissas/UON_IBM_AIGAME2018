@@ -15,6 +15,14 @@ import springboot.service.impl.TwitterService;
 import twitter4j.Twitter;
 import twitter4j.auth.RequestToken;
 
+/**
+ * <p>
+ * The AnalysisConctroller is used to handle analysis related requests.
+ * </p>
+ * 
+ * @author chenyu
+ *
+ */
 @RestController
 public class AnalysisController {
 	@Autowired

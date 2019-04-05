@@ -13,6 +13,14 @@ import org.springframework.web.bind.annotation.RestController;
 import springboot.domain.Player;
 import springboot.service.PlayerService;
 
+/**
+ * <p>
+ * The PlayerController class is used to handle the player related requests.
+ * </p>
+ * 
+ * @author chenyu
+ *
+ */
 @RestController
 public class PlayerController {
 	@Autowired

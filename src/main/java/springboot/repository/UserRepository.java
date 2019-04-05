@@ -8,10 +8,10 @@ import springboot.domain.User;
 
 /**
  * <p>
- * The repository of User which extends {@link JpaRepository}
+ * The repository of User which extends {@link JpaRepository}.
  * </p>
  * 
- * @author Yu Chen
+ * @author chenyu
  *
  */
 public interface UserRepository extends JpaRepository<User, String> {

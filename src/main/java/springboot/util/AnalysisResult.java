@@ -9,12 +9,31 @@ import com.google.gson.JsonParser;
 import springboot.domain.Ideal;
 import springboot.domain.Player;
 
+/**
+ * <p>
+ * The AnalysisResult is used to store the related data for analysis. And it
+ * will generate the factor according to the ideal personality and real
+ * personality.
+ * </p>
+ * 
+ * @author chenyu
+ *
+ */
 public class AnalysisResult {
 	private JsonObject jsonObject;
 
+	/**
+	 * Constructor
+	 */
 	public AnalysisResult() {
 	}
 
+	/**
+	 * Generate the similarity according to the ideal and player
+	 * 
+	 * @param ideal  the ideal
+	 * @param player the player
+	 */
 	public void generateFactor(Ideal ideal, Player player) {
 		JsonArray personality = jsonObject.getAsJsonArray("personality");
 
@@ -58,14 +77,29 @@ public class AnalysisResult {
 		player.setFactor(averageSimilarity + 1);
 	}
 
+	/**
+	 * Generator the normal factor
+	 * 
+	 * @param player the player
+	 */
 	public void generateNormalFactor(Player player) {
 		player.setFactor(1);
 	}
 
+	/**
+	 * Get the json result as JsonObject
+	 * 
+	 * @return a JsonObject
+	 */
 	public JsonObject getJsonObject() {
 		return jsonObject;
 	}
 
+	/**
+	 * Set the json result as a JsonObjeect
+	 * 
+	 * @param jsonResult the json result
+	 */
 	public void setJsonObject(String jsonResult) {
 		jsonObject = new JsonParser().parse(jsonResult).getAsJsonObject();
 	}

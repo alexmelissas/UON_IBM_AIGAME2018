@@ -20,6 +20,14 @@ import twitter4j.Twitter;
 import twitter4j.TwitterException;
 import twitter4j.auth.RequestToken;
 
+/**
+ * <p>
+ * The AuthController class is used to handle the authorization related requests.
+ * </p>
+ * 
+ * @author chenyu
+ *
+ */
 @RestController
 public class AuthController {
 	@Autowired

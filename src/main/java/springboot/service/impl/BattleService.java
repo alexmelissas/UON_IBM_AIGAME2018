@@ -15,6 +15,14 @@ import springboot.domain.Bot;
 import springboot.domain.Player;
 import springboot.service.PlayerService;
 
+/**
+ * <p>
+ * The BattleService class is used to handle the result of battle
+ * </p>
+ * 
+ * @author chenyu
+ *
+ */
 @Service("battleService")
 public class BattleService {
 	@Autowired
@@ -22,18 +30,28 @@ public class BattleService {
 	private Random random = new Random();
 	private static Logger logger = LoggerFactory.getLogger(BattleService.class);
 
+	/**
+	 * Handle the result of battle
+	 * 
+	 * @param id1             the current player
+	 * @param id2             the opponent player
+	 * @param result          true for win; false for lose
+	 * @param additionalExp   the additional experience
+	 * @param additionalMoney the additional money
+	 * @return the updated player
+	 */
 	public Player handleResult(String id1, String id2, boolean result, int additionalExp, int additionalMoney) {
 		logger.info(">>>Player {} {}s {}", id1, (result ? "win" : "lose"), id2);
-		logger.info(">>>Additional reward [experience:{}, money:{}]", additionalExp, additionalMoney );
-		
+		logger.info(">>>Additional reward [experience:{}, money:{}]", additionalExp, additionalMoney);
+
 		Player player1 = playerService.getPlayerById(id1);
 		int exp = additionalExp;
 		int money = additionalMoney;
 		boolean isBot = "bot".equals(id2);
-		
+
 		if (result) {
 			// player win
-			exp += isBot ? 10 : 20; 
+			exp += isBot ? 10 : 20;
 			money += isBot ? 20 : 50;
 			player1.setWin(player1.getWin() + (isBot ? 0 : 1));
 		} else {
@@ -51,6 +69,12 @@ public class BattleService {
 		return player1;
 	}
 
+	/**
+	 * Get a random player
+	 * 
+	 * @param id the id of current player
+	 * @return a random player with similar level
+	 */
 	public Player getRandomPlayer(String id) {
 		int level = playerService.getPlayerById(id).getLevel();
 		List<Player> players = playerService.getPlayersByLevel(level - 1);
@@ -71,17 +95,24 @@ public class BattleService {
 		return player;
 	}
 
-	public Bot getBot(String id, String difficult) {
+	/**
+	 * Get a bot according to the difficulty and player
+	 * 
+	 * @param id         the id of current player
+	 * @param difficulty the difficulty
+	 * @return a bot player
+	 */
+	public Bot getBot(String id, String difficulty) {
 		int level = playerService.getPlayerById(id).getLevel();
 
 		// Generate level for bot randomly according to difficult
 		double randomDouble = random.nextDouble();
-		if ("easy".equals(difficult)) {
+		if ("easy".equals(difficulty)) {
 			if (randomDouble < 0.666666) {
 				level = level > 1 ? level-- : level;
 			} else {
 			}
-		} else if ("medium".equals(difficult)) {
+		} else if ("medium".equals(difficulty)) {
 			System.out.println("medium");
 			if (randomDouble < 0.233333) {
 				level = level > 1 ? level-- : level;
@@ -100,10 +131,10 @@ public class BattleService {
 		// Generate factor for bot according to difficult
 		double randomFactor = 0;
 		double randomInt = random.nextInt(4);
-		if ("easy".equals(difficult)) {
+		if ("easy".equals(difficulty)) {
 			// 0.9 -1.2
 			randomFactor = randomInt / 10 + 0.9;
-		} else if ("medium".equals(difficult)) {
+		} else if ("medium".equals(difficulty)) {
 			// 1.2 - 1.5
 			randomFactor = randomInt / 10 + 1.2;
 		} else {
@@ -115,7 +146,13 @@ public class BattleService {
 		bot.applyPersonality();
 		return bot;
 	}
-	
+
+	/**
+	 * Check if a player is in database
+	 * 
+	 * @param id the id of current player
+	 * @return true for exist
+	 */
 	public boolean isExist(String id) {
 		return playerService.isExist(id);
 	}

@@ -25,6 +25,14 @@ import springboot.domain.Player;
 import springboot.service.impl.BattleService;
 import springboot.service.impl.RedisService;
 
+/**
+ * <p>
+ * The BattleController class is used to handle the battle related requests
+ * </p>
+ * 
+ * @author chenyu
+ *
+ */
 @RestController
 public class BattleController {
 	@Autowired
@@ -32,7 +40,7 @@ public class BattleController {
 	@Autowired
 	private RedisService redisService;
 	private static Logger logger = LoggerFactory.getLogger(BattleController.class);
-	
+
 	@GetMapping("/battle/{id}")
 	public Player getRandomPlayer(HttpServletRequest request, HttpServletResponse response, @PathVariable String id) {
 		if (!battleService.isExist(id)) {
@@ -46,7 +54,8 @@ public class BattleController {
 	}
 
 	@GetMapping("/battle/{difficult}/{id}")
-	public Bot getBot(HttpServletRequest request, HttpServletResponse response, @PathVariable String difficult, @PathVariable String id) {
+	public Bot getBot(HttpServletRequest request, HttpServletResponse response, @PathVariable String difficult,
+			@PathVariable String id) {
 		if (!battleService.isExist(id)) {
 			try {
 				request.getRequestDispatcher("/404").forward(request, response);
@@ -56,9 +65,10 @@ public class BattleController {
 		}
 		return battleService.getBot(id, difficult);
 	}
-	
+
 	@GetMapping("/battle/count/{id}")
-	public @ResponseBody int getBattleCount(HttpServletRequest request, HttpServletResponse response, @PathVariable String id) {
+	public @ResponseBody int getBattleCount(HttpServletRequest request, HttpServletResponse response,
+			@PathVariable String id) {
 		if (!battleService.isExist(id)) {
 			try {
 				request.getRequestDispatcher("/404").forward(request, response);

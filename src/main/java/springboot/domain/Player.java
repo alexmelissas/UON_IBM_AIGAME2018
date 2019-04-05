@@ -1,5 +1,7 @@
 package springboot.domain;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -17,48 +19,33 @@ import springboot.config.PlayerConfig;
  * This class class contains more information about the player.
  * </p>
  * 
- * @author Yu Chen
+ * @author chenyu
  *
  */
 @Entity
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
-public class Player extends BasicCharacter {
-	/**
-	 * id
-	 */
+public class Player extends BasicCharacter implements Serializable {
+	
+	private static final long serialVersionUID = 3625093787155595731L;
+
 	@Id
 	@Column(name = "id", columnDefinition = "VARCHAR(36)")
-	public String id;
+	private String id;
 
-	/**
-	 * money
-	 */
 	@Column(name = "money", columnDefinition = "INT")
-	public int money = 0;
+	private int money = 0;
 
-	/**
-	 * experience
-	 */
 	@Column(name = "experience", columnDefinition = "INT")
-	public int experience = 0;
+	private int experience = 0;
 
-	/**
-	 * experience needed to level up
-	 */
 	@Column(name = "exptolevel", columnDefinition = "INT")
-	public int exptolevel = PlayerConfig.getLevelUpExperience(this.level);
+	private int exptolevel = PlayerConfig.getLevelUpExperience(this.getLevel());
 
-	/**
-	 * the number of wins
-	 */
 	@Column(name = "win", columnDefinition = "INT")
-	public int win = 0;
+	private int win = 0;
 
-	/**
-	 * the number of loses
-	 */
 	@Column(name = "lose", columnDefinition = "INT")
-	public int lose = 0;
+	private int lose = 0;
 
 	/**
 	 * Constructor
@@ -112,7 +99,7 @@ public class Player extends BasicCharacter {
 	 * Check if the player can level up If so, update the information of the player
 	 */
 	public void checklevelUp() {
-		if (this.level >= 30) {
+		if (this.getLevel() >= 30) {
 			// MAX LEVEL
 			return;
 		}
@@ -120,8 +107,8 @@ public class Player extends BasicCharacter {
 		if (this.exptolevel <= this.experience) {
 			int exceed = this.experience - this.exptolevel;
 			this.setLevel(this.getLevel() + 1);
-			this.setAttributes(PlayerConfig.getBasicStatus(this.level));
-			this.setExptolevel(PlayerConfig.getLevelUpExperience(this.level));
+			this.setAttributes(PlayerConfig.getBasicStatus(this.getLevel()));
+			this.setExptolevel(PlayerConfig.getLevelUpExperience(this.getLevel()));
 			this.applyPersonality();
 			this.setExperience(exceed > 0 ? exceed : 0);
 		}
@@ -211,17 +198,16 @@ public class Player extends BasicCharacter {
 		this.lose = lose;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
+	/* (non-Javadoc)
 	 * @see java.lang.Object#toString()
 	 */
 	@Override
 	public String toString() {
 		return "Player [id=" + id + ", money=" + money + ", experience=" + experience + ", exptolevel=" + exptolevel
-				+ ", win=" + win + ", lose=" + lose + ", characterName=" + characterName + ", level=" + level + ", hp="
-				+ hp + ", attack=" + attack + ", defense=" + defense + ", agility=" + agility + ", criticalStrike="
-				+ criticalStrike + ", factor=" + factor + ", sword=" + sword + ", shield=" + shield + ", armour="
-				+ armour + "]";
+				+ ", win=" + win + ", lose=" + lose + ", getCharacterName()=" + getCharacterName() + ", getLevel()="
+				+ getLevel() + ", getHp()=" + getHp() + ", getAttack()=" + getAttack() + ", getDefense()="
+				+ getDefense() + ", getAgility()=" + getAgility() + ", getCriticalStrike()=" + getCriticalStrike()
+				+ ", getFactor()=" + getFactor() + ", getSword()=" + getSword() + ", getShield()=" + getShield()
+				+ ", getArmour()=" + getArmour() + "]";
 	}
 }

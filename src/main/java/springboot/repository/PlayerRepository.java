@@ -8,10 +8,10 @@ import springboot.domain.Player;
 
 /**
  * <p>
- * The repository of Player which extends {@link JpaRepository}
+ * The repository of Player which extends {@link JpaRepository}.
  * </p>
  * 
- * @author Yu Chen
+ * @author chenyu
  *
  */
 public interface PlayerRepository extends JpaRepository<Player, String> {

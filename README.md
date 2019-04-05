@@ -36,7 +36,7 @@
 - [ ] Encryption/Firewall/VPN
 - [ ] Test case
 - [ ] level of items
-- [ ] auth/cancel auth
+- [x] auth/cancel auth
 - [ ] check auth/ideal after login  
 - TBC
 

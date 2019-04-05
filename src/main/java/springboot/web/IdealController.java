@@ -15,6 +15,14 @@ import springboot.domain.Player;
 import springboot.service.IdealService;
 import springboot.service.PlayerService;
 
+/**
+ * <p>
+ * The IdealController class is used to handle the ideal related requests.
+ * </p>
+ * 
+ * @author chenyu
+ *
+ */
 @RestController
 public class IdealController {
 	@Autowired
@@ -22,7 +30,7 @@ public class IdealController {
 	@Autowired
 	private PlayerService playerService;
 	private static Logger logger = LoggerFactory.getLogger(IdealController.class);
-	
+
 	@GetMapping("/ideals")
 	public @ResponseBody Iterable<Ideal> getIdeals() {
 		return idealService.getIdeals();
@@ -41,7 +49,7 @@ public class IdealController {
 		logger.info("======Initialize Ideal======");
 		// UPDATE IDEAL PERSONALITY
 		// THIS METHOD WILL BE CALLED ONLY ONCE
-		
+
 		newIdeal.setId(id);
 		// UPDATE IDEAL AND PLAYER
 		idealService.initialIdeal(id, newIdeal);

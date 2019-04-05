@@ -1,34 +1,37 @@
 package springboot.config;
 
+/**
+ * <p>
+ * The AnalysisConfig class is used to configure the api key of IBM Personality
+ * Insights Service.
+ * </p>
+ * 
+ * @author chenyu
+ *
+ */
 public class AnalysisConfig {
-	/*
-	 * default values
+	private static String apiKey = "ZJED5aYP3r0pVCnGY9BQNgBLlAT5jctj__e7xmsAXH54";
+	private static String version = "2017-10-13";
+	private static String url = "https://gateway-syd.watsonplatform.net/personality-insights/api";
+
+	/**
+	 * @return the apiKey
 	 */
-	private String apiKey = "ZJED5aYP3r0pVCnGY9BQNgBLlAT5jctj__e7xmsAXH54";
-	private String version = "2017-10-13";
-	private String url = "https://gateway-syd.watsonplatform.net/personality-insights/api";
-	
-	public String getApiKey() {
+	public static String getApiKey() {
 		return apiKey;
 	}
-	
-	public void setApiKey(String apiKey) {
-		this.apiKey = apiKey;
-	}
-	
-	public String getVersion() {
+
+	/**
+	 * @return the version
+	 */
+	public static String getVersion() {
 		return version;
 	}
-	
-	public void setVersion(String version) {
-		this.version = version;
-	}
-	
-	public String getUrl() {
+
+	/**
+	 * @return the url
+	 */
+	public static String getUrl() {
 		return url;
-	}
-	
-	public void setUrl(String url) {
-		this.url = url;
 	}
 }

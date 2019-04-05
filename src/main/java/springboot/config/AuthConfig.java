@@ -3,25 +3,40 @@ package springboot.config;
 import twitter4j.Twitter;
 import twitter4j.TwitterFactory;
 
+/**
+ * <p>
+ * The AuthConfig class is used to configure the consumer key for Twitter API.
+ * </p>
+ * 
+ * @author chenyu
+ *
+ */
 public class AuthConfig {
-	private String consumerKey = "kLdFjFhJkiiWMb2SU4ZNtpGlf";
-	private String consumerSecret = "VUXAlVuDbdOYDGhbImgYOfbX91xqtvSdFnXn3kzM6ZNoOWv6fa";
-	private static AuthConfig instance = new AuthConfig();
+	private static String consumerKey = "kLdFjFhJkiiWMb2SU4ZNtpGlf";
+	private static String consumerSecret = "VUXAlVuDbdOYDGhbImgYOfbX91xqtvSdFnXn3kzM6ZNoOWv6fa";
 
-	private AuthConfig() {
-	}
-
+	/**
+	 * @return the consumerKey
+	 */
 	public static String getConsumerKey() {
-		return instance.consumerKey;
+		return consumerKey;
 	}
 
-	public static String getConsumerKeySecret() {
-		return instance.consumerSecret;
+	/**
+	 * @return the consumerSecret
+	 */
+	public static String getConsumerSecret() {
+		return consumerSecret;
 	}
-	
+
+	/**
+	 * Get the Twitter instance from TwitterFactory
+	 * 
+	 * @return the Twitter instance (with consumer key and secret)
+	 */
 	public static Twitter getTwitter() {
 		Twitter twitter = new TwitterFactory().getInstance();
-		twitter.setOAuthConsumer(instance.consumerKey, instance.consumerSecret);
+		twitter.setOAuthConsumer(consumerKey, consumerSecret);
 		return twitter;
 	}
 }
