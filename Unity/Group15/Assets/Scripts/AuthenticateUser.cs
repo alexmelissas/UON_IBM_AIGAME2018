@@ -7,6 +7,7 @@ using VoxelBusters.NativePlugins;
 //! Login and Registration processing.
 public class AuthenticateUser : MonoBehaviour {
 
+    public GameObject loading;
     public InputField usernameInput;
     public InputField passwordInput;
     public string auth_type;
@@ -62,6 +63,9 @@ public class AuthenticateUser : MonoBehaviour {
                 string next_scene = "Overworld";
                 if (!first_login) yield return StartCoroutine(GetPlayer());
                 if (first_login) next_scene = "TwitterLogin";
+                //Instantiate(loading, transform.position, Quaternion.identity);
+                //yield return new WaitForSeconds(1f);
+                //Destroy(loading);
                 gameObject.AddComponent<ChangeScene>().Forward(next_scene);
                 if (!first_login) NPBinding.UI.ShowToast("Welcome back, " + user.GetUsername(), eToastMessageLength.SHORT);
             }
