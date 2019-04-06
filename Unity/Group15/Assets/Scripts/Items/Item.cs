@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
-//! Abstract class describing core attributes of items.
+//! Abstract Factory - For Items.
 public abstract class Item {
 
     public Image icon; //maybe not Image - something to hold the icon

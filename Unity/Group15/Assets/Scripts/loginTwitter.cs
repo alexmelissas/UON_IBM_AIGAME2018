@@ -2,11 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using VoxelBusters.NativePlugins;
 
 //! Twitter login handler
 public class LoginTwitter : MonoBehaviour {
+
+    public static bool leftForTwitter = false;
 
     private bool otherPopupOpen;
 
@@ -15,12 +18,11 @@ public class LoginTwitter : MonoBehaviour {
         otherPopupOpen = false;
     }
 
-    //! Keep checking if twitter linkage was OK - until timeout (10s after they return from twitter page)
+    //! Keep checking if twitter linkage was OK - until timeout (4s after they return from twitter page)
     private IEnumerator TryTwitter()
     {
-        // need to make twitter sequence not have a timer or something else whatever
         int repeats = 0;
-        while (repeats < 5)
+        while (repeats < 2)
         {
             //string id = (UserSession.us.user.getID()=="") ? ZPlayerPrefs.GetString("id") : UserSession.us.user.getID();
             UnityWebRequest uwr = UnityWebRequest.Get(Server.Address("read_user") + UserSession.us.user.GetID());
@@ -37,6 +39,7 @@ public class LoginTwitter : MonoBehaviour {
                 UpdateSessions.JSON_Session("user", uwr.downloadHandler.text);
                 if(Server.CheckTwitter())
                 {
+                    leftForTwitter = false;
                     yield break;
                 }
                 else
@@ -47,9 +50,28 @@ public class LoginTwitter : MonoBehaviour {
                 }
             }
             uwr.Dispose();
-            if (repeats == 5) ShowPopup("fail_connection");
+            if (repeats == 1) ShowPopup("fail_connection");
         }
         StopCoroutine(TryTwitter());
+    }
+
+    //! Play without Twitter - pass noauth token to server
+    private IEnumerator NoTwitter()
+    {
+        UnityWebRequest uwr = UnityWebRequest.Get(Server.Address("skip_twitter") + UserSession.us.user.GetID());
+        yield return uwr.SendWebRequest();
+
+        if (uwr.isNetworkError)
+        {
+            Debug.Log("Error While Sending: " + uwr.error);
+            NPBinding.UI.ShowToast("Communication Error. Please try again.", eToastMessageLength.SHORT);
+        }
+        else
+        {
+            if (uwr.downloadHandler.text == Server.no_twitter_success)
+                gameObject.AddComponent<ChangeScene>().Forward("CharacterCreation");
+        }
+        yield break;
     }
 
     //! Try to open Twitter login page
@@ -59,10 +81,11 @@ public class LoginTwitter : MonoBehaviour {
         {
             string url = Server.Address("login_twitter") + UserSession.us.user.GetID();
             Application.OpenURL(url); // need nicer way -eg window in app
+            leftForTwitter = true;
             StartCoroutine(TryTwitter());
         }
     }
-    
+
     //! Show popups for twitter terms confirmation/failed connection/skip twitter
     public void ShowPopup(string popup)
     {
@@ -73,9 +96,12 @@ public class LoginTwitter : MonoBehaviour {
             switch (popup)
             {
                 case "fail_connection":
-                    _buttons = new string[] { "Retry", "Play Without Twitter" };
+                    leftForTwitter = false;
+                    string scene = SceneManager.GetActiveScene().name;
+                    if (scene=="Settings") _buttons = new string[] { "Cancel", "Retry" };
+                    else _buttons = new string[] { "Retry", "Play Without Twitter" };
                     NPBinding.UI.ShowAlertDialogWithMultipleButtons("Personality bot is sad",
-                        "Twitter Connection wasn't happy :(", _buttons, OnButtonPressed);
+                        "Twitter Connection didn't work out...", _buttons, OnButtonPressed);
                     break;
 
                 case "show_terms":
@@ -109,7 +135,6 @@ public class LoginTwitter : MonoBehaviour {
         }
     }
 
-
     //! Handle dialog box button options
     private void OnButtonPressed(string _buttonPressed)
     {
@@ -119,9 +144,9 @@ public class LoginTwitter : MonoBehaviour {
             case "Play Without Twitter": ShowPopup("skip_twitter"); break;
             case "Accept": TryOpenTwitter(true); break;
             case "Decline": TryOpenTwitter(false); break;
+            case "Cancel": TryOpenTwitter(false); break;
             case "Link Twitter": otherPopupOpen = false; ShowPopup("show_terms"); break;
-            case "Play without Twitter":gameObject.AddComponent<ChangeScene>().Forward("CharacterCreation");
-                break;
+            case "Play without Twitter": StartCoroutine(NoTwitter()); break;
         }
         if(_buttonPressed!="Link Twitter")otherPopupOpen = false;
         return;

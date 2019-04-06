@@ -5,6 +5,10 @@ using UnityEngine.Networking;
 using VoxelBusters.NativePlugins;
 
 //! Keep User and Player objects up to date with the server, keep data consistent when exiting app
+
+// Usage: add this line to the other class and choose the function
+    // gameObject.AddComponent<UpdateSessions>().function();
+
 public class UpdateSessions : MonoBehaviour{
 
     //! Update all singleton objects in the app

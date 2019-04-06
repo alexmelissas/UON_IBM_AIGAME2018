@@ -16,7 +16,7 @@ public class Gameplay : MonoBehaviour {
     public Slider playerHP, enemyHP;
     public Image playerHPcolour, enemyHPcolour;
     public Text playerName, enemyName, playerLevel, enemyLevel;
-    public Text actualPlayerHP, actualEnemyHP, playerDmgLabel, enemyDmgLabel;
+    public Text actualPlayerHP, maxPlayerHP, actualEnemyHP, maxEnemyHP, playerDmgLabel, enemyDmgLabel;
     public AudioSource soundfx;
     public AudioClip playerhit, enemyhit, crit, miss, drop_sword;
     private List<Turn> turns;
@@ -113,14 +113,17 @@ public class Gameplay : MonoBehaviour {
         if(PlayerSession.ps.enemy.id != "")
         {
             if (PlayerPrefs.HasKey("skip")) if (PlayerPrefs.GetInt("skip") == 1) skip = true;
-            if (skip)
-            {
-                Invoke("EndMatch", 0.5f);
-            }
+            if (skip) Invoke("EndMatch", 0.5f);
 
             //Update HP bars
-            actualPlayerHP.text = "" + new_hp_player*player_max_hp + "/" + player_max_hp;
-            actualEnemyHP.text = "" + new_hp_enemy*enemy_max_hp + "/" + enemy_max_hp;
+            float nhpp = new_hp_player * player_max_hp;
+            float nhpe = new_hp_enemy * enemy_max_hp;
+            Mathf.RoundToInt(nhpp);
+            Mathf.RoundToInt(nhpe);
+            actualPlayerHP.text = "" + ((nhpp>=0) ? nhpp : player_max_hp);
+            actualEnemyHP.text = "" + ((nhpe >= 0) ? nhpe : enemy_max_hp);
+            maxPlayerHP.text = "/" + player_max_hp;
+            maxEnemyHP.text = "/" + enemy_max_hp;
 
             if (new_hp_player > -1) if (playerHP.value > new_hp_player) playerHP.normalizedValue -= 0.005f;
             if (playerHP.value == 0 && !death) { soundfx.PlayOneShot(drop_sword, PlayerPrefs.GetFloat("fx"));playerHPcolour.enabled = false; death = true; }
