@@ -52,7 +52,7 @@ public class UserController {
 		}
 		logger.info("======Account Creation======");
 		userService.addUser(user);
-		logger.info("======Account Creation Finished======");
+		logger.info("======Account Creation End======");
 		return "Saved";
 	}
 
@@ -87,7 +87,7 @@ public class UserController {
 		}
 		logger.info("======Account Update======");
 		userService.updateUser(id, user);
-		logger.info("======Account Update Finished======");
+		logger.info("======Account Update End======");
 		return "Updated";
 	}
 
@@ -100,7 +100,6 @@ public class UserController {
 	@DeleteMapping("/users/{id}")
 	public @ResponseBody String deleteUser(@PathVariable String id) {
 		userService.deleteUserById(id);
-		// TODO delete players & ideals
 		return "Deleted";
 	}
 

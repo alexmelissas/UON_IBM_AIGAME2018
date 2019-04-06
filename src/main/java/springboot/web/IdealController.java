@@ -31,16 +31,33 @@ public class IdealController {
 	private PlayerService playerService;
 	private static Logger logger = LoggerFactory.getLogger(IdealController.class);
 
+	/**
+	 * Get all the ideals
+	 * 
+	 * @return a list of ideals
+	 */
 	@GetMapping("/ideals")
 	public @ResponseBody Iterable<Ideal> getIdeals() {
 		return idealService.getIdeals();
 	}
 
+	/**
+	 * Check if a ideal exists
+	 * 
+	 * @param id the id of ideal
+	 * @return true for exist
+	 */
 	@GetMapping("/ideals/{id}")
 	public boolean isExistIdeal(@PathVariable String id) {
 		return idealService.getIdealById(id) != null;
 	}
 
+	/**
+	 * Initialize the ideal 
+	 * @param id the id
+	 * @param newIdeal the initialized ideal
+	 * @return the newest player
+	 */
 	@PutMapping("/ideals/{id}")
 	public @ResponseBody Player initialIdeal(@PathVariable String id, @RequestBody Ideal newIdeal) {
 		if (!idealService.isExist(id)) {

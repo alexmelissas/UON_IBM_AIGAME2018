@@ -27,11 +27,22 @@ public class PlayerController {
 	private PlayerService playerService;
 	private static Logger logger = LoggerFactory.getLogger(PlayerController.class);
 
+	/**
+	 * Get all the players
+	 * 
+	 * @return a list of all the players
+	 */
 	@GetMapping("/players")
 	public Iterable<Player> getPlayers() {
 		return playerService.getPlayers();
 	}
 
+	/**
+	 * Update the player
+	 * @param id the id
+	 * @param player the updated player
+	 * @return the result
+	 */
 	@PutMapping("/players/{id}")
 	public String updatePlayer(@PathVariable String id, @RequestBody Player player) {
 		if (!playerService.isExist(id)) {
@@ -43,6 +54,11 @@ public class PlayerController {
 		return "Updated";
 	}
 
+	/**
+	 * Get the player with input id
+	 * @param id the id
+	 * @return the player with the id
+	 */
 	@GetMapping("/players/{id}")
 	public @ResponseBody Player getPlayerById(@PathVariable String id) {
 		Player player = playerService.getPlayerById(id);

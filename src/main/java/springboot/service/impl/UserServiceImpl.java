@@ -9,6 +9,8 @@ import org.springframework.stereotype.Service;
 
 import springboot.domain.User;
 import springboot.repository.UserRepository;
+import springboot.service.IdealService;
+import springboot.service.PlayerService;
 import springboot.service.UserService;
 
 /**
@@ -23,6 +25,10 @@ import springboot.service.UserService;
 public class UserServiceImpl implements UserService {
 	@Autowired
 	private UserRepository userRepository;
+	@Autowired
+	private IdealService idealService;
+	@Autowired
+	private PlayerService playerService;
 	private static Logger logger = LoggerFactory.getLogger(UserServiceImpl.class);
 
 	/*
@@ -69,6 +75,8 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public void deleteUserById(String id) {
 		userRepository.deleteById(id);
+		idealService.deleteIdealById(id);
+		playerService.deletePlayerById(id);
 	}
 
 	/*

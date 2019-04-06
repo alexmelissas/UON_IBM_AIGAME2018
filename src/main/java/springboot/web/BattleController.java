@@ -41,44 +41,54 @@ public class BattleController {
 	private RedisService redisService;
 	private static Logger logger = LoggerFactory.getLogger(BattleController.class);
 
+	/**
+	 * Get a random player for current player
+	 * 
+	 * @param id the id of current player
+	 * @return the random player
+	 */
 	@GetMapping("/battle/{id}")
-	public Player getRandomPlayer(HttpServletRequest request, HttpServletResponse response, @PathVariable String id) {
+	public Player getRandomPlayer(@PathVariable String id) {
 		if (!battleService.isExist(id)) {
-			try {
-				request.getRequestDispatcher("/404").forward(request, response);
-			} catch (ServletException | IOException e) {
-				e.printStackTrace();
-			}
+			return null;
 		}
 		return battleService.getRandomPlayer(id);
 	}
 
+	/**
+	 * Get a bot player for current player
+	 * 
+	 * @param difficulty the difficulty
+	 * @param id         the id
+	 * @return the generated bot player
+	 */
 	@GetMapping("/battle/{difficult}/{id}")
-	public Bot getBot(HttpServletRequest request, HttpServletResponse response, @PathVariable String difficult,
-			@PathVariable String id) {
+	public Bot getBot(@PathVariable String difficulty, @PathVariable String id) {
 		if (!battleService.isExist(id)) {
-			try {
-				request.getRequestDispatcher("/404").forward(request, response);
-			} catch (ServletException | IOException e) {
-				e.printStackTrace();
-			}
+			return null;
 		}
-		return battleService.getBot(id, difficult);
+		return battleService.getBot(id, difficulty);
 	}
 
+	/**
+	 * Get the number of battles of a player
+	 * 
+	 * @param id
+	 * @return
+	 */
 	@GetMapping("/battle/count/{id}")
-	public @ResponseBody int getBattleCount(HttpServletRequest request, HttpServletResponse response,
-			@PathVariable String id) {
+	public @ResponseBody int getBattleCount(@PathVariable String id) {
 		if (!battleService.isExist(id)) {
-			try {
-				request.getRequestDispatcher("/404").forward(request, response);
-			} catch (ServletException | IOException e) {
-				e.printStackTrace();
-			}
+			return -1;
 		}
 		return redisService.getBattleCount(id);
 	}
 
+	/**
+	 * Handle the result of battle
+	 * @param jsonString json string which contains the information of battle
+	 * @return
+	 */
 	@PutMapping("/battle")
 	public Player handleResult(@RequestBody String jsonString) {
 		logger.info("======Battle Result======");

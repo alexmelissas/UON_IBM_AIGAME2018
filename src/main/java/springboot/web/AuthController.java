@@ -22,7 +22,8 @@ import twitter4j.auth.RequestToken;
 
 /**
  * <p>
- * The AuthController class is used to handle the authorization related requests.
+ * The AuthController class is used to handle the authorization related
+ * requests.
  * </p>
  * 
  * @author chenyu
@@ -36,8 +37,16 @@ public class AuthController {
 	private TwitterService twitterService;
 	private static Logger logger = LoggerFactory.getLogger(AuthController.class);
 
+	/**
+	 * Authorize with Twitter
+	 * 
+	 * @param request  the request
+	 * @param response the response
+	 * @param id       the id
+	 * @throws IOException exception
+	 */
 	@GetMapping("/auth/{id}")
-	protected void auth(HttpServletRequest request, HttpServletResponse response, @PathVariable String id)
+	public void auth(HttpServletRequest request, HttpServletResponse response, @PathVariable String id)
 			throws IOException {
 		if (!userService.isExistById(id)) {
 			return;
@@ -63,6 +72,11 @@ public class AuthController {
 		return;
 	}
 
+	/**
+	 * Without authorization of Twitter
+	 * 
+	 * @param id the id
+	 */
 	@GetMapping("/noauth/{id}")
 	public void noauth(@PathVariable String id) {
 		if (!userService.isExistById(id)) {
@@ -81,6 +95,11 @@ public class AuthController {
 		logger.info("======Without Authorization End======");
 	}
 
+	/**
+	 * Cancel the authorization of Twittwer
+	 * 
+	 * @param id the id
+	 */
 	@GetMapping("/auth/cancel/{id}")
 	public void cancelAuth(@PathVariable String id) {
 		if (!userService.isExistById(id)) {

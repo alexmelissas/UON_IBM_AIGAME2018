@@ -21,6 +21,12 @@ import org.springframework.web.bind.annotation.RestController;
 public class PageErrorController {
 	private static Logger logger = LoggerFactory.getLogger(PageErrorController.class);
 
+	/**
+	 * Handle the 404 page
+	 * @param request the request
+	 * @param response the response
+	 * @return the information
+	 */
 	@RequestMapping("/404")
 	public @ResponseBody String pageNotFound(HttpServletRequest request, HttpServletResponse response) {
 		response.setStatus(404);
@@ -28,6 +34,12 @@ public class PageErrorController {
 		return "404 Page Not Found.";
 	}
 
+	/**
+	 * Handle the 500 page
+	 * @param request the request
+	 * @param response the response
+	 * @return the information
+	 */
 	@RequestMapping("/500")
 	public @ResponseBody String exception(HttpServletRequest request, HttpServletResponse response) {
 		response.setStatus(500);

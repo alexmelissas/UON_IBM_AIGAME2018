@@ -29,7 +29,13 @@ public class AnalysisController {
 	private TwitterService twitterService;
 	private static Logger logger = LoggerFactory.getLogger(AnalysisController.class);
 
-	// Authorization callback
+	/**
+	 * Authorization callback (set in Twitter Developer Account)
+	 * 
+	 * @param request  the request
+	 * @param response the response
+	 * @return the result
+	 */
 	@GetMapping("/tweets")
 	public String analysis(HttpServletRequest request, HttpServletResponse response) {
 		logger.info("======Analysis Tweets======");
@@ -46,6 +52,12 @@ public class AnalysisController {
 		return result;
 	}
 
+	/**
+	 * Reanalysis the tweets
+	 * 
+	 * @param id the id
+	 * @return the result
+	 */
 	@PutMapping("/reanalysis/{id}")
 	public String reanalysis(@PathVariable String id) {
 		logger.info("======Reanalysis Tweets======");
