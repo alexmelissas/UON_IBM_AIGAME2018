@@ -14,30 +14,16 @@ public class AuthenticateUser : MonoBehaviour {
 
     void Start()
     {
-        usernameInput.onEndEdit.AddListener(delegate { EndInput("username"); });
-        passwordInput.onEndEdit.AddListener(delegate { EndInput("password"); });
+        loading.SetActive(false);
+        //usernameInput.onEndEdit.AddListener(delegate { EndInput("username"); });
+        //passwordInput.onEndEdit.AddListener(delegate { EndInput("password"); });
     }
 
-    public void EndInput(string input)
-    {
-        if (input=="username") passwordInput.Select();
-        else if (input=="password") CheckUserPass();
-    }
-
-    //! Update the Player object based on the User that logged in.
-    IEnumerator GetPlayer()
-    {
-        UnityWebRequest uwr = UnityWebRequest.Get(Server.Address("players") + UserSession.us.user.GetID());
-        yield return uwr.SendWebRequest();
-        if (uwr.isNetworkError)
-        {
-            Debug.Log("Error While Sending: " + uwr.error);
-            NPBinding.UI.ShowToast("Communication Error. Please try again later.", eToastMessageLength.SHORT);
-        }
-        else
-            UpdateSessions.JSON_Session("player", uwr.downloadHandler.text);
-        StopCoroutine(GetPlayer());
-    }
+    //public void EndInput(string input)
+    //{
+    //    if (input=="username") passwordInput.Select();
+    //    else if (input=="password") CheckUserPass();
+    //}
 
     //! Try to login with given credentials.
     IEnumerator TryLogin(bool first_login, string json, User user)
@@ -61,11 +47,18 @@ public class AuthenticateUser : MonoBehaviour {
             if (Server.CheckLogin(uwr.downloadHandler.text))
             {
                 string next_scene = "Overworld";
-                if (!first_login) yield return StartCoroutine(GetPlayer());
-                if (first_login) next_scene = "TwitterLogin";
-                //Instantiate(loading, transform.position, Quaternion.identity);
-                //yield return new WaitForSeconds(1f);
-                //Destroy(loading);
+                if (first_login)
+                    next_scene = "TwitterLogin";
+                if (!first_login)
+                {
+                    gameObject.AddComponent<UpdateSessions>().U_Player();
+                    if(Server.CheckTwitter())
+                    {
+                        loading.SetActive(true);
+                        yield return new WaitForSeconds(1.5f);
+                        loading.SetActive(false);
+                    }
+                }
                 gameObject.AddComponent<ChangeScene>().Forward(next_scene);
                 if (!first_login) NPBinding.UI.ShowToast("Welcome back, " + user.GetUsername(), eToastMessageLength.SHORT);
             }

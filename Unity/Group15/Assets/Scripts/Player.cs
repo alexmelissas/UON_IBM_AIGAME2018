@@ -49,6 +49,7 @@ public class Player
     }
 
     //! Fully clone the Player object to a new one - needed in GamePlay for Turn calculation
+        // Code  modified from https://stackoverflow.com/questions/129389/how-do-you-do-a-deep-copy-of-an-object-in-net-c-specifically
     public static T DeepClone<T>(T obj)
     {
         using (var ms = new MemoryStream())
@@ -59,6 +60,5 @@ public class Player
             return (T)formatter.Deserialize(ms);
         }
     }
-    // Code  modified from https://stackoverflow.com/questions/129389/how-do-you-do-a-deep-copy-of-an-object-in-net-c-specifically
 }
 

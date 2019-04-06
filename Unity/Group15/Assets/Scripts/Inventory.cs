@@ -4,14 +4,13 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class Inventory : MonoBehaviour {
-    public Text hp_lbl;
-    public Text atk_lbl;
-    public Text def_lbl;
-    public Text agility_lbl;
-    public Text crit_lbl;
+
+    public Text hp_lbl, atk_lbl, def_lbl, money_lbl;
+    public Button swordSlot, shieldSlot, armourSlot; // says slot but really they're invis buttons xD
+    public GameObject upgradeSword, upgradeShield, upgradeArmour;
+
     private Player p;
-
-
+    
     private void Awake()
     {
         gameObject.AddComponent<UpdateSessions>().U_All(); // NOT SURE
@@ -19,6 +18,10 @@ public class Inventory : MonoBehaviour {
 
     void Start()
     {
+        upgradeSword.SetActive(false);
+        upgradeShield.SetActive(false);
+        upgradeArmour.SetActive(false);
+        //set the inv slots to current items
         p = new Player();
     }
 
@@ -30,13 +33,55 @@ public class Inventory : MonoBehaviour {
             hp_lbl.text = "" + p.hp;
             atk_lbl.text = "" + p.attack;
             def_lbl.text = "" + p.defense;
-            agility_lbl.text = "" + p.agility;
-            crit_lbl.text = "" + p.critical_strike;
+            money_lbl.text = "" + p.money;
         }
     }
 
-    void BackButton()
+    public void ExpandUpgrades(int item)
     {
-        gameObject.AddComponent<ChangeScene>().Back();
+        switch(item)
+        {
+            case 0:
+                upgradeSword.SetActive(true);
+                upgradeShield.SetActive(false);
+                upgradeArmour.SetActive(false);
+                break;
+            case 1:
+                upgradeSword.SetActive(false);
+                upgradeShield.SetActive(true);
+                upgradeArmour.SetActive(false);
+                break;
+            case 2:
+                upgradeSword.SetActive(false);
+                upgradeShield.SetActive(false);
+                upgradeArmour.SetActive(true);
+                break;
+            default:
+                break;
+        }
+    }
+
+    private void PopulateUpgrades(int item)
+    {
+        int min_level=0;
+        switch(item)
+        {
+            case 0:
+                min_level = PlayerSession.ps.player.sword;
+                break;
+            case 1:
+                min_level = PlayerSession.ps.player.shield;
+                break;
+            case 2:
+                min_level = PlayerSession.ps.player.armour;
+                break;
+        }
+        
+        // Assume have images of all items according to level
+    }
+
+    public void ConfirmPurchase(int item, int level, int cost)
+    {
+
     }
 }

@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Networking;
 using VoxelBusters.NativePlugins;
 
-//! Logout User from app
+//! Logout: Either the User from app or unlink Twitter from User
 public class Logout : MonoBehaviour {
 
     //! Remove User, Player and id from memory.
@@ -22,9 +22,9 @@ public class Logout : MonoBehaviour {
         StartCoroutine(UnauthTwitter());
     }
 
+    //! Server-request to unlink the Twitter account from the User
     private IEnumerator UnauthTwitter()
     {
-        Debug.Log(Server.Address("logout_twitter") + UserSession.us.user.GetID());
         UnityWebRequest uwr = UnityWebRequest.Get(Server.Address("logout_twitter") + UserSession.us.user.GetID());
         yield return uwr.SendWebRequest();
 
@@ -35,6 +35,7 @@ public class Logout : MonoBehaviour {
         }
         else
         {
+            NPBinding.UI.ShowToast("Successfully unlinked Twitter.", eToastMessageLength.SHORT);
             gameObject.AddComponent<UpdateSessions>().U_All();
         }
         yield break;

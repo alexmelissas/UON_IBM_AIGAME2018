@@ -4,17 +4,41 @@ using UnityEngine.UI;
 //! Check for twitter linkage and allow user to proceed.
 public class AgreeTwitter : MonoBehaviour {
 
-    public Toggle toggle;
-    public Button button;
+    public Toggle agreeToggle;
+    public Button nextButton;
+    public GameObject consent;
+
+    private void Awake()
+    {
+        nextButton.enabled = false;
+        nextButton.GetComponentInChildren<Text>().color = Color.gray;
+    }
 
     void Update() {
-        if (toggle.isOn == true) {
-            button.enabled = true;
-            button.GetComponentInChildren<Text>().color = Color.black;
+
+        if(LoginTwitter.allowNextForSkip)
+        {
+            nextButton.enabled = true;
+            nextButton.GetComponentInChildren<Text>().color = Color.black;
+            return;
+        }
+
+        if (Server.CheckTwitter()) consent.SetActive(true);
+        else consent.SetActive(false);
+
+        if (agreeToggle.isOn == true) {
+            nextButton.enabled = true;
+            nextButton.GetComponentInChildren<Text>().color = Color.black;
         }
         else {
-            button.enabled = false;
-            button.GetComponentInChildren<Text>().color = Color.gray;
+            nextButton.enabled = false;
+            nextButton.GetComponentInChildren<Text>().color = Color.gray;
         }
 	}
+
+    public void Next()
+    {
+        LoginTwitter.allowNextForSkip = false;
+        gameObject.AddComponent<ChangeScene>().Forward("CharacterCreation");
+    }
 }

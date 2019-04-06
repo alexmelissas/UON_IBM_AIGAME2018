@@ -6,14 +6,19 @@ using VoxelBusters.NativePlugins;
 
 //! Collection of server-side responses and path URLs.
 public class Server {
+
     //! Server's home directory IP address/URL.
-    private static readonly string address = "http://10.154.169.221:8080";
+    private static readonly string address = "http://35.178.2.5:8080";
+
     //! General success response (eg. For confirming Twitter linkage)
     private static readonly string register_success = "Saved";
+
     //! Username taken response
     private static readonly string username_taken = "Username has been taken";
+
     //! Failed to authorise login response (either wrong username or password)
     public static readonly string fail_auth = "Sorrry, authorization fails. Please try again later.";
+
     //! Successful no-twitter login
     public static readonly string no_twitter_success = "Account creation succss.";
 

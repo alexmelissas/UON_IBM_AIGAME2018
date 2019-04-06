@@ -27,37 +27,29 @@ public class SetSettings : MonoBehaviour {
         PlayerPrefs.SetInt("challenged", challengeToggle.isOn ? 1 : 0);
         PlayerPrefs.SetInt("skip", skipToggle.isOn ? 1 : 0);
 
-        if (UserSession.us != null)
+        if (UserSession.us != null && UserSession.us.user.GetUsername() != "")
         {
-            if (UserSession.us.user.GetUsername() == "")
+            currentloginLabel.GetComponentInChildren<Text>().text = "Logged in as: ";
+            usernameLabel.GetComponentInChildren<Text>().text = UserSession.us.user.GetUsername();
+
+            if (Server.CheckTwitter())
             {
-                usernameLabel.GetComponentInChildren<Text>().text = "";
-                currentloginLabel.GetComponentInChildren<Text>().text = "Not logged in yet.";
                 linkTwitterButton.SetActive(false);
-                unlinkTwitterButton.SetActive(false);
-                logoutButton.SetActive(false);
+                unlinkTwitterButton.SetActive(true);
             }
             else
             {
-                currentloginLabel.GetComponentInChildren<Text>().text = "You are logged in as: ";
-                usernameLabel.GetComponentInChildren<Text>().text = UserSession.us.user.GetUsername();
-                if (Server.CheckTwitter())
-                {
-                    linkTwitterButton.SetActive(false);
-                    unlinkTwitterButton.SetActive(true);
-                }
-                else
-                {
-                    linkTwitterButton.SetActive(true);
-                    unlinkTwitterButton.SetActive(false);
-                }
-                logoutButton.SetActive(true);
+                linkTwitterButton.SetActive(true);
+                unlinkTwitterButton.SetActive(false);
             }
+
+            logoutButton.SetActive(true);
+            
         }
         else
         {
             usernameLabel.GetComponentInChildren<Text>().text = "";
-            currentloginLabel.GetComponentInChildren<Text>().text = "Not logged in yet.";
+            currentloginLabel.GetComponentInChildren<Text>().text = "No login.";
             linkTwitterButton.SetActive(false);
             unlinkTwitterButton.SetActive(false);
             logoutButton.SetActive(false);

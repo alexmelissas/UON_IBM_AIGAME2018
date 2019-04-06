@@ -642,7 +642,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.20583129, g: 1, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -650,7 +650,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 8c056f90b3c88d44b8bc3d8122e7099e, type: 3}
     m_FontSize: 25
     m_FontStyle: 1
     m_BestFit: 0
@@ -681,8 +681,8 @@ GameObject:
   - component: {fileID: 1385955537}
   - component: {fileID: 1385955536}
   - component: {fileID: 1385955535}
-  - component: {fileID: 1385955539}
   - component: {fileID: 1385955540}
+  - component: {fileID: 1385955539}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -779,9 +779,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1385955534}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: be90ee46dcc1cdb4990b2e9d024616b8, type: 3}
+  m_Script: {fileID: 11500000, guid: 63c235c320d6e964795aea96edff0b5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  agreeToggle: {fileID: 1749339427}
+  nextButton: {fileID: 1555455667}
   consent: {fileID: 1749339424}
 --- !u!114 &1385955540
 MonoBehaviour:
@@ -984,8 +986,8 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 20
+    m_Font: {fileID: 12800000, guid: 8c056f90b3c88d44b8bc3d8122e7099e, type: 3}
+    m_FontSize: 30
     m_FontStyle: 1
     m_BestFit: 0
     m_MinSize: 2
@@ -1013,7 +1015,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1749339425}
   - component: {fileID: 1749339427}
-  - component: {fileID: 1749339426}
   m_Layer: 5
   m_Name: agreeToggle
   m_TagString: Untagged
@@ -1041,19 +1042,6 @@ RectTransform:
   m_AnchoredPosition: {x: 27, y: 138}
   m_SizeDelta: {x: 399.9, y: 76.6}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1749339426
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1749339424}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 63c235c320d6e964795aea96edff0b5f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  toggle: {fileID: 1749339427}
-  button: {fileID: 1555455667}
 --- !u!114 &1749339427
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1131,8 +1119,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 163.17, y: -48.9}
-  m_SizeDelta: {x: 302.35, y: 69.8}
+  m_AnchoredPosition: {x: 259.81, y: -71}
+  m_SizeDelta: {x: 474.8, y: 104.6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1992455166
 MonoBehaviour:
@@ -1154,12 +1142,12 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 50
+    m_Font: {fileID: 12800000, guid: 8c056f90b3c88d44b8bc3d8122e7099e, type: 3}
+    m_FontSize: 75
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 5
-    m_MaxSize: 50
+    m_MaxSize: 90
     m_Alignment: 0
     m_AlignByGeometry: 0
     m_RichText: 1
@@ -1293,8 +1281,8 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 0.8396226, g: 0.43169275, b: 0.43169275, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_HighlightedColor: {r: 0.8018868, g: 0.34420612, b: 0.34420612, a: 1}
+    m_PressedColor: {r: 0.8000001, g: 0.34509805, b: 0.34509805, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1

@@ -17,21 +17,18 @@ public class PauseManager : MonoBehaviour {
 
     private void Save()
     {
+        skipSelected = (PlayerPrefs.GetInt("skip")) == 1 ? true : false;
+        if (!skipSelected && SceneManager.GetActiveScene().name == "Battle") PlayerPrefs.SetInt("skip", 1);
+
         if (UserSession.us.user != null && UserSession.us.user.GetID() != "")
         {
-            if (start || AccountComplete())
+            if(StartScreens() && !LoginTwitter.leftForTwitter) //FIX THIS CONDITIONAL
+            {
+                StartCoroutine(DeleteAccount());
+            }
+            else
             {
                 ZPlayerPrefs.SetString("id", UserSession.us.user.GetID());
-                skipSelected = (PlayerPrefs.GetInt("skip")) == 1 ? true : false;
-                if (!skipSelected && SceneManager.GetActiveScene().name == "Battle") PlayerPrefs.SetInt("skip", 1);
-                ZPlayerPrefs.Save();
-            }
-            else //FIX THIS CONDITIONAL
-            {
-                ZPlayerPrefs.DeleteKey("id");
-                skipSelected = (PlayerPrefs.GetInt("skip")) == 1 ? true : false;
-                if (!skipSelected && SceneManager.GetActiveScene().name == "Battle") PlayerPrefs.SetInt("skip", 1);
-                StartCoroutine(DeleteAccount());
                 ZPlayerPrefs.Save();
             }
         }
@@ -48,8 +45,12 @@ public class PauseManager : MonoBehaviour {
     {
         UnityWebRequest uwr = UnityWebRequest.Delete(Server.Address("delete_user") + UserSession.us.user.GetID());
         yield return uwr.SendWebRequest();
-
-        if (uwr.isNetworkError) yield return DeleteAccount();
+        if (uwr.isNetworkError)
+            yield return DeleteAccount();
+        UserSession.us.user = new User("", "");
+        PlayerSession.ps.player = new Player();
+        ZPlayerPrefs.DeleteKey("id");
+        ZPlayerPrefs.Save();
         yield break;
     }
 
@@ -58,19 +59,25 @@ public class PauseManager : MonoBehaviour {
         if (!start)
         {
             if (skipSelected == false) PlayerPrefs.SetInt("skip", 0);
-            if (PlayerPrefs.HasKey("id") && ZPlayerPrefs.GetRowString("id") != "")
+            if (ZPlayerPrefs.HasKey("id") && ZPlayerPrefs.GetRowString("id") != "")
             {
-                gameObject.AddComponent<UpdateSessions>().U_All();
-                string scene = SceneManager.GetActiveScene().name;
-                if (scene == "Start_Login" || scene == "TwitterLogin" || scene == "ModelCreated"
-                    || scene == "CharacterCreation" || scene == "CreateAccount") //need other solution for settings
-                {
+                if(StartScreens() && !LoginTwitter.leftForTwitter)
                     gameObject.AddComponent<ChangeScene>().Forward("StartScreen");
-                }
-            } 
-            else if(LoginTwitter.leftForTwitter==false)
+            }
+            else if(!LoginTwitter.leftForTwitter)
+            {
+                Debug.Log("Exception: no ID");
                 gameObject.AddComponent<ChangeScene>().Forward("StartScreen");
+            }
         }         
+    }
+
+    private bool StartScreens()
+    {
+        string scene = SceneManager.GetActiveScene().name;
+        if (scene == "Start_Login" || scene == "TwitterLogin" || scene == "CharacterCreation" || scene == "CreateAccount")
+            return true;
+        return false;
     }
 
     private void OnApplicationPause(bool pauseStatus)
