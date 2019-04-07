@@ -13,36 +13,54 @@ public class Gameplay : MonoBehaviour {
      * 3. POST result to server (id, result)
      * 4. while(!skip) ShowGameplay() - displays all the animations;
     */
-    public Slider playerHP;
-    public Image playerHPcolour;
-    public Slider enemyHP;
-    public Image enemyHPcolour;
-    public Text playerName;
-    public Text enemyName;
-    public Text playerLevel;
-    public Text enemyLevel;
-    public Text actualPlayerHP;
-    public Text actualEnemyHP;
-    public Text playerDmgLabel;
-    public Text enemyDmgLabel;
+    public Slider playerHP, enemyHP;
+    public Image playerHPcolour, enemyHPcolour;
+    public Text playerName, enemyName, playerLevel, enemyLevel;
+    public Text actualPlayerHP, maxPlayerHP, actualEnemyHP, maxEnemyHP, playerDmgLabel, enemyDmgLabel;
     public AudioSource soundfx;
-    public AudioClip hit;
-    public AudioClip crit;
-    public AudioClip miss;
-    public AudioClip drop_sword;
-
+    public AudioClip playerhit, enemyhit, crit, miss, drop_sword;
     private List<Turn> turns;
-    private Player player;
-    private Player enemy;
-    private PlayerModel player_model;
-    private PlayerModel enemy_model;
-
+    private Player player, enemy;
+    private PlayerModel player_model, enemy_model;
     private int result;
-    private int player_max_hp; //for HP bar scaling
-    private int enemy_max_hp;
+    private int player_max_hp, enemy_max_hp; //HP bar scaling
     float new_hp_player = -1;
     float new_hp_enemy = -1;
     private bool skip = false;
+    private bool death = false;
+    private bool ended = false;
+
+    //! Setup the battle screen, including HP bars, Models, Damage Labels etc.
+    private void Start()
+    {
+        player = PlayerSession.ps.player;
+        Items.AttachItemsToPlayer(new Items(player), player);
+
+        if (!PlayerPrefs.HasKey("battle_type")) { gameObject.AddComponent<ChangeScene>().Forward("Overworld"); }; //Error
+        int battle_type = PlayerPrefs.GetInt("battle_type");
+        if(battle_type!=0 && battle_type!=1) gameObject.AddComponent<ChangeScene>().Forward("Overworld"); // Handle error better
+        enemy = PlayerSession.ps.enemy;
+        if (battle_type == 0)
+        {
+            enemy.id = "bot";
+            enemy.characterName = BotScreen.difficulty + "Bot";
+        }
+
+        turns = new List<Turn>();
+        player_max_hp = player.hp;
+        enemy_max_hp = enemy.hp;
+
+        playerName.text = "" + player.characterName;
+        playerLevel.text = "" + player.level;
+        enemyName.text = "" + enemy.characterName;
+        enemyLevel.text = "" + enemy.level;
+
+        playerDmgLabel.enabled = enemyDmgLabel.enabled = false;
+        playerDmgLabel.GetComponentInParent<Image>().enabled = enemyDmgLabel.GetComponentInParent<Image>().enabled = false;
+
+        playerHP.normalizedValue = enemyHP.normalizedValue = 1f;
+        RunBattle();
+    }
 
     //! Get either random player as enemy (PvP) or a bot (PvE) from server
     public static IEnumerator GetEnemy(int battletype)
@@ -65,81 +83,65 @@ public class Gameplay : MonoBehaviour {
             else
             {
                 PlayerSession.ps.enemy = Player.CreatePlayerFromJSON(uwr.downloadHandler.text);
-
             }
-        } 
+        }
         yield break;
 
     }
 
-    //! Setup the battle screen, including HP bars, Models, Damage Labels etc.
-    private void Start()
+    //! End the battle animations etc
+    private void EndMatch()
     {
-        player = PlayerSession.ps.player;
-        Items.AttachItemsToPlayer(new Items(player), player);
+        if (ended) return;
 
-        if (!PlayerPrefs.HasKey("battle_type")) { gameObject.AddComponent<ChangeScene>().Forward("Overworld"); }; //Error
-        int battle_type = PlayerPrefs.GetInt("battle_type");
-        if(battle_type!=0 || battle_type!=1) gameObject.AddComponent<ChangeScene>().Forward("Overworld"); // Handle error better
-        //if (battle_type == 0 || battle_type == 1) StartCoroutine(GetEnemy(battle_type)); //GET bot or player as enemy
-        //else { gameObject.AddComponent<ChangeScene>().Forward("Overworld"); } //Error
-        //Invoke("SetupBattleScreen", 0.5f);  // do the getenemy in the bot and pvp screens 
-    
-        enemy = PlayerSession.ps.enemy;
-
-        turns = new List<Turn>();
-        player_max_hp = player.hp;
-        enemy_max_hp = enemy.hp;
-
-        playerName.text = "" + player.character_name;
-        playerLevel.text = "" + player.level;
-        enemyName.text = "" + enemy.character_name;
-        enemyLevel.text = "" + enemy.level;
-
-        playerDmgLabel.enabled = false;
-        enemyDmgLabel.enabled = false;
-        playerDmgLabel.GetComponentInParent<Image>().enabled = false;
-        enemyDmgLabel.GetComponentInParent<Image>().enabled = false;
-
-        playerHP.normalizedValue = 1f;
-        enemyHP.normalizedValue = 1f;
-        RunBattle();
+        ended = true;
+        StopAllCoroutines();
+        PlayerSession.ps.player = Player.DeepClone<Player>(PlayerSession.ps.updatedPlayer);
+        // do animations for gain exp / level up
+        string announce = (result == 1) ? "Enemy wins. Too bad." : "You won! Congrats!";
+        Debug.Log(announce);
+        NPBinding.UI.ShowToast(announce, eToastMessageLength.SHORT);
+        result = 0;
+        gameObject.AddComponent<ChangeScene>().Forward("Overworld");
+        Destroy(gameObject);
     }
 
     //! Check if animation should be displayed: If not skipped, and if nobody won yet
     private void Update()
     {
-        if(PlayerSession.ps.enemy.id != "")
+        if (PlayerSession.ps.enemy.id != "")
         {
-
             if (PlayerPrefs.HasKey("skip")) if (PlayerPrefs.GetInt("skip") == 1) skip = true;
-            if (skip)
-            {
-                StopAllCoroutines();
-                string announce = (result == 1) ? "Enemy wins. Too bad." : "You won! Congrats!";
-                Debug.Log(announce);
-                NPBinding.UI.ShowToast(announce, eToastMessageLength.SHORT);
-                result = 0;
-                gameObject.AddComponent<ChangeScene>().Forward("Overworld");
-                Destroy(gameObject);
-            }
-            actualPlayerHP.text = "" + /*new_hp_player + "/" +*/ player_max_hp;
-            actualEnemyHP.text = "" + /*new_hp_enemy + "/" + */ enemy_max_hp;
+            if (skip) Invoke("EndMatch", 0.5f);
 
-            if (new_hp_player > -1) if (playerHP.value > new_hp_player) playerHP.normalizedValue -= 0.005f; //need to think about scaling and speed
-            if (playerHP.value == 0) { /*soundfx.PlayOneShot(drop_sword, PlayerPrefs.GetFloat("fx"));*/playerHPcolour.enabled = false; }
+            //Update HP bars
+            float nhpp = new_hp_player * player_max_hp;
+            float nhpe = new_hp_enemy * enemy_max_hp;
+            Mathf.RoundToInt(nhpp);
+            Mathf.RoundToInt(nhpe);
+            actualPlayerHP.text = "" + ((nhpp >= 0) ? nhpp : player_max_hp);
+            actualEnemyHP.text = "" + ((nhpe >= 0) ? nhpe : enemy_max_hp);
+            maxPlayerHP.text = "/" + player_max_hp;
+            maxEnemyHP.text = "/" + enemy_max_hp;
+
+            if (new_hp_player > -1) if (playerHP.value > new_hp_player) playerHP.normalizedValue -= 0.005f;
+            if (playerHP.value == 0 && !death) { soundfx.PlayOneShot(drop_sword, PlayerPrefs.GetFloat("fx")); playerHPcolour.enabled = false; death = true; }
             else if (playerHP.value < 0.25) playerHPcolour.color = Color.red; else if (playerHP.value < 0.5) playerHPcolour.color = Color.yellow;
+
             if (new_hp_enemy > -1) if (enemyHP.value > new_hp_enemy) enemyHP.normalizedValue -= 0.005f;
-            if (enemyHP.value == 0) { /*soundfx.PlayOneShot(drop_sword, PlayerPrefs.GetFloat("fx")); */enemyHPcolour.enabled = false; }
+            if (enemyHP.value == 0 && !death) { soundfx.PlayOneShot(drop_sword, PlayerPrefs.GetFloat("fx")); enemyHPcolour.enabled = false; death = true; }
             else if (enemyHP.value < 0.25) enemyHPcolour.color = Color.red; else if (enemyHP.value < 0.5) enemyHPcolour.color = Color.yellow;
+        }
+        else
+        {
+            NPBinding.UI.ShowToast("No enemy found. Try again later.", eToastMessageLength.SHORT);
+            gameObject.AddComponent<ChangeScene>().Forward("Overworld");
+            Destroy(gameObject);
         }
     }
 
     //! Skip button handler
-    public void Press_Skip()
-    {
-        skip = true;
-    }
+    public void Press_Skip() { skip = true; }
 
     //! Run the battle, calculate all Turns and result
     public void RunBattle()
@@ -162,9 +164,14 @@ public class Gameplay : MonoBehaviour {
     //! Pass the BattleResult object of this battle to the server
     IEnumerator PassResult(string battle_result)
     {
-        Debug.Log("Sending: " + battle_result);
-        byte[] jsonToSend = System.Text.Encoding.UTF8.GetBytes(battle_result);
-        using (UnityWebRequest uwr = UnityWebRequest.Put(Server.Address("battle"), jsonToSend))   
+        UnityWebRequest uwr = new UnityWebRequest(Server.Address("battle"), "PUT");
+        byte[] jsonToSend = new System.Text.UTF8Encoding().GetBytes(battle_result);
+        uwr.uploadHandler = (UploadHandler)new UploadHandlerRaw(jsonToSend);
+        uwr.downloadHandler = (DownloadHandler)new DownloadHandlerBuffer();
+        uwr.SetRequestHeader("Content-Type", "application/json");
+
+        yield return uwr.SendWebRequest();
+        
         if (uwr.isNetworkError)
         {
             Debug.Log("Error While Sending: " + uwr.error);
@@ -172,9 +179,7 @@ public class Gameplay : MonoBehaviour {
         }
         else
         {
-            // do animations for gain exp / level up 
-                Debug.Log(uwr.downloadHandler.text);
-            PlayerSession.ps.player = Player.CreatePlayerFromJSON(uwr.downloadHandler.text);
+            PlayerSession.ps.updatedPlayer = Player.CreatePlayerFromJSON(uwr.downloadHandler.text);
         }
         StopCoroutine(PassResult(battle_result));
         yield break;
@@ -218,7 +223,9 @@ public class Gameplay : MonoBehaviour {
                     case 1: dmgLabel.color = Color.green; break;
                     case 2: dmgLabel.color = Color.yellow; break;
                     case 3: dmgLabel.color = Color.red; break;
-                    default: dmgLabel.color = Color.black; sound = hit; break;
+                    default: dmgLabel.color = Color.black;
+                        sound = (attacker=="player") ? playerhit : enemyhit;
+                        break;
                 }                
             }
             else

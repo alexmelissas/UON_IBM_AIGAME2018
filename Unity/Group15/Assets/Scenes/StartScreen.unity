@@ -286,8 +286,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 9, y: 53}
-  m_SizeDelta: {x: 56, y: 56}
+  m_AnchoredPosition: {x: 8, y: 53}
+  m_SizeDelta: {x: 70, y: 70}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &950680140
 MonoBehaviour:
@@ -441,7 +441,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 8c056f90b3c88d44b8bc3d8122e7099e, type: 3}
     m_FontSize: 50
     m_FontStyle: 0
     m_BestFit: 0
@@ -516,7 +516,7 @@ MonoBehaviour:
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 640, y: 960}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0
+  m_MatchWidthOrHeight: 0.5
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
@@ -617,6 +617,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player:
     id: 
+    character_name: 
     level: 0
     hp: 0
     attack: 0
@@ -626,12 +627,48 @@ MonoBehaviour:
     money: 0
     experience: 0
     exptolevel: 0
-    factor: 0
     sword: 0
     shield: 0
     armour: 0
     win: 0
     lose: 0
+    factor: 0
+  updatedPlayer:
+    id: 
+    character_name: 
+    level: 0
+    hp: 0
+    attack: 0
+    defense: 0
+    agility: 0
+    critical_strike: 0
+    money: 0
+    experience: 0
+    exptolevel: 0
+    sword: 0
+    shield: 0
+    armour: 0
+    win: 0
+    lose: 0
+    factor: 0
+  enemy:
+    id: 
+    character_name: 
+    level: 0
+    hp: 0
+    attack: 0
+    defense: 0
+    agility: 0
+    critical_strike: 0
+    money: 0
+    experience: 0
+    exptolevel: 0
+    sword: 0
+    shield: 0
+    armour: 0
+    win: 0
+    lose: 0
+    factor: 0
 --- !u!114 &1387472609
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -698,7 +735,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 8c056f90b3c88d44b8bc3d8122e7099e, type: 3}
     m_FontSize: 50
     m_FontStyle: 0
     m_BestFit: 0
@@ -819,7 +856,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 320, y: -108}
+  m_AnchoredPosition: {x: 303.58, y: -108}
   m_SizeDelta: {x: 426.3, y: 99.4}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1981123665
@@ -842,7 +879,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 8c056f90b3c88d44b8bc3d8122e7099e, type: 3}
     m_FontSize: 90
     m_FontStyle: 0
     m_BestFit: 1
@@ -897,8 +934,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 128, y: 155.1}
-  m_SizeDelta: {x: 231.1, y: 102.2}
+  m_AnchoredPosition: {x: 0, y: -185}
+  m_SizeDelta: {x: 358.7, y: 162.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2035692317
 MonoBehaviour:
@@ -1032,8 +1069,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -114.32, y: 155.1}
-  m_SizeDelta: {x: 228.65, y: 138.1}
+  m_AnchoredPosition: {x: -0.000005722, y: 155}
+  m_SizeDelta: {x: 490.1, y: 259.4}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2124478831
 MonoBehaviour:

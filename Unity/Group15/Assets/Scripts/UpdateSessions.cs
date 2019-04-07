@@ -5,6 +5,10 @@ using UnityEngine.Networking;
 using VoxelBusters.NativePlugins;
 
 //! Keep User and Player objects up to date with the server, keep data consistent when exiting app
+
+// Usage: add this line to the other class and choose the function
+    // gameObject.AddComponent<UpdateSessions>().function();
+
 public class UpdateSessions : MonoBehaviour{
 
     //! Update all singleton objects in the app
@@ -36,7 +40,7 @@ public class UpdateSessions : MonoBehaviour{
     //! GET JSON for Player
     IEnumerator GetPlayer()
     {
-        UnityWebRequest uwr = UnityWebRequest.Get(Server.Address("players") + UserSession.us.user.GetID());
+        UnityWebRequest uwr = UnityWebRequest.Get(Server.Address("players") + ZPlayerPrefs.GetString("id"));
         yield return uwr.SendWebRequest();
         if (uwr.isNetworkError)
         {

@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
-//! Abstract class describing core attributes of items.
+//! Abstract Factory - For Items.
 public abstract class Item {
 
     public Image icon; //maybe not Image - something to hold the icon
@@ -10,11 +10,12 @@ public abstract class Item {
     public int defense;
     public int agility;
     public int critical_strike;
+    public int price;
 
     //! Create a generic item with icon and attributes
-    protected Item(Image icn,int h,int atk,int def,int ag,int cr)
+    protected Item(Image icn,int h,int atk,int def,int ag,int cr, int pr)
     {
-        icon = icn; hp = h; attack = atk; defense = def; agility = ag; critical_strike = cr;
+        icon = icn; hp = h; attack = atk; defense = def; agility = ag; critical_strike = cr; price = pr;
     }
 
     //! Factory - to create different kinds of items
