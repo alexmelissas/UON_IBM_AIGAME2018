@@ -20,6 +20,8 @@ public class ChangeScene : MonoBehaviour {
             int top = SceneHistory.sh.scenes.Count - 1;
             if (top >= 0)
             {
+                if (SceneHistory.sh.scenes[top] == "CreateAccount")
+                    StartCoroutine(PauseManager.DeleteAccount());
                 SceneManager.LoadScene(SceneHistory.sh.scenes[top]);
                 SceneHistory.sh.scenes.RemoveAt(top);
             }

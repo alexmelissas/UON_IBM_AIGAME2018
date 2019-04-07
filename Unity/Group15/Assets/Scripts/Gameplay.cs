@@ -43,16 +43,16 @@ public class Gameplay : MonoBehaviour {
         if (battle_type == 0)
         {
             enemy.id = "bot";
-            enemy.character_name = BotScreen.difficulty + "Bot";
+            enemy.characterName = BotScreen.difficulty + "Bot";
         }
 
         turns = new List<Turn>();
         player_max_hp = player.hp;
         enemy_max_hp = enemy.hp;
 
-        playerName.text = "" + player.character_name;
+        playerName.text = "" + player.characterName;
         playerLevel.text = "" + player.level;
-        enemyName.text = "" + enemy.character_name;
+        enemyName.text = "" + enemy.characterName;
         enemyLevel.text = "" + enemy.level;
 
         playerDmgLabel.enabled = enemyDmgLabel.enabled = false;
@@ -83,7 +83,6 @@ public class Gameplay : MonoBehaviour {
             else
             {
                 PlayerSession.ps.enemy = Player.CreatePlayerFromJSON(uwr.downloadHandler.text);
-                Debug.Log("Enemy found: id = " + PlayerSession.ps.enemy.id);
             }
         }
         yield break;
@@ -110,7 +109,7 @@ public class Gameplay : MonoBehaviour {
     //! Check if animation should be displayed: If not skipped, and if nobody won yet
     private void Update()
     {
-        if(PlayerSession.ps.enemy.id != "")
+        if (PlayerSession.ps.enemy.id != "")
         {
             if (PlayerPrefs.HasKey("skip")) if (PlayerPrefs.GetInt("skip") == 1) skip = true;
             if (skip) Invoke("EndMatch", 0.5f);
@@ -120,18 +119,24 @@ public class Gameplay : MonoBehaviour {
             float nhpe = new_hp_enemy * enemy_max_hp;
             Mathf.RoundToInt(nhpp);
             Mathf.RoundToInt(nhpe);
-            actualPlayerHP.text = "" + ((nhpp>=0) ? nhpp : player_max_hp);
+            actualPlayerHP.text = "" + ((nhpp >= 0) ? nhpp : player_max_hp);
             actualEnemyHP.text = "" + ((nhpe >= 0) ? nhpe : enemy_max_hp);
             maxPlayerHP.text = "/" + player_max_hp;
             maxEnemyHP.text = "/" + enemy_max_hp;
 
             if (new_hp_player > -1) if (playerHP.value > new_hp_player) playerHP.normalizedValue -= 0.005f;
-            if (playerHP.value == 0 && !death) { soundfx.PlayOneShot(drop_sword, PlayerPrefs.GetFloat("fx"));playerHPcolour.enabled = false; death = true; }
+            if (playerHP.value == 0 && !death) { soundfx.PlayOneShot(drop_sword, PlayerPrefs.GetFloat("fx")); playerHPcolour.enabled = false; death = true; }
             else if (playerHP.value < 0.25) playerHPcolour.color = Color.red; else if (playerHP.value < 0.5) playerHPcolour.color = Color.yellow;
 
             if (new_hp_enemy > -1) if (enemyHP.value > new_hp_enemy) enemyHP.normalizedValue -= 0.005f;
             if (enemyHP.value == 0 && !death) { soundfx.PlayOneShot(drop_sword, PlayerPrefs.GetFloat("fx")); enemyHPcolour.enabled = false; death = true; }
             else if (enemyHP.value < 0.25) enemyHPcolour.color = Color.red; else if (enemyHP.value < 0.5) enemyHPcolour.color = Color.yellow;
+        }
+        else
+        {
+            NPBinding.UI.ShowToast("No enemy found. Try again later.", eToastMessageLength.SHORT);
+            gameObject.AddComponent<ChangeScene>().Forward("Overworld");
+            Destroy(gameObject);
         }
     }
 
@@ -174,7 +179,6 @@ public class Gameplay : MonoBehaviour {
         }
         else
         {
-                Debug.Log(uwr.downloadHandler.text);
             PlayerSession.ps.updatedPlayer = Player.CreatePlayerFromJSON(uwr.downloadHandler.text);
         }
         StopCoroutine(PassResult(battle_result));

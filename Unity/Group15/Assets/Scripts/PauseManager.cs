@@ -41,7 +41,7 @@ public class PauseManager : MonoBehaviour {
         return true;
     }
 
-    private IEnumerator DeleteAccount()
+    public static IEnumerator DeleteAccount()
     {
         UnityWebRequest uwr = UnityWebRequest.Delete(Server.Address("delete_user") + UserSession.us.user.GetID());
         yield return uwr.SendWebRequest();

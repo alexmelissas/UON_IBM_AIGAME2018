@@ -7,8 +7,7 @@ using UnityEngine;
 //! JSON-able object with all Player-related attributes (eg. id, winrate, level, stats ...)
 public class Player
 {
-    public string id;
-    public string character_name;
+    public string id, characterName;
     public int level, hp, attack, defense, agility, critical_strike ,money, experience, exptolevel;
     public int sword, shield, armour, win, lose;
     public double factor;
@@ -17,7 +16,7 @@ public class Player
     public Player(string i, string cn, int lvl, int h_p, int atk, int def, int agl, int crit, int mn, int exp, 
         int exp2lvl, double ftr, int sw, int sh, int ar, int w, int l)
     {
-        id = i; character_name = cn; level = lvl; hp = h_p; attack = atk; defense = def; agility = agl; critical_strike = crit;
+        id = i; characterName = cn; level = lvl; hp = h_p; attack = atk; defense = def; agility = agl; critical_strike = crit;
         money = mn; experience = exp; exptolevel = exp2lvl; factor = ftr;
         sword = sw; shield = sh; armour = ar; win = w; lose = l;
     }
@@ -25,7 +24,7 @@ public class Player
     //! Default constructor
     public Player()
     {
-        id = ""; character_name = ""; level = 0; hp = 0; attack = 0; defense = 0; agility = 0; critical_strike = 0; money = 0;
+        id = ""; characterName = ""; level = 0; hp = 0; attack = 0; defense = 0; agility = 0; critical_strike = 0; money = 0;
         experience = 0; exptolevel = 0; factor = 0; sword = 0; shield = 0; armour = 0; win = 0; lose = 0;
     }
 
@@ -40,7 +39,7 @@ public class Player
     //! Check if two Player objects have identical attributes
     public bool ComparePlayer(Player other)
     {
-        if (id != other.id || character_name != other.character_name || level != other.level || hp!=other.hp 
+        if (id != other.id || characterName != other.characterName || level != other.level || hp!=other.hp 
             || attack != other.attack || defense != other.defense || agility != other.agility 
             || critical_strike != other.critical_strike || money != other.money || experience != other.experience 
             || exptolevel != other.exptolevel || factor != other.factor || sword != other.sword || shield != other.shield 

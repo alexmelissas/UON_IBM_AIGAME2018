@@ -11,14 +11,13 @@ public class LoginTwitter : MonoBehaviour {
 
     public static bool leftForTwitter = false;
     public static bool allowNextForSkip = false;
-    private bool otherPopupOpen;
+    private bool otherPopupOpen = false;
 
     private void Start()
     {
         otherPopupOpen = false;
     }
-
-
+    
     private void EndSession() { leftForTwitter = false; }
     private void SetSkipBool() { allowNextForSkip = true; }
 
@@ -76,9 +75,8 @@ public class LoginTwitter : MonoBehaviour {
         }
         else
         {
-            Debug.Log("NO TWAT RESPONSE " + uwr.downloadHandler.text + " SHOULD BE " + Server.no_twitter_success);
-
-            if (uwr.downloadHandler.text == Server.no_twitter_success) SetSkipBool();
+            //if (uwr.downloadHandler.text == Server.no_twitter_success)
+                SetSkipBool();
         }
         uwr.Dispose();
         yield break;
@@ -102,6 +100,8 @@ public class LoginTwitter : MonoBehaviour {
         if(!otherPopupOpen)
         {
             otherPopupOpen = true;
+            leftForTwitter = true;
+
             string[] _buttons;
 
             string terms = "By agreeing and linking your twitter you agree to " +
@@ -124,10 +124,7 @@ public class LoginTwitter : MonoBehaviour {
             switch (popup)
             {
                 case "fail_connection":
-                    leftForTwitter = false;
-                    string scene = SceneManager.GetActiveScene().name;
-                    if (scene=="Settings") _buttons = new string[] { "Cancel", "Retry" };
-                    else _buttons = new string[] { "Retry", "Play Without Twitter" };
+                    _buttons = new string[] { "Cancel", "Retry" };
                     NPBinding.UI.ShowAlertDialogWithMultipleButtons("Personality bot is sad",
                         "Twitter Connection didn't work out...", _buttons, OnButtonPressed);
                     break;
@@ -153,7 +150,7 @@ public class LoginTwitter : MonoBehaviour {
     //! Handle dialog box button options
     private void OnButtonPressed(string _buttonPressed)
     {
-        switch(_buttonPressed)
+        switch (_buttonPressed)
         {
             case "Retry":
                 string scene = SceneManager.GetActiveScene().name;
@@ -161,9 +158,6 @@ public class LoginTwitter : MonoBehaviour {
                 if (scene == "Settings") ShowPopup("terms_relog");
                 else ShowPopup("show_terms");
                 break;
-            case "Play Without Twitter":
-                otherPopupOpen = false;
-                ShowPopup("skip_twitter"); break;
             case "Accept":
                 TryOpenTwitter(true);
                 break;

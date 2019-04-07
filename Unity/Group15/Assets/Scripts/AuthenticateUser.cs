@@ -15,15 +15,8 @@ public class AuthenticateUser : MonoBehaviour {
     void Start()
     {
         loading.SetActive(false);
-        //usernameInput.onEndEdit.AddListener(delegate { EndInput("username"); });
-        //passwordInput.onEndEdit.AddListener(delegate { EndInput("password"); });
+        passwordInput.onEndEdit.AddListener(delegate { CheckUserPass(); });
     }
-
-    //public void EndInput(string input)
-    //{
-    //    if (input=="username") passwordInput.Select();
-    //    else if (input=="password") CheckUserPass();
-    //}
 
     //! Try to login with given credentials.
     IEnumerator TryLogin(bool first_login, string json, User user)
