@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Networking;
 using VoxelBusters.NativePlugins;
 
-//! Collection of server-side responses and path URLs.
+//! Collection of server-side responses, path URLs and functions.
 public class Server {
 
     //! Server's home directory IP address/URL.
@@ -42,6 +42,7 @@ public class Server {
 
             case "battle": path = "/battle"; break;
             case "get_battle": path = "/battle/"; break;
+            case "get_plays": path = "/battle/count/"; break;
 
             default: path = ""; break;
         }
@@ -63,7 +64,7 @@ public class Server {
         else
         {
             UpdateSessions.JSON_Session("user", output);
-            ZPlayerPrefs.SetString("id", UserSession.us.user.GetID());
+            ZPlayerPrefs.SetString("id", UserSession.us.user.id);
         }
         return true;
     }
@@ -71,7 +72,81 @@ public class Server {
     //! Check if user has linked twitter, eg. User entry has twitter token
     public static bool CheckTwitter()
     {
-        return (UserSession.us.user.GetAT()!="" && UserSession.us.user.GetATS()!="") ? true : false;
+        return (UserSession.us.user.accessToken!="" 
+            && UserSession.us.user.accessTokenSecret!="") 
+            ? true : false;
     }
 
+    // Battle Related //
+
+    //! Get the player's remaining plays for the day
+    public static IEnumerator GetPlaysLeft()
+    {
+        string address = Server.Address("get_plays") + PlayerSession.ps.player.id;
+
+        using (UnityWebRequest uwr = UnityWebRequest.Get(address))
+        {
+            yield return uwr.SendWebRequest();
+            if (uwr.isNetworkError)
+                Debug.Log("Error While Sending: " + uwr.error);
+            else
+            {
+                Debug.Log("Read plays left: " + uwr.downloadHandler.text);
+                PlayerSession.ps.plays_left = Int32.Parse(uwr.downloadHandler.text);
+            }
+        }
+        yield break;
+    }
+
+
+    //! Get either random player as enemy (PvP) or a bot (PvE) from server
+    public static IEnumerator GetEnemy(int battletype)
+    {
+        PlayerSession.ps.enemy = new Player();
+
+        string address = Server.Address("get_battle");
+        if (battletype == 0) address += BotScreen.difficulty + "/";
+        address += PlayerSession.ps.player.id;
+
+        using (UnityWebRequest uwr = UnityWebRequest.Get(address))
+        {
+            yield return uwr.SendWebRequest();
+            if (uwr.isNetworkError)
+            {
+                Debug.Log("Error While Sending: " + uwr.error);
+                NPBinding.UI.ShowToast("Communication Error. Please try again later.", eToastMessageLength.SHORT);
+                // API TO REFUND PLAY
+            }
+            else
+            {
+                Debug.Log("FINDING ENEMY BEEP BOOP");
+                //Debug.Log("URL: " + address);
+                //Debug.Log("got enemy " + uwr.downloadHandler.text);
+                PlayerSession.ps.enemy = Player.CreatePlayerFromJSON(uwr.downloadHandler.text);
+            }
+        }
+        yield break;
+    }
+
+    //! Pass the BattleResult object of the current battle to the server
+    public static IEnumerator PassResult(string battle_result)
+    {
+        UnityWebRequest uwr = new UnityWebRequest(Server.Address("battle"), "PUT");
+        byte[] jsonToSend = new System.Text.UTF8Encoding().GetBytes(battle_result);
+        uwr.uploadHandler = (UploadHandler)new UploadHandlerRaw(jsonToSend);
+        uwr.downloadHandler = (DownloadHandler)new DownloadHandlerBuffer();
+        uwr.SetRequestHeader("Content-Type", "application/json");
+
+        yield return uwr.SendWebRequest();
+
+        if (uwr.isNetworkError)
+        {
+            Debug.Log("Error While Sending: " + uwr.error);
+            NPBinding.UI.ShowToast("Communication Error. Please try again later.", eToastMessageLength.SHORT);
+        }
+        else
+            PlayerSession.ps.updatedPlayer = Player.CreatePlayerFromJSON(uwr.downloadHandler.text);
+        yield break;
+    }
+    
 }

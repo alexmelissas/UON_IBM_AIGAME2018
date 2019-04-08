@@ -12,6 +12,7 @@ public class PlayerSession : MonoBehaviour
     public Player player;
     public Player updatedPlayer;
     public Player enemy;
+    public int plays_left;
 
     void Awake()
     {
@@ -24,5 +25,10 @@ public class PlayerSession : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+
+    public static void GetPlaysLeft()
+    {
+
     }
 }
