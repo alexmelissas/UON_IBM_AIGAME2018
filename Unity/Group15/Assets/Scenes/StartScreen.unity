@@ -188,7 +188,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &880960046
 GameObject:
@@ -250,7 +250,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &950680138
 GameObject:
@@ -386,6 +386,156 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 950680138}
   m_CullTransparentMesh: 0
+--- !u!1 &1099983258
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1099983264}
+  - component: {fileID: 1099983263}
+  - component: {fileID: 1099983262}
+  - component: {fileID: 1099983261}
+  - component: {fileID: 1099983260}
+  - component: {fileID: 1099983259}
+  m_Layer: 0
+  m_Name: Singleton Container
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1099983259
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1099983258}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a997bbf8ade14814587659d957175463, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1099983260
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1099983258}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85d32b35cb6857d4f80b0496793af8c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1099983261
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1099983258}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f660738835d4e4f46b9b014be15cf14e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scenes: []
+--- !u!114 &1099983262
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1099983258}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 771fdcc5d7cadd741b1ccd2f3e9e6dbf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player:
+    id: 
+    characterName: 
+    level: 0
+    hp: 0
+    attack: 0
+    defense: 0
+    agility: 0
+    critical_strike: 0
+    money: 0
+    experience: 0
+    exptolevel: 0
+    sword: 0
+    shield: 0
+    armour: 0
+    win: 0
+    lose: 0
+    factor: 0
+  updatedPlayer:
+    id: 
+    characterName: 
+    level: 0
+    hp: 0
+    attack: 0
+    defense: 0
+    agility: 0
+    critical_strike: 0
+    money: 0
+    experience: 0
+    exptolevel: 0
+    sword: 0
+    shield: 0
+    armour: 0
+    win: 0
+    lose: 0
+    factor: 0
+  enemy:
+    id: 
+    characterName: 
+    level: 0
+    hp: 0
+    attack: 0
+    defense: 0
+    agility: 0
+    critical_strike: 0
+    money: 0
+    experience: 0
+    exptolevel: 0
+    sword: 0
+    shield: 0
+    armour: 0
+    win: 0
+    lose: 0
+    factor: 0
+  plays_left: 0
+--- !u!114 &1099983263
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1099983258}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e39944d589a55df4e9400757f0d5d068, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  user:
+    id: 
+    username: 
+    password: 
+    accessToken: 
+    accessTokenSecret: 
+--- !u!4 &1099983264
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1099983258}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 703.8334, y: 1280.0002, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1262113888
 GameObject:
   m_ObjectHideFlags: 0
@@ -472,11 +622,6 @@ GameObject:
   - component: {fileID: 1387472603}
   - component: {fileID: 1387472602}
   - component: {fileID: 1387472601}
-  - component: {fileID: 1387472605}
-  - component: {fileID: 1387472608}
-  - component: {fileID: 1387472606}
-  - component: {fileID: 1387472607}
-  - component: {fileID: 1387472609}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -557,130 +702,13 @@ RectTransform:
   - {fileID: 950680139}
   - {fileID: 1981123664}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!114 &1387472605
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1387472600}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e39944d589a55df4e9400757f0d5d068, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  user:
-    id: 
-    username: 
-    password: 
-    accessToken: 
-    accessTokenSecret: 
---- !u!114 &1387472606
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1387472600}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f660738835d4e4f46b9b014be15cf14e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  scenes: []
---- !u!114 &1387472607
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1387472600}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 85d32b35cb6857d4f80b0496793af8c2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1387472608
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1387472600}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 771fdcc5d7cadd741b1ccd2f3e9e6dbf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player:
-    id: 
-    characterName: 
-    level: 0
-    hp: 0
-    attack: 0
-    defense: 0
-    agility: 0
-    critical_strike: 0
-    money: 0
-    experience: 0
-    exptolevel: 0
-    sword: 0
-    shield: 0
-    armour: 0
-    win: 0
-    lose: 0
-    factor: 0
-  updatedPlayer:
-    id: 
-    characterName: 
-    level: 0
-    hp: 0
-    attack: 0
-    defense: 0
-    agility: 0
-    critical_strike: 0
-    money: 0
-    experience: 0
-    exptolevel: 0
-    sword: 0
-    shield: 0
-    armour: 0
-    win: 0
-    lose: 0
-    factor: 0
-  enemy:
-    id: 
-    characterName: 
-    level: 0
-    hp: 0
-    attack: 0
-    defense: 0
-    agility: 0
-    critical_strike: 0
-    money: 0
-    experience: 0
-    exptolevel: 0
-    sword: 0
-    shield: 0
-    armour: 0
-    win: 0
-    lose: 0
-    factor: 0
-  plays_left: 0
---- !u!114 &1387472609
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1387472600}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a997bbf8ade14814587659d957175463, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1569234646
 GameObject:
   m_ObjectHideFlags: 0

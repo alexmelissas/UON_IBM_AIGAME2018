@@ -66,6 +66,7 @@ public class RankedMatchScreen : MonoBehaviour
     //! Initiate the PvP match
     public void Play()
     {
+        if (PlayerSession.ps.plays_left <= 0) return;
         attempts = 0;
         PlayerPrefs.SetInt("battle_type", 1);
         StartCoroutine(Server.GetEnemy(1));
@@ -76,7 +77,7 @@ public class RankedMatchScreen : MonoBehaviour
     //! Recursively try to find an enemy 4 times (in case of errors). If not found after 4 tries, stop.
     private void CheckEnemy()
     {
-        if (PlayerSession.ps.enemy.id != "" && PlayerSession.ps.plays_left>0)
+        if (PlayerSession.ps.enemy.id != "")
             gameObject.AddComponent<ChangeScene>().Forward("Battle");
         else if (attempts < 3) //recursively try to find enemy 4 times
         {
