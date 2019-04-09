@@ -1,7 +1,7 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
 using UnityEngine.UI;
 using VoxelBusters.NativePlugins;
 
@@ -17,26 +17,26 @@ public class RankedMatchScreen : MonoBehaviour
     //! GET the top 5 players of each rank
     IEnumerator GetPlayers(string newRank)
     {
-        if (newRank != oldRank)
-        { // Only update when different rank is clicked.
-
+        if (newRank != oldRank) // Only update when different rank is clicked.
+        { 
             // Here would need to get users of THAT RANK. Now just all people.
             // Also need to get top 5 - server-side implementation.
 
-            string url = Server.Address("view_users");
-            WWW www = new WWW(url);
-            yield return www;
-            string all = www.text.Trim(new char[] { '[', ']' }); // Split the entire huge all-player JSON into individual-user JSONs.
-            string[] separators = { "},", "}" };
-            string[] entries = all.Split(separators, System.StringSplitOptions.RemoveEmptyEntries);
-            for (int i = 0; i < entries.Length; i++)
+            using (UnityWebRequest uwr = UnityWebRequest.Get(Server.Address("view_users")))
             {
-                if (i == 5) break;
-                string newUserJson = entries[i] + "}";
-                User newuser = User.CreateUserFromJSON(newUserJson);
-                Users.Add(newuser);
+                string all = uwr.downloadHandler.text.Trim(new char[] { '[', ']' }); // Split the entire huge all-player JSON into individual-user JSONs.
+                string[] separators = { "},", "}" };
+                string[] entries = all.Split(separators, System.StringSplitOptions.RemoveEmptyEntries);
+                for (int i = 0; i < entries.Length; i++)
+                {
+                    if (i == 5) break;
+                    string newUserJson = entries[i] + "}";
+                    User newuser = User.CreateUserFromJSON(newUserJson);
+                    Users.Add(newuser);
+                }
+                // Users.Sort(); //Need to sort based on Points (top 5).
+                uwr.Dispose();
             }
-            // Users.Sort(); //Need to sort based on Points (top 5).
 
             int s = 0;
             foreach (User current in Users)
@@ -47,6 +47,7 @@ public class RankedMatchScreen : MonoBehaviour
             }
             oldRank = newRank;
             StopCoroutine(GetPlayers(newRank));
+            yield break;
         }
     }
 
@@ -75,7 +76,7 @@ public class RankedMatchScreen : MonoBehaviour
     //! Recursively try to find an enemy 4 times (in case of errors). If not found after 4 tries, stop.
     private void CheckEnemy()
     {
-        if (PlayerSession.ps.enemy.id != "")
+        if (PlayerSession.ps.enemy.id != "" && PlayerSession.ps.plays_left>0)
             gameObject.AddComponent<ChangeScene>().Forward("Battle");
         else if (attempts < 3) //recursively try to find enemy 4 times
         {

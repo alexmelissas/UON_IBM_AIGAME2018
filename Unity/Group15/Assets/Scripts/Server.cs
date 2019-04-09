@@ -31,6 +31,7 @@ public class Server {
             case "view_users": path = "/users"; break;
             case "read_user": path = "/users/"; break;
             case "delete_user": path = "/users/"; break;
+            case "update_twittr": path = "/reanalysis/"; break;
 
             case "login_twitter": path = "/auth/"; break;
             case "skip_twitter":  path = "/noauth/"; break;
@@ -77,6 +78,46 @@ public class Server {
             ? true : false;
     }
 
+    // ============ Coroutines for common things =============== //
+
+    //! Request the server to reanalyse the twitter of the user for personality changes
+    public static IEnumerator Reanalyse()
+    {
+        UnityWebRequest uwr = new UnityWebRequest((Server.Address("update_twitter")), "PUT");
+        byte[] jsonToSend = new System.Text.UTF8Encoding().GetBytes(UserSession.us.user.id);
+        uwr.uploadHandler = (UploadHandler)new UploadHandlerRaw(jsonToSend);
+        uwr.downloadHandler = (DownloadHandler)new DownloadHandlerBuffer();
+        uwr.SetRequestHeader("Content-Type", "application/json");
+
+        yield return uwr.SendWebRequest();
+
+        yield return new WaitForSeconds(4);
+
+        if (uwr.isNetworkError)
+            Debug.Log("Error While Sending: " + uwr.error);
+        else
+            //error handle
+            PlayerSession.ps.updatedPlayer = Player.CreatePlayerFromJSON(uwr.downloadHandler.text);
+        uwr.Dispose();
+        yield break;
+
+    }
+
+    //! Delete the user's account - upon registration error or demand
+    public static IEnumerator DeleteAccount()
+    {
+        UnityWebRequest uwr = UnityWebRequest.Delete(Server.Address("delete_user") + UserSession.us.user.GetID());
+        yield return uwr.SendWebRequest();
+        if (uwr.isNetworkError) yield return DeleteAccount();
+        uwr.Dispose();
+
+        UserSession.us.user = new User("", "");
+        PlayerSession.ps.player = new Player();
+        ZPlayerPrefs.DeleteKey("id");
+        ZPlayerPrefs.Save();
+        yield break;
+    }
+
     // Battle Related //
 
     //! Get the player's remaining plays for the day
@@ -91,13 +132,13 @@ public class Server {
                 Debug.Log("Error While Sending: " + uwr.error);
             else
             {
-                Debug.Log("Read plays left: " + uwr.downloadHandler.text);
-                PlayerSession.ps.plays_left = Int32.Parse(uwr.downloadHandler.text);
+                Debug.Log("Read played today: " + uwr.downloadHandler.text);
+                int played_today = Int32.Parse(uwr.downloadHandler.text);
+                PlayerSession.ps.plays_left = 10 - played_today;
             }
         }
         yield break;
     }
-
 
     //! Get either random player as enemy (PvP) or a bot (PvE) from server
     public static IEnumerator GetEnemy(int battletype)
@@ -146,6 +187,8 @@ public class Server {
         }
         else
             PlayerSession.ps.updatedPlayer = Player.CreatePlayerFromJSON(uwr.downloadHandler.text);
+
+        uwr.Dispose();
         yield break;
     }
     

@@ -42,6 +42,7 @@ public class LoginTwitter : MonoBehaviour {
                 if(Server.CheckTwitter())
                 {
                     EndSession();
+                    uwr.Dispose();
                     yield break;
                 }
                 else
@@ -51,10 +52,10 @@ public class LoginTwitter : MonoBehaviour {
                     yield return new WaitForSeconds(1.3f);
                 }
             }
-            uwr.Dispose();
             if (repeats == 2 && !Server.CheckTwitter())
             {
                 EndSession();
+                uwr.Dispose();
                 ShowPopup("fail_connection");
             }
         }

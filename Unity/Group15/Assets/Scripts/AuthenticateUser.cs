@@ -47,8 +47,9 @@ public class AuthenticateUser : MonoBehaviour {
                     gameObject.AddComponent<UpdateSessions>().U_Player();
                     if(Server.CheckTwitter())
                     {
+                        StartCoroutine(Server.Reanalyse());
                         loading.SetActive(true);
-                        yield return new WaitForSeconds(1.5f);
+                        yield return new WaitForSeconds(4.5f);
                         loading.SetActive(false);
                     }
                 }
@@ -62,6 +63,7 @@ public class AuthenticateUser : MonoBehaviour {
                 passwordInput.text = "";
                 passwordInput.Select();
             }
+            uwr.Dispose();
             StopCoroutine(TryLogin(first_login,json, user));
         }
     }
@@ -99,6 +101,7 @@ public class AuthenticateUser : MonoBehaviour {
             }
         }
         yield return StartCoroutine(TryLogin(true,json,user));
+        uwr.Dispose();
         StopCoroutine(TryRegister(json, user));
     }
 

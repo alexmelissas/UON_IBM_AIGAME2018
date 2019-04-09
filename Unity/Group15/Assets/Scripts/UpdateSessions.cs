@@ -51,6 +51,7 @@ public class UpdateSessions : MonoBehaviour{
         {
             UpdateSessions.JSON_Session("player", uwr.downloadHandler.text);
         }
+        uwr.Dispose();
         StopCoroutine(GetPlayer());
     }
 
@@ -70,6 +71,7 @@ public class UpdateSessions : MonoBehaviour{
             UpdateSessions.JSON_Session("user", uwr.downloadHandler.text);          
             if (all) yield return StartCoroutine(GetPlayer());
         }
+        uwr.Dispose();
         StopCoroutine(GetUser(all));
     }
     

@@ -21,7 +21,7 @@ public class ChangeScene : MonoBehaviour {
             if (top >= 0)
             {
                 if (SceneHistory.sh.scenes[top] == "CreateAccount")
-                    StartCoroutine(PauseManager.DeleteAccount());
+                    StartCoroutine(Server.DeleteAccount());
                 SceneManager.LoadScene(SceneHistory.sh.scenes[top]);
                 SceneHistory.sh.scenes.RemoveAt(top);
             }
