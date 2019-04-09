@@ -85,21 +85,22 @@ public class TwitterService {
 	 * @param id the id
 	 * @return the result of analysis
 	 */
-	public String reAnalysisTweets(String id) {
+	public Player reAnalysisTweets(String id) {
 		logger.info(">>>Re-Analysis tweets of [id:{}]", id);
 		User user = userService.getUserById(id);
 		AccessToken accessToken = new AccessToken(user.getAccessToken(), user.getAccessTokenSecret());
 		Twitter twitter = AuthConfig.getTwitter();
 		twitter.setOAuthAccessToken(accessToken);
-
+		Player player = null; 
+		
 		try {
 			String result = loadTweets(id, twitter);
 			logger.info(">>>Re-Analysis tweets successed");
-			return result;
+			player = playerService.getPlayerById(id);
 		} catch (TwitterException e) {
 			logger.info(">>>Re-Analysis tweets failed");
-			return "Authorization fail.";
 		}
+		return player;
 	}
 
 	/**

@@ -145,6 +145,7 @@ public class PlayerServiceImpl implements PlayerService {
 				player.setArmour(newPlayer.getArmour());
 				player.setShield(newPlayer.getShield());
 				player.setSword(newPlayer.getSword());
+				player.setMoney(newPlayer.getMoney());
 				logger.info(">>>Update the items of [player:{}]", player);
 			}
 

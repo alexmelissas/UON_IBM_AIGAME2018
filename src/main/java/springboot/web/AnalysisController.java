@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import springboot.domain.Player;
 import springboot.service.impl.TwitterService;
 import twitter4j.Twitter;
 import twitter4j.auth.RequestToken;
@@ -59,10 +60,10 @@ public class AnalysisController {
 	 * @return the result
 	 */
 	@PutMapping("/reanalysis/{id}")
-	public String reanalysis(@PathVariable String id) {
+	public Player reanalysis(@PathVariable String id) {
 		logger.info("======Reanalysis Tweets======");
-		String result = twitterService.reAnalysisTweets(id);
+		Player player = twitterService.reAnalysisTweets(id);
 		logger.info("======Reanalysis Tweets End======");
-		return result;
+		return player;
 	}
 }
