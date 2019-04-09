@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using VoxelBusters.NativePlugins;
 
 //! PvP screen handling
 public class RankedMatchScreen : MonoBehaviour
@@ -10,7 +11,8 @@ public class RankedMatchScreen : MonoBehaviour
 
     public GameObject display;
     private List<User> Users;
-    string oldRank = "";
+    public string oldRank = "";
+    private int attempts = 0;
 
     //! GET the top 5 players of each rank
     IEnumerator GetPlayers(string newRank)
@@ -39,7 +41,7 @@ public class RankedMatchScreen : MonoBehaviour
             int s = 0;
             foreach (User current in Users)
             {
-                string name = current.GetUsername();
+                string name = current.username;
                 string currentslot = "Slot" + (++s);
                 display.transform.Find(currentslot).gameObject.GetComponentInChildren<Text>().text = name;
             }
@@ -63,13 +65,26 @@ public class RankedMatchScreen : MonoBehaviour
     //! Initiate the PvP match
     public void Play()
     {
+        attempts = 0;
         PlayerPrefs.SetInt("battle_type", 1);
-        StartCoroutine(Gameplay.GetEnemy(1));
-        Invoke("ActuallyPlay", 0.5f);
+        StartCoroutine(Server.GetEnemy(1));
+        // add wait animation .. looking for opponent...
+        Invoke("CheckEnemy", 0.5f);
     }
-
-    public void ActuallyPlay()
+    
+    //! Recursively try to find an enemy 4 times (in case of errors). If not found after 4 tries, stop.
+    private void CheckEnemy()
     {
-        gameObject.AddComponent<ChangeScene>().Forward("Battle");
+        if (PlayerSession.ps.enemy.id != "")
+            gameObject.AddComponent<ChangeScene>().Forward("Battle");
+        else if (attempts < 3) //recursively try to find enemy 4 times
+        {
+            StartCoroutine(Server.GetEnemy(1));
+            attempts++;
+            CheckEnemy();
+        }
+        else
+            NPBinding.UI.ShowToast("No enemy found. Try again later.", eToastMessageLength.SHORT);
+        return;
     }
 }

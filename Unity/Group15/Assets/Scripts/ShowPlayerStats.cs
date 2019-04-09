@@ -21,6 +21,7 @@ public class ShowPlayerStats : MonoBehaviour {
         p = new Player();
     }
 
+    //! Display the player's stats
     void Update () {
         if (!(p.ComparePlayer(PlayerSession.ps.player)))
         {

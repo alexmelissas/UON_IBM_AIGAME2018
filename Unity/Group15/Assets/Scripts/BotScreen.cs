@@ -63,7 +63,7 @@ public class BotScreen : MonoBehaviour {
     public void Play()
     {
         PlayerPrefs.SetInt("battle_type", 0);
-        StartCoroutine(Gameplay.GetEnemy(0));
+        StartCoroutine(Server.GetEnemy(0));
         Invoke("ActuallyPlay", 0.5f);
     }
 
