@@ -8,12 +8,13 @@ using VoxelBusters.NativePlugins;
 //! PvE screen and difficulty management
 public class BotScreen : MonoBehaviour {
 
-    public GameObject selected_easy, selected_medium, selected_hard;
+    public GameObject selected_easy, selected_medium, selected_hard, loading;
     public AudioSource audiosrc;
     public static string difficulty;
 
     private void Start()
     {
+        loading.SetActive(false);
         int difficultynumber = PlayerPrefs.GetInt("bot_difficulty");
         switch (difficultynumber)
         {
@@ -56,7 +57,11 @@ public class BotScreen : MonoBehaviour {
     public void ChangeDifficulty(string given_difficulty) { difficulty = given_difficulty; }
     
     //! Forward to the Battle scene
-    private void PlayDelayed() { gameObject.AddComponent<ChangeScene>().Forward("Battle"); }
+    private void PlayDelayed()
+    {
+        gameObject.AddComponent<ChangeScene>().Forward("Battle");
+        loading.SetActive(false);
+    }
 
     //! Initiate the PvE match
     public void Play()
@@ -66,6 +71,7 @@ public class BotScreen : MonoBehaviour {
             NPBinding.UI.ShowToast("No plays left. Check back tomorrow!", eToastMessageLength.SHORT);
             return;
         }
+        loading.SetActive(true);
         PlayerPrefs.SetInt("battle_type", 0);
         StartCoroutine(Server.GetEnemy(0));
         Invoke("PlayDelayed", 0.5f);
