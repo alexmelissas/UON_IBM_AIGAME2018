@@ -9,6 +9,7 @@ using VoxelBusters.NativePlugins;
 public class BotScreen : MonoBehaviour {
 
     public GameObject selected_easy, selected_medium, selected_hard;
+    public AudioSource audiosrc;
     public static string difficulty;
 
     private void Start()
@@ -21,6 +22,8 @@ public class BotScreen : MonoBehaviour {
             case 2: difficulty = "hard"; break;
             default: break;
         }
+        audiosrc.volume = PlayerPrefs.GetFloat("fx")/2;
+        audiosrc.playOnAwake = true;
     }
 
     private void Update()

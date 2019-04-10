@@ -9,9 +9,27 @@ using VoxelBusters.NativePlugins;
 public class RankedMatchScreen : MonoBehaviour
 {
     public GameObject display;
+    public AudioSource audiosrc;
 
     private List<User> users;
     private string oldRank = "";
+    private int attempts;
+    private float max_volume;
+
+    private void Start()
+    { 
+        max_volume = PlayerPrefs.GetFloat("fx") / 2;
+        audiosrc.playOnAwake = true;
+        audiosrc.volume = 0; 
+    }
+
+    private void Update()
+    {
+        if(audiosrc.volume<max_volume)
+        {
+            audiosrc.volume += 0.008f;
+        }
+    }
 
     //! GET the top 5 players of each rank
     IEnumerator GetPlayers(string newRank)
@@ -70,25 +88,28 @@ public class RankedMatchScreen : MonoBehaviour
             return;
         }
         PlayerPrefs.SetInt("battle_type", 1);
+        attempts = 0;
         StartCoroutine(CheckEnemy());
     }
     
     //! Recursively try to find an enemy 3 times (in case of errors). If not found after 4 tries, stop.
     private IEnumerator CheckEnemy()
     {
-        int attempts = 0;
         StartCoroutine(Server.GetEnemy(1));
-        if (PlayerSession.ps.enemy.id != "")
-            gameObject.AddComponent<ChangeScene>().Forward("Battle");
+        yield return new WaitUntil(() => Server.findenemy_done == true);
+
+        if (PlayerSession.ps.enemy.id != "") gameObject.AddComponent<ChangeScene>().Forward("Battle");
+
         else if (attempts < 3) //recursively try to find enemy 3 times
         {
-            yield return new WaitUntil(() => Server.findenemy_done == true);
-            StartCoroutine(Server.GetEnemy(1));
-            attempts++;
-            Invoke("CheckEnemy", 0.5f);
+            IncreaseAttempts();
+            StartCoroutine(CheckEnemy());
         }
-        else
-            NPBinding.UI.ShowToast("No enemy found. Try again later.", eToastMessageLength.SHORT);
+
+        else  NPBinding.UI.ShowToast("No enemy found. Try again later.", eToastMessageLength.SHORT);
+
         yield break;
     }
+
+    private void IncreaseAttempts() { attempts++; }
 }

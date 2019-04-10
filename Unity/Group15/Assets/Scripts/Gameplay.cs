@@ -17,7 +17,7 @@ public class Gameplay : MonoBehaviour {
     public Image playerHPcolour, enemyHPcolour;
     public Text playerName, enemyName, playerLevel, enemyLevel;
     public Text actualPlayerHP, maxPlayerHP, actualEnemyHP, maxEnemyHP, playerDmgLabel, enemyDmgLabel;
-    public AudioSource soundfx;
+    public AudioSource soundsrc, musicsrc;
     public AudioClip playerhit, enemyhit, crit, miss, drop_sword;
     private List<Turn> turns;
     private Player player, enemy;
@@ -62,6 +62,11 @@ public class Gameplay : MonoBehaviour {
         playerDmgLabel.GetComponentInParent<Image>().enabled = enemyDmgLabel.GetComponentInParent<Image>().enabled = false;
 
         playerHP.normalizedValue = enemyHP.normalizedValue = 1f;
+
+        musicsrc.volume = PlayerPrefs.GetFloat("music")/6;
+        musicsrc.loop = true;
+        musicsrc.playOnAwake = true;
+
         RunBattle();
     }
 
@@ -82,11 +87,11 @@ public class Gameplay : MonoBehaviour {
         maxEnemyHP.text = "/" + enemy_max_hp;
 
         if (new_hp_player > -1) if (playerHP.value > new_hp_player) playerHP.normalizedValue -= 0.005f;
-        if (playerHP.value == 0 && !death) { soundfx.PlayOneShot(drop_sword, PlayerPrefs.GetFloat("fx")); playerHPcolour.enabled = false; death = true; }
+        if (playerHP.value == 0 && !death) { soundsrc.PlayOneShot(drop_sword, PlayerPrefs.GetFloat("fx")); playerHPcolour.enabled = false; death = true; }
         else if (playerHP.value < 0.25) playerHPcolour.color = Color.red; else if (playerHP.value < 0.5) playerHPcolour.color = Color.yellow;
 
         if (new_hp_enemy > -1) if (enemyHP.value > new_hp_enemy) enemyHP.normalizedValue -= 0.005f;
-        if (enemyHP.value == 0 && !death) { soundfx.PlayOneShot(drop_sword, PlayerPrefs.GetFloat("fx")); enemyHPcolour.enabled = false; death = true; }
+        if (enemyHP.value == 0 && !death) { soundsrc.PlayOneShot(drop_sword, PlayerPrefs.GetFloat("fx")); enemyHPcolour.enabled = false; death = true; }
         else if (enemyHP.value < 0.25) enemyHPcolour.color = Color.red; else if (enemyHP.value < 0.5) enemyHPcolour.color = Color.yellow;
     }
 
@@ -175,7 +180,7 @@ public class Gameplay : MonoBehaviour {
                 dmgLabel.color = Color.grey;
                 sound = miss;
             }
-            soundfx.PlayOneShot(sound, PlayerPrefs.GetFloat("fx"));
+            soundsrc.PlayOneShot(sound, PlayerPrefs.GetFloat("fx"));
             dmgLabel.enabled = true;
             bam.enabled = true;
             yield return new WaitForSeconds(0.3f);

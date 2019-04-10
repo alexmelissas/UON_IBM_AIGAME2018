@@ -1,0 +1,18 @@
+===== SOUNDS / MUSIC =============
+
+{Epic Battle.mp3} by Twin Musicom (twinmusicom.org)
+{NFF-wind-gust-3.wav} from https://www.noiseforfun.com/2014-sound-effects/wind-gust-3/
+{ranked_backgroundmusic.mp3} from https://opengameart.org/content/dark-shrine-loop
+
+
+===== PICTURES / BACKGROUNDS =====
+
+{olympus.jpg/parthenon_backgdound.jpg} : Photo via <a href="https://www.goodfreephotos.com/">Good Free Photos</a>
+
+
+===== SPRITES / ICONS ============
+
+
+
+=== FONTS ====
+vinque font: https://www.1001fonts.com/vinque-font.html#license - CHECK AGAIN
