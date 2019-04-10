@@ -11,6 +11,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import springboot.config.PlayerConfig;
 import springboot.domain.Bot;
 import springboot.domain.Player;
 import springboot.service.PlayerService;
@@ -87,6 +88,18 @@ public class BattleService {
 		int randomIndex = random.nextInt(playerSet.size());
 		Player player = playerList.get(randomIndex);
 
+		if (players.size() == 1) {
+			Random random = new Random();
+			if (random.nextDouble() < (2.0 / 3.0))  {
+				player.setFactor(player.getFactor() - random.nextDouble() / 6);
+			} else {
+				player.setFactor(player.getFactor() + random.nextDouble() / 6);
+			}
+			player.setAttributes(PlayerConfig.getBasicStatus(player.getLevel()));
+			player.applyPersonality();
+			return player;
+		}
+		
 		while (id.equals(player.getId())) {
 			randomIndex = random.nextInt(playerSet.size());
 			player = playerList.get(randomIndex);

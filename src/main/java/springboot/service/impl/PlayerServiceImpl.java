@@ -47,7 +47,7 @@ public class PlayerServiceImpl implements PlayerService {
 	 * @see springboot.service.PlayerService#getPlayers()
 	 */
 	@Override
-	public Iterable<Player> getPlayers() {
+	public List<Player> getPlayers() {
 		return playerRepository.findAll();
 	}
 

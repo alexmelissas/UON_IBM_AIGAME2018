@@ -4,13 +4,17 @@ import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.temporal.ChronoUnit;
 import java.util.Date;
+import java.util.List;
 
+import org.apache.commons.lang3.SerializationUtils;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
+import springboot.domain.Player;
+import springboot.service.PlayerService;
 
 /**
  * <p>
@@ -24,6 +28,8 @@ import redis.clients.jedis.JedisPool;
 public class RedisService implements InitializingBean {
 	@Autowired
 	private JedisPool jedisPool;
+//	@Autowired
+//	private PlayerService playerService;
 	private Jedis jedis;
 
 	/**
@@ -95,5 +101,8 @@ public class RedisService implements InitializingBean {
 	@Override
 	public void afterPropertiesSet() throws Exception {
 		this.jedis = jedisPool.getResource();
+		// TODO
+//		List<Player> players = playerService.getPlayers();
+//		this.jedis.set("players", SerializationUtils.serialize(players));
 	}
 }

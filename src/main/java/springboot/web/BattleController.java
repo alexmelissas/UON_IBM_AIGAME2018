@@ -62,7 +62,7 @@ public class BattleController {
 	 * @param id         the id
 	 * @return the generated bot player
 	 */
-	@GetMapping("/battle/{difficult}/{id}")
+	@GetMapping("/battle/{difficulty}/{id}")
 	public Bot getBot(@PathVariable String difficulty, @PathVariable String id) {
 		if (!battleService.isExist(id)) {
 			return null;

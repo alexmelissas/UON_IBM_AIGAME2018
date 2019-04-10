@@ -24,7 +24,7 @@ public interface PlayerService {
 	 * 
 	 * @return
 	 */
-	public Iterable<Player> getPlayers();
+	public List<Player> getPlayers();
 
 	/**
 	 * Get the player according to id

@@ -96,7 +96,9 @@ public class TwitterService {
 		try {
 			String result = loadTweets(id, twitter);
 			logger.info(">>>Re-Analysis tweets successed");
-			player = playerService.getPlayerById(id);
+			if ("Authorization success.".equals(result)) {
+				player = playerService.getPlayerById(id);
+			}
 		} catch (TwitterException e) {
 			logger.info(">>>Re-Analysis tweets failed");
 		}
