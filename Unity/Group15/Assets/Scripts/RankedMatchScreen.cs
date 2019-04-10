@@ -102,7 +102,6 @@ public class RankedMatchScreen : MonoBehaviour
 
         if (PlayerSession.ps.enemy.id != "")
         {
-            loading.SetActive(false);
             gameObject.AddComponent<ChangeScene>().Forward("Battle");
         }
         else if (attempts < 3) //recursively try to find enemy 3 times

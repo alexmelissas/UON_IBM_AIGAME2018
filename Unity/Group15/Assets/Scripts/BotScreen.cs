@@ -60,7 +60,6 @@ public class BotScreen : MonoBehaviour {
     private void PlayDelayed()
     {
         gameObject.AddComponent<ChangeScene>().Forward("Battle");
-        loading.SetActive(false);
     }
 
     //! Initiate the PvE match

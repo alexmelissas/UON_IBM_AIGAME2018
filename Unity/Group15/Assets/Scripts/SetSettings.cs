@@ -14,8 +14,8 @@ public class SetSettings : MonoBehaviour {
     //! Display the currently selected settings properly
     private void Start()
     {
-        musicSlider.normalizedValue = PlayerPrefs.GetFloat("music");
-        fxSlider.normalizedValue = PlayerPrefs.GetFloat("fx");
+        musicSlider.normalizedValue = PlayerPrefs.GetFloat("music", 0.65f);
+        fxSlider.normalizedValue = PlayerPrefs.GetFloat("fx", 0.7f);
         challengeToggle.isOn = (PlayerPrefs.GetInt("challenged") != 0);
         skipToggle.isOn = (PlayerPrefs.GetInt("skip") != 0);
     }
