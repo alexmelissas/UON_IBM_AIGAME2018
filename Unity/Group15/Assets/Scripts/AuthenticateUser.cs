@@ -11,10 +11,12 @@ public class AuthenticateUser : MonoBehaviour {
     public InputField usernameInput;
     public InputField passwordInput;
     public string auth_type;
+    private bool done;
 
     void Start()
     {
         loading.SetActive(false);
+        done = false;
         passwordInput.onEndEdit.AddListener(delegate { CheckUserPass(); });
     }
 
@@ -27,6 +29,7 @@ public class AuthenticateUser : MonoBehaviour {
         uwr.uploadHandler = (UploadHandler)new UploadHandlerRaw(jsonToSend);
         uwr.downloadHandler = (DownloadHandler)new DownloadHandlerBuffer();
         uwr.SetRequestHeader("Content-Type", "application/json");
+        uwr.timeout = 10;
 
         yield return uwr.SendWebRequest();
 
@@ -49,7 +52,7 @@ public class AuthenticateUser : MonoBehaviour {
                     {
                         StartCoroutine(Server.Reanalyse());
                         loading.SetActive(true);
-                        yield return new WaitForSeconds(4.5f);
+                        yield return new WaitUntil(() => Server.reanalysis_done==true);
                         loading.SetActive(false);
                     }
                 }
@@ -63,6 +66,7 @@ public class AuthenticateUser : MonoBehaviour {
                 passwordInput.text = "";
                 passwordInput.Select();
             }
+            done = false;
             uwr.Dispose();
             StopCoroutine(TryLogin(first_login,json, user));
         }
@@ -76,6 +80,7 @@ public class AuthenticateUser : MonoBehaviour {
         uwr.uploadHandler = (UploadHandler)new UploadHandlerRaw(jsonToSend);
         uwr.downloadHandler = (DownloadHandler)new DownloadHandlerBuffer();
         uwr.SetRequestHeader("Content-Type", "application/json");
+        uwr.timeout = 10;
 
         yield return uwr.SendWebRequest();
 
@@ -108,6 +113,7 @@ public class AuthenticateUser : MonoBehaviour {
     //! Check format of username/password, pass them to Login/Register if valid
     public void CheckUserPass()
     {
+        if (done) return;
         string username = usernameInput.text;
         string password = passwordInput.text;
         
@@ -131,6 +137,7 @@ public class AuthenticateUser : MonoBehaviour {
         }
         else
         {
+            done = true;
             User user = new User(username, password);
             string json = JsonUtility.ToJson(user);
             if (auth_type == "register")

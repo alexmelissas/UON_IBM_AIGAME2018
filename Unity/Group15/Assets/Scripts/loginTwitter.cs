@@ -42,7 +42,7 @@ public class LoginTwitter : MonoBehaviour {
                 if(Server.CheckTwitter())
                 {
                     EndSession();
-                    uwr.Dispose();
+                    
                     yield break;
                 }
                 else
@@ -55,7 +55,7 @@ public class LoginTwitter : MonoBehaviour {
             if (repeats == 2 && !Server.CheckTwitter())
             {
                 EndSession();
-                uwr.Dispose();
+                
                 ShowPopup("fail_connection");
             }
         }
@@ -67,8 +67,9 @@ public class LoginTwitter : MonoBehaviour {
     private IEnumerator NoTwitter()
     {
         UnityWebRequest uwr = UnityWebRequest.Get(Server.Address("skip_twitter") + UserSession.us.user.GetID());
-        yield return uwr.SendWebRequest();
+        uwr.timeout = 10;
 
+        yield return uwr.SendWebRequest();
         if (uwr.isNetworkError)
         {
             Debug.Log("Error While Sending: " + uwr.error);
@@ -79,7 +80,7 @@ public class LoginTwitter : MonoBehaviour {
             //if (uwr.downloadHandler.text == Server.no_twitter_success)
                 SetSkipBool();
         }
-        uwr.Dispose();
+        
         yield break;
     }
 
@@ -151,11 +152,12 @@ public class LoginTwitter : MonoBehaviour {
     //! Handle dialog box button options
     private void OnButtonPressed(string _buttonPressed)
     {
+        leftForTwitter = false;
         switch (_buttonPressed)
         {
             case "Retry":
-                string scene = SceneManager.GetActiveScene().name;
                 otherPopupOpen = false;
+                string scene = SceneManager.GetActiveScene().name;
                 if (scene == "Settings") ShowPopup("terms_relog");
                 else ShowPopup("show_terms");
                 break;
