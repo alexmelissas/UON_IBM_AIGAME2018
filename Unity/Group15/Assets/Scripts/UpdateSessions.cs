@@ -41,6 +41,7 @@ public class UpdateSessions : MonoBehaviour{
     IEnumerator GetPlayer()
     {
         UnityWebRequest uwr = UnityWebRequest.Get(Server.Address("players") + ZPlayerPrefs.GetString("id"));
+        uwr.timeout = 10;
         yield return uwr.SendWebRequest();
         if (uwr.isNetworkError)
         {
@@ -51,6 +52,7 @@ public class UpdateSessions : MonoBehaviour{
         {
             UpdateSessions.JSON_Session("player", uwr.downloadHandler.text);
         }
+        uwr.Dispose();
         StopCoroutine(GetPlayer());
     }
 
@@ -58,6 +60,7 @@ public class UpdateSessions : MonoBehaviour{
     IEnumerator GetUser(bool all)
     {        
         UnityWebRequest uwr = UnityWebRequest.Get(Server.Address("read_user") + ZPlayerPrefs.GetString("id"));
+        uwr.timeout = 10;
         yield return uwr.SendWebRequest();
         if (uwr.isNetworkError)
         {
@@ -70,6 +73,7 @@ public class UpdateSessions : MonoBehaviour{
             UpdateSessions.JSON_Session("user", uwr.downloadHandler.text);          
             if (all) yield return StartCoroutine(GetPlayer());
         }
+        uwr.Dispose();
         StopCoroutine(GetUser(all));
     }
     

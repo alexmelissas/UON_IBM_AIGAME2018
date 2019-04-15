@@ -38,6 +38,7 @@ public class Logout : MonoBehaviour {
             NPBinding.UI.ShowToast("Successfully unlinked Twitter.", eToastMessageLength.SHORT);
             gameObject.AddComponent<UpdateSessions>().U_All();
         }
+        
         yield break;
     }
 }

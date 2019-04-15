@@ -24,7 +24,7 @@ public class PauseManager : MonoBehaviour {
         {
             if(StartScreens() && !LoginTwitter.leftForTwitter) //FIX THIS CONDITIONAL
             {
-                StartCoroutine(DeleteAccount());
+                StartCoroutine(Server.DeleteAccount());
             }
             else
             {
@@ -40,19 +40,7 @@ public class PauseManager : MonoBehaviour {
         if (PlayerSession.ps.player.id == "") return false;
         return true;
     }
-
-    public static IEnumerator DeleteAccount()
-    {
-        UnityWebRequest uwr = UnityWebRequest.Delete(Server.Address("delete_user") + UserSession.us.user.GetID());
-        yield return uwr.SendWebRequest();
-        if (uwr.isNetworkError)
-            yield return DeleteAccount();
-        UserSession.us.user = new User("", "");
-        PlayerSession.ps.player = new Player();
-        ZPlayerPrefs.DeleteKey("id");
-        ZPlayerPrefs.Save();
-        yield break;
-    }
+    
 
     private void Load()
     {

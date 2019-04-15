@@ -22,6 +22,12 @@ public class Server {
     //! Successful no-twitter login
     public static readonly string no_twitter_success = "Account creation succss.";
 
+    //! Determining when reanalysis of twitter is done (used by login class)
+    public static bool reanalysis_done;
+
+    //! Determining when find enemy is done (used by battle classes)
+    public static bool findenemy_done;
+
     //! Returns the particular address for one server API function.
     public static string Address(string service){
         string path;
@@ -31,6 +37,7 @@ public class Server {
             case "view_users": path = "/users"; break;
             case "read_user": path = "/users/"; break;
             case "delete_user": path = "/users/"; break;
+            case "update_twitter": path = "/reanalysis/"; break;
 
             case "login_twitter": path = "/auth/"; break;
             case "skip_twitter":  path = "/noauth/"; break;
@@ -77,53 +84,106 @@ public class Server {
             ? true : false;
     }
 
+    // ============ Coroutines for common things =============== //
+
+    //! Request the server to reanalyse the twitter of the user for personality changes
+    public static IEnumerator Reanalyse()
+    {
+        reanalysis_done = false;
+        string address = Server.Address("update_twitter") + UserSession.us.user.id;
+        UnityWebRequest uwr = new UnityWebRequest((address), "PUT");
+        byte[] jsonToSend = new System.Text.UTF8Encoding().GetBytes(UserSession.us.user.id);
+        uwr.uploadHandler = (UploadHandler)new UploadHandlerRaw(jsonToSend);
+        uwr.downloadHandler = (DownloadHandler)new DownloadHandlerBuffer();
+        uwr.SetRequestHeader("Content-Type", "application/json");
+        uwr.timeout = 10;
+
+        yield return uwr.SendWebRequest();
+        if (uwr.isNetworkError)
+        {
+            reanalysis_done = true; // just to avoid waiting forever
+            Debug.Log("Error While Sending: " + uwr.error);
+        }
+        else
+        {
+            reanalysis_done = true;
+            PlayerSession.ps.updatedPlayer = Player.CreatePlayerFromJSON(uwr.downloadHandler.text);
+        }
+        uwr.Dispose();
+
+        yield return new WaitForSeconds(1);
+        reanalysis_done = false;
+
+        yield break;
+
+    }
+
+    //! Delete the user's account - upon registration error or demand
+    public static IEnumerator DeleteAccount()
+    {
+        Debug.Log("Delete user");
+        UnityWebRequest uwr = UnityWebRequest.Delete(Server.Address("delete_user") + UserSession.us.user.GetID());
+        uwr.timeout = 10;
+        yield return uwr.SendWebRequest();
+        if (uwr.isNetworkError) yield return DeleteAccount();
+        uwr.Dispose();
+
+        UserSession.us.user = new User("", "");
+        PlayerSession.ps.player = new Player();
+        ZPlayerPrefs.DeleteKey("id");
+        ZPlayerPrefs.Save();
+        yield break;
+    }
+
     // Battle Related //
 
     //! Get the player's remaining plays for the day
     public static IEnumerator GetPlaysLeft()
     {
-        string address = Server.Address("get_plays") + PlayerSession.ps.player.id;
+        string address = Server.Address("get_plays") + UserSession.us.user.id;
 
         using (UnityWebRequest uwr = UnityWebRequest.Get(address))
         {
+            uwr.timeout = 10;
             yield return uwr.SendWebRequest();
             if (uwr.isNetworkError)
                 Debug.Log("Error While Sending: " + uwr.error);
             else
             {
-                Debug.Log("Read plays left: " + uwr.downloadHandler.text);
-                PlayerSession.ps.plays_left = Int32.Parse(uwr.downloadHandler.text);
+                int played_today = Int32.Parse(uwr.downloadHandler.text);
+                PlayerSession.ps.plays_left = 10 - played_today;
             }
+            uwr.Dispose();
         }
         yield break;
     }
 
-
     //! Get either random player as enemy (PvP) or a bot (PvE) from server
     public static IEnumerator GetEnemy(int battletype)
     {
+        findenemy_done = false;
         PlayerSession.ps.enemy = new Player();
-
         string address = Server.Address("get_battle");
         if (battletype == 0) address += BotScreen.difficulty + "/";
         address += PlayerSession.ps.player.id;
-
         using (UnityWebRequest uwr = UnityWebRequest.Get(address))
         {
+            uwr.timeout = 10;
             yield return uwr.SendWebRequest();
+
             if (uwr.isNetworkError)
             {
+                findenemy_done = true;
                 Debug.Log("Error While Sending: " + uwr.error);
                 NPBinding.UI.ShowToast("Communication Error. Please try again later.", eToastMessageLength.SHORT);
-                // API TO REFUND PLAY
             }
             else
             {
-                Debug.Log("FINDING ENEMY BEEP BOOP");
-                //Debug.Log("URL: " + address);
-                //Debug.Log("got enemy " + uwr.downloadHandler.text);
+                findenemy_done = true;
+                Debug.Log("FINDING ENEMY: " + uwr.downloadHandler.text);
                 PlayerSession.ps.enemy = Player.CreatePlayerFromJSON(uwr.downloadHandler.text);
             }
+            uwr.Dispose();
         }
         yield break;
     }
@@ -137,6 +197,7 @@ public class Server {
         uwr.downloadHandler = (DownloadHandler)new DownloadHandlerBuffer();
         uwr.SetRequestHeader("Content-Type", "application/json");
 
+        uwr.timeout = 10;
         yield return uwr.SendWebRequest();
 
         if (uwr.isNetworkError)
@@ -146,6 +207,8 @@ public class Server {
         }
         else
             PlayerSession.ps.updatedPlayer = Player.CreatePlayerFromJSON(uwr.downloadHandler.text);
+
+        uwr.Dispose();
         yield break;
     }
     
