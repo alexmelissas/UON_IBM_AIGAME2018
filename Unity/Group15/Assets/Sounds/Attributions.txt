@@ -3,6 +3,7 @@
 {Epic Battle.mp3} by Twin Musicom (twinmusicom.org)
 {NFF-wind-gust-3.wav} from https://www.noiseforfun.com/2014-sound-effects/wind-gust-3/
 {ranked_backgroundmusic.mp3} from https://opengameart.org/content/dark-shrine-loop
+{levelup.wav} from https://opengameart.org/content/level-up-sound-effects
 
 
 ===== PICTURES / BACKGROUNDS =====

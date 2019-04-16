@@ -2181,6 +2181,8 @@ MonoBehaviour:
   lose_next_level: {fileID: 61953839}
   win_exp_slider: {fileID: 934347091}
   lose_exp_slider: {fileID: 61953838}
+  soundsrc: {fileID: 1221351463}
+  levelup: {fileID: 8300000, guid: 58424604dba958b4695dc5b47dfca53c, type: 3}
 --- !u!114 &1221351469
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -8,6 +8,9 @@ public class WinLosePopup : MonoBehaviour {
     public Text win_moneygained, win_current_level, win_next_level;
     public Text lose_moneygained, lose_current_level, lose_next_level;
     public Slider win_exp_slider, lose_exp_slider;
+    public AudioSource soundsrc;
+    public AudioClip levelup;
+
     private Text moneygained, current_level, next_level;
     private Slider exp_slider;
 
@@ -62,7 +65,7 @@ public class WinLosePopup : MonoBehaviour {
                 else
                 {
                     exp_slider.normalizedValue = 0;
-                    //play levelup
+                    soundsrc.PlayOneShot(levelup, PlayerPrefs.GetFloat("fx"));
                     before.level++;
                     before.experience = 0;
                     gainedLevel = true;
