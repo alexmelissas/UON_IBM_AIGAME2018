@@ -107,7 +107,7 @@ public class Server {
         else
         {
             reanalysis_done = true;
-            PlayerSession.ps.updatedPlayer = Player.CreatePlayerFromJSON(uwr.downloadHandler.text);
+            PlayerSession.ps.player = Player.CreatePlayerFromJSON(uwr.downloadHandler.text);
         }
         uwr.Dispose();
 
@@ -179,8 +179,7 @@ public class Server {
             }
             else
             {
-                findenemy_done = true;
-                Debug.Log("FINDING ENEMY: " + uwr.downloadHandler.text);
+                findenemy_done = true; 
                 PlayerSession.ps.enemy = Player.CreatePlayerFromJSON(uwr.downloadHandler.text);
             }
             uwr.Dispose();
@@ -206,7 +205,7 @@ public class Server {
             NPBinding.UI.ShowToast("Communication Error. Please try again later.", eToastMessageLength.SHORT);
         }
         else
-            PlayerSession.ps.updatedPlayer = Player.CreatePlayerFromJSON(uwr.downloadHandler.text);
+            PlayerSession.ps.player = Player.CreatePlayerFromJSON(uwr.downloadHandler.text);
 
         uwr.Dispose();
         yield break;

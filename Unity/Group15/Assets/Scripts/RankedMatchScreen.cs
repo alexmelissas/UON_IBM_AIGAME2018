@@ -91,9 +91,11 @@ public class RankedMatchScreen : MonoBehaviour
         loading.SetActive(true);
         PlayerPrefs.SetInt("battle_type", 1);
         attempts = 0;
-        StartCoroutine(CheckEnemy());
+        Invoke("StartCheck", 0.4f);
     }
-    
+
+    private void StartCheck() { StartCoroutine(CheckEnemy()); }
+
     //! Recursively try to find an enemy 3 times (in case of errors). If not found after 4 tries, stop.
     private IEnumerator CheckEnemy()
     {

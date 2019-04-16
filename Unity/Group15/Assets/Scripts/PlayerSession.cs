@@ -10,7 +10,7 @@ public class PlayerSession : MonoBehaviour
     public static PlayerSession ps;
 
     public Player player;
-    public Player updatedPlayer;
+    public Player player_before_battle;
     public Player enemy;
     public int plays_left;
 

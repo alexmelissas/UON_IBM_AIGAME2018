@@ -13,12 +13,18 @@ public class Gameplay : MonoBehaviour {
      * 3. POST result to server (id, result)
      * 4. while(!skip) ShowGameplay() - displays all the animations;
     */
+
+    //! For the popups at the end of the battle to know when to animate EXP gain.
+    public static int updatePlayer;
+
     public Slider playerHP, enemyHP;
     public Image playerHPcolour, enemyHPcolour;
     public Text playerName, enemyName, playerLevel, enemyLevel;
     public Text actualPlayerHP, maxPlayerHP, actualEnemyHP, maxEnemyHP, playerDmgLabel, enemyDmgLabel;
     public AudioSource soundsrc, musicsrc;
     public AudioClip playerhit, enemyhit, crit, miss, drop_sword;
+    public GameObject winpopup, losepopup;
+
     private List<Turn> turns;
     private Player player, enemy;
     private PlayerModel player_model, enemy_model;
@@ -36,7 +42,9 @@ public class Gameplay : MonoBehaviour {
     //! Setup the battle screen, including HP bars, Models, Damage Labels etc.
     private void Start()
     {
+        updatePlayer = -1;
         player = PlayerSession.ps.player;
+        PlayerSession.ps.player_before_battle = Player.DeepClone<Player>(PlayerSession.ps.player); // keep the player before gains
         Items.AttachItemsToPlayer(new Items(player), player);
 
         if (!PlayerPrefs.HasKey("battle_type")) { gameObject.AddComponent<ChangeScene>().Forward("Overworld"); }; //Error
@@ -66,6 +74,9 @@ public class Gameplay : MonoBehaviour {
         musicsrc.volume = PlayerPrefs.GetFloat("music")/6;
         musicsrc.loop = true;
         musicsrc.playOnAwake = true;
+
+        winpopup.SetActive(false);
+        losepopup.SetActive(false);
 
         RunBattle();
     }
@@ -120,15 +131,13 @@ public class Gameplay : MonoBehaviour {
 
         ended = true;
         StopAllCoroutines();
-        gameObject.AddComponent<UpdateSessions>().U_Player();
-        //PlayerSession.ps.player = Player.DeepClone<Player>(PlayerSession.ps.updatedPlayer); //keep copy of pre-battle player
-        // do animations for gain exp / level up
-        string announce = (result == 1) ? "Enemy wins. Too bad." : "You won! Congrats!";
-        Debug.Log(announce);
-        NPBinding.UI.ShowToast(announce, eToastMessageLength.SHORT);
+        gameObject.AddComponent<UpdateSessions>().U_Player(); //now the Playersession player is updated
+
+        if (result == 1) losepopup.SetActive(true);
+        else winpopup.SetActive(true);
+        updatePlayer = result; //enables the popups for the exp and money gain to animate
+
         result = 0;
-        gameObject.AddComponent<ChangeScene>().Forward("Overworld");
-        Destroy(gameObject);
     }
 
     //! Animate the battle, including Player animations, HP bars, Damage Labels etc.
