@@ -28,7 +28,7 @@ public class RankedMatchScreen : MonoBehaviour
     {
         if(audiosrc.volume<max_volume)
         {
-            audiosrc.volume += 0.008f;
+            audiosrc.volume += 0.008f; // fade-in for music
         }
     }
 

@@ -60,7 +60,6 @@ public class WinLosePopup : MonoBehaviour {
                         before.experience++;
                         addedExp = 0;
                     }
-
                 }
                 else
                 {

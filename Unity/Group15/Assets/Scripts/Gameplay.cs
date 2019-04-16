@@ -16,6 +16,8 @@ public class Gameplay : MonoBehaviour {
 
     //! For the popups at the end of the battle to know when to animate EXP gain.
     public static int updatePlayer;
+    public static string currentAnimation_player = "player_idle";
+    public static string currentAnimation_enemy = "enemy_idle";
 
     public Slider playerHP, enemyHP;
     public Image playerHPcolour, enemyHPcolour;
@@ -77,6 +79,9 @@ public class Gameplay : MonoBehaviour {
 
         winpopup.SetActive(false);
         losepopup.SetActive(false);
+
+        currentAnimation_player = "player_idle";
+        currentAnimation_enemy = "enemy_idle";
 
         RunBattle();
     }
@@ -147,25 +152,38 @@ public class Gameplay : MonoBehaviour {
         foreach (Turn turn in turns)
         {
             string attacker = turn.player_turn ? "player" : "enemy";
+            
+            // (1) Play animations
+            if (attacker == "player")
+            {
+                if (turn.damage != 0)
+                {
+                    currentAnimation_player = "player_attack";
+                    yield return new WaitForSeconds(0.2f);
+                    currentAnimation_enemy = "enemy_hurt";
+                }
+                if (turns.Count == 1) // if last turn, then enemy died
+                {
+                    yield return new WaitForSeconds(0.2f);
+                    currentAnimation_enemy = "enemy_die";
+                }
+            }
+            else if(attacker == "enemy")
+            {
+                if (turn.damage != 0)
+                {
+                    currentAnimation_enemy = "enemy_attack";
+                    yield return new WaitForSeconds(0.2f);
+                    currentAnimation_player = "player_hurt";
+                }
+                if (turns.Count == 1) // if last turn, then enemy died
+                {
+                    yield return new WaitForSeconds(0.2f);
+                    currentAnimation_player = "player_die";
+                }
+            }
 
-            // 1) Run the animations (implemented in PlayerModel class)
-            //if (attacker == "player")
-            //{
-            //    player_model.Strike();
-            //    if (turns.Count == 1) enemy_model.HitWillDie(); // if last turn, then enemy died
-            //    else enemy_model.HitBlock(); // need to think about block/blockless
-            //    yield return new WaitForSeconds(1); // to wait for animation to be in motion?
-                
-            //}
-            //else if(attacker == "enemy")
-            //{
-            //    enemy_model.Strike();
-            //    if (turns.Count == 1) player_model.HitWillDie();
-            //    else player_model.HitBlock();
-            //    yield return new WaitForSeconds(1);
-            //}
-
-            // 2) Display damage
+            // (2) Display damage
             Text dmgLabel = attacker == "player" ? enemyDmgLabel : playerDmgLabel;
             Image bam = attacker == "player" ? enemyDmgLabel.GetComponentInParent<Image>() : playerDmgLabel.GetComponentInParent<Image>();
             AudioClip sound;
@@ -194,7 +212,7 @@ public class Gameplay : MonoBehaviour {
             bam.enabled = true;
             yield return new WaitForSeconds(0.3f);
 
-            // 3) Update HP of victim
+            // (3) Update HP of victim
             if (turn.damage!=0)
             {
                 float currenthp = (attacker == "player") ? turn.enemy.hp : turn.player.hp;
@@ -207,7 +225,7 @@ public class Gameplay : MonoBehaviour {
             dmgLabel.enabled = false;
             bam.enabled = false;
             
-            // 4) Wait a bit and go to next turn
+            // (4) Wait a bit and go to next turn
             yield return new WaitForSeconds(0.5f);
         }
         skip = true;
