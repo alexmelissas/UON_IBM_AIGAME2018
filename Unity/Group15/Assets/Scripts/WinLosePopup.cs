@@ -5,13 +5,13 @@ using UnityEngine.UI;
 
 public class WinLosePopup : MonoBehaviour {
 
-    public Text win_moneygained, win_current_level, win_next_level;
-    public Text lose_moneygained, lose_current_level, lose_next_level;
+    public Text win_moneygained, win_current_level;
+    public Text lose_moneygained, lose_current_level;
     public Slider win_exp_slider, lose_exp_slider;
     public AudioSource soundsrc;
     public AudioClip levelup;
 
-    private Text moneygained, current_level, next_level;
+    private Text moneygained, current_level;
     private Slider exp_slider;
 
     private Player before, after;
@@ -69,7 +69,6 @@ public class WinLosePopup : MonoBehaviour {
                     before.experience = 0;
                     gainedLevel = true;
                     current_level.text = "" + before.level;
-                    next_level.text = "" + (before.level + 1);
                 }
             }
         }
@@ -87,20 +86,17 @@ public class WinLosePopup : MonoBehaviour {
         {
             moneygained = lose_moneygained;
             current_level = lose_current_level;
-            next_level = lose_next_level;
             exp_slider = lose_exp_slider;
         }
         else
         {
             moneygained = win_moneygained;
             current_level = win_current_level;
-            next_level = win_next_level;
             exp_slider = win_exp_slider;
         }
         
         exp_slider.normalizedValue = (float)before.experience / (float)before.exptolevel;
         current_level.text = "" + before.level;
-        next_level.text = "" + (before.level + 1);
         moneygained.text = "" + (after.money - before.money);
 
         PlayerSession.ps.player_before_battle = new Player();

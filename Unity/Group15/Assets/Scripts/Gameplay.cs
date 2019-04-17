@@ -18,6 +18,7 @@ public class Gameplay : MonoBehaviour {
     public static int updatePlayer;
     public static string currentAnimation_player = "player_idle";
     public static string currentAnimation_enemy = "enemy_idle";
+    public static bool ended = false;
 
     public Slider playerHP, enemyHP;
     public Image playerHPcolour, enemyHPcolour;
@@ -36,7 +37,6 @@ public class Gameplay : MonoBehaviour {
     float new_hp_enemy = -1;
     private bool skip = false;
     private bool death = false;
-    private bool ended = false;
 
     //! Skip button handler
     public void Press_Skip() { skip = true; }
@@ -44,6 +44,7 @@ public class Gameplay : MonoBehaviour {
     //! Setup the battle screen, including HP bars, Models, Damage Labels etc.
     private void Start()
     {
+        ended = false;
         updatePlayer = -1;
         player = PlayerSession.ps.player;
         PlayerSession.ps.player_before_battle = Player.DeepClone<Player>(PlayerSession.ps.player); // keep the player before gains
@@ -162,12 +163,19 @@ public class Gameplay : MonoBehaviour {
                     yield return new WaitForSeconds(0.2f);
                     currentAnimation_enemy = "enemy_hurt";
                 }
+                else
+                {
+                    currentAnimation_player = "player_idle";
+                    yield return new WaitForSeconds(0.2f);
+                    currentAnimation_enemy = "enemy_idle";
+                }
+
                 if (turns.Count == 1) // if last turn, then enemy died
                 {
-                    yield return new WaitForSeconds(0.2f);
                     currentAnimation_enemy = "enemy_die";
                 }
             }
+
             else if(attacker == "enemy")
             {
                 if (turn.damage != 0)
@@ -176,9 +184,15 @@ public class Gameplay : MonoBehaviour {
                     yield return new WaitForSeconds(0.2f);
                     currentAnimation_player = "player_hurt";
                 }
-                if (turns.Count == 1) // if last turn, then enemy died
+                else
                 {
+                    currentAnimation_enemy = "enemy_idle";
                     yield return new WaitForSeconds(0.2f);
+                    currentAnimation_player = "player_idle";
+                }
+
+                if (turns.Count == 1) // if last turn, then player died
+                {
                     currentAnimation_player = "player_die";
                 }
             }
