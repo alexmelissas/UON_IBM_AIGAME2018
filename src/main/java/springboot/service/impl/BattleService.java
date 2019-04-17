@@ -28,6 +28,8 @@ import springboot.service.PlayerService;
 public class BattleService {
 	@Autowired
 	private PlayerService playerService;
+	@Autowired
+	private RedisService redisService;
 	private Random random = new Random();
 	private static Logger logger = LoggerFactory.getLogger(BattleService.class);
 
@@ -90,7 +92,7 @@ public class BattleService {
 
 		if (players.size() == 1) {
 			Random random = new Random();
-			if (random.nextDouble() < (2.0 / 3.0))  {
+			if (random.nextDouble() < (2.0 / 3.0)) {
 				player.setFactor(player.getFactor() - random.nextDouble() / 6);
 			} else {
 				player.setFactor(player.getFactor() + random.nextDouble() / 6);
@@ -99,12 +101,14 @@ public class BattleService {
 			player.applyPersonality();
 			return player;
 		}
-		
+
 		while (id.equals(player.getId())) {
 			randomIndex = random.nextInt(playerSet.size());
 			player = playerList.get(randomIndex);
 		}
 
+		redisService.addBattleCount(id, "");
+		logger.info(">>>Left number of battles: {}", 10 - redisService.getBattleCount(id, ""));
 		return player;
 	}
 
@@ -169,4 +173,80 @@ public class BattleService {
 	public boolean isExist(String id) {
 		return playerService.isExist(id);
 	}
+
+	/**
+	 * Get 5 random player with the same level as the current player
+	 * 
+	 * @param id the id
+	 * @return the list of 5 players
+	 */
+	public List<Player> getRankedPlayer(String id) {
+		Player player = playerService.getPlayerById(id);
+
+		int level = playerService.getPlayerById(id).getLevel();
+		List<Player> players = playerService.getPlayersByLevel(level);
+
+		Random random = new Random();
+		while (players.size() <= 5) {
+			Player fakePlayer = new Player();
+			if (random.nextDouble() < (2.0 / 3.0)) {
+				fakePlayer.setFactor(player.getFactor() - random.nextDouble() / 6);
+			} else {
+				fakePlayer.setFactor(player.getFactor() + random.nextDouble() / 6);
+			}
+			fakePlayer.setAttributes(PlayerConfig.getBasicStatus(player.getLevel()));
+			fakePlayer.applyPersonality();
+			fakePlayer.setId("fake");
+			// TODO random name
+			players.add(fakePlayer);
+		}
+
+		List<Player> playerList = new ArrayList<Player>(players);
+		List<Player> randomPlayers = new ArrayList<Player>();
+		int randomIndex = random.nextInt(playerList.size());
+		int randomGroup = random.nextInt(4);
+
+		while (randomPlayers.size() < 5) {
+			Player temp = playerList.get(randomIndex);
+			while (id.equals(temp.getId()) || randomPlayers.contains(temp) || temp.getGroup() == player.getGroup()) {
+				randomIndex = random.nextInt(playerList.size());
+				temp = playerList.get(randomIndex);
+			}
+
+			if (temp.getGroup() == -1) {
+				while (randomGroup == 0 || randomGroup == player.getGroup()) {
+					randomGroup = random.nextInt(4);
+				}
+				temp.setGroup(randomGroup);
+			}
+			randomPlayers.add(temp);
+			randomGroup = random.nextInt(4);
+		}
+
+		return randomPlayers;
+	}
+
+	/**
+	 * Get the number of battles of a player
+	 * 
+	 * @param id  the id
+	 * @param str
+	 * @return the number of battles
+	 */
+	public int getBattleCount(String id, String str) {
+		return redisService.getBattleCount(id, str);
+	}
+
+	public void handleRankedResult(String id1, String id2, boolean result, int additionalExp, int additionalMoney) {
+		// update individual score
+		int score = redisService.getRankedScore(id1);
+		score += 15;
+		redisService.setRankedScore(id1, score);
+		redisService.addBattleCount(id1, "ranked_");
+		// TODO winning streak bonus
+
+		// update group score
+
+	}
+
 }

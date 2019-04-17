@@ -15,7 +15,7 @@ import javax.persistence.Id;
  *
  */
 @Entity
-public class Ideal implements Serializable{
+public class Ideal implements Serializable {
 	private static final long serialVersionUID = -162671173711901751L;
 
 	@Id
@@ -39,7 +39,7 @@ public class Ideal implements Serializable{
 
 	@Column(name = "auth", columnDefinition = "BOOLEAN")
 	private boolean auth = false;
-	
+
 	/**
 	 * Constructor
 	 */
@@ -187,7 +187,29 @@ public class Ideal implements Serializable{
 		this.auth = auth;
 	}
 
-	/* (non-Javadoc)
+	/**
+	 * Get the group of player according to the attributes
+	 * 
+	 * @return the group number
+	 */
+	public int getGroup() {
+		int group = -1;
+		double e = this.getExtraversion();
+		double c = this.getConscientiousness();
+		double a = this.getAgreeableness();
+		if (e > c && e > a) {
+			group = 1;
+		} else if (c > e && c > a) {
+			group = 2;
+		} else {
+			group = 3;
+		}
+		return group;
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see java.lang.Object#toString()
 	 */
 	@Override

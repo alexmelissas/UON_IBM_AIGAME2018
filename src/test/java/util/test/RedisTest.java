@@ -38,19 +38,28 @@ public class RedisTest {
 	@Test
 	public void countTest() {
 		String id = "123";
-		System.out.println(">>>" + redisService.getBattleCount(id));
+		System.out.println(">>>" + redisService.getBattleCount(id, ""));
 		id = "test_id";
-		System.out.println(">>>" + redisService.getBattleCount(id));
+		System.out.println(">>>" + redisService.getBattleCount(id, ""));
 		
 		id = "123";
-		redisService.addBattleCount(id);
-		System.out.println(">>>" + redisService.getBattleCount(id));
+		redisService.addBattleCount(id, "");
+		System.out.println(">>>" + redisService.getBattleCount(id, ""));
 		id = "test_id";
-		redisService.addBattleCount(id);
-		System.out.println(">>>" + redisService.getBattleCount(id));
+		redisService.addBattleCount(id, "");
+		System.out.println(">>>" + redisService.getBattleCount(id, ""));
 		id = "1233";
-		redisService.addBattleCount(id);
-		System.out.println(">>>" + redisService.getBattleCount(id));
+		redisService.addBattleCount(id, "ranked_");
+		System.out.println(">>>" + redisService.getBattleCount(id, "ranked_"));
+	}
+	
+	@Test
+	public void scoreTest() {
+		String id = "123";
+		System.out.println(">>>" + redisService.getRankedScore(id));
+		
+		redisService.setRankedScore(id, 10);
+		System.out.println(">>>" + redisService.getRankedScore(id));
 	}
 
 	@After

@@ -4,6 +4,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -37,8 +38,6 @@ import springboot.service.impl.RedisService;
 public class BattleController {
 	@Autowired
 	private BattleService battleService;
-	@Autowired
-	private RedisService redisService;
 	private static Logger logger = LoggerFactory.getLogger(BattleController.class);
 
 	/**
@@ -73,19 +72,48 @@ public class BattleController {
 	/**
 	 * Get the number of battles of a player
 	 * 
-	 * @param id
-	 * @return
+	 * @param id the id
+	 * @return the number of battles
 	 */
 	@GetMapping("/battle/count/{id}")
 	public @ResponseBody int getBattleCount(@PathVariable String id) {
 		if (!battleService.isExist(id)) {
 			return -1;
 		}
-		return redisService.getBattleCount(id);
+		return battleService.getBattleCount(id, "");
+	}
+	
+	/**
+	 * Get the number of ranked battles of a player
+	 * 
+	 * @param id the id
+	 * @return the number of battles
+	 */
+	@GetMapping("/battle/ranked/count/{id}")
+	public @ResponseBody int getRankedBattleCount(@PathVariable String id) {
+		if (!battleService.isExist(id)) {
+			return -1;
+		}
+		return battleService.getBattleCount(id, "ranked_");
+	}
+
+	/**
+	 * Get 5 random players
+	 * 
+	 * @param id the id of current player
+	 * @return the list of players
+	 */
+	@GetMapping("/battle/ranked/{id}")
+	public @ResponseBody List<Player> getRankedPlayers(@PathVariable String id) {
+		if (!battleService.isExist(id)) {
+			return null;
+		}
+		return battleService.getRankedPlayer(id);
 	}
 
 	/**
 	 * Handle the result of battle
+	 * 
 	 * @param jsonString json string which contains the information of battle
 	 * @return
 	 */
@@ -101,9 +129,24 @@ public class BattleController {
 		int additionalMoney = jsonObject.get("additionalMoney").getAsInt();
 
 		Player player = battleService.handleResult(id1, id2, result, additionalExp, additionalMoney);
-		redisService.addBattleCount(id1);
-		logger.info(">>>Left number of battles: {}", 10 - redisService.getBattleCount(id1));
 		logger.info("======Battle Result End======");
 		return player;
+	}
+	
+	@PutMapping("/battle/ranked")
+	public void handleRankedResult(@RequestBody String jsonString) {
+		logger.info("======Ranked Battle Result======");
+		JsonObject jsonObject = (JsonObject) new JsonParser().parse(jsonString);
+		String id1 = jsonObject.get("id1").getAsString();
+		String id2 = jsonObject.get("id2").getAsString();
+		// true: id1 win; false: id1 lost;
+		boolean result = jsonObject.get("result").getAsBoolean();
+		int additionalExp = jsonObject.get("additionalExp").getAsInt();
+		int additionalMoney = jsonObject.get("additionalMoney").getAsInt();
+
+		battleService.handleRankedResult(id1, id2, result, additionalExp, additionalMoney);
+		// RETURN ?
+		
+		logger.info("======Ranked Battle Result End======");
 	}
 }

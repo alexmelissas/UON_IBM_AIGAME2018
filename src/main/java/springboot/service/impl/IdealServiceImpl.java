@@ -134,7 +134,8 @@ public class IdealServiceImpl implements IdealService {
 
 		player.setAttributes(PlayerConfig.getBasicStatus(player.getLevel()));
 		player.applyPersonality();
-
+		player.setGroup(ideal.getGroup());
+		
 		playerService.updatePlayer(id, player);
 	}
 

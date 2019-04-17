@@ -25,8 +25,8 @@ import springboot.config.PlayerConfig;
 @Entity
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public class Player extends BasicCharacter implements Serializable {
-	
-	private static final long serialVersionUID = 3625093787155595731L;
+
+	private static final long serialVersionUID = 3382275482902910220L;
 
 	@Id
 	@Column(name = "id", columnDefinition = "VARCHAR(36)")
@@ -46,6 +46,9 @@ public class Player extends BasicCharacter implements Serializable {
 
 	@Column(name = "lose", columnDefinition = "INT")
 	private int lose = 0;
+
+	@Column(name = "groupnum", columnDefinition = "INT")
+	private int group = -1;
 
 	/**
 	 * Constructor
@@ -85,7 +88,7 @@ public class Player extends BasicCharacter implements Serializable {
 	 */
 	public Player(String id, String characterName, int level, int hp, int attack, int defense, int agility,
 			int criticalStrike, int money, int experience, int exptolevel, double factor, int sword, int shield,
-			int armour, int win, int lose) {
+			int armour, int win, int lose, int group) {
 		super(characterName, level, hp, attack, defense, agility, criticalStrike, factor, sword, shield, armour);
 		this.id = id;
 		this.money = money;
@@ -93,6 +96,7 @@ public class Player extends BasicCharacter implements Serializable {
 		this.exptolevel = exptolevel;
 		this.win = win;
 		this.lose = lose;
+		this.group = group;
 	}
 
 	/**
@@ -198,13 +202,30 @@ public class Player extends BasicCharacter implements Serializable {
 		this.lose = lose;
 	}
 
-	/* (non-Javadoc)
+	/**
+	 * @return the group
+	 */
+	public int getGroup() {
+		return group;
+	}
+
+	/**
+	 * @param group the group to set
+	 */
+	public void setGroup(int group) {
+		this.group = group;
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see java.lang.Object#toString()
 	 */
 	@Override
 	public String toString() {
-		return "Player [id=" + id + ", money=" + money + ", experience=" + experience + ", exptolevel=" + exptolevel
-				+ ", win=" + win + ", lose=" + lose + ", getCharacterName()=" + getCharacterName() + ", getLevel()="
+		return "Player [getId()=" + getId() + ", getMoney()=" + getMoney() + ", getExperience()=" + getExperience()
+				+ ", getExptolevel()=" + getExptolevel() + ", getWin()=" + getWin() + ", getLose()=" + getLose()
+				+ ", getGroup()=" + getGroup() + ", getCharacterName()=" + getCharacterName() + ", getLevel()="
 				+ getLevel() + ", getHp()=" + getHp() + ", getAttack()=" + getAttack() + ", getDefense()="
 				+ getDefense() + ", getAgility()=" + getAgility() + ", getCriticalStrike()=" + getCriticalStrike()
 				+ ", getFactor()=" + getFactor() + ", getSword()=" + getSword() + ", getShield()=" + getShield()
