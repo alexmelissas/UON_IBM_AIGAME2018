@@ -28,6 +28,9 @@ public class Server {
     //! Determining when find enemy is done (used by battle classes)
     public static bool findenemy_done;
 
+    //! Determining when updating player is done (used when purchasing items)
+    public static bool updateplayer_done;
+
     //! Returns the particular address for one server API function.
     public static string Address(string service){
         string path;
@@ -210,5 +213,35 @@ public class Server {
         uwr.Dispose();
         yield break;
     }
-    
+
+    //! Update the Player in the Server (eg. when buying items)
+    public static IEnumerator UpdatePlayer(string new_player)
+    {
+        updateplayer_done = false;
+        UnityWebRequest uwr = new UnityWebRequest(Server.Address("players" + PlayerSession.ps.player.id), "PUT");
+        byte[] jsonToSend = new System.Text.UTF8Encoding().GetBytes(new_player);
+        uwr.uploadHandler = (UploadHandler)new UploadHandlerRaw(jsonToSend);
+        uwr.downloadHandler = (DownloadHandler)new DownloadHandlerBuffer();
+        uwr.SetRequestHeader("Content-Type", "application/json");
+
+        uwr.timeout = 10;
+        yield return uwr.SendWebRequest();
+
+        if (uwr.isNetworkError)
+        {
+            Debug.Log("Error While Sending: " + uwr.error);
+            NPBinding.UI.ShowToast("Communication Error. Please try again later.", eToastMessageLength.SHORT);
+            updateplayer_done = false;
+        }
+        else
+        {
+            if (uwr.downloadHandler.text == "Failed")
+                updateplayer_done = false;
+            else if (uwr.downloadHandler.text == "Updated")
+                updateplayer_done = true;
+        }
+        
+        uwr.Dispose();
+        yield break;
+    }
 }

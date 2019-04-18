@@ -41,6 +41,15 @@ public class Gameplay : MonoBehaviour {
     //! Skip button handler
     public void Press_Skip() { skip = true; }
 
+    //! Hide/Show the end game popups
+    private void ShowPopup(bool shown, bool win)
+    {
+        Vector3 hide = new Vector3(7630, 2430, 0);
+        Vector3 show = new Vector3(0,0,0);
+        GameObject panel = win ? winpopup : losepopup;
+        panel.transform.position = shown ? show : hide;
+    }
+
     //! Setup the battle screen, including HP bars, Models, Damage Labels etc.
     private void Start()
     {
@@ -78,8 +87,8 @@ public class Gameplay : MonoBehaviour {
         musicsrc.loop = true;
         musicsrc.playOnAwake = true;
 
-        winpopup.SetActive(false);
-        losepopup.SetActive(false);
+        ShowPopup(false, true);
+        ShowPopup(false, false);
 
         currentAnimation_player = "player_idle";
         currentAnimation_enemy = "enemy_idle";
@@ -138,9 +147,9 @@ public class Gameplay : MonoBehaviour {
         ended = true;
         StopAllCoroutines();
         gameObject.AddComponent<UpdateSessions>().U_Player(); //now the Playersession player is updated
-
-        if (result == 1) losepopup.SetActive(true);
-        else winpopup.SetActive(true);
+        
+        if (result == 1) ShowPopup(true, false);
+        else ShowPopup(true, true);
         updatePlayer = result; //enables the popups for the exp and money gain to animate
 
         result = 0;
