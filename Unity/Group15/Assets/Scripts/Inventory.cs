@@ -38,9 +38,13 @@ public class Inventory : MonoBehaviour {
         if (!(p.ComparePlayer(PlayerSession.ps.player)))
         {
             p = PlayerSession.ps.player;
-            hp_lbl.text = "" + p.hp;
-            atk_lbl.text = "" + p.attack;
-            def_lbl.text = "" + p.defense;
+            int atk_bonus = (new Sword(p.sword)).attack;
+            int def_bonus = (new Shield(p.shield)).defense;
+            int hp_bonus = (new Armour(p.armour)).hp;
+
+            hp_lbl.text = "" + (p.hp + hp_bonus);
+            atk_lbl.text = "" + (p.attack + atk_bonus);
+            def_lbl.text = "" + (p.defense + def_bonus);
             money_lbl.text = "" + p.money;
             if (p.sword == 4) swordFullLevel.SetActive(true);
             if (p.shield == 4) shieldFullLevel.SetActive(true);

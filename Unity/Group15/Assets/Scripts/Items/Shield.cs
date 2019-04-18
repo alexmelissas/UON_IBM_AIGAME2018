@@ -13,22 +13,22 @@ public class Shield : Item {
             case 1:
                 name = "Basic Shield";
                 attribute = 2;
-                price = 9;
+                price = 89;
                 break;
             case 2:
                 name = "Rampant Protector";
                 attribute = 10;
-                price = 29;
+                price = 219;
                 break;
             case 3:
                 name = "Runic Defender";
                 attribute = 19;
-                price = 87;
+                price = 549;
                 break;
             case 4:
                 name = "Angel's Guard";
                 attribute = 37;
-                price = 199;
+                price = 999;
                 break;
             default: break;
         }

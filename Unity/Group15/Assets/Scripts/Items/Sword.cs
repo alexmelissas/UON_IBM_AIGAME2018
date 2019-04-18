@@ -13,22 +13,22 @@ public class Sword : Item {
             case 1:
                 name = "Basic Blade";
                 attribute = 5;
-                price = 9;
+                price = 109;
                 break;
             case 2:
                 name = "Banana Wedge";
                 attribute = 15;
-                price = 69;
+                price = 299;
                 break;
             case 3:
                 name = "Midnight Sharp";
                 attribute = 30;
-                price = 109;
+                price = 519;
                 break;
             case 4:
                 name = "Leviathan Blade";
                 attribute = 50;
-                price = 199;
+                price = 999;
                 break;
             default: break;
         }

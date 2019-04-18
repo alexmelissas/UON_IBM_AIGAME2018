@@ -8,38 +8,32 @@ public class Armour : Item {
     {
         // also switch for levels to change icon of item (better looking with each upgrade)
         // attribute1/attribute2 = what the item gives
-        int attribute1 = 0;
-        int attribute2 = 0;
+        int attribute = 0;
         switch (level)
         {
             case 1:
                 name = "Basic Plating";
-                attribute1 = 20;
-                attribute2 = 1;
-                price = 10;
+                attribute = 20;
+                price = 99;
                 break;
             case 2:
                 name = "Conqueror";
-                attribute1 = 48;
-                attribute2 = 4;
-                price = 49;
+                attribute = 48;
+                price = 259;
                 break;
             case 3:
                 name = "The Unbreakable";
-                attribute1 = 79;
-                attribute2 = 7;
-                price = 139;
+                attribute = 79;
+                price = 489;
                 break;
             case 4:
                 name = "Turret Plating";
-                attribute1 = 149;
-                attribute2 = 15;
-                price = 249;
+                attribute = 149;
+                price = 999;
                 break;
             default:
                 break;
         }
-        hp = attribute1;
-        defense = attribute2;
+        hp = attribute;
     }
 }
