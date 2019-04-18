@@ -9,7 +9,8 @@ public class Inventory : MonoBehaviour {
     public Text hp_lbl, atk_lbl, def_lbl, money_lbl;
     public GameObject upgradePanel;
     public Text itemName, itemStat, itemPrice, balance;
-    public GameObject itemIcon, statsIcon;
+    public GameObject itemIcon, statsIcon, loading;
+    public GameObject swordFullLevel, shieldFullLevel, armourFullLevel;
     public Sprite atk, def, hp;
 
     private Player p;
@@ -22,14 +23,17 @@ public class Inventory : MonoBehaviour {
         gameObject.AddComponent<UpdateSessions>().U_All();
     }
 
-    void Start()
+    private void Start()
     {
-        //set the inv slots to current items?
         p = new Player();
+        swordFullLevel.SetActive(false);
+        shieldFullLevel.SetActive(false);
+        armourFullLevel.SetActive(false);
+        loading.SetActive(false);
         Displayed(false);
     }
 
-    void Update()
+    private void Update()
     {
         if (!(p.ComparePlayer(PlayerSession.ps.player)))
         {
@@ -38,6 +42,9 @@ public class Inventory : MonoBehaviour {
             atk_lbl.text = "" + p.attack;
             def_lbl.text = "" + p.defense;
             money_lbl.text = "" + p.money;
+            if (p.sword == 4) swordFullLevel.SetActive(true);
+            if (p.shield == 4) shieldFullLevel.SetActive(true);
+            if (p.armour == 4) armourFullLevel.SetActive(true);
         }
     }
 
@@ -57,17 +64,17 @@ public class Inventory : MonoBehaviour {
         {
             case 0: // Sword
                 currentItemLevel = PlayerSession.ps.player.sword;
-                if (currentItemLevel == 4) return; // message no further upgrades available - or dim the icon at start
+                if (currentItemLevel == 4) return;
                 displayItemType = "sword";
                 break;
             case 1: // Shield
                 currentItemLevel = PlayerSession.ps.player.shield;
-                if (currentItemLevel == 4) return; // message no further upgrades available - or dim the icon at start
+                if (currentItemLevel == 4) return;
                 displayItemType = "shield";
                 break;
             case 2: // Armour
                 currentItemLevel = PlayerSession.ps.player.armour;
-                if (currentItemLevel == 4) return; // message no further upgrades available - or dim the icon at start
+                if (currentItemLevel == 4) return;
                 displayItemType = "armour";
                 break;
         }
@@ -97,12 +104,24 @@ public class Inventory : MonoBehaviour {
                 stat = displayItem.hp;
                 break;
         }
+
         //itemIcon.GetComponent<Image>().sprite = statIcon;
         statsIcon.GetComponent<Image>().sprite = statIcon;
         itemName.text = displayItem.name;
         itemStat.text = "" + stat;
         balance.text = "" + PlayerSession.ps.player.money;
         itemPrice.text = "" + displayItem.price;
+    }
+
+    private IEnumerator Purchase(string poorerPlayerJSON)
+    {
+        StartCoroutine(Server.UpdatePlayer(poorerPlayerJSON));
+        loading.SetActive(true);
+        yield return new WaitUntil(() => Server.updateplayer_done == true);
+        loading.SetActive(false);
+        gameObject.AddComponent<UpdateSessions>().U_Player();
+        Displayed(false);
+        yield break;
     }
 
     public void ConfirmPurchase()
@@ -118,15 +137,14 @@ public class Inventory : MonoBehaviour {
                 case "armour": poorerPlayer.armour++; break;
             }
             string poorerPlayerJSON = JsonUtility.ToJson(poorerPlayer);
-            Server.UpdatePlayer(poorerPlayerJSON);
+            StartCoroutine(Purchase(poorerPlayerJSON));
         }
         else
         {
             NPBinding.UI.ShowToast("Insufficient Funds.", eToastMessageLength.SHORT);
+            gameObject.AddComponent<UpdateSessions>().U_Player();
+            Displayed(false);
         }
-        gameObject.AddComponent<UpdateSessions>().U_Player();
-        Displayed(false);
     }
-
     
 }

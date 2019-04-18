@@ -218,7 +218,7 @@ public class Server {
     public static IEnumerator UpdatePlayer(string new_player)
     {
         updateplayer_done = false;
-        UnityWebRequest uwr = new UnityWebRequest(Server.Address("players" + PlayerSession.ps.player.id), "PUT");
+        UnityWebRequest uwr = new UnityWebRequest(Server.Address("players") + PlayerSession.ps.player.id, "PUT");
         byte[] jsonToSend = new System.Text.UTF8Encoding().GetBytes(new_player);
         uwr.uploadHandler = (UploadHandler)new UploadHandlerRaw(jsonToSend);
         uwr.downloadHandler = (DownloadHandler)new DownloadHandlerBuffer();
@@ -235,10 +235,8 @@ public class Server {
         }
         else
         {
-            if (uwr.downloadHandler.text == "Failed")
-                updateplayer_done = false;
-            else if (uwr.downloadHandler.text == "Updated")
-                updateplayer_done = true;
+            if (uwr.downloadHandler.text == "Failed") updateplayer_done = false;
+            else if (uwr.downloadHandler.text == "Updated") updateplayer_done = true;
         }
         
         uwr.Dispose();

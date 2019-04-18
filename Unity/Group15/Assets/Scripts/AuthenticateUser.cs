@@ -11,19 +11,24 @@ public class AuthenticateUser : MonoBehaviour {
     public InputField usernameInput;
     public InputField passwordInput;
     public string auth_type;
-    private bool done;
+    public static bool logging_in;
+    private bool done; // WHAT IS THIS DOING LOL
 
     void Start()
     {
         loading.SetActive(false);
+        logging_in = false;
         done = false;
         passwordInput.onEndEdit.AddListener(delegate { CheckUserPass(); });
     }
+
+    private void Toggle(bool input) { logging_in = input; }
 
     //! Try to login with given credentials.
     IEnumerator TryLogin(bool first_login, string json, User user)
     {
         if (first_login && UserSession.us.user.GetUsername() == "") yield break;
+        Toggle(true);
         UnityWebRequest uwr = new UnityWebRequest(Server.Address("login_user"), "POST");
         byte[] jsonToSend = new System.Text.UTF8Encoding().GetBytes(json);
         uwr.uploadHandler = (UploadHandler)new UploadHandlerRaw(jsonToSend);
@@ -66,6 +71,7 @@ public class AuthenticateUser : MonoBehaviour {
                 passwordInput.text = "";
                 passwordInput.Select();
             }
+            Toggle(false);
             done = false;
             uwr.Dispose();
             StopCoroutine(TryLogin(first_login,json, user));

@@ -22,7 +22,7 @@ public class PauseManager : MonoBehaviour {
 
         if (UserSession.us.user != null && UserSession.us.user.GetID() != "")
         {
-            if(StartScreens() && !LoginTwitter.leftForTwitter) //FIX THIS CONDITIONAL
+            if(StartScreens() && !LoginTwitter.leftForTwitter && !AuthenticateUser.logging_in) //FIX THIS CONDITIONAL
             {
                 StartCoroutine(Server.DeleteAccount());
             }
