@@ -11,8 +11,21 @@
 {olympus.jpg/parthenon_backgdound.jpg} : Photo via <a href="https://www.goodfreephotos.com/">Good Free Photos</a>
 
 
-===== SPRITES / ICONS ============
+===== ICONS ============
 app icon - https://pxhere.com/en/photo/1283867
+
+
+===== SPRITES =====
+character models - 
+
+
+===== SWORDS ======
+https://opengameart.org/content/jagged-sword
+https://opengameart.org/content/butterfly-sword
+https://opengameart.org/content/spartan-sword-0
+https://opengameart.org/content/sword2
+
+===== SHIELDS ======
 
 
 === FONTS ====
