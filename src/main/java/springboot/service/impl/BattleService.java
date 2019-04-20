@@ -1,8 +1,12 @@
 package springboot.service.impl;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Random;
 import java.util.Set;
 
@@ -237,16 +241,72 @@ public class BattleService {
 		return redisService.getBattleCount(id, str);
 	}
 
-	public void handleRankedResult(String id1, String id2, boolean result, int additionalExp, int additionalMoney) {
+	/**
+	 * Handle the ranked battle
+	 * 
+	 * @param id1             the current player
+	 * @param id2             the enemy
+	 * @param result          result of battle
+	 * @param additionalExp   additional experience
+	 * @param additionalMoney additional money
+	 */
+	public synchronized void handleRankedResult(String id1, String id2, boolean result, int additionalExp,
+			int additionalMoney) {
 		// update individual score
 		int score = redisService.getRankedScore(id1);
-		score += 15;
+		score += result ? 15 : 3;
 		redisService.setRankedScore(id1, score);
 		redisService.addBattleCount(id1, "ranked_");
 		// TODO winning streak bonus
 
 		// update group score
-
+		int groupNum = playerService.getPlayerById(id1).getGroup();
+		int groupScore = redisService.getGroupScore(groupNum);
+		groupScore += result ? 15 : 3;
+		redisService.setGroupScore(groupNum, groupScore);
 	}
 
+	/**
+	 * Get the rank of each group
+	 * 
+	 * @return the rank of groups and their scores
+	 */
+	public HashMap<Integer, Integer> getGroupRank() {
+		HashMap<Integer, Integer> scoreBoard = new HashMap<Integer, Integer>();
+		for (int i = 1; i <= 3; i++) {
+			scoreBoard.put(i, redisService.getGroupScore(i));
+		}
+		return scoreBoard;
+	}
+
+	/**
+	 * Get the top ten player in the group
+	 * 
+	 * @param groupNum the group number
+	 * @return the rank of players in the group
+	 */
+	public HashMap<String, Integer> getGroupPlayerRank(String groupNum) {
+		List<Player> players = playerService.getPlayersByGroup(Integer.parseInt(groupNum));
+		HashMap<String, Integer> playerBoard = new HashMap<String, Integer>();
+		for (Player player : players) {
+			int score = redisService.getRankedScore(player.getId());
+			playerBoard.put(player.getCharacterName(), score);
+		}
+		List<Map.Entry<String, Integer>> list = new ArrayList<Map.Entry<String, Integer>>(playerBoard.entrySet());
+		Collections.sort(list, new Comparator<Map.Entry<String, Integer>>() {
+			@Override
+			public int compare(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2) {
+				return o2.getValue().compareTo(o1.getValue());
+			}
+		});
+		HashMap<String, Integer> result = new HashMap<String, Integer>();
+		int count = 0;
+		for (Map.Entry<String, Integer> mapping : list) {
+			if (count >= 10)
+				break;
+			result.put(mapping.getKey(), mapping.getValue());
+			count++;
+		}
+		return result;
+	}
 }

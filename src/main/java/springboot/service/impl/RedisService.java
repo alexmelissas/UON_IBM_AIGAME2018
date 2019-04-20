@@ -5,17 +5,14 @@ import java.time.ZoneId;
 import java.time.temporal.ChronoUnit;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.List;
+import java.util.concurrent.locks.ReentrantLock;
 
-import org.apache.commons.lang3.SerializationUtils;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
-import springboot.domain.Player;
-import springboot.service.PlayerService;
 
 /**
  * <p>
@@ -29,9 +26,10 @@ import springboot.service.PlayerService;
 public class RedisService implements InitializingBean {
 	@Autowired
 	private JedisPool jedisPool;
+	protected static ReentrantLock lockJedis = new ReentrantLock();
+
 //	@Autowired
 //	private PlayerService playerService;
-	private Jedis jedis;
 
 	/**
 	 * Store the result of analysis for one hour
@@ -40,7 +38,9 @@ public class RedisService implements InitializingBean {
 	 * @param result the analysis result
 	 */
 	public void setResult(String id, String result) {
+		Jedis jedis = jedisPool.getResource();
 		jedis.set("result_" + id, result, "NX", "EX", 60 * 10);
+		this.returnResource(jedis);
 	}
 
 	/**
@@ -50,7 +50,10 @@ public class RedisService implements InitializingBean {
 	 * @return
 	 */
 	public String getResult(String id) {
-		return jedis.get("result_" + id);
+		Jedis jedis = jedisPool.getResource();
+		String result = jedis.get("result_" + id);
+		this.returnResource(jedis);
+		return result;
 	}
 
 	/**
@@ -82,9 +85,11 @@ public class RedisService implements InitializingBean {
 	 * @param str   string indicate if the battle is ranked
 	 */
 	public void setBattleCount(String id, int count, String str) {
+		Jedis jedis = jedisPool.getResource();
 		jedis.set("count_" + str + id, Integer.toString(count));
 		int seconds = this.daily();
 		jedis.expire("count_" + str + id, (int) seconds);
+		this.returnResource(jedis);
 	}
 
 	/**
@@ -95,11 +100,13 @@ public class RedisService implements InitializingBean {
 	 * @return the number of battles
 	 */
 	public int getBattleCount(String id, String str) {
+		Jedis jedis = jedisPool.getResource();
 		int count = 0;
 		if (jedis.exists("count_" + str + id)) {
 			String num = jedis.get("count_" + str + id);
 			count = Integer.parseInt(num);
 		}
+		this.returnResource(jedis);
 		return count;
 	}
 
@@ -110,9 +117,11 @@ public class RedisService implements InitializingBean {
 	 * @param score the score of player
 	 */
 	public void setRankedScore(String id, int score) {
+		Jedis jedis = jedisPool.getResource();
 		jedis.set("score_" + id, Integer.toString(score));
 		int seconds = this.weekly();
 		jedis.expire("score_" + id, (int) seconds);
+		this.returnResource(jedis);
 	}
 
 	/**
@@ -122,11 +131,13 @@ public class RedisService implements InitializingBean {
 	 * @return the score of the player
 	 */
 	public int getRankedScore(String id) {
+		Jedis jedis = jedisPool.getResource();
 		int score = 0;
 		if (jedis.exists("score_" + id)) {
 			String str = jedis.get("score_" + id);
 			score = Integer.parseInt(str);
 		}
+		this.returnResource(jedis);
 		return score;
 	}
 
@@ -137,9 +148,11 @@ public class RedisService implements InitializingBean {
 	 * @param score    the score
 	 */
 	public void setGroupScore(int groupNum, int score) {
+		Jedis jedis = jedisPool.getResource();
 		jedis.set("group_" + Integer.toString(groupNum), Integer.toString(score));
 		int seconds = this.weekly();
 		jedis.expire("group_" + Integer.toString(groupNum), seconds);
+		this.returnResource(jedis);
 	}
 
 	/**
@@ -149,11 +162,13 @@ public class RedisService implements InitializingBean {
 	 * @return the score
 	 */
 	public int getGroupScore(int groupNum) {
+		Jedis jedis = jedisPool.getResource();
 		int score = 0;
 		if (jedis.exists("group_" + Integer.toString(groupNum))) {
 			String str = jedis.get("group_" + Integer.toString(groupNum));
 			score = Integer.parseInt(str);
 		}
+		this.returnResource(jedis);
 		return score;
 	}
 
@@ -194,9 +209,18 @@ public class RedisService implements InitializingBean {
 
 	@Override
 	public void afterPropertiesSet() throws Exception {
-		this.jedis = jedisPool.getResource();
 		// TODO
 //		List<Player> players = playerService.getPlayers();
 //		this.jedis.set("players", SerializationUtils.serialize(players));
+	}
+
+	/**
+	 * Return jedis resource
+	 * 
+	 * @param jedis the jedis
+	 */
+	@SuppressWarnings("deprecation")
+	public void returnResource(Jedis jedis) {
+		jedisPool.returnResource(jedis);
 	}
 }

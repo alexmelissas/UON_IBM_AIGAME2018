@@ -3,12 +3,8 @@ package springboot.web;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
-
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -24,7 +20,6 @@ import com.google.gson.JsonParser;
 import springboot.domain.Bot;
 import springboot.domain.Player;
 import springboot.service.impl.BattleService;
-import springboot.service.impl.RedisService;
 
 /**
  * <p>
@@ -82,7 +77,7 @@ public class BattleController {
 		}
 		return battleService.getBattleCount(id, "");
 	}
-	
+
 	/**
 	 * Get the number of ranked battles of a player
 	 * 
@@ -112,6 +107,26 @@ public class BattleController {
 	}
 
 	/**
+	 * Get the rank of each group
+	 * 
+	 * @return the rank of groups and their scores
+	 */
+	@GetMapping("/battle/ranked/group")
+	public @ResponseBody HashMap<Integer, Integer> getGroupRank() {
+		return battleService.getGroupRank();
+	}
+
+	/**
+	 * Get the top ten player in the group
+	 * 
+	 * @return the rank of players in the group
+	 */
+	@GetMapping("/battle/ranked/group/{groupNum}")
+	public @ResponseBody HashMap<String, Integer> getGroupPlayerRank(@PathVariable String groupNum) {
+		return battleService.getGroupPlayerRank(groupNum);
+	}
+
+	/**
 	 * Handle the result of battle
 	 * 
 	 * @param jsonString json string which contains the information of battle
@@ -132,7 +147,12 @@ public class BattleController {
 		logger.info("======Battle Result End======");
 		return player;
 	}
-	
+
+	/**
+	 * Handle the ranked battle
+	 * 
+	 * @param jsonString
+	 */
 	@PutMapping("/battle/ranked")
 	public void handleRankedResult(@RequestBody String jsonString) {
 		logger.info("======Ranked Battle Result======");
@@ -146,7 +166,7 @@ public class BattleController {
 
 		battleService.handleRankedResult(id1, id2, result, additionalExp, additionalMoney);
 		// RETURN ?
-		
+
 		logger.info("======Ranked Battle Result End======");
 	}
 }

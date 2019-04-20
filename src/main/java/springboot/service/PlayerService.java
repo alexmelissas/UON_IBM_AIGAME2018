@@ -25,6 +25,13 @@ public interface PlayerService {
 	 * @return
 	 */
 	public List<Player> getPlayers();
+	
+	/**
+	 * Get all the players by group
+	 * 
+	 * @return
+	 */
+	public List<Player> getPlayersByGroup(int group);
 
 	/**
 	 * Get the player according to id

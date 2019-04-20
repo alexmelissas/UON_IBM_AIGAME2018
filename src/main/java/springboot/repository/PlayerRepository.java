@@ -15,5 +15,6 @@ import springboot.domain.Player;
  *
  */
 public interface PlayerRepository extends JpaRepository<Player, String> {
-	public List<Player> findAllByLevel(int levele);
+	public List<Player> findAllByLevel(int level);
+	public List<Player> findAllByGroup(int group);
 }

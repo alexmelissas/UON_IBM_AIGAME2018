@@ -178,4 +178,13 @@ public class PlayerServiceImpl implements PlayerService {
 	public boolean isExist(String id) {
 		return playerRepository.existsById(id);
 	}
+
+	/*
+	 * (non-Javadoc)
+	 * @see springboot.service.PlayerService#getPlayersByGroup(int)
+	 */
+	@Override
+	public List<Player> getPlayersByGroup(int group) {
+		return playerRepository.findAllByGroup(group);
+	}
 }
