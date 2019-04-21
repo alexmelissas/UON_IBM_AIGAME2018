@@ -1,5 +1,3 @@
-package util.test;
-
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -15,8 +13,8 @@ import springboot.service.impl.RedisService;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = { RedisConfig.class, RedisService.class})
-public class RedisTest {
-	private static Logger logger = LoggerFactory.getLogger(RedisTest.class);
+public class RedisServiceTest {
+	private static Logger logger = LoggerFactory.getLogger(RedisServiceTest.class);
 
 	@Autowired
 	private RedisService redisService;

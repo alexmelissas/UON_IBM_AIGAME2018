@@ -75,8 +75,12 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public void deleteUserById(String id) {
 		userRepository.deleteById(id);
-		idealService.deleteIdealById(id);
-		playerService.deletePlayerById(id);
+		if (idealService.isExist(id)) {
+			idealService.deleteIdealById(id);
+		}
+		if (playerService.isExist(id)) {
+			playerService.deletePlayerById(id);
+		}
 	}
 
 	/*
