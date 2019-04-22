@@ -1,18 +1,17 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
+//! Visualize the rewards gained from winning/losing a match
 public class WinLosePopup : MonoBehaviour {
 
-    public Text win_moneygained, win_current_level;
-    public Text lose_moneygained, lose_current_level;
-    public Slider win_exp_slider, lose_exp_slider;
+    public Text winMoneyText, winNextLevelText;
+    public Text loseMoneyText, loseNextLvlText;
+    public Slider winExpSlider, loseExpSlider;
     public AudioSource soundsrc;
-    public AudioClip levelup;
+    public AudioClip levelup_Sound;
 
-    private Text moneygained, current_level;
-    private Slider exp_slider;
+    private Text moneyGained, currentLevel;
+    private Slider expSlider;
 
     private Player before, after;
 
@@ -20,6 +19,7 @@ public class WinLosePopup : MonoBehaviour {
     private bool gainedLevel = false;
     private float addedExp = 0;
 
+    //! When battle ends, display the Win/Lose popup and animate the EXP and money gain
     private void Update()
     {
         if(Gameplay.updatePlayer!=-1 && didSetup==false)
@@ -32,9 +32,9 @@ public class WinLosePopup : MonoBehaviour {
         {
             if (before.experience < after.experience)
             {
-                if (exp_slider.normalizedValue != 1)
+                if (expSlider.normalizedValue != 1)
                 {
-                    exp_slider.normalizedValue += 0.002f;
+                    expSlider.normalizedValue += 0.002f;
 
                     if (gainedLevel) addedExp += after.exptolevel * 0.002f;
                     else addedExp += before.exptolevel * 0.002f;
@@ -48,9 +48,9 @@ public class WinLosePopup : MonoBehaviour {
             }
             else if (before.level != after.level)
             {
-                if (exp_slider.normalizedValue != 1)
+                if (expSlider.normalizedValue != 1)
                 {
-                    exp_slider.normalizedValue += 0.002f;
+                    expSlider.normalizedValue += 0.002f;
 
                     if (gainedLevel) addedExp += after.exptolevel * 0.002f;
                     else addedExp += before.exptolevel * 0.002f;
@@ -63,42 +63,43 @@ public class WinLosePopup : MonoBehaviour {
                 }
                 else
                 {
-                    exp_slider.normalizedValue = 0;
-                    soundsrc.PlayOneShot(levelup, PlayerPrefs.GetFloat("fx"));
+                    expSlider.normalizedValue = 0;
+                    soundsrc.PlayOneShot(levelup_Sound, PlayerPrefs.GetFloat("fx"));
                     before.level++;
                     before.experience = 0;
                     gainedLevel = true;
-                    current_level.text = "" + before.level;
+                    currentLevel.text = "" + before.level;
                 }
             }
         }
         
     }
 
+    // Calculate the changes to the Player (rewards)
     private void Setup()
     {
-        before = PlayerSession.ps.player_before_battle;
-        after = PlayerSession.ps.player;
+        before = PlayerSession.player_session.player_before_battle;
+        after = PlayerSession.player_session.player;
         
         addedExp = 0;
 
         if(Gameplay.updatePlayer==1)
         {
-            moneygained = lose_moneygained;
-            current_level = lose_current_level;
-            exp_slider = lose_exp_slider;
+            moneyGained = loseMoneyText;
+            currentLevel = loseNextLvlText;
+            expSlider = loseExpSlider;
         }
         else
         {
-            moneygained = win_moneygained;
-            current_level = win_current_level;
-            exp_slider = win_exp_slider;
+            moneyGained = winMoneyText;
+            currentLevel = winNextLevelText;
+            expSlider = winExpSlider;
         }
         
-        exp_slider.normalizedValue = (float)before.experience / (float)before.exptolevel;
-        current_level.text = "" + before.level;
-        moneygained.text = "" + (after.money - before.money);
+        expSlider.normalizedValue = (float)before.experience / (float)before.exptolevel;
+        currentLevel.text = "" + before.level;
+        moneyGained.text = "" + (after.money - before.money);
 
-        PlayerSession.ps.player_before_battle = new Player();
+        PlayerSession.player_session.player_before_battle = new Player();
     }
 }

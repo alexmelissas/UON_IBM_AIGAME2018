@@ -1,47 +1,45 @@
-﻿using System.Collections;
-using UnityEngine;
-using UnityEngine.Networking;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
-using VoxelBusters.NativePlugins;
 
 //! Keep User/Player data stored when exiting app, reload them when coming back
 public class PauseManager : MonoBehaviour {
 
+    //! Check if this is the initial opening of the app
     private bool start = true;
     private bool skipSelected;
 
-    private void Awake()
-    {
-        ZPlayerPrefs.Initialize("small fluffy puppies", "I'mASaltySalter");
-    }
+    //! Set the salt for the encryption
+    private void Awake() { ZPlayerPrefs.Initialize("small fluffy puppies", "I'mASaltySalter"); }
 
+    //! Save the settings and player id, or delete the account upon registration error
     private void Save()
     {
         skipSelected = (PlayerPrefs.GetInt("skip")) == 1 ? true : false;
         if (!skipSelected && SceneManager.GetActiveScene().name == "Battle") PlayerPrefs.SetInt("skip", 1);
 
-        if (UserSession.us.user != null && UserSession.us.user.GetID() != "")
+        if (UserSession.user_session.user != null && UserSession.user_session.user.GetID() != "")
         {
-            if(StartScreens() && !LoginTwitter.leftForTwitter && !AuthenticateUser.display_loginAnimation) //FIX THIS CONDITIONAL
+            if(StartScreens() && !LoginTwitter.leftForTwitter && !AuthenticateUser.display_loginAnimation)
             {
                 StartCoroutine(Server.DeleteAccount());
             }
             else
             {
-                ZPlayerPrefs.SetString("id", UserSession.us.user.GetID());
+                ZPlayerPrefs.SetString("id", UserSession.user_session.user.GetID());
                 ZPlayerPrefs.Save();
             }
         }
     }
 
+    //! Check if account registration is correctly completed
     private bool AccountComplete()
     {
         gameObject.AddComponent<UpdateSessions>().U_Player();
-        if (PlayerSession.ps.player.id == "") return false;
+        if (PlayerSession.player_session.player.id == "") return false;
         return true;
     }
     
-
+    //! Load the settings and player id
     private void Load()
     {
         if (!start)
@@ -60,6 +58,7 @@ public class PauseManager : MonoBehaviour {
         }         
     }
 
+    //! Check if current screen is one of the Starting screens
     private bool StartScreens()
     {
         string scene = SceneManager.GetActiveScene().name;
@@ -68,6 +67,7 @@ public class PauseManager : MonoBehaviour {
         return false;
     }
 
+    //! Handle exiting the app
     private void OnApplicationPause(bool pauseStatus)
     {
         if (pauseStatus)

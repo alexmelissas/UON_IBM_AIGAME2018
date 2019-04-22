@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 //! Handle the Settings screen
@@ -8,7 +6,7 @@ public class SetSettings : MonoBehaviour {
 
     public Slider musicSlider, fxSlider;
     public Toggle challengeToggle, skipToggle;
-    public Text currentloginLabel, usernameLabel;
+    public Text currentloginText, usernameText;
     public GameObject logoutButton, linkTwitterButton, unlinkTwitterButton;
 
     //! Display the currently selected settings properly
@@ -27,10 +25,10 @@ public class SetSettings : MonoBehaviour {
         PlayerPrefs.SetInt("challenged", challengeToggle.isOn ? 1 : 0);
         PlayerPrefs.SetInt("skip", skipToggle.isOn ? 1 : 0);
 
-        if (UserSession.us != null && UserSession.us.user.GetUsername() != "")
+        if (UserSession.user_session != null && UserSession.user_session.user.GetUsername() != "")
         {
-            currentloginLabel.GetComponentInChildren<Text>().text = "Logged in as: ";
-            usernameLabel.GetComponentInChildren<Text>().text = UserSession.us.user.GetUsername();
+            currentloginText.GetComponentInChildren<Text>().text = "Logged in as: ";
+            usernameText.GetComponentInChildren<Text>().text = UserSession.user_session.user.GetUsername();
 
             if (Server.CheckTwitter())
             {
@@ -48,8 +46,8 @@ public class SetSettings : MonoBehaviour {
         }
         else
         {
-            usernameLabel.GetComponentInChildren<Text>().text = "";
-            currentloginLabel.GetComponentInChildren<Text>().text = "No login.";
+            usernameText.GetComponentInChildren<Text>().text = "";
+            currentloginText.GetComponentInChildren<Text>().text = "No login.";
             linkTwitterButton.SetActive(false);
             unlinkTwitterButton.SetActive(false);
             logoutButton.SetActive(false);

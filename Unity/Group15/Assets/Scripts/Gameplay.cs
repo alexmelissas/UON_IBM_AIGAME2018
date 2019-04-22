@@ -2,17 +2,24 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using VoxelBusters.NativePlugins;
-using UnityEngine.Networking;
 
 //! Entire Gameplay and Battle Screen management
 public class Gameplay : MonoBehaviour {
 
-    /* 1. Calculate and store Turns until one dies (List<Turn> turns)
-     * 2. Calculate result
-     * 3. POST result to server (id, result)
-     * 4. while(!skip) ShowGameplay() - displays all the animations;
-    */
+     /* ==== Class Responsibilities =====
+     *  1. Calculate and store Turns until one dies
+     *  2. Calculate result
+     *  3. Pass result to server, calculate bonuses
+     *  4. Display full battle animations until end of match/until skipped
+     * =================================*/
+    
+    public Slider playerHPSlider, enemyHPSlider;
+    public Image playerHPColourImage, enemyHPColourImage;
+    public Text playerNameText, enemyNameText, playerLevelText, enemyLevelText;
+    public Text actualPlayerHPText, maxPlayerHPText, actualEnemyHPText, maxEnemyHPText, playerDmgLabelText, enemyDmgLabelText; 
+    public AudioSource soundsrc, musicsrc;
+    public AudioClip player_hit_Sound, enemy_hit_Sound, crit_Sound, miss_Sound, drop_sword_Sound;
+    public GameObject winPopup, losePopup;
 
     //! For the popups at the end of the battle to know when to animate EXP gain.
     public static int updatePlayer;
@@ -20,21 +27,13 @@ public class Gameplay : MonoBehaviour {
     public static string currentAnimation_enemy = "enemy_idle_Animation";
     public static bool ended = false;
 
-    public Slider playerHP, enemyHP;
-    public Image playerHPcolour, enemyHPcolour;
-    public Text playerName, enemyName, playerLevel, enemyLevel;
-    public Text actualPlayerHP, maxPlayerHP, actualEnemyHP, maxEnemyHP, playerDmgLabel, enemyDmgLabel;
-    public AudioSource soundsrc, musicsrc;
-    public AudioClip playerhit, enemyhit, crit, miss, drop_sword;
-    public GameObject winpopup, losepopup;
-
+    //! Store all the Turns of the battle until a player lost.
     private List<Turn> turns;
     private Player player, enemy;
-    private PlayerModel player_model, enemy_model;
     private int result;
-    private int player_max_hp, enemy_max_hp; //HP bar scaling
-    float new_hp_player = -1;
-    float new_hp_enemy = -1;
+    private int player_maxHP, enemy_maxHP;
+    float player_newHP = -1;
+    float enemy_newHP = -1;
     private bool skip = false;
     private bool death = false;
 
@@ -46,7 +45,7 @@ public class Gameplay : MonoBehaviour {
     {
         Vector3 hide = new Vector3(7630, 2430, 0);
         Vector3 show = new Vector3(0,0,0);
-        GameObject panel = win ? winpopup : losepopup;
+        GameObject panel = win ? winPopup : losePopup;
         panel.transform.position = shown ? show : hide;
     }
 
@@ -55,14 +54,14 @@ public class Gameplay : MonoBehaviour {
     {
         ended = false;
         updatePlayer = -1;
-        player = PlayerSession.ps.player;
-        PlayerSession.ps.player_before_battle = Player.Clone(PlayerSession.ps.player); // keep the player before gains
+        player = PlayerSession.player_session.player;
+        PlayerSession.player_session.player_before_battle = Player.Clone(PlayerSession.player_session.player); // keep the player before gains
         Items.AttachItemsToPlayer(new Items(player), player);
 
         if (!PlayerPrefs.HasKey("battle_type")) { gameObject.AddComponent<ChangeScene>().Forward("Overworld"); };
         int battle_type = PlayerPrefs.GetInt("battle_type");
         if(battle_type!=0 && battle_type!=1) gameObject.AddComponent<ChangeScene>().Forward("Overworld"); 
-        enemy = PlayerSession.ps.enemy;
+        enemy = PlayerSession.player_session.enemy;
         if (battle_type == 0)
         {
             enemy.id = "bot";
@@ -71,18 +70,18 @@ public class Gameplay : MonoBehaviour {
         Items.AttachItemsToPlayer(new Items(enemy), enemy);
 
         turns = new List<Turn>();
-        player_max_hp = player.hp;
-        enemy_max_hp = enemy.hp;
+        player_maxHP = player.hp;
+        enemy_maxHP = enemy.hp;
 
-        playerName.text = "" + player.characterName;
-        playerLevel.text = "" + player.level;
-        enemyName.text = "" + enemy.characterName;
-        enemyLevel.text = "" + enemy.level;
+        playerNameText.text = "" + player.characterName;
+        playerLevelText.text = "" + player.level;
+        enemyNameText.text = "" + enemy.characterName;
+        enemyLevelText.text = "" + enemy.level;
 
-        playerDmgLabel.enabled = enemyDmgLabel.enabled = false;
-        playerDmgLabel.GetComponentInParent<Image>().enabled = enemyDmgLabel.GetComponentInParent<Image>().enabled = false;
+        playerDmgLabelText.enabled = enemyDmgLabelText.enabled = false;
+        playerDmgLabelText.GetComponentInParent<Image>().enabled = enemyDmgLabelText.GetComponentInParent<Image>().enabled = false;
 
-        playerHP.normalizedValue = enemyHP.normalizedValue = 1f;
+        playerHPSlider.normalizedValue = enemyHPSlider.normalizedValue = 1f;
 
         musicsrc.volume = PlayerPrefs.GetFloat("music")/6;
         musicsrc.loop = true;
@@ -104,22 +103,22 @@ public class Gameplay : MonoBehaviour {
         if (skip) Invoke("EndMatch", 0.5f);
 
         //Update HP bars
-        float nhpp = new_hp_player * player_max_hp;
-        float nhpe = new_hp_enemy * enemy_max_hp;
+        float nhpp = player_newHP * player_maxHP;
+        float nhpe = enemy_newHP * enemy_maxHP;
         Mathf.RoundToInt(nhpp);
         Mathf.RoundToInt(nhpe);
-        actualPlayerHP.text = "" + ((nhpp >= 0) ? nhpp : player_max_hp); //bug when dying
-        actualEnemyHP.text = "" + ((nhpe >= 0) ? nhpe : enemy_max_hp);
-        maxPlayerHP.text = "/" + player_max_hp;
-        maxEnemyHP.text = "/" + enemy_max_hp;
+        actualPlayerHPText.text = "" + ((nhpp >= 0) ? nhpp : player_maxHP); //bug when dying
+        actualEnemyHPText.text = "" + ((nhpe >= 0) ? nhpe : enemy_maxHP);
+        maxPlayerHPText.text = "/" + player_maxHP;
+        maxEnemyHPText.text = "/" + enemy_maxHP;
 
-        if (new_hp_player > -1) if (playerHP.value > new_hp_player) playerHP.normalizedValue -= 0.005f;
-        if (playerHP.value == 0 && !death) { soundsrc.PlayOneShot(drop_sword, PlayerPrefs.GetFloat("fx")); playerHPcolour.enabled = false; death = true; }
-        else if (playerHP.value < 0.25) playerHPcolour.color = Color.red; else if (playerHP.value < 0.5) playerHPcolour.color = Color.yellow;
+        if (player_newHP > -1) if (playerHPSlider.value > player_newHP) playerHPSlider.normalizedValue -= 0.005f;
+        if (playerHPSlider.value == 0 && !death) { soundsrc.PlayOneShot(drop_sword_Sound, PlayerPrefs.GetFloat("fx")); playerHPColourImage.enabled = false; death = true; }
+        else if (playerHPSlider.value < 0.25) playerHPColourImage.color = Color.red; else if (playerHPSlider.value < 0.5) playerHPColourImage.color = Color.yellow;
 
-        if (new_hp_enemy > -1) if (enemyHP.value > new_hp_enemy) enemyHP.normalizedValue -= 0.005f;
-        if (enemyHP.value == 0 && !death) { soundsrc.PlayOneShot(drop_sword, PlayerPrefs.GetFloat("fx")); enemyHPcolour.enabled = false; death = true; }
-        else if (enemyHP.value < 0.25) enemyHPcolour.color = Color.red; else if (enemyHP.value < 0.5) enemyHPcolour.color = Color.yellow;
+        if (enemy_newHP > -1) if (enemyHPSlider.value > enemy_newHP) enemyHPSlider.normalizedValue -= 0.005f;
+        if (enemyHPSlider.value == 0 && !death) { soundsrc.PlayOneShot(drop_sword_Sound, PlayerPrefs.GetFloat("fx")); enemyHPColourImage.enabled = false; death = true; }
+        else if (enemyHPSlider.value < 0.25) enemyHPColourImage.color = Color.red; else if (enemyHPSlider.value < 0.5) enemyHPColourImage.color = Color.yellow;
     }
 
     //! Run the battle, calculate all Turns and result
@@ -137,10 +136,10 @@ public class Gameplay : MonoBehaviour {
             if (result==0) player_turn = player_turn ? false : true;
         }
         StartCoroutine(Server.PassResult(BattleResult.GetJSON(player, enemy, (result == 1) ? false : true)));
-        StartCoroutine(PlayTurns(turns));
+        StartCoroutine(AnimateTurns(turns));
     }
 
-    //! End the battle animations etc
+    //! End the battle animations, show the Win/Lose popups
     private void EndMatch()
     {
         if (ended) return;
@@ -157,7 +156,7 @@ public class Gameplay : MonoBehaviour {
     }
 
     //! Animate the battle, including Player animations, HP bars, Damage Labels etc.
-    IEnumerator PlayTurns(List<Turn> turns)
+    IEnumerator AnimateTurns(List<Turn> turns)
     {
         yield return new WaitForSeconds(1f);
         foreach (Turn turn in turns)
@@ -208,20 +207,20 @@ public class Gameplay : MonoBehaviour {
             }
 
             // (2) Display damage
-            Text dmgLabel = attacker == "player" ? enemyDmgLabel : playerDmgLabel;
-            Image bam = attacker == "player" ? enemyDmgLabel.GetComponentInParent<Image>() : playerDmgLabel.GetComponentInParent<Image>();
+            Text dmgLabel = attacker == "player" ? enemyDmgLabelText : playerDmgLabelText;
+            Image bam = attacker == "player" ? enemyDmgLabelText.GetComponentInParent<Image>() : playerDmgLabelText.GetComponentInParent<Image>();
             AudioClip sound;
             if (turn.damage != 0)
             {
                 dmgLabel.text = "" + turn.damage;
-                sound = crit;
+                sound = crit_Sound;
                 switch (turn.crit_landed)
                 {
                     case 1: dmgLabel.color = Color.green; break;
                     case 2: dmgLabel.color = Color.yellow; break;
                     case 3: dmgLabel.color = Color.red; break;
                     default: dmgLabel.color = Color.black;
-                        sound = (attacker=="player") ? playerhit : enemyhit;
+                        sound = (attacker=="player") ? player_hit_Sound : enemy_hit_Sound;
                         break;
                 }                
             }
@@ -229,7 +228,7 @@ public class Gameplay : MonoBehaviour {
             {
                 dmgLabel.text = "MISS";
                 dmgLabel.color = Color.grey;
-                sound = miss;
+                sound = miss_Sound;
             }
             soundsrc.PlayOneShot(sound, PlayerPrefs.GetFloat("fx"));
             dmgLabel.enabled = true;
@@ -240,10 +239,10 @@ public class Gameplay : MonoBehaviour {
             if (turn.damage!=0)
             {
                 float currenthp = (attacker == "player") ? turn.enemy.hp : turn.player.hp;
-                float maxhp = (attacker == "player") ? enemy_max_hp : player_max_hp;
+                float maxhp = (attacker == "player") ? enemy_maxHP : player_maxHP;
                 float hp_bar_value = currenthp / maxhp;
-                if (attacker == "player") new_hp_enemy = hp_bar_value;
-                else new_hp_player = hp_bar_value;
+                if (attacker == "player") enemy_newHP = hp_bar_value;
+                else player_newHP = hp_bar_value;
             }
             yield return new WaitForSeconds(0.75f);
             dmgLabel.enabled = false;

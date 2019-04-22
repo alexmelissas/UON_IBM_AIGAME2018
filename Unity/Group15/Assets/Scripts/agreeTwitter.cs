@@ -7,13 +7,14 @@ public class AgreeTwitter : MonoBehaviour {
     public Toggle agreeToggle;
     public Button nextButton;
     public GameObject consent;
-
+    
     private void Awake()
     {
         nextButton.enabled = false;
         nextButton.GetComponentInChildren<Text>().color = Color.gray;
     }
 
+    //! Keep checking whether to display the Twitter consent option
     void Update() {
 
         if(LoginTwitter.allowNextForSkip)
@@ -36,6 +37,7 @@ public class AgreeTwitter : MonoBehaviour {
         }
 	}
 
+    //! Done with twitter (either logged in or skipped) - move to Ideals selection
     public void Next()
     {
         LoginTwitter.allowNextForSkip = false;

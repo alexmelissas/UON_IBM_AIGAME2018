@@ -1892,7 +1892,7 @@ GameObject:
   - component: {fileID: 792055440}
   - component: {fileID: 792055439}
   m_Layer: 8
-  m_Name: winMoneyImage
+  m_Name: winMoneyText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3488,14 +3488,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8936d65c6f3af1341a6b5078e37ad77c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  win_moneygained: {fileID: 792055439}
-  win_current_level: {fileID: 52751773}
-  lose_moneygained: {fileID: 1196661691}
-  lose_current_level: {fileID: 1046321376}
-  win_exp_slider: {fileID: 1147171064}
-  lose_exp_slider: {fileID: 1072821057}
+  winMoneyText: {fileID: 792055439}
+  winNextLevelText: {fileID: 52751773}
+  loseMoneyText: {fileID: 1196661691}
+  loseNextLvlText: {fileID: 1046321376}
+  winExpSlider: {fileID: 1147171064}
+  loseExpSlider: {fileID: 1072821057}
   soundsrc: {fileID: 1221351463}
-  levelup: {fileID: 8300000, guid: 58424604dba958b4695dc5b47dfca53c, type: 3}
+  levelup_Sound: {fileID: 8300000, guid: 58424604dba958b4695dc5b47dfca53c, type: 3}
 --- !u!114 &1221351465
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3608,29 +3608,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6fb8d09134729e24cad6db37ede67574, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerHP: {fileID: 1906663756}
-  enemyHP: {fileID: 1219979369}
-  playerHPcolour: {fileID: 380914375}
-  enemyHPcolour: {fileID: 110633612}
-  playerName: {fileID: 571925982}
-  enemyName: {fileID: 972525100}
-  playerLevel: {fileID: 619607407}
-  enemyLevel: {fileID: 1763755163}
-  actualPlayerHP: {fileID: 638928300}
-  maxPlayerHP: {fileID: 268208019}
-  actualEnemyHP: {fileID: 1104135160}
-  maxEnemyHP: {fileID: 135888753}
-  playerDmgLabel: {fileID: 2038534134}
-  enemyDmgLabel: {fileID: 378990183}
+  playerHPSlider: {fileID: 1906663756}
+  enemyHPSlider: {fileID: 1219979369}
+  playerHPColourImage: {fileID: 380914375}
+  enemyHPColourImage: {fileID: 110633612}
+  playerNameText: {fileID: 571925982}
+  enemyNameText: {fileID: 972525100}
+  playerLevelText: {fileID: 619607407}
+  enemyLevelText: {fileID: 1763755163}
+  actualPlayerHPText: {fileID: 638928300}
+  maxPlayerHPText: {fileID: 268208019}
+  actualEnemyHPText: {fileID: 1104135160}
+  maxEnemyHPText: {fileID: 135888753}
+  playerDmgLabelText: {fileID: 2038534134}
+  enemyDmgLabelText: {fileID: 378990183}
   soundsrc: {fileID: 1221351463}
   musicsrc: {fileID: 1328933566}
-  playerhit: {fileID: 8300000, guid: 52566793d8dde8944afb8a40c76b840a, type: 3}
-  enemyhit: {fileID: 8300000, guid: 34c8ec301fbe48c458e76bd3b31205b3, type: 3}
-  crit: {fileID: 8300000, guid: 4c4c380b41ae72a4894d27f1bc973bbd, type: 3}
-  miss: {fileID: 8300000, guid: 1ce16c40b51880b41a16a5791f5378d7, type: 3}
-  drop_sword: {fileID: 8300000, guid: ec6c4c615db73dd49b2cb7dbd96819fa, type: 3}
-  winpopup: {fileID: 1254022780}
-  losepopup: {fileID: 1048384500}
+  player_hit_Sound: {fileID: 8300000, guid: 52566793d8dde8944afb8a40c76b840a, type: 3}
+  enemy_hit_Sound: {fileID: 8300000, guid: 34c8ec301fbe48c458e76bd3b31205b3, type: 3}
+  crit_Sound: {fileID: 8300000, guid: 4c4c380b41ae72a4894d27f1bc973bbd, type: 3}
+  miss_Sound: {fileID: 8300000, guid: 1ce16c40b51880b41a16a5791f5378d7, type: 3}
+  drop_sword_Sound: {fileID: 8300000, guid: ec6c4c615db73dd49b2cb7dbd96819fa, type: 3}
+  winPopup: {fileID: 1254022780}
+  losePopup: {fileID: 1048384500}
 --- !u!1 &1254022780
 GameObject:
   m_ObjectHideFlags: 0

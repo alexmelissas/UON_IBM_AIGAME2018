@@ -3630,21 +3630,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe2ec4cb29a088e48b4b2c69683897e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp_lbl: {fileID: 588944981}
-  atk_lbl: {fileID: 1566351478}
-  def_lbl: {fileID: 1628013115}
-  money_lbl: {fileID: 143882799}
+  hpText: {fileID: 588944981}
+  atkText: {fileID: 1566351478}
+  defText: {fileID: 1628013115}
+  moneyText: {fileID: 143882799}
   upgradePanel: {fileID: 1023027411}
-  itemName: {fileID: 1723852231}
-  itemStat: {fileID: 1447628912}
-  itemPrice: {fileID: 1379933187}
-  balance: {fileID: 154224218}
-  itemIcon: {fileID: 1698655436}
-  statsIcon: {fileID: 1920044740}
-  loading: {fileID: 589825133}
-  swordFullLevel: {fileID: 39629215}
-  shieldFullLevel: {fileID: 246594953}
-  armourFullLevel: {fileID: 878319482}
+  itemNameText: {fileID: 1723852231}
+  statText: {fileID: 1447628912}
+  priceText: {fileID: 1379933187}
+  balanceText: {fileID: 154224218}
+  itemIconImage: {fileID: 1698655436}
+  statIconImage: {fileID: 1920044740}
+  loading_spinning_Animation: {fileID: 589825133}
+  swordFullyUpgradedImage: {fileID: 39629215}
+  shieldFullyUpgradedImage: {fileID: 246594953}
+  armourFullyUpgradedImage: {fileID: 878319482}
   atk: {fileID: 21300000, guid: 13e01e32a721c1d43b6efe16e238a701, type: 3}
   def: {fileID: 21300000, guid: 52bd0dd1f7c3ace4da7c30089cac09ed, type: 3}
   hp: {fileID: 21300000, guid: ae887cf0549349e40bf66e82e2daf8bf, type: 3}

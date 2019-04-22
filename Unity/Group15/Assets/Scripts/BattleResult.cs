@@ -16,12 +16,12 @@ public class BattleResult {
     //! Extra money gained/lost by defeating higher/lower level enemy
     public int additionalMoney;
 
-    //! Constructor
-    private BattleResult(Player p1, Player p2, bool win)
+    //! Constructor for the BattleResult to pass to server
+    private BattleResult(Player _player1, Player _player2, bool _win)
     {
-        id1 = p1.id; id2 = p2.id; result = win;
-        additionalExp = CalculateBonusExp(p1,p2);
-        additionalMoney = CalculateBonusMoney(p1,p2);
+        id1 = _player1.id; id2 = _player2.id; result = _win;
+        additionalExp = CalculateBonusExp(_player1,_player2);
+        additionalMoney = CalculateBonusMoney(_player1,_player2);
     }
 
     //! Calculates bonus EXP based on level comparison
@@ -31,7 +31,7 @@ public class BattleResult {
         else return 10;
     }
 
-    //! Calculates bonus money based on level comparison
+    //! Calculate bonus money based on level comparison
     private int CalculateBonusMoney(Player p1, Player p2)
     {
         if (p1.level > p2.level) return -10;

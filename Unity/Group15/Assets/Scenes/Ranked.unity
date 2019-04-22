@@ -412,8 +412,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6fed9fe479aff984d90a5b1d68ee897f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  display: {fileID: 1119984302}
-  loading: {fileID: 328553466}
+  rankingsDisplayGroup: {fileID: 1119984302}
+  loading_spin_Animation: {fileID: 328553466}
   audiosrc: {fileID: 209987855}
 --- !u!82 &209987855
 AudioSource:

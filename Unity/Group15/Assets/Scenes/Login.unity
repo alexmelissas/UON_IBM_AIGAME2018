@@ -1346,7 +1346,7 @@ MonoBehaviour:
   loading_spin_Animation: {fileID: 1955385975}
   usernameInputField: {fileID: 345035649}
   passwordInputField: {fileID: 1689793733}
-  auth_type: login
+  authType: login
 --- !u!1 &1501613141
 GameObject:
   m_ObjectHideFlags: 0

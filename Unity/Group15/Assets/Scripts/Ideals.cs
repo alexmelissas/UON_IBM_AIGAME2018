@@ -1,5 +1,4 @@
 ﻿using System;
-using UnityEngine;
 
 [Serializable]
 //! JSON-able object to pass to server to submit Ideal personality traits
@@ -12,13 +11,14 @@ public class Ideals {
     public float agreeableness;
     public float emotionalrange;
 
-    public Ideals(string i, float o, float c, float ex, float a, float em)
+    //! Basic Constructor
+    public Ideals(string _id, float _openess, float _conscientiousness, float _extraversion, float _agreeableness, float _emotionalrange)
     {
-        id = i;
-        openess = o;
-        conscientiousness = c;
-        extraversion = ex;
-        agreeableness = a;
-        emotionalrange = em;
+        id = _id;
+        openess = _openess;
+        conscientiousness = _conscientiousness;
+        extraversion = _extraversion;
+        agreeableness = _agreeableness;
+        emotionalrange = _emotionalrange;
     }
 }

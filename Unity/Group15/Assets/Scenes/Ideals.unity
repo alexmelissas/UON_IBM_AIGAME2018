@@ -2264,17 +2264,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 181f6f0a6b206d5468c7580321ca315b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  trait1slider: {fileID: 1089737456}
-  trait2slider: {fileID: 1887611891}
-  trait3slider: {fileID: 60710245}
-  trait4slider: {fileID: 1356775422}
-  trait5slider: {fileID: 53856446}
+  trait1Slider: {fileID: 1089737456}
+  trait2Slider: {fileID: 1887611891}
+  trait3Slider: {fileID: 60710245}
+  trait4Slider: {fileID: 1356775422}
+  trait5Slider: {fileID: 53856446}
   submitButton: {fileID: 2000511037}
-  t1out: {fileID: 841738414}
-  t2out: {fileID: 1389067657}
-  t3out: {fileID: 696387256}
-  t4out: {fileID: 567675732}
-  t5out: {fileID: 1676242457}
+  percentT1Text: {fileID: 841738414}
+  percentT2Text: {fileID: 1389067657}
+  percentT3Text: {fileID: 696387256}
+  percentT4Text: {fileID: 567675732}
+  percentT5Text: {fileID: 1676242457}
 --- !u!1 &1138727876
 GameObject:
   m_ObjectHideFlags: 0

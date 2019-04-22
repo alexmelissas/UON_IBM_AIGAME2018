@@ -1,16 +1,16 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using VoxelBusters.NativePlugins;
 
+//! Manage the Inventory screen, including Upgrades
 public class Inventory : MonoBehaviour {
 
-    public Text hp_lbl, atk_lbl, def_lbl, money_lbl;
+    public Text hpText, atkText, defText, moneyText;
     public GameObject upgradePanel;
-    public Text itemName, itemStat, itemPrice, balance;
-    public GameObject itemIcon, statsIcon, loading;
-    public GameObject swordFullLevel, shieldFullLevel, armourFullLevel;
+    public Text itemNameText, statText, priceText, balanceText;
+    public GameObject itemIconImage, statIconImage, loading_spinning_Animation;
+    public GameObject swordFullyUpgradedImage, shieldFullyUpgradedImage, armourFullyUpgradedImage;
     public Sprite atk, def, hp;
 
     private Player p;
@@ -18,40 +18,40 @@ public class Inventory : MonoBehaviour {
     private string displayItemType;
     private int currentItemLevel;
 
-    private void Awake()
-    {
-        gameObject.AddComponent<UpdateSessions>().U_All();
-    }
+    private void Awake() { gameObject.AddComponent<UpdateSessions>().U_All(); }
 
+    //! General Setup
     private void Start()
     {
         p = new Player();
-        swordFullLevel.SetActive(false);
-        shieldFullLevel.SetActive(false);
-        armourFullLevel.SetActive(false);
-        loading.SetActive(false);
+        swordFullyUpgradedImage.SetActive(false);
+        shieldFullyUpgradedImage.SetActive(false);
+        armourFullyUpgradedImage.SetActive(false);
+        loading_spinning_Animation.SetActive(false);
         Displayed(false);
     }
 
+    //! Keep the player's stats display updated
     private void Update()
     {
-        if (!(p.ComparePlayer(PlayerSession.ps.player)))
+        if (!(p.ComparePlayer(PlayerSession.player_session.player)))
         {
-            p = PlayerSession.ps.player;
+            p = PlayerSession.player_session.player;
             int atk_bonus = (new Sword(p.sword)).attack;
             int def_bonus = (new Shield(p.shield)).defense;
             int hp_bonus = (new Armour(p.armour)).hp;
 
-            hp_lbl.text = "" + (p.hp + hp_bonus);
-            atk_lbl.text = "" + (p.attack + atk_bonus);
-            def_lbl.text = "" + (p.defense + def_bonus);
-            money_lbl.text = "" + p.money;
-            if (p.sword == 4) swordFullLevel.SetActive(true);
-            if (p.shield == 4) shieldFullLevel.SetActive(true);
-            if (p.armour == 4) armourFullLevel.SetActive(true);
+            hpText.text = "" + (p.hp + hp_bonus);
+            atkText.text = "" + (p.attack + atk_bonus);
+            defText.text = "" + (p.defense + def_bonus);
+            moneyText.text = "" + p.money;
+            if (p.sword == 4) swordFullyUpgradedImage.SetActive(true);
+            if (p.shield == 4) shieldFullyUpgradedImage.SetActive(true);
+            if (p.armour == 4) armourFullyUpgradedImage.SetActive(true);
         }
     }
 
+    //! Show/Hide the item upgrade panels
     private void Displayed(bool shown)
     {
         Vector3 hide = new Vector3(-791.5f, -1231.1f, 0);
@@ -59,6 +59,7 @@ public class Inventory : MonoBehaviour {
         upgradePanel.transform.position = shown ? show : hide;
     }
 
+    //! Setup the item upgrade panel with the next level item of selected type
     public void SetupUpgradePanel(int item_type)
     {
         if (item_type < 0 || item_type > 2) return;
@@ -67,17 +68,17 @@ public class Inventory : MonoBehaviour {
         switch(item_type)
         {
             case 0: // Sword
-                currentItemLevel = PlayerSession.ps.player.sword;
+                currentItemLevel = PlayerSession.player_session.player.sword;
                 if (currentItemLevel == 4) return;
                 displayItemType = "sword";
                 break;
             case 1: // Shield
-                currentItemLevel = PlayerSession.ps.player.shield;
+                currentItemLevel = PlayerSession.player_session.player.shield;
                 if (currentItemLevel == 4) return;
                 displayItemType = "shield";
                 break;
             case 2: // Armour
-                currentItemLevel = PlayerSession.ps.player.armour;
+                currentItemLevel = PlayerSession.player_session.player.armour;
                 if (currentItemLevel == 4) return;
                 displayItemType = "armour";
                 break;
@@ -88,6 +89,7 @@ public class Inventory : MonoBehaviour {
         Displayed(true);
     }
 
+    //! Helper for SetupUpgradePanels
     private void UpdateLabels(int item_type)
     {
         int stat = 0;
@@ -110,29 +112,31 @@ public class Inventory : MonoBehaviour {
         }
 
         //itemIcon.GetComponent<Image>().sprite = statIcon;
-        statsIcon.GetComponent<Image>().sprite = statIcon;
-        itemName.text = displayItem.name;
-        itemStat.text = "" + stat;
-        balance.text = "" + PlayerSession.ps.player.money;
-        itemPrice.text = "" + displayItem.price;
+        statIconImage.GetComponent<Image>().sprite = statIcon;
+        itemNameText.text = displayItem.name;
+        statText.text = "" + stat;
+        balanceText.text = "" + PlayerSession.player_session.player.money;
+        priceText.text = "" + displayItem.price;
     }
 
+    //! Perform the server-side updating of the Player based on the purchase
     private IEnumerator Purchase(string poorerPlayerJSON)
     {
         StartCoroutine(Server.UpdatePlayer(poorerPlayerJSON));
-        loading.SetActive(true);
-        yield return new WaitUntil(() => Server.updateplayer_done == true);
-        loading.SetActive(false);
+        loading_spinning_Animation.SetActive(true);
+        yield return new WaitUntil(() => Server.updatePlayer_done == true);
+        loading_spinning_Animation.SetActive(false);
         gameObject.AddComponent<UpdateSessions>().U_Player();
         Displayed(false);
         yield break;
     }
 
+    //! Check if player has enough funds, then make the purchase
     public void ConfirmPurchase()
     {
-        if (PlayerSession.ps.player.money >= displayItem.price)
+        if (PlayerSession.player_session.player.money >= displayItem.price)
         {
-            Player poorerPlayer = Player.Clone(PlayerSession.ps.player);
+            Player poorerPlayer = Player.Clone(PlayerSession.player_session.player);
             poorerPlayer.money -= displayItem.price;
             switch(displayItemType)
             {

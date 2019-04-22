@@ -1,8 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.SceneManagement;
-using UnityEngine.UI;
+﻿using UnityEngine;
 using VoxelBusters.NativePlugins;
 
 //! PvE screen and difficulty management
@@ -12,6 +8,7 @@ public class BotScreen : MonoBehaviour {
     public AudioSource audiosrc;
     public static string difficulty;
 
+    //! Pre-select the stored difficulty setting, play sounds
     private void Start()
     {
         loading.SetActive(false);
@@ -27,6 +24,7 @@ public class BotScreen : MonoBehaviour {
         audiosrc.playOnAwake = true;
     }
 
+    //! Keep the difficulty updated
     private void Update()
     {
         string selected = "selected_" + difficulty;
@@ -56,16 +54,10 @@ public class BotScreen : MonoBehaviour {
     //! Update the difficulty to the selected one.
     public void ChangeDifficulty(string given_difficulty) { difficulty = given_difficulty; }
     
-    //! Forward to the Battle scene
-    private void PlayDelayed()
-    {
-        gameObject.AddComponent<ChangeScene>().Forward("Battle");
-    }
-
-    //! Initiate the PvE match
+    //! Initiate the PvE match sequence
     public void Play()
     {
-        if (PlayerSession.ps.plays_left <= 0)
+        if (PlayerSession.player_session.plays_left <= 0)
         {
             NPBinding.UI.ShowToast("No plays left. Check back tomorrow!", eToastMessageLength.SHORT);
             return;
@@ -75,5 +67,8 @@ public class BotScreen : MonoBehaviour {
         StartCoroutine(Server.GetEnemy(0));
         Invoke("PlayDelayed", 0.5f);
     }
-    
+
+    //! Forward to the Battle scene
+    private void PlayDelayed() { gameObject.AddComponent<ChangeScene>().Forward("Battle"); }
+
 }

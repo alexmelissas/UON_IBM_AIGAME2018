@@ -8,7 +8,7 @@ using VoxelBusters.NativePlugins;
 //! PvP screen handling
 public class RankedMatchScreen : MonoBehaviour
 {
-    public GameObject display, loading;
+    public GameObject rankingsDisplayGroup, loading_spin_Animation;
     public AudioSource audiosrc;
 
     private List<User> users;
@@ -16,14 +16,16 @@ public class RankedMatchScreen : MonoBehaviour
     private int attempts;
     private float max_volume;
 
+    //! Setup the screen
     private void Start()
     {
-        loading.SetActive(false);
+        loading_spin_Animation.SetActive(false);
         max_volume = PlayerPrefs.GetFloat("fx") / 2;
         audiosrc.playOnAwake = true;
         audiosrc.volume = 0; 
     }
 
+    //! Used for fading in the music
     private void Update()
     {
         if(audiosrc.volume<max_volume)
@@ -65,7 +67,7 @@ public class RankedMatchScreen : MonoBehaviour
             {
                 string name = current.username;
                 string currentslot = "slot" + (++s);
-                display.transform.Find(currentslot).gameObject.GetComponentInChildren<Text>().text = name;
+                rankingsDisplayGroup.transform.Find(currentslot).gameObject.GetComponentInChildren<Text>().text = name;
             }
             oldRank = newRank;
             StopCoroutine(GetPlayers(newRank));
@@ -83,26 +85,30 @@ public class RankedMatchScreen : MonoBehaviour
     //! Initiate the PvP match
     public void Play()
     {
-        if (PlayerSession.ps.plays_left <= 0)
+        if (PlayerSession.player_session.plays_left <= 0)
         {
             NPBinding.UI.ShowToast("No plays left. Check back tomorrow!", eToastMessageLength.SHORT);
             return;
         }
-        loading.SetActive(true);
+        loading_spin_Animation.SetActive(true);
         PlayerPrefs.SetInt("battle_type", 1);
         attempts = 0;
         Invoke("StartCheck", 0.4f);
     }
 
+    //! Press button to initiate matchmaking
     private void StartCheck() { StartCoroutine(CheckEnemy()); }
+    
+    //! Increase attempts
+    private void IncreaseAttempts() { attempts++; }
 
     //! Recursively try to find an enemy 3 times (in case of errors). If not found after 4 tries, stop.
     private IEnumerator CheckEnemy()
     {
         StartCoroutine(Server.GetEnemy(1));
-        yield return new WaitUntil(() => Server.findenemy_done == true);
+        yield return new WaitUntil(() => Server.findEnemy_done == true);
 
-        if (PlayerSession.ps.enemy.id != "")
+        if (PlayerSession.player_session.enemy.id != "")
         {
             gameObject.AddComponent<ChangeScene>().Forward("Battle");
         }
@@ -117,5 +123,4 @@ public class RankedMatchScreen : MonoBehaviour
         yield break;
     }
 
-    private void IncreaseAttempts() { attempts++; }
 }

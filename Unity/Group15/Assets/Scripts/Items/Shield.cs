@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 
+//! Shield item class
 public class Shield : Item {
 
     public static Sprite base_icon; //set path to base icon here

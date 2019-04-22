@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 
+//! Armour item class
 public class Armour : Item {
 
     public static Sprite base_icon; // set path to base icon here
@@ -7,7 +8,7 @@ public class Armour : Item {
     public Armour(int level) : base(base_icon, "", 0, 0, 0, 0, 0, 0)
     {
         // also switch for levels to change icon of item (better looking with each upgrade)
-        // attribute1/attribute2 = what the item gives
+
         int attribute = 0;
         switch (level)
         {

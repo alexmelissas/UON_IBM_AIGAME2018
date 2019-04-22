@@ -948,7 +948,7 @@ MonoBehaviour:
   loading_spin_Animation: {fileID: 1857544901}
   usernameInputField: {fileID: 88956072}
   passwordInputField: {fileID: 1167538952}
-  auth_type: register
+  authType: register
 --- !u!1 &881901238
 GameObject:
   m_ObjectHideFlags: 0
@@ -1037,7 +1037,7 @@ GameObject:
   - component: {fileID: 1033462667}
   - component: {fileID: 1033462666}
   m_Layer: 5
-  m_Name: toStartButton
+  m_Name: backButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

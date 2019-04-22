@@ -1528,17 +1528,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f344769079593b2438bcd1e9449637b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp_lbl: {fileID: 1667883105}
-  atk_lbl: {fileID: 294822804}
-  def_lbl: {fileID: 1782816314}
-  agility_lbl: {fileID: 618456413}
-  crit_lbl: {fileID: 1334145692}
-  factor_lbl: {fileID: 1350278542}
-  lvl_lbl: {fileID: 394767177}
-  next_lvl_lbl: {fileID: 334148588}
-  exp_lbl: {fileID: 317466063}
-  exp_slider: {fileID: 1269458800}
-  factor_slider: {fileID: 1197027805}
+  hpText: {fileID: 1667883105}
+  atkText: {fileID: 294822804}
+  defText: {fileID: 1782816314}
+  agilityText: {fileID: 618456413}
+  critText: {fileID: 1334145692}
+  factorTagText: {fileID: 1350278542}
+  lvlText: {fileID: 394767177}
+  nextLevelText: {fileID: 334148588}
+  expText: {fileID: 317466063}
+  expSlider: {fileID: 1269458800}
+  factorSlider: {fileID: 1197027805}
 --- !u!1 &1334145690
 GameObject:
   m_ObjectHideFlags: 0

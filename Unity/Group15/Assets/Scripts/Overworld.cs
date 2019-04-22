@@ -1,16 +1,15 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 //! View username on the overworld
 public class Overworld : MonoBehaviour {
 
-    public Text usernameLabel, playsLabel;
+    public Text usernameText, playsText;
+
+    //! Check the user's remaining Plays for the day
     private void GetPlays() { StartCoroutine(Server.GetPlaysLeft()); }
 
-    //! Update the Plays left
+    //! Update the Player and the Plays left
     private void Start()
     {
         gameObject.AddComponent<UpdateSessions>().U_All();
@@ -20,15 +19,15 @@ public class Overworld : MonoBehaviour {
     //! Keep the logged-in user's username and plays left on the top of the screen
     private void Update ()
     {
-        if (UserSession.us != null && UserSession.us.user.GetUsername()!="")
+        if (UserSession.user_session != null && UserSession.user_session.user.GetUsername()!="")
         {
-            usernameLabel.GetComponentInChildren<Text>().text = UserSession.us.user.GetUsername();
-            playsLabel.GetComponentInChildren<Text>().text = "" + PlayerSession.ps.plays_left;
+            usernameText.GetComponentInChildren<Text>().text = UserSession.user_session.user.GetUsername();
+            playsText.GetComponentInChildren<Text>().text = "" + PlayerSession.player_session.plays_left;
         }
         else
         {
-            usernameLabel.GetComponentInChildren<Text>().text = "<Invalid Session>";
-            playsLabel.GetComponentInChildren<Text>().text = "";
+            usernameText.GetComponentInChildren<Text>().text = "<Invalid Session>";
+            playsText.GetComponentInChildren<Text>().text = "";
         }
     }
 }

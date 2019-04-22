@@ -26,10 +26,10 @@ public class Server {
     public static bool reanalysis_done;
 
     //! Determining when find enemy is done (used by battle classes)
-    public static bool findenemy_done;
+    public static bool findEnemy_done;
 
     //! Determining when updating player is done (used when purchasing items)
-    public static bool updateplayer_done;
+    public static bool updatePlayer_done;
 
     //! Returns the particular address for one server API function.
     public static string Address(string service){
@@ -74,7 +74,7 @@ public class Server {
         else
         {
             UpdateSessions.JSON_Session("user", output);
-            ZPlayerPrefs.SetString("id", UserSession.us.user.id);
+            ZPlayerPrefs.SetString("id", UserSession.user_session.user.id);
         }
         return true;
     }
@@ -82,20 +82,20 @@ public class Server {
     //! Check if user has linked twitter, eg. User entry has twitter token
     public static bool CheckTwitter()
     {
-        return (UserSession.us.user.accessToken!="" 
-            && UserSession.us.user.accessTokenSecret!="") 
+        return (UserSession.user_session.user.accessToken!="" 
+            && UserSession.user_session.user.accessTokenSecret!="") 
             ? true : false;
     }
 
-    // ============ Coroutines for common things =============== //
+    // +=+=+=+============ Coroutines for common actions ===============+=+=+=+ //
 
     //! Request the server to reanalyse the twitter of the user for personality changes
     public static IEnumerator Reanalyse()
     {
         reanalysis_done = false;
-        string address = Server.Address("update_twitter") + UserSession.us.user.id;
+        string address = Server.Address("update_twitter") + UserSession.user_session.user.id;
         UnityWebRequest uwr = new UnityWebRequest((address), "PUT");
-        byte[] jsonToSend = new System.Text.UTF8Encoding().GetBytes(UserSession.us.user.id);
+        byte[] jsonToSend = new System.Text.UTF8Encoding().GetBytes(UserSession.user_session.user.id);
         uwr.uploadHandler = (UploadHandler)new UploadHandlerRaw(jsonToSend);
         uwr.downloadHandler = (DownloadHandler)new DownloadHandlerBuffer();
         uwr.SetRequestHeader("Content-Type", "application/json");
@@ -110,7 +110,7 @@ public class Server {
         else
         {
             reanalysis_done = true;
-            PlayerSession.ps.player = Player.CreatePlayerFromJSON(uwr.downloadHandler.text);
+            PlayerSession.player_session.player = Player.CreatePlayerFromJSON(uwr.downloadHandler.text);
         }
         uwr.Dispose();
 
@@ -125,25 +125,25 @@ public class Server {
     public static IEnumerator DeleteAccount()
     {
         Debug.Log("Delete user");
-        UnityWebRequest uwr = UnityWebRequest.Delete(Server.Address("delete_user") + UserSession.us.user.GetID());
+        UnityWebRequest uwr = UnityWebRequest.Delete(Server.Address("delete_user") + UserSession.user_session.user.GetID());
         uwr.timeout = 10;
         yield return uwr.SendWebRequest();
         if (uwr.isNetworkError) yield return DeleteAccount();
         uwr.Dispose();
 
-        UserSession.us.user = new User("", "");
-        PlayerSession.ps.player = new Player();
+        UserSession.user_session.user = new User("", "");
+        PlayerSession.player_session.player = new Player();
         ZPlayerPrefs.DeleteKey("id");
         ZPlayerPrefs.Save();
         yield break;
     }
 
-    // Battle Related //
+    // +=+=+=+============ Battle-Related Coroutines ===============+=+=+=+ //
 
     //! Get the player's remaining plays for the day
     public static IEnumerator GetPlaysLeft()
     {
-        string address = Server.Address("get_plays") + UserSession.us.user.id;
+        string address = Server.Address("get_plays") + UserSession.user_session.user.id;
 
         using (UnityWebRequest uwr = UnityWebRequest.Get(address))
         {
@@ -154,7 +154,7 @@ public class Server {
             else
             {
                 int played_today = Int32.Parse(uwr.downloadHandler.text);
-                PlayerSession.ps.plays_left = 10 - played_today;
+                PlayerSession.player_session.plays_left = 10 - played_today;
             }
             uwr.Dispose();
         }
@@ -164,11 +164,11 @@ public class Server {
     //! Get either random player as enemy (PvP) or a bot (PvE) from server
     public static IEnumerator GetEnemy(int battletype)
     {
-        findenemy_done = false;
-        PlayerSession.ps.enemy = new Player();
+        findEnemy_done = false;
+        PlayerSession.player_session.enemy = new Player();
         string address = Server.Address("get_battle");
         if (battletype == 0) address += BotScreen.difficulty + "/";
-        address += PlayerSession.ps.player.id;
+        address += PlayerSession.player_session.player.id;
         using (UnityWebRequest uwr = UnityWebRequest.Get(address))
         {
             uwr.timeout = 10;
@@ -176,14 +176,14 @@ public class Server {
 
             if (uwr.isNetworkError)
             {
-                findenemy_done = true;
+                findEnemy_done = true;
                 Debug.Log("Error While Sending: " + uwr.error);
                 NPBinding.UI.ShowToast("Communication Error. Please try again later.", eToastMessageLength.SHORT);
             }
             else
             {
-                findenemy_done = true; 
-                PlayerSession.ps.enemy = Player.CreatePlayerFromJSON(uwr.downloadHandler.text);
+                findEnemy_done = true; 
+                PlayerSession.player_session.enemy = Player.CreatePlayerFromJSON(uwr.downloadHandler.text);
             }
             uwr.Dispose();
         }
@@ -208,7 +208,7 @@ public class Server {
             NPBinding.UI.ShowToast("Communication Error. Please try again later.", eToastMessageLength.SHORT);
         }
         else
-            PlayerSession.ps.player = Player.CreatePlayerFromJSON(uwr.downloadHandler.text);
+            PlayerSession.player_session.player = Player.CreatePlayerFromJSON(uwr.downloadHandler.text);
 
         uwr.Dispose();
         yield break;
@@ -217,8 +217,8 @@ public class Server {
     //! Update the Player in the Server (eg. when buying items)
     public static IEnumerator UpdatePlayer(string new_player)
     {
-        updateplayer_done = false;
-        UnityWebRequest uwr = new UnityWebRequest(Server.Address("players") + PlayerSession.ps.player.id, "PUT");
+        updatePlayer_done = false;
+        UnityWebRequest uwr = new UnityWebRequest(Server.Address("players") + PlayerSession.player_session.player.id, "PUT");
         byte[] jsonToSend = new System.Text.UTF8Encoding().GetBytes(new_player);
         uwr.uploadHandler = (UploadHandler)new UploadHandlerRaw(jsonToSend);
         uwr.downloadHandler = (DownloadHandler)new DownloadHandlerBuffer();
@@ -231,12 +231,12 @@ public class Server {
         {
             Debug.Log("Error While Sending: " + uwr.error);
             NPBinding.UI.ShowToast("Communication Error. Please try again later.", eToastMessageLength.SHORT);
-            updateplayer_done = false;
+            updatePlayer_done = false;
         }
         else
         {
-            if (uwr.downloadHandler.text == "Failed") updateplayer_done = false;
-            else if (uwr.downloadHandler.text == "Updated") updateplayer_done = true;
+            if (uwr.downloadHandler.text == "Failed") updatePlayer_done = false;
+            else if (uwr.downloadHandler.text == "Updated") updatePlayer_done = true;
         }
         
         uwr.Dispose();

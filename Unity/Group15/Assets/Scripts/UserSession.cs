@@ -3,17 +3,19 @@
 //! Singleton - Store the User object
 public class UserSession : MonoBehaviour {
 
-    public static UserSession us;
+    //! The Singleton object
+    public static UserSession user_session;
 
     public User user;
 
+    //! Handle the Singleton object
 	void Awake () {
-        if (us == null)
+        if (user_session == null)
         {
             DontDestroyOnLoad(gameObject);
-            us = this;
+            user_session = this;
         }
-        else if(us!=this)
+        else if(user_session!=this)
         {
             Destroy(gameObject);
         }

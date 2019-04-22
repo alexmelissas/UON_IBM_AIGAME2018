@@ -10,11 +10,11 @@ public class Items {
     public Item armour;
 
     //! Create items based on the Player object's item attributes
-    public Items(Player p)
+    public Items(Player _player)
     {
-        sword = Item.NewItem("sword", p.sword);
-        shield = Item.NewItem("shield", p.shield);
-        armour = Item.NewItem("armour", p.armour);
+        sword = Item.NewItem("sword", _player.sword);
+        shield = Item.NewItem("shield", _player.shield);
+        armour = Item.NewItem("armour", _player.armour);
     }
 
     //! Put items on player model, add their stats to Player

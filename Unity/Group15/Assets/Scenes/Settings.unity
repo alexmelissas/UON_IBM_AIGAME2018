@@ -312,8 +312,8 @@ MonoBehaviour:
   fxSlider: {fileID: 1880008122}
   challengeToggle: {fileID: 1727363329}
   skipToggle: {fileID: 36196880}
-  currentloginLabel: {fileID: 1026191701}
-  usernameLabel: {fileID: 118609833}
+  currentloginText: {fileID: 1026191701}
+  usernameText: {fileID: 118609833}
   logoutButton: {fileID: 1817723877}
   linkTwitterButton: {fileID: 1285378957}
   unlinkTwitterButton: {fileID: 2091706733}

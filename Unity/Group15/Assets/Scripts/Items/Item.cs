@@ -14,9 +14,10 @@ public abstract class Item {
     public int price;
 
     //! Create a generic item with icon and attributes
-    protected Item(Sprite icn, string nm, int h,int atk,int def,int ag,int cr, int pr)
+    protected Item(Sprite _icon, string _name, int _hp, int _attack, int _defense, int _agility, int _critical_strike, int _price)
     {
-        icon = icn; name = nm;  hp = h; attack = atk; defense = def; agility = ag; critical_strike = cr; price = pr;
+        icon = _icon; name = _name;  hp = _hp; attack = _attack; defense = _defense;
+        agility = _agility; critical_strike = _critical_strike; price = _price;
     }
 
     //! Factory - to create different kinds of items

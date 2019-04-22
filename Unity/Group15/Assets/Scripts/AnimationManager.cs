@@ -1,18 +1,18 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
+//! Handle the Battle Animations
 public class AnimationManager : MonoBehaviour {
 
     public GameObject player_hurt_Animation, player_idle_Animation, player_attack_Animation, player_die_Animation;
     public GameObject enemy_hurt_Animation, enemy_idle_Animation, enemy_attack_Animation, enemy_die_Animation;
 
+    //! Stores all available animations
     private Dictionary<string,GameObject> animations;
-    private string currentAnimation_player;
-    private string currentAnimation_enemy;
-    private string played_player;
-    private string played_enemy;
+    private string current_player_Animation;
+    private string current_enemy_Animation;
 
+    //! Save all available animations, set both Players to Idle
     void Start()
     {
         animations = new Dictionary<string, GameObject>
@@ -30,37 +30,38 @@ public class AnimationManager : MonoBehaviour {
         foreach (KeyValuePair<string,GameObject> animation in animations)
             animation.Value.SetActive(false);
 
-        currentAnimation_player = "player_idle_Animation";
-        currentAnimation_enemy = "enemy_idle_Animation";
+        current_player_Animation = "player_idle_Animation";
+        current_enemy_Animation = "enemy_idle_Animation";
         animations["player_idle_Animation"].SetActive(true);
         animations["enemy_idle_Animation"].SetActive(true);
     }
 
+    //! Update the animations according to changes from the Gameplay class
     void Update () {
 
         if (Gameplay.ended)
         {
-            animations[currentAnimation_player].SetActive(false);
-            animations[currentAnimation_enemy].SetActive(false);
+            animations[current_player_Animation].SetActive(false);
+            animations[current_enemy_Animation].SetActive(false);
             return;
         }
 
-        if (currentAnimation_player != Gameplay.currentAnimation_player)
+        if (current_player_Animation != Gameplay.currentAnimation_player)
         {
-            string new_animation_name = "" + Gameplay.currentAnimation_player;
-            string old_animation_name = "" + currentAnimation_player;
-            animations[new_animation_name].SetActive(true);
-            animations[old_animation_name].SetActive(false);
-            currentAnimation_player = Gameplay.currentAnimation_player;
+            string new_animation = "" + Gameplay.currentAnimation_player;
+            string old_animation = "" + current_player_Animation;
+            animations[new_animation].SetActive(true);
+            animations[old_animation].SetActive(false);
+            current_player_Animation = Gameplay.currentAnimation_player;
         }
 
-        if(currentAnimation_enemy != Gameplay.currentAnimation_enemy)
+        if(current_enemy_Animation != Gameplay.currentAnimation_enemy)
         {
-            string new_animation_name = "" + Gameplay.currentAnimation_enemy;
-            string old_animation_name = "" + currentAnimation_enemy;
-            animations[new_animation_name].SetActive(true);
-            animations[old_animation_name].SetActive(false);
-            currentAnimation_enemy = Gameplay.currentAnimation_enemy;
+            string new_animation = "" + Gameplay.currentAnimation_enemy;
+            string old_animation = "" + current_enemy_Animation;
+            animations[new_animation].SetActive(true);
+            animations[old_animation].SetActive(false);
+            current_enemy_Animation = Gameplay.currentAnimation_enemy;
         }
             
     }

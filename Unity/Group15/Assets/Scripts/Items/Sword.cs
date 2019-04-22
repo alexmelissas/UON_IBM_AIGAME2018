@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 
+//! Sword item class
 public class Sword : Item {
 
     public static Sprite base_icon; // set path to base icon here

@@ -1,24 +1,25 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 using VoxelBusters.NativePlugins;
 
 //! Twitter login handler
 public class LoginTwitter : MonoBehaviour {
 
+    //! Allow user to exit app for twitter, without ending the session
     public static bool leftForTwitter = false;
+
+    //! Allow user to go to Ideals, if not using twitter
     public static bool allowNextForSkip = false;
+
+    //! Avoid having more than 1 popup open at a time
     private bool otherPopupOpen = false;
 
-    private void Start()
-    {
-        otherPopupOpen = false;
-    }
+    private void Start() { otherPopupOpen = false; }
     
     private void EndSession() { leftForTwitter = false; }
+
     private void SetSkipBool() { allowNextForSkip = true; }
 
     //! Keep checking if twitter linkage was OK - until timeout (4s after they return from twitter page)
@@ -27,7 +28,7 @@ public class LoginTwitter : MonoBehaviour {
         int repeats = 0;
         while (repeats < 3)
         {
-            UnityWebRequest uwr = UnityWebRequest.Get(Server.Address("read_user") + UserSession.us.user.GetID());
+            UnityWebRequest uwr = UnityWebRequest.Get(Server.Address("read_user") + UserSession.user_session.user.GetID());
             yield return uwr.SendWebRequest();
 
             if (uwr.isNetworkError)
@@ -52,10 +53,10 @@ public class LoginTwitter : MonoBehaviour {
                     yield return new WaitForSeconds(1.3f);
                 }
             }
+
             if (repeats == 2 && !Server.CheckTwitter())
             {
                 EndSession();
-                
                 ShowPopup("fail_connection");
             }
         }
@@ -66,7 +67,7 @@ public class LoginTwitter : MonoBehaviour {
     //! Play without Twitter - pass noauth token to server
     private IEnumerator NoTwitter()
     {
-        UnityWebRequest uwr = UnityWebRequest.Get(Server.Address("skip_twitter") + UserSession.us.user.GetID());
+        UnityWebRequest uwr = UnityWebRequest.Get(Server.Address("skip_twitter") + UserSession.user_session.user.GetID());
         uwr.timeout = 10;
 
         yield return uwr.SendWebRequest();
@@ -89,7 +90,7 @@ public class LoginTwitter : MonoBehaviour {
     {
         if (acceptedTerms)
         {
-            string url = Server.Address("login_twitter") + UserSession.us.user.GetID();
+            string url = Server.Address("login_twitter") + UserSession.user_session.user.GetID();
             Application.OpenURL(url); // need nicer way -eg window in app
             leftForTwitter = true;
             StartCoroutine(TryTwitter());

@@ -9,12 +9,12 @@ public class Turn {
     public float damage;
     public int crit_landed;
 
-    //! Constructor
-    public Turn(bool turn, Player p, Player e)
+    //! Basic Constructor
+    public Turn(bool _turn, Player _player, Player _enemy)
     {
-        player_turn = turn;
-        player = p;
-        enemy = e;
+        player_turn = _turn;
+        player = _player;
+        enemy = _enemy;
     }
 
     //! Choose whose Turn this is, alternating every Turn
@@ -26,9 +26,9 @@ public class Turn {
         Player attacker = PlaysNow(player_turn);
         Player victim = PlaysNow(!player_turn);
 
-        int r_atk = attacker.attack;
-        int atk = Random.Range((int)(r_atk - (r_atk*0.05)),(int)(r_atk + (r_atk*0.05)));
-        damage = (atk - victim.defense) * (victim.level > attacker.level ? victim.level - attacker.level : 1);
+        int real_attack = attacker.attack;
+        int applied_attack = Random.Range((int)(real_attack - (real_attack*0.05)),(int)(real_attack + (real_attack*0.05)));
+        damage = (applied_attack - victim.defense) * (victim.level > attacker.level ? victim.level - attacker.level : 1);
         if (damage < 1) damage = 1;
         int low_crit = 10;//attacker.critical_strike; // not sure about multiplying it?
         int med_crit = low_crit/2;
