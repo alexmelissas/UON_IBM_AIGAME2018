@@ -1,6 +1,7 @@
 ﻿using NUnit.Framework;
 using UnityEngine;
 
+//! Unit tests for the User and Player objects
 public class User_Player_Test {
 
 	[Test]
