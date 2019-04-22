@@ -22,7 +22,7 @@ public class PauseManager : MonoBehaviour {
 
         if (UserSession.us.user != null && UserSession.us.user.GetID() != "")
         {
-            if(StartScreens() && !LoginTwitter.leftForTwitter && !AuthenticateUser.logging_in) //FIX THIS CONDITIONAL
+            if(StartScreens() && !LoginTwitter.leftForTwitter && !AuthenticateUser.display_loginAnimation) //FIX THIS CONDITIONAL
             {
                 StartCoroutine(Server.DeleteAccount());
             }
@@ -50,12 +50,12 @@ public class PauseManager : MonoBehaviour {
             if (ZPlayerPrefs.HasKey("id") && ZPlayerPrefs.GetRowString("id") != "")
             {
                 if(StartScreens() && !LoginTwitter.leftForTwitter)
-                    gameObject.AddComponent<ChangeScene>().Forward("StartScreen");
+                    gameObject.AddComponent<ChangeScene>().Forward("Start");
             }
             else if(!LoginTwitter.leftForTwitter)
             {
                 Debug.Log("Exception: no ID");
-                gameObject.AddComponent<ChangeScene>().Forward("StartScreen");
+                gameObject.AddComponent<ChangeScene>().Forward("Start");
             }
         }         
     }
@@ -63,7 +63,7 @@ public class PauseManager : MonoBehaviour {
     private bool StartScreens()
     {
         string scene = SceneManager.GetActiveScene().name;
-        if (scene == "Start_Login" || scene == "TwitterLogin" || scene == "CharacterCreation" || scene == "CreateAccount")
+        if (scene == "Login" || scene == "Twitter" || scene == "Ideals" || scene == "Register")
             return true;
         return false;
     }

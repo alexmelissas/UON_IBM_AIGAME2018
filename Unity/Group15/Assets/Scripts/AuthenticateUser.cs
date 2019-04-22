@@ -7,22 +7,20 @@ using VoxelBusters.NativePlugins;
 //! Login and Registration processing.
 public class AuthenticateUser : MonoBehaviour {
 
-    public GameObject loading;
-    public InputField usernameInput;
-    public InputField passwordInput;
+    public GameObject loading_spin_Animation;
+    public InputField usernameInputField;
+    public InputField passwordInputField;
     public string auth_type;
-    public static bool logging_in;
-    private bool done; // WHAT IS THIS DOING LOL
+    public static bool display_loginAnimation;
 
     void Start()
     {
-        loading.SetActive(false);
-        logging_in = false;
-        done = false;
-        passwordInput.onEndEdit.AddListener(delegate { CheckUserPass(); });
+        loading_spin_Animation.SetActive(false);
+        display_loginAnimation = false;
+        passwordInputField.onEndEdit.AddListener(delegate { CheckUserPass(); });
     }
 
-    private void Toggle(bool input) { logging_in = input; }
+    private void Toggle(bool input) { display_loginAnimation = input; }
 
     //! Try to login with given credentials.
     IEnumerator TryLogin(bool first_login, string json, User user)
@@ -49,16 +47,16 @@ public class AuthenticateUser : MonoBehaviour {
             {
                 string next_scene = "Overworld";
                 if (first_login)
-                    next_scene = "TwitterLogin";
+                    next_scene = "Twitter";
                 if (!first_login)
                 {
                     gameObject.AddComponent<UpdateSessions>().U_Player();
                     if(Server.CheckTwitter())
                     {
                         StartCoroutine(Server.Reanalyse());
-                        loading.SetActive(true);
+                        loading_spin_Animation.SetActive(true);
                         yield return new WaitUntil(() => Server.reanalysis_done==true);
-                        loading.SetActive(false);
+                        loading_spin_Animation.SetActive(false);
                     }
                 }
                 gameObject.AddComponent<ChangeScene>().Forward(next_scene);
@@ -68,11 +66,10 @@ public class AuthenticateUser : MonoBehaviour {
             {
                 Debug.Log("Invalid Credentials");
                 NPBinding.UI.ShowToast("Invalid Credentials.", eToastMessageLength.SHORT);
-                passwordInput.text = "";
-                passwordInput.Select();
+                passwordInputField.text = "";
+                passwordInputField.Select();
             }
             Toggle(false);
-            done = false;
             uwr.Dispose();
             StopCoroutine(TryLogin(first_login,json, user));
         }
@@ -107,8 +104,8 @@ public class AuthenticateUser : MonoBehaviour {
                 UserSession.us.user = new User("","");
                 if (response == 0) NPBinding.UI.ShowToast("Sorry, that username is taken. Please try something else.", eToastMessageLength.SHORT);
                 if (response == 0) Debug.Log("Username taken.");
-                usernameInput.text = "";
-                usernameInput.Select();
+                usernameInputField.text = "";
+                usernameInputField.Select();
             }
         }
         yield return StartCoroutine(TryLogin(true,json,user));
@@ -119,9 +116,8 @@ public class AuthenticateUser : MonoBehaviour {
     //! Check format of username/password, pass them to Login/Register if valid
     public void CheckUserPass()
     {
-        if (done) return;
-        string username = usernameInput.text;
-        string password = passwordInput.text;
+        string username = usernameInputField.text;
+        string password = passwordInputField.text;
         
         if (username == "")
         {
@@ -143,7 +139,6 @@ public class AuthenticateUser : MonoBehaviour {
         }
         else
         {
-            done = true;
             User user = new User(username, password);
             string json = JsonUtility.ToJson(user);
             if (auth_type == "register")

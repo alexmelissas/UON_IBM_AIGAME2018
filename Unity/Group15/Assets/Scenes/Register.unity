@@ -125,7 +125,7 @@ GameObject:
   - component: {fileID: 88956073}
   - component: {fileID: 88956072}
   m_Layer: 5
-  m_Name: usernameInput
+  m_Name: usernameInputField
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -259,7 +259,7 @@ GameObject:
   - component: {fileID: 127043651}
   - component: {fileID: 127043650}
   m_Layer: 5
-  m_Name: password
+  m_Name: passwordText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -335,7 +335,7 @@ GameObject:
   - component: {fileID: 203956256}
   - component: {fileID: 203956255}
   m_Layer: 5
-  m_Name: background
+  m_Name: backgroundImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -479,7 +479,7 @@ GameObject:
   - component: {fileID: 378406090}
   - component: {fileID: 378406089}
   m_Layer: 5
-  m_Name: username
+  m_Name: usernameText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -555,7 +555,7 @@ GameObject:
   - component: {fileID: 445181244}
   - component: {fileID: 445181243}
   m_Layer: 5
-  m_Name: title
+  m_Name: titleText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -945,9 +945,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0aa2fabfc7255e43a44ae1de58baea2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  loading: {fileID: 1857544901}
-  usernameInput: {fileID: 88956072}
-  passwordInput: {fileID: 1167538952}
+  loading_spin_Animation: {fileID: 1857544901}
+  usernameInputField: {fileID: 88956072}
+  passwordInputField: {fileID: 1167538952}
   auth_type: register
 --- !u!1 &881901238
 GameObject:
@@ -1171,7 +1171,7 @@ GameObject:
   - component: {fileID: 1167538953}
   - component: {fileID: 1167538952}
   m_Layer: 5
-  m_Name: passwordInput
+  m_Name: passwordInputField
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

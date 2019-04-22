@@ -16,8 +16,8 @@ public class Gameplay : MonoBehaviour {
 
     //! For the popups at the end of the battle to know when to animate EXP gain.
     public static int updatePlayer;
-    public static string currentAnimation_player = "player_idle";
-    public static string currentAnimation_enemy = "enemy_idle";
+    public static string currentAnimation_player = "player_idle_Animation";
+    public static string currentAnimation_enemy = "enemy_idle_Animation";
     public static bool ended = false;
 
     public Slider playerHP, enemyHP;
@@ -56,7 +56,7 @@ public class Gameplay : MonoBehaviour {
         ended = false;
         updatePlayer = -1;
         player = PlayerSession.ps.player;
-        PlayerSession.ps.player_before_battle = Player.DeepClone<Player>(PlayerSession.ps.player); // keep the player before gains
+        PlayerSession.ps.player_before_battle = Player.Clone(PlayerSession.ps.player); // keep the player before gains
         Items.AttachItemsToPlayer(new Items(player), player);
 
         if (!PlayerPrefs.HasKey("battle_type")) { gameObject.AddComponent<ChangeScene>().Forward("Overworld"); };
@@ -91,8 +91,8 @@ public class Gameplay : MonoBehaviour {
         ShowPopup(false, true);
         ShowPopup(false, false);
 
-        currentAnimation_player = "player_idle";
-        currentAnimation_enemy = "enemy_idle";
+        currentAnimation_player = "player_idle_Animation";
+        currentAnimation_enemy = "enemy_idle_Animation";
 
         RunBattle();
     }
@@ -132,8 +132,8 @@ public class Gameplay : MonoBehaviour {
             Turn turn = new Turn(player_turn, player, enemy);
             turns.Add(turn);
             result = turn.PlayTurn();
-            player = Player.DeepClone<Player>(turn.player); // get a new Player object with updated HP to pass to the next turn
-            enemy = Player.DeepClone<Player>(turn.enemy);
+            player = Player.Clone(turn.player); // get a new Player object with updated HP to pass to the next turn
+            enemy = Player.Clone(turn.enemy);
             if (result==0) player_turn = player_turn ? false : true;
         }
         StartCoroutine(Server.PassResult(BattleResult.GetJSON(player, enemy, (result == 1) ? false : true)));
@@ -169,20 +169,20 @@ public class Gameplay : MonoBehaviour {
             {
                 if (turn.damage != 0)
                 {
-                    currentAnimation_player = "player_attack";
+                    currentAnimation_player = "player_attack_Animation";
                     yield return new WaitForSeconds(0.2f);
-                    currentAnimation_enemy = "enemy_hurt";
+                    currentAnimation_enemy = "enemy_hurt_Animation";
                 }
                 else
                 {
-                    currentAnimation_player = "player_idle";
+                    currentAnimation_player = "player_idle_Animation";
                     yield return new WaitForSeconds(0.2f);
-                    currentAnimation_enemy = "enemy_idle";
+                    currentAnimation_enemy = "enemy_idle_Animation";
                 }
 
                 if (turns.Count == 1) // if last turn, then enemy died
                 {
-                    currentAnimation_enemy = "enemy_die";
+                    currentAnimation_enemy = "enemy_die_Animation";
                 }
             }
 
@@ -190,20 +190,20 @@ public class Gameplay : MonoBehaviour {
             {
                 if (turn.damage != 0)
                 {
-                    currentAnimation_enemy = "enemy_attack";
+                    currentAnimation_enemy = "enemy_attack_Animation";
                     yield return new WaitForSeconds(0.2f);
-                    currentAnimation_player = "player_hurt";
+                    currentAnimation_player = "player_hurt_Animation";
                 }
                 else
                 {
-                    currentAnimation_enemy = "enemy_idle";
+                    currentAnimation_enemy = "enemy_idle_Animation";
                     yield return new WaitForSeconds(0.2f);
-                    currentAnimation_player = "player_idle";
+                    currentAnimation_player = "player_idle_Animation";
                 }
 
                 if (turns.Count == 1) // if last turn, then player died
                 {
-                    currentAnimation_player = "player_die";
+                    currentAnimation_player = "player_die_Animation";
                 }
             }
 

@@ -124,7 +124,7 @@ GameObject:
   - component: {fileID: 39629218}
   - component: {fileID: 39629217}
   m_Layer: 0
-  m_Name: swordFullyUpgraded
+  m_Name: swordFullyUpgradedImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -193,7 +193,7 @@ GameObject:
   - component: {fileID: 71017727}
   - component: {fileID: 71017726}
   m_Layer: 8
-  m_Name: stat_tag
+  m_Name: statTitleText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -268,7 +268,7 @@ GameObject:
   - component: {fileID: 143882800}
   - component: {fileID: 143882799}
   m_Layer: 5
-  m_Name: money
+  m_Name: moneyText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -344,7 +344,7 @@ GameObject:
   - component: {fileID: 154224219}
   - component: {fileID: 154224218}
   m_Layer: 8
-  m_Name: balance
+  m_Name: balanceText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -491,7 +491,7 @@ GameObject:
   - component: {fileID: 238011880}
   - component: {fileID: 238011879}
   m_Layer: 5
-  m_Name: hpIcon
+  m_Name: hpImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -560,7 +560,7 @@ GameObject:
   - component: {fileID: 246594956}
   - component: {fileID: 246594955}
   m_Layer: 0
-  m_Name: shieldFullyUpgraded
+  m_Name: shieldFullyUpgradedImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -630,7 +630,7 @@ GameObject:
   - component: {fileID: 270259027}
   - component: {fileID: 270259029}
   m_Layer: 0
-  m_Name: clickShield
+  m_Name: clickShieldButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -956,7 +956,7 @@ GameObject:
   - component: {fileID: 588944982}
   - component: {fileID: 588944981}
   m_Layer: 5
-  m_Name: hp
+  m_Name: hpText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1079,6 +1079,10 @@ Prefab:
     - target: {fileID: 100000, guid: 987e4e47dae6f41dca193d106b133a46, type: 2}
       propertyPath: m_Layer
       value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: 987e4e47dae6f41dca193d106b133a46, type: 2}
+      propertyPath: m_Name
+      value: loading_spinning_Animation
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 987e4e47dae6f41dca193d106b133a46, type: 2}
@@ -1332,7 +1336,7 @@ GameObject:
   - component: {fileID: 719766817}
   - component: {fileID: 719766816}
   m_Layer: 0
-  m_Name: clickArmour
+  m_Name: clickArmourButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1453,7 +1457,7 @@ GameObject:
   - component: {fileID: 732222569}
   - component: {fileID: 732222568}
   m_Layer: 8
-  m_Name: price_tag
+  m_Name: priceTagText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1528,7 +1532,7 @@ GameObject:
   - component: {fileID: 751637005}
   - component: {fileID: 751637004}
   m_Layer: 0
-  m_Name: title
+  m_Name: titleText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1717,7 +1721,7 @@ GameObject:
   - component: {fileID: 878319485}
   - component: {fileID: 878319484}
   m_Layer: 0
-  m_Name: armourFullyUpgraded
+  m_Name: armourFullyUpgradedImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2073,7 +2077,7 @@ GameObject:
   - component: {fileID: 1103299210}
   - component: {fileID: 1103299209}
   m_Layer: 0
-  m_Name: upgrades
+  m_Name: upgradesText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2285,7 +2289,7 @@ GameObject:
   - component: {fileID: 1280568951}
   - component: {fileID: 1280568950}
   m_Layer: 5
-  m_Name: defIcon
+  m_Name: defImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2354,7 +2358,7 @@ GameObject:
   - component: {fileID: 1309538701}
   - component: {fileID: 1309538700}
   m_Layer: 5
-  m_Name: atkIcon
+  m_Name: atkImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2423,7 +2427,7 @@ GameObject:
   - component: {fileID: 1379933188}
   - component: {fileID: 1379933187}
   m_Layer: 8
-  m_Name: price
+  m_Name: priceText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2499,7 +2503,7 @@ GameObject:
   - component: {fileID: 1447628913}
   - component: {fileID: 1447628912}
   m_Layer: 8
-  m_Name: stat
+  m_Name: statText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2576,7 +2580,7 @@ GameObject:
   - component: {fileID: 1566351479}
   - component: {fileID: 1566351478}
   m_Layer: 5
-  m_Name: atk
+  m_Name: atkText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2652,7 +2656,7 @@ GameObject:
   - component: {fileID: 1628013116}
   - component: {fileID: 1628013115}
   m_Layer: 5
-  m_Name: def
+  m_Name: defText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2728,7 +2732,7 @@ GameObject:
   - component: {fileID: 1698655439}
   - component: {fileID: 1698655438}
   m_Layer: 8
-  m_Name: itemIcon
+  m_Name: itemIconImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2872,7 +2876,7 @@ GameObject:
   - component: {fileID: 1723852232}
   - component: {fileID: 1723852231}
   m_Layer: 8
-  m_Name: itemName
+  m_Name: itemNameText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3207,6 +3211,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1076146770848506, guid: e401b93f8d618fb43b67f19b68229e3c, type: 2}
+      propertyPath: m_Name
+      value: player_bop_Animation
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e401b93f8d618fb43b67f19b68229e3c, type: 2}
   m_IsPrefabAsset: 0
@@ -3220,7 +3228,7 @@ GameObject:
   - component: {fileID: 1783364107}
   - component: {fileID: 1783364109}
   m_Layer: 0
-  m_Name: Inventory
+  m_Name: inventory
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3266,7 +3274,7 @@ GameObject:
   - component: {fileID: 1830285879}
   - component: {fileID: 1830285881}
   m_Layer: 0
-  m_Name: clickSword
+  m_Name: clickSwordButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3651,7 +3659,7 @@ GameObject:
   - component: {fileID: 1920044743}
   - component: {fileID: 1920044742}
   m_Layer: 8
-  m_Name: stat_icon
+  m_Name: statIconImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3720,7 +3728,7 @@ GameObject:
   - component: {fileID: 2009657806}
   - component: {fileID: 2009657805}
   m_Layer: 8
-  m_Name: money_tag
+  m_Name: moneyTitleText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

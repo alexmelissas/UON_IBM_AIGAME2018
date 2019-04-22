@@ -123,7 +123,7 @@ GameObject:
   - component: {fileID: 4025073}
   - component: {fileID: 4025074}
   m_Layer: 5
-  m_Name: Slot1
+  m_Name: slot1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -767,6 +767,10 @@ Prefab:
       propertyPath: m_LocalScale.y
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 100004, guid: 74627d47794d14dbd95c115f395a7897, type: 2}
+      propertyPath: m_Name
+      value: loading_spin_Animation
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 74627d47794d14dbd95c115f395a7897, type: 2}
   m_IsPrefabAsset: 0
@@ -785,7 +789,7 @@ GameObject:
   - component: {fileID: 344867533}
   - component: {fileID: 344867534}
   m_Layer: 5
-  m_Name: Slot3
+  m_Name: slot3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -978,7 +982,7 @@ GameObject:
   - component: {fileID: 557346180}
   - component: {fileID: 557346179}
   m_Layer: 5
-  m_Name: entry5
+  m_Name: entry5Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1148,7 +1152,7 @@ GameObject:
   - component: {fileID: 666730832}
   - component: {fileID: 666730833}
   m_Layer: 5
-  m_Name: Slot4
+  m_Name: slot4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1207,7 +1211,7 @@ GameObject:
   - component: {fileID: 890172954}
   - component: {fileID: 890172953}
   m_Layer: 5
-  m_Name: entry2
+  m_Name: entry2Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1302,7 +1306,7 @@ GameObject:
   - component: {fileID: 1119984306}
   - component: {fileID: 1119984305}
   m_Layer: 5
-  m_Name: rankingsDisplay
+  m_Name: rankingsDisplayGroup
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1398,7 +1402,7 @@ GameObject:
   - component: {fileID: 1124517359}
   - component: {fileID: 1124517358}
   m_Layer: 5
-  m_Name: currentrankingsLabel
+  m_Name: currentrankingsText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1474,7 +1478,7 @@ GameObject:
   - component: {fileID: 1151001929}
   - component: {fileID: 1151001928}
   m_Layer: 5
-  m_Name: coverup
+  m_Name: leaderboardBackgroundImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1585,7 +1589,7 @@ GameObject:
   - component: {fileID: 1158390879}
   - component: {fileID: 1158390878}
   m_Layer: 5
-  m_Name: entry3
+  m_Name: entry3Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1802,7 +1806,7 @@ GameObject:
   - component: {fileID: 1326954336}
   - component: {fileID: 1326954335}
   m_Layer: 5
-  m_Name: title
+  m_Name: titleText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1879,7 +1883,7 @@ GameObject:
   - component: {fileID: 1346803063}
   - component: {fileID: 1346803062}
   m_Layer: 5
-  m_Name: background
+  m_Name: backgroundImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2024,7 +2028,7 @@ GameObject:
   - component: {fileID: 1724112073}
   - component: {fileID: 1724112072}
   m_Layer: 5
-  m_Name: entry1
+  m_Name: entry1Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2191,7 +2195,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1871864783}
   m_Layer: 5
-  m_Name: Rankings
+  m_Name: leaderboard
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2231,7 +2235,7 @@ GameObject:
   - component: {fileID: 1925472780}
   - component: {fileID: 1925472781}
   m_Layer: 5
-  m_Name: Slot5
+  m_Name: slot5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2611,7 +2615,7 @@ GameObject:
   - component: {fileID: 2119958368}
   - component: {fileID: 2119958367}
   m_Layer: 5
-  m_Name: entry4
+  m_Name: entry4Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2704,7 +2708,7 @@ GameObject:
   - component: {fileID: 2129837569}
   - component: {fileID: 2129837570}
   m_Layer: 5
-  m_Name: Slot2
+  m_Name: slot2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -13,7 +13,7 @@ public class Logout : MonoBehaviour {
         UserSession.us.user = new User("","");
         PlayerSession.ps.player = new Player();
         PlayerPrefs.DeleteKey("id");
-        gameObject.AddComponent<ChangeScene>().Forward("StartScreen");
+        gameObject.AddComponent<ChangeScene>().Forward("Start");
     }
 
     //! Unlink the Twitter account from the User

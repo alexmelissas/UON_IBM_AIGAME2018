@@ -350,7 +350,7 @@ GameObject:
   - component: {fileID: 118609834}
   - component: {fileID: 118609833}
   m_Layer: 5
-  m_Name: usernameLabel
+  m_Name: usernameText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -425,7 +425,7 @@ GameObject:
   - component: {fileID: 152645957}
   - component: {fileID: 152645956}
   m_Layer: 5
-  m_Name: accountLabel
+  m_Name: accountLabelText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -507,7 +507,7 @@ GameObject:
   - component: {fileID: 292198951}
   - component: {fileID: 292198950}
   m_Layer: 5
-  m_Name: pushLabel
+  m_Name: pushLabelText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -585,7 +585,7 @@ GameObject:
   - component: {fileID: 338448996}
   - component: {fileID: 338448995}
   m_Layer: 5
-  m_Name: musicLabel
+  m_Name: musicLabelText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -660,7 +660,7 @@ GameObject:
   - component: {fileID: 364802127}
   - component: {fileID: 364802126}
   m_Layer: 5
-  m_Name: soundsLabel
+  m_Name: soundsLabelText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1156,7 +1156,7 @@ GameObject:
   - component: {fileID: 1026191702}
   - component: {fileID: 1026191701}
   m_Layer: 5
-  m_Name: current_loginLabel
+  m_Name: currentLoginText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1231,7 +1231,7 @@ GameObject:
   - component: {fileID: 1031041222}
   - component: {fileID: 1031041221}
   m_Layer: 5
-  m_Name: Image
+  m_Name: backgroundImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1437,7 +1437,7 @@ GameObject:
   - component: {fileID: 1175824113}
   - component: {fileID: 1175824112}
   m_Layer: 5
-  m_Name: title
+  m_Name: titleText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1954,7 +1954,7 @@ GameObject:
   - component: {fileID: 1510781774}
   - component: {fileID: 1510781773}
   m_Layer: 5
-  m_Name: Label
+  m_Name: labelText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2029,7 +2029,7 @@ GameObject:
   - component: {fileID: 1548022861}
   - component: {fileID: 1548022860}
   m_Layer: 5
-  m_Name: Label
+  m_Name: labelText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2452,7 +2452,7 @@ GameObject:
   - component: {fileID: 1638516649}
   - component: {fileID: 1638516648}
   m_Layer: 5
-  m_Name: gameplayLabel
+  m_Name: gameplayLabelText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2758,7 +2758,7 @@ GameObject:
   - component: {fileID: 1775205729}
   - component: {fileID: 1775205728}
   m_Layer: 5
-  m_Name: fxLabel
+  m_Name: fxLabelText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

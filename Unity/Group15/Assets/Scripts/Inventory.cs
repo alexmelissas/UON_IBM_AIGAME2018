@@ -132,7 +132,7 @@ public class Inventory : MonoBehaviour {
     {
         if (PlayerSession.ps.player.money >= displayItem.price)
         {
-            Player poorerPlayer = Player.DeepClone<Player>(PlayerSession.ps.player);
+            Player poorerPlayer = Player.Clone(PlayerSession.ps.player);
             poorerPlayer.money -= displayItem.price;
             switch(displayItemType)
             {

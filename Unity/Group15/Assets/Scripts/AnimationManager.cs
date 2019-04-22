@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class AnimationManager : MonoBehaviour {
 
-    public GameObject player_hurt, player_idle, player_attack, player_die;
-    public GameObject enemy_hurt, enemy_idle, enemy_attack, enemy_die;
+    public GameObject player_hurt_Animation, player_idle_Animation, player_attack_Animation, player_die_Animation;
+    public GameObject enemy_hurt_Animation, enemy_idle_Animation, enemy_attack_Animation, enemy_die_Animation;
 
     private Dictionary<string,GameObject> animations;
     private string currentAnimation_player;
@@ -17,23 +17,23 @@ public class AnimationManager : MonoBehaviour {
     {
         animations = new Dictionary<string, GameObject>
         {
-            { "player_hurt", player_hurt },
-            { "player_idle", player_idle },
-            { "player_attack", player_attack },
-            { "player_die", player_die },
-            { "enemy_hurt", enemy_hurt },
-            { "enemy_idle", enemy_idle },
-            { "enemy_attack", enemy_attack },
-            { "enemy_die", enemy_die }
+            { "player_hurt_Animation", player_hurt_Animation },
+            { "player_idle_Animation", player_idle_Animation },
+            { "player_attack_Animation", player_attack_Animation },
+            { "player_die_Animation", player_die_Animation },
+            { "enemy_hurt_Animation", enemy_hurt_Animation },
+            { "enemy_idle_Animation", enemy_idle_Animation },
+            { "enemy_attack_Animation", enemy_attack_Animation },
+            { "enemy_die_Animation", enemy_die_Animation }
         };
 
         foreach (KeyValuePair<string,GameObject> animation in animations)
             animation.Value.SetActive(false);
 
-        currentAnimation_player = "player_idle";
-        currentAnimation_enemy = "enemy_idle";
-        animations["player_idle"].SetActive(true);
-        animations["enemy_idle"].SetActive(true);
+        currentAnimation_player = "player_idle_Animation";
+        currentAnimation_enemy = "enemy_idle_Animation";
+        animations["player_idle_Animation"].SetActive(true);
+        animations["enemy_idle_Animation"].SetActive(true);
     }
 
     void Update () {

@@ -123,7 +123,7 @@ GameObject:
   - component: {fileID: 53856445}
   - component: {fileID: 53856446}
   m_Layer: 5
-  m_Name: trait5slider
+  m_Name: trait5Slider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -149,7 +149,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 67.072, y: -57.9}
+  m_AnchoredPosition: {x: 80.00001, y: -118.600006}
   m_SizeDelta: {x: 239.01, y: 45}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &53856446
@@ -221,7 +221,7 @@ GameObject:
   - component: {fileID: 60710244}
   - component: {fileID: 60710245}
   m_Layer: 5
-  m_Name: trait3slider
+  m_Name: trait3Slider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -247,7 +247,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 67.305, y: 80.1}
+  m_AnchoredPosition: {x: 80.23301, y: 19.399994}
   m_SizeDelta: {x: 239.01, y: 45}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &60710245
@@ -561,7 +561,7 @@ GameObject:
   - component: {fileID: 245749628}
   - component: {fileID: 245749627}
   m_Layer: 5
-  m_Name: Text
+  m_Name: traitText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -705,7 +705,7 @@ GameObject:
   - component: {fileID: 289329073}
   - component: {fileID: 289329072}
   m_Layer: 5
-  m_Name: title
+  m_Name: titleText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -780,7 +780,7 @@ GameObject:
   - component: {fileID: 355181012}
   - component: {fileID: 355181011}
   m_Layer: 5
-  m_Name: subtitle
+  m_Name: subtitleText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -889,7 +889,7 @@ GameObject:
   - component: {fileID: 436210615}
   - component: {fileID: 436210614}
   m_Layer: 5
-  m_Name: background
+  m_Name: backgroundImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1130,7 +1130,7 @@ GameObject:
   - component: {fileID: 547990110}
   - component: {fileID: 547990109}
   m_Layer: 5
-  m_Name: Text
+  m_Name: traitText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1205,7 +1205,7 @@ GameObject:
   - component: {fileID: 567675733}
   - component: {fileID: 567675732}
   m_Layer: 5
-  m_Name: percentT4
+  m_Name: percentT4Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1314,7 +1314,7 @@ GameObject:
   - component: {fileID: 696387257}
   - component: {fileID: 696387256}
   m_Layer: 5
-  m_Name: percentT3
+  m_Name: percentT3Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1389,7 +1389,7 @@ GameObject:
   - component: {fileID: 746917216}
   - component: {fileID: 746917215}
   m_Layer: 5
-  m_Name: Text
+  m_Name: traitText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1466,7 +1466,7 @@ GameObject:
   - component: {fileID: 814721293}
   - component: {fileID: 814721292}
   m_Layer: 5
-  m_Name: Text
+  m_Name: traitText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1610,7 +1610,7 @@ GameObject:
   - component: {fileID: 841738415}
   - component: {fileID: 841738414}
   m_Layer: 5
-  m_Name: percentT1
+  m_Name: percentT1Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2062,7 +2062,7 @@ GameObject:
   - component: {fileID: 1089737457}
   - component: {fileID: 1089737456}
   m_Layer: 5
-  m_Name: trait1slider
+  m_Name: trait1Slider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2147,7 +2147,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 67.075, y: 213.4}
+  m_AnchoredPosition: {x: 80.003006, y: 152.69998}
   m_SizeDelta: {x: 239.01, y: 45}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1106165141
@@ -2245,7 +2245,6 @@ RectTransform:
   - {fileID: 1356775421}
   - {fileID: 53856445}
   - {fileID: 2000511036}
-  - {fileID: 1912392678}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2390,7 +2389,7 @@ GameObject:
   - component: {fileID: 1238486781}
   - component: {fileID: 1238486780}
   m_Layer: 5
-  m_Name: Text
+  m_Name: traitText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2466,7 +2465,7 @@ GameObject:
   - component: {fileID: 1356775421}
   - component: {fileID: 1356775422}
   m_Layer: 5
-  m_Name: trait4slider
+  m_Name: trait4Slider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2492,7 +2491,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 67.072, y: 10.9}
+  m_AnchoredPosition: {x: 80.00001, y: -49.800003}
   m_SizeDelta: {x: 239.01, y: 45}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1356775422
@@ -2565,7 +2564,7 @@ GameObject:
   - component: {fileID: 1389067658}
   - component: {fileID: 1389067657}
   m_Layer: 5
-  m_Name: percentT2
+  m_Name: percentT2Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2784,7 +2783,7 @@ GameObject:
   - component: {fileID: 1676242458}
   - component: {fileID: 1676242457}
   m_Layer: 5
-  m_Name: percentT5
+  m_Name: percentT5Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3072,7 +3071,7 @@ GameObject:
   - component: {fileID: 1887611890}
   - component: {fileID: 1887611891}
   m_Layer: 5
-  m_Name: trait2slider
+  m_Name: trait2Slider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3098,7 +3097,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 67.072, y: 144.7}
+  m_AnchoredPosition: {x: 80, y: 84}
   m_SizeDelta: {x: 239.01, y: 45}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1887611891
@@ -3160,140 +3159,6 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Slider+SliderEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
---- !u!1 &1912392677
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1912392678}
-  - component: {fileID: 1912392682}
-  - component: {fileID: 1912392681}
-  - component: {fileID: 1912392680}
-  - component: {fileID: 1912392679}
-  m_Layer: 5
-  m_Name: backToStart
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1912392678
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1912392677}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1106165145}
-  m_RootOrder: 9
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -123.05, y: -191}
-  m_SizeDelta: {x: 52, y: 53.5}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1912392679
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1912392677}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 094dd886521400a49a014862da358095, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1912392680
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1912392677}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 1392445389, guid: f70555f144d8491a825f0804e09c671c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Navigation:
-    m_Mode: 3
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
-    m_SelectOnLeft: {fileID: 0}
-    m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
-  m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
-    m_ColorMultiplier: 1
-    m_FadeDuration: 0.1
-  m_SpriteState:
-    m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 0}
-    m_DisabledSprite: {fileID: 0}
-  m_AnimationTriggers:
-    m_NormalTrigger: Normal
-    m_HighlightedTrigger: Highlighted
-    m_PressedTrigger: Pressed
-    m_DisabledTrigger: Disabled
-  m_Interactable: 1
-  m_TargetGraphic: {fileID: 1912392681}
-  m_OnClick:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1912392679}
-        m_MethodName: Back
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: TwitterLogin
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
-      Culture=neutral, PublicKeyToken=null
---- !u!114 &1912392681
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1912392677}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 0.0041384934, g: 0.42051473, b: 0.8773585, a: 1}
-  m_RaycastTarget: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 4e25856234a659d45ab240f125e11f3f, type: 3}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
---- !u!222 &1912392682
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1912392677}
-  m_CullTransparentMesh: 0
 --- !u!1 &2000511035
 GameObject:
   m_ObjectHideFlags: 0
@@ -3328,7 +3193,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 67.17, y: -191}
+  m_AnchoredPosition: {x: -0.0000038147, y: -307}
   m_SizeDelta: {x: 256.3, y: 99.6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2000511037

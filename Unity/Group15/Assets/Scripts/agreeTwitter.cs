@@ -39,6 +39,6 @@ public class AgreeTwitter : MonoBehaviour {
     public void Next()
     {
         LoginTwitter.allowNextForSkip = false;
-        gameObject.AddComponent<ChangeScene>().Forward("CharacterCreation");
+        gameObject.AddComponent<ChangeScene>().Forward("Ideals");
     }
 }

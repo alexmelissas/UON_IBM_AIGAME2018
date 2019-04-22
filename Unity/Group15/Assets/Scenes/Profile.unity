@@ -124,7 +124,7 @@ GameObject:
   - component: {fileID: 175728441}
   - component: {fileID: 175728440}
   m_Layer: 5
-  m_Name: critIcon
+  m_Name: critIconImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -262,7 +262,7 @@ GameObject:
   - component: {fileID: 294822805}
   - component: {fileID: 294822804}
   m_Layer: 5
-  m_Name: atk
+  m_Name: atkText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -400,7 +400,7 @@ GameObject:
   - component: {fileID: 317466064}
   - component: {fileID: 317466063}
   m_Layer: 5
-  m_Name: expLabel
+  m_Name: expText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -475,7 +475,7 @@ GameObject:
   - component: {fileID: 334148589}
   - component: {fileID: 334148588}
   m_Layer: 5
-  m_Name: nextLevel
+  m_Name: nextLevelText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -550,7 +550,7 @@ GameObject:
   - component: {fileID: 394767178}
   - component: {fileID: 394767177}
   m_Layer: 5
-  m_Name: lvlLabel
+  m_Name: lvlText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -625,7 +625,7 @@ GameObject:
   - component: {fileID: 422572886}
   - component: {fileID: 422572885}
   m_Layer: 5
-  m_Name: exp_title
+  m_Name: expTitleText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -700,7 +700,7 @@ GameObject:
   - component: {fileID: 618456414}
   - component: {fileID: 618456413}
   m_Layer: 5
-  m_Name: agility
+  m_Name: agilityText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -953,7 +953,7 @@ GameObject:
   - component: {fileID: 1197027806}
   - component: {fileID: 1197027805}
   m_Layer: 5
-  m_Name: factor
+  m_Name: factorSlider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1117,7 +1117,7 @@ GameObject:
   - component: {fileID: 1244933849}
   - component: {fileID: 1244933848}
   m_Layer: 5
-  m_Name: title
+  m_Name: titleText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1191,7 +1191,7 @@ GameObject:
   - component: {fileID: 1269458799}
   - component: {fileID: 1269458800}
   m_Layer: 5
-  m_Name: exp
+  m_Name: expSlider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1280,7 +1280,7 @@ GameObject:
   - component: {fileID: 1271036653}
   - component: {fileID: 1271036652}
   m_Layer: 5
-  m_Name: factorColour
+  m_Name: factorColourImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1349,7 +1349,7 @@ GameObject:
   - component: {fileID: 1282809285}
   - component: {fileID: 1282809284}
   m_Layer: 5
-  m_Name: factor_title
+  m_Name: factorTitleText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1550,7 +1550,7 @@ GameObject:
   - component: {fileID: 1334145693}
   - component: {fileID: 1334145692}
   m_Layer: 5
-  m_Name: crit
+  m_Name: critText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1626,7 +1626,7 @@ GameObject:
   - component: {fileID: 1334257331}
   - component: {fileID: 1334257330}
   m_Layer: 5
-  m_Name: agilityIcon
+  m_Name: agilityIconImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1695,7 +1695,7 @@ GameObject:
   - component: {fileID: 1350278541}
   - component: {fileID: 1350278542}
   m_Layer: 5
-  m_Name: factor_tag
+  m_Name: factorTagText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1770,7 +1770,7 @@ GameObject:
   - component: {fileID: 1415525601}
   - component: {fileID: 1415525600}
   m_Layer: 5
-  m_Name: expColour
+  m_Name: expColourImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1974,7 +1974,7 @@ GameObject:
   - component: {fileID: 1667883106}
   - component: {fileID: 1667883105}
   m_Layer: 5
-  m_Name: hp
+  m_Name: hpText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2050,7 +2050,7 @@ GameObject:
   - component: {fileID: 1742099217}
   - component: {fileID: 1742099216}
   m_Layer: 5
-  m_Name: atkIcon
+  m_Name: atkIconImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2119,7 +2119,7 @@ GameObject:
   - component: {fileID: 1782816315}
   - component: {fileID: 1782816314}
   m_Layer: 5
-  m_Name: def
+  m_Name: defText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2195,7 +2195,7 @@ GameObject:
   - component: {fileID: 1787392426}
   - component: {fileID: 1787392425}
   m_Layer: 5
-  m_Name: hpIcon
+  m_Name: hpIconImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2264,7 +2264,7 @@ GameObject:
   - component: {fileID: 1981695163}
   - component: {fileID: 1981695162}
   m_Layer: 5
-  m_Name: defIcon
+  m_Name: defIconImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2333,7 +2333,7 @@ GameObject:
   - component: {fileID: 2009204024}
   - component: {fileID: 2009204023}
   m_Layer: 5
-  m_Name: background
+  m_Name: backgroundImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

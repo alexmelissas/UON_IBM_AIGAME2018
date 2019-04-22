@@ -60,7 +60,7 @@ public class PersonalityCreation : MonoBehaviour {
                 UpdateSessions.JSON_Session("player",uwr.downloadHandler.text);
                 // create the model here somehow 
                 NPBinding.UI.ShowToast("Ideal Personality Submitted. Player created.", eToastMessageLength.SHORT);
-                gameObject.AddComponent<ChangeScene>().Forward("ModelCreated");
+                gameObject.AddComponent<ChangeScene>().Forward("Overworld");
             }
         }
         StopCoroutine(PutIdeals(json));

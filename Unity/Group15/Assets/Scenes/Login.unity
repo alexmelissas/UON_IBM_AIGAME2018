@@ -124,7 +124,7 @@ GameObject:
   - component: {fileID: 112570390}
   - component: {fileID: 112570389}
   m_Layer: 5
-  m_Name: username
+  m_Name: usernameText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -263,7 +263,7 @@ GameObject:
   - component: {fileID: 345035650}
   - component: {fileID: 345035649}
   m_Layer: 5
-  m_Name: usernameInput
+  m_Name: usernameInputField
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -939,7 +939,7 @@ GameObject:
   - component: {fileID: 579208763}
   - component: {fileID: 579208762}
   m_Layer: 5
-  m_Name: password
+  m_Name: passwordText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1343,9 +1343,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0aa2fabfc7255e43a44ae1de58baea2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  loading: {fileID: 1955385975}
-  usernameInput: {fileID: 345035649}
-  passwordInput: {fileID: 1689793733}
+  loading_spin_Animation: {fileID: 1955385975}
+  usernameInputField: {fileID: 345035649}
+  passwordInputField: {fileID: 1689793733}
   auth_type: login
 --- !u!1 &1501613141
 GameObject:
@@ -1511,7 +1511,7 @@ GameObject:
   - component: {fileID: 1689793734}
   - component: {fileID: 1689793733}
   m_Layer: 5
-  m_Name: passwordInput
+  m_Name: passwordInputField
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1645,7 +1645,7 @@ GameObject:
   - component: {fileID: 1719734832}
   - component: {fileID: 1719734831}
   m_Layer: 5
-  m_Name: Text
+  m_Name: titleText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1720,7 +1720,7 @@ GameObject:
   - component: {fileID: 1898440464}
   - component: {fileID: 1898440463}
   m_Layer: 5
-  m_Name: Image
+  m_Name: backgroundImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1836,6 +1836,10 @@ Prefab:
     - target: {fileID: 100000, guid: 987e4e47dae6f41dca193d106b133a46, type: 2}
       propertyPath: m_Layer
       value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: 987e4e47dae6f41dca193d106b133a46, type: 2}
+      propertyPath: m_Name
+      value: loading_spin_Animation
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 987e4e47dae6f41dca193d106b133a46, type: 2}
