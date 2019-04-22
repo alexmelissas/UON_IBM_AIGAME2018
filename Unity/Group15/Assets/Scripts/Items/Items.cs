@@ -18,9 +18,8 @@ public class Items {
     }
 
     //! Put items on player model, add their stats to Player
-    public static void AttachItemsToPlayer(Items i, Player p) //also make this put the item icons onto player
+    public static void AttachItemsToPlayer(Items i, Player p) //also make this put the item icons onto player?
     {
-        if (PlayerSession.ps.player == null) return;
         p.hp += i.armour.hp;
         p.attack += i.sword.attack;
         p.defense += (i.shield.defense + i.armour.defense);

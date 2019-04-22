@@ -59,15 +59,16 @@ public class Gameplay : MonoBehaviour {
         PlayerSession.ps.player_before_battle = Player.DeepClone<Player>(PlayerSession.ps.player); // keep the player before gains
         Items.AttachItemsToPlayer(new Items(player), player);
 
-        if (!PlayerPrefs.HasKey("battle_type")) { gameObject.AddComponent<ChangeScene>().Forward("Overworld"); }; //Error
+        if (!PlayerPrefs.HasKey("battle_type")) { gameObject.AddComponent<ChangeScene>().Forward("Overworld"); };
         int battle_type = PlayerPrefs.GetInt("battle_type");
-        if(battle_type!=0 && battle_type!=1) gameObject.AddComponent<ChangeScene>().Forward("Overworld"); // Handle error better
+        if(battle_type!=0 && battle_type!=1) gameObject.AddComponent<ChangeScene>().Forward("Overworld"); 
         enemy = PlayerSession.ps.enemy;
         if (battle_type == 0)
         {
             enemy.id = "bot";
             enemy.characterName = BotScreen.difficulty + "Bot";
         }
+        Items.AttachItemsToPlayer(new Items(enemy), enemy);
 
         turns = new List<Turn>();
         player_max_hp = player.hp;
@@ -107,7 +108,7 @@ public class Gameplay : MonoBehaviour {
         float nhpe = new_hp_enemy * enemy_max_hp;
         Mathf.RoundToInt(nhpp);
         Mathf.RoundToInt(nhpe);
-        actualPlayerHP.text = "" + ((nhpp >= 0) ? nhpp : player_max_hp);
+        actualPlayerHP.text = "" + ((nhpp >= 0) ? nhpp : player_max_hp); //bug when dying
         actualEnemyHP.text = "" + ((nhpe >= 0) ? nhpe : enemy_max_hp);
         maxPlayerHP.text = "/" + player_max_hp;
         maxEnemyHP.text = "/" + enemy_max_hp;
