@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.15"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Group 15: BattleResult Class Reference</title>
+<title>The Battle Within (Group 15): BattleResult Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -21,8 +21,9 @@
  <tbody>
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">Group 15
+   <div id="projectname">The Battle Within (Group 15)
    </div>
+   <div id="projectbrief">An asynchronous multiplayer, self-improvement RPG</div>
   </td>
  </tr>
  </tbody>
@@ -65,7 +66,6 @@ $(function() {
 <a href="#pub-static-methods">Static Public Member Functions</a> &#124;
 <a href="#pub-attribs">Public Attributes</a> &#124;
 <a href="#pri-methods">Private Member Functions</a> &#124;
-<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="class_battle_result-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">BattleResult Class Reference</div>  </div>
@@ -84,6 +84,18 @@ static string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" h
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
+<tr class="memitem:a350ad6a31cf445647adc770788444832"><td class="memItemLeft" align="right" valign="top"><a id="a350ad6a31cf445647adc770788444832"></a>
+string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_battle_result.html#a350ad6a31cf445647adc770788444832">id1</a></td></tr>
+<tr class="memdesc:a350ad6a31cf445647adc770788444832"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="class_player.html" title="JSON-able object with all Player-related attributes (eg. id, winrate, level, stats ....">Player</a> ID. <br /></td></tr>
+<tr class="separator:a350ad6a31cf445647adc770788444832"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae2c787e74297c842bf4e284f0cc612fb"><td class="memItemLeft" align="right" valign="top"><a id="ae2c787e74297c842bf4e284f0cc612fb"></a>
+string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_battle_result.html#ae2c787e74297c842bf4e284f0cc612fb">id2</a></td></tr>
+<tr class="memdesc:ae2c787e74297c842bf4e284f0cc612fb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enemy ID. <br /></td></tr>
+<tr class="separator:ae2c787e74297c842bf4e284f0cc612fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afd1e0eda93aa975e42f89c2eb3ce0fdc"><td class="memItemLeft" align="right" valign="top"><a id="afd1e0eda93aa975e42f89c2eb3ce0fdc"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_battle_result.html#afd1e0eda93aa975e42f89c2eb3ce0fdc">result</a></td></tr>
+<tr class="memdesc:afd1e0eda93aa975e42f89c2eb3ce0fdc"><td class="mdescLeft">&#160;</td><td class="mdescRight">True = <a class="el" href="class_player.html" title="JSON-able object with all Player-related attributes (eg. id, winrate, level, stats ....">Player</a> win | False = Enemy win. <br /></td></tr>
+<tr class="separator:afd1e0eda93aa975e42f89c2eb3ce0fdc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afc0db86910169071de1574e338681970"><td class="memItemLeft" align="right" valign="top"><a id="afc0db86910169071de1574e338681970"></a>
 int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_battle_result.html#afc0db86910169071de1574e338681970">additionalExp</a></td></tr>
 <tr class="memdesc:afc0db86910169071de1574e338681970"><td class="mdescLeft">&#160;</td><td class="mdescRight">Extra EXP gained/lost by defeating higher/lower level enemy. <br /></td></tr>
@@ -95,38 +107,23 @@ int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
-<tr class="memitem:af69f9ca4cc70f7dbbd44c4482f0ce651"><td class="memItemLeft" align="right" valign="top"><a id="af69f9ca4cc70f7dbbd44c4482f0ce651"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_battle_result.html#af69f9ca4cc70f7dbbd44c4482f0ce651">BattleResult</a> (<a class="el" href="class_player.html">Player</a> p1, <a class="el" href="class_player.html">Player</a> p2, bool win)</td></tr>
-<tr class="memdesc:af69f9ca4cc70f7dbbd44c4482f0ce651"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor. <br /></td></tr>
-<tr class="separator:af69f9ca4cc70f7dbbd44c4482f0ce651"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa9b8da5a628723badc34d0828591ff0a"><td class="memItemLeft" align="right" valign="top"><a id="aa9b8da5a628723badc34d0828591ff0a"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_battle_result.html#aa9b8da5a628723badc34d0828591ff0a">BattleResult</a> (<a class="el" href="class_player.html">Player</a> _player1, <a class="el" href="class_player.html">Player</a> _player2, bool _win)</td></tr>
+<tr class="memdesc:aa9b8da5a628723badc34d0828591ff0a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor for the <a class="el" href="class_battle_result.html" title="JSON-able object to pass result of battle to server.">BattleResult</a> to pass to server. <br /></td></tr>
+<tr class="separator:aa9b8da5a628723badc34d0828591ff0a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af20191426878f7be611049a4715dcfbd"><td class="memItemLeft" align="right" valign="top"><a id="af20191426878f7be611049a4715dcfbd"></a>
 int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_battle_result.html#af20191426878f7be611049a4715dcfbd">CalculateBonusExp</a> (<a class="el" href="class_player.html">Player</a> p1, <a class="el" href="class_player.html">Player</a> p2)</td></tr>
 <tr class="memdesc:af20191426878f7be611049a4715dcfbd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculates bonus EXP based on level comparison. <br /></td></tr>
 <tr class="separator:af20191426878f7be611049a4715dcfbd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad5eed686021435525855eb55902be318"><td class="memItemLeft" align="right" valign="top"><a id="ad5eed686021435525855eb55902be318"></a>
 int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_battle_result.html#ad5eed686021435525855eb55902be318">CalculateBonusMoney</a> (<a class="el" href="class_player.html">Player</a> p1, <a class="el" href="class_player.html">Player</a> p2)</td></tr>
-<tr class="memdesc:ad5eed686021435525855eb55902be318"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculates bonus money based on level comparison. <br /></td></tr>
+<tr class="memdesc:ad5eed686021435525855eb55902be318"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculate bonus money based on level comparison. <br /></td></tr>
 <tr class="separator:ad5eed686021435525855eb55902be318"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
-Private Attributes</h2></td></tr>
-<tr class="memitem:acc40372a21108136cf3de9ced977f0bd"><td class="memItemLeft" align="right" valign="top"><a id="acc40372a21108136cf3de9ced977f0bd"></a>
-readonly string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_battle_result.html#acc40372a21108136cf3de9ced977f0bd">id1</a></td></tr>
-<tr class="memdesc:acc40372a21108136cf3de9ced977f0bd"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="class_player.html" title="JSON-able object with all Player-related attributes (eg. id, winrate, level, stats ....">Player</a> ID. <br /></td></tr>
-<tr class="separator:acc40372a21108136cf3de9ced977f0bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a09baeea90e3ce08457c8271bdf6e4d33"><td class="memItemLeft" align="right" valign="top"><a id="a09baeea90e3ce08457c8271bdf6e4d33"></a>
-readonly string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_battle_result.html#a09baeea90e3ce08457c8271bdf6e4d33">id2</a></td></tr>
-<tr class="memdesc:a09baeea90e3ce08457c8271bdf6e4d33"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enemy ID. <br /></td></tr>
-<tr class="separator:a09baeea90e3ce08457c8271bdf6e4d33"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aea985985a2c88b1e6f295f6646d34e8b"><td class="memItemLeft" align="right" valign="top"><a id="aea985985a2c88b1e6f295f6646d34e8b"></a>
-readonly bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_battle_result.html#aea985985a2c88b1e6f295f6646d34e8b">result</a></td></tr>
-<tr class="memdesc:aea985985a2c88b1e6f295f6646d34e8b"><td class="mdescLeft">&#160;</td><td class="mdescRight">True = <a class="el" href="class_player.html" title="JSON-able object with all Player-related attributes (eg. id, winrate, level, stats ....">Player</a> win | False = Enemy win. <br /></td></tr>
-<tr class="separator:aea985985a2c88b1e6f295f6646d34e8b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>JSON-able object to pass result of battle to server. </p>
 </div><hr/>The documentation for this class was generated from the following file:<ul>
-<li>Assets/Scripts/BattleResult.cs</li>
+<li>BattleResult.cs</li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

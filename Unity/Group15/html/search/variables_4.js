@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['username_5ftaken',['username_taken',['../class_server.html#a0d876aba3addd4f76cf9d998f0552048',1,'Server']]]
+  ['leftfortwitter',['leftForTwitter',['../class_login_twitter.html#a6719de883466089832df2f9f5189629e',1,'LoginTwitter']]]
 ];

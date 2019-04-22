@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['fail_5fauth',['fail_auth',['../class_server.html#ab625c993d6d1ab40721d3ca33af00cb8',1,'Server']]]
+  ['back_5fbutton_5fhandler',['back_button_handler',['../class_back_button_handler.html#a6fd6f32fc652c5be872ebdeef591ecfe',1,'BackButtonHandler']]]
 ];

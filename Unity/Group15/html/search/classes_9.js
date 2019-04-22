@@ -1,4 +1,8 @@
 var searchData=
 [
-  ['turn',['Turn',['../class_turn.html',1,'']]]
+  ['scenehistory',['SceneHistory',['../class_scene_history.html',1,'']]],
+  ['server',['Server',['../class_server.html',1,'']]],
+  ['setsettings',['SetSettings',['../class_set_settings.html',1,'']]],
+  ['shield',['Shield',['../class_shield.html',1,'']]],
+  ['sword',['Sword',['../class_sword.html',1,'']]]
 ];

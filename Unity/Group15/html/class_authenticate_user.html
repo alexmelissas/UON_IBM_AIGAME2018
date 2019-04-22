@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.15"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Group 15: AuthenticateUser Class Reference</title>
+<title>The Battle Within (Group 15): AuthenticateUser Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -21,8 +21,9 @@
  <tbody>
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">Group 15
+   <div id="projectname">The Battle Within (Group 15)
    </div>
+   <div id="projectbrief">An asynchronous multiplayer, self-improvement RPG</div>
   </td>
  </tr>
  </tbody>
@@ -64,6 +65,7 @@ $(function() {
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-attribs">Public Attributes</a> &#124;
+<a href="#pub-static-attribs">Static Public Attributes</a> &#124;
 <a href="#pri-methods">Private Member Functions</a> &#124;
 <a href="class_authenticate_user-members.html">List of all members</a>  </div>
   <div class="headertitle">
@@ -82,9 +84,6 @@ Inheritance diagram for AuthenticateUser:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a2df21e251ada4051e0a05ca42b0b5a50"><td class="memItemLeft" align="right" valign="top"><a id="a2df21e251ada4051e0a05ca42b0b5a50"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>EndInput</b> (string input)</td></tr>
-<tr class="separator:a2df21e251ada4051e0a05ca42b0b5a50"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6d1abb9b546a5fa3016bb6063e3eabaa"><td class="memItemLeft" align="right" valign="top"><a id="a6d1abb9b546a5fa3016bb6063e3eabaa"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_authenticate_user.html#a6d1abb9b546a5fa3016bb6063e3eabaa">CheckUserPass</a> ()</td></tr>
 <tr class="memdesc:a6d1abb9b546a5fa3016bb6063e3eabaa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check format of username/password, pass them to Login/Register if valid. <br /></td></tr>
@@ -92,29 +91,38 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr class="memitem:a532ce51c8aaa998e5ce6a1045f9c40cd"><td class="memItemLeft" align="right" valign="top"><a id="a532ce51c8aaa998e5ce6a1045f9c40cd"></a>
-InputField&#160;</td><td class="memItemRight" valign="bottom"><b>usernameInput</b></td></tr>
-<tr class="separator:a532ce51c8aaa998e5ce6a1045f9c40cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad698ebb327f7ca1a3ca6c9fbc870896f"><td class="memItemLeft" align="right" valign="top"><a id="ad698ebb327f7ca1a3ca6c9fbc870896f"></a>
-InputField&#160;</td><td class="memItemRight" valign="bottom"><b>passwordInput</b></td></tr>
-<tr class="separator:ad698ebb327f7ca1a3ca6c9fbc870896f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afb01dae3faedae56fd24a3549f3b92c6"><td class="memItemLeft" align="right" valign="top"><a id="afb01dae3faedae56fd24a3549f3b92c6"></a>
-string&#160;</td><td class="memItemRight" valign="bottom"><b>auth_type</b></td></tr>
-<tr class="separator:afb01dae3faedae56fd24a3549f3b92c6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af6ef34075c6ae8b71ccdadf4db3ab2f5"><td class="memItemLeft" align="right" valign="top"><a id="af6ef34075c6ae8b71ccdadf4db3ab2f5"></a>
+GameObject&#160;</td><td class="memItemRight" valign="bottom"><b>loading_spin_Animation</b></td></tr>
+<tr class="separator:af6ef34075c6ae8b71ccdadf4db3ab2f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a38f2b4577d8f375bb33d3eab2e669774"><td class="memItemLeft" align="right" valign="top"><a id="a38f2b4577d8f375bb33d3eab2e669774"></a>
+InputField&#160;</td><td class="memItemRight" valign="bottom"><b>usernameInputField</b></td></tr>
+<tr class="separator:a38f2b4577d8f375bb33d3eab2e669774"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5def6ad7e62bddc9a48cffee77c04168"><td class="memItemLeft" align="right" valign="top"><a id="a5def6ad7e62bddc9a48cffee77c04168"></a>
+InputField&#160;</td><td class="memItemRight" valign="bottom"><b>passwordInputField</b></td></tr>
+<tr class="separator:a5def6ad7e62bddc9a48cffee77c04168"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a299b64de03d6461c988a78593365624b"><td class="memItemLeft" align="right" valign="top"><a id="a299b64de03d6461c988a78593365624b"></a>
+string&#160;</td><td class="memItemRight" valign="bottom"><b>authType</b></td></tr>
+<tr class="separator:a299b64de03d6461c988a78593365624b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-attribs"></a>
+Static Public Attributes</h2></td></tr>
+<tr class="memitem:abb9961dab19aac74a73ca4fb1b9e60a6"><td class="memItemLeft" align="right" valign="top"><a id="abb9961dab19aac74a73ca4fb1b9e60a6"></a>
+static bool&#160;</td><td class="memItemRight" valign="bottom"><b>display_loginAnimation</b></td></tr>
+<tr class="separator:abb9961dab19aac74a73ca4fb1b9e60a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
 <tr class="memitem:a2fede13427963bbcdd6a7d09a6846f3a"><td class="memItemLeft" align="right" valign="top"><a id="a2fede13427963bbcdd6a7d09a6846f3a"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>Start</b> ()</td></tr>
 <tr class="separator:a2fede13427963bbcdd6a7d09a6846f3a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2bd8e46118550278f4c8429e6174061a"><td class="memItemLeft" align="right" valign="top"><a id="a2bd8e46118550278f4c8429e6174061a"></a>
-IEnumerator&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_authenticate_user.html#a2bd8e46118550278f4c8429e6174061a">GetPlayer</a> ()</td></tr>
-<tr class="memdesc:a2bd8e46118550278f4c8429e6174061a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Update the <a class="el" href="class_player.html" title="JSON-able object with all Player-related attributes (eg. id, winrate, level, stats ....">Player</a> object based on the <a class="el" href="class_user.html" title="JSON-able object storing the user&#39;s account information.">User</a> that logged in. <br /></td></tr>
-<tr class="separator:a2bd8e46118550278f4c8429e6174061a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a58f46eb506b0a535158891c9ed85b991"><td class="memItemLeft" align="right" valign="top"><a id="a58f46eb506b0a535158891c9ed85b991"></a>
-IEnumerator&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_authenticate_user.html#a58f46eb506b0a535158891c9ed85b991">TryLogin</a> (bool first_login, string json, <a class="el" href="class_user.html">User</a> user)</td></tr>
-<tr class="memdesc:a58f46eb506b0a535158891c9ed85b991"><td class="mdescLeft">&#160;</td><td class="mdescRight">Try to login with given credentials. <br /></td></tr>
-<tr class="separator:a58f46eb506b0a535158891c9ed85b991"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a58d5801c4d4ea321321ae7729a17ef7f"><td class="memItemLeft" align="right" valign="top"><a id="a58d5801c4d4ea321321ae7729a17ef7f"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_authenticate_user.html#a58d5801c4d4ea321321ae7729a17ef7f">Toggle</a> (bool input)</td></tr>
+<tr class="memdesc:a58d5801c4d4ea321321ae7729a17ef7f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Toggle the loading circle to be active/not. <br /></td></tr>
+<tr class="separator:a58d5801c4d4ea321321ae7729a17ef7f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7c2cb46ec083bb2474c6decf4f165773"><td class="memItemLeft" align="right" valign="top"><a id="a7c2cb46ec083bb2474c6decf4f165773"></a>
+IEnumerator&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_authenticate_user.html#a7c2cb46ec083bb2474c6decf4f165773">TryLogin</a> (bool firstLogin, string json, <a class="el" href="class_user.html">User</a> user)</td></tr>
+<tr class="memdesc:a7c2cb46ec083bb2474c6decf4f165773"><td class="mdescLeft">&#160;</td><td class="mdescRight">Try to login with given credentials. <br /></td></tr>
+<tr class="separator:a7c2cb46ec083bb2474c6decf4f165773"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1243f9482a71212db33a555534a1bc97"><td class="memItemLeft" align="right" valign="top"><a id="a1243f9482a71212db33a555534a1bc97"></a>
 IEnumerator&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_authenticate_user.html#a1243f9482a71212db33a555534a1bc97">TryRegister</a> (string json, <a class="el" href="class_user.html">User</a> user)</td></tr>
 <tr class="memdesc:a1243f9482a71212db33a555534a1bc97"><td class="mdescLeft">&#160;</td><td class="mdescRight">Try to register an account with given credentials. <br /></td></tr>
@@ -123,7 +131,7 @@ IEnumerator&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hre
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Login and Registration processing. </p>
 </div><hr/>The documentation for this class was generated from the following file:<ul>
-<li>Assets/Scripts/AuthenticateUser.cs</li>
+<li>AuthenticateUser.cs</li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

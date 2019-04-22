@@ -1,9 +1,6 @@
 var searchData=
 [
-  ['gameplay',['Gameplay',['../class_gameplay.html',1,'']]],
-  ['getenemy',['GetEnemy',['../class_gameplay.html#a913bad5f298dc40a248681ce50dc81dc',1,'Gameplay']]],
-  ['getjson',['GetJSON',['../class_battle_result.html#a269702cb7e87a7029e0ff374eefd5547',1,'BattleResult']]],
-  ['getplayer',['GetPlayer',['../class_authenticate_user.html#a2bd8e46118550278f4c8429e6174061a',1,'AuthenticateUser.GetPlayer()'],['../class_update_sessions.html#a2a73c7d01b39317eab0b06a3ddfb9669',1,'UpdateSessions.GetPlayer()']]],
-  ['getplayers',['GetPlayers',['../class_ranked_match_screen.html#ac556e6c839f3ed858ee7120291bf84bd',1,'RankedMatchScreen']]],
-  ['getuser',['GetUser',['../class_update_sessions.html#a0d9f725dd5bd780272f19531fcc2c523',1,'UpdateSessions']]]
+  ['fail_5fauth',['fail_auth',['../class_server.html#ab625c993d6d1ab40721d3ca33af00cb8',1,'Server']]],
+  ['findenemy_5fdone',['findEnemy_done',['../class_server.html#a914251970cab3255c343d60a6a7a55f5',1,'Server']]],
+  ['forward',['Forward',['../class_change_scene.html#a9451a67ccf1d11d95d4dd515c173d96e',1,'ChangeScene']]]
 ];

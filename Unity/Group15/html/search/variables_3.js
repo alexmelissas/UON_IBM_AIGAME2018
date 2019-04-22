@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['register_5fsuccess',['register_success',['../class_server.html#a2e16618d6f2b9f4308203f4053d54545',1,'Server']]],
-  ['result',['result',['../class_battle_result.html#aea985985a2c88b1e6f295f6646d34e8b',1,'BattleResult']]]
+  ['id1',['id1',['../class_battle_result.html#a350ad6a31cf445647adc770788444832',1,'BattleResult']]],
+  ['id2',['id2',['../class_battle_result.html#ae2c787e74297c842bf4e284f0cc612fb',1,'BattleResult']]]
 ];

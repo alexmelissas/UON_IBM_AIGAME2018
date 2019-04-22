@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.15"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Group 15: Player Class Reference</title>
+<title>The Battle Within (Group 15): Player Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -21,8 +21,9 @@
  <tbody>
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">Group 15
+   <div id="projectname">The Battle Within (Group 15)
    </div>
+   <div id="projectbrief">An asynchronous multiplayer, self-improvement RPG</div>
   </td>
  </tr>
  </tbody>
@@ -65,6 +66,7 @@ $(function() {
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-static-methods">Static Public Member Functions</a> &#124;
 <a href="#pub-attribs">Public Attributes</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="class_player-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">Player Class Reference</div>  </div>
@@ -76,14 +78,14 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:afb4c7b5f7399979c0859a7b385fa990b"><td class="memItemLeft" align="right" valign="top"><a id="afb4c7b5f7399979c0859a7b385fa990b"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_player.html#afb4c7b5f7399979c0859a7b385fa990b">Player</a> (string i, string cn, int lvl, int h_p, int atk, int def, int agl, int crit, int mn, int exp, int exp2lvl, double ftr, int sw, int sh, int ar, int w, int l)</td></tr>
-<tr class="memdesc:afb4c7b5f7399979c0859a7b385fa990b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fully specific constructor. <br /></td></tr>
-<tr class="separator:afb4c7b5f7399979c0859a7b385fa990b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a712a726b07cf901c040116d6d0c5cc66"><td class="memItemLeft" align="right" valign="top"><a id="a712a726b07cf901c040116d6d0c5cc66"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_player.html#a712a726b07cf901c040116d6d0c5cc66">Player</a> ()</td></tr>
 <tr class="memdesc:a712a726b07cf901c040116d6d0c5cc66"><td class="mdescLeft">&#160;</td><td class="mdescRight">Default constructor. <br /></td></tr>
 <tr class="separator:a712a726b07cf901c040116d6d0c5cc66"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad275d2e546547d19fca625bad0dd9dc6"><td class="memItemLeft" align="right" valign="top"><a id="ad275d2e546547d19fca625bad0dd9dc6"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_player.html#ad275d2e546547d19fca625bad0dd9dc6">Player</a> (string _id, string _characterName, int _level, int _hp, int _attack, int _defense, int _agility, int _critical_strike, int _money, int _experience, int _exptolevel, double _factor, int _sword, int _shield, int _armour, int _win, int _lose)</td></tr>
+<tr class="memdesc:ad275d2e546547d19fca625bad0dd9dc6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fully specific constructor. <br /></td></tr>
+<tr class="separator:ad275d2e546547d19fca625bad0dd9dc6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4801fed9ec34d0eac42ca4c474b3e584"><td class="memItemLeft" align="right" valign="top"><a id="a4801fed9ec34d0eac42ca4c474b3e584"></a>
 bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_player.html#a4801fed9ec34d0eac42ca4c474b3e584">ComparePlayer</a> (<a class="el" href="class_player.html">Player</a> other)</td></tr>
 <tr class="memdesc:a4801fed9ec34d0eac42ca4c474b3e584"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if two <a class="el" href="class_player.html" title="JSON-able object with all Player-related attributes (eg. id, winrate, level, stats ....">Player</a> objects have identical attributes. <br /></td></tr>
@@ -95,22 +97,31 @@ Static Public Member Functions</h2></td></tr>
 static <a class="el" href="class_player.html">Player</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_player.html#a9278b5c20dc0e3b2cab022cccacac63c">CreatePlayerFromJSON</a> (string json)</td></tr>
 <tr class="memdesc:a9278b5c20dc0e3b2cab022cccacac63c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a <a class="el" href="class_player.html" title="JSON-able object with all Player-related attributes (eg. id, winrate, level, stats ....">Player</a> object from JSON. <br /></td></tr>
 <tr class="separator:a9278b5c20dc0e3b2cab022cccacac63c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a029b0d89777abecf507167afd9342f79"><td class="memItemLeft" align="right" valign="top"><a id="a029b0d89777abecf507167afd9342f79"></a>
-static <a class="el" href="class_player.html">Player</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_player.html#a029b0d89777abecf507167afd9342f79">DeepClone&lt; Player &gt;</a> (<a class="el" href="class_player.html">Player</a> obj)</td></tr>
-<tr class="memdesc:a029b0d89777abecf507167afd9342f79"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fully clone the <a class="el" href="class_player.html" title="JSON-able object with all Player-related attributes (eg. id, winrate, level, stats ....">Player</a> object to a new one - needed in GamePlay for <a class="el" href="class_turn.html" title="Calculate all data of each turn until victory/defeat.">Turn</a> calculation. <br /></td></tr>
-<tr class="separator:a029b0d89777abecf507167afd9342f79"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adf965ae02f9b21712dcd93b8a2f955f4"><td class="memItemLeft" align="right" valign="top"><a id="adf965ae02f9b21712dcd93b8a2f955f4"></a>
+static <a class="el" href="class_player.html">Player</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_player.html#adf965ae02f9b21712dcd93b8a2f955f4">Clone</a> (<a class="el" href="class_player.html">Player</a> original)</td></tr>
+<tr class="memdesc:adf965ae02f9b21712dcd93b8a2f955f4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fully clone the <a class="el" href="class_player.html" title="JSON-able object with all Player-related attributes (eg. id, winrate, level, stats ....">Player</a> object to a new one. <br /></td></tr>
+<tr class="separator:adf965ae02f9b21712dcd93b8a2f955f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
 <tr class="memitem:a4133cf7ecb22b0ae16ee457c46eacc08"><td class="memItemLeft" align="right" valign="top"><a id="a4133cf7ecb22b0ae16ee457c46eacc08"></a>
 string&#160;</td><td class="memItemRight" valign="bottom"><b>id</b></td></tr>
 <tr class="separator:a4133cf7ecb22b0ae16ee457c46eacc08"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a921fd28fd22178d2a492819db2ac1ea8"><td class="memItemLeft" align="right" valign="top"><a id="a921fd28fd22178d2a492819db2ac1ea8"></a>
-string&#160;</td><td class="memItemRight" valign="bottom"><b>character_name</b></td></tr>
-<tr class="separator:a921fd28fd22178d2a492819db2ac1ea8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a400a72423db730ee29977227c4860cfd"><td class="memItemLeft" align="right" valign="top"><a id="a400a72423db730ee29977227c4860cfd"></a>
 int&#160;</td><td class="memItemRight" valign="bottom"><b>level</b></td></tr>
 <tr class="separator:a400a72423db730ee29977227c4860cfd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa6c1d9c5753ea9a365f28eac36238d1f"><td class="memItemLeft" align="right" valign="top"><a id="aa6c1d9c5753ea9a365f28eac36238d1f"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>sword</b></td></tr>
+<tr class="separator:aa6c1d9c5753ea9a365f28eac36238d1f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1d8f77afde9a68f34917561d915a5656"><td class="memItemLeft" align="right" valign="top"><a id="a1d8f77afde9a68f34917561d915a5656"></a>
+double&#160;</td><td class="memItemRight" valign="bottom"><b>factor</b></td></tr>
+<tr class="separator:a1d8f77afde9a68f34917561d915a5656"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:ade3562b0b9a88c192f0349ac2cafce76"><td class="memItemLeft" align="right" valign="top"><a id="ade3562b0b9a88c192f0349ac2cafce76"></a>
+string&#160;</td><td class="memItemRight" valign="bottom"><b>characterName</b></td></tr>
+<tr class="separator:ade3562b0b9a88c192f0349ac2cafce76"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9159a0bdf10845c484a41823fe3c101e"><td class="memItemLeft" align="right" valign="top"><a id="a9159a0bdf10845c484a41823fe3c101e"></a>
 int&#160;</td><td class="memItemRight" valign="bottom"><b>hp</b></td></tr>
 <tr class="separator:a9159a0bdf10845c484a41823fe3c101e"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -135,12 +146,6 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>experience</b></td></t
 <tr class="memitem:af0a031857f4ade770c6f6688b0c41dc7"><td class="memItemLeft" align="right" valign="top"><a id="af0a031857f4ade770c6f6688b0c41dc7"></a>
 int&#160;</td><td class="memItemRight" valign="bottom"><b>exptolevel</b></td></tr>
 <tr class="separator:af0a031857f4ade770c6f6688b0c41dc7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1d8f77afde9a68f34917561d915a5656"><td class="memItemLeft" align="right" valign="top"><a id="a1d8f77afde9a68f34917561d915a5656"></a>
-double&#160;</td><td class="memItemRight" valign="bottom"><b>factor</b></td></tr>
-<tr class="separator:a1d8f77afde9a68f34917561d915a5656"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa6c1d9c5753ea9a365f28eac36238d1f"><td class="memItemLeft" align="right" valign="top"><a id="aa6c1d9c5753ea9a365f28eac36238d1f"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>sword</b></td></tr>
-<tr class="separator:aa6c1d9c5753ea9a365f28eac36238d1f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af31f60ef7eedd89486623f26edb2b990"><td class="memItemLeft" align="right" valign="top"><a id="af31f60ef7eedd89486623f26edb2b990"></a>
 int&#160;</td><td class="memItemRight" valign="bottom"><b>shield</b></td></tr>
 <tr class="separator:af31f60ef7eedd89486623f26edb2b990"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -157,7 +162,7 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>lose</b></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>JSON-able object with all Player-related attributes (eg. id, winrate, level, stats ...) </p>
 </div><hr/>The documentation for this class was generated from the following file:<ul>
-<li>Assets/Scripts/Player.cs</li>
+<li>Player.cs</li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

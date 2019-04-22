@@ -1,7 +1,4 @@
 var searchData=
 [
-  ['logintwitter',['LoginTwitter',['../class_login_twitter.html',1,'']]],
-  ['logout',['Logout',['../class_logout_user.html#abd1301238a8aed6fe8ba0a83a78f347e',1,'LogoutUser']]],
-  ['logoutuser',['LogoutUser',['../class_logout_user.html',1,'']]],
-  ['lt_5fconfirm',['LT_Confirm',['../class_l_t___confirm.html',1,'']]]
+  ['json_5fsession',['JSON_Session',['../class_update_sessions.html#a841ee986ab762d64af283c9ba009c23d',1,'UpdateSessions']]]
 ];

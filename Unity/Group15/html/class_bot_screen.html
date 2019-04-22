@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.15"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Group 15: BotScreen Class Reference</title>
+<title>The Battle Within (Group 15): BotScreen Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -21,8 +21,9 @@
  <tbody>
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">Group 15
+   <div id="projectname">The Battle Within (Group 15)
    </div>
+   <div id="projectbrief">An asynchronous multiplayer, self-improvement RPG</div>
   </td>
  </tr>
  </tbody>
@@ -88,22 +89,19 @@ Public Member Functions</h2></td></tr>
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_bot_screen.html#a0d4926b1ac8cb0e45f72b127cd297f94">ChangeDifficulty</a> (string given_difficulty)</td></tr>
 <tr class="memdesc:a0d4926b1ac8cb0e45f72b127cd297f94"><td class="mdescLeft">&#160;</td><td class="mdescRight">Update the difficulty to the selected one. <br /></td></tr>
 <tr class="separator:a0d4926b1ac8cb0e45f72b127cd297f94"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6e0efe10a0e02d3d4d778676d8f17443"><td class="memItemLeft" align="right" valign="top"><a id="a6e0efe10a0e02d3d4d778676d8f17443"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>OpenInventory</b> ()</td></tr>
-<tr class="separator:a6e0efe10a0e02d3d4d778676d8f17443"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a594089f360bedf3ae9aff037401a504c"><td class="memItemLeft" align="right" valign="top"><a id="a594089f360bedf3ae9aff037401a504c"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_bot_screen.html#a594089f360bedf3ae9aff037401a504c">Play</a> ()</td></tr>
-<tr class="memdesc:a594089f360bedf3ae9aff037401a504c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initiate the PvE match. <br /></td></tr>
+<tr class="memdesc:a594089f360bedf3ae9aff037401a504c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initiate the PvE match sequence. <br /></td></tr>
 <tr class="separator:a594089f360bedf3ae9aff037401a504c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4e5c7c63dfe4cbdb6b05baa1bb623fa5"><td class="memItemLeft" align="right" valign="top"><a id="a4e5c7c63dfe4cbdb6b05baa1bb623fa5"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>ActuallyPlay</b> ()</td></tr>
-<tr class="separator:a4e5c7c63dfe4cbdb6b05baa1bb623fa5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
 <tr class="memitem:a6bfbc4fa0fb32c1eaddab0d8f4a696a7"><td class="memItemLeft" align="right" valign="top"><a id="a6bfbc4fa0fb32c1eaddab0d8f4a696a7"></a>
 GameObject&#160;</td><td class="memItemRight" valign="bottom"><b>selected_easy</b></td></tr>
 <tr class="separator:a6bfbc4fa0fb32c1eaddab0d8f4a696a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad005dc3b790b271432c1a7146acd1057"><td class="memItemLeft" align="right" valign="top"><a id="ad005dc3b790b271432c1a7146acd1057"></a>
+AudioSource&#160;</td><td class="memItemRight" valign="bottom"><b>audiosrc</b></td></tr>
+<tr class="separator:ad005dc3b790b271432c1a7146acd1057"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-attribs"></a>
 Static Public Attributes</h2></td></tr>
@@ -114,11 +112,17 @@ static string&#160;</td><td class="memItemRight" valign="bottom"><b>difficulty</
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
 <tr class="memitem:a3ffff8c4a3c08bfc13dde5e3a7af702f"><td class="memItemLeft" align="right" valign="top"><a id="a3ffff8c4a3c08bfc13dde5e3a7af702f"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>Start</b> ()</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_bot_screen.html#a3ffff8c4a3c08bfc13dde5e3a7af702f">Start</a> ()</td></tr>
+<tr class="memdesc:a3ffff8c4a3c08bfc13dde5e3a7af702f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pre-select the stored difficulty setting, play sounds. <br /></td></tr>
 <tr class="separator:a3ffff8c4a3c08bfc13dde5e3a7af702f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4a3fe27c63d7539549cd01b2f7176ed5"><td class="memItemLeft" align="right" valign="top"><a id="a4a3fe27c63d7539549cd01b2f7176ed5"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>Update</b> ()</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_bot_screen.html#a4a3fe27c63d7539549cd01b2f7176ed5">Update</a> ()</td></tr>
+<tr class="memdesc:a4a3fe27c63d7539549cd01b2f7176ed5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Keep the difficulty updated. <br /></td></tr>
 <tr class="separator:a4a3fe27c63d7539549cd01b2f7176ed5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4d2d8d3ba5b06b185ee0ee039dbdcdd4"><td class="memItemLeft" align="right" valign="top"><a id="a4d2d8d3ba5b06b185ee0ee039dbdcdd4"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_bot_screen.html#a4d2d8d3ba5b06b185ee0ee039dbdcdd4">PlayDelayed</a> ()</td></tr>
+<tr class="memdesc:a4d2d8d3ba5b06b185ee0ee039dbdcdd4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Forward to the Battle scene. <br /></td></tr>
+<tr class="separator:a4d2d8d3ba5b06b185ee0ee039dbdcdd4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
@@ -128,11 +132,14 @@ GameObject&#160;</td><td class="memItemRight" valign="bottom"><b>selected_medium
 <tr class="memitem:a262f5baad010eaff48025e5121de8399"><td class="memItemLeft" align="right" valign="top"><a id="a262f5baad010eaff48025e5121de8399"></a>
 GameObject&#160;</td><td class="memItemRight" valign="bottom"><b>selected_hard</b></td></tr>
 <tr class="separator:a262f5baad010eaff48025e5121de8399"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a233b5c70a27ea041ec3485282b95dedf"><td class="memItemLeft" align="right" valign="top"><a id="a233b5c70a27ea041ec3485282b95dedf"></a>
+GameObject&#160;</td><td class="memItemRight" valign="bottom"><b>loading</b></td></tr>
+<tr class="separator:a233b5c70a27ea041ec3485282b95dedf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>PvE screen and difficulty management. </p>
 </div><hr/>The documentation for this class was generated from the following file:<ul>
-<li>Assets/Scripts/BotScreen.cs</li>
+<li>BotScreen.cs</li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

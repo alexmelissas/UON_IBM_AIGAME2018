@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.15"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Group 15: Item Class Reference</title>
+<title>The Battle Within (Group 15): Item Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -21,8 +21,9 @@
  <tbody>
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">Group 15
+   <div id="projectname">The Battle Within (Group 15)
    </div>
+   <div id="projectbrief">An asynchronous multiplayer, self-improvement RPG</div>
   </td>
  </tr>
  </tbody>
@@ -71,7 +72,7 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
-<p>Abstract class describing core attributes of items.  
+<p>Abstract Factory - For <a class="el" href="class_items.html" title="Handle all items.">Items</a>.  
  <a href="class_item.html#details">More...</a></p>
 <div class="dynheader">
 Inheritance diagram for Item:</div>
@@ -79,9 +80,9 @@ Inheritance diagram for Item:</div>
  <div class="center">
   <img src="class_item.png" usemap="#Item_map" alt=""/>
   <map id="Item_map" name="Item_map">
-<area href="class_armour.html" alt="Armour" shape="rect" coords="0,56,54,80"/>
-<area href="class_shield.html" alt="Shield" shape="rect" coords="64,56,118,80"/>
-<area href="class_sword.html" alt="Sword" shape="rect" coords="128,56,182,80"/>
+<area href="class_armour.html" title="Armour item class." alt="Armour" shape="rect" coords="0,56,54,80"/>
+<area href="class_shield.html" title="Shield item class." alt="Shield" shape="rect" coords="64,56,118,80"/>
+<area href="class_sword.html" title="Sword item class." alt="Sword" shape="rect" coords="128,56,182,80"/>
   </map>
 </div></div>
 <table class="memberdecls">
@@ -94,9 +95,12 @@ static <a class="el" href="class_item.html">Item</a>&#160;</td><td class="memIte
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr class="memitem:a7a7bb829aca932c1c3ea439fcfa87dff"><td class="memItemLeft" align="right" valign="top"><a id="a7a7bb829aca932c1c3ea439fcfa87dff"></a>
-Image&#160;</td><td class="memItemRight" valign="bottom"><b>icon</b></td></tr>
-<tr class="separator:a7a7bb829aca932c1c3ea439fcfa87dff"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af1dc016532d298122f97471dc66c2c81"><td class="memItemLeft" align="right" valign="top"><a id="af1dc016532d298122f97471dc66c2c81"></a>
+Sprite&#160;</td><td class="memItemRight" valign="bottom"><b>icon</b></td></tr>
+<tr class="separator:af1dc016532d298122f97471dc66c2c81"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a86a80b030e63ac2d31f3576ed8d1be51"><td class="memItemLeft" align="right" valign="top"><a id="a86a80b030e63ac2d31f3576ed8d1be51"></a>
+string&#160;</td><td class="memItemRight" valign="bottom"><b>name</b></td></tr>
+<tr class="separator:a86a80b030e63ac2d31f3576ed8d1be51"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8ac358b3db5252f0f4cef2422e301fe4"><td class="memItemLeft" align="right" valign="top"><a id="a8ac358b3db5252f0f4cef2422e301fe4"></a>
 int&#160;</td><td class="memItemRight" valign="bottom"><b>hp</b></td></tr>
 <tr class="separator:a8ac358b3db5252f0f4cef2422e301fe4"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -112,18 +116,21 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>agility</b></td></tr>
 <tr class="memitem:a925e7d3f5b5ad9195d17e4db303f86f1"><td class="memItemLeft" align="right" valign="top"><a id="a925e7d3f5b5ad9195d17e4db303f86f1"></a>
 int&#160;</td><td class="memItemRight" valign="bottom"><b>critical_strike</b></td></tr>
 <tr class="separator:a925e7d3f5b5ad9195d17e4db303f86f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a371a0aed2415a1b8adf020707a38ab76"><td class="memItemLeft" align="right" valign="top"><a id="a371a0aed2415a1b8adf020707a38ab76"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>price</b></td></tr>
+<tr class="separator:a371a0aed2415a1b8adf020707a38ab76"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
-<tr class="memitem:af68e18274a72ecbbd9773024028799dd"><td class="memItemLeft" align="right" valign="top"><a id="af68e18274a72ecbbd9773024028799dd"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_item.html#af68e18274a72ecbbd9773024028799dd">Item</a> (Image icn, int h, int atk, int def, int ag, int cr)</td></tr>
-<tr class="memdesc:af68e18274a72ecbbd9773024028799dd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a generic item with icon and attributes. <br /></td></tr>
-<tr class="separator:af68e18274a72ecbbd9773024028799dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a26abe7b7a300340375a3bec714cfdd5c"><td class="memItemLeft" align="right" valign="top"><a id="a26abe7b7a300340375a3bec714cfdd5c"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_item.html#a26abe7b7a300340375a3bec714cfdd5c">Item</a> (Sprite _icon, string _name, int _hp, int _attack, int _defense, int _agility, int _critical_strike, int _price)</td></tr>
+<tr class="memdesc:a26abe7b7a300340375a3bec714cfdd5c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a generic item with icon and attributes. <br /></td></tr>
+<tr class="separator:a26abe7b7a300340375a3bec714cfdd5c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Abstract class describing core attributes of items. </p>
+<div class="textblock"><p>Abstract Factory - For <a class="el" href="class_items.html" title="Handle all items.">Items</a>. </p>
 </div><hr/>The documentation for this class was generated from the following file:<ul>
-<li>Assets/Scripts/Items/Item.cs</li>
+<li>Items/Item.cs</li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

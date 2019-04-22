@@ -1,12 +1,9 @@
 var searchData=
 [
-  ['scenehistory',['SceneHistory',['../class_scene_history.html',1,'']]],
-  ['server',['Server',['../class_server.html',1,'']]],
-  ['setsettings',['SetSettings',['../class_set_settings.html',1,'']]],
-  ['shield',['Shield',['../class_shield.html',1,'']]],
-  ['showplayerstats',['ShowPlayerStats',['../class_show_player_stats.html',1,'']]],
-  ['skiptwitter',['SkipTwitter',['../class_login_twitter.html#abdf7428a606be0f96ea4f7db15dc5f22',1,'LoginTwitter']]],
-  ['start',['Start',['../class_gameplay.html#a3262248fce4aeecf5de2486bb3305de3',1,'Gameplay.Start()'],['../class_set_settings.html#a7d405e56dc6123768fac6fdd6e70ab0f',1,'SetSettings.Start()']]],
-  ['submit',['Submit',['../class_personality_creation.html#a464be274e82be75bab0899f8756c9562',1,'PersonalityCreation']]],
-  ['sword',['Sword',['../class_sword.html',1,'']]]
+  ['rankedmatchscreen',['RankedMatchScreen',['../class_ranked_match_screen.html',1,'']]],
+  ['reanalyse',['Reanalyse',['../class_server.html#ae77fb220463cc2e8a103b90aeb4e80bb',1,'Server']]],
+  ['reanalysis_5fdone',['reanalysis_done',['../class_server.html#a42280d186d88088d0f060ccb02974ae9',1,'Server']]],
+  ['register_5fsuccess',['register_success',['../class_server.html#a2e16618d6f2b9f4308203f4053d54545',1,'Server']]],
+  ['result',['result',['../class_battle_result.html#afd1e0eda93aa975e42f89c2eb3ce0fdc',1,'BattleResult']]],
+  ['runbattle',['RunBattle',['../class_gameplay.html#a314779fdcab62c148dbf587aa0ab4f67',1,'Gameplay']]]
 ];

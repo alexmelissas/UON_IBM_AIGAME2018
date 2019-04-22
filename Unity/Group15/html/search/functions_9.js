@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['logout',['Logout',['../class_logout_user.html#abd1301238a8aed6fe8ba0a83a78f347e',1,'LogoutUser']]]
+  ['json_5fsession',['JSON_Session',['../class_update_sessions.html#a841ee986ab762d64af283c9ba009c23d',1,'UpdateSessions']]]
 ];

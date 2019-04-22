@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['onbuttonpressed',['OnButtonPressed',['../class_login_twitter.html#a93f9df661ee558c415ad4bd1aeea4555',1,'LoginTwitter']]],
-  ['opentwitter',['OpenTwitter',['../class_login_twitter.html#a89edc553ec3dd6ba022a7b126baf5b5f',1,'LoginTwitter']]]
+  ['newitem',['NewItem',['../class_item.html#ab8f02ecfdb0e7333b423635cccaac0ee',1,'Item']]],
+  ['next',['Next',['../class_agree_twitter.html#abeb68444f8f36f2eace07d276ed9970c',1,'AgreeTwitter']]],
+  ['notwitter',['NoTwitter',['../class_login_twitter.html#af7789cc9f8f7b7b541b7b78ce125944b',1,'LoginTwitter']]]
 ];
