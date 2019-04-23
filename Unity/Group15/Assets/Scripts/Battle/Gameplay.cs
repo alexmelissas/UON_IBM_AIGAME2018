@@ -36,6 +36,7 @@ public class Gameplay : MonoBehaviour {
     float enemy_newHP = -1;
     private bool skip = false;
     private bool death = false;
+    private bool ranked;
 
     //! Skip button handler
     public void Press_Skip() { skip = true; }
@@ -58,9 +59,13 @@ public class Gameplay : MonoBehaviour {
         PlayerSession.player_session.player_before_battle = Player.Clone(PlayerSession.player_session.player); // keep the player before gains
         Items.AttachItemsToPlayer(new Items(player), player);
 
-        if (!PlayerPrefs.HasKey("battle_type")) { gameObject.AddComponent<ChangeScene>().Forward("Overworld"); };
+        if (!PlayerPrefs.HasKey("battle_type"))
+            gameObject.AddComponent<ChangeScene>().Forward("Overworld");
         int battle_type = PlayerPrefs.GetInt("battle_type");
-        if(battle_type!=0 && battle_type!=1) gameObject.AddComponent<ChangeScene>().Forward("Overworld"); 
+        ranked = (battle_type == 1);
+
+        if(battle_type!=0 && battle_type!=1 && battle_type!=2)
+            gameObject.AddComponent<ChangeScene>().Forward("Overworld"); 
         enemy = PlayerSession.player_session.enemy;
         if (battle_type == 0)
         {
@@ -135,7 +140,8 @@ public class Gameplay : MonoBehaviour {
             enemy = Player.Clone(turn.enemy);
             if (result==0) player_turn = player_turn ? false : true;
         }
-        StartCoroutine(Server.PassResult(BattleResult.GetJSON(player, enemy, (result == 1) ? false : true)));
+        
+        StartCoroutine(Server.PassResult(BattleResult.GetJSON(player, enemy, (result == 1) ? false : true),ranked));
         StartCoroutine(AnimateTurns(turns));
     }
 

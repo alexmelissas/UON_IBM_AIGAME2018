@@ -10,7 +10,8 @@ public class PlayerSession : MonoBehaviour
     //! An old copy of the player for comparisons before and after a battle
     public Player player_before_battle;
     public Player enemy;
-    public int plays_left;
+    public int plays_left_unranked;
+    public int plays_left_ranked;
 
     //! Handle the Singleton object
     void Awake()

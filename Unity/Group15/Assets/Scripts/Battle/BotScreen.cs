@@ -57,7 +57,7 @@ public class BotScreen : MonoBehaviour {
     //! Initiate the PvE match sequence
     public void Play()
     {
-        if (PlayerSession.player_session.plays_left <= 0)
+        if (PlayerSession.player_session.plays_left_unranked <= 0)
         {
             NPBinding.UI.ShowToast("No plays left. Check back tomorrow!", eToastMessageLength.SHORT);
             return;

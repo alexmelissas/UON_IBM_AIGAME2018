@@ -53,6 +53,7 @@ public class Server {
             case "battle": path = "/battle"; break;
             case "get_battle": path = "/battle/"; break;
             case "get_plays": path = "/battle/count/"; break;
+            case "get_plays_ranked": path = "/battle/ranked/count"; break;
 
             default: path = ""; break;
         }
@@ -143,9 +144,9 @@ public class Server {
     //! Get the player's remaining plays for the day
     public static IEnumerator GetPlaysLeft()
     {
-        string address = Server.Address("get_plays") + UserSession.user_session.user.id;
+        string unranked_address = Server.Address("get_plays") + UserSession.user_session.user.id;
 
-        using (UnityWebRequest uwr = UnityWebRequest.Get(address))
+        using (UnityWebRequest uwr = UnityWebRequest.Get(unranked_address))
         {
             uwr.timeout = 10;
             yield return uwr.SendWebRequest();
@@ -154,14 +155,31 @@ public class Server {
             else
             {
                 int played_today = Int32.Parse(uwr.downloadHandler.text);
-                PlayerSession.player_session.plays_left = 10 - played_today;
+                PlayerSession.player_session.plays_left_unranked = 10 - played_today;
             }
             uwr.Dispose();
         }
+        
+        string ranked_address = Server.Address("get_plays_ranked") + UserSession.user_session.user.id;
+
+        using (UnityWebRequest uwr = UnityWebRequest.Get(unranked_address))
+        {
+            uwr.timeout = 10;
+            yield return uwr.SendWebRequest();
+            if (uwr.isNetworkError)
+                Debug.Log("Error While Sending: " + uwr.error);
+            else
+            {
+                int played_today = Int32.Parse(uwr.downloadHandler.text);
+                PlayerSession.player_session.plays_left_ranked = 10 - played_today;
+            }
+            uwr.Dispose();
+        }
+
         yield break;
     }
 
-    //! Get either random player as enemy (PvP) or a bot (PvE) from server
+    //! Get either random player as enemy (PvP/Ranked) or a bot (PvE) from server
     public static IEnumerator GetEnemy(int battletype)
     {
         findEnemy_done = false;
@@ -191,9 +209,11 @@ public class Server {
     }
 
     //! Pass the BattleResult object of the current battle to the server
-    public static IEnumerator PassResult(string battle_result)
+    public static IEnumerator PassResult(string battle_result, bool ranked)
     {
-        UnityWebRequest uwr = new UnityWebRequest(Server.Address("battle"), "PUT");
+        string url = Server.Address("battle");
+        if (ranked) url += "/ranked";
+        UnityWebRequest uwr = new UnityWebRequest(url, "PUT");
         byte[] jsonToSend = new System.Text.UTF8Encoding().GetBytes(battle_result);
         uwr.uploadHandler = (UploadHandler)new UploadHandlerRaw(jsonToSend);
         uwr.downloadHandler = (DownloadHandler)new DownloadHandlerBuffer();

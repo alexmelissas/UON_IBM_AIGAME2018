@@ -4,7 +4,7 @@ using UnityEngine.UI;
 //! View username on the overworld
 public class Overworld : MonoBehaviour {
 
-    public Text usernameText, playsText;
+    public Text usernameText, playsUnrankedText, playsRankedText;
 
     //! Check the user's remaining Plays for the day
     private void GetPlays() { StartCoroutine(Server.GetPlaysLeft()); }
@@ -22,12 +22,14 @@ public class Overworld : MonoBehaviour {
         if (UserSession.user_session != null && UserSession.user_session.user.GetUsername()!="")
         {
             usernameText.GetComponentInChildren<Text>().text = UserSession.user_session.user.GetUsername();
-            playsText.GetComponentInChildren<Text>().text = "" + PlayerSession.player_session.plays_left;
+            playsUnrankedText.GetComponentInChildren<Text>().text = "" + PlayerSession.player_session.plays_left_unranked;
+            playsRankedText.GetComponentInChildren<Text>().text = "" + PlayerSession.player_session.plays_left_ranked;
         }
         else
         {
             usernameText.GetComponentInChildren<Text>().text = "<Invalid Session>";
-            playsText.GetComponentInChildren<Text>().text = "";
+            playsUnrankedText.GetComponentInChildren<Text>().text = "";
+            playsRankedText.GetComponentInChildren<Text>().text = "";
         }
     }
 }

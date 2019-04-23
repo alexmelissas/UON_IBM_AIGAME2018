@@ -5,7 +5,7 @@ using UnityEngine.Networking;
 using UnityEngine.UI;
 using VoxelBusters.NativePlugins;
 
-//! PvP screen handling
+//! Ranked PvP screen handling
 public class RankedMatchScreen : MonoBehaviour
 {
     public GameObject rankingsDisplayGroup, loading_spin_Animation;
@@ -85,7 +85,7 @@ public class RankedMatchScreen : MonoBehaviour
     //! Initiate the PvP match
     public void Play()
     {
-        if (PlayerSession.player_session.plays_left <= 0)
+        if (PlayerSession.player_session.plays_left_ranked <= 0)
         {
             NPBinding.UI.ShowToast("No plays left. Check back tomorrow!", eToastMessageLength.SHORT);
             return;
