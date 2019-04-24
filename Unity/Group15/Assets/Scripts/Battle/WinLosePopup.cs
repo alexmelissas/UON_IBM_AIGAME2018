@@ -64,7 +64,7 @@ public class WinLosePopup : MonoBehaviour {
                 else
                 {
                     expSlider.normalizedValue = 0;
-                    soundsrc.PlayOneShot(levelup_Sound, PlayerPrefs.GetFloat("fx"));
+                    soundsrc.PlayOneShot(levelup_Sound, PlayerPrefs.GetFloat("fx")/2);
                     before.level++;
                     before.experience = 0;
                     gainedLevel = true;
