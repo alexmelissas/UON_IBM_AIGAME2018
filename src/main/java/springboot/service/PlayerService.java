@@ -22,14 +22,15 @@ public interface PlayerService {
 	/**
 	 * Get all the players
 	 * 
-	 * @return
+	 * @return the list of players
 	 */
 	public List<Player> getPlayers();
-	
+
 	/**
 	 * Get all the players by group
 	 * 
-	 * @return
+	 * @param group the group number
+	 * @return the list of players
 	 */
 	public List<Player> getPlayersByGroup(int group);
 

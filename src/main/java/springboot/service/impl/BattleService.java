@@ -234,7 +234,7 @@ public class BattleService {
 	 * Get the number of battles of a player
 	 * 
 	 * @param id  the id
-	 * @param str
+	 * @param str indicate the battle is ranked or unranked
 	 * @return the number of battles
 	 */
 	public int getBattleCount(String id, String str) {

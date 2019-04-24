@@ -119,6 +119,7 @@ public class BattleController {
 	/**
 	 * Get the top ten player in the group
 	 * 
+	 * @param groupNum the group number
 	 * @return the rank of players in the group
 	 */
 	@GetMapping("/battle/ranked/group/{groupNum}")
@@ -130,7 +131,7 @@ public class BattleController {
 	 * Handle the result of battle
 	 * 
 	 * @param jsonString json string which contains the information of battle
-	 * @return
+	 * @return the updated player
 	 */
 	@PutMapping("/battle")
 	public Player handleResult(@RequestBody String jsonString) {
@@ -151,7 +152,7 @@ public class BattleController {
 	/**
 	 * Handle the ranked battle
 	 * 
-	 * @param jsonString
+	 * @param jsonString the json result
 	 */
 	@PutMapping("/battle/ranked")
 	public void handleRankedResult(@RequestBody String jsonString) {

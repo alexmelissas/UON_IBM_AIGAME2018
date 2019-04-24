@@ -54,9 +54,9 @@ public class User implements Serializable{
 	/**
 	 * Constructor
 	 * 
-	 * @param id
-	 * @param username
-	 * @param password
+	 * @param id the id
+	 * @param username the username
+	 * @param password the password
 	 */
 	public User(String id, String username, String password) {
 		this.id = id;
@@ -67,11 +67,11 @@ public class User implements Serializable{
 	/**
 	 * Constructor
 	 * 
-	 * @param id
-	 * @param username
-	 * @param password
-	 * @param accessToken
-	 * @param accessTokenSecret
+	 * @param id the id
+	 * @param username the username
+	 * @param password the password
+	 * @param accessToken the access token
+	 * @param accessTokenSecret the access token secret
 	 */
 	public User(String id, String username, String password, String accessToken, String accessTokenSecret) {
 		this.id = id;

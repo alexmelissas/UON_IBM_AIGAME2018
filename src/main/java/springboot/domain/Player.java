@@ -59,7 +59,7 @@ public class Player extends BasicCharacter implements Serializable {
 	/**
 	 * Constructor
 	 * 
-	 * @param id
+	 * @param id the id
 	 */
 	public Player(String id) {
 		this.id = id;
@@ -85,6 +85,7 @@ public class Player extends BasicCharacter implements Serializable {
 	 * @param armour         armour level
 	 * @param win            number of wins
 	 * @param lose           number of loses
+	 * @param group          group number
 	 */
 	public Player(String id, String characterName, int level, int hp, int attack, int defense, int agility,
 			int criticalStrike, int money, int experience, int exptolevel, double factor, int sword, int shield,

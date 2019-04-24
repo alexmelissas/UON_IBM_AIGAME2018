@@ -46,8 +46,8 @@ public class RedisService implements InitializingBean {
 	/**
 	 * Get the analysis result
 	 * 
-	 * @param id
-	 * @return
+	 * @param id the id
+	 * @return the analysis result
 	 */
 	public String getResult(String id) {
 		Jedis jedis = jedisPool.getResource();

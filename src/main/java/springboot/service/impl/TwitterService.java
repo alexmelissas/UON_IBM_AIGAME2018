@@ -55,7 +55,7 @@ public class TwitterService {
 	 * @param twitter      the twitter
 	 * @param verifier     the verifier
 	 * @param requestToken the request token
-	 * @return
+	 * @return the result
 	 */
 	public String analysisTweets(String id, Twitter twitter, String verifier, RequestToken requestToken) {
 		try {
@@ -173,12 +173,10 @@ public class TwitterService {
 	 * Without twitter
 	 * 
 	 * @param id the id
-	 * @return the result of
 	 */
 	public void withoutTwitter(String id) {
 		logger.info(">>>Initializing the character", id);
 		initialize(id, false);
-
 	}
 
 	/**

@@ -52,7 +52,7 @@ public interface UserService {
 	 * Check if a username is available
 	 * 
 	 * @param username the user
-	 * @return
+	 * @return true for exist; false for not
 	 */
 	public boolean isExist(String username);
 

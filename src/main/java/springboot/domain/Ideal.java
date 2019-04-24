@@ -49,7 +49,7 @@ public class Ideal implements Serializable {
 	/**
 	 * Constructor
 	 * 
-	 * @param id id
+	 * @param id the id
 	 */
 	public Ideal(String id) {
 		this.id = id;
@@ -58,11 +58,11 @@ public class Ideal implements Serializable {
 	/**
 	 * Constructor
 	 * 
-	 * @param openess           the degree of openess
-	 * @param conscientiousness the degree of conscientiousness
-	 * @param extraversion      the degree of extraversion
-	 * @param agreeableness     the degree of agreeableness
-	 * @param emotionalrange    the degree of emotionalrange
+	 * @param openess           openess
+	 * @param conscientiousness conscientiousness
+	 * @param extraversion      extraversion
+	 * @param agreeableness     agreeableness
+	 * @param emotionalrange    emotionalrange
 	 */
 	public Ideal(double openess, double conscientiousness, double extraversion, double agreeableness,
 			double emotionalrange) {
@@ -76,12 +76,12 @@ public class Ideal implements Serializable {
 	/**
 	 * Constructor
 	 * 
-	 * @param id
-	 * @param openess
-	 * @param conscientiousness
-	 * @param extraversion
-	 * @param agreeableness
-	 * @param emotionalrange
+	 * @param id                id
+	 * @param openess           openess
+	 * @param conscientiousness conscientiousness
+	 * @param extraversion      extraversion
+	 * @param agreeableness     agreeableness
+	 * @param emotionalrange    emotionalrange
 	 */
 	public Ideal(String id, double openess, double conscientiousness, double extraversion, double agreeableness,
 			double emotionalrange) {

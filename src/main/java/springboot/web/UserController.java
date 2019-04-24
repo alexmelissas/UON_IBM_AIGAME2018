@@ -32,7 +32,7 @@ public class UserController {
 	/**
 	 * Get all the users
 	 * 
-	 * @return
+	 * @return a list of users
 	 */
 	@GetMapping("/users")
 	public @ResponseBody Iterable<User> getAllUsers() {
@@ -42,8 +42,8 @@ public class UserController {
 	/**
 	 * Add a new user and create account for users
 	 * 
-	 * @param user
-	 * @return
+	 * @param user the new user
+	 * @return the result
 	 */
 	@PostMapping("/users")
 	public @ResponseBody String addUser(@RequestBody User user) {
@@ -59,8 +59,8 @@ public class UserController {
 	/**
 	 * Get a single user through id
 	 * 
-	 * @param id
-	 * @return
+	 * @param id the id
+	 * @return the user
 	 */
 	@GetMapping("/users/{id}")
 	public @ResponseBody User getUserById(@PathVariable String id) {
@@ -71,9 +71,9 @@ public class UserController {
 	/**
 	 * Update the information of users
 	 * 
-	 * @param id
-	 * @param user
-	 * @return
+	 * @param id the id
+	 * @param user the user
+	 * @return the result
 	 */
 	@PutMapping("/users/{id}")
 	public @ResponseBody String updateUser(@PathVariable String id, @RequestBody User user) {
@@ -94,8 +94,8 @@ public class UserController {
 	/**
 	 * Delete the account of users
 	 * 
-	 * @param id
-	 * @return
+	 * @param id the id
+	 * @return the result
 	 */
 	@DeleteMapping("/users/{id}")
 	public @ResponseBody String deleteUser(@PathVariable String id) {
@@ -106,8 +106,8 @@ public class UserController {
 	/**
 	 * Login
 	 * 
-	 * @param user
-	 * @return
+	 * @param user the user
+	 * @return the result
 	 */
 	@PostMapping("/users/login")
 	public User login(@RequestBody User user) {
