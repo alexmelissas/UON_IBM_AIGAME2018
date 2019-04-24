@@ -1,39 +1,30 @@
-### Game_backend
+### Content Guide
 
-**Technical**
-- Spring Boot
-- MySQL
-- IBM Personality Insight
-- Twitter4j
-- oauth 1.0
+## Play the Game
 
-**TODO**
-- [x] Twitter authorization
-- [x] Access user tweets
-- [x] Load tweets to IBM Personality Insight
-- [ ] Store access token into datatbase
-- [ ] User sign up and login API
-- [x] Add error page
-- [ ] Deal with insufficient words on twitter
-- [ ] Transfer the result of analysis to character attributes:
-	- user choose the personality
-	- compare the similarity
-	- generate the attributes
-- [ ] Improve the security of database
-- [ ] REST API
-- [ ] Logger
-- [ ] Exception handle
+**Minimum Requirements**
+- Android 4.1 or later
+- ARMv7 CPU with NEON support or Atom CPU
+- OpenGL ES 2.0 or later
 
-**API reference**
-- `/auth`: go to the authorization page
-- `/user`:
-	- `"/add"`: add new user
-	- `"/all"`: get all the users
-	- `"/find"`: find user by id
-	- `"/update"`: update user information
-	- `"/delete"`: delete user
-- `/analysis`: IBM personality insight service
-- TBD
+**Install**
+- Download the "BattleWithin.apk" file
+- Plug in your Android device, set it to developer mode.
+- Install the apk with your favourite file browser.
+- Now play!
 
-**Helpful material**
-- https://developer.twitter.com/en/docs/twitter-for-websites/log-in-with-twitter/guides/implementing-sign-in-with-twitter
+## Work on the FrontEnd
+**Setup**
+- Download the */Unity/Group15* folder
+- Open in Unity
+- Unity version used: 2018.2.14.f1
+
+**Walkthrough**
+- Have a look at the Assets folder. There you'll find:
+- *Scripts* - the folder containing all the C# scripts.
+- *Graphics* - backgrounds, models, icons.
+- *Sounds* - soundFX and music.
+- *Scenes* - all our game's screens.
+
+**Most important classes**
+- Look at our software documentation for a list of the most significant aspects of the frontend
