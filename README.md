@@ -74,6 +74,9 @@ More details can be found in our Game Concept folders in documentation. Please s
 - IBM personality insight: https://cloud.ibm.com/apidocs/personality-insights?code=java#get-profile
 - Spring Boot: https://spring.io/guides
 
+**Most Important Classes**
+- Please refer to our Software Documentation for a list of the most significant classes of the backend
+
 # Tracking the Project
 - You can also follow our Blog for more information about each step.
 - You can view our Trello board for more information on the nitty gritty and tasks
