@@ -1,68 +1,69 @@
 package springboot.web;
 
-import java.io.IOException;
-import java.util.List;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import springboot.service.PersonalityInsightService;
-import springboot.util.AnalysisResult;
-import springboot.util.ContentLoader;
-import twitter4j.Status;
+import springboot.domain.Player;
+import springboot.service.impl.TwitterService;
 import twitter4j.Twitter;
-import twitter4j.TwitterException;
-import twitter4j.User;
-import twitter4j.auth.AccessToken;
 import twitter4j.auth.RequestToken;
 
+/**
+ * <p>
+ * The AnalysisConctroller is used to handle analysis related requests.
+ * </p>
+ * 
+ * @author chenyu
+ *
+ */
 @RestController
 public class AnalysisController {
 	@Autowired
-	private PersonalityInsightService piService; 
-	
-    @RequestMapping("/analysis")
-    public AnalysisResult anlysis(HttpServletRequest request) {
-    	ContentLoader contentLoader = (ContentLoader) request.getSession().getAttribute("content");
-    	return new AnalysisResult(piService.analysis(contentLoader));
-    }
-    
-    // Authorization callback
-    @RequestMapping("/success")
-	public void success(HttpServletRequest request, HttpServletResponse response) throws IOException {
+	private TwitterService twitterService;
+	private static Logger logger = LoggerFactory.getLogger(AnalysisController.class);
+
+	/**
+	 * Authorization callback (set in Twitter Developer Account)
+	 * 
+	 * @param request  the request
+	 * @param response the response
+	 * @return the result
+	 */
+	@GetMapping("/tweets")
+	public String analysis(HttpServletRequest request, HttpServletResponse response) {
+		logger.info("======Analysis Tweets======");
+		// Get the tweets of user
+		String result = null;
+		String id = (String) request.getSession().getAttribute("id");
 		Twitter twitter = (Twitter) request.getSession().getAttribute("twitter");
 		RequestToken requestToken = (RequestToken) request.getSession().getAttribute("requestToken");
 		String verifier = request.getParameter("oauth_verifier");
-		
-		try {
-			AccessToken accessToken = twitter.getOAuthAccessToken(requestToken, verifier);
-			System.out.println("Access Token:" + accessToken.getToken());
-			System.out.println("Access Token Secret:" + accessToken.getTokenSecret());
-			User user = twitter.verifyCredentials();
-			System.out.println(user);
-			
-//			user = twitter.showUser(accessToken.getUserId());
-//			System.out.println(user);
-			
-			// Get tweets and add text into ContentLoader
-			ContentLoader contentLoader = new ContentLoader();
-			List<Status> statuses = twitter.getUserTimeline();			
-			System.out.println("Showing @" + user.getScreenName() + "'s home timeline.");
-            for (Status status : statuses) {
-                System.out.println("@" + status.getUser().getScreenName() + " - " + status.getText());
-                contentLoader.addInput(status.getText());
-            }
-            
-            request.getSession().setAttribute("content", contentLoader);
-		} catch (TwitterException e) {
-			e.printStackTrace();
-		}
-		
-		response.sendRedirect(request.getContextPath() + "/analysis");
-		return;
+		result = twitterService.analysisTweets(id, twitter, verifier, requestToken);
+		logger.info("======Analysis Tweets End======");
+		logger.info("======Authorization End======");
+
+		return result;
+	}
+
+	/**
+	 * Reanalysis the tweets
+	 * 
+	 * @param id the id
+	 * @return the result
+	 */
+	@PutMapping("/reanalysis/{id}")
+	public Player reanalysis(@PathVariable String id) {
+		logger.info("======Reanalysis Tweets======");
+		Player player = twitterService.reAnalysisTweets(id);
+		logger.info("======Reanalysis Tweets End======");
+		return player;
 	}
 }

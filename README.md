@@ -13,18 +13,9 @@ More details can be found in our Game Concept folders in documentation. Please s
   - Gail Hopkins
 - Sponsor:
   - John McNamara
-  
-## Tracking the Project
-- You can also follow our Blog for more information about each step.
-- You can view our Trello board for more information on the nitty gritty and tasks
-- You can go through our "Instructable.pdf", an overview of the entire development process from start to finish. It's available on the Documentation Repository (OneDrive)
-
-## Useful Links:
-- Project Trello Board: https://trello.com/b/E747Qbxe - *Please contact Alexandros if you can't access the link, the link in the Final Report should work, this is due to privacy concerns*.
-- Project Documentation: OneDrive - *No link provided here for public access restriction* - Please contact Alexandros if you need a link to OneDrive.
-- Blog: https://uonaigame.wordpress.com
 
 # Content Guide
+
 ## Play the Game
 
 **Minimum Requirements**
@@ -53,3 +44,42 @@ More details can be found in our Game Concept folders in documentation. Please s
 
 **Most Important Classes**
 - Please refer to our Software Documentation for a list of the most significant classes of the frontend
+
+## Work on the BackEnd
+
+**Technical Requirements**
+- Spring Boot
+- MySQL
+- Redis
+- IBM Personality Insight
+- Twitter4j
+- OAuth 1.0
+
+**Deployment Instructions**
+- Example environment:
+	- ubuntu 18.04.2
+	- MySQL 5.7.25
+	- Java 1.8.0_201-b09
+	- Redis 4.0.9
+- Step:
+	- setup the environment
+	- modify the MySQL connection information in application.properties
+	- create a database in MySQL
+	- start Redis: `redis-server`
+	- package the project into jar file
+	- startup the jar file: `java -jar xxx.jar`
+
+**Helpful material**
+- Twitte4j: https://developer.twitter.com/en/docs/twitter-for-websites/log-in-with-twitter/guides/implementing-sign-in-with-twitter
+- IBM personality insight: https://cloud.ibm.com/apidocs/personality-insights?code=java#get-profile
+- Spring Boot: https://spring.io/guides
+
+# Tracking the Project
+- You can also follow our Blog for more information about each step.
+- You can view our Trello board for more information on the nitty gritty and tasks
+- You can go through our "Instructable.pdf", an overview of the entire development process from start to finish. It's available on the Documentation Repository (OneDrive)
+
+## Useful Links:
+- Project Trello Board: https://trello.com/b/E747Qbxe - *Please contact Alexandros if you can't access the link, the link in the Final Report should work, this is due to privacy concerns*.
+- Project Documentation: OneDrive - *No link provided here for public access restriction* - Please contact Alexandros if you need a link to OneDrive.
+- Blog: https://uonaigame.wordpress.com
