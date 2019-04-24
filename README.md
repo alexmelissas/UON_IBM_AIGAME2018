@@ -1,5 +1,30 @@
-### Content Guide
+# UON_IBM_AIGAME2018
+UoN Students' 2nd Year Project building an AI-centric Self-Improvement Game with IBM. The game will focus on helping the player work towards making their personality better, according to their own perception of what a 'good' personality will be. 
+More details can be found in our Game Concept folders in documentation. Please see the "Tracking the Project" section below for more information on how to go through this project development process.
 
+## People Involved
+- Students:
+  - Alexandros Melissas (**Team Leader**) **psyam19**
+  - Yu Chen (**Administrator**) **psyyc6**
+  - Aaron Mathe **psyapm**
+  - Qingyang Liu **psyql2**
+  - Samuel Adejumo **eeysaad**
+- Supervisor:
+  - Gail Hopkins
+- Sponsor:
+  - John McNamara
+  
+## Tracking the Project
+- You can also follow our Blog for more information about each step.
+- You can view our Trello board for more information on the nitty gritty and tasks
+- You can go through our "Instructable.pdf", an overview of the entire development process from start to finish. It's available on the Documentation Repository (OneDrive)
+
+## Useful Links:
+- Project Trello Board: https://trello.com/b/E747Qbxe - *Please contact Alexandros if you can't access the link, the link in the Final Report should work, this is due to privacy concerns*.
+- Project Documentation: OneDrive - *No link provided here for public access restriction* - Please contact Alexandros if you need a link to OneDrive.
+- Blog: https://uonaigame.wordpress.com
+
+# Content Guide
 ## Play the Game
 
 **Minimum Requirements**
