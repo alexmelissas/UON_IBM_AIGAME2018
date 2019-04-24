@@ -1,0 +1,123 @@
+\hypertarget{class_inventory}{}\section{Inventory Class Reference}
+\label{class_inventory}\index{Inventory@{Inventory}}
+
+
+Manage the \mbox{\hyperlink{class_inventory}{Inventory}} screen, including Upgrades.  
+
+
+Inheritance diagram for Inventory\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_inventory}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_inventory_aa99e2b5246a749ec59f04aa1ce48416a}\label{class_inventory_aa99e2b5246a749ec59f04aa1ce48416a}} 
+void \mbox{\hyperlink{class_inventory_aa99e2b5246a749ec59f04aa1ce48416a}{Setup\+Upgrade\+Panel}} (int item\+\_\+type)
+\begin{DoxyCompactList}\small\item\em Setup the item upgrade panel with the next level item of selected type. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_inventory_a284995426324c648b4c9144a3b9bc277}\label{class_inventory_a284995426324c648b4c9144a3b9bc277}} 
+void \mbox{\hyperlink{class_inventory_a284995426324c648b4c9144a3b9bc277}{Confirm\+Purchase}} ()
+\begin{DoxyCompactList}\small\item\em Check if player has enough funds, then make the purchase. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_inventory_abd3af35db0c0049ce91eaa99b1798a69}\label{class_inventory_abd3af35db0c0049ce91eaa99b1798a69}} 
+Text {\bfseries hp\+Text}
+\item 
+\mbox{\Hypertarget{class_inventory_a4382ed8c55fa1899bf7a981ffac00523}\label{class_inventory_a4382ed8c55fa1899bf7a981ffac00523}} 
+Game\+Object {\bfseries upgrade\+Panel}
+\item 
+\mbox{\Hypertarget{class_inventory_aff3bb1bee86c2916dd649bf623cbb963}\label{class_inventory_aff3bb1bee86c2916dd649bf623cbb963}} 
+Text {\bfseries item\+Name\+Text}
+\item 
+\mbox{\Hypertarget{class_inventory_ae035b7a3471724276238be3ec5d4769f}\label{class_inventory_ae035b7a3471724276238be3ec5d4769f}} 
+Game\+Object {\bfseries item\+Icon\+Image}
+\item 
+\mbox{\Hypertarget{class_inventory_a268e4f39b1a158144b18d8560d4c2ef2}\label{class_inventory_a268e4f39b1a158144b18d8560d4c2ef2}} 
+Game\+Object {\bfseries sword\+Fully\+Upgraded\+Image}
+\item 
+\mbox{\Hypertarget{class_inventory_a8c34a2d39aab6ff22ec36e41763e2e22}\label{class_inventory_a8c34a2d39aab6ff22ec36e41763e2e22}} 
+Sprite {\bfseries atk}
+\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_inventory_a88da279faf84d529af011f7e25bea01b}\label{class_inventory_a88da279faf84d529af011f7e25bea01b}} 
+void {\bfseries Awake} ()
+\item 
+\mbox{\Hypertarget{class_inventory_aa5a9d430aff1ecd12a75901608d337ea}\label{class_inventory_aa5a9d430aff1ecd12a75901608d337ea}} 
+void \mbox{\hyperlink{class_inventory_aa5a9d430aff1ecd12a75901608d337ea}{Start}} ()
+\begin{DoxyCompactList}\small\item\em General Setup. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_inventory_a7b1e7148da0c7b5e4d87b6ea07dce086}\label{class_inventory_a7b1e7148da0c7b5e4d87b6ea07dce086}} 
+void \mbox{\hyperlink{class_inventory_a7b1e7148da0c7b5e4d87b6ea07dce086}{Update}} ()
+\begin{DoxyCompactList}\small\item\em Keep the player\textquotesingle{}s stats display updated. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_inventory_a6a6906197f22590ffa086d4aca935dc3}\label{class_inventory_a6a6906197f22590ffa086d4aca935dc3}} 
+void \mbox{\hyperlink{class_inventory_a6a6906197f22590ffa086d4aca935dc3}{Displayed}} (bool shown)
+\begin{DoxyCompactList}\small\item\em Show/\+Hide the item upgrade panels. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_inventory_a5ff170daf3d949c611d8e064626524e2}\label{class_inventory_a5ff170daf3d949c611d8e064626524e2}} 
+void \mbox{\hyperlink{class_inventory_a5ff170daf3d949c611d8e064626524e2}{Update\+Labels}} (int item\+\_\+type)
+\begin{DoxyCompactList}\small\item\em Helper for Setup\+Upgrade\+Panels. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_inventory_a6be0d5d14468b2eb9cba732c3f65c3e5}\label{class_inventory_a6be0d5d14468b2eb9cba732c3f65c3e5}} 
+I\+Enumerator \mbox{\hyperlink{class_inventory_a6be0d5d14468b2eb9cba732c3f65c3e5}{Purchase}} (string poorer\+Player\+J\+S\+ON)
+\begin{DoxyCompactList}\small\item\em Perform the server-\/side updating of the \mbox{\hyperlink{class_player}{Player}} based on the purchase. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_inventory_a6be0183125fd410aab7aeaf701db4741}\label{class_inventory_a6be0183125fd410aab7aeaf701db4741}} 
+Text {\bfseries atk\+Text}
+\item 
+\mbox{\Hypertarget{class_inventory_aa126dcd06ebf1ea9eec5aa6ca1e83a8d}\label{class_inventory_aa126dcd06ebf1ea9eec5aa6ca1e83a8d}} 
+Text {\bfseries def\+Text}
+\item 
+\mbox{\Hypertarget{class_inventory_aa93a5a923daa1233401192da490e8e27}\label{class_inventory_aa93a5a923daa1233401192da490e8e27}} 
+Text {\bfseries money\+Text}
+\item 
+\mbox{\Hypertarget{class_inventory_a00da1044a0d829c9b8e0156f8b059db7}\label{class_inventory_a00da1044a0d829c9b8e0156f8b059db7}} 
+Text {\bfseries stat\+Text}
+\item 
+\mbox{\Hypertarget{class_inventory_a357c419671e7cb628288360cc7acd604}\label{class_inventory_a357c419671e7cb628288360cc7acd604}} 
+Text {\bfseries price\+Text}
+\item 
+\mbox{\Hypertarget{class_inventory_a904e3fced18e5366bb5b89c7e4262874}\label{class_inventory_a904e3fced18e5366bb5b89c7e4262874}} 
+Text {\bfseries balance\+Text}
+\item 
+\mbox{\Hypertarget{class_inventory_a93a55231b5b247c2e7b0dfee9ce2dd3d}\label{class_inventory_a93a55231b5b247c2e7b0dfee9ce2dd3d}} 
+Game\+Object {\bfseries stat\+Icon\+Image}
+\item 
+\mbox{\Hypertarget{class_inventory_a1d9b045b21d5bd72f6a6f6a94d535c72}\label{class_inventory_a1d9b045b21d5bd72f6a6f6a94d535c72}} 
+Game\+Object {\bfseries loading\+\_\+spinning\+\_\+\+Animation}
+\item 
+\mbox{\Hypertarget{class_inventory_a19d58719a7e83a39bedb7514bd938649}\label{class_inventory_a19d58719a7e83a39bedb7514bd938649}} 
+Game\+Object {\bfseries shield\+Fully\+Upgraded\+Image}
+\item 
+\mbox{\Hypertarget{class_inventory_ad414f904995e16ebdd58cf18700d4e59}\label{class_inventory_ad414f904995e16ebdd58cf18700d4e59}} 
+Game\+Object {\bfseries armour\+Fully\+Upgraded\+Image}
+\item 
+\mbox{\Hypertarget{class_inventory_a62372c6936045f41bfa87a95c1aec3c8}\label{class_inventory_a62372c6936045f41bfa87a95c1aec3c8}} 
+Sprite {\bfseries def}
+\item 
+\mbox{\Hypertarget{class_inventory_aed66b242ae5cf8df814b5d30bf20a6b3}\label{class_inventory_aed66b242ae5cf8df814b5d30bf20a6b3}} 
+Sprite {\bfseries hp}
+\item 
+\mbox{\Hypertarget{class_inventory_a2b3ce9cd39d106439c316059a190782f}\label{class_inventory_a2b3ce9cd39d106439c316059a190782f}} 
+\mbox{\hyperlink{class_player}{Player}} {\bfseries p}
+\item 
+\mbox{\Hypertarget{class_inventory_aa1d8741824496d71e52c6f87de2c1533}\label{class_inventory_aa1d8741824496d71e52c6f87de2c1533}} 
+\mbox{\hyperlink{class_item}{Item}} {\bfseries display\+Item}
+\item 
+\mbox{\Hypertarget{class_inventory_aeef6e41606f68069f4b44ab4a46bcc59}\label{class_inventory_aeef6e41606f68069f4b44ab4a46bcc59}} 
+string {\bfseries display\+Item\+Type}
+\item 
+\mbox{\Hypertarget{class_inventory_ae1830fc12251f73f70b9d5bb7986273b}\label{class_inventory_ae1830fc12251f73f70b9d5bb7986273b}} 
+int {\bfseries current\+Item\+Level}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Manage the \mbox{\hyperlink{class_inventory}{Inventory}} screen, including Upgrades. 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+U\+O\+N\+\_\+\+I\+B\+M\+\_\+\+A\+I\+G\+A\+M\+E2018/\+Unity/\+Group15/\+Assets/\+Scripts/Inventory.\+cs\end{DoxyCompactItemize}
