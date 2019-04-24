@@ -1,0 +1,66 @@
+\hypertarget{class_login_twitter}{}\section{Login\+Twitter Class Reference}
+\label{class_login_twitter}\index{LoginTwitter@{LoginTwitter}}
+
+
+Twitter login handler.  
+
+
+Inheritance diagram for Login\+Twitter\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_login_twitter}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_login_twitter_aa41d307ac0099b8dd187f05d3d2aeab3}\label{class_login_twitter_aa41d307ac0099b8dd187f05d3d2aeab3}} 
+void \mbox{\hyperlink{class_login_twitter_aa41d307ac0099b8dd187f05d3d2aeab3}{Show\+Popup}} (string popup)
+\begin{DoxyCompactList}\small\item\em Show popups for twitter terms confirmation/failed connection/skip twitter. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_login_twitter_a6719de883466089832df2f9f5189629e}\label{class_login_twitter_a6719de883466089832df2f9f5189629e}} 
+static bool \mbox{\hyperlink{class_login_twitter_a6719de883466089832df2f9f5189629e}{left\+For\+Twitter}} = false
+\begin{DoxyCompactList}\small\item\em Allow user to exit app for twitter, without ending the session. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_login_twitter_ab5b6026e105743976dbc6d21ce55f83c}\label{class_login_twitter_ab5b6026e105743976dbc6d21ce55f83c}} 
+static bool \mbox{\hyperlink{class_login_twitter_ab5b6026e105743976dbc6d21ce55f83c}{allow\+Next\+For\+Skip}} = false
+\begin{DoxyCompactList}\small\item\em Allow user to go to \mbox{\hyperlink{class_ideals}{Ideals}}, if not using twitter. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_login_twitter_aa93b8ee84e787d99c171d9086c64275c}\label{class_login_twitter_aa93b8ee84e787d99c171d9086c64275c}} 
+void {\bfseries Start} ()
+\item 
+\mbox{\Hypertarget{class_login_twitter_ac489a3bf63140ddcc50d9a10f70409d1}\label{class_login_twitter_ac489a3bf63140ddcc50d9a10f70409d1}} 
+void {\bfseries End\+Session} ()
+\item 
+\mbox{\Hypertarget{class_login_twitter_a6291e32f19d1cae3ea13e08b5401960f}\label{class_login_twitter_a6291e32f19d1cae3ea13e08b5401960f}} 
+void {\bfseries Set\+Skip\+Bool} ()
+\item 
+\mbox{\Hypertarget{class_login_twitter_a45104792188cdefa496e01daf069a9e9}\label{class_login_twitter_a45104792188cdefa496e01daf069a9e9}} 
+I\+Enumerator \mbox{\hyperlink{class_login_twitter_a45104792188cdefa496e01daf069a9e9}{Try\+Twitter}} ()
+\begin{DoxyCompactList}\small\item\em Keep checking if twitter linkage was OK -\/ until timeout (4s after they return from twitter page) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_login_twitter_af7789cc9f8f7b7b541b7b78ce125944b}\label{class_login_twitter_af7789cc9f8f7b7b541b7b78ce125944b}} 
+I\+Enumerator \mbox{\hyperlink{class_login_twitter_af7789cc9f8f7b7b541b7b78ce125944b}{No\+Twitter}} ()
+\begin{DoxyCompactList}\small\item\em Play without Twitter -\/ pass noauth token to server. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_login_twitter_a61c2451a8162c3b5e3e7f4fbec0940c1}\label{class_login_twitter_a61c2451a8162c3b5e3e7f4fbec0940c1}} 
+void \mbox{\hyperlink{class_login_twitter_a61c2451a8162c3b5e3e7f4fbec0940c1}{Try\+Open\+Twitter}} (bool accepted\+Terms)
+\begin{DoxyCompactList}\small\item\em Try to open Twitter login page. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_login_twitter_a93f9df661ee558c415ad4bd1aeea4555}\label{class_login_twitter_a93f9df661ee558c415ad4bd1aeea4555}} 
+void \mbox{\hyperlink{class_login_twitter_a93f9df661ee558c415ad4bd1aeea4555}{On\+Button\+Pressed}} (string \+\_\+button\+Pressed)
+\begin{DoxyCompactList}\small\item\em Handle dialog box button options. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_login_twitter_af567aa064be62c7c71fdd375d5f46b10}\label{class_login_twitter_af567aa064be62c7c71fdd375d5f46b10}} 
+bool \mbox{\hyperlink{class_login_twitter_af567aa064be62c7c71fdd375d5f46b10}{other\+Popup\+Open}} = false
+\begin{DoxyCompactList}\small\item\em Avoid having more than 1 popup open at a time. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Twitter login handler. 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+U\+O\+N\+\_\+\+I\+B\+M\+\_\+\+A\+I\+G\+A\+M\+E2018/\+Unity/\+Group15/\+Assets/\+Scripts/\+Personality/Login\+Twitter.\+cs\end{DoxyCompactItemize}

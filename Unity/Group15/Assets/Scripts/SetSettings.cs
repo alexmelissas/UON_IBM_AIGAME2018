@@ -1,25 +1,19 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 //! Handle the Settings screen
 public class SetSettings : MonoBehaviour {
 
-    public Slider musicSlider;
-    public Slider fxSlider;
-    public Toggle challengeToggle;
-    public Toggle skipToggle;
-    public Text currentloginLabel;
-    public Text usernameLabel;
-    public GameObject notyouLabel;
-    public GameObject logoutButton;
+    public Slider musicSlider, fxSlider;
+    public Toggle challengeToggle, skipToggle;
+    public Text currentloginText, usernameText;
+    public GameObject logoutButton, linkTwitterButton, unlinkTwitterButton;
 
     //! Display the currently selected settings properly
     private void Start()
     {
-        musicSlider.normalizedValue = PlayerPrefs.GetFloat("music");
-        fxSlider.normalizedValue = PlayerPrefs.GetFloat("fx");
+        musicSlider.normalizedValue = PlayerPrefs.GetFloat("music", 0.65f);
+        fxSlider.normalizedValue = PlayerPrefs.GetFloat("fx", 0.7f);
         challengeToggle.isOn = (PlayerPrefs.GetInt("challenged") != 0);
         skipToggle.isOn = (PlayerPrefs.GetInt("skip") != 0);
     }
@@ -31,29 +25,32 @@ public class SetSettings : MonoBehaviour {
         PlayerPrefs.SetInt("challenged", challengeToggle.isOn ? 1 : 0);
         PlayerPrefs.SetInt("skip", skipToggle.isOn ? 1 : 0);
 
-        if (UserSession.us != null)
+        if (UserSession.user_session != null && UserSession.user_session.user.GetUsername() != "")
         {
-            if (UserSession.us.user.GetUsername() == "")
+            currentloginText.GetComponentInChildren<Text>().text = "Logged in as: ";
+            usernameText.GetComponentInChildren<Text>().text = UserSession.user_session.user.GetUsername();
+
+            if (Server.CheckTwitter())
             {
-                usernameLabel.GetComponentInChildren<Text>().text = "";
-                currentloginLabel.GetComponentInChildren<Text>().text = "Not logged in yet.";                
-                logoutButton.SetActive(false);
-                notyouLabel.SetActive(false);
+                linkTwitterButton.SetActive(false);
+                unlinkTwitterButton.SetActive(true);
             }
             else
             {
-                currentloginLabel.GetComponentInChildren<Text>().text = "You are logged in as: ";
-                usernameLabel.GetComponentInChildren<Text>().text = UserSession.us.user.GetUsername();
-                logoutButton.SetActive(true);
-                notyouLabel.SetActive(true);
+                linkTwitterButton.SetActive(true);
+                unlinkTwitterButton.SetActive(false);
             }
+
+            logoutButton.SetActive(true);
+            
         }
         else
         {
-            usernameLabel.GetComponentInChildren<Text>().text = "";
-            currentloginLabel.GetComponentInChildren<Text>().text = "Not logged in yet.";            
+            usernameText.GetComponentInChildren<Text>().text = "";
+            currentloginText.GetComponentInChildren<Text>().text = "No login.";
+            linkTwitterButton.SetActive(false);
+            unlinkTwitterButton.SetActive(false);
             logoutButton.SetActive(false);
-            notyouLabel.SetActive(false);
         }
     }      
 }

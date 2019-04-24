@@ -2,25 +2,27 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-//! Singleton - Maintain the one screen history list.
+//! Singleton - Maintain the screen history list.
 public class BackButtonHandler : MonoBehaviour
 {
+    //! The Singleton object
+    public static BackButtonHandler back_button_handler;
 
-    public static BackButtonHandler bbh;
-
+    //! Handle the Singleton object
     void Awake()
     {
-        if (bbh == null)
+        if (back_button_handler == null)
         {
             DontDestroyOnLoad(gameObject);
-            bbh = this;
+            back_button_handler = this;
         }
-        else if (bbh != this)
+        else if (back_button_handler != this)
         {
             Destroy(gameObject);
         }
     }
 
+    //! Handle native Android back button pressed
     void Update()
     {
         if (Application.platform == RuntimePlatform.Android)
