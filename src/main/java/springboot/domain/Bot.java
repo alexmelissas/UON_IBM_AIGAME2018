@@ -1,17 +1,21 @@
 package springboot.domain;
 
-import springboot.util.PlayerConfig;
+import java.io.Serializable;
+
+import springboot.config.PlayerConfig;
 
 /**
  * <p>
- * The Bot class represents the bot character of the game It extends the @link
- * BasicCharacter} class
+ * The Bot class represents the bot character of the game It extends the
+ * {@link BasicCharacter} class.
  * </p>
  * 
- * @author Yu Chen
+ * @author chenyu
  *
  */
-public class Bot extends BasicCharacter {
+public class Bot extends BasicCharacter implements Serializable {
+
+	private static final long serialVersionUID = -1329586083529614902L;
 
 	/**
 	 * Constructor
@@ -20,9 +24,9 @@ public class Bot extends BasicCharacter {
 	 * @param factor the buff of the bot
 	 */
 	public Bot(int level, double factor) {
-		this.level = level;
+		this.setLevel(level);
 		this.setAttributes(PlayerConfig.getBasicStatus(level));
-		this.factor = factor;
-		this.characterName = "Bot";
+		this.setFactor(factor);
+		this.setCharacterName("Bot");
 	}
 }

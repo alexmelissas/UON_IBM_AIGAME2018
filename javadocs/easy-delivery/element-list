@@ -1,0 +1,8 @@
+springboot
+springboot.config
+springboot.domain
+springboot.repository
+springboot.service
+springboot.service.impl
+springboot.util
+springboot.web

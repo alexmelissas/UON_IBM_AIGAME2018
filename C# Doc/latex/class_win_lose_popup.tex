@@ -1,0 +1,84 @@
+\hypertarget{class_win_lose_popup}{}\section{Win\+Lose\+Popup Class Reference}
+\label{class_win_lose_popup}\index{WinLosePopup@{WinLosePopup}}
+
+
+Visualize the rewards gained from winning/losing a match.  
+
+
+Inheritance diagram for Win\+Lose\+Popup\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_win_lose_popup}
+\end{center}
+\end{figure}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_win_lose_popup_a96b5a5d480b14cdae7e5a882bee30757}\label{class_win_lose_popup_a96b5a5d480b14cdae7e5a882bee30757}} 
+Text {\bfseries win\+Money\+Text}
+\item 
+\mbox{\Hypertarget{class_win_lose_popup_adbe5b4c1578b28ae3a6bc4993407a739}\label{class_win_lose_popup_adbe5b4c1578b28ae3a6bc4993407a739}} 
+Text {\bfseries lose\+Money\+Text}
+\item 
+\mbox{\Hypertarget{class_win_lose_popup_a68c25472f6b7101d6995dd57b6aa6803}\label{class_win_lose_popup_a68c25472f6b7101d6995dd57b6aa6803}} 
+Slider {\bfseries win\+Exp\+Slider}
+\item 
+\mbox{\Hypertarget{class_win_lose_popup_a7f104ba616010ea3714c5abc1306e6de}\label{class_win_lose_popup_a7f104ba616010ea3714c5abc1306e6de}} 
+Audio\+Source {\bfseries soundsrc}
+\item 
+\mbox{\Hypertarget{class_win_lose_popup_a1f35c7e6dea70e8dba042d4703768d8d}\label{class_win_lose_popup_a1f35c7e6dea70e8dba042d4703768d8d}} 
+Audio\+Clip {\bfseries levelup\+\_\+\+Sound}
+\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_win_lose_popup_a9f1909bfd129a06cb0ff7048ccf19d0f}\label{class_win_lose_popup_a9f1909bfd129a06cb0ff7048ccf19d0f}} 
+void \mbox{\hyperlink{class_win_lose_popup_a9f1909bfd129a06cb0ff7048ccf19d0f}{Update}} ()
+\begin{DoxyCompactList}\small\item\em When battle ends, display the Win/\+Lose popup and animate the E\+XP and money gain. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_win_lose_popup_a93530da059106189d5c41afff35bca9d}\label{class_win_lose_popup_a93530da059106189d5c41afff35bca9d}} 
+void {\bfseries Setup} ()
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_win_lose_popup_ae36d60eb365ca9331d068e354a13eb00}\label{class_win_lose_popup_ae36d60eb365ca9331d068e354a13eb00}} 
+Text {\bfseries win\+Next\+Level\+Text}
+\item 
+\mbox{\Hypertarget{class_win_lose_popup_a2d14509aafa2672bffa70812b7fd8feb}\label{class_win_lose_popup_a2d14509aafa2672bffa70812b7fd8feb}} 
+Text {\bfseries lose\+Next\+Lvl\+Text}
+\item 
+\mbox{\Hypertarget{class_win_lose_popup_ab14cf5e3153f0c51bacc94f0dc7de77e}\label{class_win_lose_popup_ab14cf5e3153f0c51bacc94f0dc7de77e}} 
+Slider {\bfseries lose\+Exp\+Slider}
+\item 
+\mbox{\Hypertarget{class_win_lose_popup_adbc1922aff99c3b3fa585a4e7f124e13}\label{class_win_lose_popup_adbc1922aff99c3b3fa585a4e7f124e13}} 
+Text {\bfseries money\+Gained}
+\item 
+\mbox{\Hypertarget{class_win_lose_popup_a3b0146c33af33ccf52b4404052896bb9}\label{class_win_lose_popup_a3b0146c33af33ccf52b4404052896bb9}} 
+Text {\bfseries current\+Level}
+\item 
+\mbox{\Hypertarget{class_win_lose_popup_afef81efb95018e4cbe2505da1c5a3ab3}\label{class_win_lose_popup_afef81efb95018e4cbe2505da1c5a3ab3}} 
+Slider {\bfseries exp\+Slider}
+\item 
+\mbox{\Hypertarget{class_win_lose_popup_a7201ba527ce8ca90adf383224c89c2d3}\label{class_win_lose_popup_a7201ba527ce8ca90adf383224c89c2d3}} 
+\mbox{\hyperlink{class_player}{Player}} {\bfseries before}
+\item 
+\mbox{\Hypertarget{class_win_lose_popup_a5da1387cc4bb2efb52708a85b5a70685}\label{class_win_lose_popup_a5da1387cc4bb2efb52708a85b5a70685}} 
+\mbox{\hyperlink{class_player}{Player}} {\bfseries after}
+\item 
+\mbox{\Hypertarget{class_win_lose_popup_adaa6d1028fb44efd4fe50993ae35c9f1}\label{class_win_lose_popup_adaa6d1028fb44efd4fe50993ae35c9f1}} 
+bool {\bfseries did\+Setup} = false
+\item 
+\mbox{\Hypertarget{class_win_lose_popup_adf087a11d92bb33525095c666db98b15}\label{class_win_lose_popup_adf087a11d92bb33525095c666db98b15}} 
+bool {\bfseries gained\+Level} = false
+\item 
+\mbox{\Hypertarget{class_win_lose_popup_a24495c1926e8cf1d2284204629e8ce78}\label{class_win_lose_popup_a24495c1926e8cf1d2284204629e8ce78}} 
+float {\bfseries added\+Exp} = 0
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Visualize the rewards gained from winning/losing a match. 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+U\+O\+N\+\_\+\+I\+B\+M\+\_\+\+A\+I\+G\+A\+M\+E2018/\+Unity/\+Group15/\+Assets/\+Scripts/\+Battle/Win\+Lose\+Popup.\+cs\end{DoxyCompactItemize}

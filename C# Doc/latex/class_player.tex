@@ -1,0 +1,93 @@
+\hypertarget{class_player}{}\section{Player Class Reference}
+\label{class_player}\index{Player@{Player}}
+
+
+J\+S\+O\+N-\/able object with all Player-\/related attributes (eg. id, winrate, level, stats ...)  
+
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_player_a712a726b07cf901c040116d6d0c5cc66}\label{class_player_a712a726b07cf901c040116d6d0c5cc66}} 
+\mbox{\hyperlink{class_player_a712a726b07cf901c040116d6d0c5cc66}{Player}} ()
+\begin{DoxyCompactList}\small\item\em Default constructor. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_player_ad275d2e546547d19fca625bad0dd9dc6}\label{class_player_ad275d2e546547d19fca625bad0dd9dc6}} 
+\mbox{\hyperlink{class_player_ad275d2e546547d19fca625bad0dd9dc6}{Player}} (string \+\_\+id, string \+\_\+character\+Name, int \+\_\+level, int \+\_\+hp, int \+\_\+attack, int \+\_\+defense, int \+\_\+agility, int \+\_\+critical\+\_\+strike, int \+\_\+money, int \+\_\+experience, int \+\_\+exptolevel, double \+\_\+factor, int \+\_\+sword, int \+\_\+shield, int \+\_\+armour, int \+\_\+win, int \+\_\+lose)
+\begin{DoxyCompactList}\small\item\em Fully specific constructor. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_player_a4801fed9ec34d0eac42ca4c474b3e584}\label{class_player_a4801fed9ec34d0eac42ca4c474b3e584}} 
+bool \mbox{\hyperlink{class_player_a4801fed9ec34d0eac42ca4c474b3e584}{Compare\+Player}} (\mbox{\hyperlink{class_player}{Player}} other)
+\begin{DoxyCompactList}\small\item\em Check if two \mbox{\hyperlink{class_player}{Player}} objects have identical attributes. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_player_a9278b5c20dc0e3b2cab022cccacac63c}\label{class_player_a9278b5c20dc0e3b2cab022cccacac63c}} 
+static \mbox{\hyperlink{class_player}{Player}} \mbox{\hyperlink{class_player_a9278b5c20dc0e3b2cab022cccacac63c}{Create\+Player\+From\+J\+S\+ON}} (string json)
+\begin{DoxyCompactList}\small\item\em Create a \mbox{\hyperlink{class_player}{Player}} object from J\+S\+ON. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_player_adf965ae02f9b21712dcd93b8a2f955f4}\label{class_player_adf965ae02f9b21712dcd93b8a2f955f4}} 
+static \mbox{\hyperlink{class_player}{Player}} \mbox{\hyperlink{class_player_adf965ae02f9b21712dcd93b8a2f955f4}{Clone}} (\mbox{\hyperlink{class_player}{Player}} original)
+\begin{DoxyCompactList}\small\item\em Fully clone the \mbox{\hyperlink{class_player}{Player}} object to a new one. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_player_a4133cf7ecb22b0ae16ee457c46eacc08}\label{class_player_a4133cf7ecb22b0ae16ee457c46eacc08}} 
+string {\bfseries id}
+\item 
+\mbox{\Hypertarget{class_player_a400a72423db730ee29977227c4860cfd}\label{class_player_a400a72423db730ee29977227c4860cfd}} 
+int {\bfseries level}
+\item 
+\mbox{\Hypertarget{class_player_aa6c1d9c5753ea9a365f28eac36238d1f}\label{class_player_aa6c1d9c5753ea9a365f28eac36238d1f}} 
+int {\bfseries sword}
+\item 
+\mbox{\Hypertarget{class_player_a1d8f77afde9a68f34917561d915a5656}\label{class_player_a1d8f77afde9a68f34917561d915a5656}} 
+double {\bfseries factor}
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_player_ade3562b0b9a88c192f0349ac2cafce76}\label{class_player_ade3562b0b9a88c192f0349ac2cafce76}} 
+string {\bfseries character\+Name}
+\item 
+\mbox{\Hypertarget{class_player_a9159a0bdf10845c484a41823fe3c101e}\label{class_player_a9159a0bdf10845c484a41823fe3c101e}} 
+int {\bfseries hp}
+\item 
+\mbox{\Hypertarget{class_player_a9912e57826c51a067ab34db854f31562}\label{class_player_a9912e57826c51a067ab34db854f31562}} 
+int {\bfseries attack}
+\item 
+\mbox{\Hypertarget{class_player_a63ed43151a54b62e9d59d8ef4edc0165}\label{class_player_a63ed43151a54b62e9d59d8ef4edc0165}} 
+int {\bfseries defense}
+\item 
+\mbox{\Hypertarget{class_player_ae49bfbaba1583b695d12235263841f96}\label{class_player_ae49bfbaba1583b695d12235263841f96}} 
+int {\bfseries agility}
+\item 
+\mbox{\Hypertarget{class_player_a5e3cf6dab1263ca2b4b6b94bbcddc788}\label{class_player_a5e3cf6dab1263ca2b4b6b94bbcddc788}} 
+int {\bfseries critical\+\_\+strike}
+\item 
+\mbox{\Hypertarget{class_player_aed37167e4117c2518a154e73fbfc103c}\label{class_player_aed37167e4117c2518a154e73fbfc103c}} 
+int {\bfseries money}
+\item 
+\mbox{\Hypertarget{class_player_a99cc9f5c9fad23b0ddab68ba4eb8eee4}\label{class_player_a99cc9f5c9fad23b0ddab68ba4eb8eee4}} 
+int {\bfseries experience}
+\item 
+\mbox{\Hypertarget{class_player_af0a031857f4ade770c6f6688b0c41dc7}\label{class_player_af0a031857f4ade770c6f6688b0c41dc7}} 
+int {\bfseries exptolevel}
+\item 
+\mbox{\Hypertarget{class_player_af31f60ef7eedd89486623f26edb2b990}\label{class_player_af31f60ef7eedd89486623f26edb2b990}} 
+int {\bfseries shield}
+\item 
+\mbox{\Hypertarget{class_player_a51ccca43f3c0a2549e95bacf1b71e504}\label{class_player_a51ccca43f3c0a2549e95bacf1b71e504}} 
+int {\bfseries armour}
+\item 
+\mbox{\Hypertarget{class_player_a9abe91f5084f15d7a11c7a77f345e517}\label{class_player_a9abe91f5084f15d7a11c7a77f345e517}} 
+int {\bfseries win}
+\item 
+\mbox{\Hypertarget{class_player_abbb49fe572e8c86068fe4f9d326ab07c}\label{class_player_abbb49fe572e8c86068fe4f9d326ab07c}} 
+int {\bfseries lose}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+J\+S\+O\+N-\/able object with all Player-\/related attributes (eg. id, winrate, level, stats ...) 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+U\+O\+N\+\_\+\+I\+B\+M\+\_\+\+A\+I\+G\+A\+M\+E2018/\+Unity/\+Group15/\+Assets/\+Scripts/\+Session Objects/Player.\+cs\end{DoxyCompactItemize}

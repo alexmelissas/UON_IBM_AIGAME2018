@@ -1,5 +1,7 @@
 package springboot.domain;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -9,87 +11,54 @@ import javax.persistence.InheritanceType;
 /**
  * <p>
  * The BasicCharacter class represents the character of the game, and it
- * contains the id and the name of the player, and the basic attributes
+ * contains the id and the name of the player, and the basic attributes.
  * </p>
  * 
- * @author Yu Chen
+ * @author chenyu
  *
  */
 @Entity
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
-public class BasicCharacter {
-	/**
-	 * id
-	 */
+public class BasicCharacter implements Serializable {
+
+	private static final long serialVersionUID = -4380422588767534964L;
+
 	@Id
 	@Column(name = "id", columnDefinition = "VARCHAR(36)")
-	public String id;
+	private String id;
 
-	/**
-	 * character name
-	 */
 	@Column(name = "character_name", columnDefinition = "VARCHAR(15)")
-	public String characterName;
+	private String characterName;
 
-	/**
-	 * level
-	 */
 	@Column(name = "level", columnDefinition = "INT")
-	public int level = 1;
+	private int level = 1;
 
-	/**
-	 * hp
-	 */
 	@Column(name = "hp", columnDefinition = "INT")
-	public int hp;
+	private int hp;
 
-	/**
-	 * attack
-	 */
 	@Column(name = "attack", columnDefinition = "INT")
-	public int attack;
+	private int attack;
 
-	/**
-	 * defense
-	 */
 	@Column(name = "defense", columnDefinition = "INT")
-	public int defense;
+	private int defense;
 
-	/**
-	 * agility
-	 */
 	@Column(name = "agility", columnDefinition = "INT")
-	public int agility;
+	private int agility;
 
-	/**
-	 * critical
-	 */
 	@Column(name = "critical_strike", columnDefinition = "INT")
-	public int criticalStrike;
+	private int criticalStrike;
 
-	/**
-	 * the similarity between the ideal personality and the real personality
-	 */
 	@Column(name = "factor", columnDefinition = "DOUBLE")
-	public double factor = 0;
+	private double factor = 0;
 
-	/**
-	 * sword level
-	 */
 	@Column(name = "sword", columnDefinition = "INT")
-	public int sword = 1;
+	private int sword = 1;
 
-	/**
-	 * shield level
-	 */
 	@Column(name = "shield", columnDefinition = "INT")
-	public int shield = 1;
+	private int shield = 1;
 
-	/**
-	 * armour level
-	 */
 	@Column(name = "armour", columnDefinition = "INT")
-	public int armour = 1;
+	private int armour = 1;
 
 	/**
 	 * Constructor

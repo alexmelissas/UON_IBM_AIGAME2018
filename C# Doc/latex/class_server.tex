@@ -1,0 +1,78 @@
+\hypertarget{class_server}{}\section{Server Class Reference}
+\label{class_server}\index{Server@{Server}}
+
+
+Collection of server-\/side responses, path U\+R\+Ls and functions.  
+
+
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_server_a0a701ca3c73b238ca8808eb05897988c}\label{class_server_a0a701ca3c73b238ca8808eb05897988c}} 
+static string \mbox{\hyperlink{class_server_a0a701ca3c73b238ca8808eb05897988c}{Address}} (string service)
+\begin{DoxyCompactList}\small\item\em Returns the particular address for one server A\+PI function. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_server_a4fe4bf9d73c95a59d6f2b07faf93c7a2}\label{class_server_a4fe4bf9d73c95a59d6f2b07faf93c7a2}} 
+static int \mbox{\hyperlink{class_server_a4fe4bf9d73c95a59d6f2b07faf93c7a2}{Check\+Registration}} (string output)
+\begin{DoxyCompactList}\small\item\em Check if username is entire registration process is OK. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_server_a14b1c4d9f09ef86474d7675abce7258a}\label{class_server_a14b1c4d9f09ef86474d7675abce7258a}} 
+static bool \mbox{\hyperlink{class_server_a14b1c4d9f09ef86474d7675abce7258a}{Check\+Login}} (string output)
+\begin{DoxyCompactList}\small\item\em Check if valid login, then update \mbox{\hyperlink{class_user}{User}} object. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_server_aaf401398cccdc041ad7bb2a64c8323f8}\label{class_server_aaf401398cccdc041ad7bb2a64c8323f8}} 
+static bool \mbox{\hyperlink{class_server_aaf401398cccdc041ad7bb2a64c8323f8}{Check\+Twitter}} ()
+\begin{DoxyCompactList}\small\item\em Check if user has linked twitter, eg. \mbox{\hyperlink{class_user}{User}} entry has twitter token. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_server_ae77fb220463cc2e8a103b90aeb4e80bb}\label{class_server_ae77fb220463cc2e8a103b90aeb4e80bb}} 
+static I\+Enumerator \mbox{\hyperlink{class_server_ae77fb220463cc2e8a103b90aeb4e80bb}{Reanalyse}} ()
+\begin{DoxyCompactList}\small\item\em Request the server to reanalyse the twitter of the user for personality changes. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_server_a3f176e4b6cca1229cba9694566d25e32}\label{class_server_a3f176e4b6cca1229cba9694566d25e32}} 
+static I\+Enumerator \mbox{\hyperlink{class_server_a3f176e4b6cca1229cba9694566d25e32}{Delete\+Account}} ()
+\begin{DoxyCompactList}\small\item\em Delete the user\textquotesingle{}s account -\/ upon registration error or demand. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_server_ab91c9efe68369b07f5f4d0d179926f48}\label{class_server_ab91c9efe68369b07f5f4d0d179926f48}} 
+static I\+Enumerator \mbox{\hyperlink{class_server_ab91c9efe68369b07f5f4d0d179926f48}{Get\+Plays\+Left}} ()
+\begin{DoxyCompactList}\small\item\em Get the player\textquotesingle{}s remaining plays for the day. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_server_ab8763dec1a3a83e91962022cbcf405db}\label{class_server_ab8763dec1a3a83e91962022cbcf405db}} 
+static I\+Enumerator \mbox{\hyperlink{class_server_ab8763dec1a3a83e91962022cbcf405db}{Get\+Enemy}} (int battletype)
+\begin{DoxyCompactList}\small\item\em Get either random player as enemy (Pv\+P/\+Ranked) or a bot (PvE) from server. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_server_ac8137eb1cd7752cf3231cd3d1539a849}\label{class_server_ac8137eb1cd7752cf3231cd3d1539a849}} 
+static I\+Enumerator \mbox{\hyperlink{class_server_ac8137eb1cd7752cf3231cd3d1539a849}{Pass\+Result}} (string battle\+\_\+result, bool ranked)
+\begin{DoxyCompactList}\small\item\em Pass the \mbox{\hyperlink{class_battle_result}{Battle\+Result}} object of the current battle to the server. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_server_a80d81b83c802dfa2afd77f17dae0b28e}\label{class_server_a80d81b83c802dfa2afd77f17dae0b28e}} 
+static I\+Enumerator \mbox{\hyperlink{class_server_a80d81b83c802dfa2afd77f17dae0b28e}{Update\+Player}} (string new\+\_\+player)
+\begin{DoxyCompactList}\small\item\em Update the \mbox{\hyperlink{class_player}{Player}} in the \mbox{\hyperlink{class_server}{Server}} (eg. when buying items) \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_server_ab625c993d6d1ab40721d3ca33af00cb8}\label{class_server_ab625c993d6d1ab40721d3ca33af00cb8}} 
+static readonly string \mbox{\hyperlink{class_server_ab625c993d6d1ab40721d3ca33af00cb8}{fail\+\_\+auth}} = \char`\"{}Sorrry, authorization fails. Please try again later.\char`\"{}
+\begin{DoxyCompactList}\small\item\em Failed to authorise login response (either wrong username or password) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_server_a68768a2b0fbd0595e8690908bf8bb66b}\label{class_server_a68768a2b0fbd0595e8690908bf8bb66b}} 
+static readonly string \mbox{\hyperlink{class_server_a68768a2b0fbd0595e8690908bf8bb66b}{no\+\_\+twitter\+\_\+success}} = \char`\"{}Account creation succss.\char`\"{}
+\begin{DoxyCompactList}\small\item\em Successful no-\/twitter login. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_server_a42280d186d88088d0f060ccb02974ae9}\label{class_server_a42280d186d88088d0f060ccb02974ae9}} 
+static bool \mbox{\hyperlink{class_server_a42280d186d88088d0f060ccb02974ae9}{reanalysis\+\_\+done}}
+\begin{DoxyCompactList}\small\item\em Determining when reanalysis of twitter is done (used by login class) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_server_a914251970cab3255c343d60a6a7a55f5}\label{class_server_a914251970cab3255c343d60a6a7a55f5}} 
+static bool \mbox{\hyperlink{class_server_a914251970cab3255c343d60a6a7a55f5}{find\+Enemy\+\_\+done}}
+\begin{DoxyCompactList}\small\item\em Determining when find enemy is done (used by battle classes) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_server_acf78dae58011f4406003d79e6df7e3ef}\label{class_server_acf78dae58011f4406003d79e6df7e3ef}} 
+static bool \mbox{\hyperlink{class_server_acf78dae58011f4406003d79e6df7e3ef}{update\+Player\+\_\+done}}
+\begin{DoxyCompactList}\small\item\em Determining when updating player is done (used when purchasing items) \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Static Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_server_a4db3f96fe18261d12fd6eef5476aa69d}\label{class_server_a4db3f96fe18261d12fd6eef5476aa69d}} 
+static readonly string \mbox{\hyperlink{class_server_a4db3f96fe18261d12fd6eef5476aa69d}{address}} = \char`\"{}http\+://35.\+178.\+2.\+5\+:8080\char`\"{}
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{class_server}{Server}}\textquotesingle{}s home directory IP address/\+U\+RL. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_server_a2e16618d6f2b9f4308203f4053d54545}\label{class_server_a2e16618d6f2b9f4308203f4053d54545}} 
+static readonly string \mbox{\hyperlink{class_server_a2e16618d6f2b9f4308203f4053d54545}{register\+\_\+success}} = \char`\"{}Saved\char`\"{}
+\begin{DoxyCompactList}\small\item\em General success response (eg. For confirming Twitter linkage) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_server_a0d876aba3addd4f76cf9d998f0552048}\label{class_server_a0d876aba3addd4f76cf9d998f0552048}} 
+static readonly string \mbox{\hyperlink{class_server_a0d876aba3addd4f76cf9d998f0552048}{username\+\_\+taken}} = \char`\"{}Username has been taken\char`\"{}
+\begin{DoxyCompactList}\small\item\em Username taken response. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Collection of server-\/side responses, path U\+R\+Ls and functions. 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+U\+O\+N\+\_\+\+I\+B\+M\+\_\+\+A\+I\+G\+A\+M\+E2018/\+Unity/\+Group15/\+Assets/\+Scripts/Server.\+cs\end{DoxyCompactItemize}

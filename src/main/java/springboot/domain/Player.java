@@ -1,12 +1,14 @@
 package springboot.domain;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 
-import springboot.util.PlayerConfig;
+import springboot.config.PlayerConfig;
 
 /**
  * <p>
@@ -17,48 +19,36 @@ import springboot.util.PlayerConfig;
  * This class class contains more information about the player.
  * </p>
  * 
- * @author Yu Chen
+ * @author chenyu
  *
  */
 @Entity
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
-public class Player extends BasicCharacter {
-	/**
-	 * id
-	 */
+public class Player extends BasicCharacter implements Serializable {
+
+	private static final long serialVersionUID = 3382275482902910220L;
+
 	@Id
 	@Column(name = "id", columnDefinition = "VARCHAR(36)")
-	public String id;
+	private String id;
 
-	/**
-	 * money
-	 */
 	@Column(name = "money", columnDefinition = "INT")
-	public int money = 0;
+	private int money = 0;
 
-	/**
-	 * experience
-	 */
 	@Column(name = "experience", columnDefinition = "INT")
-	public int experience = 0;
+	private int experience = 0;
 
-	/**
-	 * experience needed to level up
-	 */
 	@Column(name = "exptolevel", columnDefinition = "INT")
-	public int exptolevel = PlayerConfig.getLevelUpExperience(this.level);
+	private int exptolevel = PlayerConfig.getLevelUpExperience(this.getLevel());
 
-	/**
-	 * the number of wins
-	 */
 	@Column(name = "win", columnDefinition = "INT")
-	public int win = 0;
+	private int win = 0;
 
-	/**
-	 * the number of loses
-	 */
 	@Column(name = "lose", columnDefinition = "INT")
-	public int lose = 0;
+	private int lose = 0;
+
+	@Column(name = "groupnum", columnDefinition = "INT")
+	private int group = -1;
 
 	/**
 	 * Constructor
@@ -66,17 +56,10 @@ public class Player extends BasicCharacter {
 	public Player() {
 	}
 
-	// TODO Update function which update the status of player
-	// Constructor to generate the level 1 player
-	// Level up function
-	// QUESTION - How to calculate the value after own items??? --- further
-	// discussion
-	// WHAT IS THE STRUCTURE OF INVENTORY?
-
 	/**
 	 * Constructor
 	 * 
-	 * @param id
+	 * @param id the id
 	 */
 	public Player(String id) {
 		this.id = id;
@@ -102,10 +85,11 @@ public class Player extends BasicCharacter {
 	 * @param armour         armour level
 	 * @param win            number of wins
 	 * @param lose           number of loses
+	 * @param group          group number
 	 */
 	public Player(String id, String characterName, int level, int hp, int attack, int defense, int agility,
 			int criticalStrike, int money, int experience, int exptolevel, double factor, int sword, int shield,
-			int armour, int win, int lose) {
+			int armour, int win, int lose, int group) {
 		super(characterName, level, hp, attack, defense, agility, criticalStrike, factor, sword, shield, armour);
 		this.id = id;
 		this.money = money;
@@ -113,13 +97,14 @@ public class Player extends BasicCharacter {
 		this.exptolevel = exptolevel;
 		this.win = win;
 		this.lose = lose;
+		this.group = group;
 	}
 
 	/**
 	 * Check if the player can level up If so, update the information of the player
 	 */
 	public void checklevelUp() {
-		if (this.level >= 30) {
+		if (this.getLevel() >= 30) {
 			// MAX LEVEL
 			return;
 		}
@@ -127,8 +112,8 @@ public class Player extends BasicCharacter {
 		if (this.exptolevel <= this.experience) {
 			int exceed = this.experience - this.exptolevel;
 			this.setLevel(this.getLevel() + 1);
-			this.setAttributes(PlayerConfig.getBasicStatus(this.level));
-			this.setExptolevel(PlayerConfig.getLevelUpExperience(this.level));
+			this.setAttributes(PlayerConfig.getBasicStatus(this.getLevel()));
+			this.setExptolevel(PlayerConfig.getLevelUpExperience(this.getLevel()));
 			this.applyPersonality();
 			this.setExperience(exceed > 0 ? exceed : 0);
 		}
@@ -218,6 +203,20 @@ public class Player extends BasicCharacter {
 		this.lose = lose;
 	}
 
+	/**
+	 * @return the group
+	 */
+	public int getGroup() {
+		return group;
+	}
+
+	/**
+	 * @param group the group to set
+	 */
+	public void setGroup(int group) {
+		this.group = group;
+	}
+
 	/*
 	 * (non-Javadoc)
 	 * 
@@ -225,10 +224,12 @@ public class Player extends BasicCharacter {
 	 */
 	@Override
 	public String toString() {
-		return "Player [id=" + id + ", money=" + money + ", experience=" + experience + ", exptolevel=" + exptolevel
-				+ ", win=" + win + ", lose=" + lose + ", characterName=" + characterName + ", level=" + level + ", hp="
-				+ hp + ", attack=" + attack + ", defense=" + defense + ", agility=" + agility + ", criticalStrike="
-				+ criticalStrike + ", factor=" + factor + ", sword=" + sword + ", shield=" + shield + ", armour="
-				+ armour + "]";
+		return "Player [getId()=" + getId() + ", getMoney()=" + getMoney() + ", getExperience()=" + getExperience()
+				+ ", getExptolevel()=" + getExptolevel() + ", getWin()=" + getWin() + ", getLose()=" + getLose()
+				+ ", getGroup()=" + getGroup() + ", getCharacterName()=" + getCharacterName() + ", getLevel()="
+				+ getLevel() + ", getHp()=" + getHp() + ", getAttack()=" + getAttack() + ", getDefense()="
+				+ getDefense() + ", getAgility()=" + getAgility() + ", getCriticalStrike()=" + getCriticalStrike()
+				+ ", getFactor()=" + getFactor() + ", getSword()=" + getSword() + ", getShield()=" + getShield()
+				+ ", getArmour()=" + getArmour() + "]";
 	}
 }

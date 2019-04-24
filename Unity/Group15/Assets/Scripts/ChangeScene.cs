@@ -7,21 +7,23 @@ public class ChangeScene : MonoBehaviour {
 
     //! Go forward a scene and add current scene to SceneHistory
     public void Forward(String next_scene){
-        SceneHistory.sh.scenes.Add(SceneManager.GetActiveScene().name);
-        if (next_scene == "Overworld" || next_scene == "StartScreen") SceneHistory.sh.scenes.Clear(); //to not go back to login/register after in game
+        SceneHistory.scene_history.scenes.Add(SceneManager.GetActiveScene().name);
+        if (next_scene == "Overworld" || next_scene == "Start") SceneHistory.scene_history.scenes.Clear(); //to not go back to login/register after in game
         SceneManager.LoadScene(next_scene);
         return;
     }
 
     //! Go back to the top scene of SceneHistory
     public void Back() {
-        if(SceneHistory.sh.scenes!=null)
+        if(SceneHistory.scene_history.scenes!=null)
         {
-            int top = SceneHistory.sh.scenes.Count - 1;
+            int top = SceneHistory.scene_history.scenes.Count - 1;
             if (top >= 0)
             {
-                SceneManager.LoadScene(SceneHistory.sh.scenes[top]);
-                SceneHistory.sh.scenes.RemoveAt(top);
+                if (SceneHistory.scene_history.scenes[top] == "Register")
+                    StartCoroutine(Server.DeleteAccount());
+                SceneManager.LoadScene(SceneHistory.scene_history.scenes[top]);
+                SceneHistory.scene_history.scenes.RemoveAt(top);
             }
             else
                 Application.Quit();
