@@ -1,19 +1,23 @@
 package springboot.domain;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
 /**
  * <p>
- * The Ideal class represents the ideal personality of the player
+ * The Ideal class represents the ideal personality of the player.
  * </p>
  * 
- * @author Yu Chen
+ * @author chenyu
  *
  */
 @Entity
-public class Ideal {
+public class Ideal implements Serializable {
+	private static final long serialVersionUID = -162671173711901751L;
+
 	@Id
 	@Column(name = "id", columnDefinition = "VARCHAR(36)")
 	private String id;
@@ -33,8 +37,8 @@ public class Ideal {
 	@Column(name = "emotionalrange", columnDefinition = "DOUBLE")
 	private double emotionalrange = 0; // neuroticism
 
-	@Column(name = "jsonresult", columnDefinition = "TEXT")
-	private String jsonResult = null;
+	@Column(name = "auth", columnDefinition = "BOOLEAN")
+	private boolean auth = false;
 
 	/**
 	 * Constructor
@@ -45,7 +49,7 @@ public class Ideal {
 	/**
 	 * Constructor
 	 * 
-	 * @param id id
+	 * @param id the id
 	 */
 	public Ideal(String id) {
 		this.id = id;
@@ -54,11 +58,11 @@ public class Ideal {
 	/**
 	 * Constructor
 	 * 
-	 * @param openess           the degree of openess
-	 * @param conscientiousness the degree of conscientiousness
-	 * @param extraversion      the degree of extraversion
-	 * @param agreeableness     the degree of agreeableness
-	 * @param emotionalrange    the degree of emotionalrange
+	 * @param openess           openess
+	 * @param conscientiousness conscientiousness
+	 * @param extraversion      extraversion
+	 * @param agreeableness     agreeableness
+	 * @param emotionalrange    emotionalrange
 	 */
 	public Ideal(double openess, double conscientiousness, double extraversion, double agreeableness,
 			double emotionalrange) {
@@ -72,12 +76,12 @@ public class Ideal {
 	/**
 	 * Constructor
 	 * 
-	 * @param id
-	 * @param openess
-	 * @param conscientiousness
-	 * @param extraversion
-	 * @param agreeableness
-	 * @param emotionalrange
+	 * @param id                id
+	 * @param openess           openess
+	 * @param conscientiousness conscientiousness
+	 * @param extraversion      extraversion
+	 * @param agreeableness     agreeableness
+	 * @param emotionalrange    emotionalrange
 	 */
 	public Ideal(String id, double openess, double conscientiousness, double extraversion, double agreeableness,
 			double emotionalrange) {
@@ -170,17 +174,37 @@ public class Ideal {
 	}
 
 	/**
-	 * @return the jsonResult
+	 * @return the auth
 	 */
-	public String getJsonResult() {
-		return jsonResult;
+	public boolean isAuth() {
+		return auth;
 	}
 
 	/**
-	 * @param jsonResult the jsonResult to set
+	 * @param auth the auth to set
 	 */
-	public void setJsonResult(String jsonResult) {
-		this.jsonResult = jsonResult;
+	public void setAuth(boolean auth) {
+		this.auth = auth;
+	}
+
+	/**
+	 * Get the group of player according to the attributes
+	 * 
+	 * @return the group number
+	 */
+	public int getGroup() {
+		int group = -1;
+		double e = this.getExtraversion();
+		double c = this.getConscientiousness();
+		double a = this.getAgreeableness();
+		if (e > c && e > a) {
+			group = 1;
+		} else if (c > e && c > a) {
+			group = 2;
+		} else {
+			group = 3;
+		}
+		return group;
 	}
 
 	/*
@@ -192,6 +216,6 @@ public class Ideal {
 	public String toString() {
 		return "Ideal [id=" + id + ", openess=" + openess + ", conscientiousness=" + conscientiousness
 				+ ", extraversion=" + extraversion + ", agreeableness=" + agreeableness + ", emotionalrange="
-				+ emotionalrange + ", jsonResult=" + jsonResult + "]";
+				+ emotionalrange + ", auth=" + auth + "]";
 	}
 }

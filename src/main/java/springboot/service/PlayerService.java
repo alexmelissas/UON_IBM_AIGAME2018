@@ -1,103 +1,90 @@
 package springboot.service;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Sort;
-import org.springframework.data.domain.Sort.Direction;
-import org.springframework.stereotype.Service;
-
 import springboot.domain.Player;
-import springboot.domain.PlayerRepository;
 
-@Service("playerService")
-public class PlayerService {
-	@Autowired
-	private PlayerRepository playerRepository;
+/**
+ * <p>
+ * The PlayerService interface defines the operations on Player in the database
+ * </p>
+ * 
+ * @author chenyu
+ *
+ */
+public interface PlayerService {
+	/**
+	 * Add a new player
+	 * 
+	 * @param player the new player
+	 */
+	public void addPlayer(Player player);
 
-	public void addPlayer(Player player) {
-		playerRepository.save(player);
-	}
+	/**
+	 * Get all the players
+	 * 
+	 * @return the list of players
+	 */
+	public List<Player> getPlayers();
 
-	public Iterable<Player> getPlayers() {
-		return playerRepository.findAll();
-	}
+	/**
+	 * Get all the players by group
+	 * 
+	 * @param group the group number
+	 * @return the list of players
+	 */
+	public List<Player> getPlayersByGroup(int group);
 
-	public Player getPlayerById(String id) {
-		Player player = null;
-		Optional<Player> refPlayer = playerRepository.findById(id);
-		if (refPlayer.isPresent()) {
-			player = refPlayer.get();
-		} else {
-		}
-		return player;
-	}
+	/**
+	 * Get the player according to id
+	 * 
+	 * @param id the id
+	 * @return the player
+	 */
+	public Player getPlayerById(String id);
 
-	// TODO think about the rank
-	public List<Player> getTopPlayers() {
-		Sort sort = new Sort(Direction.DESC, "score");
-		List<Player> players = playerRepository.findAll(sort);
-		ArrayList<Player> topPlayers = new ArrayList<Player>();
-		int count = 0;
-		for (Player p : players) {
-			if (count >= 5) {
-				break;
-			}
-			topPlayers.add(p);
-			count++;
-		}
-		return topPlayers;
-	}
+	/**
+	 * Get the list of top 10 players
+	 * 
+	 * @return a list of players
+	 */
+	public List<Player> getTopPlayers();
 
-	public int getRankById(String id) {
-		Sort sort = new Sort(Direction.DESC, "score");
-		List<Player> players = playerRepository.findAll(sort);
-		int count = 0;
-		for (Player p : players) {
-			if (p.getId().equals(id)) {
-				break;
-			}
-			count++;
-		}
-		return count;
-	}
+	/**
+	 * Get the rank of player
+	 * 
+	 * @param id the id
+	 * @return the rank of player
+	 */
+	public int getRankById(String id);
 
-	public List<Player> getPlayersByLevel(int level) {
-		return playerRepository.findAllByLevel(level);
-	}
+	/**
+	 * Get the players with specific level
+	 * 
+	 * @param level the level
+	 * @return a list of players with the input level
+	 */
+	public List<Player> getPlayersByLevel(int level);
 
-	// update the player
-	public void updatePlayer(String id, Player newPlayer) {
-		System.out.println("Update Plyer:" + newPlayer);
+	/**
+	 * Update the status of player
+	 * 
+	 * @param id        the id
+	 * @param newPlayer the updated player
+	 */
+	public void updatePlayer(String id, Player newPlayer);
 
-		playerRepository.findById(id).map(player -> {
-			// update the basic status
-			if (newPlayer.getHp() != 0 && newPlayer.getAttack() != 0 && newPlayer.getDefense() != 0
-					&& newPlayer.getAgility() != 0 && newPlayer.getCriticalStrike() != 0) {
-				player.setHp(newPlayer.getHp());
-				player.setAttack(newPlayer.getAttack());
-				player.setDefense(newPlayer.getDefense());
-				player.setAgility(newPlayer.getAgility());
-				player.setCriticalStrike(newPlayer.getCriticalStrike());
-			}
+	/**
+	 * Delete the player
+	 * 
+	 * @param id the id
+	 */
+	public void deletePlayerById(String id);
 
-			// update the items level
-			if (newPlayer.getArmour() > player.getArmour() || newPlayer.getShield() > player.getSword()
-					|| newPlayer.getSword() > player.getSword()) {
-				player.setArmour(newPlayer.getArmour());
-				player.setShield(newPlayer.getShield());
-				player.setSword(newPlayer.getSword());
-			}
-			return playerRepository.save(player);
-		});
-	}
-
-	// TODO update factor
-
-	public void deletePlayerById(String id) {
-		playerRepository.deleteById(id);
-
-	}
+	/**
+	 * Check if a player is already in database
+	 * 
+	 * @param id the id
+	 * @return true for exist
+	 */
+	boolean isExist(String id);
 }

@@ -1,80 +1,80 @@
 package springboot.service;
 
-import java.util.Optional;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
 import springboot.domain.Ideal;
-import springboot.domain.IdealRepository;
-import springboot.domain.Player;
-import springboot.util.AnalysisResult;
-import springboot.util.PlayerConfig;
 
-@Service("idealService")
-public class IdealService {
-	@Autowired
-	private IdealRepository idealRepository;
-	@Autowired
-	private PlayerService playerService;
+/**
+ * <p>
+ * The IdealService interface defines the operations on Ideal in the database
+ * </p>
+ * 
+ * @author chenyu
+ *
+ */
+public interface IdealService {
+	/**
+	 * Add a new ideal to database
+	 * 
+	 * @param ideal the ideal
+	 */
+	public void addIdeal(Ideal ideal);
 
-	public void addIdeal(Ideal ideal) {
-		idealRepository.save(ideal);
-	}
+	/**
+	 * Get all the ideals from database
+	 * 
+	 * @return all the ideals
+	 */
+	public Iterable<Ideal> getIdeals();
 
-	public Iterable<Ideal> getIdeals() {
-		return idealRepository.findAll();
-	}
+	/**
+	 * Get the ideal according to the id
+	 * 
+	 * @param id the id
+	 * @return the ideal with the input id
+	 */
+	public Ideal getIdealById(String id);
 
-	public Ideal getIdealById(String id) {
-		Ideal ideal = null;
-		Optional<Ideal> refIdeal = idealRepository.findById(id);
-		if(refIdeal.isPresent()) {
-			ideal = refIdeal.get();
-		}
-		return ideal;
-	}
+	/**
+	 * Initialize the ideal
+	 * 
+	 * @param id       the id
+	 * @param newIdeal the initialized ideal
+	 */
+	public void initialIdeal(String id, Ideal newIdeal);
 
-	public void initialIdeal(String id, Ideal newIdeal) {
-		// This method will only be called once when the user submit the ideal
-		// personality
+	/**
+	 * Delete the ideal
+	 * 
+	 * @param id the id
+	 */
+	public void deleteIdealById(String id);
 
-		idealRepository.findById(id).map(ideal -> {
-			ideal.setAgreeableness(newIdeal.getAgreeableness());
-			ideal.setConscientiousness(newIdeal.getConscientiousness());
-			ideal.setEmotionalrange(newIdeal.getEmotionalrange());
-			ideal.setExtraversion(newIdeal.getExtraversion());
-			ideal.setOpeness(newIdeal.getOpeness());
+	/**
+	 * Initialize the player
+	 * 
+	 * @param id    the id
+	 * @param ideal the ideal
+	 */
+	public void initialPlayer(String id, Ideal ideal);
 
-			this.initialPlayer(id, ideal);
-			return idealRepository.save(ideal);
-		});
-	}
+	/**
+	 * Check if a ideal is already in database
+	 * 
+	 * @param id the id
+	 * @return true for exist; false for not
+	 */
+	public boolean isExist(String id);
 
-	public void deleteIdealById(String id) {
-		idealRepository.deleteById(id);
-	}
+	/**
+	 * Mark the ideal as unauthorized
+	 * 
+	 * @param id the id
+	 */
+	public void unAuth(String id);
 
-	public void initialPlayer(String id, Ideal ideal) {
-		AnalysisResult analysisResult = new AnalysisResult();
-		String jsonResult = ideal.getJsonResult();
-
-		System.out.println("------" + analysisResult);
-
-		Player player = playerService.getPlayerById(id);
-		if (player == null) {
-			// Player do not exist
-		} else if (jsonResult != null) {
-			analysisResult.setJsonObject(jsonResult);
-			analysisResult.generateFactor(ideal, player);
-		} else {
-			analysisResult.generateNormalFactor(player);
-		}
-		
-		player.setAttributes(PlayerConfig.getBasicStatus(player.level));
-		player.applyPersonality();
-		System.out.println(">>>>>>" + player);
-
-		playerService.updatePlayer(id, player);
-	}
+	/**
+	 * Mark the ideal as authorized
+	 * 
+	 * @param id the id
+	 */
+	public void reAuth(String id);
 }

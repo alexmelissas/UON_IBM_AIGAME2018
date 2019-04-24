@@ -1,68 +1,81 @@
 package springboot.service;
 
-import java.util.Optional;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
 import springboot.domain.User;
-import springboot.domain.UserRepository;
 
-@Service("userService")
-public class UserService {
-	@Autowired
-	private UserRepository userRepository;
+/**
+ * <p>
+ * The UserService interface defines the operations on User in the database
+ * </p>
+ * 
+ * @author chenyu
+ *
+ */
+public interface UserService {
+	/**
+	 * Add a new user
+	 * 
+	 * @param user the new user
+	 */
+	public void addUser(User user);
 
-	public void addUser(User user) {
-		userRepository.save(user);
-	}
+	/**
+	 * Get the user according to the id
+	 * 
+	 * @param id the id
+	 * @return the user
+	 */
+	public User getUserById(String id);
 
-	public User getUserById(String id) {
-		User user = null;
-		Optional<User> refUser = userRepository.findById(id);
-		if (refUser.isPresent()) {
-			user = refUser.get();
-		}
-		return user;
-	}
+	/**
+	 * Get all the users
+	 * 
+	 * @return a list of users
+	 */
+	public Iterable<User> getAllUsers();
 
-	public Iterable<User> getAllUsers() {
-		return userRepository.findAll();
-	}
+	/**
+	 * Delete a user
+	 * 
+	 * @param id the id
+	 */
+	public void deleteUserById(String id);
 
-	public void deleteUserById(String id) {
-		userRepository.deleteById(id);
-	}
+	/**
+	 * Update the user
+	 * 
+	 * @param id      the id
+	 * @param newUser the updated user
+	 */
+	public void updateUser(String id, User newUser);
 
-	public void updateUser(String id, User newUser) {
-		userRepository.findById(id).map(user -> {
-			user.setUsername(newUser.getUsername());
-			user.setPassword(newUser.getPassword());
+	/**
+	 * Check if a username is available
+	 * 
+	 * @param username the user
+	 * @return true for exist; false for not
+	 */
+	public boolean isExist(String username);
 
-			// Use to store the authorization information after create account
-			// Modification of username/password do not need to contains token info
-			if (newUser.getAccessToken() != null && newUser.getAccessTokenSecret() != null) {
-				user.setAccessToken(newUser.getAccessToken());
-				user.setAccessTokenSecret(newUser.getAccessTokenSecret());
-			}
-			return userRepository.save(user);
-		});
-	}
+	/**
+	 * Login
+	 * 
+	 * @param loginUser the user
+	 * @return the user contains all the information
+	 */
+	public User login(User loginUser);
 
-	public boolean isExist(String username) {
-		return userRepository.existsByUsername(username);
-	}
+	/**
+	 * Check if a user is already in database
+	 * 
+	 * @param id the id
+	 * @return true for exist
+	 */
+	public boolean isExistById(String id);
 
-	public User login(User loginUser) {
-		Optional<User> refUser = userRepository.findByUsername(loginUser.getUsername());
-		User user = null;
-		if (!refUser.isPresent()) {
-		} else {
-			user = refUser.get();
-			if (!user.getPassword().equals(loginUser.getPassword())) {
-				user = null;
-			}
-		}
-		return user;
-	}
+	/**
+	 * Delete the token of a user
+	 * 
+	 * @param id the id
+	 */
+	public void deleteToken(String id);
 }

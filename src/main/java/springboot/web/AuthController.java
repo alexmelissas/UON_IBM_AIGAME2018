@@ -2,47 +2,59 @@ package springboot.web;
 
 import java.io.IOException;
 
-import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RestController;
 
+import springboot.config.AuthConfig;
 import springboot.domain.User;
 import springboot.service.UserService;
+import springboot.service.impl.TwitterService;
 import twitter4j.Twitter;
 import twitter4j.TwitterException;
-import twitter4j.TwitterFactory;
 import twitter4j.auth.RequestToken;
 
-@Controller
+/**
+ * <p>
+ * The AuthController class is used to handle the authorization related
+ * requests.
+ * </p>
+ * 
+ * @author chenyu
+ *
+ */
+@RestController
 public class AuthController {
 	@Autowired
 	private UserService userService;
+	@Autowired
+	private TwitterService twitterService;
+	private static Logger logger = LoggerFactory.getLogger(AuthController.class);
 
+	/**
+	 * Authorize with Twitter
+	 * 
+	 * @param request  the request
+	 * @param response the response
+	 * @param id       the id
+	 * @throws IOException exception
+	 */
 	@GetMapping("/auth/{id}")
-	protected void auth(HttpServletRequest request, HttpServletResponse response, @PathVariable String id)
+	public void auth(HttpServletRequest request, HttpServletResponse response, @PathVariable String id)
 			throws IOException {
-		// Get the user
-		User user = userService.getUserById(id);
-		if (user == null) {
-			try {
-				request.getRequestDispatcher("/404").forward(request, response);
-			} catch (ServletException e) {
-				e.printStackTrace();
-			}
+		if (!userService.isExistById(id)) {
 			return;
 		}
 
-		String consumerKey = "kLdFjFhJkiiWMb2SU4ZNtpGlf";
-		String consumerSecret = "VUXAlVuDbdOYDGhbImgYOfbX91xqtvSdFnXn3kzM6ZNoOWv6fa";
-
+		logger.info("======Authorization======");
 		// Get request token and token secret
-		Twitter twitter = new TwitterFactory().getInstance();
-		twitter.setOAuthConsumer(consumerKey, consumerSecret);
+		Twitter twitter = AuthConfig.getTwitter();
 		RequestToken requestToken = null;
 
 		try {
@@ -55,22 +67,46 @@ public class AuthController {
 			e.printStackTrace();
 		}
 
-//		String token = requestToken.getToken();
-//		String tokenSecret = requestToken.getTokenSecret();
-//		System.out.println("---Request Token:" + token);
-//		System.out.println("---Request Token Secret:" + tokenSecret);
-
 		// Redirect to authorization page
 		response.sendRedirect(requestToken.getAuthorizationURL());
 		return;
+	}
 
-//    	twitter = (Twitter) request.getSession().getAttribute("twitter");
-//		requestToken = (RequestToken) request.getSession().getAttribute("requestToken");
-//		
-//		System.out.println("Twitter:" + twitter);
-//		token = requestToken.getToken();
-//		tokenSecret = requestToken.getTokenSecret();
-//		System.out.println("Request Token:" + token);
-//		System.out.println("Request Token Secret:" + tokenSecret);
+	/**
+	 * Without authorization of Twitter
+	 * 
+	 * @param id the id
+	 */
+	@GetMapping("/noauth/{id}")
+	public void noauth(@PathVariable String id) {
+		if (!userService.isExistById(id)) {
+			return;
+		}
+
+		logger.info("======Without Authorization======");
+		User user = userService.getUserById(id);
+		if (user.getAccessToken() != null || user.getAccessTokenSecret() != null) {
+			user.setAccessToken(null);
+			user.setAccessTokenSecret(null);
+			userService.updateUser(id, user);
+		}
+
+		twitterService.withoutTwitter(id);
+		logger.info("======Without Authorization End======");
+	}
+
+	/**
+	 * Cancel the authorization of Twittwer
+	 * 
+	 * @param id the id
+	 */
+	@GetMapping("/auth/cancel/{id}")
+	public void cancelAuth(@PathVariable String id) {
+		if (!userService.isExistById(id)) {
+			return;
+		}
+		logger.info("======Cancel Authorization======");
+		twitterService.cancelAuth(id);
+		logger.info("======Cancel Authorization End======");
 	}
 }
