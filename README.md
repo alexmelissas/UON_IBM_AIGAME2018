@@ -35,6 +35,11 @@ More details can be found in our Game Concept folders in documentation. Please s
 - Open in Unity
 - Unity version used: 2018.2.14.f1
 
+**Plugins needed**
+- https://assetstore.unity.com/packages/tools/integration/cross-platform-native-plugins-lite-version-37272
+- https://assetstore.unity.com/packages/3d/animations/activity-indicator-progress-circle-23677
+- https://assetstore.unity.com/packages/tools/input-management/secured-playerprefs-32357
+
 **Content Walkthrough**
 - Have a look at the Assets folder. There you'll find:
 - *Scripts* - the folder containing all the C# scripts.
