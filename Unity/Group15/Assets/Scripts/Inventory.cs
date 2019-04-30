@@ -17,6 +17,7 @@ public class Inventory : MonoBehaviour {
     private Item displayItem;
     private string displayItemType;
     private int currentItemLevel;
+    
 
     private void Awake() { gameObject.AddComponent<UpdateSessions>().U_All(); }
 
@@ -37,20 +38,20 @@ public class Inventory : MonoBehaviour {
         if (!(p.ComparePlayer(PlayerSession.player_session.player)))
         {
             p = PlayerSession.player_session.player;
-            int atk_bonus = (new Sword(p.sword)).attack;
-            int def_bonus = (new Shield(p.shield)).defense;
-            int hp_bonus = (new Armour(p.armour)).hp;
+            Stats stats = new Stats(p);
 
-            hpText.text = "" + (p.hp + hp_bonus);
-            atkText.text = "" + (p.attack + atk_bonus);
-            defText.text = "" + (p.defense + def_bonus);
+            hpText.text = stats.StatsToStrings()[0];
+            atkText.text = stats.StatsToStrings()[1];
+            defText.text = stats.StatsToStrings()[2];
+
             moneyText.text = "" + p.money;
+
             if (p.sword == 4) swordFullyUpgradedImage.SetActive(true);
             if (p.shield == 4) shieldFullyUpgradedImage.SetActive(true);
             if (p.armour == 4) armourFullyUpgradedImage.SetActive(true);
         }
     }
-
+    
     //! Show/Hide the item upgrade panels
     private void Displayed(bool shown)
     {

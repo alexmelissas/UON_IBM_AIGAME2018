@@ -21,9 +21,12 @@ public class Profile: MonoBehaviour {
         if (!(p.ComparePlayer(PlayerSession.player_session.player)))
         {
             p = PlayerSession.player_session.player;
-            hpText.text = "" + p.hp;
-            atkText.text = "" + p.attack;
-            defText.text = "" + p.defense;
+            Stats stats = new Stats(p);
+
+            hpText.text = stats.StatsToStrings()[0];
+            atkText.text = stats.StatsToStrings()[1];
+            defText.text = stats.StatsToStrings()[2];
+
             agilityText.text = "" + p.agility;
             critText.text = "" + p.critical_strike;
 
