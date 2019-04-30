@@ -34,27 +34,27 @@ public class Stats {
     {
         string[] output = {"","",""};
         
-        output[0] = "<b>" + hpTotal + "</b>"
+        output[0] = "<b>" + hpTotal + "</b>" // HP display
             + "<color=black> (</color>"
-            + "<color=white>" + hp_base + "</color>"
+            + "<color=yellow>" + hp_base + "</color>"
             + "<color=black>+</color>"
             + "<color=purple>" + hp_factor + "</color>"
             + "<color=black>+</color>"
             + "<color=red>" + hp_item + "</color>"
             + "<color=black>)</color>";
         
-        output[1] = "<b>" + attackTotal + "</b>"
+        output[1] = "<b>" + attackTotal + "</b>" // Attack display
             + "<color=black> (</color>"
-            + "<color=white>" + attack_base + "</color>"
+            + "<color=yellow>" + attack_base + "</color>"
             + "<color=black>+</color>"
             + "<color=purple>" + attack_factor + "</color>"
             + "<color=black>+</color>"
             + "<color=red>" + attack_item + "</color>"
             + "<color=black>)</color>";
 
-        output[2] = "<b>" + defenseTotal + "</b>"
+        output[2] = "<b>" + defenseTotal + "</b>" // Defense display
             + "<color=black> (</color>"
-            + "<color=white>" + defense_base + "</color>"
+            + "<color=yellow>" + defense_base + "</color>"
             + "<color=black>+</color>"
             + "<color=purple>" + defense_factor + "</color>"
             + "<color=black>+</color>"

@@ -40,18 +40,15 @@ Character Models - https://craftpix.net/
 ===============
 
 ===== SWORDS ======
-https://opengameart.org/content/jagged-sword
-https://opengameart.org/content/butterfly-sword
-https://opengameart.org/content/spartan-sword-0
-https://opengameart.org/content/sword2
+All sword sprites from https://opengameart.org/content/swords-set-3
 ===============
 
 ===== SHIELDS ======
-
+All shield sprites from https://opengameart.org/content/shields-set-1
 ===============
 
 ===== ARMOURS ======
-
+All armour sptites from https://opengameart.org/content/armor-icons-by-equipment-slot
 ===============
 
 === FONTS ====

@@ -23,7 +23,7 @@ public class AgreeTwitter : MonoBehaviour {
             nextButton.GetComponentInChildren<Text>().color = Color.black;
             return;
         }
-
+        
         if (Server.CheckTwitter()) consent.SetActive(true);
         else consent.SetActive(false);
 

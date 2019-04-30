@@ -8,9 +8,10 @@ public class Inventory : MonoBehaviour {
 
     public Text hpText, atkText, defText, moneyText;
     public GameObject upgradePanel;
+    public GameObject player_bop_Animation;
     public Text itemNameText, statText, priceText, balanceText;
-    public GameObject itemIconImage, statIconImage, loading_spinning_Animation;
-    public GameObject swordFullyUpgradedImage, shieldFullyUpgradedImage, armourFullyUpgradedImage;
+    public GameObject itemIconImage, swordIconImage, statIconImage, loading_spinning_Animation;
+    public GameObject currentSwordImage, currentShieldImage, currentArmourImage;
     public Sprite atk, def, hp;
 
     private Player p;
@@ -25,9 +26,7 @@ public class Inventory : MonoBehaviour {
     private void Start()
     {
         p = new Player();
-        swordFullyUpgradedImage.SetActive(false);
-        shieldFullyUpgradedImage.SetActive(false);
-        armourFullyUpgradedImage.SetActive(false);
+        player_bop_Animation.SetActive(false);
         loading_spinning_Animation.SetActive(false);
         hpText.supportRichText = true;
         atkText.supportRichText = true;
@@ -46,12 +45,11 @@ public class Inventory : MonoBehaviour {
             hpText.text = stats.StatsToStrings()[0];
             atkText.text = stats.StatsToStrings()[1];
             defText.text = stats.StatsToStrings()[2];
-
             moneyText.text = "" + p.money;
 
-            if (p.sword == 4) swordFullyUpgradedImage.SetActive(true);
-            if (p.shield == 4) shieldFullyUpgradedImage.SetActive(true);
-            if (p.armour == 4) armourFullyUpgradedImage.SetActive(true);
+            currentSwordImage.GetComponent<RawImage>().texture = Item.NewItem("sword", p.sword).icon;
+            currentShieldImage.GetComponent<RawImage>().texture = Item.NewItem("shield", p.shield).icon;
+            currentArmourImage.GetComponent<RawImage>().texture = Item.NewItem("armour", p.armour).icon;
         }
     }
     
@@ -73,22 +71,49 @@ public class Inventory : MonoBehaviour {
         {
             case 0: // Sword
                 currentItemLevel = PlayerSession.player_session.player.sword;
-                if (currentItemLevel == 4) return;
+                if (currentItemLevel >= 4)
+                {
+                    NPBinding.UI.ShowToast("Item Fully Upgraded!", eToastMessageLength.SHORT);
+                    return;
+                }
                 displayItemType = "sword";
                 break;
+
             case 1: // Shield
                 currentItemLevel = PlayerSession.player_session.player.shield;
-                if (currentItemLevel == 4) return;
+                if (currentItemLevel >= 4)
+                {
+                    NPBinding.UI.ShowToast("Item Fully Upgraded!", eToastMessageLength.SHORT);
+                    return;
+                }
                 displayItemType = "shield";
                 break;
+
             case 2: // Armour
                 currentItemLevel = PlayerSession.player_session.player.armour;
-                if (currentItemLevel == 4) return;
+                if (currentItemLevel >= 4)
+                {
+                    NPBinding.UI.ShowToast("Item Fully Upgraded!", eToastMessageLength.SHORT);
+                    return;
+                }
                 displayItemType = "armour";
                 break;
         }
 
         displayItem = Item.NewItem(displayItemType, currentItemLevel + 1);
+
+        if (displayItemType == "sword") // Update the icon
+        {
+            itemIconImage.SetActive(false);
+            swordIconImage.SetActive(true);
+            swordIconImage.GetComponent<RawImage>().texture = displayItem.icon;
+        }
+        else
+        {
+            itemIconImage.SetActive(true);
+            swordIconImage.SetActive(false);
+            itemIconImage.GetComponent<RawImage>().texture = displayItem.icon;
+        }
         UpdateLabels(item_type);
         Displayed(true);
     }
@@ -99,7 +124,7 @@ public class Inventory : MonoBehaviour {
         int stat = 0;
         Sprite statIcon = atk;
 
-        switch(item_type)
+        switch (item_type)
         {
             case 0:
                 statIcon = atk;
@@ -115,7 +140,6 @@ public class Inventory : MonoBehaviour {
                 break;
         }
 
-        //itemIcon.GetComponent<Image>().sprite = statIcon;
         statIconImage.GetComponent<Image>().sprite = statIcon;
         itemNameText.text = displayItem.name;
         statText.text = "" + stat;

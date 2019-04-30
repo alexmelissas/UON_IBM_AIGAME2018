@@ -84,7 +84,9 @@ public class Server {
     public static bool CheckTwitter()
     {
         return (UserSession.user_session.user.accessToken!="" 
-            && UserSession.user_session.user.accessTokenSecret!="") 
+            && UserSession.user_session.user.accessTokenSecret!=""
+            && UserSession.user_session.user.accessToken != null
+            && UserSession.user_session.user.accessTokenSecret != null) 
             ? true : false;
     }
 
@@ -133,6 +135,7 @@ public class Server {
         uwr.Dispose();
 
         UserSession.user_session.user = new User("", "");
+        LoginTwitter.allowNextForSkip = false;
         PlayerSession.player_session.player = new Player();
         ZPlayerPrefs.DeleteKey("id");
         ZPlayerPrefs.Save();
