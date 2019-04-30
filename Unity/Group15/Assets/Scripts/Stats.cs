@@ -33,9 +33,34 @@ public class Stats {
     public string[] StatsToStrings()
     {
         string[] output = {"","",""};
-        output[0] = "" + hpTotal + " (" + hp_base + "+" + hp_factor + "+" + hp_item + ")";
-        output[1] = "" + attackTotal + " (" + attack_base + "+" + attack_factor + "+" + attack_item + ")";
-        output[2] = "" + defenseTotal + " (" + defense_base + "+" + defense_factor + "+" + defense_item + ")";
+        
+        output[0] = "<b>" + hpTotal + "</b>"
+            + "<color=black> (</color>"
+            + "<color=white>" + hp_base + "</color>"
+            + "<color=black>+</color>"
+            + "<color=purple>" + hp_factor + "</color>"
+            + "<color=black>+</color>"
+            + "<color=red>" + hp_item + "</color>"
+            + "<color=black>)</color>";
+        
+        output[1] = "<b>" + attackTotal + "</b>"
+            + "<color=black> (</color>"
+            + "<color=white>" + attack_base + "</color>"
+            + "<color=black>+</color>"
+            + "<color=purple>" + attack_factor + "</color>"
+            + "<color=black>+</color>"
+            + "<color=red>" + attack_item + "</color>"
+            + "<color=black>)</color>";
+
+        output[2] = "<b>" + defenseTotal + "</b>"
+            + "<color=black> (</color>"
+            + "<color=white>" + defense_base + "</color>"
+            + "<color=black>+</color>"
+            + "<color=purple>" + defense_factor + "</color>"
+            + "<color=black>+</color>"
+            + "<color=red>" + defense_item + "</color>"
+            + "<color=black>)</color>";
+
         return output;
     }
 }

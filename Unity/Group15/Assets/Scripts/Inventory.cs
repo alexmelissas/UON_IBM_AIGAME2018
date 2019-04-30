@@ -29,6 +29,9 @@ public class Inventory : MonoBehaviour {
         shieldFullyUpgradedImage.SetActive(false);
         armourFullyUpgradedImage.SetActive(false);
         loading_spinning_Animation.SetActive(false);
+        hpText.supportRichText = true;
+        atkText.supportRichText = true;
+        defText.supportRichText = true;
         Displayed(false);
     }
 

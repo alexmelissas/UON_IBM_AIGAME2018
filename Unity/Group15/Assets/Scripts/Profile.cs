@@ -14,7 +14,13 @@ public class Profile: MonoBehaviour {
     //! Instantly update the Player's stats when opening the screen
     private void Awake() { gameObject.AddComponent<UpdateSessions>().U_All(); }
 
-    void Start() { p = new Player(); }
+    void Start()
+    {
+        p = new Player();
+        hpText.supportRichText = true;
+        atkText.supportRichText = true;
+        defText.supportRichText = true;
+    }
 
     //! Display the player's stats - update only if a change is detected
     void Update () {
