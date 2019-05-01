@@ -13,6 +13,8 @@ public class Inventory : MonoBehaviour {
     public GameObject itemIconImage, swordIconImage, statIconImage, loading_spinning_Animation;
     public GameObject currentSwordImage, currentShieldImage, currentArmourImage;
     public Sprite atk, def, hp;
+    public AudioSource soundsrc;
+    public AudioClip purchase_sound;
 
     private Player p;
     private Item displayItem;
@@ -142,9 +144,13 @@ public class Inventory : MonoBehaviour {
     private IEnumerator Purchase(string poorerPlayerJSON)
     {
         StartCoroutine(Server.UpdatePlayer(poorerPlayerJSON));
+
         loading_spinning_Animation.SetActive(true);
         yield return new WaitUntil(() => Server.updatePlayer_done == true);
         loading_spinning_Animation.SetActive(false);
+
+        soundsrc.PlayOneShot(purchase_sound, PlayerPrefs.GetFloat("fx"));
+
         gameObject.AddComponent<UpdateSessions>().U_Player();
         Displayed(false);
         yield break;

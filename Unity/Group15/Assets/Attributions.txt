@@ -12,6 +12,7 @@ Attributions for media used in our game.
 {crit.mp3} from https://opengameart.org/content/punches-hits-swords-and-squishes
 {playerhit.wav/enemyhit.wav} modified from https://opengameart.org/content/battle-sound-effects
 {miss.wav} modified from https://opengameart.org/content/3-melee-sounds
+{purchase.ogg} from https://opengameart.org/content/80-cc0-rpg-sfx
 ===============
 
 ===== PICTURES / BACKGROUNDS =====
