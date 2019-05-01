@@ -261,7 +261,7 @@ public class Server {
             if (uwr.downloadHandler.text == "Failed") updatePlayer_done = false;
             else if (uwr.downloadHandler.text == "Updated") updatePlayer_done = true;
         }
-        
+
         uwr.Dispose();
         yield break;
     }

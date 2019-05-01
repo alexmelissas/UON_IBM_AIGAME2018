@@ -18,19 +18,19 @@ public class Shield : Item {
                 item_icon_location = "basic_shield";
                 break;
             case 2:
-                name = "Emerald Protector";
+                name = "Poseidon's Wavebreaker";
                 attribute = 10;
                 price = 219;
                 item_icon_location = "emerald_protector";
                 break;
             case 3:
-                name = "Serpant Defender";
+                name = "Persephone's Defender";
                 attribute = 19;
                 price = 549;
                 item_icon_location = "serpant_defender";
                 break;
             case 4:
-                name = "Zeus' Star Guard";
+                name = "Athena's Star Guard";
                 attribute = 37;
                 price = 999;
                 item_icon_location = "zeus_star_guard";

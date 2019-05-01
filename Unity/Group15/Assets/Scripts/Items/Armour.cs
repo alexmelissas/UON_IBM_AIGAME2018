@@ -12,13 +12,13 @@ public class Armour : Item {
         switch (level)
         {
             case 1:
-                name = "Boots";
+                name = "Peasant Boots";
                 attribute = 20;
                 price = 99;
                 item_icon_location = "boots";
                 break;
             case 2:
-                name = "Hunter's Jacket";
+                name = "Theseus' Jacket";
                 attribute = 48;
                 price = 259;
                 item_icon_location = "hunter's jacket";

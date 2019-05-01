@@ -3161,7 +3161,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Goliathan Blade
+  m_Text: 'Item name here '
 --- !u!222 &1723852232
 CanvasRenderer:
   m_ObjectHideFlags: 0

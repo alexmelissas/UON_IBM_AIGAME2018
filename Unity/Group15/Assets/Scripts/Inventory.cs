@@ -71,36 +71,27 @@ public class Inventory : MonoBehaviour {
         {
             case 0: // Sword
                 currentItemLevel = PlayerSession.player_session.player.sword;
-                if (currentItemLevel >= 4)
-                {
-                    NPBinding.UI.ShowToast("Item Fully Upgraded!", eToastMessageLength.SHORT);
-                    return;
-                }
                 displayItemType = "sword";
                 break;
 
             case 1: // Shield
                 currentItemLevel = PlayerSession.player_session.player.shield;
-                if (currentItemLevel >= 4)
-                {
-                    NPBinding.UI.ShowToast("Item Fully Upgraded!", eToastMessageLength.SHORT);
-                    return;
-                }
                 displayItemType = "shield";
                 break;
 
             case 2: // Armour
                 currentItemLevel = PlayerSession.player_session.player.armour;
-                if (currentItemLevel >= 4)
-                {
-                    NPBinding.UI.ShowToast("Item Fully Upgraded!", eToastMessageLength.SHORT);
-                    return;
-                }
                 displayItemType = "armour";
                 break;
         }
 
-        displayItem = Item.NewItem(displayItemType, currentItemLevel + 1);
+        if (currentItemLevel >= 4)
+        {
+            NPBinding.UI.ShowToast("Item Fully Upgraded!", eToastMessageLength.SHORT);
+            return;
+        }
+        else
+            displayItem = Item.NewItem(displayItemType, currentItemLevel + 1);
 
         if (displayItemType == "sword") // Update the icon
         {
@@ -172,6 +163,7 @@ public class Inventory : MonoBehaviour {
                 case "shield": poorerPlayer.shield++; break;
                 case "armour": poorerPlayer.armour++; break;
             }
+
             string poorerPlayerJSON = JsonUtility.ToJson(poorerPlayer);
             StartCoroutine(Purchase(poorerPlayerJSON));
         }

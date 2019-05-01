@@ -18,13 +18,13 @@ public class Sword : Item {
                 item_icon_location = "basic_blade";
                 break;
             case 2:
-                name = "Runic Slasher";
+                name = "Aries' Dawnbringer";
                 attribute = 15;
                 price = 299;
                 item_icon_location = "runic_slayer";
                 break;
             case 3:
-                name = "Zeus's ThunderSlasher";
+                name = "Zeus' ThunderSlasher";
                 attribute = 30;
                 price = 519;
                 item_icon_location = "zeus_thunderslasher";
