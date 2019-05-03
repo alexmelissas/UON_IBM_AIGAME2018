@@ -7,26 +7,35 @@ using VoxelBusters.NativePlugins;
 //! Login and Registration processing.
 public class AuthenticateUser : MonoBehaviour {
 
-    public GameObject loading;
-    public InputField usernameInput;
-    public InputField passwordInput;
-    public string auth_type;
+    public GameObject loading_spin_Animation;
+    public InputField usernameInputField;
+    public InputField passwordInputField;
 
+    public string authType;
+    public static bool display_loginAnimation;
+
+    // Setup the screen
     void Start()
     {
-        loading.SetActive(false);
-        passwordInput.onEndEdit.AddListener(delegate { CheckUserPass(); });
+        loading_spin_Animation.SetActive(false);
+        display_loginAnimation = false;
+        passwordInputField.onEndEdit.AddListener(delegate { CheckUserPass(); });
     }
 
+    //! Toggle the loading circle to be active/not
+    private void Toggle(bool input) { display_loginAnimation = input; }
+
     //! Try to login with given credentials.
-    IEnumerator TryLogin(bool first_login, string json, User user)
+    IEnumerator TryLogin(bool firstLogin, string json, User user)
     {
-        if (first_login && UserSession.us.user.GetUsername() == "") yield break;
+        if (firstLogin && UserSession.user_session.user.GetUsername() == "") yield break;
+        Toggle(true);
         UnityWebRequest uwr = new UnityWebRequest(Server.Address("login_user"), "POST");
         byte[] jsonToSend = new System.Text.UTF8Encoding().GetBytes(json);
         uwr.uploadHandler = (UploadHandler)new UploadHandlerRaw(jsonToSend);
         uwr.downloadHandler = (DownloadHandler)new DownloadHandlerBuffer();
         uwr.SetRequestHeader("Content-Type", "application/json");
+        uwr.timeout = 10;
 
         yield return uwr.SendWebRequest();
 
@@ -40,29 +49,32 @@ public class AuthenticateUser : MonoBehaviour {
             if (Server.CheckLogin(uwr.downloadHandler.text))
             {
                 string next_scene = "Overworld";
-                if (first_login)
-                    next_scene = "TwitterLogin";
-                if (!first_login)
+                if (firstLogin)
+                    next_scene = "Twitter";
+                if (!firstLogin)
                 {
                     gameObject.AddComponent<UpdateSessions>().U_Player();
                     if(Server.CheckTwitter())
                     {
-                        loading.SetActive(true);
-                        yield return new WaitForSeconds(1.5f);
-                        loading.SetActive(false);
+                        StartCoroutine(Server.Reanalyse());
+                        loading_spin_Animation.SetActive(true);
+                        yield return new WaitUntil(() => Server.reanalysis_done==true);
+                        loading_spin_Animation.SetActive(false);
                     }
                 }
                 gameObject.AddComponent<ChangeScene>().Forward(next_scene);
-                if (!first_login) NPBinding.UI.ShowToast("Welcome back, " + user.GetUsername(), eToastMessageLength.SHORT);
+                if (!firstLogin) NPBinding.UI.ShowToast("Welcome back, " + user.GetUsername(), eToastMessageLength.SHORT);
             }
             else
             {
                 Debug.Log("Invalid Credentials");
                 NPBinding.UI.ShowToast("Invalid Credentials.", eToastMessageLength.SHORT);
-                passwordInput.text = "";
-                passwordInput.Select();
+                passwordInputField.text = "";
+                passwordInputField.Select();
             }
-            StopCoroutine(TryLogin(first_login,json, user));
+            Toggle(false);
+            uwr.Dispose();
+            StopCoroutine(TryLogin(firstLogin,json, user));
         }
     }
 
@@ -74,6 +86,7 @@ public class AuthenticateUser : MonoBehaviour {
         uwr.uploadHandler = (UploadHandler)new UploadHandlerRaw(jsonToSend);
         uwr.downloadHandler = (DownloadHandler)new DownloadHandlerBuffer();
         uwr.SetRequestHeader("Content-Type", "application/json");
+        uwr.timeout = 10;
 
         yield return uwr.SendWebRequest();
 
@@ -85,28 +98,29 @@ public class AuthenticateUser : MonoBehaviour {
             int response = Server.CheckRegistration(uwr.downloadHandler.text);
             if (response == 1)
             {
-                UserSession.us.user = user;
+                UserSession.user_session.user = user;
                 Debug.Log("Account created");
                 NPBinding.UI.ShowToast("Account Created.", eToastMessageLength.SHORT);
             }
             else
             {
-                UserSession.us.user = new User("","");
+                UserSession.user_session.user = new User("","");
                 if (response == 0) NPBinding.UI.ShowToast("Sorry, that username is taken. Please try something else.", eToastMessageLength.SHORT);
                 if (response == 0) Debug.Log("Username taken.");
-                usernameInput.text = "";
-                usernameInput.Select();
+                usernameInputField.text = "";
+                usernameInputField.Select();
             }
         }
         yield return StartCoroutine(TryLogin(true,json,user));
+        uwr.Dispose();
         StopCoroutine(TryRegister(json, user));
     }
 
     //! Check format of username/password, pass them to Login/Register if valid
     public void CheckUserPass()
     {
-        string username = usernameInput.text;
-        string password = passwordInput.text;
+        string username = usernameInputField.text;
+        string password = passwordInputField.text;
         
         if (username == "")
         {
@@ -130,7 +144,7 @@ public class AuthenticateUser : MonoBehaviour {
         {
             User user = new User(username, password);
             string json = JsonUtility.ToJson(user);
-            if (auth_type == "register")
+            if (authType == "register")
                 StartCoroutine(TryRegister(json, user));
             else
                 StartCoroutine(TryLogin(false, json, user));

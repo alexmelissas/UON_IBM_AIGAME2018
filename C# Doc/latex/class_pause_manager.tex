@@ -1,0 +1,51 @@
+\hypertarget{class_pause_manager}{}\section{Pause\+Manager Class Reference}
+\label{class_pause_manager}\index{PauseManager@{PauseManager}}
+
+
+Keep User/\+Player data stored when exiting app, reload them when coming back.  
+
+
+Inheritance diagram for Pause\+Manager\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_pause_manager}
+\end{center}
+\end{figure}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_pause_manager_a655b826847bdc4c8721d35aa47a4c880}\label{class_pause_manager_a655b826847bdc4c8721d35aa47a4c880}} 
+void \mbox{\hyperlink{class_pause_manager_a655b826847bdc4c8721d35aa47a4c880}{Awake}} ()
+\begin{DoxyCompactList}\small\item\em Set the salt for the encryption. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_pause_manager_a0150346b902b664ce65d5e1b840d9d4d}\label{class_pause_manager_a0150346b902b664ce65d5e1b840d9d4d}} 
+void \mbox{\hyperlink{class_pause_manager_a0150346b902b664ce65d5e1b840d9d4d}{Save}} ()
+\begin{DoxyCompactList}\small\item\em Save the settings and player id, or delete the account upon registration error. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_pause_manager_a3afaaf8ca6d30581f6df12d900d0e1b5}\label{class_pause_manager_a3afaaf8ca6d30581f6df12d900d0e1b5}} 
+bool \mbox{\hyperlink{class_pause_manager_a3afaaf8ca6d30581f6df12d900d0e1b5}{Account\+Complete}} ()
+\begin{DoxyCompactList}\small\item\em Check if account registration is correctly completed. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_pause_manager_a8666e6da14b6f6b2287e34c5775e21c7}\label{class_pause_manager_a8666e6da14b6f6b2287e34c5775e21c7}} 
+void \mbox{\hyperlink{class_pause_manager_a8666e6da14b6f6b2287e34c5775e21c7}{Load}} ()
+\begin{DoxyCompactList}\small\item\em Load the settings and player id. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_pause_manager_a9a9453e92a60de1d20cf37c9e55ded0d}\label{class_pause_manager_a9a9453e92a60de1d20cf37c9e55ded0d}} 
+bool \mbox{\hyperlink{class_pause_manager_a9a9453e92a60de1d20cf37c9e55ded0d}{Start\+Screens}} ()
+\begin{DoxyCompactList}\small\item\em Check if current screen is one of the Starting screens. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_pause_manager_adccb03eddbe4377a0153565456c92325}\label{class_pause_manager_adccb03eddbe4377a0153565456c92325}} 
+void \mbox{\hyperlink{class_pause_manager_adccb03eddbe4377a0153565456c92325}{On\+Application\+Pause}} (bool pause\+Status)
+\begin{DoxyCompactList}\small\item\em Handle exiting the app. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_pause_manager_a01e84a6aa94c2e746f047af9dcb5a04c}\label{class_pause_manager_a01e84a6aa94c2e746f047af9dcb5a04c}} 
+bool \mbox{\hyperlink{class_pause_manager_a01e84a6aa94c2e746f047af9dcb5a04c}{start}} = true
+\begin{DoxyCompactList}\small\item\em Check if this is the initial opening of the app. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_pause_manager_a2d11f4fd49f97bd8ede5f9e0afda9601}\label{class_pause_manager_a2d11f4fd49f97bd8ede5f9e0afda9601}} 
+bool {\bfseries skip\+Selected}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Keep User/\+Player data stored when exiting app, reload them when coming back. 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+U\+O\+N\+\_\+\+I\+B\+M\+\_\+\+A\+I\+G\+A\+M\+E2018/\+Unity/\+Group15/\+Assets/\+Scripts/Pause\+Manager.\+cs\end{DoxyCompactItemize}

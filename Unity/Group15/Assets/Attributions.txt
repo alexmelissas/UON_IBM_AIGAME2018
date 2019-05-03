@@ -1,0 +1,66 @@
+
+Attributions for media used in our game.
+
+
+===== MUSIC / SOUNDS =============
+{Epic Battle.mp3} by Twin Musicom (twinmusicom.org)
+{NFF-wind-gust-3.wav} from https://www.noiseforfun.com/2014-sound-effects/wind-gust-3/
+{ranked_backgroundmusic.mp3} from https://opengameart.org/content/dark-shrine-loop
+
+{levelup.wav} from https://opengameart.org/content/level-up-sound-effects
+{drop_sword.wav} from https://freesound.org/people/32cheeseman32/sounds/180817/
+{crit.mp3} from https://opengameart.org/content/punches-hits-swords-and-squishes
+{playerhit.wav/enemyhit.wav} modified from https://opengameart.org/content/battle-sound-effects
+{miss.wav} modified from https://opengameart.org/content/3-melee-sounds
+{purchase.ogg} from https://opengameart.org/content/80-cc0-rpg-sfx
+===============
+
+===== PICTURES / BACKGROUNDS =====
+{olympus.jpg/parthenon_backgdound.jpg} : Photo via <a href="https://www.goodfreephotos.com/">Good Free Photos</a>
+{flower.jpg} from https://www.pexels.com/photo/red-and-black-flowers-1803911/
+{unranked.jpg} from https://commons.wikimedia.org/wiki/File:Ancient_Greek_theatre_in_Delos_01.jpg
+{aphrodite.jpg} from https://pxhere.com/en/photo/1048704
+{bird.jpg} from https://picryl.com/media/terracotta-vase-in-the-form-of-a-bird-9d403b
+{pebble.jpg} from https://www.pexels.com/photo/4k-apple-tree-background-background-image-580785/
+{words.jpg} from https://pxhere.com/en/photo/701819
+{battle.jpg} from https://commons.wikimedia.org/wiki/File:Thermopylae_hot_springs.jpg
+{athena.jpg} from https://commons.wikimedia.org/wiki/File:Bust_Athena_Velletri_Glyptothek_Munich_213.jpg
+===============
+
+===== ICONS ============
+{app_icon.jpg} from https://pxhere.com/en/photo/1283867
+{home.png} from https://www.clipartmax.com/middle/m2H7K9H7Z5d3b1G6_look-for-a-study-guide-to-go-home-on-thurs-science-clip/
+{profile.png} from https://commons.wikimedia.org/wiki/File:User_Circle.png
+{selection_puck.png} from https://pixabay.com/illustrations/generic-button-button-3d-sign-1357002/
+{settings.png} from https://pixabay.com/vectors/gear-settings-options-icon-1077550/
+{skip.png} from https://pixabay.com/vectors/skip-forward-fast-media-button-97632/
+===============
+
+===== SPRITES =====
+Character Models - https://craftpix.net/
+===============
+
+===== SWORDS ======
+All sword sprites from https://opengameart.org/content/swords-set-3
+===============
+
+===== SHIELDS ======
+All shield sprites from https://opengameart.org/content/shields-set-1
+===============
+
+===== ARMOURS ======
+All armour sptites from https://opengameart.org/content/armor-icons-by-equipment-slot
+===============
+
+=== FONTS ====
+{vinque.ttf} from https://www.1001fonts.com/vinque-font.html#license - CHECK AGAIN
+==============
+
+=== PLUGINS ===
+https://assetstore.unity.com/packages/tools/integration/cross-platform-native-plugins-lite-version-37272
+https://assetstore.unity.com/packages/3d/animations/activity-indicator-progress-circle-23677
+https://assetstore.unity.com/packages/tools/input-management/secured-playerprefs-32357
+===============
+
+
+* Stat icons drawn by Alex

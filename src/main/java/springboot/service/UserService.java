@@ -1,39 +1,81 @@
 package springboot.service;
 
-import java.util.Optional;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
 import springboot.domain.User;
-import springboot.domain.UserRepository;
 
-@Service("userService")
-public class UserService {
-	@Autowired
-	private UserRepository userRepository;
-	
-	public void addUser(String username, String password) {
-		User user = new User(username, password);
-		
-		userRepository.save(user);
-	}
-	
-	public Optional<User> getUserById(int id) {
-		return userRepository.findById(id);
-	}
-	
-	public Iterable<User> getAllUsers() {
-		return userRepository.findAll();
-	}
-	
-	public void updateUser(int id, String username, String password) {
-		User user = new User(id, username, password);
-		
-		userRepository.save(user);
-	}
-	
-	public void deleteUserById(int id) {
-		userRepository.deleteById(id);
-	}
+/**
+ * <p>
+ * The UserService interface defines the operations on User in the database
+ * </p>
+ * 
+ * @author chenyu
+ *
+ */
+public interface UserService {
+	/**
+	 * Add a new user
+	 * 
+	 * @param user the new user
+	 */
+	public void addUser(User user);
+
+	/**
+	 * Get the user according to the id
+	 * 
+	 * @param id the id
+	 * @return the user
+	 */
+	public User getUserById(String id);
+
+	/**
+	 * Get all the users
+	 * 
+	 * @return a list of users
+	 */
+	public Iterable<User> getAllUsers();
+
+	/**
+	 * Delete a user
+	 * 
+	 * @param id the id
+	 */
+	public void deleteUserById(String id);
+
+	/**
+	 * Update the user
+	 * 
+	 * @param id      the id
+	 * @param newUser the updated user
+	 */
+	public void updateUser(String id, User newUser);
+
+	/**
+	 * Check if a username is available
+	 * 
+	 * @param username the user
+	 * @return true for exist; false for not
+	 */
+	public boolean isExist(String username);
+
+	/**
+	 * Login
+	 * 
+	 * @param loginUser the user
+	 * @return the user contains all the information
+	 */
+	public User login(User loginUser);
+
+	/**
+	 * Check if a user is already in database
+	 * 
+	 * @param id the id
+	 * @return true for exist
+	 */
+	public boolean isExistById(String id);
+
+	/**
+	 * Delete the token of a user
+	 * 
+	 * @param id the id
+	 */
+	public void deleteToken(String id);
 }

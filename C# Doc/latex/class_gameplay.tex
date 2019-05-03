@@ -1,0 +1,171 @@
+\hypertarget{class_gameplay}{}\section{Gameplay Class Reference}
+\label{class_gameplay}\index{Gameplay@{Gameplay}}
+
+
+Entire \mbox{\hyperlink{class_gameplay}{Gameplay}} and Battle Screen management.  
+
+
+Inheritance diagram for Gameplay\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_gameplay}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_gameplay_af68b4ea2b131c1c77a5daf9c5a0b5b5e}\label{class_gameplay_af68b4ea2b131c1c77a5daf9c5a0b5b5e}} 
+void \mbox{\hyperlink{class_gameplay_af68b4ea2b131c1c77a5daf9c5a0b5b5e}{Press\+\_\+\+Skip}} ()
+\begin{DoxyCompactList}\small\item\em Skip button handler. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_gameplay_a314779fdcab62c148dbf587aa0ab4f67}\label{class_gameplay_a314779fdcab62c148dbf587aa0ab4f67}} 
+void \mbox{\hyperlink{class_gameplay_a314779fdcab62c148dbf587aa0ab4f67}{Run\+Battle}} ()
+\begin{DoxyCompactList}\small\item\em Run the battle, calculate all Turns and result. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_gameplay_a5849feccd3e55e9a56fb8d01de6cb2b0}\label{class_gameplay_a5849feccd3e55e9a56fb8d01de6cb2b0}} 
+Slider {\bfseries player\+H\+P\+Slider}
+\item 
+\mbox{\Hypertarget{class_gameplay_afd46687c13f38631ec21871bf9ac84bb}\label{class_gameplay_afd46687c13f38631ec21871bf9ac84bb}} 
+Image {\bfseries player\+H\+P\+Colour\+Image}
+\item 
+\mbox{\Hypertarget{class_gameplay_a1ab2fc541d3ded07b45440f1c10d1cd5}\label{class_gameplay_a1ab2fc541d3ded07b45440f1c10d1cd5}} 
+Text {\bfseries player\+Name\+Text}
+\item 
+\mbox{\Hypertarget{class_gameplay_add500df8b9f20ace05c1fd087f4d8911}\label{class_gameplay_add500df8b9f20ace05c1fd087f4d8911}} 
+Text {\bfseries actual\+Player\+H\+P\+Text}
+\item 
+\mbox{\Hypertarget{class_gameplay_a8d3cada851038cf7cd7a3b3f25b400bb}\label{class_gameplay_a8d3cada851038cf7cd7a3b3f25b400bb}} 
+Audio\+Source {\bfseries soundsrc}
+\item 
+\mbox{\Hypertarget{class_gameplay_a0a1fc8bb201acba72d595d49ac04039e}\label{class_gameplay_a0a1fc8bb201acba72d595d49ac04039e}} 
+Audio\+Clip {\bfseries player\+\_\+hit\+\_\+\+Sound}
+\item 
+\mbox{\Hypertarget{class_gameplay_ab3a83b9c136b94d0633708b8366b71c4}\label{class_gameplay_ab3a83b9c136b94d0633708b8366b71c4}} 
+Game\+Object {\bfseries win\+Popup}
+\end{DoxyCompactItemize}
+\subsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_gameplay_acd7f7caba8d780232371c187cdf8fcc8}\label{class_gameplay_acd7f7caba8d780232371c187cdf8fcc8}} 
+static int \mbox{\hyperlink{class_gameplay_acd7f7caba8d780232371c187cdf8fcc8}{update\+Player}}
+\begin{DoxyCompactList}\small\item\em For the popups at the end of the battle to know when to animate E\+XP gain. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_gameplay_a4c1b8e45bd5eadbb4a9d876be085ffe6}\label{class_gameplay_a4c1b8e45bd5eadbb4a9d876be085ffe6}} 
+static string {\bfseries current\+Animation\+\_\+player} = \char`\"{}player\+\_\+idle\+\_\+\+Animation\char`\"{}
+\item 
+\mbox{\Hypertarget{class_gameplay_ab7decfcd8cb7caa5262c05a80d56b564}\label{class_gameplay_ab7decfcd8cb7caa5262c05a80d56b564}} 
+static string {\bfseries current\+Animation\+\_\+enemy} = \char`\"{}enemy\+\_\+idle\+\_\+\+Animation\char`\"{}
+\item 
+\mbox{\Hypertarget{class_gameplay_a2a5861c6013001df52b09f53f9194e87}\label{class_gameplay_a2a5861c6013001df52b09f53f9194e87}} 
+static bool {\bfseries ended} = false
+\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_gameplay_a26e8c55ca4dbbfb1898a3a7bb06d679d}\label{class_gameplay_a26e8c55ca4dbbfb1898a3a7bb06d679d}} 
+void \mbox{\hyperlink{class_gameplay_a26e8c55ca4dbbfb1898a3a7bb06d679d}{Show\+Popup}} (bool shown, bool win)
+\begin{DoxyCompactList}\small\item\em Hide/\+Show the end game popups. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_gameplay_a3262248fce4aeecf5de2486bb3305de3}\label{class_gameplay_a3262248fce4aeecf5de2486bb3305de3}} 
+void \mbox{\hyperlink{class_gameplay_a3262248fce4aeecf5de2486bb3305de3}{Start}} ()
+\begin{DoxyCompactList}\small\item\em Setup the battle screen, including HP bars, Models, Damage Labels etc. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_gameplay_a0b4601bd58b54a27d9c4d3c6c9b72d8c}\label{class_gameplay_a0b4601bd58b54a27d9c4d3c6c9b72d8c}} 
+void \mbox{\hyperlink{class_gameplay_a0b4601bd58b54a27d9c4d3c6c9b72d8c}{Update}} ()
+\begin{DoxyCompactList}\small\item\em Check if animation should be displayed\+: If not skipped, and if nobody won yet. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_gameplay_ab30c33d44acef3478ae5b601c14a4346}\label{class_gameplay_ab30c33d44acef3478ae5b601c14a4346}} 
+void \mbox{\hyperlink{class_gameplay_ab30c33d44acef3478ae5b601c14a4346}{End\+Match}} ()
+\begin{DoxyCompactList}\small\item\em End the battle animations, show the Win/\+Lose popups. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_gameplay_a0d0ef2766c769e58dbd93b3467a40d0b}\label{class_gameplay_a0d0ef2766c769e58dbd93b3467a40d0b}} 
+I\+Enumerator \mbox{\hyperlink{class_gameplay_a0d0ef2766c769e58dbd93b3467a40d0b}{Animate\+Turns}} (List$<$ \mbox{\hyperlink{class_turn}{Turn}} $>$ \mbox{\hyperlink{class_gameplay_a835615e1b6b33c0340b1a6a00aff92ef}{turns}})
+\begin{DoxyCompactList}\small\item\em Animate the battle, including \mbox{\hyperlink{class_player}{Player}} animations, HP bars, Damage Labels etc. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_gameplay_a7d03f69d9d928b307f00ce1b684969c3}\label{class_gameplay_a7d03f69d9d928b307f00ce1b684969c3}} 
+Slider {\bfseries enemy\+H\+P\+Slider}
+\item 
+\mbox{\Hypertarget{class_gameplay_ada260396fe858ad44f0d159845df5f09}\label{class_gameplay_ada260396fe858ad44f0d159845df5f09}} 
+Image {\bfseries enemy\+H\+P\+Colour\+Image}
+\item 
+\mbox{\Hypertarget{class_gameplay_a369fac38122ccf9d2714d6eeb8e9f4da}\label{class_gameplay_a369fac38122ccf9d2714d6eeb8e9f4da}} 
+Text {\bfseries enemy\+Name\+Text}
+\item 
+\mbox{\Hypertarget{class_gameplay_a66d192ecad5474b325ab0166fecca93e}\label{class_gameplay_a66d192ecad5474b325ab0166fecca93e}} 
+Text {\bfseries player\+Level\+Text}
+\item 
+\mbox{\Hypertarget{class_gameplay_a1f9b823605ad5d6bcd5e6510ad8669ff}\label{class_gameplay_a1f9b823605ad5d6bcd5e6510ad8669ff}} 
+Text {\bfseries enemy\+Level\+Text}
+\item 
+\mbox{\Hypertarget{class_gameplay_a6ccce240e6de8ca0594f2d1dfe9ad381}\label{class_gameplay_a6ccce240e6de8ca0594f2d1dfe9ad381}} 
+Text {\bfseries max\+Player\+H\+P\+Text}
+\item 
+\mbox{\Hypertarget{class_gameplay_af744284896199a16b0fa180dc271f2e6}\label{class_gameplay_af744284896199a16b0fa180dc271f2e6}} 
+Text {\bfseries actual\+Enemy\+H\+P\+Text}
+\item 
+\mbox{\Hypertarget{class_gameplay_a3417dd6e842ca2a3ab2a162599d71d43}\label{class_gameplay_a3417dd6e842ca2a3ab2a162599d71d43}} 
+Text {\bfseries max\+Enemy\+H\+P\+Text}
+\item 
+\mbox{\Hypertarget{class_gameplay_af87a6ba5f01b2ca40f099fcc31074d78}\label{class_gameplay_af87a6ba5f01b2ca40f099fcc31074d78}} 
+Text {\bfseries player\+Dmg\+Label\+Text}
+\item 
+\mbox{\Hypertarget{class_gameplay_a5425c9e52ca326252663135eec4aba05}\label{class_gameplay_a5425c9e52ca326252663135eec4aba05}} 
+Text {\bfseries enemy\+Dmg\+Label\+Text}
+\item 
+\mbox{\Hypertarget{class_gameplay_ac0f5f25339c8f9f7ce890b5cb68900af}\label{class_gameplay_ac0f5f25339c8f9f7ce890b5cb68900af}} 
+Audio\+Source {\bfseries musicsrc}
+\item 
+\mbox{\Hypertarget{class_gameplay_accfeede9500530c26e0d05bd9e333894}\label{class_gameplay_accfeede9500530c26e0d05bd9e333894}} 
+Audio\+Clip {\bfseries enemy\+\_\+hit\+\_\+\+Sound}
+\item 
+\mbox{\Hypertarget{class_gameplay_a8ad8fc709889c1581412a46b5c648f2e}\label{class_gameplay_a8ad8fc709889c1581412a46b5c648f2e}} 
+Audio\+Clip {\bfseries crit\+\_\+\+Sound}
+\item 
+\mbox{\Hypertarget{class_gameplay_aa5c98178b057b707fd6127c2823c803d}\label{class_gameplay_aa5c98178b057b707fd6127c2823c803d}} 
+Audio\+Clip {\bfseries miss\+\_\+\+Sound}
+\item 
+\mbox{\Hypertarget{class_gameplay_aef5930170ca2cbd77a04c611bc3e81db}\label{class_gameplay_aef5930170ca2cbd77a04c611bc3e81db}} 
+Audio\+Clip {\bfseries drop\+\_\+sword\+\_\+\+Sound}
+\item 
+\mbox{\Hypertarget{class_gameplay_a9891285ae11da63d4751760a82a161a4}\label{class_gameplay_a9891285ae11da63d4751760a82a161a4}} 
+Game\+Object {\bfseries lose\+Popup}
+\item 
+\mbox{\Hypertarget{class_gameplay_a835615e1b6b33c0340b1a6a00aff92ef}\label{class_gameplay_a835615e1b6b33c0340b1a6a00aff92ef}} 
+List$<$ \mbox{\hyperlink{class_turn}{Turn}} $>$ \mbox{\hyperlink{class_gameplay_a835615e1b6b33c0340b1a6a00aff92ef}{turns}}
+\begin{DoxyCompactList}\small\item\em Store all the Turns of the battle until a player lost. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_gameplay_a08bd2fb4dd769dfdb90d4627da35728a}\label{class_gameplay_a08bd2fb4dd769dfdb90d4627da35728a}} 
+\mbox{\hyperlink{class_player}{Player}} {\bfseries player}
+\item 
+\mbox{\Hypertarget{class_gameplay_a6879e0b49de984028dd0dae85873f20d}\label{class_gameplay_a6879e0b49de984028dd0dae85873f20d}} 
+\mbox{\hyperlink{class_player}{Player}} {\bfseries enemy}
+\item 
+\mbox{\Hypertarget{class_gameplay_afb9326f06082e04ed20c8c08bd3b323c}\label{class_gameplay_afb9326f06082e04ed20c8c08bd3b323c}} 
+int {\bfseries result}
+\item 
+\mbox{\Hypertarget{class_gameplay_a6a7bbaa555529ed618f3a699d9fba7da}\label{class_gameplay_a6a7bbaa555529ed618f3a699d9fba7da}} 
+int {\bfseries player\+\_\+max\+HP}
+\item 
+\mbox{\Hypertarget{class_gameplay_a30cf1b38be25e93296e9e12d5b1c7a1a}\label{class_gameplay_a30cf1b38be25e93296e9e12d5b1c7a1a}} 
+int {\bfseries enemy\+\_\+max\+HP}
+\item 
+\mbox{\Hypertarget{class_gameplay_ab6a745c63842b466d2089a7ee69f2504}\label{class_gameplay_ab6a745c63842b466d2089a7ee69f2504}} 
+float {\bfseries player\+\_\+new\+HP} = -\/1
+\item 
+\mbox{\Hypertarget{class_gameplay_a64a0112ee42d349da1f4bf0e0876746f}\label{class_gameplay_a64a0112ee42d349da1f4bf0e0876746f}} 
+float {\bfseries enemy\+\_\+new\+HP} = -\/1
+\item 
+\mbox{\Hypertarget{class_gameplay_a9218bbfcfe0c3e6392eef67514aa18eb}\label{class_gameplay_a9218bbfcfe0c3e6392eef67514aa18eb}} 
+bool {\bfseries skip} = false
+\item 
+\mbox{\Hypertarget{class_gameplay_ab4a9da65b37f32fe2ffd6edb5bc8c25b}\label{class_gameplay_ab4a9da65b37f32fe2ffd6edb5bc8c25b}} 
+bool {\bfseries death} = false
+\item 
+\mbox{\Hypertarget{class_gameplay_adceff1461afda5b8b46381c99d315c51}\label{class_gameplay_adceff1461afda5b8b46381c99d315c51}} 
+bool {\bfseries ranked}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Entire \mbox{\hyperlink{class_gameplay}{Gameplay}} and Battle Screen management. 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+U\+O\+N\+\_\+\+I\+B\+M\+\_\+\+A\+I\+G\+A\+M\+E2018/\+Unity/\+Group15/\+Assets/\+Scripts/\+Battle/Gameplay.\+cs\end{DoxyCompactItemize}

@@ -1,59 +1,45 @@
-﻿using System.Collections;
-using UnityEngine;
-using UnityEngine.Networking;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
-using VoxelBusters.NativePlugins;
 
 //! Keep User/Player data stored when exiting app, reload them when coming back
 public class PauseManager : MonoBehaviour {
 
+    //! Check if this is the initial opening of the app
     private bool start = true;
     private bool skipSelected;
 
-    private void Awake()
-    {
-        ZPlayerPrefs.Initialize("small fluffy puppies", "I'mASaltySalter");
-    }
+    //! Set the salt for the encryption
+    private void Awake() { ZPlayerPrefs.Initialize("small fluffy puppies", "I'mASaltySalter"); }
 
+    //! Save the settings and player id, or delete the account upon registration error
     private void Save()
     {
         skipSelected = (PlayerPrefs.GetInt("skip")) == 1 ? true : false;
         if (!skipSelected && SceneManager.GetActiveScene().name == "Battle") PlayerPrefs.SetInt("skip", 1);
 
-        if (UserSession.us.user != null && UserSession.us.user.GetID() != "")
+        if (UserSession.user_session.user != null && UserSession.user_session.user.GetID() != "")
         {
-            if(StartScreens() && !LoginTwitter.leftForTwitter) //FIX THIS CONDITIONAL
+            if(StartScreens() && !LoginTwitter.leftForTwitter && !AuthenticateUser.display_loginAnimation)
             {
-                StartCoroutine(DeleteAccount());
+                StartCoroutine(Server.DeleteAccount());
             }
             else
             {
-                ZPlayerPrefs.SetString("id", UserSession.us.user.GetID());
+                ZPlayerPrefs.SetString("id", UserSession.user_session.user.GetID());
                 ZPlayerPrefs.Save();
             }
         }
     }
 
+    //! Check if account registration is correctly completed
     private bool AccountComplete()
     {
         gameObject.AddComponent<UpdateSessions>().U_Player();
-        if (PlayerSession.ps.player.id == "") return false;
+        if (PlayerSession.player_session.player.id == "") return false;
         return true;
     }
-
-    public static IEnumerator DeleteAccount()
-    {
-        UnityWebRequest uwr = UnityWebRequest.Delete(Server.Address("delete_user") + UserSession.us.user.GetID());
-        yield return uwr.SendWebRequest();
-        if (uwr.isNetworkError)
-            yield return DeleteAccount();
-        UserSession.us.user = new User("", "");
-        PlayerSession.ps.player = new Player();
-        ZPlayerPrefs.DeleteKey("id");
-        ZPlayerPrefs.Save();
-        yield break;
-    }
-
+    
+    //! Load the settings and player id
     private void Load()
     {
         if (!start)
@@ -62,24 +48,26 @@ public class PauseManager : MonoBehaviour {
             if (ZPlayerPrefs.HasKey("id") && ZPlayerPrefs.GetRowString("id") != "")
             {
                 if(StartScreens() && !LoginTwitter.leftForTwitter)
-                    gameObject.AddComponent<ChangeScene>().Forward("StartScreen");
+                    gameObject.AddComponent<ChangeScene>().Forward("Start");
             }
             else if(!LoginTwitter.leftForTwitter)
             {
                 Debug.Log("Exception: no ID");
-                gameObject.AddComponent<ChangeScene>().Forward("StartScreen");
+                gameObject.AddComponent<ChangeScene>().Forward("Start");
             }
         }         
     }
 
+    //! Check if current screen is one of the Starting screens
     private bool StartScreens()
     {
         string scene = SceneManager.GetActiveScene().name;
-        if (scene == "Start_Login" || scene == "TwitterLogin" || scene == "CharacterCreation" || scene == "CreateAccount")
+        if (scene == "Login" || scene == "Twitter" || scene == "Ideals" || scene == "Register")
             return true;
         return false;
     }
 
+    //! Handle exiting the app
     private void OnApplicationPause(bool pauseStatus)
     {
         if (pauseStatus)

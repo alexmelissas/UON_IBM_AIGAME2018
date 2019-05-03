@@ -1,41 +1,43 @@
-﻿using UnityEngine.UI;
+﻿using UnityEngine;
 
+//! Shield item class
 public class Shield : Item {
 
-    public static Image base_icon; //set path to base icon here
+    public static Texture2D base_icon; //set path to base icon here
 
-    public Shield(int level) : base(base_icon, 0, 0, 0, 0, 0, 0)
+    public Shield(int level) : base(base_icon, "", 0, 0, 0, 0, 0, 0)
     {
-        // also switch for levels to change icon of item (better looking with each upgrade)
+        string item_icon_location = "";
         int attribute = 0;
         switch (level)
         {
             case 1:
+                name = "Basic Shield";
                 attribute = 2;
-                price = 9;
+                price = 89;
+                item_icon_location = "basic_shield";
                 break;
             case 2:
+                name = "Poseidon's Wavebreaker";
                 attribute = 10;
-                price = 29;
+                price = 219;
+                item_icon_location = "emerald_protector";
                 break;
             case 3:
+                name = "Persephone's Defender";
                 attribute = 19;
-                price = 87;
+                price = 549;
+                item_icon_location = "serpant_defender";
                 break;
             case 4:
+                name = "Athena's Star Guard";
                 attribute = 37;
-                price = 199;
-                break;
-            case 5:
-                attribute = 51;
-                price = 399;
-                break;
-            case 6:
-                attribute = 79;
                 price = 999;
+                item_icon_location = "zeus_star_guard";
                 break;
             default: break;
         }
+        icon = Resources.Load(item_icon_location) as Texture2D;
         defense = attribute;
     }
 

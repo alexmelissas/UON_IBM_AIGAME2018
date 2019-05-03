@@ -1,41 +1,43 @@
-﻿using UnityEngine.UI;
+﻿using UnityEngine;
 
+//! Sword item class
 public class Sword : Item {
 
-    public static Image base_icon; // set path to base icon here
+    public static Texture2D base_icon; // set path to base icon here
 
-	public Sword(int level) : base(base_icon, 0, 0, 0, 0, 0, 0)
+	public Sword(int level) : base(base_icon, "", 0, 0, 0, 0, 0, 0)
     {
-        // also switch for levels to change icon of item (better looking with each upgrade)
+        string item_icon_location = "";
         int attribute = 0;
         switch (level)
         {
             case 1:
+                name = "Basic Blade";
                 attribute = 5;
-                price = 9;
+                price = 109;
+                item_icon_location = "basic_blade";
                 break;
             case 2:
+                name = "Aries' Dawnbringer";
                 attribute = 15;
-                price = 69;
+                price = 299;
+                item_icon_location = "runic_slayer";
                 break;
             case 3:
+                name = "Zeus' ThunderSlasher";
                 attribute = 30;
-                price = 109;
+                price = 519;
+                item_icon_location = "zeus_thunderslasher";
                 break;
             case 4:
+                name = "Athena's AngelBlade";
                 attribute = 50;
-                price = 199;
-                break;
-            case 5:
-                attribute = 77;
-                price = 449;
-                break;
-            case 6:
-                attribute = 105;
                 price = 999;
+                item_icon_location = "athena's_angelblade";
                 break;
             default: break;
         }
+        icon = Resources.Load(item_icon_location) as Texture2D;
         attack = attribute;
     }
 }

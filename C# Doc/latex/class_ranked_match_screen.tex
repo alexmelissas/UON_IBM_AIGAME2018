@@ -1,0 +1,78 @@
+\hypertarget{class_ranked_match_screen}{}\section{Ranked\+Match\+Screen Class Reference}
+\label{class_ranked_match_screen}\index{RankedMatchScreen@{RankedMatchScreen}}
+
+
+Ranked PvP screen handling.  
+
+
+Inheritance diagram for Ranked\+Match\+Screen\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_ranked_match_screen}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_ranked_match_screen_a6ee96d8d4c47bfca292a49198e399c1b}\label{class_ranked_match_screen_a6ee96d8d4c47bfca292a49198e399c1b}} 
+void \mbox{\hyperlink{class_ranked_match_screen_a6ee96d8d4c47bfca292a49198e399c1b}{Display\+Top\+Players}} (string rank)
+\begin{DoxyCompactList}\small\item\em Show the top players of selected rank. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_ranked_match_screen_a605d6d6b0092debfa254bb43835e16c1}\label{class_ranked_match_screen_a605d6d6b0092debfa254bb43835e16c1}} 
+void \mbox{\hyperlink{class_ranked_match_screen_a605d6d6b0092debfa254bb43835e16c1}{Play}} ()
+\begin{DoxyCompactList}\small\item\em Initiate the PvP match. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_ranked_match_screen_adeac07462f1e291a4f641dea869e1ff9}\label{class_ranked_match_screen_adeac07462f1e291a4f641dea869e1ff9}} 
+Game\+Object {\bfseries rankings\+Display\+Group}
+\item 
+\mbox{\Hypertarget{class_ranked_match_screen_aea358c317a97859c74904fceb35853ac}\label{class_ranked_match_screen_aea358c317a97859c74904fceb35853ac}} 
+Audio\+Source {\bfseries audiosrc}
+\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_ranked_match_screen_a98bbe7478a312eca3e6b43bf452f4923}\label{class_ranked_match_screen_a98bbe7478a312eca3e6b43bf452f4923}} 
+void \mbox{\hyperlink{class_ranked_match_screen_a98bbe7478a312eca3e6b43bf452f4923}{Start}} ()
+\begin{DoxyCompactList}\small\item\em Setup the screen. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_ranked_match_screen_ab11c2f202db041f75bf5efbd8063f2f2}\label{class_ranked_match_screen_ab11c2f202db041f75bf5efbd8063f2f2}} 
+void \mbox{\hyperlink{class_ranked_match_screen_ab11c2f202db041f75bf5efbd8063f2f2}{Update}} ()
+\begin{DoxyCompactList}\small\item\em Used for fading in the music. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_ranked_match_screen_ac556e6c839f3ed858ee7120291bf84bd}\label{class_ranked_match_screen_ac556e6c839f3ed858ee7120291bf84bd}} 
+I\+Enumerator \mbox{\hyperlink{class_ranked_match_screen_ac556e6c839f3ed858ee7120291bf84bd}{Get\+Players}} (string new\+Rank)
+\begin{DoxyCompactList}\small\item\em G\+ET the top 5 players of each rank. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_ranked_match_screen_af680a685d6adae7f7c9580a04eea4bed}\label{class_ranked_match_screen_af680a685d6adae7f7c9580a04eea4bed}} 
+void \mbox{\hyperlink{class_ranked_match_screen_af680a685d6adae7f7c9580a04eea4bed}{Start\+Check}} ()
+\begin{DoxyCompactList}\small\item\em Press button to initiate matchmaking. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_ranked_match_screen_a8c3dcce8a497dddd00881d64690be6df}\label{class_ranked_match_screen_a8c3dcce8a497dddd00881d64690be6df}} 
+void \mbox{\hyperlink{class_ranked_match_screen_a8c3dcce8a497dddd00881d64690be6df}{Increase\+Attempts}} ()
+\begin{DoxyCompactList}\small\item\em Increase attempts. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_ranked_match_screen_ad61c0cdc08dd280707aa5e4bb29bdb58}\label{class_ranked_match_screen_ad61c0cdc08dd280707aa5e4bb29bdb58}} 
+I\+Enumerator \mbox{\hyperlink{class_ranked_match_screen_ad61c0cdc08dd280707aa5e4bb29bdb58}{Check\+Enemy}} ()
+\begin{DoxyCompactList}\small\item\em Recursively try to find an enemy 3 times (in case of errors). If not found after 4 tries, stop. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_ranked_match_screen_a07964a0e688df7fac3544ecbacdb1b38}\label{class_ranked_match_screen_a07964a0e688df7fac3544ecbacdb1b38}} 
+Game\+Object {\bfseries loading\+\_\+spin\+\_\+\+Animation}
+\item 
+\mbox{\Hypertarget{class_ranked_match_screen_a58808e8b95d7ceae1e2fded90b49a717}\label{class_ranked_match_screen_a58808e8b95d7ceae1e2fded90b49a717}} 
+List$<$ \mbox{\hyperlink{class_user}{User}} $>$ {\bfseries users}
+\item 
+\mbox{\Hypertarget{class_ranked_match_screen_a9b7d719703c76fa997c55af096f1f515}\label{class_ranked_match_screen_a9b7d719703c76fa997c55af096f1f515}} 
+string {\bfseries old\+Rank} = \char`\"{}\char`\"{}
+\item 
+\mbox{\Hypertarget{class_ranked_match_screen_a98589ae73b128bf087585b9992e42b55}\label{class_ranked_match_screen_a98589ae73b128bf087585b9992e42b55}} 
+int {\bfseries attempts}
+\item 
+\mbox{\Hypertarget{class_ranked_match_screen_a543fa182be7d42093f3da8924e37802e}\label{class_ranked_match_screen_a543fa182be7d42093f3da8924e37802e}} 
+float {\bfseries max\+\_\+volume}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Ranked PvP screen handling. 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+U\+O\+N\+\_\+\+I\+B\+M\+\_\+\+A\+I\+G\+A\+M\+E2018/\+Unity/\+Group15/\+Assets/\+Scripts/\+Battle/Ranked\+Match\+Screen.\+cs\end{DoxyCompactItemize}
