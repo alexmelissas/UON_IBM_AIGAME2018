@@ -80,6 +80,8 @@
 		- GET: get the number of battle today
 	- `/battle/ranked/count/{id}`:
 		- GET: get the number of battle today
+	- `/battle/ranked/score/{id}`:
+		- GET: get the rank score of the player
 	- `/battle/ranked/{id}`:
 		- GET: get 5 random players
 	- `/battle/ranked/group`:

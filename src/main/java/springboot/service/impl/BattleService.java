@@ -242,6 +242,16 @@ public class BattleService {
 	}
 
 	/**
+	 * Get the score of a player
+	 * 
+	 * @param id the id
+	 * @return the score
+	 */
+	public int getRankedScore(String id) {
+		return redisService.getRankedScore(id);
+	}
+
+	/**
 	 * Handle the ranked battle
 	 * 
 	 * @param id1             the current player
@@ -250,7 +260,7 @@ public class BattleService {
 	 * @param additionalExp   additional experience
 	 * @param additionalMoney additional money
 	 */
-	public synchronized void handleRankedResult(String id1, String id2, boolean result, int additionalExp,
+	public synchronized Player handleRankedResult(String id1, String id2, boolean result, int additionalExp,
 			int additionalMoney) {
 		// update individual score
 		int score = redisService.getRankedScore(id1);
@@ -264,6 +274,9 @@ public class BattleService {
 		int groupScore = redisService.getGroupScore(groupNum);
 		groupScore += result ? 15 : 3;
 		redisService.setGroupScore(groupNum, groupScore);
+
+		Player player = playerService.getPlayerById(id1);
+		return player;
 	}
 
 	/**

@@ -1,3 +1,4 @@
-/Users/chenyu/github/UON_IBM_AIGAME2018/src/test/java/game/CharacterTest.java
-/Users/chenyu/github/UON_IBM_AIGAME2018/src/test/java/util/test/RedisTest.java
-/Users/chenyu/github/UON_IBM_AIGAME2018/src/test/java/game/ConfigTest.java
+/Users/chenyu/github/UON_IBM_AIGAME2018/src/test/java/RedisServiceTest.java
+/Users/chenyu/github/UON_IBM_AIGAME2018/src/test/java/PlayerServiceTest.java
+/Users/chenyu/github/UON_IBM_AIGAME2018/src/test/java/UserServiceTest.java
+/Users/chenyu/github/UON_IBM_AIGAME2018/src/test/java/IdealServiceTest.java

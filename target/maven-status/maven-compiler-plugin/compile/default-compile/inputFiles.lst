@@ -25,7 +25,6 @@
 /Users/chenyu/github/UON_IBM_AIGAME2018/src/main/java/springboot/service/impl/TwitterService.java
 /Users/chenyu/github/UON_IBM_AIGAME2018/src/main/java/springboot/domain/Player.java
 /Users/chenyu/github/UON_IBM_AIGAME2018/src/main/java/springboot/domain/Ideal.java
-/Users/chenyu/github/UON_IBM_AIGAME2018/src/main/java/springboot/aop/ResourceCheckAspect.java
 /Users/chenyu/github/UON_IBM_AIGAME2018/src/main/java/springboot/domain/Bot.java
 /Users/chenyu/github/UON_IBM_AIGAME2018/src/main/java/springboot/repository/UserRepository.java
 /Users/chenyu/github/UON_IBM_AIGAME2018/src/main/java/springboot/config/RedisConfig.java
