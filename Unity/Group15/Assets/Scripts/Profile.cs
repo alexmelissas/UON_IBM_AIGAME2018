@@ -8,7 +8,9 @@ public class Profile: MonoBehaviour {
     public Text hpText, atkText, defText, agilityText, critText;
     public Text factorTagText, lvlText, nextLevelText, expText;
     public Slider expSlider, factorSlider;
+    public GameObject rankImage;
 
+    private Texture2D bronzeIcon, silverIcon, goldIcon;
     private Player p;
     
     //! Instantly update the Player's stats when opening the screen
@@ -20,6 +22,9 @@ public class Profile: MonoBehaviour {
         hpText.supportRichText = true;
         atkText.supportRichText = true;
         defText.supportRichText = true;
+        bronzeIcon = Resources.Load("bronze") as Texture2D;
+        silverIcon = Resources.Load("silver") as Texture2D;
+        goldIcon = Resources.Load("gold") as Texture2D;
     }
 
     //! Display the player's stats - update only if a change is detected
@@ -29,6 +34,17 @@ public class Profile: MonoBehaviour {
             p = PlayerSession.player_session.player;
             Stats stats = new Stats(p);
 
+
+            Texture2D rankIcon;
+            //switch(p.rank)
+            //{
+            //    case "bronze": rankIcon = bronzeIcon; break;
+            //    case "silver": rankIcon = silverIcon; break;
+            //    case "gold": rankIcon = goldIcon; break;
+            //}
+            rankIcon = bronzeIcon; // TRASH LINE
+            rankImage.GetComponent<RawImage>().texture = rankIcon;
+
             hpText.text = stats.StatsToStrings()[0];
             atkText.text = stats.StatsToStrings()[1];
             defText.text = stats.StatsToStrings()[2];
@@ -36,7 +52,7 @@ public class Profile: MonoBehaviour {
             agilityText.text = "" + p.agility;
             critText.text = "" + p.critical_strike;
 
-            double max_factor = 0.8f; //keep updated!
+            double max_factor = 0.8f;
 
             double factor = (p.factor - 1) / max_factor;
             factorSlider.normalizedValue = (float)factor;

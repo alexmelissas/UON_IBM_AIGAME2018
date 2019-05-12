@@ -4,6 +4,7 @@ public class Stats {
     public int hpTotal, hp_base, hp_factor, hp_item;
     public int attackTotal, attack_base, attack_factor, attack_item;
     public int defenseTotal, defense_base, defense_factor, defense_item;
+    public string rank;
 
     //! Calculate the stats based on Player given (including base/item/factor splits)
     public Stats(Player p)
