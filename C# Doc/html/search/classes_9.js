@@ -4,5 +4,6 @@ var searchData=
   ['server',['Server',['../class_server.html',1,'']]],
   ['setsettings',['SetSettings',['../class_set_settings.html',1,'']]],
   ['shield',['Shield',['../class_shield.html',1,'']]],
+  ['stats',['Stats',['../class_stats.html',1,'']]],
   ['sword',['Sword',['../class_sword.html',1,'']]]
 ];

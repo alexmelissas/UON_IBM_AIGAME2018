@@ -14,50 +14,130 @@ Inheritance diagram for Unranked\+Match\+:\begin{figure}[H]
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{class_unranked_match_afce2d9b096ad7e07913e6e574055083e}\label{class_unranked_match_afce2d9b096ad7e07913e6e574055083e}} 
 void \mbox{\hyperlink{class_unranked_match_afce2d9b096ad7e07913e6e574055083e}{Play}} ()
 \begin{DoxyCompactList}\small\item\em Initiate the PvP match. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{class_unranked_match_acf7f9186ee313f3bc5cabb097eb41e37}\label{class_unranked_match_acf7f9186ee313f3bc5cabb097eb41e37}} 
-Game\+Object {\bfseries loading\+\_\+spin\+\_\+\+Animation}
+Game\+Object \mbox{\hyperlink{class_unranked_match_acf7f9186ee313f3bc5cabb097eb41e37}{loading\+\_\+spin\+\_\+\+Animation}}
 \item 
-\mbox{\Hypertarget{class_unranked_match_a467346b77a8d2cbe87bdbdc6a99809b0}\label{class_unranked_match_a467346b77a8d2cbe87bdbdc6a99809b0}} 
-Audio\+Source {\bfseries audiosrc}
+Audio\+Source \mbox{\hyperlink{class_unranked_match_a467346b77a8d2cbe87bdbdc6a99809b0}{audiosrc}}
 \end{DoxyCompactItemize}
 \subsection*{Private Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{class_unranked_match_a7361150ca22d5a53cdbfe4d34a6c94ea}\label{class_unranked_match_a7361150ca22d5a53cdbfe4d34a6c94ea}} 
 void \mbox{\hyperlink{class_unranked_match_a7361150ca22d5a53cdbfe4d34a6c94ea}{Start}} ()
 \begin{DoxyCompactList}\small\item\em Setup the screen. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{class_unranked_match_a11b0733dd14df9f9abcf75dfd7047172}\label{class_unranked_match_a11b0733dd14df9f9abcf75dfd7047172}} 
 void \mbox{\hyperlink{class_unranked_match_a11b0733dd14df9f9abcf75dfd7047172}{Update}} ()
 \begin{DoxyCompactList}\small\item\em Used for fading in the music. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{class_unranked_match_a39c95f995b2fbaecfc07f24e9ec847a9}\label{class_unranked_match_a39c95f995b2fbaecfc07f24e9ec847a9}} 
 void \mbox{\hyperlink{class_unranked_match_a39c95f995b2fbaecfc07f24e9ec847a9}{Start\+Check}} ()
 \begin{DoxyCompactList}\small\item\em Press button to initiate matchmaking. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{class_unranked_match_a155dc55d0125b9fa9fe2625d976e6278}\label{class_unranked_match_a155dc55d0125b9fa9fe2625d976e6278}} 
 void \mbox{\hyperlink{class_unranked_match_a155dc55d0125b9fa9fe2625d976e6278}{Increase\+Attempts}} ()
 \begin{DoxyCompactList}\small\item\em Increase attempts. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{class_unranked_match_ae723d97807f1686b46648b2bbee881ee}\label{class_unranked_match_ae723d97807f1686b46648b2bbee881ee}} 
 I\+Enumerator \mbox{\hyperlink{class_unranked_match_ae723d97807f1686b46648b2bbee881ee}{Check\+Enemy}} ()
 \begin{DoxyCompactList}\small\item\em Recursively try to find an enemy 3 times (in case of errors). If not found after 4 tries, stop. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Private Attributes}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{class_unranked_match_a6a0e41bddbea09b48e2129f35875daf2}\label{class_unranked_match_a6a0e41bddbea09b48e2129f35875daf2}} 
-int {\bfseries attempts}
+int \mbox{\hyperlink{class_unranked_match_a6a0e41bddbea09b48e2129f35875daf2}{attempts}}
 \item 
-\mbox{\Hypertarget{class_unranked_match_a5aa53fa5b0f4ff0b942fd905beea8c6e}\label{class_unranked_match_a5aa53fa5b0f4ff0b942fd905beea8c6e}} 
-float {\bfseries max\+\_\+volume}
+float \mbox{\hyperlink{class_unranked_match_a5aa53fa5b0f4ff0b942fd905beea8c6e}{max\+\_\+volume}}
 \end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}
 Ranked PvP screen handling. 
 
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_unranked_match_ae723d97807f1686b46648b2bbee881ee}\label{class_unranked_match_ae723d97807f1686b46648b2bbee881ee}} 
+\index{UnrankedMatch@{UnrankedMatch}!CheckEnemy@{CheckEnemy}}
+\index{CheckEnemy@{CheckEnemy}!UnrankedMatch@{UnrankedMatch}}
+\subsubsection{\texorpdfstring{CheckEnemy()}{CheckEnemy()}}
+{\footnotesize\ttfamily I\+Enumerator Unranked\+Match.\+Check\+Enemy (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Recursively try to find an enemy 3 times (in case of errors). If not found after 4 tries, stop. 
+
+\mbox{\Hypertarget{class_unranked_match_a155dc55d0125b9fa9fe2625d976e6278}\label{class_unranked_match_a155dc55d0125b9fa9fe2625d976e6278}} 
+\index{UnrankedMatch@{UnrankedMatch}!IncreaseAttempts@{IncreaseAttempts}}
+\index{IncreaseAttempts@{IncreaseAttempts}!UnrankedMatch@{UnrankedMatch}}
+\subsubsection{\texorpdfstring{IncreaseAttempts()}{IncreaseAttempts()}}
+{\footnotesize\ttfamily void Unranked\+Match.\+Increase\+Attempts (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Increase attempts. 
+
+\mbox{\Hypertarget{class_unranked_match_afce2d9b096ad7e07913e6e574055083e}\label{class_unranked_match_afce2d9b096ad7e07913e6e574055083e}} 
+\index{UnrankedMatch@{UnrankedMatch}!Play@{Play}}
+\index{Play@{Play}!UnrankedMatch@{UnrankedMatch}}
+\subsubsection{\texorpdfstring{Play()}{Play()}}
+{\footnotesize\ttfamily void Unranked\+Match.\+Play (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Initiate the PvP match. 
+
+\mbox{\Hypertarget{class_unranked_match_a7361150ca22d5a53cdbfe4d34a6c94ea}\label{class_unranked_match_a7361150ca22d5a53cdbfe4d34a6c94ea}} 
+\index{UnrankedMatch@{UnrankedMatch}!Start@{Start}}
+\index{Start@{Start}!UnrankedMatch@{UnrankedMatch}}
+\subsubsection{\texorpdfstring{Start()}{Start()}}
+{\footnotesize\ttfamily void Unranked\+Match.\+Start (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Setup the screen. 
+
+\mbox{\Hypertarget{class_unranked_match_a39c95f995b2fbaecfc07f24e9ec847a9}\label{class_unranked_match_a39c95f995b2fbaecfc07f24e9ec847a9}} 
+\index{UnrankedMatch@{UnrankedMatch}!StartCheck@{StartCheck}}
+\index{StartCheck@{StartCheck}!UnrankedMatch@{UnrankedMatch}}
+\subsubsection{\texorpdfstring{StartCheck()}{StartCheck()}}
+{\footnotesize\ttfamily void Unranked\+Match.\+Start\+Check (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Press button to initiate matchmaking. 
+
+\mbox{\Hypertarget{class_unranked_match_a11b0733dd14df9f9abcf75dfd7047172}\label{class_unranked_match_a11b0733dd14df9f9abcf75dfd7047172}} 
+\index{UnrankedMatch@{UnrankedMatch}!Update@{Update}}
+\index{Update@{Update}!UnrankedMatch@{UnrankedMatch}}
+\subsubsection{\texorpdfstring{Update()}{Update()}}
+{\footnotesize\ttfamily void Unranked\+Match.\+Update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Used for fading in the music. 
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{class_unranked_match_a6a0e41bddbea09b48e2129f35875daf2}\label{class_unranked_match_a6a0e41bddbea09b48e2129f35875daf2}} 
+\index{UnrankedMatch@{UnrankedMatch}!attempts@{attempts}}
+\index{attempts@{attempts}!UnrankedMatch@{UnrankedMatch}}
+\subsubsection{\texorpdfstring{attempts}{attempts}}
+{\footnotesize\ttfamily int Unranked\+Match.\+attempts\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_unranked_match_a467346b77a8d2cbe87bdbdc6a99809b0}\label{class_unranked_match_a467346b77a8d2cbe87bdbdc6a99809b0}} 
+\index{UnrankedMatch@{UnrankedMatch}!audiosrc@{audiosrc}}
+\index{audiosrc@{audiosrc}!UnrankedMatch@{UnrankedMatch}}
+\subsubsection{\texorpdfstring{audiosrc}{audiosrc}}
+{\footnotesize\ttfamily Audio\+Source Unranked\+Match.\+audiosrc}
+
+\mbox{\Hypertarget{class_unranked_match_acf7f9186ee313f3bc5cabb097eb41e37}\label{class_unranked_match_acf7f9186ee313f3bc5cabb097eb41e37}} 
+\index{UnrankedMatch@{UnrankedMatch}!loading\_spin\_Animation@{loading\_spin\_Animation}}
+\index{loading\_spin\_Animation@{loading\_spin\_Animation}!UnrankedMatch@{UnrankedMatch}}
+\subsubsection{\texorpdfstring{loading\_spin\_Animation}{loading\_spin\_Animation}}
+{\footnotesize\ttfamily Game\+Object Unranked\+Match.\+loading\+\_\+spin\+\_\+\+Animation}
+
+\mbox{\Hypertarget{class_unranked_match_a5aa53fa5b0f4ff0b942fd905beea8c6e}\label{class_unranked_match_a5aa53fa5b0f4ff0b942fd905beea8c6e}} 
+\index{UnrankedMatch@{UnrankedMatch}!max\_volume@{max\_volume}}
+\index{max\_volume@{max\_volume}!UnrankedMatch@{UnrankedMatch}}
+\subsubsection{\texorpdfstring{max\_volume}{max\_volume}}
+{\footnotesize\ttfamily float Unranked\+Match.\+max\+\_\+volume\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
 The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 
-U\+O\+N\+\_\+\+I\+B\+M\+\_\+\+A\+I\+G\+A\+M\+E2018/\+Unity/\+Group15/\+Assets/\+Scripts/\+Battle/Unranked\+Match.\+cs\end{DoxyCompactItemize}
+U\+O\+N\+\_\+\+I\+B\+M\+\_\+\+A\+I\+G\+A\+M\+E2018/\+Unity/\+Group15/\+Assets/\+Scripts/\+Battle/\mbox{\hyperlink{_unranked_match_8cs}{Unranked\+Match.\+cs}}\end{DoxyCompactItemize}

@@ -98,7 +98,7 @@ public class UpdateSessions : MonoBehaviour{
 
         string ranked_address = Server.Address("get_plays_ranked") + UserSession.user_session.user.id;
 
-        using (UnityWebRequest uwr = UnityWebRequest.Get(unranked_address))
+        using (UnityWebRequest uwr = UnityWebRequest.Get(ranked_address))
         {
             uwr.timeout = 10;
             yield return uwr.SendWebRequest();

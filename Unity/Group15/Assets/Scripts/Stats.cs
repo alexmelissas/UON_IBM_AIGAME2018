@@ -1,4 +1,4 @@
-﻿// Container class for splitting the Player's stats to their counterparts
+﻿//! Container class for splitting the Player's stats to their counterparts
 public class Stats {
 
     public int hpTotal, hp_base, hp_factor, hp_item;
@@ -30,7 +30,7 @@ public class Stats {
         defenseTotal = p.defense + defense_item;
     }
 
-    //! Format the stats (base-bonus-totals) to array of displayable strings
+    //! Format the stats (base-bonus-totals) to array of colour-coded strings
     public string[] StatsToStrings()
     {
         string[] output = {"","",""};

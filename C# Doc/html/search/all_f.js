@@ -1,17 +1,15 @@
 var searchData=
 [
-  ['save',['Save',['../class_pause_manager.html#a0150346b902b664ce65d5e1b840d9d4d',1,'PauseManager']]],
-  ['scene_5fhistory',['scene_history',['../class_scene_history.html#a66d1fc693a99eb7055349244fa233868',1,'SceneHistory']]],
-  ['scenehistory',['SceneHistory',['../class_scene_history.html',1,'']]],
-  ['scenes',['scenes',['../class_scene_history.html#a2795917d2bfcff8b698453e9ea474efc',1,'SceneHistory']]],
-  ['server',['Server',['../class_server.html',1,'']]],
-  ['setsettings',['SetSettings',['../class_set_settings.html',1,'']]],
-  ['setupupgradepanel',['SetupUpgradePanel',['../class_inventory.html#aa99e2b5246a749ec59f04aa1ce48416a',1,'Inventory']]],
-  ['shield',['Shield',['../class_shield.html',1,'']]],
-  ['showpopup',['ShowPopup',['../class_gameplay.html#a26e8c55ca4dbbfb1898a3a7bb06d679d',1,'Gameplay.ShowPopup()'],['../class_login_twitter.html#aa41d307ac0099b8dd187f05d3d2aeab3',1,'LoginTwitter.ShowPopup()']]],
-  ['start',['start',['../class_pause_manager.html#a01e84a6aa94c2e746f047af9dcb5a04c',1,'PauseManager.start()'],['../class_animation_manager.html#a24e3383ca8d2acf1cf37211f8e9f2131',1,'AnimationManager.Start()'],['../class_bot_screen.html#a3ffff8c4a3c08bfc13dde5e3a7af702f',1,'BotScreen.Start()'],['../class_gameplay.html#a3262248fce4aeecf5de2486bb3305de3',1,'Gameplay.Start()'],['../class_ranked_match_screen.html#a98bbe7478a312eca3e6b43bf452f4923',1,'RankedMatchScreen.Start()'],['../class_unranked_match.html#a7361150ca22d5a53cdbfe4d34a6c94ea',1,'UnrankedMatch.Start()'],['../class_inventory.html#aa5a9d430aff1ecd12a75901608d337ea',1,'Inventory.Start()'],['../class_overworld.html#a1065dc87edcf287032a56809584feeab',1,'Overworld.Start()'],['../class_set_settings.html#a7d405e56dc6123768fac6fdd6e70ab0f',1,'SetSettings.Start()']]],
-  ['startcheck',['StartCheck',['../class_ranked_match_screen.html#af680a685d6adae7f7c9580a04eea4bed',1,'RankedMatchScreen.StartCheck()'],['../class_unranked_match.html#a39c95f995b2fbaecfc07f24e9ec847a9',1,'UnrankedMatch.StartCheck()']]],
-  ['startscreens',['StartScreens',['../class_pause_manager.html#a9a9453e92a60de1d20cf37c9e55ded0d',1,'PauseManager']]],
-  ['submit',['Submit',['../class_personality_creation.html#a464be274e82be75bab0899f8756c9562',1,'PersonalityCreation']]],
-  ['sword',['Sword',['../class_sword.html',1,'']]]
+  ['rank',['rank',['../class_player_session.html#a40ae843028dbcdbdd441078b88ea5cd0',1,'PlayerSession.rank()'],['../class_stats.html#a674f883d2ae3a54728674ba9a88991a2',1,'Stats.rank()']]],
+  ['rank_5fpoints',['rank_points',['../class_player_session.html#ac6cb4814f73c3e70feabc2d87d39ff3c',1,'PlayerSession']]],
+  ['ranked',['ranked',['../class_gameplay.html#adceff1461afda5b8b46381c99d315c51',1,'Gameplay']]],
+  ['rankedmatchscreen',['RankedMatchScreen',['../class_ranked_match_screen.html',1,'']]],
+  ['rankedmatchscreen_2ecs',['RankedMatchScreen.cs',['../_ranked_match_screen_8cs.html',1,'']]],
+  ['rankimage',['rankImage',['../class_profile.html#a60c8b525cd7a039a98226586b789c75a',1,'Profile']]],
+  ['rankingsdisplaygroup',['rankingsDisplayGroup',['../class_ranked_match_screen.html#adeac07462f1e291a4f641dea869e1ff9',1,'RankedMatchScreen']]],
+  ['reanalyse',['Reanalyse',['../class_server.html#ae77fb220463cc2e8a103b90aeb4e80bb',1,'Server']]],
+  ['reanalysis_5fdone',['reanalysis_done',['../class_server.html#a42280d186d88088d0f060ccb02974ae9',1,'Server']]],
+  ['register_5fsuccess',['register_success',['../class_server.html#a2e16618d6f2b9f4308203f4053d54545',1,'Server']]],
+  ['result',['result',['../class_battle_result.html#afd1e0eda93aa975e42f89c2eb3ce0fdc',1,'BattleResult.result()'],['../class_gameplay.html#afb9326f06082e04ed20c8c08bd3b323c',1,'Gameplay.result()']]],
+  ['runbattle',['RunBattle',['../class_gameplay.html#a314779fdcab62c148dbf587aa0ab4f67',1,'Gameplay']]]
 ];

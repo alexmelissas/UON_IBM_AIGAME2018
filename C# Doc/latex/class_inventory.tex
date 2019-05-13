@@ -14,110 +14,326 @@ Inheritance diagram for Inventory\+:\begin{figure}[H]
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{class_inventory_aa99e2b5246a749ec59f04aa1ce48416a}\label{class_inventory_aa99e2b5246a749ec59f04aa1ce48416a}} 
 void \mbox{\hyperlink{class_inventory_aa99e2b5246a749ec59f04aa1ce48416a}{Setup\+Upgrade\+Panel}} (int item\+\_\+type)
 \begin{DoxyCompactList}\small\item\em Setup the item upgrade panel with the next level item of selected type. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{class_inventory_a284995426324c648b4c9144a3b9bc277}\label{class_inventory_a284995426324c648b4c9144a3b9bc277}} 
 void \mbox{\hyperlink{class_inventory_a284995426324c648b4c9144a3b9bc277}{Confirm\+Purchase}} ()
 \begin{DoxyCompactList}\small\item\em Check if player has enough funds, then make the purchase. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{class_inventory_abd3af35db0c0049ce91eaa99b1798a69}\label{class_inventory_abd3af35db0c0049ce91eaa99b1798a69}} 
-Text {\bfseries hp\+Text}
+Text \mbox{\hyperlink{class_inventory_abd3af35db0c0049ce91eaa99b1798a69}{hp\+Text}}
 \item 
-\mbox{\Hypertarget{class_inventory_a4382ed8c55fa1899bf7a981ffac00523}\label{class_inventory_a4382ed8c55fa1899bf7a981ffac00523}} 
-Game\+Object {\bfseries upgrade\+Panel}
+Game\+Object \mbox{\hyperlink{class_inventory_a4382ed8c55fa1899bf7a981ffac00523}{upgrade\+Panel}}
 \item 
-\mbox{\Hypertarget{class_inventory_aff3bb1bee86c2916dd649bf623cbb963}\label{class_inventory_aff3bb1bee86c2916dd649bf623cbb963}} 
-Text {\bfseries item\+Name\+Text}
+Game\+Object \mbox{\hyperlink{class_inventory_a69cd0d81a41a9e4a1e0dea6b45434084}{player\+\_\+bop\+\_\+\+Animation}}
 \item 
-\mbox{\Hypertarget{class_inventory_ae035b7a3471724276238be3ec5d4769f}\label{class_inventory_ae035b7a3471724276238be3ec5d4769f}} 
-Game\+Object {\bfseries item\+Icon\+Image}
+Text \mbox{\hyperlink{class_inventory_aff3bb1bee86c2916dd649bf623cbb963}{item\+Name\+Text}}
 \item 
-\mbox{\Hypertarget{class_inventory_a268e4f39b1a158144b18d8560d4c2ef2}\label{class_inventory_a268e4f39b1a158144b18d8560d4c2ef2}} 
-Game\+Object {\bfseries sword\+Fully\+Upgraded\+Image}
+Game\+Object \mbox{\hyperlink{class_inventory_ae035b7a3471724276238be3ec5d4769f}{item\+Icon\+Image}}
 \item 
-\mbox{\Hypertarget{class_inventory_a8c34a2d39aab6ff22ec36e41763e2e22}\label{class_inventory_a8c34a2d39aab6ff22ec36e41763e2e22}} 
-Sprite {\bfseries atk}
+Game\+Object \mbox{\hyperlink{class_inventory_a7090ec7477cf37ce75e0722a0e792744}{current\+Sword\+Image}}
+\item 
+Sprite \mbox{\hyperlink{class_inventory_a8c34a2d39aab6ff22ec36e41763e2e22}{atk}}
+\item 
+Audio\+Source \mbox{\hyperlink{class_inventory_a28d3f85f956e83b94831df16b40a14ec}{soundsrc}}
+\item 
+Audio\+Clip \mbox{\hyperlink{class_inventory_af0bc00a8b9fb7d977b5f96eeedd7e166}{purchase\+\_\+sound}}
 \end{DoxyCompactItemize}
 \subsection*{Private Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{class_inventory_a88da279faf84d529af011f7e25bea01b}\label{class_inventory_a88da279faf84d529af011f7e25bea01b}} 
-void {\bfseries Awake} ()
+void \mbox{\hyperlink{class_inventory_a88da279faf84d529af011f7e25bea01b}{Awake}} ()
 \item 
-\mbox{\Hypertarget{class_inventory_aa5a9d430aff1ecd12a75901608d337ea}\label{class_inventory_aa5a9d430aff1ecd12a75901608d337ea}} 
 void \mbox{\hyperlink{class_inventory_aa5a9d430aff1ecd12a75901608d337ea}{Start}} ()
 \begin{DoxyCompactList}\small\item\em General Setup. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{class_inventory_a7b1e7148da0c7b5e4d87b6ea07dce086}\label{class_inventory_a7b1e7148da0c7b5e4d87b6ea07dce086}} 
 void \mbox{\hyperlink{class_inventory_a7b1e7148da0c7b5e4d87b6ea07dce086}{Update}} ()
 \begin{DoxyCompactList}\small\item\em Keep the player\textquotesingle{}s stats display updated. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{class_inventory_a6a6906197f22590ffa086d4aca935dc3}\label{class_inventory_a6a6906197f22590ffa086d4aca935dc3}} 
 void \mbox{\hyperlink{class_inventory_a6a6906197f22590ffa086d4aca935dc3}{Displayed}} (bool shown)
 \begin{DoxyCompactList}\small\item\em Show/\+Hide the item upgrade panels. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{class_inventory_a5ff170daf3d949c611d8e064626524e2}\label{class_inventory_a5ff170daf3d949c611d8e064626524e2}} 
 void \mbox{\hyperlink{class_inventory_a5ff170daf3d949c611d8e064626524e2}{Update\+Labels}} (int item\+\_\+type)
 \begin{DoxyCompactList}\small\item\em Helper for Setup\+Upgrade\+Panels. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{class_inventory_a6be0d5d14468b2eb9cba732c3f65c3e5}\label{class_inventory_a6be0d5d14468b2eb9cba732c3f65c3e5}} 
 I\+Enumerator \mbox{\hyperlink{class_inventory_a6be0d5d14468b2eb9cba732c3f65c3e5}{Purchase}} (string poorer\+Player\+J\+S\+ON)
 \begin{DoxyCompactList}\small\item\em Perform the server-\/side updating of the \mbox{\hyperlink{class_player}{Player}} based on the purchase. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Private Attributes}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{class_inventory_a6be0183125fd410aab7aeaf701db4741}\label{class_inventory_a6be0183125fd410aab7aeaf701db4741}} 
-Text {\bfseries atk\+Text}
+Text \mbox{\hyperlink{class_inventory_a6be0183125fd410aab7aeaf701db4741}{atk\+Text}}
 \item 
-\mbox{\Hypertarget{class_inventory_aa126dcd06ebf1ea9eec5aa6ca1e83a8d}\label{class_inventory_aa126dcd06ebf1ea9eec5aa6ca1e83a8d}} 
-Text {\bfseries def\+Text}
+Text \mbox{\hyperlink{class_inventory_aa126dcd06ebf1ea9eec5aa6ca1e83a8d}{def\+Text}}
 \item 
-\mbox{\Hypertarget{class_inventory_aa93a5a923daa1233401192da490e8e27}\label{class_inventory_aa93a5a923daa1233401192da490e8e27}} 
-Text {\bfseries money\+Text}
+Text \mbox{\hyperlink{class_inventory_aa93a5a923daa1233401192da490e8e27}{money\+Text}}
 \item 
-\mbox{\Hypertarget{class_inventory_a00da1044a0d829c9b8e0156f8b059db7}\label{class_inventory_a00da1044a0d829c9b8e0156f8b059db7}} 
-Text {\bfseries stat\+Text}
+Text \mbox{\hyperlink{class_inventory_a00da1044a0d829c9b8e0156f8b059db7}{stat\+Text}}
 \item 
-\mbox{\Hypertarget{class_inventory_a357c419671e7cb628288360cc7acd604}\label{class_inventory_a357c419671e7cb628288360cc7acd604}} 
-Text {\bfseries price\+Text}
+Text \mbox{\hyperlink{class_inventory_a357c419671e7cb628288360cc7acd604}{price\+Text}}
 \item 
-\mbox{\Hypertarget{class_inventory_a904e3fced18e5366bb5b89c7e4262874}\label{class_inventory_a904e3fced18e5366bb5b89c7e4262874}} 
-Text {\bfseries balance\+Text}
+Text \mbox{\hyperlink{class_inventory_a904e3fced18e5366bb5b89c7e4262874}{balance\+Text}}
 \item 
-\mbox{\Hypertarget{class_inventory_a93a55231b5b247c2e7b0dfee9ce2dd3d}\label{class_inventory_a93a55231b5b247c2e7b0dfee9ce2dd3d}} 
-Game\+Object {\bfseries stat\+Icon\+Image}
+Game\+Object \mbox{\hyperlink{class_inventory_af9d04c9febb8280182f03d1ccdc14fa8}{sword\+Icon\+Image}}
 \item 
-\mbox{\Hypertarget{class_inventory_a1d9b045b21d5bd72f6a6f6a94d535c72}\label{class_inventory_a1d9b045b21d5bd72f6a6f6a94d535c72}} 
-Game\+Object {\bfseries loading\+\_\+spinning\+\_\+\+Animation}
+Game\+Object \mbox{\hyperlink{class_inventory_a93a55231b5b247c2e7b0dfee9ce2dd3d}{stat\+Icon\+Image}}
 \item 
-\mbox{\Hypertarget{class_inventory_a19d58719a7e83a39bedb7514bd938649}\label{class_inventory_a19d58719a7e83a39bedb7514bd938649}} 
-Game\+Object {\bfseries shield\+Fully\+Upgraded\+Image}
+Game\+Object \mbox{\hyperlink{class_inventory_a1d9b045b21d5bd72f6a6f6a94d535c72}{loading\+\_\+spinning\+\_\+\+Animation}}
 \item 
-\mbox{\Hypertarget{class_inventory_ad414f904995e16ebdd58cf18700d4e59}\label{class_inventory_ad414f904995e16ebdd58cf18700d4e59}} 
-Game\+Object {\bfseries armour\+Fully\+Upgraded\+Image}
+Game\+Object \mbox{\hyperlink{class_inventory_a945eba3f91aa5a429eaa74502fe71bbc}{current\+Shield\+Image}}
 \item 
-\mbox{\Hypertarget{class_inventory_a62372c6936045f41bfa87a95c1aec3c8}\label{class_inventory_a62372c6936045f41bfa87a95c1aec3c8}} 
-Sprite {\bfseries def}
+Game\+Object \mbox{\hyperlink{class_inventory_a7fe90f0ee39e013f8c318327e20f85f1}{current\+Armour\+Image}}
 \item 
-\mbox{\Hypertarget{class_inventory_aed66b242ae5cf8df814b5d30bf20a6b3}\label{class_inventory_aed66b242ae5cf8df814b5d30bf20a6b3}} 
-Sprite {\bfseries hp}
+Sprite \mbox{\hyperlink{class_inventory_a62372c6936045f41bfa87a95c1aec3c8}{def}}
 \item 
-\mbox{\Hypertarget{class_inventory_a2b3ce9cd39d106439c316059a190782f}\label{class_inventory_a2b3ce9cd39d106439c316059a190782f}} 
-\mbox{\hyperlink{class_player}{Player}} {\bfseries p}
+Sprite \mbox{\hyperlink{class_inventory_aed66b242ae5cf8df814b5d30bf20a6b3}{hp}}
 \item 
-\mbox{\Hypertarget{class_inventory_aa1d8741824496d71e52c6f87de2c1533}\label{class_inventory_aa1d8741824496d71e52c6f87de2c1533}} 
-\mbox{\hyperlink{class_item}{Item}} {\bfseries display\+Item}
+\mbox{\hyperlink{class_player}{Player}} \mbox{\hyperlink{class_inventory_a2b3ce9cd39d106439c316059a190782f}{p}}
 \item 
-\mbox{\Hypertarget{class_inventory_aeef6e41606f68069f4b44ab4a46bcc59}\label{class_inventory_aeef6e41606f68069f4b44ab4a46bcc59}} 
-string {\bfseries display\+Item\+Type}
+\mbox{\hyperlink{class_item}{Item}} \mbox{\hyperlink{class_inventory_aa1d8741824496d71e52c6f87de2c1533}{display\+Item}}
 \item 
-\mbox{\Hypertarget{class_inventory_ae1830fc12251f73f70b9d5bb7986273b}\label{class_inventory_ae1830fc12251f73f70b9d5bb7986273b}} 
-int {\bfseries current\+Item\+Level}
+string \mbox{\hyperlink{class_inventory_aeef6e41606f68069f4b44ab4a46bcc59}{display\+Item\+Type}}
+\item 
+int \mbox{\hyperlink{class_inventory_ae1830fc12251f73f70b9d5bb7986273b}{current\+Item\+Level}}
 \end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}
 Manage the \mbox{\hyperlink{class_inventory}{Inventory}} screen, including Upgrades. 
 
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_inventory_a88da279faf84d529af011f7e25bea01b}\label{class_inventory_a88da279faf84d529af011f7e25bea01b}} 
+\index{Inventory@{Inventory}!Awake@{Awake}}
+\index{Awake@{Awake}!Inventory@{Inventory}}
+\subsubsection{\texorpdfstring{Awake()}{Awake()}}
+{\footnotesize\ttfamily void Inventory.\+Awake (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_inventory_a284995426324c648b4c9144a3b9bc277}\label{class_inventory_a284995426324c648b4c9144a3b9bc277}} 
+\index{Inventory@{Inventory}!ConfirmPurchase@{ConfirmPurchase}}
+\index{ConfirmPurchase@{ConfirmPurchase}!Inventory@{Inventory}}
+\subsubsection{\texorpdfstring{ConfirmPurchase()}{ConfirmPurchase()}}
+{\footnotesize\ttfamily void Inventory.\+Confirm\+Purchase (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Check if player has enough funds, then make the purchase. 
+
+\mbox{\Hypertarget{class_inventory_a6a6906197f22590ffa086d4aca935dc3}\label{class_inventory_a6a6906197f22590ffa086d4aca935dc3}} 
+\index{Inventory@{Inventory}!Displayed@{Displayed}}
+\index{Displayed@{Displayed}!Inventory@{Inventory}}
+\subsubsection{\texorpdfstring{Displayed()}{Displayed()}}
+{\footnotesize\ttfamily void Inventory.\+Displayed (\begin{DoxyParamCaption}\item[{bool}]{shown }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Show/\+Hide the item upgrade panels. 
+
+\mbox{\Hypertarget{class_inventory_a6be0d5d14468b2eb9cba732c3f65c3e5}\label{class_inventory_a6be0d5d14468b2eb9cba732c3f65c3e5}} 
+\index{Inventory@{Inventory}!Purchase@{Purchase}}
+\index{Purchase@{Purchase}!Inventory@{Inventory}}
+\subsubsection{\texorpdfstring{Purchase()}{Purchase()}}
+{\footnotesize\ttfamily I\+Enumerator Inventory.\+Purchase (\begin{DoxyParamCaption}\item[{string}]{poorer\+Player\+J\+S\+ON }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Perform the server-\/side updating of the \mbox{\hyperlink{class_player}{Player}} based on the purchase. 
+
+\mbox{\Hypertarget{class_inventory_aa99e2b5246a749ec59f04aa1ce48416a}\label{class_inventory_aa99e2b5246a749ec59f04aa1ce48416a}} 
+\index{Inventory@{Inventory}!SetupUpgradePanel@{SetupUpgradePanel}}
+\index{SetupUpgradePanel@{SetupUpgradePanel}!Inventory@{Inventory}}
+\subsubsection{\texorpdfstring{SetupUpgradePanel()}{SetupUpgradePanel()}}
+{\footnotesize\ttfamily void Inventory.\+Setup\+Upgrade\+Panel (\begin{DoxyParamCaption}\item[{int}]{item\+\_\+type }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Setup the item upgrade panel with the next level item of selected type. 
+
+\mbox{\Hypertarget{class_inventory_aa5a9d430aff1ecd12a75901608d337ea}\label{class_inventory_aa5a9d430aff1ecd12a75901608d337ea}} 
+\index{Inventory@{Inventory}!Start@{Start}}
+\index{Start@{Start}!Inventory@{Inventory}}
+\subsubsection{\texorpdfstring{Start()}{Start()}}
+{\footnotesize\ttfamily void Inventory.\+Start (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+General Setup. 
+
+\mbox{\Hypertarget{class_inventory_a7b1e7148da0c7b5e4d87b6ea07dce086}\label{class_inventory_a7b1e7148da0c7b5e4d87b6ea07dce086}} 
+\index{Inventory@{Inventory}!Update@{Update}}
+\index{Update@{Update}!Inventory@{Inventory}}
+\subsubsection{\texorpdfstring{Update()}{Update()}}
+{\footnotesize\ttfamily void Inventory.\+Update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Keep the player\textquotesingle{}s stats display updated. 
+
+\mbox{\Hypertarget{class_inventory_a5ff170daf3d949c611d8e064626524e2}\label{class_inventory_a5ff170daf3d949c611d8e064626524e2}} 
+\index{Inventory@{Inventory}!UpdateLabels@{UpdateLabels}}
+\index{UpdateLabels@{UpdateLabels}!Inventory@{Inventory}}
+\subsubsection{\texorpdfstring{UpdateLabels()}{UpdateLabels()}}
+{\footnotesize\ttfamily void Inventory.\+Update\+Labels (\begin{DoxyParamCaption}\item[{int}]{item\+\_\+type }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Helper for Setup\+Upgrade\+Panels. 
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{class_inventory_a8c34a2d39aab6ff22ec36e41763e2e22}\label{class_inventory_a8c34a2d39aab6ff22ec36e41763e2e22}} 
+\index{Inventory@{Inventory}!atk@{atk}}
+\index{atk@{atk}!Inventory@{Inventory}}
+\subsubsection{\texorpdfstring{atk}{atk}}
+{\footnotesize\ttfamily Sprite Inventory.\+atk}
+
+\mbox{\Hypertarget{class_inventory_a6be0183125fd410aab7aeaf701db4741}\label{class_inventory_a6be0183125fd410aab7aeaf701db4741}} 
+\index{Inventory@{Inventory}!atkText@{atkText}}
+\index{atkText@{atkText}!Inventory@{Inventory}}
+\subsubsection{\texorpdfstring{atkText}{atkText}}
+{\footnotesize\ttfamily Text Inventory.\+atk\+Text\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_inventory_a904e3fced18e5366bb5b89c7e4262874}\label{class_inventory_a904e3fced18e5366bb5b89c7e4262874}} 
+\index{Inventory@{Inventory}!balanceText@{balanceText}}
+\index{balanceText@{balanceText}!Inventory@{Inventory}}
+\subsubsection{\texorpdfstring{balanceText}{balanceText}}
+{\footnotesize\ttfamily Text Inventory.\+balance\+Text\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_inventory_a7fe90f0ee39e013f8c318327e20f85f1}\label{class_inventory_a7fe90f0ee39e013f8c318327e20f85f1}} 
+\index{Inventory@{Inventory}!currentArmourImage@{currentArmourImage}}
+\index{currentArmourImage@{currentArmourImage}!Inventory@{Inventory}}
+\subsubsection{\texorpdfstring{currentArmourImage}{currentArmourImage}}
+{\footnotesize\ttfamily Game\+Object Inventory.\+current\+Armour\+Image\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_inventory_ae1830fc12251f73f70b9d5bb7986273b}\label{class_inventory_ae1830fc12251f73f70b9d5bb7986273b}} 
+\index{Inventory@{Inventory}!currentItemLevel@{currentItemLevel}}
+\index{currentItemLevel@{currentItemLevel}!Inventory@{Inventory}}
+\subsubsection{\texorpdfstring{currentItemLevel}{currentItemLevel}}
+{\footnotesize\ttfamily int Inventory.\+current\+Item\+Level\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_inventory_a945eba3f91aa5a429eaa74502fe71bbc}\label{class_inventory_a945eba3f91aa5a429eaa74502fe71bbc}} 
+\index{Inventory@{Inventory}!currentShieldImage@{currentShieldImage}}
+\index{currentShieldImage@{currentShieldImage}!Inventory@{Inventory}}
+\subsubsection{\texorpdfstring{currentShieldImage}{currentShieldImage}}
+{\footnotesize\ttfamily Game\+Object Inventory.\+current\+Shield\+Image\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_inventory_a7090ec7477cf37ce75e0722a0e792744}\label{class_inventory_a7090ec7477cf37ce75e0722a0e792744}} 
+\index{Inventory@{Inventory}!currentSwordImage@{currentSwordImage}}
+\index{currentSwordImage@{currentSwordImage}!Inventory@{Inventory}}
+\subsubsection{\texorpdfstring{currentSwordImage}{currentSwordImage}}
+{\footnotesize\ttfamily Game\+Object Inventory.\+current\+Sword\+Image}
+
+\mbox{\Hypertarget{class_inventory_a62372c6936045f41bfa87a95c1aec3c8}\label{class_inventory_a62372c6936045f41bfa87a95c1aec3c8}} 
+\index{Inventory@{Inventory}!def@{def}}
+\index{def@{def}!Inventory@{Inventory}}
+\subsubsection{\texorpdfstring{def}{def}}
+{\footnotesize\ttfamily Sprite Inventory.\+def\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_inventory_aa126dcd06ebf1ea9eec5aa6ca1e83a8d}\label{class_inventory_aa126dcd06ebf1ea9eec5aa6ca1e83a8d}} 
+\index{Inventory@{Inventory}!defText@{defText}}
+\index{defText@{defText}!Inventory@{Inventory}}
+\subsubsection{\texorpdfstring{defText}{defText}}
+{\footnotesize\ttfamily Text Inventory.\+def\+Text\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_inventory_aa1d8741824496d71e52c6f87de2c1533}\label{class_inventory_aa1d8741824496d71e52c6f87de2c1533}} 
+\index{Inventory@{Inventory}!displayItem@{displayItem}}
+\index{displayItem@{displayItem}!Inventory@{Inventory}}
+\subsubsection{\texorpdfstring{displayItem}{displayItem}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_item}{Item}} Inventory.\+display\+Item\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_inventory_aeef6e41606f68069f4b44ab4a46bcc59}\label{class_inventory_aeef6e41606f68069f4b44ab4a46bcc59}} 
+\index{Inventory@{Inventory}!displayItemType@{displayItemType}}
+\index{displayItemType@{displayItemType}!Inventory@{Inventory}}
+\subsubsection{\texorpdfstring{displayItemType}{displayItemType}}
+{\footnotesize\ttfamily string Inventory.\+display\+Item\+Type\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_inventory_aed66b242ae5cf8df814b5d30bf20a6b3}\label{class_inventory_aed66b242ae5cf8df814b5d30bf20a6b3}} 
+\index{Inventory@{Inventory}!hp@{hp}}
+\index{hp@{hp}!Inventory@{Inventory}}
+\subsubsection{\texorpdfstring{hp}{hp}}
+{\footnotesize\ttfamily Sprite Inventory.\+hp\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_inventory_abd3af35db0c0049ce91eaa99b1798a69}\label{class_inventory_abd3af35db0c0049ce91eaa99b1798a69}} 
+\index{Inventory@{Inventory}!hpText@{hpText}}
+\index{hpText@{hpText}!Inventory@{Inventory}}
+\subsubsection{\texorpdfstring{hpText}{hpText}}
+{\footnotesize\ttfamily Text Inventory.\+hp\+Text}
+
+\mbox{\Hypertarget{class_inventory_ae035b7a3471724276238be3ec5d4769f}\label{class_inventory_ae035b7a3471724276238be3ec5d4769f}} 
+\index{Inventory@{Inventory}!itemIconImage@{itemIconImage}}
+\index{itemIconImage@{itemIconImage}!Inventory@{Inventory}}
+\subsubsection{\texorpdfstring{itemIconImage}{itemIconImage}}
+{\footnotesize\ttfamily Game\+Object Inventory.\+item\+Icon\+Image}
+
+\mbox{\Hypertarget{class_inventory_aff3bb1bee86c2916dd649bf623cbb963}\label{class_inventory_aff3bb1bee86c2916dd649bf623cbb963}} 
+\index{Inventory@{Inventory}!itemNameText@{itemNameText}}
+\index{itemNameText@{itemNameText}!Inventory@{Inventory}}
+\subsubsection{\texorpdfstring{itemNameText}{itemNameText}}
+{\footnotesize\ttfamily Text Inventory.\+item\+Name\+Text}
+
+\mbox{\Hypertarget{class_inventory_a1d9b045b21d5bd72f6a6f6a94d535c72}\label{class_inventory_a1d9b045b21d5bd72f6a6f6a94d535c72}} 
+\index{Inventory@{Inventory}!loading\_spinning\_Animation@{loading\_spinning\_Animation}}
+\index{loading\_spinning\_Animation@{loading\_spinning\_Animation}!Inventory@{Inventory}}
+\subsubsection{\texorpdfstring{loading\_spinning\_Animation}{loading\_spinning\_Animation}}
+{\footnotesize\ttfamily Game\+Object Inventory.\+loading\+\_\+spinning\+\_\+\+Animation\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_inventory_aa93a5a923daa1233401192da490e8e27}\label{class_inventory_aa93a5a923daa1233401192da490e8e27}} 
+\index{Inventory@{Inventory}!moneyText@{moneyText}}
+\index{moneyText@{moneyText}!Inventory@{Inventory}}
+\subsubsection{\texorpdfstring{moneyText}{moneyText}}
+{\footnotesize\ttfamily Text Inventory.\+money\+Text\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_inventory_a2b3ce9cd39d106439c316059a190782f}\label{class_inventory_a2b3ce9cd39d106439c316059a190782f}} 
+\index{Inventory@{Inventory}!p@{p}}
+\index{p@{p}!Inventory@{Inventory}}
+\subsubsection{\texorpdfstring{p}{p}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_player}{Player}} Inventory.\+p\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_inventory_a69cd0d81a41a9e4a1e0dea6b45434084}\label{class_inventory_a69cd0d81a41a9e4a1e0dea6b45434084}} 
+\index{Inventory@{Inventory}!player\_bop\_Animation@{player\_bop\_Animation}}
+\index{player\_bop\_Animation@{player\_bop\_Animation}!Inventory@{Inventory}}
+\subsubsection{\texorpdfstring{player\_bop\_Animation}{player\_bop\_Animation}}
+{\footnotesize\ttfamily Game\+Object Inventory.\+player\+\_\+bop\+\_\+\+Animation}
+
+\mbox{\Hypertarget{class_inventory_a357c419671e7cb628288360cc7acd604}\label{class_inventory_a357c419671e7cb628288360cc7acd604}} 
+\index{Inventory@{Inventory}!priceText@{priceText}}
+\index{priceText@{priceText}!Inventory@{Inventory}}
+\subsubsection{\texorpdfstring{priceText}{priceText}}
+{\footnotesize\ttfamily Text Inventory.\+price\+Text\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_inventory_af0bc00a8b9fb7d977b5f96eeedd7e166}\label{class_inventory_af0bc00a8b9fb7d977b5f96eeedd7e166}} 
+\index{Inventory@{Inventory}!purchase\_sound@{purchase\_sound}}
+\index{purchase\_sound@{purchase\_sound}!Inventory@{Inventory}}
+\subsubsection{\texorpdfstring{purchase\_sound}{purchase\_sound}}
+{\footnotesize\ttfamily Audio\+Clip Inventory.\+purchase\+\_\+sound}
+
+\mbox{\Hypertarget{class_inventory_a28d3f85f956e83b94831df16b40a14ec}\label{class_inventory_a28d3f85f956e83b94831df16b40a14ec}} 
+\index{Inventory@{Inventory}!soundsrc@{soundsrc}}
+\index{soundsrc@{soundsrc}!Inventory@{Inventory}}
+\subsubsection{\texorpdfstring{soundsrc}{soundsrc}}
+{\footnotesize\ttfamily Audio\+Source Inventory.\+soundsrc}
+
+\mbox{\Hypertarget{class_inventory_a93a55231b5b247c2e7b0dfee9ce2dd3d}\label{class_inventory_a93a55231b5b247c2e7b0dfee9ce2dd3d}} 
+\index{Inventory@{Inventory}!statIconImage@{statIconImage}}
+\index{statIconImage@{statIconImage}!Inventory@{Inventory}}
+\subsubsection{\texorpdfstring{statIconImage}{statIconImage}}
+{\footnotesize\ttfamily Game\+Object Inventory.\+stat\+Icon\+Image\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_inventory_a00da1044a0d829c9b8e0156f8b059db7}\label{class_inventory_a00da1044a0d829c9b8e0156f8b059db7}} 
+\index{Inventory@{Inventory}!statText@{statText}}
+\index{statText@{statText}!Inventory@{Inventory}}
+\subsubsection{\texorpdfstring{statText}{statText}}
+{\footnotesize\ttfamily Text Inventory.\+stat\+Text\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_inventory_af9d04c9febb8280182f03d1ccdc14fa8}\label{class_inventory_af9d04c9febb8280182f03d1ccdc14fa8}} 
+\index{Inventory@{Inventory}!swordIconImage@{swordIconImage}}
+\index{swordIconImage@{swordIconImage}!Inventory@{Inventory}}
+\subsubsection{\texorpdfstring{swordIconImage}{swordIconImage}}
+{\footnotesize\ttfamily Game\+Object Inventory.\+sword\+Icon\+Image\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_inventory_a4382ed8c55fa1899bf7a981ffac00523}\label{class_inventory_a4382ed8c55fa1899bf7a981ffac00523}} 
+\index{Inventory@{Inventory}!upgradePanel@{upgradePanel}}
+\index{upgradePanel@{upgradePanel}!Inventory@{Inventory}}
+\subsubsection{\texorpdfstring{upgradePanel}{upgradePanel}}
+{\footnotesize\ttfamily Game\+Object Inventory.\+upgrade\+Panel}
+
+
+
 The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 
-U\+O\+N\+\_\+\+I\+B\+M\+\_\+\+A\+I\+G\+A\+M\+E2018/\+Unity/\+Group15/\+Assets/\+Scripts/Inventory.\+cs\end{DoxyCompactItemize}
+U\+O\+N\+\_\+\+I\+B\+M\+\_\+\+A\+I\+G\+A\+M\+E2018/\+Unity/\+Group15/\+Assets/\+Scripts/\mbox{\hyperlink{_inventory_8cs}{Inventory.\+cs}}\end{DoxyCompactItemize}

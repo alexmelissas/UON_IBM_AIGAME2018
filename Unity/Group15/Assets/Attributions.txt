@@ -34,6 +34,7 @@ Attributions for media used in our game.
 {selection_puck.png} from https://pixabay.com/illustrations/generic-button-button-3d-sign-1357002/
 {settings.png} from https://pixabay.com/vectors/gear-settings-options-icon-1077550/
 {skip.png} from https://pixabay.com/vectors/skip-forward-fast-media-button-97632/
+{bronze.png, silver.png} modified from {gold.png} from https://opengameart.org/content/medal
 ===============
 
 ===== SPRITES =====
