@@ -203,7 +203,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: 74627d47794d14dbd95c115f395a7897, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 215.067
+      value: 214.405
       objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: 74627d47794d14dbd95c115f395a7897, type: 2}
       propertyPath: m_LocalPosition.z
@@ -294,7 +294,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.19238, y: 0.000015259}
+  m_AnchoredPosition: {x: 0.19238, y: -67}
   m_SizeDelta: {x: 364.2, y: 186.1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &553944232
@@ -818,8 +818,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.19238281, y: 136.70001}
-  m_SizeDelta: {x: 714.6, y: 273.5}
+  m_AnchoredPosition: {x: 48.6, y: 0.012495}
+  m_SizeDelta: {x: 97.2, y: 0.025024}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1433062321
 MonoBehaviour:
@@ -840,7 +840,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 1d7d12555f061f240af5c78c08803ef6, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 54aa4cd831032114880e3680baf3c05e, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
