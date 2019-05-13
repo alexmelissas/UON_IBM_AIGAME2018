@@ -10,7 +10,7 @@ public class Inventory : MonoBehaviour {
     public GameObject upgradePanel;
     public GameObject player_bop_Animation;
     public Text itemNameText, statText, priceText, balanceText;
-    public GameObject itemIconImage, swordIconImage, statIconImage, loading_spinning_Animation;
+    public GameObject itemIconImage, swordIconImage, statIconImage;
     public GameObject currentSwordImage, currentShieldImage, currentArmourImage;
     public Sprite atk, def, hp;
     public AudioSource soundsrc;
@@ -29,7 +29,6 @@ public class Inventory : MonoBehaviour {
     {
         p = new Player();
         player_bop_Animation.SetActive(false);
-        loading_spinning_Animation.SetActive(false);
         hpText.supportRichText = true;
         atkText.supportRichText = true;
         defText.supportRichText = true;
@@ -144,13 +143,8 @@ public class Inventory : MonoBehaviour {
     private IEnumerator Purchase(string poorerPlayerJSON)
     {
         StartCoroutine(Server.UpdatePlayer(poorerPlayerJSON));
-
-        loading_spinning_Animation.SetActive(true);
         yield return new WaitUntil(() => Server.updatePlayer_done == true);
-        loading_spinning_Animation.SetActive(false);
-
         soundsrc.PlayOneShot(purchase_sound, PlayerPrefs.GetFloat("fx"));
-
         gameObject.AddComponent<UpdateSessions>().U_Player();
         Displayed(false);
         yield break;
