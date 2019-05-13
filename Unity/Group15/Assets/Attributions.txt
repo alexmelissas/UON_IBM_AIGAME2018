@@ -23,7 +23,7 @@ Attributions for media used in our game.
 {bird.jpg} from https://picryl.com/media/terracotta-vase-in-the-form-of-a-bird-9d403b
 {pebble.jpg} from https://www.pexels.com/photo/4k-apple-tree-background-background-image-580785/
 {words.jpg} from https://pxhere.com/en/photo/701819
-{battle.jpg} from https://commons.wikimedia.org/wiki/File:Thermopylae_hot_springs.jpg
+{battle.jpg} from 
 {athena.jpg} from https://commons.wikimedia.org/wiki/File:Bust_Athena_Velletri_Glyptothek_Munich_213.jpg
 ===============
 
@@ -32,8 +32,7 @@ Attributions for media used in our game.
 {home.png} from https://www.clipartmax.com/middle/m2H7K9H7Z5d3b1G6_look-for-a-study-guide-to-go-home-on-thurs-science-clip/
 {profile.png} from https://commons.wikimedia.org/wiki/File:User_Circle.png
 {selection_puck.png} from https://pixabay.com/illustrations/generic-button-button-3d-sign-1357002/
-{settings.png} from https://pixabay.com/vectors/gear-settings-options-icon-1077550/
-{skip.png} from https://pixabay.com/vectors/skip-forward-fast-media-button-97632/
+{settings.png, register.png, play.png} from 
 {bronze.png, silver.png} modified from {gold.png} from https://opengameart.org/content/medal
 ===============
 
@@ -62,6 +61,3 @@ https://assetstore.unity.com/packages/tools/integration/cross-platform-native-pl
 https://assetstore.unity.com/packages/3d/animations/activity-indicator-progress-circle-23677
 https://assetstore.unity.com/packages/tools/input-management/secured-playerprefs-32357
 ===============
-
-
-* Stat icons drawn by Alex

@@ -10,7 +10,7 @@ public class Profile: MonoBehaviour {
     public Slider expSlider, factorSlider;
     public GameObject rankImage;
 
-    private Texture2D bronzeIcon, silverIcon, goldIcon;
+    private Texture2D nullIcon, bronzeIcon, silverIcon, goldIcon;
     private Player p;
     
     //! Instantly update the Player's stats when opening the screen
@@ -25,6 +25,7 @@ public class Profile: MonoBehaviour {
         bronzeIcon = Resources.Load("bronze") as Texture2D;
         silverIcon = Resources.Load("silver") as Texture2D;
         goldIcon = Resources.Load("gold") as Texture2D;
+        nullIcon = Resources.Load("unranked") as Texture2D;
     }
 
     //! Display the player's stats - update only if a change is detected
@@ -37,7 +38,7 @@ public class Profile: MonoBehaviour {
             Texture2D rankIcon = null;
             switch (PlayerSession.player_session.rank)
             {
-                case "unranked": break;
+                case "unranked": rankIcon = nullIcon; break;
                 case "bronze": rankIcon = bronzeIcon; break;
                 case "silver": rankIcon = silverIcon; break;
                 case "gold": rankIcon = goldIcon; break;

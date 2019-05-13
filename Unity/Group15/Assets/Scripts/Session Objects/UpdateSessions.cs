@@ -107,7 +107,7 @@ public class UpdateSessions : MonoBehaviour{
             else
             {
                 int played_today = Int32.Parse(uwr.downloadHandler.text);
-                PlayerSession.player_session.plays_left_ranked = 10 - played_today;
+                PlayerSession.player_session.plays_left_ranked = 5 - played_today;
             }
             uwr.Dispose();
         }

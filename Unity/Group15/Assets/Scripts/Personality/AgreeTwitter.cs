@@ -11,7 +11,7 @@ public class AgreeTwitter : MonoBehaviour {
     private void Awake()
     {
         nextButton.enabled = false;
-        nextButton.GetComponentInChildren<Text>().color = Color.gray;
+        nextButton.GetComponent<Image>().color = Color.grey;
     }
 
     //! Keep checking whether to display the Twitter consent option
@@ -20,7 +20,7 @@ public class AgreeTwitter : MonoBehaviour {
         if(LoginTwitter.allowNextForSkip)
         {
             nextButton.enabled = true;
-            nextButton.GetComponentInChildren<Text>().color = Color.black;
+            nextButton.GetComponent<Image>().color = Color.white;
             return;
         }
         
@@ -29,11 +29,11 @@ public class AgreeTwitter : MonoBehaviour {
 
         if (agreeToggle.isOn == true) {
             nextButton.enabled = true;
-            nextButton.GetComponentInChildren<Text>().color = Color.black;
+            nextButton.GetComponent<Image>().color = Color.white;
         }
         else {
             nextButton.enabled = false;
-            nextButton.GetComponentInChildren<Text>().color = Color.gray;
+            nextButton.GetComponent<Image>().color = Color.grey;
         }
 	}
 
