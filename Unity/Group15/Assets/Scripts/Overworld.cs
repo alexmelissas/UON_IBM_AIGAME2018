@@ -6,14 +6,10 @@ public class Overworld : MonoBehaviour {
 
     public Text usernameText, playsUnrankedText, playsRankedText;
 
-    //! Check the user's remaining Plays for the day
-    private void GetPlays() { StartCoroutine(Server.GetPlaysLeft()); }
-
     //! Update the Player and the Plays left
     private void Start()
     {
         gameObject.AddComponent<UpdateSessions>().U_All();
-        Invoke("GetPlays", 0.5f);
     }
     
     //! Keep the logged-in user's username and plays left on the top of the screen

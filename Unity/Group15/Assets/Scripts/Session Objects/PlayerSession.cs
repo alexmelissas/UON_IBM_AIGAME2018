@@ -10,6 +10,9 @@ public class PlayerSession : MonoBehaviour
     //! An old copy of the player for comparisons before and after a battle
     public Player player_before_battle;
     public Player enemy;
+
+    public int rank_points;
+    public string rank;
     public int plays_left_unranked;
     public int plays_left_ranked;
 
@@ -25,5 +28,15 @@ public class PlayerSession : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+
+    //! Place player in rank according to rank points
+    public void PlaceInRank(int points)
+    {
+        Debug.Log(points);
+        if (points == 0) rank = "unranked";
+        else if (points < 100) rank = "bronze";
+        else if (points < 200) rank = "silver";
+        else rank = "gold";
     }
 }

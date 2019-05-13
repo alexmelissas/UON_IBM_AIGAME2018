@@ -33,16 +33,15 @@ public class Profile: MonoBehaviour {
         {
             p = PlayerSession.player_session.player;
             Stats stats = new Stats(p);
-
-
-            Texture2D rankIcon;
-            //switch(p.rank)
-            //{
-            //    case "bronze": rankIcon = bronzeIcon; break;
-            //    case "silver": rankIcon = silverIcon; break;
-            //    case "gold": rankIcon = goldIcon; break;
-            //}
-            rankIcon = bronzeIcon; // TRASH LINE
+            
+            Texture2D rankIcon = null;
+            switch (PlayerSession.player_session.rank)
+            {
+                case "unranked": break;
+                case "bronze": rankIcon = bronzeIcon; break;
+                case "silver": rankIcon = silverIcon; break;
+                case "gold": rankIcon = goldIcon; break;
+            }
             rankImage.GetComponent<RawImage>().texture = rankIcon;
 
             hpText.text = stats.StatsToStrings()[0];
