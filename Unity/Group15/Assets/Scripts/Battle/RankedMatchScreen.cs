@@ -11,7 +11,7 @@ public class RankedMatchScreen : MonoBehaviour
     public GameObject rankingsDisplayGroup, loading_spin_Animation;
     public AudioSource audiosrc;
 
-    private List<User> users;
+    private List<Player> players;
     private string oldRank = "";
     private int attempts;
     private float max_volume;
@@ -38,16 +38,14 @@ public class RankedMatchScreen : MonoBehaviour
     IEnumerator GetPlayers(string newRank)
     {
         if (newRank != oldRank) // Only update when different rank is clicked.
-        { 
-            // Here would need to get users of THAT RANK. Now just all people.
-            // Also need to get top 5 - server-side implementation.
-
-            using (UnityWebRequest uwr = UnityWebRequest.Get(Server.Address("view_users")))
+        {
+            //string url = Server.Address("ranked_leaderboards") + newRank;
+            using (UnityWebRequest uwr = UnityWebRequest.Get(Server.Address("view_users"))) // new API eg. /players/rank/{rank}
             {
                 uwr.timeout = 10;
                 yield return uwr.SendWebRequest();
 
-                string all = uwr.downloadHandler.text.Trim(new char[] { '[', ']' }); // Split the entire huge all-player JSON into individual-user JSONs.
+                string all = uwr.downloadHandler.text.Trim(new char[] { '[', ']' }); // Split the entire all-player JSON into individual-user JSONs.
                 string[] separators = { "},", "}" };
                 string[] entries = all.Split(separators, System.StringSplitOptions.RemoveEmptyEntries);
 
@@ -55,17 +53,17 @@ public class RankedMatchScreen : MonoBehaviour
                 {
                     if (i == 5) break;
                     string newUserJson = entries[i] + "}";
-                    User newuser = User.CreateUserFromJSON(newUserJson);
-                    users.Add(newuser);
+                    Player newPlayer = Player.CreatePlayerFromJSON(newUserJson);
+                    players.Add(newPlayer);
                 }
                 // Users.Sort(); //Need to sort based on Points (top 5).
                 uwr.Dispose();
             }
 
             int s = 0;
-            foreach (User current in users)
+            foreach (Player current in players)
             {
-                string name = current.username;
+                string name = current.characterName;
                 string currentslot = "slot" + (++s);
                 rankingsDisplayGroup.transform.Find(currentslot).gameObject.GetComponentInChildren<Text>().text = name;
             }
@@ -78,7 +76,7 @@ public class RankedMatchScreen : MonoBehaviour
     //! Show the top players of selected rank
     public void DisplayTopPlayers(string rank)
     {
-        users = new List<User>();
+        players = new List<Player>();
         StartCoroutine(GetPlayers(rank));
     }
     

@@ -50,7 +50,6 @@ public class PersonalityCreation : MonoBehaviour {
         }
         else
         {
-            Debug.Log("" + uwr.downloadHandler.text);
             if (uwr.downloadHandler.text == Server.fail_auth)
             {
                 NPBinding.UI.ShowToast("Server Error. Please try again.", eToastMessageLength.SHORT);
@@ -68,7 +67,6 @@ public class PersonalityCreation : MonoBehaviour {
     //! Create JSON to pass to server
     public void Submit () {                                             
         string json = JsonUtility.ToJson(new Ideals(UserSession.user_session.user.GetID(), trait1, trait2, trait3, trait4, trait5));
-        Debug.Log("Ideal Personality: " + json);
         StartCoroutine(PutIdeals(json));
     }
 }
