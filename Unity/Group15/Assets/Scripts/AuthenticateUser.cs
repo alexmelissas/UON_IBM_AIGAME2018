@@ -13,14 +13,14 @@ public class AuthenticateUser : MonoBehaviour {
 
     public string authType;
     public static bool display_loginAnimation;
-    private bool lock_register; //avoid duplicate register requests
+    private bool lock_attempt; //avoid duplicate register requests
 
     // Setup the screen
     void Start()
     {
         loading_spin_Animation.SetActive(false);
         display_loginAnimation = false;
-        lock_register = false;
+        lock_attempt = false;
         passwordInputField.onEndEdit.AddListener(delegate { CheckUserPass(); });
     }
 
@@ -28,7 +28,7 @@ public class AuthenticateUser : MonoBehaviour {
     private void Toggle(bool input) { display_loginAnimation = input; }
 
     //! Allow request for registration - avoid clashes
-    private void UnlockRegister() { lock_register = false; }
+    private void Unlock() { lock_attempt = false; }
 
     //! Try to login with given credentials.
     IEnumerator TryLogin(bool firstLogin, string json, User user)
@@ -69,6 +69,7 @@ public class AuthenticateUser : MonoBehaviour {
                 }
                 gameObject.AddComponent<ChangeScene>().Forward(next_scene);
                 if (!firstLogin) NPBinding.UI.ShowToast("Welcome back, " + user.GetUsername(), eToastMessageLength.SHORT);
+
             }
             else
             {
@@ -77,6 +78,7 @@ public class AuthenticateUser : MonoBehaviour {
                 passwordInputField.text = "";
                 passwordInputField.Select();
             }
+            Unlock();
             Toggle(false);
             uwr.Dispose();
             StopCoroutine(TryLogin(firstLogin,json, user));
@@ -99,7 +101,7 @@ public class AuthenticateUser : MonoBehaviour {
         {
             Debug.Log("Error While Sending: " + uwr.error);
             NPBinding.UI.ShowToast("Communication Error. Please try again later.", eToastMessageLength.SHORT);
-            UnlockRegister();
+            Unlock();
         }
         else
         { 
@@ -118,7 +120,7 @@ public class AuthenticateUser : MonoBehaviour {
                 if (response == 0) Debug.Log("Username taken.");
                 usernameInputField.text = "";
                 usernameInputField.Select();
-                UnlockRegister();
+                Unlock();
             }
         }
         uwr.Dispose();
@@ -128,9 +130,8 @@ public class AuthenticateUser : MonoBehaviour {
     //! Check format of username/password, pass them to Login/Register if valid
     public void CheckUserPass()
     {
-        Debug.Log("HI FELICIA");
-        if (lock_register) { Debug.Log("BYE FELICIA"); return; }
-        lock_register = true;
+        if (lock_attempt) return;
+        lock_attempt = true;
 
         string username = usernameInputField.text;
         string password = passwordInputField.text;
@@ -139,21 +140,21 @@ public class AuthenticateUser : MonoBehaviour {
         {
             Debug.Log("Enter username.");
             NPBinding.UI.ShowToast("Need a username.", eToastMessageLength.SHORT);
-            UnlockRegister();
+            Unlock();
             return;
         }
         else if (password == "")
         {
             Debug.Log("Enter password.");
             NPBinding.UI.ShowToast("Need a password.", eToastMessageLength.SHORT);
-            UnlockRegister();
+            Unlock();
             return;
         }
         else if (username.Length > 25)
         {
             Debug.Log("Username max length 25 characters.");
             NPBinding.UI.ShowToast("Username max length 25 characters.", eToastMessageLength.SHORT);
-            UnlockRegister();
+            Unlock();
             return;
         }
         else
