@@ -75,7 +75,7 @@ public class BattleController {
 		if (!battleService.isExist(id)) {
 			return -1;
 		}
-		return battleService.getBattleCount(id, "");
+		return battleService.getBattleCount(id);
 	}
 
 	/**
@@ -89,7 +89,21 @@ public class BattleController {
 		if (!battleService.isExist(id)) {
 			return -1;
 		}
-		return battleService.getBattleCount(id, "ranked_");
+		return battleService.getRankedBattleCount(id);
+	}
+
+	/**
+	 * Get the rank score of a player
+	 * 
+	 * @param id the id
+	 * @return the score
+	 */
+	@GetMapping("/battle/ranked/score/{id}")
+	public @ResponseBody int getRankedScore(@PathVariable String id) {
+		if (!battleService.isExist(id)) {
+			return -1;
+		}
+		return battleService.getRankedScore(id);
 	}
 
 	/**
@@ -155,7 +169,7 @@ public class BattleController {
 	 * @param jsonString the json result
 	 */
 	@PutMapping("/battle/ranked")
-	public void handleRankedResult(@RequestBody String jsonString) {
+	public Player handleRankedResult(@RequestBody String jsonString) {
 		logger.info("======Ranked Battle Result======");
 		JsonObject jsonObject = (JsonObject) new JsonParser().parse(jsonString);
 		String id1 = jsonObject.get("id1").getAsString();
@@ -165,9 +179,9 @@ public class BattleController {
 		int additionalExp = jsonObject.get("additionalExp").getAsInt();
 		int additionalMoney = jsonObject.get("additionalMoney").getAsInt();
 
-		battleService.handleRankedResult(id1, id2, result, additionalExp, additionalMoney);
-		// RETURN ?
+		Player player = battleService.handleRankedResult(id1, id2, result, additionalExp, additionalMoney);
 
 		logger.info("======Ranked Battle Result End======");
+		return player;
 	}
 }

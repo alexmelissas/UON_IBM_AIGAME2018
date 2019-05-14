@@ -14,35 +14,140 @@ Inheritance diagram for Update\+Sessions\+:\begin{figure}[H]
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{class_update_sessions_a0ea698e5b708671e7ba25a160b325833}\label{class_update_sessions_a0ea698e5b708671e7ba25a160b325833}} 
 void \mbox{\hyperlink{class_update_sessions_a0ea698e5b708671e7ba25a160b325833}{U\+\_\+\+All}} ()
 \begin{DoxyCompactList}\small\item\em Update all singleton objects in the app. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{class_update_sessions_adf570975af9bca48413a5d6b0cbf24b1}\label{class_update_sessions_adf570975af9bca48413a5d6b0cbf24b1}} 
 void \mbox{\hyperlink{class_update_sessions_adf570975af9bca48413a5d6b0cbf24b1}{U\+\_\+\+User}} ()
 \begin{DoxyCompactList}\small\item\em Update just the \mbox{\hyperlink{class_user}{User}} object. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{class_update_sessions_a888b2a028e131e41ea7e34607c0a5d45}\label{class_update_sessions_a888b2a028e131e41ea7e34607c0a5d45}} 
 void \mbox{\hyperlink{class_update_sessions_a888b2a028e131e41ea7e34607c0a5d45}{U\+\_\+\+Player}} ()
 \begin{DoxyCompactList}\small\item\em Update just the \mbox{\hyperlink{class_player}{Player}} object. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Static Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{class_update_sessions_a841ee986ab762d64af283c9ba009c23d}\label{class_update_sessions_a841ee986ab762d64af283c9ba009c23d}} 
 static void \mbox{\hyperlink{class_update_sessions_a841ee986ab762d64af283c9ba009c23d}{J\+S\+O\+N\+\_\+\+Session}} (string session, string json)
 \begin{DoxyCompactList}\small\item\em Update a User/\+Player object from J\+S\+ON. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Private Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{class_update_sessions_a2a73c7d01b39317eab0b06a3ddfb9669}\label{class_update_sessions_a2a73c7d01b39317eab0b06a3ddfb9669}} 
+void \mbox{\hyperlink{class_update_sessions_af02a599b262f2ea1e620f7ec468f8ebb}{Invokable\+Get\+Plays\+Left}} ()
+\begin{DoxyCompactList}\small\item\em Check the user\textquotesingle{}s remaining Plays for the day. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_update_sessions_a13b53f5d4ab3beafc880931c5870e740}{Invokable\+Get\+Rank\+Points}} ()
+\begin{DoxyCompactList}\small\item\em Check the user\textquotesingle{}s Rank points. \end{DoxyCompactList}\item 
 I\+Enumerator \mbox{\hyperlink{class_update_sessions_a2a73c7d01b39317eab0b06a3ddfb9669}{Get\+Player}} ()
 \begin{DoxyCompactList}\small\item\em G\+ET J\+S\+ON for \mbox{\hyperlink{class_player}{Player}}. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{class_update_sessions_a0d9f725dd5bd780272f19531fcc2c523}\label{class_update_sessions_a0d9f725dd5bd780272f19531fcc2c523}} 
 I\+Enumerator \mbox{\hyperlink{class_update_sessions_a0d9f725dd5bd780272f19531fcc2c523}{Get\+User}} (bool all)
-\begin{DoxyCompactList}\small\item\em Get J\+S\+ON for \mbox{\hyperlink{class_user}{User}}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Get J\+S\+ON for \mbox{\hyperlink{class_user}{User}}. \end{DoxyCompactList}\item 
+I\+Enumerator \mbox{\hyperlink{class_update_sessions_a9e3f91b8c328a2c75b4fd7ba38ea5c1a}{Get\+Plays\+Left}} ()
+\begin{DoxyCompactList}\small\item\em Get the player\textquotesingle{}s remaining plays for the day. \end{DoxyCompactList}\item 
+I\+Enumerator \mbox{\hyperlink{class_update_sessions_afe2dacd8d53c15803cca09bf07de37b7}{Get\+Rank\+Points}} ()
+\begin{DoxyCompactList}\small\item\em Get the player\textquotesingle{}s rank points. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}
 Keep \mbox{\hyperlink{class_user}{User}} and \mbox{\hyperlink{class_player}{Player}} objects up to date with the server, keep data consistent when exiting app. 
 
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_update_sessions_a2a73c7d01b39317eab0b06a3ddfb9669}\label{class_update_sessions_a2a73c7d01b39317eab0b06a3ddfb9669}} 
+\index{UpdateSessions@{UpdateSessions}!GetPlayer@{GetPlayer}}
+\index{GetPlayer@{GetPlayer}!UpdateSessions@{UpdateSessions}}
+\subsubsection{\texorpdfstring{GetPlayer()}{GetPlayer()}}
+{\footnotesize\ttfamily I\+Enumerator Update\+Sessions.\+Get\+Player (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+G\+ET J\+S\+ON for \mbox{\hyperlink{class_player}{Player}}. 
+
+\mbox{\Hypertarget{class_update_sessions_a9e3f91b8c328a2c75b4fd7ba38ea5c1a}\label{class_update_sessions_a9e3f91b8c328a2c75b4fd7ba38ea5c1a}} 
+\index{UpdateSessions@{UpdateSessions}!GetPlaysLeft@{GetPlaysLeft}}
+\index{GetPlaysLeft@{GetPlaysLeft}!UpdateSessions@{UpdateSessions}}
+\subsubsection{\texorpdfstring{GetPlaysLeft()}{GetPlaysLeft()}}
+{\footnotesize\ttfamily I\+Enumerator Update\+Sessions.\+Get\+Plays\+Left (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Get the player\textquotesingle{}s remaining plays for the day. 
+
+\mbox{\Hypertarget{class_update_sessions_afe2dacd8d53c15803cca09bf07de37b7}\label{class_update_sessions_afe2dacd8d53c15803cca09bf07de37b7}} 
+\index{UpdateSessions@{UpdateSessions}!GetRankPoints@{GetRankPoints}}
+\index{GetRankPoints@{GetRankPoints}!UpdateSessions@{UpdateSessions}}
+\subsubsection{\texorpdfstring{GetRankPoints()}{GetRankPoints()}}
+{\footnotesize\ttfamily I\+Enumerator Update\+Sessions.\+Get\+Rank\+Points (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Get the player\textquotesingle{}s rank points. 
+
+\mbox{\Hypertarget{class_update_sessions_a0d9f725dd5bd780272f19531fcc2c523}\label{class_update_sessions_a0d9f725dd5bd780272f19531fcc2c523}} 
+\index{UpdateSessions@{UpdateSessions}!GetUser@{GetUser}}
+\index{GetUser@{GetUser}!UpdateSessions@{UpdateSessions}}
+\subsubsection{\texorpdfstring{GetUser()}{GetUser()}}
+{\footnotesize\ttfamily I\+Enumerator Update\+Sessions.\+Get\+User (\begin{DoxyParamCaption}\item[{bool}]{all }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Get J\+S\+ON for \mbox{\hyperlink{class_user}{User}}. 
+
+\mbox{\Hypertarget{class_update_sessions_af02a599b262f2ea1e620f7ec468f8ebb}\label{class_update_sessions_af02a599b262f2ea1e620f7ec468f8ebb}} 
+\index{UpdateSessions@{UpdateSessions}!InvokableGetPlaysLeft@{InvokableGetPlaysLeft}}
+\index{InvokableGetPlaysLeft@{InvokableGetPlaysLeft}!UpdateSessions@{UpdateSessions}}
+\subsubsection{\texorpdfstring{InvokableGetPlaysLeft()}{InvokableGetPlaysLeft()}}
+{\footnotesize\ttfamily void Update\+Sessions.\+Invokable\+Get\+Plays\+Left (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Check the user\textquotesingle{}s remaining Plays for the day. 
+
+\mbox{\Hypertarget{class_update_sessions_a13b53f5d4ab3beafc880931c5870e740}\label{class_update_sessions_a13b53f5d4ab3beafc880931c5870e740}} 
+\index{UpdateSessions@{UpdateSessions}!InvokableGetRankPoints@{InvokableGetRankPoints}}
+\index{InvokableGetRankPoints@{InvokableGetRankPoints}!UpdateSessions@{UpdateSessions}}
+\subsubsection{\texorpdfstring{InvokableGetRankPoints()}{InvokableGetRankPoints()}}
+{\footnotesize\ttfamily void Update\+Sessions.\+Invokable\+Get\+Rank\+Points (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Check the user\textquotesingle{}s Rank points. 
+
+\mbox{\Hypertarget{class_update_sessions_a841ee986ab762d64af283c9ba009c23d}\label{class_update_sessions_a841ee986ab762d64af283c9ba009c23d}} 
+\index{UpdateSessions@{UpdateSessions}!JSON\_Session@{JSON\_Session}}
+\index{JSON\_Session@{JSON\_Session}!UpdateSessions@{UpdateSessions}}
+\subsubsection{\texorpdfstring{JSON\_Session()}{JSON\_Session()}}
+{\footnotesize\ttfamily static void Update\+Sessions.\+J\+S\+O\+N\+\_\+\+Session (\begin{DoxyParamCaption}\item[{string}]{session,  }\item[{string}]{json }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Update a User/\+Player object from J\+S\+ON. 
+
+\mbox{\Hypertarget{class_update_sessions_a0ea698e5b708671e7ba25a160b325833}\label{class_update_sessions_a0ea698e5b708671e7ba25a160b325833}} 
+\index{UpdateSessions@{UpdateSessions}!U\_All@{U\_All}}
+\index{U\_All@{U\_All}!UpdateSessions@{UpdateSessions}}
+\subsubsection{\texorpdfstring{U\_All()}{U\_All()}}
+{\footnotesize\ttfamily void Update\+Sessions.\+U\+\_\+\+All (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Update all singleton objects in the app. 
+
+\mbox{\Hypertarget{class_update_sessions_a888b2a028e131e41ea7e34607c0a5d45}\label{class_update_sessions_a888b2a028e131e41ea7e34607c0a5d45}} 
+\index{UpdateSessions@{UpdateSessions}!U\_Player@{U\_Player}}
+\index{U\_Player@{U\_Player}!UpdateSessions@{UpdateSessions}}
+\subsubsection{\texorpdfstring{U\_Player()}{U\_Player()}}
+{\footnotesize\ttfamily void Update\+Sessions.\+U\+\_\+\+Player (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Update just the \mbox{\hyperlink{class_player}{Player}} object. 
+
+\mbox{\Hypertarget{class_update_sessions_adf570975af9bca48413a5d6b0cbf24b1}\label{class_update_sessions_adf570975af9bca48413a5d6b0cbf24b1}} 
+\index{UpdateSessions@{UpdateSessions}!U\_User@{U\_User}}
+\index{U\_User@{U\_User}!UpdateSessions@{UpdateSessions}}
+\subsubsection{\texorpdfstring{U\_User()}{U\_User()}}
+{\footnotesize\ttfamily void Update\+Sessions.\+U\+\_\+\+User (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Update just the \mbox{\hyperlink{class_user}{User}} object. 
+
+
+
 The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 
-U\+O\+N\+\_\+\+I\+B\+M\+\_\+\+A\+I\+G\+A\+M\+E2018/\+Unity/\+Group15/\+Assets/\+Scripts/\+Session Objects/Update\+Sessions.\+cs\end{DoxyCompactItemize}
+U\+O\+N\+\_\+\+I\+B\+M\+\_\+\+A\+I\+G\+A\+M\+E2018/\+Unity/\+Group15/\+Assets/\+Scripts/\+Session Objects/\mbox{\hyperlink{_update_sessions_8cs}{Update\+Sessions.\+cs}}\end{DoxyCompactItemize}

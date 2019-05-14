@@ -38,27 +38,30 @@ public class RankedMatchScreen : MonoBehaviour
     IEnumerator GetPlayers(string newRank)
     {
         if (newRank != oldRank) // Only update when different rank is clicked.
-        { 
-            // Here would need to get users of THAT RANK. Now just all people.
-            // Also need to get top 5 - server-side implementation.
-
-            using (UnityWebRequest uwr = UnityWebRequest.Get(Server.Address("view_users")))
+        {
+            string url = Server.Address("get_ranked_players") + PlayerSession.player_session.player.id;
+            using (UnityWebRequest uwr = UnityWebRequest.Get(Server.Address("view_users"))) // new API eg. /players/rank/{rank}
             {
                 uwr.timeout = 10;
                 yield return uwr.SendWebRequest();
-
-                string all = uwr.downloadHandler.text.Trim(new char[] { '[', ']' }); // Split the entire huge all-player JSON into individual-user JSONs.
+            
+                string all = uwr.downloadHandler.text.Trim(new char[] { '[', ']' }); // Split the entire all-player JSON into individual-user JSONs.
                 string[] separators = { "},", "}" };
                 string[] entries = all.Split(separators, System.StringSplitOptions.RemoveEmptyEntries);
+
+                Debug.Log(all);
+                foreach(string st in entries)
+                {
+                    Debug.Log(st);
+                }
 
                 for (int i = 0; i < entries.Length; i++)
                 {
                     if (i == 5) break;
                     string newUserJson = entries[i] + "}";
-                    User newuser = User.CreateUserFromJSON(newUserJson);
-                    users.Add(newuser);
+                    User newUser = User.CreateUserFromJSON(newUserJson);
+                    users.Add(newUser);
                 }
-                // Users.Sort(); //Need to sort based on Points (top 5).
                 uwr.Dispose();
             }
 

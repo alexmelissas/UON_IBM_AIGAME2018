@@ -1,8 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-//! Handle all items
+﻿//! Handle item sets
 public class Items {
 
     public Item sword;
@@ -17,8 +13,8 @@ public class Items {
         armour = Item.NewItem("armour", _player.armour);
     }
 
-    //! Put items on player model, add their stats to Player
-    public static void AttachItemsToPlayer(Items i, Player p) //also make this put the item icons onto player?
+    //! Add item stats to Player
+    public static void AttachItemsToPlayer(Items i, Player p) //FUTURE: also make this put the item icons onto player?
     {
         p.hp += i.armour.hp;
         p.attack += i.sword.attack;

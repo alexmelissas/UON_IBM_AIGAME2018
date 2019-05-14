@@ -5,7 +5,7 @@ using UnityEngine.UI;
 public class SetSettings : MonoBehaviour {
 
     public Slider musicSlider, fxSlider;
-    public Toggle challengeToggle, skipToggle;
+    public Toggle skipToggle;
     public Text currentloginText, usernameText;
     public GameObject logoutButton, linkTwitterButton, unlinkTwitterButton;
 
@@ -14,7 +14,6 @@ public class SetSettings : MonoBehaviour {
     {
         musicSlider.normalizedValue = PlayerPrefs.GetFloat("music", 0.65f);
         fxSlider.normalizedValue = PlayerPrefs.GetFloat("fx", 0.7f);
-        challengeToggle.isOn = (PlayerPrefs.GetInt("challenged") != 0);
         skipToggle.isOn = (PlayerPrefs.GetInt("skip") != 0);
     }
 
@@ -22,7 +21,6 @@ public class SetSettings : MonoBehaviour {
     void Update () {
         PlayerPrefs.SetFloat("music",musicSlider.value);
         PlayerPrefs.SetFloat("fx", fxSlider.value);
-        PlayerPrefs.SetInt("challenged", challengeToggle.isOn ? 1 : 0);
         PlayerPrefs.SetInt("skip", skipToggle.isOn ? 1 : 0);
 
         if (UserSession.user_session != null && UserSession.user_session.user.GetUsername() != "")

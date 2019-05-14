@@ -60,7 +60,6 @@ More details can be found in our Game Concept folders in documentation. Please s
 - Twitter4j
 - OAuth 1.0
 
-**Deployment Instructions**
 - Example environment:
 	- ubuntu 18.04.2
 	- MySQL 5.7.25

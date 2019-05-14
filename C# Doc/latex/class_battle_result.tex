@@ -8,37 +8,28 @@ J\+S\+O\+N-\/able object to pass result of battle to server.
 \subsection*{Static Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{class_battle_result_a269702cb7e87a7029e0ff374eefd5547}\label{class_battle_result_a269702cb7e87a7029e0ff374eefd5547}} 
 static string \mbox{\hyperlink{class_battle_result_a269702cb7e87a7029e0ff374eefd5547}{Get\+J\+S\+ON}} (\mbox{\hyperlink{class_player}{Player}} p1, \mbox{\hyperlink{class_player}{Player}} p2, bool win)
 \begin{DoxyCompactList}\small\item\em Get a J\+S\+ON equivalent of this object. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{class_battle_result_a350ad6a31cf445647adc770788444832}\label{class_battle_result_a350ad6a31cf445647adc770788444832}} 
 string \mbox{\hyperlink{class_battle_result_a350ad6a31cf445647adc770788444832}{id1}}
 \begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{class_player}{Player}} ID. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{class_battle_result_ae2c787e74297c842bf4e284f0cc612fb}\label{class_battle_result_ae2c787e74297c842bf4e284f0cc612fb}} 
 string \mbox{\hyperlink{class_battle_result_ae2c787e74297c842bf4e284f0cc612fb}{id2}}
 \begin{DoxyCompactList}\small\item\em Enemy ID. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{class_battle_result_afd1e0eda93aa975e42f89c2eb3ce0fdc}\label{class_battle_result_afd1e0eda93aa975e42f89c2eb3ce0fdc}} 
 bool \mbox{\hyperlink{class_battle_result_afd1e0eda93aa975e42f89c2eb3ce0fdc}{result}}
 \begin{DoxyCompactList}\small\item\em True = \mbox{\hyperlink{class_player}{Player}} win $\vert$ False = Enemy win. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{class_battle_result_afc0db86910169071de1574e338681970}\label{class_battle_result_afc0db86910169071de1574e338681970}} 
 int \mbox{\hyperlink{class_battle_result_afc0db86910169071de1574e338681970}{additional\+Exp}}
 \begin{DoxyCompactList}\small\item\em Extra E\+XP gained/lost by defeating higher/lower level enemy. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{class_battle_result_a41b75012dae886cb26753404c5ff9dcd}\label{class_battle_result_a41b75012dae886cb26753404c5ff9dcd}} 
 int \mbox{\hyperlink{class_battle_result_a41b75012dae886cb26753404c5ff9dcd}{additional\+Money}}
 \begin{DoxyCompactList}\small\item\em Extra money gained/lost by defeating higher/lower level enemy. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Private Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{class_battle_result_aa9b8da5a628723badc34d0828591ff0a}\label{class_battle_result_aa9b8da5a628723badc34d0828591ff0a}} 
 \mbox{\hyperlink{class_battle_result_aa9b8da5a628723badc34d0828591ff0a}{Battle\+Result}} (\mbox{\hyperlink{class_player}{Player}} \+\_\+player1, \mbox{\hyperlink{class_player}{Player}} \+\_\+player2, bool \+\_\+win)
 \begin{DoxyCompactList}\small\item\em Constructor for the \mbox{\hyperlink{class_battle_result}{Battle\+Result}} to pass to server. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{class_battle_result_af20191426878f7be611049a4715dcfbd}\label{class_battle_result_af20191426878f7be611049a4715dcfbd}} 
 int \mbox{\hyperlink{class_battle_result_af20191426878f7be611049a4715dcfbd}{Calculate\+Bonus\+Exp}} (\mbox{\hyperlink{class_player}{Player}} p1, \mbox{\hyperlink{class_player}{Player}} p2)
 \begin{DoxyCompactList}\small\item\em Calculates bonus E\+XP based on level comparison. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{class_battle_result_ad5eed686021435525855eb55902be318}\label{class_battle_result_ad5eed686021435525855eb55902be318}} 
 int \mbox{\hyperlink{class_battle_result_ad5eed686021435525855eb55902be318}{Calculate\+Bonus\+Money}} (\mbox{\hyperlink{class_player}{Player}} p1, \mbox{\hyperlink{class_player}{Player}} p2)
 \begin{DoxyCompactList}\small\item\em Calculate bonus money based on level comparison. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
@@ -46,6 +37,105 @@ int \mbox{\hyperlink{class_battle_result_ad5eed686021435525855eb55902be318}{Calc
 \subsection{Detailed Description}
 J\+S\+O\+N-\/able object to pass result of battle to server. 
 
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_battle_result_aa9b8da5a628723badc34d0828591ff0a}\label{class_battle_result_aa9b8da5a628723badc34d0828591ff0a}} 
+\index{BattleResult@{BattleResult}!BattleResult@{BattleResult}}
+\index{BattleResult@{BattleResult}!BattleResult@{BattleResult}}
+\subsubsection{\texorpdfstring{BattleResult()}{BattleResult()}}
+{\footnotesize\ttfamily Battle\+Result.\+Battle\+Result (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_player}{Player}}}]{\+\_\+player1,  }\item[{\mbox{\hyperlink{class_player}{Player}}}]{\+\_\+player2,  }\item[{bool}]{\+\_\+win }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Constructor for the \mbox{\hyperlink{class_battle_result}{Battle\+Result}} to pass to server. 
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_battle_result_af20191426878f7be611049a4715dcfbd}\label{class_battle_result_af20191426878f7be611049a4715dcfbd}} 
+\index{BattleResult@{BattleResult}!CalculateBonusExp@{CalculateBonusExp}}
+\index{CalculateBonusExp@{CalculateBonusExp}!BattleResult@{BattleResult}}
+\subsubsection{\texorpdfstring{CalculateBonusExp()}{CalculateBonusExp()}}
+{\footnotesize\ttfamily int Battle\+Result.\+Calculate\+Bonus\+Exp (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_player}{Player}}}]{p1,  }\item[{\mbox{\hyperlink{class_player}{Player}}}]{p2 }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Calculates bonus E\+XP based on level comparison. 
+
+\mbox{\Hypertarget{class_battle_result_ad5eed686021435525855eb55902be318}\label{class_battle_result_ad5eed686021435525855eb55902be318}} 
+\index{BattleResult@{BattleResult}!CalculateBonusMoney@{CalculateBonusMoney}}
+\index{CalculateBonusMoney@{CalculateBonusMoney}!BattleResult@{BattleResult}}
+\subsubsection{\texorpdfstring{CalculateBonusMoney()}{CalculateBonusMoney()}}
+{\footnotesize\ttfamily int Battle\+Result.\+Calculate\+Bonus\+Money (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_player}{Player}}}]{p1,  }\item[{\mbox{\hyperlink{class_player}{Player}}}]{p2 }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Calculate bonus money based on level comparison. 
+
+\mbox{\Hypertarget{class_battle_result_a269702cb7e87a7029e0ff374eefd5547}\label{class_battle_result_a269702cb7e87a7029e0ff374eefd5547}} 
+\index{BattleResult@{BattleResult}!GetJSON@{GetJSON}}
+\index{GetJSON@{GetJSON}!BattleResult@{BattleResult}}
+\subsubsection{\texorpdfstring{GetJSON()}{GetJSON()}}
+{\footnotesize\ttfamily static string Battle\+Result.\+Get\+J\+S\+ON (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_player}{Player}}}]{p1,  }\item[{\mbox{\hyperlink{class_player}{Player}}}]{p2,  }\item[{bool}]{win }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Get a J\+S\+ON equivalent of this object. 
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{class_battle_result_afc0db86910169071de1574e338681970}\label{class_battle_result_afc0db86910169071de1574e338681970}} 
+\index{BattleResult@{BattleResult}!additionalExp@{additionalExp}}
+\index{additionalExp@{additionalExp}!BattleResult@{BattleResult}}
+\subsubsection{\texorpdfstring{additionalExp}{additionalExp}}
+{\footnotesize\ttfamily int Battle\+Result.\+additional\+Exp}
+
+
+
+Extra E\+XP gained/lost by defeating higher/lower level enemy. 
+
+\mbox{\Hypertarget{class_battle_result_a41b75012dae886cb26753404c5ff9dcd}\label{class_battle_result_a41b75012dae886cb26753404c5ff9dcd}} 
+\index{BattleResult@{BattleResult}!additionalMoney@{additionalMoney}}
+\index{additionalMoney@{additionalMoney}!BattleResult@{BattleResult}}
+\subsubsection{\texorpdfstring{additionalMoney}{additionalMoney}}
+{\footnotesize\ttfamily int Battle\+Result.\+additional\+Money}
+
+
+
+Extra money gained/lost by defeating higher/lower level enemy. 
+
+\mbox{\Hypertarget{class_battle_result_a350ad6a31cf445647adc770788444832}\label{class_battle_result_a350ad6a31cf445647adc770788444832}} 
+\index{BattleResult@{BattleResult}!id1@{id1}}
+\index{id1@{id1}!BattleResult@{BattleResult}}
+\subsubsection{\texorpdfstring{id1}{id1}}
+{\footnotesize\ttfamily string Battle\+Result.\+id1}
+
+
+
+\mbox{\hyperlink{class_player}{Player}} ID. 
+
+\mbox{\Hypertarget{class_battle_result_ae2c787e74297c842bf4e284f0cc612fb}\label{class_battle_result_ae2c787e74297c842bf4e284f0cc612fb}} 
+\index{BattleResult@{BattleResult}!id2@{id2}}
+\index{id2@{id2}!BattleResult@{BattleResult}}
+\subsubsection{\texorpdfstring{id2}{id2}}
+{\footnotesize\ttfamily string Battle\+Result.\+id2}
+
+
+
+Enemy ID. 
+
+\mbox{\Hypertarget{class_battle_result_afd1e0eda93aa975e42f89c2eb3ce0fdc}\label{class_battle_result_afd1e0eda93aa975e42f89c2eb3ce0fdc}} 
+\index{BattleResult@{BattleResult}!result@{result}}
+\index{result@{result}!BattleResult@{BattleResult}}
+\subsubsection{\texorpdfstring{result}{result}}
+{\footnotesize\ttfamily bool Battle\+Result.\+result}
+
+
+
+True = \mbox{\hyperlink{class_player}{Player}} win $\vert$ False = Enemy win. 
+
+
+
 The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 
-U\+O\+N\+\_\+\+I\+B\+M\+\_\+\+A\+I\+G\+A\+M\+E2018/\+Unity/\+Group15/\+Assets/\+Scripts/\+Battle/Battle\+Result.\+cs\end{DoxyCompactItemize}
+U\+O\+N\+\_\+\+I\+B\+M\+\_\+\+A\+I\+G\+A\+M\+E2018/\+Unity/\+Group15/\+Assets/\+Scripts/\+Battle/\mbox{\hyperlink{_battle_result_8cs}{Battle\+Result.\+cs}}\end{DoxyCompactItemize}

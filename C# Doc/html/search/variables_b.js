@@ -1,7 +1,7 @@
 var searchData=
 [
-  ['updateplayer',['updatePlayer',['../class_gameplay.html#acd7f7caba8d780232371c187cdf8fcc8',1,'Gameplay']]],
-  ['updateplayer_5fdone',['updatePlayer_done',['../class_server.html#acf78dae58011f4406003d79e6df7e3ef',1,'Server']]],
-  ['user_5fsession',['user_session',['../class_user_session.html#aa2651c5c9a3108e8a545c100a16387a1',1,'UserSession']]],
-  ['username_5ftaken',['username_taken',['../class_server.html#a0d876aba3addd4f76cf9d998f0552048',1,'Server']]]
+  ['name',['name',['../class_item.html#a86a80b030e63ac2d31f3576ed8d1be51',1,'Item']]],
+  ['nextbutton',['nextButton',['../class_agree_twitter.html#ac75bd6520211bb529625d0972bc9f896',1,'AgreeTwitter']]],
+  ['nextleveltext',['nextLevelText',['../class_profile.html#a603dea7538d222934d0be46c96b2dd79',1,'Profile']]],
+  ['no_5ftwitter_5fsuccess',['no_twitter_success',['../class_server.html#a68768a2b0fbd0595e8690908bf8bb66b',1,'Server']]]
 ];

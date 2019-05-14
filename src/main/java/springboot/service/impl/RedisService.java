@@ -60,21 +60,28 @@ public class RedisService implements InitializingBean {
 	 * Add the battle account of player with input id
 	 * 
 	 * @param id  the id
-	 * @param str string indicate if the battle is ranked
 	 */
-	public void addBattleCount(String id, String str) {
-		int count = this.getBattleCount(id, str);
-		if ("".equals(str)) {
-			if (count >= 10) {
-				return;
-			}
-		} else {
-			if (count >= 5) {
-				return;
-			}
+	public void addBattleCount(String id) {
+		int count = this.getBattleCount(id);
+		if (count >= 10) {
+			return;
 		}
 		count++;
-		this.setBattleCount(id, count, str);
+		this.setBattleCount(id, count);
+	}
+
+	/**
+	 * Add the ranked battle account of player with input id
+	 * 
+	 * @param id  the id
+	 */
+	public void addRankedBattleCount(String id) {
+		int count = this.getRankedBattleCount(id);
+		if (count >= 5) {
+			return;
+		}
+		count++;
+		this.setRankedBattleCount(id, count);
 	}
 
 	/**
@@ -82,13 +89,26 @@ public class RedisService implements InitializingBean {
 	 * 
 	 * @param id    the id
 	 * @param count the number of battls
-	 * @param str   string indicate if the battle is ranked
 	 */
-	public void setBattleCount(String id, int count, String str) {
+	public void setBattleCount(String id, int count) {
 		Jedis jedis = jedisPool.getResource();
-		jedis.set("count_" + str + id, Integer.toString(count));
+		jedis.set("count_" + id, Integer.toString(count));
 		int seconds = this.daily();
-		jedis.expire("count_" + str + id, (int) seconds);
+		jedis.expire("count_" + id, (int) seconds);
+		this.returnResource(jedis);
+	}
+	
+	/**
+	 * Set the number of ranked battles of a player
+	 * 
+	 * @param id    the id
+	 * @param count the number of battls
+	 */
+	public void setRankedBattleCount(String id, int count) {
+		Jedis jedis = jedisPool.getResource();
+		jedis.set("count_ranked_" + id, Integer.toString(count));
+		int seconds = this.daily();
+		jedis.expire("count_ranked_" + id, (int) seconds);
 		this.returnResource(jedis);
 	}
 
@@ -96,14 +116,30 @@ public class RedisService implements InitializingBean {
 	 * Get the number of battles of a player
 	 * 
 	 * @param id  the id
-	 * @param str string indicate if the battle is ranked
 	 * @return the number of battles
 	 */
-	public int getBattleCount(String id, String str) {
+	public int getBattleCount(String id) {
 		Jedis jedis = jedisPool.getResource();
 		int count = 0;
-		if (jedis.exists("count_" + str + id)) {
-			String num = jedis.get("count_" + str + id);
+		if (jedis.exists("count_" + id)) {
+			String num = jedis.get("count_" + id);
+			count = Integer.parseInt(num);
+		}
+		this.returnResource(jedis);
+		return count;
+	}
+	
+	/**
+	 * Get the number of ranked battles of a player
+	 * 
+	 * @param id  the id
+	 * @return the number of battles
+	 */
+	public int getRankedBattleCount(String id) {
+		Jedis jedis = jedisPool.getResource();
+		int count = 0;
+		if (jedis.exists("count_ranked_" + id)) {
+			String num = jedis.get("count_ranked_" + id);
 			count = Integer.parseInt(num);
 		}
 		this.returnResource(jedis);

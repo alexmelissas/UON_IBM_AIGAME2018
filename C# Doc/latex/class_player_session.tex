@@ -11,34 +11,36 @@ Inheritance diagram for Player\+Session\+:\begin{figure}[H]
 \includegraphics[height=2.000000cm]{class_player_session}
 \end{center}
 \end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_player_session_aeb4aa3bf4eaaa1f444ab5d9e06144898}{Place\+In\+Rank}} (int points)
+\begin{DoxyCompactList}\small\item\em Place player in rank according to rank points. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{class_player_session_aca4d3def0c85712299f5528789df8110}\label{class_player_session_aca4d3def0c85712299f5528789df8110}} 
-\mbox{\hyperlink{class_player}{Player}} {\bfseries player}
+\mbox{\hyperlink{class_player}{Player}} \mbox{\hyperlink{class_player_session_aca4d3def0c85712299f5528789df8110}{player}}
 \item 
-\mbox{\Hypertarget{class_player_session_ab9a2cc0cdf6740f1dcbea0cef56c636b}\label{class_player_session_ab9a2cc0cdf6740f1dcbea0cef56c636b}} 
 \mbox{\hyperlink{class_player}{Player}} \mbox{\hyperlink{class_player_session_ab9a2cc0cdf6740f1dcbea0cef56c636b}{player\+\_\+before\+\_\+battle}}
 \begin{DoxyCompactList}\small\item\em An old copy of the player for comparisons before and after a battle. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{class_player_session_abef83de04d9672e0af2c9313ecde1dc1}\label{class_player_session_abef83de04d9672e0af2c9313ecde1dc1}} 
-\mbox{\hyperlink{class_player}{Player}} {\bfseries enemy}
+\mbox{\hyperlink{class_player}{Player}} \mbox{\hyperlink{class_player_session_abef83de04d9672e0af2c9313ecde1dc1}{enemy}}
 \item 
-\mbox{\Hypertarget{class_player_session_a0e78485525b4c9cedb9056ad65767d94}\label{class_player_session_a0e78485525b4c9cedb9056ad65767d94}} 
-int {\bfseries plays\+\_\+left\+\_\+unranked}
+int \mbox{\hyperlink{class_player_session_ac6cb4814f73c3e70feabc2d87d39ff3c}{rank\+\_\+points}}
 \item 
-\mbox{\Hypertarget{class_player_session_a297bef5c73fbe65dc70f914b066c7187}\label{class_player_session_a297bef5c73fbe65dc70f914b066c7187}} 
-int {\bfseries plays\+\_\+left\+\_\+ranked}
+string \mbox{\hyperlink{class_player_session_a40ae843028dbcdbdd441078b88ea5cd0}{rank}}
+\item 
+int \mbox{\hyperlink{class_player_session_a0e78485525b4c9cedb9056ad65767d94}{plays\+\_\+left\+\_\+unranked}}
+\item 
+int \mbox{\hyperlink{class_player_session_a297bef5c73fbe65dc70f914b066c7187}{plays\+\_\+left\+\_\+ranked}}
 \end{DoxyCompactItemize}
 \subsection*{Static Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{class_player_session_acc6317b2b33507b267fc204419aa3ab9}\label{class_player_session_acc6317b2b33507b267fc204419aa3ab9}} 
-static \mbox{\hyperlink{class_player_session}{Player\+Session}} {\bfseries player\+\_\+session}
+static \mbox{\hyperlink{class_player_session}{Player\+Session}} \mbox{\hyperlink{class_player_session_acc6317b2b33507b267fc204419aa3ab9}{player\+\_\+session}}
 \end{DoxyCompactItemize}
 \subsection*{Private Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{class_player_session_a5f382c3a86c0042bfad86f54299bb119}\label{class_player_session_a5f382c3a86c0042bfad86f54299bb119}} 
 void \mbox{\hyperlink{class_player_session_a5f382c3a86c0042bfad86f54299bb119}{Awake}} ()
 \begin{DoxyCompactList}\small\item\em Handle the Singleton object. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
@@ -46,6 +48,84 @@ void \mbox{\hyperlink{class_player_session_a5f382c3a86c0042bfad86f54299bb119}{Aw
 \subsection{Detailed Description}
 Singleton -\/ Store the \mbox{\hyperlink{class_player}{Player}} objects for the user and the enemy. 
 
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_player_session_a5f382c3a86c0042bfad86f54299bb119}\label{class_player_session_a5f382c3a86c0042bfad86f54299bb119}} 
+\index{PlayerSession@{PlayerSession}!Awake@{Awake}}
+\index{Awake@{Awake}!PlayerSession@{PlayerSession}}
+\subsubsection{\texorpdfstring{Awake()}{Awake()}}
+{\footnotesize\ttfamily void Player\+Session.\+Awake (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Handle the Singleton object. 
+
+\mbox{\Hypertarget{class_player_session_aeb4aa3bf4eaaa1f444ab5d9e06144898}\label{class_player_session_aeb4aa3bf4eaaa1f444ab5d9e06144898}} 
+\index{PlayerSession@{PlayerSession}!PlaceInRank@{PlaceInRank}}
+\index{PlaceInRank@{PlaceInRank}!PlayerSession@{PlayerSession}}
+\subsubsection{\texorpdfstring{PlaceInRank()}{PlaceInRank()}}
+{\footnotesize\ttfamily void Player\+Session.\+Place\+In\+Rank (\begin{DoxyParamCaption}\item[{int}]{points }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Place player in rank according to rank points. 
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{class_player_session_abef83de04d9672e0af2c9313ecde1dc1}\label{class_player_session_abef83de04d9672e0af2c9313ecde1dc1}} 
+\index{PlayerSession@{PlayerSession}!enemy@{enemy}}
+\index{enemy@{enemy}!PlayerSession@{PlayerSession}}
+\subsubsection{\texorpdfstring{enemy}{enemy}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_player}{Player}} Player\+Session.\+enemy}
+
+\mbox{\Hypertarget{class_player_session_aca4d3def0c85712299f5528789df8110}\label{class_player_session_aca4d3def0c85712299f5528789df8110}} 
+\index{PlayerSession@{PlayerSession}!player@{player}}
+\index{player@{player}!PlayerSession@{PlayerSession}}
+\subsubsection{\texorpdfstring{player}{player}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_player}{Player}} Player\+Session.\+player}
+
+\mbox{\Hypertarget{class_player_session_ab9a2cc0cdf6740f1dcbea0cef56c636b}\label{class_player_session_ab9a2cc0cdf6740f1dcbea0cef56c636b}} 
+\index{PlayerSession@{PlayerSession}!player\_before\_battle@{player\_before\_battle}}
+\index{player\_before\_battle@{player\_before\_battle}!PlayerSession@{PlayerSession}}
+\subsubsection{\texorpdfstring{player\_before\_battle}{player\_before\_battle}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_player}{Player}} Player\+Session.\+player\+\_\+before\+\_\+battle}
+
+
+
+An old copy of the player for comparisons before and after a battle. 
+
+\mbox{\Hypertarget{class_player_session_acc6317b2b33507b267fc204419aa3ab9}\label{class_player_session_acc6317b2b33507b267fc204419aa3ab9}} 
+\index{PlayerSession@{PlayerSession}!player\_session@{player\_session}}
+\index{player\_session@{player\_session}!PlayerSession@{PlayerSession}}
+\subsubsection{\texorpdfstring{player\_session}{player\_session}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_player_session}{Player\+Session}} Player\+Session.\+player\+\_\+session\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{class_player_session_a297bef5c73fbe65dc70f914b066c7187}\label{class_player_session_a297bef5c73fbe65dc70f914b066c7187}} 
+\index{PlayerSession@{PlayerSession}!plays\_left\_ranked@{plays\_left\_ranked}}
+\index{plays\_left\_ranked@{plays\_left\_ranked}!PlayerSession@{PlayerSession}}
+\subsubsection{\texorpdfstring{plays\_left\_ranked}{plays\_left\_ranked}}
+{\footnotesize\ttfamily int Player\+Session.\+plays\+\_\+left\+\_\+ranked}
+
+\mbox{\Hypertarget{class_player_session_a0e78485525b4c9cedb9056ad65767d94}\label{class_player_session_a0e78485525b4c9cedb9056ad65767d94}} 
+\index{PlayerSession@{PlayerSession}!plays\_left\_unranked@{plays\_left\_unranked}}
+\index{plays\_left\_unranked@{plays\_left\_unranked}!PlayerSession@{PlayerSession}}
+\subsubsection{\texorpdfstring{plays\_left\_unranked}{plays\_left\_unranked}}
+{\footnotesize\ttfamily int Player\+Session.\+plays\+\_\+left\+\_\+unranked}
+
+\mbox{\Hypertarget{class_player_session_a40ae843028dbcdbdd441078b88ea5cd0}\label{class_player_session_a40ae843028dbcdbdd441078b88ea5cd0}} 
+\index{PlayerSession@{PlayerSession}!rank@{rank}}
+\index{rank@{rank}!PlayerSession@{PlayerSession}}
+\subsubsection{\texorpdfstring{rank}{rank}}
+{\footnotesize\ttfamily string Player\+Session.\+rank}
+
+\mbox{\Hypertarget{class_player_session_ac6cb4814f73c3e70feabc2d87d39ff3c}\label{class_player_session_ac6cb4814f73c3e70feabc2d87d39ff3c}} 
+\index{PlayerSession@{PlayerSession}!rank\_points@{rank\_points}}
+\index{rank\_points@{rank\_points}!PlayerSession@{PlayerSession}}
+\subsubsection{\texorpdfstring{rank\_points}{rank\_points}}
+{\footnotesize\ttfamily int Player\+Session.\+rank\+\_\+points}
+
+
+
 The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 
-U\+O\+N\+\_\+\+I\+B\+M\+\_\+\+A\+I\+G\+A\+M\+E2018/\+Unity/\+Group15/\+Assets/\+Scripts/\+Session Objects/Player\+Session.\+cs\end{DoxyCompactItemize}
+U\+O\+N\+\_\+\+I\+B\+M\+\_\+\+A\+I\+G\+A\+M\+E2018/\+Unity/\+Group15/\+Assets/\+Scripts/\+Session Objects/\mbox{\hyperlink{_player_session_8cs}{Player\+Session.\+cs}}\end{DoxyCompactItemize}

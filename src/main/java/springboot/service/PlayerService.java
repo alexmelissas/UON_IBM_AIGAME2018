@@ -43,13 +43,6 @@ public interface PlayerService {
 	public Player getPlayerById(String id);
 
 	/**
-	 * Get the list of top 10 players
-	 * 
-	 * @return a list of players
-	 */
-	public List<Player> getTopPlayers();
-
-	/**
 	 * Get the rank of player
 	 * 
 	 * @param id the id

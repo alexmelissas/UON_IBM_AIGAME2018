@@ -23,7 +23,7 @@
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">The Battle Within (Group 15)
    </div>
-   <div id="projectbrief">An asynchronous multiplayer, self-improvement RPG.</div>
+   <div id="projectbrief">An asynchronous multiplayer, self-improvement AI-fuelled RPG.</div>
   </td>
  </tr>
  </tbody>
@@ -83,72 +83,420 @@ Inheritance diagram for WinLosePopup:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr class="memitem:a96b5a5d480b14cdae7e5a882bee30757"><td class="memItemLeft" align="right" valign="top"><a id="a96b5a5d480b14cdae7e5a882bee30757"></a>
-Text&#160;</td><td class="memItemRight" valign="bottom"><b>winMoneyText</b></td></tr>
+<tr class="memitem:a96b5a5d480b14cdae7e5a882bee30757"><td class="memItemLeft" align="right" valign="top">Text&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_win_lose_popup.html#a96b5a5d480b14cdae7e5a882bee30757">winMoneyText</a></td></tr>
 <tr class="separator:a96b5a5d480b14cdae7e5a882bee30757"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adbe5b4c1578b28ae3a6bc4993407a739"><td class="memItemLeft" align="right" valign="top"><a id="adbe5b4c1578b28ae3a6bc4993407a739"></a>
-Text&#160;</td><td class="memItemRight" valign="bottom"><b>loseMoneyText</b></td></tr>
+<tr class="memitem:adbe5b4c1578b28ae3a6bc4993407a739"><td class="memItemLeft" align="right" valign="top">Text&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_win_lose_popup.html#adbe5b4c1578b28ae3a6bc4993407a739">loseMoneyText</a></td></tr>
 <tr class="separator:adbe5b4c1578b28ae3a6bc4993407a739"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a68c25472f6b7101d6995dd57b6aa6803"><td class="memItemLeft" align="right" valign="top"><a id="a68c25472f6b7101d6995dd57b6aa6803"></a>
-Slider&#160;</td><td class="memItemRight" valign="bottom"><b>winExpSlider</b></td></tr>
+<tr class="memitem:a68c25472f6b7101d6995dd57b6aa6803"><td class="memItemLeft" align="right" valign="top">Slider&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_win_lose_popup.html#a68c25472f6b7101d6995dd57b6aa6803">winExpSlider</a></td></tr>
 <tr class="separator:a68c25472f6b7101d6995dd57b6aa6803"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7f104ba616010ea3714c5abc1306e6de"><td class="memItemLeft" align="right" valign="top"><a id="a7f104ba616010ea3714c5abc1306e6de"></a>
-AudioSource&#160;</td><td class="memItemRight" valign="bottom"><b>soundsrc</b></td></tr>
+<tr class="memitem:a7f104ba616010ea3714c5abc1306e6de"><td class="memItemLeft" align="right" valign="top">AudioSource&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_win_lose_popup.html#a7f104ba616010ea3714c5abc1306e6de">soundsrc</a></td></tr>
 <tr class="separator:a7f104ba616010ea3714c5abc1306e6de"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1f35c7e6dea70e8dba042d4703768d8d"><td class="memItemLeft" align="right" valign="top"><a id="a1f35c7e6dea70e8dba042d4703768d8d"></a>
-AudioClip&#160;</td><td class="memItemRight" valign="bottom"><b>levelup_Sound</b></td></tr>
+<tr class="memitem:a1f35c7e6dea70e8dba042d4703768d8d"><td class="memItemLeft" align="right" valign="top">AudioClip&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_win_lose_popup.html#a1f35c7e6dea70e8dba042d4703768d8d">levelup_Sound</a></td></tr>
 <tr class="separator:a1f35c7e6dea70e8dba042d4703768d8d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
-<tr class="memitem:a9f1909bfd129a06cb0ff7048ccf19d0f"><td class="memItemLeft" align="right" valign="top"><a id="a9f1909bfd129a06cb0ff7048ccf19d0f"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_win_lose_popup.html#a9f1909bfd129a06cb0ff7048ccf19d0f">Update</a> ()</td></tr>
-<tr class="memdesc:a9f1909bfd129a06cb0ff7048ccf19d0f"><td class="mdescLeft">&#160;</td><td class="mdescRight">When battle ends, display the Win/Lose popup and animate the EXP and money gain. <br /></td></tr>
+<tr class="memitem:a9f1909bfd129a06cb0ff7048ccf19d0f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_win_lose_popup.html#a9f1909bfd129a06cb0ff7048ccf19d0f">Update</a> ()</td></tr>
+<tr class="memdesc:a9f1909bfd129a06cb0ff7048ccf19d0f"><td class="mdescLeft">&#160;</td><td class="mdescRight">When battle ends, display the Win/Lose popup and animate the EXP and money gain.  <a href="#a9f1909bfd129a06cb0ff7048ccf19d0f">More...</a><br /></td></tr>
 <tr class="separator:a9f1909bfd129a06cb0ff7048ccf19d0f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a93530da059106189d5c41afff35bca9d"><td class="memItemLeft" align="right" valign="top"><a id="a93530da059106189d5c41afff35bca9d"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>Setup</b> ()</td></tr>
+<tr class="memitem:a93530da059106189d5c41afff35bca9d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_win_lose_popup.html#a93530da059106189d5c41afff35bca9d">Setup</a> ()</td></tr>
 <tr class="separator:a93530da059106189d5c41afff35bca9d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
-<tr class="memitem:ae36d60eb365ca9331d068e354a13eb00"><td class="memItemLeft" align="right" valign="top"><a id="ae36d60eb365ca9331d068e354a13eb00"></a>
-Text&#160;</td><td class="memItemRight" valign="bottom"><b>winNextLevelText</b></td></tr>
+<tr class="memitem:ae36d60eb365ca9331d068e354a13eb00"><td class="memItemLeft" align="right" valign="top">Text&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_win_lose_popup.html#ae36d60eb365ca9331d068e354a13eb00">winNextLevelText</a></td></tr>
 <tr class="separator:ae36d60eb365ca9331d068e354a13eb00"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2d14509aafa2672bffa70812b7fd8feb"><td class="memItemLeft" align="right" valign="top"><a id="a2d14509aafa2672bffa70812b7fd8feb"></a>
-Text&#160;</td><td class="memItemRight" valign="bottom"><b>loseNextLvlText</b></td></tr>
+<tr class="memitem:a2d14509aafa2672bffa70812b7fd8feb"><td class="memItemLeft" align="right" valign="top">Text&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_win_lose_popup.html#a2d14509aafa2672bffa70812b7fd8feb">loseNextLvlText</a></td></tr>
 <tr class="separator:a2d14509aafa2672bffa70812b7fd8feb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab14cf5e3153f0c51bacc94f0dc7de77e"><td class="memItemLeft" align="right" valign="top"><a id="ab14cf5e3153f0c51bacc94f0dc7de77e"></a>
-Slider&#160;</td><td class="memItemRight" valign="bottom"><b>loseExpSlider</b></td></tr>
+<tr class="memitem:ab14cf5e3153f0c51bacc94f0dc7de77e"><td class="memItemLeft" align="right" valign="top">Slider&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_win_lose_popup.html#ab14cf5e3153f0c51bacc94f0dc7de77e">loseExpSlider</a></td></tr>
 <tr class="separator:ab14cf5e3153f0c51bacc94f0dc7de77e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adbc1922aff99c3b3fa585a4e7f124e13"><td class="memItemLeft" align="right" valign="top"><a id="adbc1922aff99c3b3fa585a4e7f124e13"></a>
-Text&#160;</td><td class="memItemRight" valign="bottom"><b>moneyGained</b></td></tr>
+<tr class="memitem:adbc1922aff99c3b3fa585a4e7f124e13"><td class="memItemLeft" align="right" valign="top">Text&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_win_lose_popup.html#adbc1922aff99c3b3fa585a4e7f124e13">moneyGained</a></td></tr>
 <tr class="separator:adbc1922aff99c3b3fa585a4e7f124e13"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3b0146c33af33ccf52b4404052896bb9"><td class="memItemLeft" align="right" valign="top"><a id="a3b0146c33af33ccf52b4404052896bb9"></a>
-Text&#160;</td><td class="memItemRight" valign="bottom"><b>currentLevel</b></td></tr>
+<tr class="memitem:a3b0146c33af33ccf52b4404052896bb9"><td class="memItemLeft" align="right" valign="top">Text&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_win_lose_popup.html#a3b0146c33af33ccf52b4404052896bb9">currentLevel</a></td></tr>
 <tr class="separator:a3b0146c33af33ccf52b4404052896bb9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afef81efb95018e4cbe2505da1c5a3ab3"><td class="memItemLeft" align="right" valign="top"><a id="afef81efb95018e4cbe2505da1c5a3ab3"></a>
-Slider&#160;</td><td class="memItemRight" valign="bottom"><b>expSlider</b></td></tr>
+<tr class="memitem:afef81efb95018e4cbe2505da1c5a3ab3"><td class="memItemLeft" align="right" valign="top">Slider&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_win_lose_popup.html#afef81efb95018e4cbe2505da1c5a3ab3">expSlider</a></td></tr>
 <tr class="separator:afef81efb95018e4cbe2505da1c5a3ab3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7201ba527ce8ca90adf383224c89c2d3"><td class="memItemLeft" align="right" valign="top"><a id="a7201ba527ce8ca90adf383224c89c2d3"></a>
-<a class="el" href="class_player.html">Player</a>&#160;</td><td class="memItemRight" valign="bottom"><b>before</b></td></tr>
+<tr class="memitem:a7201ba527ce8ca90adf383224c89c2d3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_player.html">Player</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_win_lose_popup.html#a7201ba527ce8ca90adf383224c89c2d3">before</a></td></tr>
 <tr class="separator:a7201ba527ce8ca90adf383224c89c2d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5da1387cc4bb2efb52708a85b5a70685"><td class="memItemLeft" align="right" valign="top"><a id="a5da1387cc4bb2efb52708a85b5a70685"></a>
-<a class="el" href="class_player.html">Player</a>&#160;</td><td class="memItemRight" valign="bottom"><b>after</b></td></tr>
+<tr class="memitem:a5da1387cc4bb2efb52708a85b5a70685"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_player.html">Player</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_win_lose_popup.html#a5da1387cc4bb2efb52708a85b5a70685">after</a></td></tr>
 <tr class="separator:a5da1387cc4bb2efb52708a85b5a70685"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adaa6d1028fb44efd4fe50993ae35c9f1"><td class="memItemLeft" align="right" valign="top"><a id="adaa6d1028fb44efd4fe50993ae35c9f1"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>didSetup</b> = false</td></tr>
+<tr class="memitem:adaa6d1028fb44efd4fe50993ae35c9f1"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_win_lose_popup.html#adaa6d1028fb44efd4fe50993ae35c9f1">didSetup</a> = false</td></tr>
 <tr class="separator:adaa6d1028fb44efd4fe50993ae35c9f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adf087a11d92bb33525095c666db98b15"><td class="memItemLeft" align="right" valign="top"><a id="adf087a11d92bb33525095c666db98b15"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>gainedLevel</b> = false</td></tr>
+<tr class="memitem:adf087a11d92bb33525095c666db98b15"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_win_lose_popup.html#adf087a11d92bb33525095c666db98b15">gainedLevel</a> = false</td></tr>
 <tr class="separator:adf087a11d92bb33525095c666db98b15"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a24495c1926e8cf1d2284204629e8ce78"><td class="memItemLeft" align="right" valign="top"><a id="a24495c1926e8cf1d2284204629e8ce78"></a>
-float&#160;</td><td class="memItemRight" valign="bottom"><b>addedExp</b> = 0</td></tr>
+<tr class="memitem:a24495c1926e8cf1d2284204629e8ce78"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_win_lose_popup.html#a24495c1926e8cf1d2284204629e8ce78">addedExp</a> = 0</td></tr>
 <tr class="separator:a24495c1926e8cf1d2284204629e8ce78"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Visualize the rewards gained from winning/losing a match. </p>
-</div><hr/>The documentation for this class was generated from the following file:<ul>
-<li>UON_IBM_AIGAME2018/Unity/Group15/Assets/Scripts/Battle/WinLosePopup.cs</li>
+</div><h2 class="groupheader">Member Function Documentation</h2>
+<a id="a93530da059106189d5c41afff35bca9d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a93530da059106189d5c41afff35bca9d">&#9670;&nbsp;</a></span>Setup()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void WinLosePopup.Setup </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a9f1909bfd129a06cb0ff7048ccf19d0f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9f1909bfd129a06cb0ff7048ccf19d0f">&#9670;&nbsp;</a></span>Update()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void WinLosePopup.Update </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>When battle ends, display the Win/Lose popup and animate the EXP and money gain. </p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="a24495c1926e8cf1d2284204629e8ce78"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a24495c1926e8cf1d2284204629e8ce78">&#9670;&nbsp;</a></span>addedExp</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float WinLosePopup.addedExp = 0</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a5da1387cc4bb2efb52708a85b5a70685"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5da1387cc4bb2efb52708a85b5a70685">&#9670;&nbsp;</a></span>after</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_player.html">Player</a> WinLosePopup.after</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a7201ba527ce8ca90adf383224c89c2d3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7201ba527ce8ca90adf383224c89c2d3">&#9670;&nbsp;</a></span>before</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_player.html">Player</a> WinLosePopup.before</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a3b0146c33af33ccf52b4404052896bb9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3b0146c33af33ccf52b4404052896bb9">&#9670;&nbsp;</a></span>currentLevel</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Text WinLosePopup.currentLevel</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="adaa6d1028fb44efd4fe50993ae35c9f1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adaa6d1028fb44efd4fe50993ae35c9f1">&#9670;&nbsp;</a></span>didSetup</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool WinLosePopup.didSetup = false</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="afef81efb95018e4cbe2505da1c5a3ab3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afef81efb95018e4cbe2505da1c5a3ab3">&#9670;&nbsp;</a></span>expSlider</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Slider WinLosePopup.expSlider</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="adf087a11d92bb33525095c666db98b15"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adf087a11d92bb33525095c666db98b15">&#9670;&nbsp;</a></span>gainedLevel</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool WinLosePopup.gainedLevel = false</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a1f35c7e6dea70e8dba042d4703768d8d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1f35c7e6dea70e8dba042d4703768d8d">&#9670;&nbsp;</a></span>levelup_Sound</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">AudioClip WinLosePopup.levelup_Sound</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ab14cf5e3153f0c51bacc94f0dc7de77e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab14cf5e3153f0c51bacc94f0dc7de77e">&#9670;&nbsp;</a></span>loseExpSlider</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Slider WinLosePopup.loseExpSlider</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="adbe5b4c1578b28ae3a6bc4993407a739"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adbe5b4c1578b28ae3a6bc4993407a739">&#9670;&nbsp;</a></span>loseMoneyText</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Text WinLosePopup.loseMoneyText</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a2d14509aafa2672bffa70812b7fd8feb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2d14509aafa2672bffa70812b7fd8feb">&#9670;&nbsp;</a></span>loseNextLvlText</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Text WinLosePopup.loseNextLvlText</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="adbc1922aff99c3b3fa585a4e7f124e13"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adbc1922aff99c3b3fa585a4e7f124e13">&#9670;&nbsp;</a></span>moneyGained</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Text WinLosePopup.moneyGained</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a7f104ba616010ea3714c5abc1306e6de"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7f104ba616010ea3714c5abc1306e6de">&#9670;&nbsp;</a></span>soundsrc</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">AudioSource WinLosePopup.soundsrc</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a68c25472f6b7101d6995dd57b6aa6803"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a68c25472f6b7101d6995dd57b6aa6803">&#9670;&nbsp;</a></span>winExpSlider</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Slider WinLosePopup.winExpSlider</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a96b5a5d480b14cdae7e5a882bee30757"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a96b5a5d480b14cdae7e5a882bee30757">&#9670;&nbsp;</a></span>winMoneyText</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Text WinLosePopup.winMoneyText</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ae36d60eb365ca9331d068e354a13eb00"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae36d60eb365ca9331d068e354a13eb00">&#9670;&nbsp;</a></span>winNextLevelText</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Text WinLosePopup.winNextLevelText</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following file:<ul>
+<li>UON_IBM_AIGAME2018/Unity/Group15/Assets/Scripts/Battle/<a class="el" href="_win_lose_popup_8cs.html">WinLosePopup.cs</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

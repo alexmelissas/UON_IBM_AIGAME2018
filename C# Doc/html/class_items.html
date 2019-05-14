@@ -23,7 +23,7 @@
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">The Battle Within (Group 15)
    </div>
-   <div id="projectbrief">An asynchronous multiplayer, self-improvement RPG.</div>
+   <div id="projectbrief">An asynchronous multiplayer, self-improvement AI-fuelled RPG.</div>
   </td>
  </tr>
  </tbody>
@@ -72,39 +72,145 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
-<p>Handle all items.  
+<p>Handle item sets.  
  <a href="class_items.html#details">More...</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a78d62b542929857f6e65b3ed91fb31ee"><td class="memItemLeft" align="right" valign="top"><a id="a78d62b542929857f6e65b3ed91fb31ee"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_items.html#a78d62b542929857f6e65b3ed91fb31ee">Items</a> (<a class="el" href="class_player.html">Player</a> _player)</td></tr>
-<tr class="memdesc:a78d62b542929857f6e65b3ed91fb31ee"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create items based on the <a class="el" href="class_player.html" title="JSON-able object with all Player-related attributes (eg. id, winrate, level, stats ....">Player</a> object's item attributes. <br /></td></tr>
+<tr class="memitem:a78d62b542929857f6e65b3ed91fb31ee"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_items.html#a78d62b542929857f6e65b3ed91fb31ee">Items</a> (<a class="el" href="class_player.html">Player</a> _player)</td></tr>
+<tr class="memdesc:a78d62b542929857f6e65b3ed91fb31ee"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create items based on the <a class="el" href="class_player.html" title="JSON-able object with all Player-related attributes (eg. id, winrate, level, stats ....">Player</a> object's item attributes.  <a href="#a78d62b542929857f6e65b3ed91fb31ee">More...</a><br /></td></tr>
 <tr class="separator:a78d62b542929857f6e65b3ed91fb31ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
-<tr class="memitem:a0fed8123fbaa68d1d310cdb28cb1793d"><td class="memItemLeft" align="right" valign="top"><a id="a0fed8123fbaa68d1d310cdb28cb1793d"></a>
-static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_items.html#a0fed8123fbaa68d1d310cdb28cb1793d">AttachItemsToPlayer</a> (<a class="el" href="class_items.html">Items</a> i, <a class="el" href="class_player.html">Player</a> p)</td></tr>
-<tr class="memdesc:a0fed8123fbaa68d1d310cdb28cb1793d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Put items on player model, add their stats to <a class="el" href="class_player.html" title="JSON-able object with all Player-related attributes (eg. id, winrate, level, stats ....">Player</a>. <br /></td></tr>
+<tr class="memitem:a0fed8123fbaa68d1d310cdb28cb1793d"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_items.html#a0fed8123fbaa68d1d310cdb28cb1793d">AttachItemsToPlayer</a> (<a class="el" href="class_items.html">Items</a> i, <a class="el" href="class_player.html">Player</a> p)</td></tr>
+<tr class="memdesc:a0fed8123fbaa68d1d310cdb28cb1793d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add item stats to <a class="el" href="class_player.html" title="JSON-able object with all Player-related attributes (eg. id, winrate, level, stats ....">Player</a>.  <a href="#a0fed8123fbaa68d1d310cdb28cb1793d">More...</a><br /></td></tr>
 <tr class="separator:a0fed8123fbaa68d1d310cdb28cb1793d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr class="memitem:a2ee0fd7e676f594e6e184b56b7f1c958"><td class="memItemLeft" align="right" valign="top"><a id="a2ee0fd7e676f594e6e184b56b7f1c958"></a>
-<a class="el" href="class_item.html">Item</a>&#160;</td><td class="memItemRight" valign="bottom"><b>sword</b></td></tr>
+<tr class="memitem:a2ee0fd7e676f594e6e184b56b7f1c958"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_item.html">Item</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_items.html#a2ee0fd7e676f594e6e184b56b7f1c958">sword</a></td></tr>
 <tr class="separator:a2ee0fd7e676f594e6e184b56b7f1c958"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7e6e791cf22f41a685dd2092105a81b1"><td class="memItemLeft" align="right" valign="top"><a id="a7e6e791cf22f41a685dd2092105a81b1"></a>
-<a class="el" href="class_item.html">Item</a>&#160;</td><td class="memItemRight" valign="bottom"><b>shield</b></td></tr>
+<tr class="memitem:a7e6e791cf22f41a685dd2092105a81b1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_item.html">Item</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_items.html#a7e6e791cf22f41a685dd2092105a81b1">shield</a></td></tr>
 <tr class="separator:a7e6e791cf22f41a685dd2092105a81b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad59621b7b465ccd957cf06dde55279dd"><td class="memItemLeft" align="right" valign="top"><a id="ad59621b7b465ccd957cf06dde55279dd"></a>
-<a class="el" href="class_item.html">Item</a>&#160;</td><td class="memItemRight" valign="bottom"><b>armour</b></td></tr>
+<tr class="memitem:ad59621b7b465ccd957cf06dde55279dd"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_item.html">Item</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_items.html#ad59621b7b465ccd957cf06dde55279dd">armour</a></td></tr>
 <tr class="separator:ad59621b7b465ccd957cf06dde55279dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Handle all items. </p>
-</div><hr/>The documentation for this class was generated from the following file:<ul>
-<li>UON_IBM_AIGAME2018/Unity/Group15/Assets/Scripts/Items/Items.cs</li>
+<div class="textblock"><p>Handle item sets. </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a78d62b542929857f6e65b3ed91fb31ee"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a78d62b542929857f6e65b3ed91fb31ee">&#9670;&nbsp;</a></span>Items()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Items.Items </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_player.html">Player</a>&#160;</td>
+          <td class="paramname"><em>_player</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Create items based on the <a class="el" href="class_player.html" title="JSON-able object with all Player-related attributes (eg. id, winrate, level, stats ....">Player</a> object's item attributes. </p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="a0fed8123fbaa68d1d310cdb28cb1793d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0fed8123fbaa68d1d310cdb28cb1793d">&#9670;&nbsp;</a></span>AttachItemsToPlayer()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void Items.AttachItemsToPlayer </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_items.html">Items</a>&#160;</td>
+          <td class="paramname"><em>i</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_player.html">Player</a>&#160;</td>
+          <td class="paramname"><em>p</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Add item stats to <a class="el" href="class_player.html" title="JSON-able object with all Player-related attributes (eg. id, winrate, level, stats ....">Player</a>. </p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="ad59621b7b465ccd957cf06dde55279dd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad59621b7b465ccd957cf06dde55279dd">&#9670;&nbsp;</a></span>armour</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_item.html">Item</a> Items.armour</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a7e6e791cf22f41a685dd2092105a81b1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7e6e791cf22f41a685dd2092105a81b1">&#9670;&nbsp;</a></span>shield</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_item.html">Item</a> Items.shield</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a2ee0fd7e676f594e6e184b56b7f1c958"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2ee0fd7e676f594e6e184b56b7f1c958">&#9670;&nbsp;</a></span>sword</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_item.html">Item</a> Items.sword</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following file:<ul>
+<li>UON_IBM_AIGAME2018/Unity/Group15/Assets/Scripts/Items/<a class="el" href="_items_8cs.html">Items.cs</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

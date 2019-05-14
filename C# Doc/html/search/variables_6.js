@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['otherpopupopen',['otherPopupOpen',['../class_login_twitter.html#af567aa064be62c7c71fdd375d5f46b10',1,'LoginTwitter']]]
+  ['gainedlevel',['gainedLevel',['../class_win_lose_popup.html#adf087a11d92bb33525095c666db98b15',1,'WinLosePopup']]],
+  ['goldicon',['goldIcon',['../class_profile.html#aedf7d88327e54a157f1d7b2cfcf4c0a2',1,'Profile']]]
 ];

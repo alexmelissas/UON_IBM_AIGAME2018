@@ -14,38 +14,112 @@ Inheritance diagram for Pause\+Manager\+:\begin{figure}[H]
 \subsection*{Private Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{class_pause_manager_a655b826847bdc4c8721d35aa47a4c880}\label{class_pause_manager_a655b826847bdc4c8721d35aa47a4c880}} 
 void \mbox{\hyperlink{class_pause_manager_a655b826847bdc4c8721d35aa47a4c880}{Awake}} ()
 \begin{DoxyCompactList}\small\item\em Set the salt for the encryption. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{class_pause_manager_a0150346b902b664ce65d5e1b840d9d4d}\label{class_pause_manager_a0150346b902b664ce65d5e1b840d9d4d}} 
 void \mbox{\hyperlink{class_pause_manager_a0150346b902b664ce65d5e1b840d9d4d}{Save}} ()
 \begin{DoxyCompactList}\small\item\em Save the settings and player id, or delete the account upon registration error. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{class_pause_manager_a3afaaf8ca6d30581f6df12d900d0e1b5}\label{class_pause_manager_a3afaaf8ca6d30581f6df12d900d0e1b5}} 
 bool \mbox{\hyperlink{class_pause_manager_a3afaaf8ca6d30581f6df12d900d0e1b5}{Account\+Complete}} ()
 \begin{DoxyCompactList}\small\item\em Check if account registration is correctly completed. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{class_pause_manager_a8666e6da14b6f6b2287e34c5775e21c7}\label{class_pause_manager_a8666e6da14b6f6b2287e34c5775e21c7}} 
 void \mbox{\hyperlink{class_pause_manager_a8666e6da14b6f6b2287e34c5775e21c7}{Load}} ()
 \begin{DoxyCompactList}\small\item\em Load the settings and player id. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{class_pause_manager_a9a9453e92a60de1d20cf37c9e55ded0d}\label{class_pause_manager_a9a9453e92a60de1d20cf37c9e55ded0d}} 
 bool \mbox{\hyperlink{class_pause_manager_a9a9453e92a60de1d20cf37c9e55ded0d}{Start\+Screens}} ()
 \begin{DoxyCompactList}\small\item\em Check if current screen is one of the Starting screens. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{class_pause_manager_adccb03eddbe4377a0153565456c92325}\label{class_pause_manager_adccb03eddbe4377a0153565456c92325}} 
 void \mbox{\hyperlink{class_pause_manager_adccb03eddbe4377a0153565456c92325}{On\+Application\+Pause}} (bool pause\+Status)
 \begin{DoxyCompactList}\small\item\em Handle exiting the app. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Private Attributes}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{class_pause_manager_a01e84a6aa94c2e746f047af9dcb5a04c}\label{class_pause_manager_a01e84a6aa94c2e746f047af9dcb5a04c}} 
 bool \mbox{\hyperlink{class_pause_manager_a01e84a6aa94c2e746f047af9dcb5a04c}{start}} = true
 \begin{DoxyCompactList}\small\item\em Check if this is the initial opening of the app. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{class_pause_manager_a2d11f4fd49f97bd8ede5f9e0afda9601}\label{class_pause_manager_a2d11f4fd49f97bd8ede5f9e0afda9601}} 
-bool {\bfseries skip\+Selected}
+bool \mbox{\hyperlink{class_pause_manager_a2d11f4fd49f97bd8ede5f9e0afda9601}{skip\+Selected}}
 \end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}
 Keep User/\+Player data stored when exiting app, reload them when coming back. 
 
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_pause_manager_a3afaaf8ca6d30581f6df12d900d0e1b5}\label{class_pause_manager_a3afaaf8ca6d30581f6df12d900d0e1b5}} 
+\index{PauseManager@{PauseManager}!AccountComplete@{AccountComplete}}
+\index{AccountComplete@{AccountComplete}!PauseManager@{PauseManager}}
+\subsubsection{\texorpdfstring{AccountComplete()}{AccountComplete()}}
+{\footnotesize\ttfamily bool Pause\+Manager.\+Account\+Complete (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Check if account registration is correctly completed. 
+
+\mbox{\Hypertarget{class_pause_manager_a655b826847bdc4c8721d35aa47a4c880}\label{class_pause_manager_a655b826847bdc4c8721d35aa47a4c880}} 
+\index{PauseManager@{PauseManager}!Awake@{Awake}}
+\index{Awake@{Awake}!PauseManager@{PauseManager}}
+\subsubsection{\texorpdfstring{Awake()}{Awake()}}
+{\footnotesize\ttfamily void Pause\+Manager.\+Awake (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Set the salt for the encryption. 
+
+\mbox{\Hypertarget{class_pause_manager_a8666e6da14b6f6b2287e34c5775e21c7}\label{class_pause_manager_a8666e6da14b6f6b2287e34c5775e21c7}} 
+\index{PauseManager@{PauseManager}!Load@{Load}}
+\index{Load@{Load}!PauseManager@{PauseManager}}
+\subsubsection{\texorpdfstring{Load()}{Load()}}
+{\footnotesize\ttfamily void Pause\+Manager.\+Load (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Load the settings and player id. 
+
+\mbox{\Hypertarget{class_pause_manager_adccb03eddbe4377a0153565456c92325}\label{class_pause_manager_adccb03eddbe4377a0153565456c92325}} 
+\index{PauseManager@{PauseManager}!OnApplicationPause@{OnApplicationPause}}
+\index{OnApplicationPause@{OnApplicationPause}!PauseManager@{PauseManager}}
+\subsubsection{\texorpdfstring{OnApplicationPause()}{OnApplicationPause()}}
+{\footnotesize\ttfamily void Pause\+Manager.\+On\+Application\+Pause (\begin{DoxyParamCaption}\item[{bool}]{pause\+Status }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Handle exiting the app. 
+
+\mbox{\Hypertarget{class_pause_manager_a0150346b902b664ce65d5e1b840d9d4d}\label{class_pause_manager_a0150346b902b664ce65d5e1b840d9d4d}} 
+\index{PauseManager@{PauseManager}!Save@{Save}}
+\index{Save@{Save}!PauseManager@{PauseManager}}
+\subsubsection{\texorpdfstring{Save()}{Save()}}
+{\footnotesize\ttfamily void Pause\+Manager.\+Save (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Save the settings and player id, or delete the account upon registration error. 
+
+\mbox{\Hypertarget{class_pause_manager_a9a9453e92a60de1d20cf37c9e55ded0d}\label{class_pause_manager_a9a9453e92a60de1d20cf37c9e55ded0d}} 
+\index{PauseManager@{PauseManager}!StartScreens@{StartScreens}}
+\index{StartScreens@{StartScreens}!PauseManager@{PauseManager}}
+\subsubsection{\texorpdfstring{StartScreens()}{StartScreens()}}
+{\footnotesize\ttfamily bool Pause\+Manager.\+Start\+Screens (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Check if current screen is one of the Starting screens. 
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{class_pause_manager_a2d11f4fd49f97bd8ede5f9e0afda9601}\label{class_pause_manager_a2d11f4fd49f97bd8ede5f9e0afda9601}} 
+\index{PauseManager@{PauseManager}!skipSelected@{skipSelected}}
+\index{skipSelected@{skipSelected}!PauseManager@{PauseManager}}
+\subsubsection{\texorpdfstring{skipSelected}{skipSelected}}
+{\footnotesize\ttfamily bool Pause\+Manager.\+skip\+Selected\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_pause_manager_a01e84a6aa94c2e746f047af9dcb5a04c}\label{class_pause_manager_a01e84a6aa94c2e746f047af9dcb5a04c}} 
+\index{PauseManager@{PauseManager}!start@{start}}
+\index{start@{start}!PauseManager@{PauseManager}}
+\subsubsection{\texorpdfstring{start}{start}}
+{\footnotesize\ttfamily bool Pause\+Manager.\+start = true\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Check if this is the initial opening of the app. 
+
+
+
 The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 
-U\+O\+N\+\_\+\+I\+B\+M\+\_\+\+A\+I\+G\+A\+M\+E2018/\+Unity/\+Group15/\+Assets/\+Scripts/Pause\+Manager.\+cs\end{DoxyCompactItemize}
+U\+O\+N\+\_\+\+I\+B\+M\+\_\+\+A\+I\+G\+A\+M\+E2018/\+Unity/\+Group15/\+Assets/\+Scripts/\mbox{\hyperlink{_pause_manager_8cs}{Pause\+Manager.\+cs}}\end{DoxyCompactItemize}

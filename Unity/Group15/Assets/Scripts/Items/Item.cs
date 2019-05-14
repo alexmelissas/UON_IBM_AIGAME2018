@@ -3,8 +3,8 @@ using UnityEngine.UI;
 
 //! Abstract Factory - For Items.
 public abstract class Item {
-
-    public Sprite icon;
+    
+    public Texture2D icon;
     public string name;
     public int hp;
     public int attack;
@@ -14,7 +14,7 @@ public abstract class Item {
     public int price;
 
     //! Create a generic item with icon and attributes
-    protected Item(Sprite _icon, string _name, int _hp, int _attack, int _defense, int _agility, int _critical_strike, int _price)
+    protected Item(Texture2D _icon, string _name, int _hp, int _attack, int _defense, int _agility, int _critical_strike, int _price)
     {
         icon = _icon; name = _name;  hp = _hp; attack = _attack; defense = _defense;
         agility = _agility; critical_strike = _critical_strike; price = _price;

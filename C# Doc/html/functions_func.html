@@ -23,7 +23,7 @@
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">The Battle Within (Group 15)
    </div>
-   <div id="projectbrief">An asynchronous multiplayer, self-improvement RPG.</div>
+   <div id="projectbrief">An asynchronous multiplayer, self-improvement AI-fuelled RPG.</div>
   </td>
  </tr>
  </tbody>
@@ -74,11 +74,19 @@ $(function() {
 <li>AnimateTurns()
 : <a class="el" href="class_gameplay.html#a0d0ef2766c769e58dbd93b3467a40d0b">Gameplay</a>
 </li>
+<li>Armour()
+: <a class="el" href="class_armour.html#a8e1de059e6735d359e21f097deb9780a">Armour</a>
+</li>
 <li>AttachItemsToPlayer()
 : <a class="el" href="class_items.html#a0fed8123fbaa68d1d310cdb28cb1793d">Items</a>
 </li>
+<li>AttachItemsToPlayer_Test()
+: <a class="el" href="class_items___test.html#a806431bc31e50464f95323f395057066">Items_Test</a>
+</li>
 <li>Awake()
-: <a class="el" href="class_back_button_handler.html#ac35dc3235b4f8a0b86645237b2490ace">BackButtonHandler</a>
+: <a class="el" href="class_agree_twitter.html#ac14f26c38898b7e0afec3f3d5310e756">AgreeTwitter</a>
+, <a class="el" href="class_back_button_handler.html#ac35dc3235b4f8a0b86645237b2490ace">BackButtonHandler</a>
+, <a class="el" href="class_inventory.html#a88da279faf84d529af011f7e25bea01b">Inventory</a>
 , <a class="el" href="class_pause_manager.html#a655b826847bdc4c8721d35aa47a4c880">PauseManager</a>
 , <a class="el" href="class_player_session.html#a5f382c3a86c0042bfad86f54299bb119">PlayerSession</a>
 , <a class="el" href="class_profile.html#aa17a7ceae100a98b5962b238758a72b0">Profile</a>
@@ -133,11 +141,26 @@ $(function() {
 <li>ConfirmPurchase()
 : <a class="el" href="class_inventory.html#a284995426324c648b4c9144a3b9bc277">Inventory</a>
 </li>
+<li>CreateItems_Test()
+: <a class="el" href="class_items___test.html#af3d9432fd0dacf8716a1e0a50e642df3">Items_Test</a>
+</li>
+<li>CreateItemSet_Test()
+: <a class="el" href="class_items___test.html#a2891c44bc7f9131017df9cddb5fc163c">Items_Test</a>
+</li>
+<li>CreatePlayer_Test()
+: <a class="el" href="class_user___player___test.html#aa88269b78c5bd7f6140b20b14aa975a0">User_Player_Test</a>
+</li>
 <li>CreatePlayerFromJSON()
 : <a class="el" href="class_player.html#a9278b5c20dc0e3b2cab022cccacac63c">Player</a>
 </li>
+<li>CreatePlayerFromJSON_Test()
+: <a class="el" href="class_user___player___test.html#a1b00d27b0e5bb67f63d0ee46ed39b0f0">User_Player_Test</a>
+</li>
 <li>CreateUserFromJSON()
 : <a class="el" href="class_user.html#ab083d14c7cefbeb5eb91eb9ebb21a3bd">User</a>
+</li>
+<li>CreateUserFromJSON_Test()
+: <a class="el" href="class_user___player___test.html#a45e8193156cae6d3615b54d257738662">User_Player_Test</a>
 </li>
 </ul>
 
@@ -159,6 +182,9 @@ $(function() {
 <li>EndMatch()
 : <a class="el" href="class_gameplay.html#ab30c33d44acef3478ae5b601c14a4346">Gameplay</a>
 </li>
+<li>EndSession()
+: <a class="el" href="class_login_twitter.html#ac489a3bf63140ddcc50d9a10f70409d1">LoginTwitter</a>
+</li>
 </ul>
 
 
@@ -170,11 +196,23 @@ $(function() {
 
 
 <h3><a id="index_g"></a>- g -</h3><ul>
+<li>GetAT()
+: <a class="el" href="class_user.html#a208b67765760712a54a3c354f351ab34">User</a>
+</li>
+<li>GetATS()
+: <a class="el" href="class_user.html#ab1bd8f0f2b784942840ab712e61a3979">User</a>
+</li>
 <li>GetEnemy()
 : <a class="el" href="class_server.html#ab8763dec1a3a83e91962022cbcf405db">Server</a>
 </li>
+<li>GetID()
+: <a class="el" href="class_user.html#a91e7a9a20ab853c8291c19e3b607ddeb">User</a>
+</li>
 <li>GetJSON()
 : <a class="el" href="class_battle_result.html#a269702cb7e87a7029e0ff374eefd5547">BattleResult</a>
+</li>
+<li>GetPassword()
+: <a class="el" href="class_user.html#a19477827d4e7de7ed4e1c3356aec3e81">User</a>
 </li>
 <li>GetPlayer()
 : <a class="el" href="class_update_sessions.html#a2a73c7d01b39317eab0b06a3ddfb9669">UpdateSessions</a>
@@ -182,14 +220,17 @@ $(function() {
 <li>GetPlayers()
 : <a class="el" href="class_ranked_match_screen.html#ac556e6c839f3ed858ee7120291bf84bd">RankedMatchScreen</a>
 </li>
-<li>GetPlays()
-: <a class="el" href="class_overworld.html#acf1ba6443e23dc40621133acda06ff37">Overworld</a>
-</li>
 <li>GetPlaysLeft()
-: <a class="el" href="class_server.html#ab91c9efe68369b07f5f4d0d179926f48">Server</a>
+: <a class="el" href="class_update_sessions.html#a9e3f91b8c328a2c75b4fd7ba38ea5c1a">UpdateSessions</a>
+</li>
+<li>GetRankPoints()
+: <a class="el" href="class_update_sessions.html#afe2dacd8d53c15803cca09bf07de37b7">UpdateSessions</a>
 </li>
 <li>GetUser()
 : <a class="el" href="class_update_sessions.html#a0d9f725dd5bd780272f19531fcc2c523">UpdateSessions</a>
+</li>
+<li>GetUsername()
+: <a class="el" href="class_user.html#a9b01c32e62c89a10e380f6cdfa19b8b0">User</a>
 </li>
 </ul>
 
@@ -209,8 +250,14 @@ $(function() {
 : <a class="el" href="class_ranked_match_screen.html#a8c3dcce8a497dddd00881d64690be6df">RankedMatchScreen</a>
 , <a class="el" href="class_unranked_match.html#a155dc55d0125b9fa9fe2625d976e6278">UnrankedMatch</a>
 </li>
+<li>InvokableGetPlaysLeft()
+: <a class="el" href="class_update_sessions.html#af02a599b262f2ea1e620f7ec468f8ebb">UpdateSessions</a>
+</li>
+<li>InvokableGetRankPoints()
+: <a class="el" href="class_update_sessions.html#a13b53f5d4ab3beafc880931c5870e740">UpdateSessions</a>
+</li>
 <li>Item()
-: <a class="el" href="class_item.html#a26abe7b7a300340375a3bec714cfdd5c">Item</a>
+: <a class="el" href="class_item.html#ada8a1dc9034f8a956747857f0e4b9e7b">Item</a>
 </li>
 <li>Items()
 : <a class="el" href="class_items.html#a78d62b542929857f6e65b3ed91fb31ee">Items</a>
@@ -262,6 +309,9 @@ $(function() {
 <li>PassResult()
 : <a class="el" href="class_server.html#ac8137eb1cd7752cf3231cd3d1539a849">Server</a>
 </li>
+<li>PlaceInRank()
+: <a class="el" href="class_player_session.html#aeb4aa3bf4eaaa1f444ab5d9e06144898">PlayerSession</a>
+</li>
 <li>Play()
 : <a class="el" href="class_bot_screen.html#a594089f360bedf3ae9aff037401a504c">BotScreen</a>
 , <a class="el" href="class_ranked_match_screen.html#a605d6d6b0092debfa254bb43835e16c1">RankedMatchScreen</a>
@@ -305,8 +355,17 @@ $(function() {
 <li>Save()
 : <a class="el" href="class_pause_manager.html#a0150346b902b664ce65d5e1b840d9d4d">PauseManager</a>
 </li>
+<li>SetSkipBool()
+: <a class="el" href="class_login_twitter.html#a6291e32f19d1cae3ea13e08b5401960f">LoginTwitter</a>
+</li>
+<li>Setup()
+: <a class="el" href="class_win_lose_popup.html#a93530da059106189d5c41afff35bca9d">WinLosePopup</a>
+</li>
 <li>SetupUpgradePanel()
 : <a class="el" href="class_inventory.html#aa99e2b5246a749ec59f04aa1ce48416a">Inventory</a>
+</li>
+<li>Shield()
+: <a class="el" href="class_shield.html#a5bd67f14c9a8202223629d8dce2cb9f2">Shield</a>
 </li>
 <li>ShowPopup()
 : <a class="el" href="class_gameplay.html#a26e8c55ca4dbbfb1898a3a7bb06d679d">Gameplay</a>
@@ -314,10 +373,13 @@ $(function() {
 </li>
 <li>Start()
 : <a class="el" href="class_animation_manager.html#a24e3383ca8d2acf1cf37211f8e9f2131">AnimationManager</a>
+, <a class="el" href="class_authenticate_user.html#a2fede13427963bbcdd6a7d09a6846f3a">AuthenticateUser</a>
 , <a class="el" href="class_bot_screen.html#a3ffff8c4a3c08bfc13dde5e3a7af702f">BotScreen</a>
 , <a class="el" href="class_gameplay.html#a3262248fce4aeecf5de2486bb3305de3">Gameplay</a>
 , <a class="el" href="class_inventory.html#aa5a9d430aff1ecd12a75901608d337ea">Inventory</a>
+, <a class="el" href="class_login_twitter.html#aa93b8ee84e787d99c171d9086c64275c">LoginTwitter</a>
 , <a class="el" href="class_overworld.html#a1065dc87edcf287032a56809584feeab">Overworld</a>
+, <a class="el" href="class_profile.html#a647e62f8ea4ea155450b61f840196144">Profile</a>
 , <a class="el" href="class_ranked_match_screen.html#a98bbe7478a312eca3e6b43bf452f4923">RankedMatchScreen</a>
 , <a class="el" href="class_set_settings.html#a7d405e56dc6123768fac6fdd6e70ab0f">SetSettings</a>
 , <a class="el" href="class_unranked_match.html#a7361150ca22d5a53cdbfe4d34a6c94ea">UnrankedMatch</a>
@@ -329,8 +391,17 @@ $(function() {
 <li>StartScreens()
 : <a class="el" href="class_pause_manager.html#a9a9453e92a60de1d20cf37c9e55ded0d">PauseManager</a>
 </li>
+<li>Stats()
+: <a class="el" href="class_stats.html#af8606e198097e115c6ee9e1de60af34c">Stats</a>
+</li>
+<li>StatsToStrings()
+: <a class="el" href="class_stats.html#acae5dda69cd0f8843eed4d72e16284e6">Stats</a>
+</li>
 <li>Submit()
 : <a class="el" href="class_personality_creation.html#a464be274e82be75bab0899f8756c9562">PersonalityCreation</a>
+</li>
+<li>Sword()
+: <a class="el" href="class_sword.html#ae8f29c644df340edb5b70d8e3e632c3b">Sword</a>
 </li>
 </ul>
 

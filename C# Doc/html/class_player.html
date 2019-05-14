@@ -23,7 +23,7 @@
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">The Battle Within (Group 15)
    </div>
-   <div id="projectbrief">An asynchronous multiplayer, self-improvement RPG.</div>
+   <div id="projectbrief">An asynchronous multiplayer, self-improvement AI-fuelled RPG.</div>
   </td>
  </tr>
  </tbody>
@@ -78,91 +78,653 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a712a726b07cf901c040116d6d0c5cc66"><td class="memItemLeft" align="right" valign="top"><a id="a712a726b07cf901c040116d6d0c5cc66"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_player.html#a712a726b07cf901c040116d6d0c5cc66">Player</a> ()</td></tr>
-<tr class="memdesc:a712a726b07cf901c040116d6d0c5cc66"><td class="mdescLeft">&#160;</td><td class="mdescRight">Default constructor. <br /></td></tr>
+<tr class="memitem:a712a726b07cf901c040116d6d0c5cc66"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_player.html#a712a726b07cf901c040116d6d0c5cc66">Player</a> ()</td></tr>
+<tr class="memdesc:a712a726b07cf901c040116d6d0c5cc66"><td class="mdescLeft">&#160;</td><td class="mdescRight">Default constructor.  <a href="#a712a726b07cf901c040116d6d0c5cc66">More...</a><br /></td></tr>
 <tr class="separator:a712a726b07cf901c040116d6d0c5cc66"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad275d2e546547d19fca625bad0dd9dc6"><td class="memItemLeft" align="right" valign="top"><a id="ad275d2e546547d19fca625bad0dd9dc6"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_player.html#ad275d2e546547d19fca625bad0dd9dc6">Player</a> (string _id, string _characterName, int _level, int _hp, int _attack, int _defense, int _agility, int _critical_strike, int _money, int _experience, int _exptolevel, double _factor, int _sword, int _shield, int _armour, int _win, int _lose)</td></tr>
-<tr class="memdesc:ad275d2e546547d19fca625bad0dd9dc6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fully specific constructor. <br /></td></tr>
+<tr class="memitem:ad275d2e546547d19fca625bad0dd9dc6"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_player.html#ad275d2e546547d19fca625bad0dd9dc6">Player</a> (string _id, string _characterName, int _level, int _hp, int _attack, int _defense, int _agility, int _critical_strike, int _money, int _experience, int _exptolevel, double _factor, int _sword, int _shield, int _armour, int _win, int _lose)</td></tr>
+<tr class="memdesc:ad275d2e546547d19fca625bad0dd9dc6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fully specific constructor.  <a href="#ad275d2e546547d19fca625bad0dd9dc6">More...</a><br /></td></tr>
 <tr class="separator:ad275d2e546547d19fca625bad0dd9dc6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4801fed9ec34d0eac42ca4c474b3e584"><td class="memItemLeft" align="right" valign="top"><a id="a4801fed9ec34d0eac42ca4c474b3e584"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_player.html#a4801fed9ec34d0eac42ca4c474b3e584">ComparePlayer</a> (<a class="el" href="class_player.html">Player</a> other)</td></tr>
-<tr class="memdesc:a4801fed9ec34d0eac42ca4c474b3e584"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if two <a class="el" href="class_player.html" title="JSON-able object with all Player-related attributes (eg. id, winrate, level, stats ....">Player</a> objects have identical attributes. <br /></td></tr>
+<tr class="memitem:a4801fed9ec34d0eac42ca4c474b3e584"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_player.html#a4801fed9ec34d0eac42ca4c474b3e584">ComparePlayer</a> (<a class="el" href="class_player.html">Player</a> other)</td></tr>
+<tr class="memdesc:a4801fed9ec34d0eac42ca4c474b3e584"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if two <a class="el" href="class_player.html" title="JSON-able object with all Player-related attributes (eg. id, winrate, level, stats ....">Player</a> objects have identical attributes.  <a href="#a4801fed9ec34d0eac42ca4c474b3e584">More...</a><br /></td></tr>
 <tr class="separator:a4801fed9ec34d0eac42ca4c474b3e584"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
-<tr class="memitem:a9278b5c20dc0e3b2cab022cccacac63c"><td class="memItemLeft" align="right" valign="top"><a id="a9278b5c20dc0e3b2cab022cccacac63c"></a>
-static <a class="el" href="class_player.html">Player</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_player.html#a9278b5c20dc0e3b2cab022cccacac63c">CreatePlayerFromJSON</a> (string json)</td></tr>
-<tr class="memdesc:a9278b5c20dc0e3b2cab022cccacac63c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a <a class="el" href="class_player.html" title="JSON-able object with all Player-related attributes (eg. id, winrate, level, stats ....">Player</a> object from JSON. <br /></td></tr>
+<tr class="memitem:a9278b5c20dc0e3b2cab022cccacac63c"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_player.html">Player</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_player.html#a9278b5c20dc0e3b2cab022cccacac63c">CreatePlayerFromJSON</a> (string json)</td></tr>
+<tr class="memdesc:a9278b5c20dc0e3b2cab022cccacac63c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a <a class="el" href="class_player.html" title="JSON-able object with all Player-related attributes (eg. id, winrate, level, stats ....">Player</a> object from JSON.  <a href="#a9278b5c20dc0e3b2cab022cccacac63c">More...</a><br /></td></tr>
 <tr class="separator:a9278b5c20dc0e3b2cab022cccacac63c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adf965ae02f9b21712dcd93b8a2f955f4"><td class="memItemLeft" align="right" valign="top"><a id="adf965ae02f9b21712dcd93b8a2f955f4"></a>
-static <a class="el" href="class_player.html">Player</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_player.html#adf965ae02f9b21712dcd93b8a2f955f4">Clone</a> (<a class="el" href="class_player.html">Player</a> original)</td></tr>
-<tr class="memdesc:adf965ae02f9b21712dcd93b8a2f955f4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fully clone the <a class="el" href="class_player.html" title="JSON-able object with all Player-related attributes (eg. id, winrate, level, stats ....">Player</a> object to a new one. <br /></td></tr>
+<tr class="memitem:adf965ae02f9b21712dcd93b8a2f955f4"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_player.html">Player</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_player.html#adf965ae02f9b21712dcd93b8a2f955f4">Clone</a> (<a class="el" href="class_player.html">Player</a> original)</td></tr>
+<tr class="memdesc:adf965ae02f9b21712dcd93b8a2f955f4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fully clone the <a class="el" href="class_player.html" title="JSON-able object with all Player-related attributes (eg. id, winrate, level, stats ....">Player</a> object to a new one.  <a href="#adf965ae02f9b21712dcd93b8a2f955f4">More...</a><br /></td></tr>
 <tr class="separator:adf965ae02f9b21712dcd93b8a2f955f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr class="memitem:a4133cf7ecb22b0ae16ee457c46eacc08"><td class="memItemLeft" align="right" valign="top"><a id="a4133cf7ecb22b0ae16ee457c46eacc08"></a>
-string&#160;</td><td class="memItemRight" valign="bottom"><b>id</b></td></tr>
+<tr class="memitem:a4133cf7ecb22b0ae16ee457c46eacc08"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_player.html#a4133cf7ecb22b0ae16ee457c46eacc08">id</a></td></tr>
 <tr class="separator:a4133cf7ecb22b0ae16ee457c46eacc08"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a400a72423db730ee29977227c4860cfd"><td class="memItemLeft" align="right" valign="top"><a id="a400a72423db730ee29977227c4860cfd"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>level</b></td></tr>
+<tr class="memitem:a400a72423db730ee29977227c4860cfd"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_player.html#a400a72423db730ee29977227c4860cfd">level</a></td></tr>
 <tr class="separator:a400a72423db730ee29977227c4860cfd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa6c1d9c5753ea9a365f28eac36238d1f"><td class="memItemLeft" align="right" valign="top"><a id="aa6c1d9c5753ea9a365f28eac36238d1f"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>sword</b></td></tr>
+<tr class="memitem:aa6c1d9c5753ea9a365f28eac36238d1f"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_player.html#aa6c1d9c5753ea9a365f28eac36238d1f">sword</a></td></tr>
 <tr class="separator:aa6c1d9c5753ea9a365f28eac36238d1f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1d8f77afde9a68f34917561d915a5656"><td class="memItemLeft" align="right" valign="top"><a id="a1d8f77afde9a68f34917561d915a5656"></a>
-double&#160;</td><td class="memItemRight" valign="bottom"><b>factor</b></td></tr>
+<tr class="memitem:a1d8f77afde9a68f34917561d915a5656"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_player.html#a1d8f77afde9a68f34917561d915a5656">factor</a></td></tr>
 <tr class="separator:a1d8f77afde9a68f34917561d915a5656"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
-<tr class="memitem:ade3562b0b9a88c192f0349ac2cafce76"><td class="memItemLeft" align="right" valign="top"><a id="ade3562b0b9a88c192f0349ac2cafce76"></a>
-string&#160;</td><td class="memItemRight" valign="bottom"><b>characterName</b></td></tr>
+<tr class="memitem:ade3562b0b9a88c192f0349ac2cafce76"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_player.html#ade3562b0b9a88c192f0349ac2cafce76">characterName</a></td></tr>
 <tr class="separator:ade3562b0b9a88c192f0349ac2cafce76"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9159a0bdf10845c484a41823fe3c101e"><td class="memItemLeft" align="right" valign="top"><a id="a9159a0bdf10845c484a41823fe3c101e"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>hp</b></td></tr>
+<tr class="memitem:a9159a0bdf10845c484a41823fe3c101e"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_player.html#a9159a0bdf10845c484a41823fe3c101e">hp</a></td></tr>
 <tr class="separator:a9159a0bdf10845c484a41823fe3c101e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9912e57826c51a067ab34db854f31562"><td class="memItemLeft" align="right" valign="top"><a id="a9912e57826c51a067ab34db854f31562"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>attack</b></td></tr>
+<tr class="memitem:a9912e57826c51a067ab34db854f31562"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_player.html#a9912e57826c51a067ab34db854f31562">attack</a></td></tr>
 <tr class="separator:a9912e57826c51a067ab34db854f31562"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a63ed43151a54b62e9d59d8ef4edc0165"><td class="memItemLeft" align="right" valign="top"><a id="a63ed43151a54b62e9d59d8ef4edc0165"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>defense</b></td></tr>
+<tr class="memitem:a63ed43151a54b62e9d59d8ef4edc0165"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_player.html#a63ed43151a54b62e9d59d8ef4edc0165">defense</a></td></tr>
 <tr class="separator:a63ed43151a54b62e9d59d8ef4edc0165"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae49bfbaba1583b695d12235263841f96"><td class="memItemLeft" align="right" valign="top"><a id="ae49bfbaba1583b695d12235263841f96"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>agility</b></td></tr>
+<tr class="memitem:ae49bfbaba1583b695d12235263841f96"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_player.html#ae49bfbaba1583b695d12235263841f96">agility</a></td></tr>
 <tr class="separator:ae49bfbaba1583b695d12235263841f96"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5e3cf6dab1263ca2b4b6b94bbcddc788"><td class="memItemLeft" align="right" valign="top"><a id="a5e3cf6dab1263ca2b4b6b94bbcddc788"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>critical_strike</b></td></tr>
+<tr class="memitem:a5e3cf6dab1263ca2b4b6b94bbcddc788"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_player.html#a5e3cf6dab1263ca2b4b6b94bbcddc788">critical_strike</a></td></tr>
 <tr class="separator:a5e3cf6dab1263ca2b4b6b94bbcddc788"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aed37167e4117c2518a154e73fbfc103c"><td class="memItemLeft" align="right" valign="top"><a id="aed37167e4117c2518a154e73fbfc103c"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>money</b></td></tr>
+<tr class="memitem:aed37167e4117c2518a154e73fbfc103c"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_player.html#aed37167e4117c2518a154e73fbfc103c">money</a></td></tr>
 <tr class="separator:aed37167e4117c2518a154e73fbfc103c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a99cc9f5c9fad23b0ddab68ba4eb8eee4"><td class="memItemLeft" align="right" valign="top"><a id="a99cc9f5c9fad23b0ddab68ba4eb8eee4"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>experience</b></td></tr>
+<tr class="memitem:a99cc9f5c9fad23b0ddab68ba4eb8eee4"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_player.html#a99cc9f5c9fad23b0ddab68ba4eb8eee4">experience</a></td></tr>
 <tr class="separator:a99cc9f5c9fad23b0ddab68ba4eb8eee4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af0a031857f4ade770c6f6688b0c41dc7"><td class="memItemLeft" align="right" valign="top"><a id="af0a031857f4ade770c6f6688b0c41dc7"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>exptolevel</b></td></tr>
+<tr class="memitem:af0a031857f4ade770c6f6688b0c41dc7"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_player.html#af0a031857f4ade770c6f6688b0c41dc7">exptolevel</a></td></tr>
 <tr class="separator:af0a031857f4ade770c6f6688b0c41dc7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af31f60ef7eedd89486623f26edb2b990"><td class="memItemLeft" align="right" valign="top"><a id="af31f60ef7eedd89486623f26edb2b990"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>shield</b></td></tr>
+<tr class="memitem:af31f60ef7eedd89486623f26edb2b990"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_player.html#af31f60ef7eedd89486623f26edb2b990">shield</a></td></tr>
 <tr class="separator:af31f60ef7eedd89486623f26edb2b990"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a51ccca43f3c0a2549e95bacf1b71e504"><td class="memItemLeft" align="right" valign="top"><a id="a51ccca43f3c0a2549e95bacf1b71e504"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>armour</b></td></tr>
+<tr class="memitem:a51ccca43f3c0a2549e95bacf1b71e504"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_player.html#a51ccca43f3c0a2549e95bacf1b71e504">armour</a></td></tr>
 <tr class="separator:a51ccca43f3c0a2549e95bacf1b71e504"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9abe91f5084f15d7a11c7a77f345e517"><td class="memItemLeft" align="right" valign="top"><a id="a9abe91f5084f15d7a11c7a77f345e517"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>win</b></td></tr>
+<tr class="memitem:a9abe91f5084f15d7a11c7a77f345e517"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_player.html#a9abe91f5084f15d7a11c7a77f345e517">win</a></td></tr>
 <tr class="separator:a9abe91f5084f15d7a11c7a77f345e517"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abbb49fe572e8c86068fe4f9d326ab07c"><td class="memItemLeft" align="right" valign="top"><a id="abbb49fe572e8c86068fe4f9d326ab07c"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>lose</b></td></tr>
+<tr class="memitem:abbb49fe572e8c86068fe4f9d326ab07c"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_player.html#abbb49fe572e8c86068fe4f9d326ab07c">lose</a></td></tr>
 <tr class="separator:abbb49fe572e8c86068fe4f9d326ab07c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>JSON-able object with all Player-related attributes (eg. id, winrate, level, stats ...) </p>
-</div><hr/>The documentation for this class was generated from the following file:<ul>
-<li>UON_IBM_AIGAME2018/Unity/Group15/Assets/Scripts/Session Objects/Player.cs</li>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a712a726b07cf901c040116d6d0c5cc66"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a712a726b07cf901c040116d6d0c5cc66">&#9670;&nbsp;</a></span>Player() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Player.Player </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Default constructor. </p>
+
+</div>
+</div>
+<a id="ad275d2e546547d19fca625bad0dd9dc6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad275d2e546547d19fca625bad0dd9dc6">&#9670;&nbsp;</a></span>Player() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Player.Player </td>
+          <td>(</td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>_id</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>_characterName</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>_level</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>_hp</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>_attack</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>_defense</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>_agility</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>_critical_strike</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>_money</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>_experience</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>_exptolevel</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>_factor</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>_sword</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>_shield</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>_armour</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>_win</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>_lose</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Fully specific constructor. </p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="adf965ae02f9b21712dcd93b8a2f955f4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adf965ae02f9b21712dcd93b8a2f955f4">&#9670;&nbsp;</a></span>Clone()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="class_player.html">Player</a> Player.Clone </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_player.html">Player</a>&#160;</td>
+          <td class="paramname"><em>original</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Fully clone the <a class="el" href="class_player.html" title="JSON-able object with all Player-related attributes (eg. id, winrate, level, stats ....">Player</a> object to a new one. </p>
+
+</div>
+</div>
+<a id="a4801fed9ec34d0eac42ca4c474b3e584"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4801fed9ec34d0eac42ca4c474b3e584">&#9670;&nbsp;</a></span>ComparePlayer()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Player.ComparePlayer </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_player.html">Player</a>&#160;</td>
+          <td class="paramname"><em>other</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Check if two <a class="el" href="class_player.html" title="JSON-able object with all Player-related attributes (eg. id, winrate, level, stats ....">Player</a> objects have identical attributes. </p>
+
+</div>
+</div>
+<a id="a9278b5c20dc0e3b2cab022cccacac63c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9278b5c20dc0e3b2cab022cccacac63c">&#9670;&nbsp;</a></span>CreatePlayerFromJSON()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="class_player.html">Player</a> Player.CreatePlayerFromJSON </td>
+          <td>(</td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>json</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Create a <a class="el" href="class_player.html" title="JSON-able object with all Player-related attributes (eg. id, winrate, level, stats ....">Player</a> object from JSON. </p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="ae49bfbaba1583b695d12235263841f96"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae49bfbaba1583b695d12235263841f96">&#9670;&nbsp;</a></span>agility</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Player.agility</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a51ccca43f3c0a2549e95bacf1b71e504"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a51ccca43f3c0a2549e95bacf1b71e504">&#9670;&nbsp;</a></span>armour</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Player.armour</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a9912e57826c51a067ab34db854f31562"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9912e57826c51a067ab34db854f31562">&#9670;&nbsp;</a></span>attack</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Player.attack</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ade3562b0b9a88c192f0349ac2cafce76"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ade3562b0b9a88c192f0349ac2cafce76">&#9670;&nbsp;</a></span>characterName</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">string Player.characterName</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a5e3cf6dab1263ca2b4b6b94bbcddc788"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5e3cf6dab1263ca2b4b6b94bbcddc788">&#9670;&nbsp;</a></span>critical_strike</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Player.critical_strike</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a63ed43151a54b62e9d59d8ef4edc0165"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a63ed43151a54b62e9d59d8ef4edc0165">&#9670;&nbsp;</a></span>defense</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Player.defense</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a99cc9f5c9fad23b0ddab68ba4eb8eee4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a99cc9f5c9fad23b0ddab68ba4eb8eee4">&#9670;&nbsp;</a></span>experience</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Player.experience</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="af0a031857f4ade770c6f6688b0c41dc7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af0a031857f4ade770c6f6688b0c41dc7">&#9670;&nbsp;</a></span>exptolevel</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Player.exptolevel</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a1d8f77afde9a68f34917561d915a5656"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1d8f77afde9a68f34917561d915a5656">&#9670;&nbsp;</a></span>factor</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double Player.factor</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a9159a0bdf10845c484a41823fe3c101e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9159a0bdf10845c484a41823fe3c101e">&#9670;&nbsp;</a></span>hp</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Player.hp</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a4133cf7ecb22b0ae16ee457c46eacc08"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4133cf7ecb22b0ae16ee457c46eacc08">&#9670;&nbsp;</a></span>id</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">string Player.id</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a400a72423db730ee29977227c4860cfd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a400a72423db730ee29977227c4860cfd">&#9670;&nbsp;</a></span>level</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Player.level</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="abbb49fe572e8c86068fe4f9d326ab07c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abbb49fe572e8c86068fe4f9d326ab07c">&#9670;&nbsp;</a></span>lose</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Player.lose</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aed37167e4117c2518a154e73fbfc103c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aed37167e4117c2518a154e73fbfc103c">&#9670;&nbsp;</a></span>money</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Player.money</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="af31f60ef7eedd89486623f26edb2b990"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af31f60ef7eedd89486623f26edb2b990">&#9670;&nbsp;</a></span>shield</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Player.shield</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aa6c1d9c5753ea9a365f28eac36238d1f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa6c1d9c5753ea9a365f28eac36238d1f">&#9670;&nbsp;</a></span>sword</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Player.sword</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a9abe91f5084f15d7a11c7a77f345e517"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9abe91f5084f15d7a11c7a77f345e517">&#9670;&nbsp;</a></span>win</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Player.win</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following file:<ul>
+<li>UON_IBM_AIGAME2018/Unity/Group15/Assets/Scripts/Session Objects/<a class="el" href="_player_8cs.html">Player.cs</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

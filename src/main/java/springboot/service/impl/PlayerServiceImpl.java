@@ -1,15 +1,13 @@
 package springboot.service.impl;
 
-import java.util.ArrayList;
-
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Sort;
-import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
 
 import springboot.domain.Player;
@@ -28,6 +26,8 @@ import springboot.service.PlayerService;
 public class PlayerServiceImpl implements PlayerService {
 	@Autowired
 	private PlayerRepository playerRepository;
+	@Autowired
+	private RedisService redisService;
 	private static Logger logger = LoggerFactory.getLogger(PlayerServiceImpl.class);
 
 	/*
@@ -48,7 +48,11 @@ public class PlayerServiceImpl implements PlayerService {
 	 */
 	@Override
 	public List<Player> getPlayers() {
-		return playerRepository.findAll();
+		List<Player> players = playerRepository.findAll();
+		for (Player player : players) {
+			player.setRankScore(redisService.getRankedScore(player.getId()));
+		}
+		return players;
 	}
 
 	/*
@@ -62,31 +66,10 @@ public class PlayerServiceImpl implements PlayerService {
 		Optional<Player> refPlayer = playerRepository.findById(id);
 		if (refPlayer.isPresent()) {
 			player = refPlayer.get();
+			player.setRankScore(redisService.getRankedScore(player.getId()));
 		} else {
 		}
 		return player;
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see springboot.service.PlayerService#getTopPlayers()
-	 */
-	// TODO think about the rank
-	@Override
-	public List<Player> getTopPlayers() {
-		Sort sort = new Sort(Direction.DESC, "score");
-		List<Player> players = playerRepository.findAll(sort);
-		ArrayList<Player> topPlayers = new ArrayList<Player>();
-		int count = 0;
-		for (Player p : players) {
-			if (count >= 5) {
-				break;
-			}
-			topPlayers.add(p);
-			count++;
-		}
-		return topPlayers;
 	}
 
 	/*
@@ -96,8 +79,21 @@ public class PlayerServiceImpl implements PlayerService {
 	 */
 	@Override
 	public int getRankById(String id) {
-		Sort sort = new Sort(Direction.DESC, "score");
-		List<Player> players = playerRepository.findAll(sort);
+		List<Player> players = this.getPlayers();
+		Collections.sort(players, new Comparator<Player>() {
+
+			@Override
+			public int compare(Player p1, Player p2) {
+				if (p1.getRankScore() < p2.getRankScore()) {
+					return 1;
+				} else if (p1.getRankScore() == p2.getRankScore()) {
+					return 0;
+				} else {
+					return -1;
+				}
+			}
+		});
+		
 		int count = 0;
 		for (Player p : players) {
 			if (p.getId().equals(id)) {
@@ -115,7 +111,11 @@ public class PlayerServiceImpl implements PlayerService {
 	 */
 	@Override
 	public List<Player> getPlayersByLevel(int level) {
-		return playerRepository.findAllByLevel(level);
+		List<Player> players = playerRepository.findAllByLevel(level);
+		for (Player player : players) {
+			player.setRankScore(redisService.getRankedScore(player.getId()));
+		}
+		return players;
 	}
 
 	/*
@@ -181,10 +181,15 @@ public class PlayerServiceImpl implements PlayerService {
 
 	/*
 	 * (non-Javadoc)
+	 * 
 	 * @see springboot.service.PlayerService#getPlayersByGroup(int)
 	 */
 	@Override
 	public List<Player> getPlayersByGroup(int group) {
-		return playerRepository.findAllByGroup(group);
+		List<Player> players = playerRepository.findAllByGroup(group);
+		for (Player player : players) {
+			player.setRankScore(redisService.getRankedScore(player.getId()));
+		}
+		return players;
 	}
 }

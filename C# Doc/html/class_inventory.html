@@ -23,7 +23,7 @@
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">The Battle Within (Group 15)
    </div>
-   <div id="projectbrief">An asynchronous multiplayer, self-improvement RPG.</div>
+   <div id="projectbrief">An asynchronous multiplayer, self-improvement AI-fuelled RPG.</div>
   </td>
  </tr>
  </tbody>
@@ -84,117 +84,815 @@ Inheritance diagram for Inventory:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:aa99e2b5246a749ec59f04aa1ce48416a"><td class="memItemLeft" align="right" valign="top"><a id="aa99e2b5246a749ec59f04aa1ce48416a"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_inventory.html#aa99e2b5246a749ec59f04aa1ce48416a">SetupUpgradePanel</a> (int item_type)</td></tr>
-<tr class="memdesc:aa99e2b5246a749ec59f04aa1ce48416a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Setup the item upgrade panel with the next level item of selected type. <br /></td></tr>
+<tr class="memitem:aa99e2b5246a749ec59f04aa1ce48416a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_inventory.html#aa99e2b5246a749ec59f04aa1ce48416a">SetupUpgradePanel</a> (int item_type)</td></tr>
+<tr class="memdesc:aa99e2b5246a749ec59f04aa1ce48416a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Setup the item upgrade panel with the next level item of selected type.  <a href="#aa99e2b5246a749ec59f04aa1ce48416a">More...</a><br /></td></tr>
 <tr class="separator:aa99e2b5246a749ec59f04aa1ce48416a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a284995426324c648b4c9144a3b9bc277"><td class="memItemLeft" align="right" valign="top"><a id="a284995426324c648b4c9144a3b9bc277"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_inventory.html#a284995426324c648b4c9144a3b9bc277">ConfirmPurchase</a> ()</td></tr>
-<tr class="memdesc:a284995426324c648b4c9144a3b9bc277"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if player has enough funds, then make the purchase. <br /></td></tr>
+<tr class="memitem:a284995426324c648b4c9144a3b9bc277"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_inventory.html#a284995426324c648b4c9144a3b9bc277">ConfirmPurchase</a> ()</td></tr>
+<tr class="memdesc:a284995426324c648b4c9144a3b9bc277"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if player has enough funds, then make the purchase.  <a href="#a284995426324c648b4c9144a3b9bc277">More...</a><br /></td></tr>
 <tr class="separator:a284995426324c648b4c9144a3b9bc277"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr class="memitem:abd3af35db0c0049ce91eaa99b1798a69"><td class="memItemLeft" align="right" valign="top"><a id="abd3af35db0c0049ce91eaa99b1798a69"></a>
-Text&#160;</td><td class="memItemRight" valign="bottom"><b>hpText</b></td></tr>
+<tr class="memitem:abd3af35db0c0049ce91eaa99b1798a69"><td class="memItemLeft" align="right" valign="top">Text&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_inventory.html#abd3af35db0c0049ce91eaa99b1798a69">hpText</a></td></tr>
 <tr class="separator:abd3af35db0c0049ce91eaa99b1798a69"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4382ed8c55fa1899bf7a981ffac00523"><td class="memItemLeft" align="right" valign="top"><a id="a4382ed8c55fa1899bf7a981ffac00523"></a>
-GameObject&#160;</td><td class="memItemRight" valign="bottom"><b>upgradePanel</b></td></tr>
+<tr class="memitem:a4382ed8c55fa1899bf7a981ffac00523"><td class="memItemLeft" align="right" valign="top">GameObject&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_inventory.html#a4382ed8c55fa1899bf7a981ffac00523">upgradePanel</a></td></tr>
 <tr class="separator:a4382ed8c55fa1899bf7a981ffac00523"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aff3bb1bee86c2916dd649bf623cbb963"><td class="memItemLeft" align="right" valign="top"><a id="aff3bb1bee86c2916dd649bf623cbb963"></a>
-Text&#160;</td><td class="memItemRight" valign="bottom"><b>itemNameText</b></td></tr>
+<tr class="memitem:a69cd0d81a41a9e4a1e0dea6b45434084"><td class="memItemLeft" align="right" valign="top">GameObject&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_inventory.html#a69cd0d81a41a9e4a1e0dea6b45434084">player_bop_Animation</a></td></tr>
+<tr class="separator:a69cd0d81a41a9e4a1e0dea6b45434084"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aff3bb1bee86c2916dd649bf623cbb963"><td class="memItemLeft" align="right" valign="top">Text&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_inventory.html#aff3bb1bee86c2916dd649bf623cbb963">itemNameText</a></td></tr>
 <tr class="separator:aff3bb1bee86c2916dd649bf623cbb963"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae035b7a3471724276238be3ec5d4769f"><td class="memItemLeft" align="right" valign="top"><a id="ae035b7a3471724276238be3ec5d4769f"></a>
-GameObject&#160;</td><td class="memItemRight" valign="bottom"><b>itemIconImage</b></td></tr>
+<tr class="memitem:ae035b7a3471724276238be3ec5d4769f"><td class="memItemLeft" align="right" valign="top">GameObject&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_inventory.html#ae035b7a3471724276238be3ec5d4769f">itemIconImage</a></td></tr>
 <tr class="separator:ae035b7a3471724276238be3ec5d4769f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a268e4f39b1a158144b18d8560d4c2ef2"><td class="memItemLeft" align="right" valign="top"><a id="a268e4f39b1a158144b18d8560d4c2ef2"></a>
-GameObject&#160;</td><td class="memItemRight" valign="bottom"><b>swordFullyUpgradedImage</b></td></tr>
-<tr class="separator:a268e4f39b1a158144b18d8560d4c2ef2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8c34a2d39aab6ff22ec36e41763e2e22"><td class="memItemLeft" align="right" valign="top"><a id="a8c34a2d39aab6ff22ec36e41763e2e22"></a>
-Sprite&#160;</td><td class="memItemRight" valign="bottom"><b>atk</b></td></tr>
+<tr class="memitem:a7090ec7477cf37ce75e0722a0e792744"><td class="memItemLeft" align="right" valign="top">GameObject&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_inventory.html#a7090ec7477cf37ce75e0722a0e792744">currentSwordImage</a></td></tr>
+<tr class="separator:a7090ec7477cf37ce75e0722a0e792744"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8c34a2d39aab6ff22ec36e41763e2e22"><td class="memItemLeft" align="right" valign="top">Sprite&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_inventory.html#a8c34a2d39aab6ff22ec36e41763e2e22">atk</a></td></tr>
 <tr class="separator:a8c34a2d39aab6ff22ec36e41763e2e22"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a28d3f85f956e83b94831df16b40a14ec"><td class="memItemLeft" align="right" valign="top">AudioSource&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_inventory.html#a28d3f85f956e83b94831df16b40a14ec">soundsrc</a></td></tr>
+<tr class="separator:a28d3f85f956e83b94831df16b40a14ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af0bc00a8b9fb7d977b5f96eeedd7e166"><td class="memItemLeft" align="right" valign="top">AudioClip&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_inventory.html#af0bc00a8b9fb7d977b5f96eeedd7e166">purchase_sound</a></td></tr>
+<tr class="separator:af0bc00a8b9fb7d977b5f96eeedd7e166"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
-<tr class="memitem:a88da279faf84d529af011f7e25bea01b"><td class="memItemLeft" align="right" valign="top"><a id="a88da279faf84d529af011f7e25bea01b"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>Awake</b> ()</td></tr>
+<tr class="memitem:a88da279faf84d529af011f7e25bea01b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_inventory.html#a88da279faf84d529af011f7e25bea01b">Awake</a> ()</td></tr>
 <tr class="separator:a88da279faf84d529af011f7e25bea01b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa5a9d430aff1ecd12a75901608d337ea"><td class="memItemLeft" align="right" valign="top"><a id="aa5a9d430aff1ecd12a75901608d337ea"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_inventory.html#aa5a9d430aff1ecd12a75901608d337ea">Start</a> ()</td></tr>
-<tr class="memdesc:aa5a9d430aff1ecd12a75901608d337ea"><td class="mdescLeft">&#160;</td><td class="mdescRight">General Setup. <br /></td></tr>
+<tr class="memitem:aa5a9d430aff1ecd12a75901608d337ea"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_inventory.html#aa5a9d430aff1ecd12a75901608d337ea">Start</a> ()</td></tr>
+<tr class="memdesc:aa5a9d430aff1ecd12a75901608d337ea"><td class="mdescLeft">&#160;</td><td class="mdescRight">General Setup.  <a href="#aa5a9d430aff1ecd12a75901608d337ea">More...</a><br /></td></tr>
 <tr class="separator:aa5a9d430aff1ecd12a75901608d337ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7b1e7148da0c7b5e4d87b6ea07dce086"><td class="memItemLeft" align="right" valign="top"><a id="a7b1e7148da0c7b5e4d87b6ea07dce086"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_inventory.html#a7b1e7148da0c7b5e4d87b6ea07dce086">Update</a> ()</td></tr>
-<tr class="memdesc:a7b1e7148da0c7b5e4d87b6ea07dce086"><td class="mdescLeft">&#160;</td><td class="mdescRight">Keep the player's stats display updated. <br /></td></tr>
+<tr class="memitem:a7b1e7148da0c7b5e4d87b6ea07dce086"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_inventory.html#a7b1e7148da0c7b5e4d87b6ea07dce086">Update</a> ()</td></tr>
+<tr class="memdesc:a7b1e7148da0c7b5e4d87b6ea07dce086"><td class="mdescLeft">&#160;</td><td class="mdescRight">Keep the player's stats display updated.  <a href="#a7b1e7148da0c7b5e4d87b6ea07dce086">More...</a><br /></td></tr>
 <tr class="separator:a7b1e7148da0c7b5e4d87b6ea07dce086"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6a6906197f22590ffa086d4aca935dc3"><td class="memItemLeft" align="right" valign="top"><a id="a6a6906197f22590ffa086d4aca935dc3"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_inventory.html#a6a6906197f22590ffa086d4aca935dc3">Displayed</a> (bool shown)</td></tr>
-<tr class="memdesc:a6a6906197f22590ffa086d4aca935dc3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Show/Hide the item upgrade panels. <br /></td></tr>
+<tr class="memitem:a6a6906197f22590ffa086d4aca935dc3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_inventory.html#a6a6906197f22590ffa086d4aca935dc3">Displayed</a> (bool shown)</td></tr>
+<tr class="memdesc:a6a6906197f22590ffa086d4aca935dc3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Show/Hide the item upgrade panels.  <a href="#a6a6906197f22590ffa086d4aca935dc3">More...</a><br /></td></tr>
 <tr class="separator:a6a6906197f22590ffa086d4aca935dc3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5ff170daf3d949c611d8e064626524e2"><td class="memItemLeft" align="right" valign="top"><a id="a5ff170daf3d949c611d8e064626524e2"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_inventory.html#a5ff170daf3d949c611d8e064626524e2">UpdateLabels</a> (int item_type)</td></tr>
-<tr class="memdesc:a5ff170daf3d949c611d8e064626524e2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Helper for SetupUpgradePanels. <br /></td></tr>
+<tr class="memitem:a5ff170daf3d949c611d8e064626524e2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_inventory.html#a5ff170daf3d949c611d8e064626524e2">UpdateLabels</a> (int item_type)</td></tr>
+<tr class="memdesc:a5ff170daf3d949c611d8e064626524e2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Helper for SetupUpgradePanels.  <a href="#a5ff170daf3d949c611d8e064626524e2">More...</a><br /></td></tr>
 <tr class="separator:a5ff170daf3d949c611d8e064626524e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6be0d5d14468b2eb9cba732c3f65c3e5"><td class="memItemLeft" align="right" valign="top"><a id="a6be0d5d14468b2eb9cba732c3f65c3e5"></a>
-IEnumerator&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_inventory.html#a6be0d5d14468b2eb9cba732c3f65c3e5">Purchase</a> (string poorerPlayerJSON)</td></tr>
-<tr class="memdesc:a6be0d5d14468b2eb9cba732c3f65c3e5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Perform the server-side updating of the <a class="el" href="class_player.html" title="JSON-able object with all Player-related attributes (eg. id, winrate, level, stats ....">Player</a> based on the purchase. <br /></td></tr>
+<tr class="memitem:a6be0d5d14468b2eb9cba732c3f65c3e5"><td class="memItemLeft" align="right" valign="top">IEnumerator&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_inventory.html#a6be0d5d14468b2eb9cba732c3f65c3e5">Purchase</a> (string poorerPlayerJSON)</td></tr>
+<tr class="memdesc:a6be0d5d14468b2eb9cba732c3f65c3e5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Perform the server-side updating of the <a class="el" href="class_player.html" title="JSON-able object with all Player-related attributes (eg. id, winrate, level, stats ....">Player</a> based on the purchase.  <a href="#a6be0d5d14468b2eb9cba732c3f65c3e5">More...</a><br /></td></tr>
 <tr class="separator:a6be0d5d14468b2eb9cba732c3f65c3e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
-<tr class="memitem:a6be0183125fd410aab7aeaf701db4741"><td class="memItemLeft" align="right" valign="top"><a id="a6be0183125fd410aab7aeaf701db4741"></a>
-Text&#160;</td><td class="memItemRight" valign="bottom"><b>atkText</b></td></tr>
+<tr class="memitem:a6be0183125fd410aab7aeaf701db4741"><td class="memItemLeft" align="right" valign="top">Text&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_inventory.html#a6be0183125fd410aab7aeaf701db4741">atkText</a></td></tr>
 <tr class="separator:a6be0183125fd410aab7aeaf701db4741"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa126dcd06ebf1ea9eec5aa6ca1e83a8d"><td class="memItemLeft" align="right" valign="top"><a id="aa126dcd06ebf1ea9eec5aa6ca1e83a8d"></a>
-Text&#160;</td><td class="memItemRight" valign="bottom"><b>defText</b></td></tr>
+<tr class="memitem:aa126dcd06ebf1ea9eec5aa6ca1e83a8d"><td class="memItemLeft" align="right" valign="top">Text&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_inventory.html#aa126dcd06ebf1ea9eec5aa6ca1e83a8d">defText</a></td></tr>
 <tr class="separator:aa126dcd06ebf1ea9eec5aa6ca1e83a8d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa93a5a923daa1233401192da490e8e27"><td class="memItemLeft" align="right" valign="top"><a id="aa93a5a923daa1233401192da490e8e27"></a>
-Text&#160;</td><td class="memItemRight" valign="bottom"><b>moneyText</b></td></tr>
+<tr class="memitem:aa93a5a923daa1233401192da490e8e27"><td class="memItemLeft" align="right" valign="top">Text&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_inventory.html#aa93a5a923daa1233401192da490e8e27">moneyText</a></td></tr>
 <tr class="separator:aa93a5a923daa1233401192da490e8e27"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a00da1044a0d829c9b8e0156f8b059db7"><td class="memItemLeft" align="right" valign="top"><a id="a00da1044a0d829c9b8e0156f8b059db7"></a>
-Text&#160;</td><td class="memItemRight" valign="bottom"><b>statText</b></td></tr>
+<tr class="memitem:a00da1044a0d829c9b8e0156f8b059db7"><td class="memItemLeft" align="right" valign="top">Text&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_inventory.html#a00da1044a0d829c9b8e0156f8b059db7">statText</a></td></tr>
 <tr class="separator:a00da1044a0d829c9b8e0156f8b059db7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a357c419671e7cb628288360cc7acd604"><td class="memItemLeft" align="right" valign="top"><a id="a357c419671e7cb628288360cc7acd604"></a>
-Text&#160;</td><td class="memItemRight" valign="bottom"><b>priceText</b></td></tr>
+<tr class="memitem:a357c419671e7cb628288360cc7acd604"><td class="memItemLeft" align="right" valign="top">Text&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_inventory.html#a357c419671e7cb628288360cc7acd604">priceText</a></td></tr>
 <tr class="separator:a357c419671e7cb628288360cc7acd604"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a904e3fced18e5366bb5b89c7e4262874"><td class="memItemLeft" align="right" valign="top"><a id="a904e3fced18e5366bb5b89c7e4262874"></a>
-Text&#160;</td><td class="memItemRight" valign="bottom"><b>balanceText</b></td></tr>
+<tr class="memitem:a904e3fced18e5366bb5b89c7e4262874"><td class="memItemLeft" align="right" valign="top">Text&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_inventory.html#a904e3fced18e5366bb5b89c7e4262874">balanceText</a></td></tr>
 <tr class="separator:a904e3fced18e5366bb5b89c7e4262874"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a93a55231b5b247c2e7b0dfee9ce2dd3d"><td class="memItemLeft" align="right" valign="top"><a id="a93a55231b5b247c2e7b0dfee9ce2dd3d"></a>
-GameObject&#160;</td><td class="memItemRight" valign="bottom"><b>statIconImage</b></td></tr>
+<tr class="memitem:af9d04c9febb8280182f03d1ccdc14fa8"><td class="memItemLeft" align="right" valign="top">GameObject&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_inventory.html#af9d04c9febb8280182f03d1ccdc14fa8">swordIconImage</a></td></tr>
+<tr class="separator:af9d04c9febb8280182f03d1ccdc14fa8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a93a55231b5b247c2e7b0dfee9ce2dd3d"><td class="memItemLeft" align="right" valign="top">GameObject&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_inventory.html#a93a55231b5b247c2e7b0dfee9ce2dd3d">statIconImage</a></td></tr>
 <tr class="separator:a93a55231b5b247c2e7b0dfee9ce2dd3d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1d9b045b21d5bd72f6a6f6a94d535c72"><td class="memItemLeft" align="right" valign="top"><a id="a1d9b045b21d5bd72f6a6f6a94d535c72"></a>
-GameObject&#160;</td><td class="memItemRight" valign="bottom"><b>loading_spinning_Animation</b></td></tr>
+<tr class="memitem:a1d9b045b21d5bd72f6a6f6a94d535c72"><td class="memItemLeft" align="right" valign="top">GameObject&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_inventory.html#a1d9b045b21d5bd72f6a6f6a94d535c72">loading_spinning_Animation</a></td></tr>
 <tr class="separator:a1d9b045b21d5bd72f6a6f6a94d535c72"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a19d58719a7e83a39bedb7514bd938649"><td class="memItemLeft" align="right" valign="top"><a id="a19d58719a7e83a39bedb7514bd938649"></a>
-GameObject&#160;</td><td class="memItemRight" valign="bottom"><b>shieldFullyUpgradedImage</b></td></tr>
-<tr class="separator:a19d58719a7e83a39bedb7514bd938649"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad414f904995e16ebdd58cf18700d4e59"><td class="memItemLeft" align="right" valign="top"><a id="ad414f904995e16ebdd58cf18700d4e59"></a>
-GameObject&#160;</td><td class="memItemRight" valign="bottom"><b>armourFullyUpgradedImage</b></td></tr>
-<tr class="separator:ad414f904995e16ebdd58cf18700d4e59"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a62372c6936045f41bfa87a95c1aec3c8"><td class="memItemLeft" align="right" valign="top"><a id="a62372c6936045f41bfa87a95c1aec3c8"></a>
-Sprite&#160;</td><td class="memItemRight" valign="bottom"><b>def</b></td></tr>
+<tr class="memitem:a945eba3f91aa5a429eaa74502fe71bbc"><td class="memItemLeft" align="right" valign="top">GameObject&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_inventory.html#a945eba3f91aa5a429eaa74502fe71bbc">currentShieldImage</a></td></tr>
+<tr class="separator:a945eba3f91aa5a429eaa74502fe71bbc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7fe90f0ee39e013f8c318327e20f85f1"><td class="memItemLeft" align="right" valign="top">GameObject&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_inventory.html#a7fe90f0ee39e013f8c318327e20f85f1">currentArmourImage</a></td></tr>
+<tr class="separator:a7fe90f0ee39e013f8c318327e20f85f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a62372c6936045f41bfa87a95c1aec3c8"><td class="memItemLeft" align="right" valign="top">Sprite&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_inventory.html#a62372c6936045f41bfa87a95c1aec3c8">def</a></td></tr>
 <tr class="separator:a62372c6936045f41bfa87a95c1aec3c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aed66b242ae5cf8df814b5d30bf20a6b3"><td class="memItemLeft" align="right" valign="top"><a id="aed66b242ae5cf8df814b5d30bf20a6b3"></a>
-Sprite&#160;</td><td class="memItemRight" valign="bottom"><b>hp</b></td></tr>
+<tr class="memitem:aed66b242ae5cf8df814b5d30bf20a6b3"><td class="memItemLeft" align="right" valign="top">Sprite&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_inventory.html#aed66b242ae5cf8df814b5d30bf20a6b3">hp</a></td></tr>
 <tr class="separator:aed66b242ae5cf8df814b5d30bf20a6b3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2b3ce9cd39d106439c316059a190782f"><td class="memItemLeft" align="right" valign="top"><a id="a2b3ce9cd39d106439c316059a190782f"></a>
-<a class="el" href="class_player.html">Player</a>&#160;</td><td class="memItemRight" valign="bottom"><b>p</b></td></tr>
+<tr class="memitem:a2b3ce9cd39d106439c316059a190782f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_player.html">Player</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_inventory.html#a2b3ce9cd39d106439c316059a190782f">p</a></td></tr>
 <tr class="separator:a2b3ce9cd39d106439c316059a190782f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa1d8741824496d71e52c6f87de2c1533"><td class="memItemLeft" align="right" valign="top"><a id="aa1d8741824496d71e52c6f87de2c1533"></a>
-<a class="el" href="class_item.html">Item</a>&#160;</td><td class="memItemRight" valign="bottom"><b>displayItem</b></td></tr>
+<tr class="memitem:aa1d8741824496d71e52c6f87de2c1533"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_item.html">Item</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_inventory.html#aa1d8741824496d71e52c6f87de2c1533">displayItem</a></td></tr>
 <tr class="separator:aa1d8741824496d71e52c6f87de2c1533"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aeef6e41606f68069f4b44ab4a46bcc59"><td class="memItemLeft" align="right" valign="top"><a id="aeef6e41606f68069f4b44ab4a46bcc59"></a>
-string&#160;</td><td class="memItemRight" valign="bottom"><b>displayItemType</b></td></tr>
+<tr class="memitem:aeef6e41606f68069f4b44ab4a46bcc59"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_inventory.html#aeef6e41606f68069f4b44ab4a46bcc59">displayItemType</a></td></tr>
 <tr class="separator:aeef6e41606f68069f4b44ab4a46bcc59"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae1830fc12251f73f70b9d5bb7986273b"><td class="memItemLeft" align="right" valign="top"><a id="ae1830fc12251f73f70b9d5bb7986273b"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>currentItemLevel</b></td></tr>
+<tr class="memitem:ae1830fc12251f73f70b9d5bb7986273b"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_inventory.html#ae1830fc12251f73f70b9d5bb7986273b">currentItemLevel</a></td></tr>
 <tr class="separator:ae1830fc12251f73f70b9d5bb7986273b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Manage the <a class="el" href="class_inventory.html" title="Manage the Inventory screen, including Upgrades.">Inventory</a> screen, including Upgrades. </p>
-</div><hr/>The documentation for this class was generated from the following file:<ul>
-<li>UON_IBM_AIGAME2018/Unity/Group15/Assets/Scripts/Inventory.cs</li>
+</div><h2 class="groupheader">Member Function Documentation</h2>
+<a id="a88da279faf84d529af011f7e25bea01b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a88da279faf84d529af011f7e25bea01b">&#9670;&nbsp;</a></span>Awake()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Inventory.Awake </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a284995426324c648b4c9144a3b9bc277"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a284995426324c648b4c9144a3b9bc277">&#9670;&nbsp;</a></span>ConfirmPurchase()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Inventory.ConfirmPurchase </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Check if player has enough funds, then make the purchase. </p>
+
+</div>
+</div>
+<a id="a6a6906197f22590ffa086d4aca935dc3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6a6906197f22590ffa086d4aca935dc3">&#9670;&nbsp;</a></span>Displayed()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Inventory.Displayed </td>
+          <td>(</td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>shown</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Show/Hide the item upgrade panels. </p>
+
+</div>
+</div>
+<a id="a6be0d5d14468b2eb9cba732c3f65c3e5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6be0d5d14468b2eb9cba732c3f65c3e5">&#9670;&nbsp;</a></span>Purchase()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">IEnumerator Inventory.Purchase </td>
+          <td>(</td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>poorerPlayerJSON</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Perform the server-side updating of the <a class="el" href="class_player.html" title="JSON-able object with all Player-related attributes (eg. id, winrate, level, stats ....">Player</a> based on the purchase. </p>
+
+</div>
+</div>
+<a id="aa99e2b5246a749ec59f04aa1ce48416a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa99e2b5246a749ec59f04aa1ce48416a">&#9670;&nbsp;</a></span>SetupUpgradePanel()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Inventory.SetupUpgradePanel </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>item_type</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Setup the item upgrade panel with the next level item of selected type. </p>
+
+</div>
+</div>
+<a id="aa5a9d430aff1ecd12a75901608d337ea"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa5a9d430aff1ecd12a75901608d337ea">&#9670;&nbsp;</a></span>Start()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Inventory.Start </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>General Setup. </p>
+
+</div>
+</div>
+<a id="a7b1e7148da0c7b5e4d87b6ea07dce086"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7b1e7148da0c7b5e4d87b6ea07dce086">&#9670;&nbsp;</a></span>Update()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Inventory.Update </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Keep the player's stats display updated. </p>
+
+</div>
+</div>
+<a id="a5ff170daf3d949c611d8e064626524e2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5ff170daf3d949c611d8e064626524e2">&#9670;&nbsp;</a></span>UpdateLabels()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Inventory.UpdateLabels </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>item_type</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Helper for SetupUpgradePanels. </p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="a8c34a2d39aab6ff22ec36e41763e2e22"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8c34a2d39aab6ff22ec36e41763e2e22">&#9670;&nbsp;</a></span>atk</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Sprite Inventory.atk</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a6be0183125fd410aab7aeaf701db4741"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6be0183125fd410aab7aeaf701db4741">&#9670;&nbsp;</a></span>atkText</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Text Inventory.atkText</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a904e3fced18e5366bb5b89c7e4262874"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a904e3fced18e5366bb5b89c7e4262874">&#9670;&nbsp;</a></span>balanceText</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Text Inventory.balanceText</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a7fe90f0ee39e013f8c318327e20f85f1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7fe90f0ee39e013f8c318327e20f85f1">&#9670;&nbsp;</a></span>currentArmourImage</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">GameObject Inventory.currentArmourImage</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ae1830fc12251f73f70b9d5bb7986273b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae1830fc12251f73f70b9d5bb7986273b">&#9670;&nbsp;</a></span>currentItemLevel</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Inventory.currentItemLevel</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a945eba3f91aa5a429eaa74502fe71bbc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a945eba3f91aa5a429eaa74502fe71bbc">&#9670;&nbsp;</a></span>currentShieldImage</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">GameObject Inventory.currentShieldImage</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a7090ec7477cf37ce75e0722a0e792744"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7090ec7477cf37ce75e0722a0e792744">&#9670;&nbsp;</a></span>currentSwordImage</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">GameObject Inventory.currentSwordImage</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a62372c6936045f41bfa87a95c1aec3c8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a62372c6936045f41bfa87a95c1aec3c8">&#9670;&nbsp;</a></span>def</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Sprite Inventory.def</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aa126dcd06ebf1ea9eec5aa6ca1e83a8d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa126dcd06ebf1ea9eec5aa6ca1e83a8d">&#9670;&nbsp;</a></span>defText</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Text Inventory.defText</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aa1d8741824496d71e52c6f87de2c1533"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa1d8741824496d71e52c6f87de2c1533">&#9670;&nbsp;</a></span>displayItem</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_item.html">Item</a> Inventory.displayItem</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aeef6e41606f68069f4b44ab4a46bcc59"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aeef6e41606f68069f4b44ab4a46bcc59">&#9670;&nbsp;</a></span>displayItemType</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">string Inventory.displayItemType</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aed66b242ae5cf8df814b5d30bf20a6b3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aed66b242ae5cf8df814b5d30bf20a6b3">&#9670;&nbsp;</a></span>hp</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Sprite Inventory.hp</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="abd3af35db0c0049ce91eaa99b1798a69"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abd3af35db0c0049ce91eaa99b1798a69">&#9670;&nbsp;</a></span>hpText</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Text Inventory.hpText</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ae035b7a3471724276238be3ec5d4769f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae035b7a3471724276238be3ec5d4769f">&#9670;&nbsp;</a></span>itemIconImage</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">GameObject Inventory.itemIconImage</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aff3bb1bee86c2916dd649bf623cbb963"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aff3bb1bee86c2916dd649bf623cbb963">&#9670;&nbsp;</a></span>itemNameText</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Text Inventory.itemNameText</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a1d9b045b21d5bd72f6a6f6a94d535c72"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1d9b045b21d5bd72f6a6f6a94d535c72">&#9670;&nbsp;</a></span>loading_spinning_Animation</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">GameObject Inventory.loading_spinning_Animation</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aa93a5a923daa1233401192da490e8e27"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa93a5a923daa1233401192da490e8e27">&#9670;&nbsp;</a></span>moneyText</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Text Inventory.moneyText</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a2b3ce9cd39d106439c316059a190782f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2b3ce9cd39d106439c316059a190782f">&#9670;&nbsp;</a></span>p</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_player.html">Player</a> Inventory.p</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a69cd0d81a41a9e4a1e0dea6b45434084"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a69cd0d81a41a9e4a1e0dea6b45434084">&#9670;&nbsp;</a></span>player_bop_Animation</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">GameObject Inventory.player_bop_Animation</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a357c419671e7cb628288360cc7acd604"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a357c419671e7cb628288360cc7acd604">&#9670;&nbsp;</a></span>priceText</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Text Inventory.priceText</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="af0bc00a8b9fb7d977b5f96eeedd7e166"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af0bc00a8b9fb7d977b5f96eeedd7e166">&#9670;&nbsp;</a></span>purchase_sound</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">AudioClip Inventory.purchase_sound</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a28d3f85f956e83b94831df16b40a14ec"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a28d3f85f956e83b94831df16b40a14ec">&#9670;&nbsp;</a></span>soundsrc</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">AudioSource Inventory.soundsrc</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a93a55231b5b247c2e7b0dfee9ce2dd3d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a93a55231b5b247c2e7b0dfee9ce2dd3d">&#9670;&nbsp;</a></span>statIconImage</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">GameObject Inventory.statIconImage</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a00da1044a0d829c9b8e0156f8b059db7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a00da1044a0d829c9b8e0156f8b059db7">&#9670;&nbsp;</a></span>statText</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Text Inventory.statText</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="af9d04c9febb8280182f03d1ccdc14fa8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af9d04c9febb8280182f03d1ccdc14fa8">&#9670;&nbsp;</a></span>swordIconImage</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">GameObject Inventory.swordIconImage</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a4382ed8c55fa1899bf7a981ffac00523"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4382ed8c55fa1899bf7a981ffac00523">&#9670;&nbsp;</a></span>upgradePanel</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">GameObject Inventory.upgradePanel</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following file:<ul>
+<li>UON_IBM_AIGAME2018/Unity/Group15/Assets/Scripts/<a class="el" href="_inventory_8cs.html">Inventory.cs</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

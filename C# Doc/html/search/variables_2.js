@@ -1,5 +1,21 @@
 var searchData=
 [
-  ['fail_5fauth',['fail_auth',['../class_server.html#ab625c993d6d1ab40721d3ca33af00cb8',1,'Server']]],
-  ['findenemy_5fdone',['findEnemy_done',['../class_server.html#a914251970cab3255c343d60a6a7a55f5',1,'Server']]]
+  ['challengetoggle',['challengeToggle',['../class_set_settings.html#aa1d76df5c31261919a7132d81471a7b0',1,'SetSettings']]],
+  ['charactername',['characterName',['../class_player.html#ade3562b0b9a88c192f0349ac2cafce76',1,'Player']]],
+  ['conscientiousness',['conscientiousness',['../class_ideals.html#ab111253ba1026e09b2a87b2b0accaee8',1,'Ideals']]],
+  ['consent',['consent',['../class_agree_twitter.html#a88d8132a44edc46d16598ac3cf431f94',1,'AgreeTwitter']]],
+  ['crit_5flanded',['crit_landed',['../class_turn.html#adee435c5c71d7bfe0c701e11dea8c365',1,'Turn']]],
+  ['crit_5fsound',['crit_Sound',['../class_gameplay.html#a8ad8fc709889c1581412a46b5c648f2e',1,'Gameplay']]],
+  ['critical_5fstrike',['critical_strike',['../class_item.html#a925e7d3f5b5ad9195d17e4db303f86f1',1,'Item.critical_strike()'],['../class_player.html#a5e3cf6dab1263ca2b4b6b94bbcddc788',1,'Player.critical_strike()']]],
+  ['crittext',['critText',['../class_profile.html#a77a83d4e7a8954edc63e5f510591d3ce',1,'Profile']]],
+  ['current_5fenemy_5fanimation',['current_enemy_Animation',['../class_animation_manager.html#a358d48e7e9b63bb00f8b866e16a41a21',1,'AnimationManager']]],
+  ['current_5fplayer_5fanimation',['current_player_Animation',['../class_animation_manager.html#aef0c8a682a163cbb1222604d4e7887c3',1,'AnimationManager']]],
+  ['currentanimation_5fenemy',['currentAnimation_enemy',['../class_gameplay.html#ab7decfcd8cb7caa5262c05a80d56b564',1,'Gameplay']]],
+  ['currentanimation_5fplayer',['currentAnimation_player',['../class_gameplay.html#a4c1b8e45bd5eadbb4a9d876be085ffe6',1,'Gameplay']]],
+  ['currentarmourimage',['currentArmourImage',['../class_inventory.html#a7fe90f0ee39e013f8c318327e20f85f1',1,'Inventory']]],
+  ['currentitemlevel',['currentItemLevel',['../class_inventory.html#ae1830fc12251f73f70b9d5bb7986273b',1,'Inventory']]],
+  ['currentlevel',['currentLevel',['../class_win_lose_popup.html#a3b0146c33af33ccf52b4404052896bb9',1,'WinLosePopup']]],
+  ['currentlogintext',['currentloginText',['../class_set_settings.html#a8cb995fa0671cc73dbe7ada21f371e5a',1,'SetSettings']]],
+  ['currentshieldimage',['currentShieldImage',['../class_inventory.html#a945eba3f91aa5a429eaa74502fe71bbc',1,'Inventory']]],
+  ['currentswordimage',['currentSwordImage',['../class_inventory.html#a7090ec7477cf37ce75e0722a0e792744',1,'Inventory']]]
 ];
