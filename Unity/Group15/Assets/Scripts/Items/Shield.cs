@@ -15,25 +15,25 @@ public class Shield : Item {
                 name = "Basic Shield";
                 attribute = 2;
                 price = 89;
-                item_icon_location = "basic_shield";
+                item_icon_location = "sh1";
                 break;
             case 2:
                 name = "Poseidon's Wavebreaker";
                 attribute = 10;
                 price = 219;
-                item_icon_location = "emerald_protector";
+                item_icon_location = "sh2";
                 break;
             case 3:
                 name = "Persephone's Defender";
                 attribute = 19;
                 price = 549;
-                item_icon_location = "serpant_defender";
+                item_icon_location = "sh3";
                 break;
             case 4:
                 name = "Athena's Star Guard";
                 attribute = 37;
                 price = 999;
-                item_icon_location = "zeus_star_guard";
+                item_icon_location = "sh4";
                 break;
             default: break;
         }

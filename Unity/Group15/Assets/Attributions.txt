@@ -40,16 +40,11 @@ Attributions for media used in our game.
 Character Models - https://craftpix.net/
 ===============
 
-===== SWORDS ======
-All sword sprites from https://opengameart.org/content/swords-set-3
-===============
-
-===== SHIELDS ======
-All shield sprites from https://opengameart.org/content/shields-set-1
-===============
-
-===== ARMOURS ======
-All armour sptites from https://opengameart.org/content/armor-icons-by-equipment-slot
+===== ITEMS ======
+Item sprites from:
+https://www.vecteezy.com/
+https://www.flaticon.com/home
+https://assetstore.unity.com/
 ===============
 
 === FONTS ====

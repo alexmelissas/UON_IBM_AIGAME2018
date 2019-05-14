@@ -9,7 +9,7 @@ public class Inventory : MonoBehaviour {
     public Text hpText, atkText, defText, moneyText;
     public GameObject upgradePanel;
     public Text itemNameText, statText, priceText, balanceText;
-    public GameObject itemIconImage, swordIconImage, statIconImage;
+    public GameObject armourIconImage, shieldIconImage, swordIconImage, statIconImage;
     public GameObject currentSwordImage, currentShieldImage, currentArmourImage;
     public Sprite atk, def, hp;
     public AudioSource soundsrc;
@@ -94,15 +94,24 @@ public class Inventory : MonoBehaviour {
 
         if (displayItemType == "sword") // Update the icon
         {
-            itemIconImage.SetActive(false);
+            armourIconImage.SetActive(false);
+            shieldIconImage.SetActive(false);
             swordIconImage.SetActive(true);
             swordIconImage.GetComponent<RawImage>().texture = displayItem.icon;
         }
+        else if (displayItemType == "shield")
+        {
+            armourIconImage.SetActive(false);
+            shieldIconImage.SetActive(true);
+            swordIconImage.SetActive(false);
+            shieldIconImage.GetComponent<RawImage>().texture = displayItem.icon;
+        }
         else
         {
-            itemIconImage.SetActive(true);
+            armourIconImage.SetActive(true);
+            shieldIconImage.SetActive(false);
             swordIconImage.SetActive(false);
-            itemIconImage.GetComponent<RawImage>().texture = displayItem.icon;
+            armourIconImage.GetComponent<RawImage>().texture = displayItem.icon;
         }
         UpdateLabels(item_type);
         Displayed(true);

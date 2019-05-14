@@ -15,25 +15,25 @@ public class Sword : Item {
                 name = "Basic Blade";
                 attribute = 5;
                 price = 109;
-                item_icon_location = "basic_blade";
+                item_icon_location = "s1";
                 break;
             case 2:
                 name = "Aries' Dawnbringer";
                 attribute = 15;
                 price = 299;
-                item_icon_location = "runic_slayer";
+                item_icon_location = "s2";
                 break;
             case 3:
                 name = "Zeus' ThunderSlasher";
                 attribute = 30;
                 price = 519;
-                item_icon_location = "zeus_thunderslasher";
+                item_icon_location = "s3";
                 break;
             case 4:
                 name = "Athena's AngelBlade";
                 attribute = 50;
                 price = 999;
-                item_icon_location = "athena's_angelblade";
+                item_icon_location = "s4";
                 break;
             default: break;
         }

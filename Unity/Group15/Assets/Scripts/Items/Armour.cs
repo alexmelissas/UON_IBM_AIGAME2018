@@ -15,25 +15,25 @@ public class Armour : Item {
                 name = "Peasant Boots";
                 attribute = 20;
                 price = 99;
-                item_icon_location = "boots";
+                item_icon_location = "a1";
                 break;
             case 2:
                 name = "Theseus' Jacket";
                 attribute = 48;
                 price = 259;
-                item_icon_location = "hunter's jacket";
+                item_icon_location = "a2";
                 break;
             case 3:
                 name = "Hephaestus' Chains";
                 attribute = 79;
                 price = 489;
-                item_icon_location = "hephaestus' chains";
+                item_icon_location = "a3";
                 break;
             case 4:
                 name = "Athena's Headplate";
                 attribute = 149;
                 price = 999;
-                item_icon_location = "athena's_headplate";
+                item_icon_location = "a4";
                 break;
             default:
                 break;
