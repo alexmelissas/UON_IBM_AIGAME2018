@@ -20,7 +20,7 @@ public class LoginTwitter : MonoBehaviour {
     
     private void EndSession() { leftForTwitter = false; }
 
-    private void SetSkipBool() { allowNextForSkip = true; }
+    private void SetSkipBool() { allowNextForSkip = true;}
 
     //! Keep checking if twitter linkage was OK - until timeout (4s after they return from twitter page)
     private IEnumerator TryTwitter()
@@ -43,7 +43,6 @@ public class LoginTwitter : MonoBehaviour {
                 if(Server.CheckTwitter())
                 {
                     EndSession();
-                    
                     yield break;
                 }
                 else
@@ -78,8 +77,8 @@ public class LoginTwitter : MonoBehaviour {
         }
         else
         {
-            //if (uwr.downloadHandler.text == Server.no_twitter_success)
-                SetSkipBool();
+            SetSkipBool();
+            EndSession();
         }
         
         yield break;
@@ -179,8 +178,8 @@ public class LoginTwitter : MonoBehaviour {
                 StartCoroutine(NoTwitter());
                 break;
         }
-        if(_buttonPressed!="Link Twitter")otherPopupOpen = false;
-        //???
+        if(_buttonPressed!="Link Twitter")
+            otherPopupOpen = false;
         return;
     }
 }

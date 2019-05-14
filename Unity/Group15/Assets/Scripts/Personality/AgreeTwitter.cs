@@ -7,33 +7,47 @@ public class AgreeTwitter : MonoBehaviour {
     public Toggle agreeToggle;
     public Button nextButton;
     public GameObject consent;
+    public AudioSource audioSrc;
+    public AudioClip confirmSound;
     
     private void Awake()
     {
         nextButton.enabled = false;
-        nextButton.GetComponentInChildren<Text>().color = Color.gray;
+        nextButton.GetComponent<Image>().color = Color.grey;
+    }
+
+    private void Start()
+    {
+        LoginTwitter.allowNextForSkip = false;
     }
 
     //! Keep checking whether to display the Twitter consent option
     void Update() {
 
-        if(LoginTwitter.allowNextForSkip)
+        if (LoginTwitter.allowNextForSkip)
         {
             nextButton.enabled = true;
-            nextButton.GetComponentInChildren<Text>().color = Color.black;
+            nextButton.GetComponent<Image>().color = Color.white;
             return;
         }
 
-        if (Server.CheckTwitter()) consent.SetActive(true);
-        else consent.SetActive(false);
+        if (Server.CheckTwitter())
+        {
+            consent.SetActive(true);
+            audioSrc.PlayOneShot(confirmSound, PlayerPrefs.GetFloat("fx"));
+        }
+        else
+        {
+            consent.SetActive(false);
+        }
 
         if (agreeToggle.isOn == true) {
             nextButton.enabled = true;
-            nextButton.GetComponentInChildren<Text>().color = Color.black;
+            nextButton.GetComponent<Image>().color = Color.white;
         }
         else {
             nextButton.enabled = false;
-            nextButton.GetComponentInChildren<Text>().color = Color.gray;
+            nextButton.GetComponent<Image>().color = Color.grey;
         }
 	}
 

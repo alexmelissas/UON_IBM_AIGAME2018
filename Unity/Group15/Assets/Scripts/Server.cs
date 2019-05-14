@@ -9,6 +9,7 @@ public class Server {
 
     //! Server's home directory IP address/URL.
     private static readonly string address = "http://35.178.2.5:8080";
+    
 
     //! General success response (eg. For confirming Twitter linkage)
     private static readonly string register_success = "Saved";
@@ -53,7 +54,9 @@ public class Server {
             case "battle": path = "/battle"; break;
             case "get_battle": path = "/battle/"; break;
             case "get_plays": path = "/battle/count/"; break;
-            case "get_plays_ranked": path = "/battle/ranked/count"; break;
+            case "get_ranked_players": path = "/battle/ranked/"; break;
+            case "get_plays_ranked": path = "/battle/ranked/count/"; break;
+            case "ranked_points": path = "/battle/ranked/score/"; break;
 
             default: path = ""; break;
         }
@@ -84,7 +87,9 @@ public class Server {
     public static bool CheckTwitter()
     {
         return (UserSession.user_session.user.accessToken!="" 
-            && UserSession.user_session.user.accessTokenSecret!="") 
+            && UserSession.user_session.user.accessTokenSecret!=""
+            && UserSession.user_session.user.accessToken != null
+            && UserSession.user_session.user.accessTokenSecret != null) 
             ? true : false;
     }
 
@@ -133,6 +138,7 @@ public class Server {
         uwr.Dispose();
 
         UserSession.user_session.user = new User("", "");
+        LoginTwitter.allowNextForSkip = false;
         PlayerSession.player_session.player = new Player();
         ZPlayerPrefs.DeleteKey("id");
         ZPlayerPrefs.Save();
@@ -140,45 +146,7 @@ public class Server {
     }
 
     // +=+=+=+============ Battle-Related Coroutines ===============+=+=+=+ //
-
-    //! Get the player's remaining plays for the day
-    public static IEnumerator GetPlaysLeft()
-    {
-        string unranked_address = Server.Address("get_plays") + UserSession.user_session.user.id;
-
-        using (UnityWebRequest uwr = UnityWebRequest.Get(unranked_address))
-        {
-            uwr.timeout = 10;
-            yield return uwr.SendWebRequest();
-            if (uwr.isNetworkError)
-                Debug.Log("Error While Sending: " + uwr.error);
-            else
-            {
-                int played_today = Int32.Parse(uwr.downloadHandler.text);
-                PlayerSession.player_session.plays_left_unranked = 10 - played_today;
-            }
-            uwr.Dispose();
-        }
-        
-        string ranked_address = Server.Address("get_plays_ranked") + UserSession.user_session.user.id;
-
-        using (UnityWebRequest uwr = UnityWebRequest.Get(unranked_address))
-        {
-            uwr.timeout = 10;
-            yield return uwr.SendWebRequest();
-            if (uwr.isNetworkError)
-                Debug.Log("Error While Sending: " + uwr.error);
-            else
-            {
-                int played_today = Int32.Parse(uwr.downloadHandler.text);
-                PlayerSession.player_session.plays_left_ranked = 10 - played_today;
-            }
-            uwr.Dispose();
-        }
-
-        yield break;
-    }
-
+    
     //! Get either random player as enemy (PvP/Ranked) or a bot (PvE) from server
     public static IEnumerator GetEnemy(int battletype)
     {
@@ -229,7 +197,7 @@ public class Server {
         }
         else
             PlayerSession.player_session.player = Player.CreatePlayerFromJSON(uwr.downloadHandler.text);
-
+        
         uwr.Dispose();
         yield break;
     }
@@ -258,7 +226,7 @@ public class Server {
             if (uwr.downloadHandler.text == "Failed") updatePlayer_done = false;
             else if (uwr.downloadHandler.text == "Updated") updatePlayer_done = true;
         }
-        
+
         uwr.Dispose();
         yield break;
     }

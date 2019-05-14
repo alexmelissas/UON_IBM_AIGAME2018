@@ -11,6 +11,11 @@ var searchData=
   ['clone',['Clone',['../class_player.html#adf965ae02f9b21712dcd93b8a2f955f4',1,'Player']]],
   ['compareplayer',['ComparePlayer',['../class_player.html#a4801fed9ec34d0eac42ca4c474b3e584',1,'Player']]],
   ['confirmpurchase',['ConfirmPurchase',['../class_inventory.html#a284995426324c648b4c9144a3b9bc277',1,'Inventory']]],
+  ['createitems_5ftest',['CreateItems_Test',['../class_items___test.html#af3d9432fd0dacf8716a1e0a50e642df3',1,'Items_Test']]],
+  ['createitemset_5ftest',['CreateItemSet_Test',['../class_items___test.html#a2891c44bc7f9131017df9cddb5fc163c',1,'Items_Test']]],
+  ['createplayer_5ftest',['CreatePlayer_Test',['../class_user___player___test.html#aa88269b78c5bd7f6140b20b14aa975a0',1,'User_Player_Test']]],
   ['createplayerfromjson',['CreatePlayerFromJSON',['../class_player.html#a9278b5c20dc0e3b2cab022cccacac63c',1,'Player']]],
-  ['createuserfromjson',['CreateUserFromJSON',['../class_user.html#ab083d14c7cefbeb5eb91eb9ebb21a3bd',1,'User']]]
+  ['createplayerfromjson_5ftest',['CreatePlayerFromJSON_Test',['../class_user___player___test.html#a1b00d27b0e5bb67f63d0ee46ed39b0f0',1,'User_Player_Test']]],
+  ['createuserfromjson',['CreateUserFromJSON',['../class_user.html#ab083d14c7cefbeb5eb91eb9ebb21a3bd',1,'User']]],
+  ['createuserfromjson_5ftest',['CreateUserFromJSON_Test',['../class_user___player___test.html#a45e8193156cae6d3615b54d257738662',1,'User_Player_Test']]]
 ];

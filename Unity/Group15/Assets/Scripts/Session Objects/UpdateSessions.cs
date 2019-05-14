@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Networking;
 using VoxelBusters.NativePlugins;
@@ -17,6 +18,12 @@ public class UpdateSessions : MonoBehaviour{
 
     //! Update just the Player object
     public void U_Player() { StartCoroutine(GetPlayer()); }
+
+    //! Check the user's remaining Plays for the day
+    private void InvokableGetPlaysLeft() { StartCoroutine(GetPlaysLeft()); }
+
+    //! Check the user's Rank points
+    private void InvokableGetRankPoints() { StartCoroutine(GetRankPoints()); }
 
     //! Update a User/Player object from JSON
     public static void JSON_Session(string session, string json)
@@ -42,6 +49,10 @@ public class UpdateSessions : MonoBehaviour{
             UpdateSessions.JSON_Session("player", uwr.downloadHandler.text);
         }
         uwr.Dispose();
+
+        Invoke("InvokableGetPlaysLeft", 0.3f);
+        Invoke("InvokableGetRankPoints", 0.4f);
+
         StopCoroutine(GetPlayer());
     }
 
@@ -65,5 +76,62 @@ public class UpdateSessions : MonoBehaviour{
         uwr.Dispose();
         StopCoroutine(GetUser(all));
     }
-    
+
+    //! Get the player's remaining plays for the day
+    IEnumerator GetPlaysLeft()
+    {
+        string unranked_address = Server.Address("get_plays") + UserSession.user_session.user.id;
+
+        using (UnityWebRequest uwr = UnityWebRequest.Get(unranked_address))
+        {
+            uwr.timeout = 10;
+            yield return uwr.SendWebRequest();
+            if (uwr.isNetworkError)
+                Debug.Log("Error While Sending: " + uwr.error);
+            else
+            {
+                int played_today = Int32.Parse(uwr.downloadHandler.text);
+                PlayerSession.player_session.plays_left_unranked = 10 - played_today;
+            }
+            uwr.Dispose();
+        }
+
+        string ranked_address = Server.Address("get_plays_ranked") + UserSession.user_session.user.id;
+
+        using (UnityWebRequest uwr = UnityWebRequest.Get(ranked_address))
+        {
+            uwr.timeout = 10;
+            yield return uwr.SendWebRequest();
+            if (uwr.isNetworkError)
+                Debug.Log("Error While Sending: " + uwr.error);
+            else
+            {
+                int played_today = Int32.Parse(uwr.downloadHandler.text);
+                PlayerSession.player_session.plays_left_ranked = 5 - played_today;
+            }
+            uwr.Dispose();
+        }
+
+        yield break;
+    }
+
+    //! Get the player's rank points
+    IEnumerator GetRankPoints()
+    {
+        string unranked_address = Server.Address("ranked_points") + UserSession.user_session.user.id;
+
+        using (UnityWebRequest uwr = UnityWebRequest.Get(unranked_address))
+        {
+            uwr.timeout = 10;
+            yield return uwr.SendWebRequest();
+            if (uwr.isNetworkError)
+                Debug.Log("Error While Sending: " + uwr.error);
+            else
+                PlayerSession.player_session.PlaceInRank(Int32.Parse(uwr.downloadHandler.text));
+            uwr.Dispose();
+        }
+
+        yield break;
+    }
+
 }

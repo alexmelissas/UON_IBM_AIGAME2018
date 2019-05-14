@@ -10,20 +10,27 @@ public class AuthenticateUser : MonoBehaviour {
     public GameObject loading_spin_Animation;
     public InputField usernameInputField;
     public InputField passwordInputField;
+    public AudioSource audioSrc;
+    public AudioClip confirmSound;
 
     public string authType;
     public static bool display_loginAnimation;
+    private bool lock_attempt; //avoid duplicate register requests
 
     // Setup the screen
     void Start()
     {
         loading_spin_Animation.SetActive(false);
         display_loginAnimation = false;
+        lock_attempt = false;
         passwordInputField.onEndEdit.AddListener(delegate { CheckUserPass(); });
     }
 
     //! Toggle the loading circle to be active/not
     private void Toggle(bool input) { display_loginAnimation = input; }
+
+    //! Allow request for registration - avoid clashes
+    private void Unlock() { lock_attempt = false; }
 
     //! Try to login with given credentials.
     IEnumerator TryLogin(bool firstLogin, string json, User user)
@@ -58,12 +65,14 @@ public class AuthenticateUser : MonoBehaviour {
                     {
                         StartCoroutine(Server.Reanalyse());
                         loading_spin_Animation.SetActive(true);
-                        yield return new WaitUntil(() => Server.reanalysis_done==true);
+                        yield return new WaitUntil(() => Server.reanalysis_done == true);
                         loading_spin_Animation.SetActive(false);
                     }
                 }
-                gameObject.AddComponent<ChangeScene>().Forward(next_scene);
                 if (!firstLogin) NPBinding.UI.ShowToast("Welcome back, " + user.GetUsername(), eToastMessageLength.SHORT);
+                audioSrc.PlayOneShot(confirmSound, PlayerPrefs.GetFloat("fx"));
+                yield return new WaitForSeconds(0.5f);
+                gameObject.AddComponent<ChangeScene>().Forward(next_scene);
             }
             else
             {
@@ -72,6 +81,7 @@ public class AuthenticateUser : MonoBehaviour {
                 passwordInputField.text = "";
                 passwordInputField.Select();
             }
+            Unlock();
             Toggle(false);
             uwr.Dispose();
             StopCoroutine(TryLogin(firstLogin,json, user));
@@ -90,17 +100,21 @@ public class AuthenticateUser : MonoBehaviour {
 
         yield return uwr.SendWebRequest();
 
-        if (uwr.isNetworkError) {
+        if (uwr.isNetworkError)
+        {
             Debug.Log("Error While Sending: " + uwr.error);
             NPBinding.UI.ShowToast("Communication Error. Please try again later.", eToastMessageLength.SHORT);
+            Unlock();
         }
-        else { 
+        else
+        { 
             int response = Server.CheckRegistration(uwr.downloadHandler.text);
             if (response == 1)
             {
                 UserSession.user_session.user = user;
                 Debug.Log("Account created");
                 NPBinding.UI.ShowToast("Account Created.", eToastMessageLength.SHORT);
+                yield return StartCoroutine(TryLogin(true, json, user));
             }
             else
             {
@@ -109,9 +123,9 @@ public class AuthenticateUser : MonoBehaviour {
                 if (response == 0) Debug.Log("Username taken.");
                 usernameInputField.text = "";
                 usernameInputField.Select();
+                Unlock();
             }
         }
-        yield return StartCoroutine(TryLogin(true,json,user));
         uwr.Dispose();
         StopCoroutine(TryRegister(json, user));
     }
@@ -119,6 +133,9 @@ public class AuthenticateUser : MonoBehaviour {
     //! Check format of username/password, pass them to Login/Register if valid
     public void CheckUserPass()
     {
+        if (lock_attempt) return;
+        lock_attempt = true;
+
         string username = usernameInputField.text;
         string password = passwordInputField.text;
         
@@ -126,18 +143,21 @@ public class AuthenticateUser : MonoBehaviour {
         {
             Debug.Log("Enter username.");
             NPBinding.UI.ShowToast("Need a username.", eToastMessageLength.SHORT);
+            Unlock();
             return;
         }
         else if (password == "")
         {
             Debug.Log("Enter password.");
             NPBinding.UI.ShowToast("Need a password.", eToastMessageLength.SHORT);
+            Unlock();
             return;
         }
         else if (username.Length > 25)
         {
             Debug.Log("Username max length 25 characters.");
             NPBinding.UI.ShowToast("Username max length 25 characters.", eToastMessageLength.SHORT);
+            Unlock();
             return;
         }
         else
