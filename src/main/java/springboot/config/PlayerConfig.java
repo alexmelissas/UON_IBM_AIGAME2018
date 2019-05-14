@@ -81,7 +81,7 @@ public class PlayerConfig {
 		a = 0.05;
 		b = 0.5;
 		c = 5;
-		agility = (int) (a * x * x + b * x + c);
+		agility = (int) ((a * x * x + b * x + c) * 0.2);
 		a = 0.1;
 		b = 0.1;
 		c = 10;

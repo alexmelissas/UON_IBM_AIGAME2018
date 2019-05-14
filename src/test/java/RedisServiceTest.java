@@ -35,20 +35,20 @@ public class RedisServiceTest {
 	
 	@Test
 	public void countTest() {
-		String id = "123";
-		System.out.println(">>>" + redisService.getBattleCount(id, ""));
-		id = "test_id";
-		System.out.println(">>>" + redisService.getBattleCount(id, ""));
-		
-		id = "123";
-		redisService.addBattleCount(id, "");
-		System.out.println(">>>" + redisService.getBattleCount(id, ""));
-		id = "test_id";
-		redisService.addBattleCount(id, "");
-		System.out.println(">>>" + redisService.getBattleCount(id, ""));
-		id = "1233";
-		redisService.addBattleCount(id, "ranked_");
-		System.out.println(">>>" + redisService.getBattleCount(id, "ranked_"));
+//		String id = "123";
+//		System.out.println(">>>" + redisService.getBattleCount(id, ""));
+//		id = "test_id";
+//		System.out.println(">>>" + redisService.getBattleCount(id, ""));
+//		
+//		id = "123";
+//		redisService.addBattleCount(id, "");
+//		System.out.println(">>>" + redisService.getBattleCount(id, ""));
+//		id = "test_id";
+//		redisService.addBattleCount(id, "");
+//		System.out.println(">>>" + redisService.getBattleCount(id, ""));
+//		id = "1233";
+//		redisService.addBattleCount(id, "ranked_");
+//		System.out.println(">>>" + redisService.getBattleCount(id, "ranked_"));
 	}
 	
 	@Test

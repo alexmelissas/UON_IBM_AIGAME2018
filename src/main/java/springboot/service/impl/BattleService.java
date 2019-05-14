@@ -72,7 +72,8 @@ public class BattleService {
 
 		player1.checklevelUp();
 		playerService.updatePlayer(id1, player1);
-
+		
+		redisService.addBattleCount(id1);
 		return player1;
 	}
 
@@ -111,8 +112,6 @@ public class BattleService {
 			player = playerList.get(randomIndex);
 		}
 
-		redisService.addBattleCount(id, "");
-		logger.info(">>>Left number of battles: {}", 10 - redisService.getBattleCount(id, ""));
 		return player;
 	}
 
@@ -234,11 +233,30 @@ public class BattleService {
 	 * Get the number of battles of a player
 	 * 
 	 * @param id  the id
-	 * @param str indicate the battle is ranked or unranked
 	 * @return the number of battles
 	 */
-	public int getBattleCount(String id, String str) {
-		return redisService.getBattleCount(id, str);
+	public int getBattleCount(String id) {
+		return redisService.getBattleCount(id);
+	}
+	
+	/**
+	 * Get the number of ranked battles of a player
+	 * 
+	 * @param id  the id
+	 * @return the number of battles
+	 */
+	public int getRankedBattleCount(String id) {
+		return redisService.getRankedBattleCount(id);
+	}
+
+	/**
+	 * Get the score of a player
+	 * 
+	 * @param id the id
+	 * @return the score
+	 */
+	public int getRankedScore(String id) {
+		return redisService.getRankedScore(id);
 	}
 
 	/**
@@ -250,20 +268,47 @@ public class BattleService {
 	 * @param additionalExp   additional experience
 	 * @param additionalMoney additional money
 	 */
-	public synchronized void handleRankedResult(String id1, String id2, boolean result, int additionalExp,
+	public synchronized Player handleRankedResult(String id1, String id2, boolean result, int additionalExp,
 			int additionalMoney) {
-		// update individual score
+		
+		Player player1 = playerService.getPlayerById(id1);
+		int exp = additionalExp;
+		int money = additionalMoney;
 		int score = redisService.getRankedScore(id1);
-		score += result ? 15 : 3;
-		redisService.setRankedScore(id1, score);
-		redisService.addBattleCount(id1, "ranked_");
-		// TODO winning streak bonus
-
-		// update group score
 		int groupNum = playerService.getPlayerById(id1).getGroup();
 		int groupScore = redisService.getGroupScore(groupNum);
-		groupScore += result ? 15 : 3;
+		boolean isFake = "fake".equals(id2);
+		
+		if (result) {
+			// player win
+			exp += isFake ? 15 : 25;
+			money += isFake ? 30 : 60;
+			score += isFake ? 8 : 15;
+			groupScore += isFake ? 8 : 15;
+			player1.setWin(player1.getWin() + 1);
+		} else {
+			// player lose
+			exp += isFake ? 5 : 10;
+			money += isFake ? 10 : 20;
+			score += isFake ? 3 : 5;
+			groupScore += isFake ? 3 : 5;
+			player1.setLose(player1.getLose() + 1);
+		}
+		//  update player
+		player1.setExperience(exp + player1.getExperience());
+		player1.setMoney(money + player1.getMoney());
+
+		player1.checklevelUp();
+		playerService.updatePlayer(id1, player1);
+
+		// update individual score
+		redisService.setRankedScore(id1, score);
+		redisService.addRankedBattleCount(id1);
+
+		// update group score
 		redisService.setGroupScore(groupNum, groupScore);
+
+		return player1;
 	}
 
 	/**
