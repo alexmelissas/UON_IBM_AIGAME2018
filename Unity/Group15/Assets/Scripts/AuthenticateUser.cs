@@ -10,6 +10,8 @@ public class AuthenticateUser : MonoBehaviour {
     public GameObject loading_spin_Animation;
     public InputField usernameInputField;
     public InputField passwordInputField;
+    public AudioSource audioSrc;
+    public AudioClip confirmSound;
 
     public string authType;
     public static bool display_loginAnimation;
@@ -63,13 +65,14 @@ public class AuthenticateUser : MonoBehaviour {
                     {
                         StartCoroutine(Server.Reanalyse());
                         loading_spin_Animation.SetActive(true);
-                        yield return new WaitUntil(() => Server.reanalysis_done==true);
+                        yield return new WaitUntil(() => Server.reanalysis_done == true);
                         loading_spin_Animation.SetActive(false);
                     }
                 }
-                gameObject.AddComponent<ChangeScene>().Forward(next_scene);
                 if (!firstLogin) NPBinding.UI.ShowToast("Welcome back, " + user.GetUsername(), eToastMessageLength.SHORT);
-
+                audioSrc.PlayOneShot(confirmSound, PlayerPrefs.GetFloat("fx"));
+                yield return new WaitForSeconds(0.5f);
+                gameObject.AddComponent<ChangeScene>().Forward(next_scene);
             }
             else
             {

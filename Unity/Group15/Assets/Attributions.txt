@@ -6,7 +6,7 @@ Attributions for media used in our game.
 {Epic Battle.mp3} by Twin Musicom (twinmusicom.org)
 {NFF-wind-gust-3.wav} from https://www.noiseforfun.com/2014-sound-effects/wind-gust-3/
 {ranked_backgroundmusic.mp3} from https://opengameart.org/content/dark-shrine-loop
-
+{confirm.wav} from https://opengameart.org/content/botton-sound-pack
 {levelup.wav} from https://opengameart.org/content/level-up-sound-effects
 {drop_sword.wav} from https://freesound.org/people/32cheeseman32/sounds/180817/
 {crit.mp3} from https://opengameart.org/content/punches-hits-swords-and-squishes

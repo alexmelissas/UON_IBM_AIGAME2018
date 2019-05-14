@@ -11,7 +11,7 @@ public class RankedMatchScreen : MonoBehaviour
     public GameObject rankingsDisplayGroup, loading_spin_Animation;
     public AudioSource audiosrc;
 
-    private List<Player> players;
+    private List<User> users;
     private string oldRank = "";
     private int attempts;
     private float max_volume;
@@ -39,31 +39,36 @@ public class RankedMatchScreen : MonoBehaviour
     {
         if (newRank != oldRank) // Only update when different rank is clicked.
         {
-            //string url = Server.Address("ranked_leaderboards") + newRank;
+            string url = Server.Address("get_ranked_players") + PlayerSession.player_session.player.id;
             using (UnityWebRequest uwr = UnityWebRequest.Get(Server.Address("view_users"))) // new API eg. /players/rank/{rank}
             {
                 uwr.timeout = 10;
                 yield return uwr.SendWebRequest();
-
+            
                 string all = uwr.downloadHandler.text.Trim(new char[] { '[', ']' }); // Split the entire all-player JSON into individual-user JSONs.
                 string[] separators = { "},", "}" };
                 string[] entries = all.Split(separators, System.StringSplitOptions.RemoveEmptyEntries);
+
+                Debug.Log(all);
+                foreach(string st in entries)
+                {
+                    Debug.Log(st);
+                }
 
                 for (int i = 0; i < entries.Length; i++)
                 {
                     if (i == 5) break;
                     string newUserJson = entries[i] + "}";
-                    Player newPlayer = Player.CreatePlayerFromJSON(newUserJson);
-                    players.Add(newPlayer);
+                    User newUser = User.CreateUserFromJSON(newUserJson);
+                    users.Add(newUser);
                 }
-                // Users.Sort(); //Need to sort based on Points (top 5).
                 uwr.Dispose();
             }
 
             int s = 0;
-            foreach (Player current in players)
+            foreach (User current in users)
             {
-                string name = current.characterName;
+                string name = current.username;
                 string currentslot = "slot" + (++s);
                 rankingsDisplayGroup.transform.Find(currentslot).gameObject.GetComponentInChildren<Text>().text = name;
             }
@@ -76,7 +81,7 @@ public class RankedMatchScreen : MonoBehaviour
     //! Show the top players of selected rank
     public void DisplayTopPlayers(string rank)
     {
-        players = new List<Player>();
+        users = new List<User>();
         StartCoroutine(GetPlayers(rank));
     }
     

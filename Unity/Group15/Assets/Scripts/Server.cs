@@ -54,6 +54,7 @@ public class Server {
             case "battle": path = "/battle"; break;
             case "get_battle": path = "/battle/"; break;
             case "get_plays": path = "/battle/count/"; break;
+            case "get_ranked_players": path = "/battle/ranked/"; break;
             case "get_plays_ranked": path = "/battle/ranked/count/"; break;
             case "ranked_points": path = "/battle/ranked/score/"; break;
 

@@ -7,6 +7,8 @@ public class AgreeTwitter : MonoBehaviour {
     public Toggle agreeToggle;
     public Button nextButton;
     public GameObject consent;
+    public AudioSource audioSrc;
+    public AudioClip confirmSound;
     
     private void Awake()
     {
@@ -22,15 +24,22 @@ public class AgreeTwitter : MonoBehaviour {
     //! Keep checking whether to display the Twitter consent option
     void Update() {
 
-        if(LoginTwitter.allowNextForSkip)
+        if (LoginTwitter.allowNextForSkip)
         {
             nextButton.enabled = true;
             nextButton.GetComponent<Image>().color = Color.white;
             return;
         }
-        
-        if (Server.CheckTwitter()) consent.SetActive(true);
-        else consent.SetActive(false);
+
+        if (Server.CheckTwitter())
+        {
+            consent.SetActive(true);
+            audioSrc.PlayOneShot(confirmSound, PlayerPrefs.GetFloat("fx"));
+        }
+        else
+        {
+            consent.SetActive(false);
+        }
 
         if (agreeToggle.isOn == true) {
             nextButton.enabled = true;
