@@ -1,0 +1,135 @@
+\hypertarget{class_authenticate_user}{}\section{Authenticate\+User Class Reference}
+\label{class_authenticate_user}\index{AuthenticateUser@{AuthenticateUser}}
+
+
+Login and Registration processing.  
+
+
+Inheritance diagram for Authenticate\+User\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_authenticate_user}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_authenticate_user_a6d1abb9b546a5fa3016bb6063e3eabaa}{Check\+User\+Pass}} ()
+\begin{DoxyCompactList}\small\item\em Check format of username/password, pass them to Login/\+Register if valid. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+Game\+Object \mbox{\hyperlink{class_authenticate_user_af6ef34075c6ae8b71ccdadf4db3ab2f5}{loading\+\_\+spin\+\_\+\+Animation}}
+\item 
+Input\+Field \mbox{\hyperlink{class_authenticate_user_a38f2b4577d8f375bb33d3eab2e669774}{username\+Input\+Field}}
+\item 
+Input\+Field \mbox{\hyperlink{class_authenticate_user_a5def6ad7e62bddc9a48cffee77c04168}{password\+Input\+Field}}
+\item 
+string \mbox{\hyperlink{class_authenticate_user_a299b64de03d6461c988a78593365624b}{auth\+Type}}
+\end{DoxyCompactItemize}
+\subsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static bool \mbox{\hyperlink{class_authenticate_user_abb9961dab19aac74a73ca4fb1b9e60a6}{display\+\_\+login\+Animation}}
+\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_authenticate_user_a2fede13427963bbcdd6a7d09a6846f3a}{Start}} ()
+\item 
+void \mbox{\hyperlink{class_authenticate_user_a58d5801c4d4ea321321ae7729a17ef7f}{Toggle}} (bool input)
+\begin{DoxyCompactList}\small\item\em Toggle the loading circle to be active/not. \end{DoxyCompactList}\item 
+I\+Enumerator \mbox{\hyperlink{class_authenticate_user_a7c2cb46ec083bb2474c6decf4f165773}{Try\+Login}} (bool first\+Login, string json, \mbox{\hyperlink{class_user}{User}} user)
+\begin{DoxyCompactList}\small\item\em Try to login with given credentials. \end{DoxyCompactList}\item 
+I\+Enumerator \mbox{\hyperlink{class_authenticate_user_a1243f9482a71212db33a555534a1bc97}{Try\+Register}} (string json, \mbox{\hyperlink{class_user}{User}} user)
+\begin{DoxyCompactList}\small\item\em Try to register an account with given credentials. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Login and Registration processing. 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_authenticate_user_a6d1abb9b546a5fa3016bb6063e3eabaa}\label{class_authenticate_user_a6d1abb9b546a5fa3016bb6063e3eabaa}} 
+\index{AuthenticateUser@{AuthenticateUser}!CheckUserPass@{CheckUserPass}}
+\index{CheckUserPass@{CheckUserPass}!AuthenticateUser@{AuthenticateUser}}
+\subsubsection{\texorpdfstring{CheckUserPass()}{CheckUserPass()}}
+{\footnotesize\ttfamily void Authenticate\+User.\+Check\+User\+Pass (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Check format of username/password, pass them to Login/\+Register if valid. 
+
+\mbox{\Hypertarget{class_authenticate_user_a2fede13427963bbcdd6a7d09a6846f3a}\label{class_authenticate_user_a2fede13427963bbcdd6a7d09a6846f3a}} 
+\index{AuthenticateUser@{AuthenticateUser}!Start@{Start}}
+\index{Start@{Start}!AuthenticateUser@{AuthenticateUser}}
+\subsubsection{\texorpdfstring{Start()}{Start()}}
+{\footnotesize\ttfamily void Authenticate\+User.\+Start (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_authenticate_user_a58d5801c4d4ea321321ae7729a17ef7f}\label{class_authenticate_user_a58d5801c4d4ea321321ae7729a17ef7f}} 
+\index{AuthenticateUser@{AuthenticateUser}!Toggle@{Toggle}}
+\index{Toggle@{Toggle}!AuthenticateUser@{AuthenticateUser}}
+\subsubsection{\texorpdfstring{Toggle()}{Toggle()}}
+{\footnotesize\ttfamily void Authenticate\+User.\+Toggle (\begin{DoxyParamCaption}\item[{bool}]{input }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Toggle the loading circle to be active/not. 
+
+\mbox{\Hypertarget{class_authenticate_user_a7c2cb46ec083bb2474c6decf4f165773}\label{class_authenticate_user_a7c2cb46ec083bb2474c6decf4f165773}} 
+\index{AuthenticateUser@{AuthenticateUser}!TryLogin@{TryLogin}}
+\index{TryLogin@{TryLogin}!AuthenticateUser@{AuthenticateUser}}
+\subsubsection{\texorpdfstring{TryLogin()}{TryLogin()}}
+{\footnotesize\ttfamily I\+Enumerator Authenticate\+User.\+Try\+Login (\begin{DoxyParamCaption}\item[{bool}]{first\+Login,  }\item[{string}]{json,  }\item[{\mbox{\hyperlink{class_user}{User}}}]{user }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Try to login with given credentials. 
+
+\mbox{\Hypertarget{class_authenticate_user_a1243f9482a71212db33a555534a1bc97}\label{class_authenticate_user_a1243f9482a71212db33a555534a1bc97}} 
+\index{AuthenticateUser@{AuthenticateUser}!TryRegister@{TryRegister}}
+\index{TryRegister@{TryRegister}!AuthenticateUser@{AuthenticateUser}}
+\subsubsection{\texorpdfstring{TryRegister()}{TryRegister()}}
+{\footnotesize\ttfamily I\+Enumerator Authenticate\+User.\+Try\+Register (\begin{DoxyParamCaption}\item[{string}]{json,  }\item[{\mbox{\hyperlink{class_user}{User}}}]{user }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Try to register an account with given credentials. 
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{class_authenticate_user_a299b64de03d6461c988a78593365624b}\label{class_authenticate_user_a299b64de03d6461c988a78593365624b}} 
+\index{AuthenticateUser@{AuthenticateUser}!authType@{authType}}
+\index{authType@{authType}!AuthenticateUser@{AuthenticateUser}}
+\subsubsection{\texorpdfstring{authType}{authType}}
+{\footnotesize\ttfamily string Authenticate\+User.\+auth\+Type}
+
+\mbox{\Hypertarget{class_authenticate_user_abb9961dab19aac74a73ca4fb1b9e60a6}\label{class_authenticate_user_abb9961dab19aac74a73ca4fb1b9e60a6}} 
+\index{AuthenticateUser@{AuthenticateUser}!display\_loginAnimation@{display\_loginAnimation}}
+\index{display\_loginAnimation@{display\_loginAnimation}!AuthenticateUser@{AuthenticateUser}}
+\subsubsection{\texorpdfstring{display\_loginAnimation}{display\_loginAnimation}}
+{\footnotesize\ttfamily bool Authenticate\+User.\+display\+\_\+login\+Animation\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{class_authenticate_user_af6ef34075c6ae8b71ccdadf4db3ab2f5}\label{class_authenticate_user_af6ef34075c6ae8b71ccdadf4db3ab2f5}} 
+\index{AuthenticateUser@{AuthenticateUser}!loading\_spin\_Animation@{loading\_spin\_Animation}}
+\index{loading\_spin\_Animation@{loading\_spin\_Animation}!AuthenticateUser@{AuthenticateUser}}
+\subsubsection{\texorpdfstring{loading\_spin\_Animation}{loading\_spin\_Animation}}
+{\footnotesize\ttfamily Game\+Object Authenticate\+User.\+loading\+\_\+spin\+\_\+\+Animation}
+
+\mbox{\Hypertarget{class_authenticate_user_a5def6ad7e62bddc9a48cffee77c04168}\label{class_authenticate_user_a5def6ad7e62bddc9a48cffee77c04168}} 
+\index{AuthenticateUser@{AuthenticateUser}!passwordInputField@{passwordInputField}}
+\index{passwordInputField@{passwordInputField}!AuthenticateUser@{AuthenticateUser}}
+\subsubsection{\texorpdfstring{passwordInputField}{passwordInputField}}
+{\footnotesize\ttfamily Input\+Field Authenticate\+User.\+password\+Input\+Field}
+
+\mbox{\Hypertarget{class_authenticate_user_a38f2b4577d8f375bb33d3eab2e669774}\label{class_authenticate_user_a38f2b4577d8f375bb33d3eab2e669774}} 
+\index{AuthenticateUser@{AuthenticateUser}!usernameInputField@{usernameInputField}}
+\index{usernameInputField@{usernameInputField}!AuthenticateUser@{AuthenticateUser}}
+\subsubsection{\texorpdfstring{usernameInputField}{usernameInputField}}
+{\footnotesize\ttfamily Input\+Field Authenticate\+User.\+username\+Input\+Field}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+U\+O\+N\+\_\+\+I\+B\+M\+\_\+\+A\+I\+G\+A\+M\+E2018/\+Unity/\+Group15/\+Assets/\+Scripts/\mbox{\hyperlink{_authenticate_user_8cs}{Authenticate\+User.\+cs}}\end{DoxyCompactItemize}

@@ -1,0 +1,232 @@
+\hypertarget{class_player}{}\section{Player Class Reference}
+\label{class_player}\index{Player@{Player}}
+
+
+J\+S\+O\+N-\/able object with all Player-\/related attributes (eg. id, winrate, level, stats ...)  
+
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_player_a712a726b07cf901c040116d6d0c5cc66}{Player}} ()
+\begin{DoxyCompactList}\small\item\em Default constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_player_ad275d2e546547d19fca625bad0dd9dc6}{Player}} (string \+\_\+id, string \+\_\+character\+Name, int \+\_\+level, int \+\_\+hp, int \+\_\+attack, int \+\_\+defense, int \+\_\+agility, int \+\_\+critical\+\_\+strike, int \+\_\+money, int \+\_\+experience, int \+\_\+exptolevel, double \+\_\+factor, int \+\_\+sword, int \+\_\+shield, int \+\_\+armour, int \+\_\+win, int \+\_\+lose)
+\begin{DoxyCompactList}\small\item\em Fully specific constructor. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_player_a4801fed9ec34d0eac42ca4c474b3e584}{Compare\+Player}} (\mbox{\hyperlink{class_player}{Player}} other)
+\begin{DoxyCompactList}\small\item\em Check if two \mbox{\hyperlink{class_player}{Player}} objects have identical attributes. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{class_player}{Player}} \mbox{\hyperlink{class_player_a9278b5c20dc0e3b2cab022cccacac63c}{Create\+Player\+From\+J\+S\+ON}} (string json)
+\begin{DoxyCompactList}\small\item\em Create a \mbox{\hyperlink{class_player}{Player}} object from J\+S\+ON. \end{DoxyCompactList}\item 
+static \mbox{\hyperlink{class_player}{Player}} \mbox{\hyperlink{class_player_adf965ae02f9b21712dcd93b8a2f955f4}{Clone}} (\mbox{\hyperlink{class_player}{Player}} original)
+\begin{DoxyCompactList}\small\item\em Fully clone the \mbox{\hyperlink{class_player}{Player}} object to a new one. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+string \mbox{\hyperlink{class_player_a4133cf7ecb22b0ae16ee457c46eacc08}{id}}
+\item 
+int \mbox{\hyperlink{class_player_a400a72423db730ee29977227c4860cfd}{level}}
+\item 
+int \mbox{\hyperlink{class_player_aa6c1d9c5753ea9a365f28eac36238d1f}{sword}}
+\item 
+double \mbox{\hyperlink{class_player_a1d8f77afde9a68f34917561d915a5656}{factor}}
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+string \mbox{\hyperlink{class_player_ade3562b0b9a88c192f0349ac2cafce76}{character\+Name}}
+\item 
+int \mbox{\hyperlink{class_player_a9159a0bdf10845c484a41823fe3c101e}{hp}}
+\item 
+int \mbox{\hyperlink{class_player_a9912e57826c51a067ab34db854f31562}{attack}}
+\item 
+int \mbox{\hyperlink{class_player_a63ed43151a54b62e9d59d8ef4edc0165}{defense}}
+\item 
+int \mbox{\hyperlink{class_player_ae49bfbaba1583b695d12235263841f96}{agility}}
+\item 
+int \mbox{\hyperlink{class_player_a5e3cf6dab1263ca2b4b6b94bbcddc788}{critical\+\_\+strike}}
+\item 
+int \mbox{\hyperlink{class_player_aed37167e4117c2518a154e73fbfc103c}{money}}
+\item 
+int \mbox{\hyperlink{class_player_a99cc9f5c9fad23b0ddab68ba4eb8eee4}{experience}}
+\item 
+int \mbox{\hyperlink{class_player_af0a031857f4ade770c6f6688b0c41dc7}{exptolevel}}
+\item 
+int \mbox{\hyperlink{class_player_af31f60ef7eedd89486623f26edb2b990}{shield}}
+\item 
+int \mbox{\hyperlink{class_player_a51ccca43f3c0a2549e95bacf1b71e504}{armour}}
+\item 
+int \mbox{\hyperlink{class_player_a9abe91f5084f15d7a11c7a77f345e517}{win}}
+\item 
+int \mbox{\hyperlink{class_player_abbb49fe572e8c86068fe4f9d326ab07c}{lose}}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+J\+S\+O\+N-\/able object with all Player-\/related attributes (eg. id, winrate, level, stats ...) 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_player_a712a726b07cf901c040116d6d0c5cc66}\label{class_player_a712a726b07cf901c040116d6d0c5cc66}} 
+\index{Player@{Player}!Player@{Player}}
+\index{Player@{Player}!Player@{Player}}
+\subsubsection{\texorpdfstring{Player()}{Player()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Player.\+Player (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Default constructor. 
+
+\mbox{\Hypertarget{class_player_ad275d2e546547d19fca625bad0dd9dc6}\label{class_player_ad275d2e546547d19fca625bad0dd9dc6}} 
+\index{Player@{Player}!Player@{Player}}
+\index{Player@{Player}!Player@{Player}}
+\subsubsection{\texorpdfstring{Player()}{Player()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Player.\+Player (\begin{DoxyParamCaption}\item[{string}]{\+\_\+id,  }\item[{string}]{\+\_\+character\+Name,  }\item[{int}]{\+\_\+level,  }\item[{int}]{\+\_\+hp,  }\item[{int}]{\+\_\+attack,  }\item[{int}]{\+\_\+defense,  }\item[{int}]{\+\_\+agility,  }\item[{int}]{\+\_\+critical\+\_\+strike,  }\item[{int}]{\+\_\+money,  }\item[{int}]{\+\_\+experience,  }\item[{int}]{\+\_\+exptolevel,  }\item[{double}]{\+\_\+factor,  }\item[{int}]{\+\_\+sword,  }\item[{int}]{\+\_\+shield,  }\item[{int}]{\+\_\+armour,  }\item[{int}]{\+\_\+win,  }\item[{int}]{\+\_\+lose }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Fully specific constructor. 
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_player_adf965ae02f9b21712dcd93b8a2f955f4}\label{class_player_adf965ae02f9b21712dcd93b8a2f955f4}} 
+\index{Player@{Player}!Clone@{Clone}}
+\index{Clone@{Clone}!Player@{Player}}
+\subsubsection{\texorpdfstring{Clone()}{Clone()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{class_player}{Player}} Player.\+Clone (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_player}{Player}}}]{original }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Fully clone the \mbox{\hyperlink{class_player}{Player}} object to a new one. 
+
+\mbox{\Hypertarget{class_player_a4801fed9ec34d0eac42ca4c474b3e584}\label{class_player_a4801fed9ec34d0eac42ca4c474b3e584}} 
+\index{Player@{Player}!ComparePlayer@{ComparePlayer}}
+\index{ComparePlayer@{ComparePlayer}!Player@{Player}}
+\subsubsection{\texorpdfstring{ComparePlayer()}{ComparePlayer()}}
+{\footnotesize\ttfamily bool Player.\+Compare\+Player (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_player}{Player}}}]{other }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Check if two \mbox{\hyperlink{class_player}{Player}} objects have identical attributes. 
+
+\mbox{\Hypertarget{class_player_a9278b5c20dc0e3b2cab022cccacac63c}\label{class_player_a9278b5c20dc0e3b2cab022cccacac63c}} 
+\index{Player@{Player}!CreatePlayerFromJSON@{CreatePlayerFromJSON}}
+\index{CreatePlayerFromJSON@{CreatePlayerFromJSON}!Player@{Player}}
+\subsubsection{\texorpdfstring{CreatePlayerFromJSON()}{CreatePlayerFromJSON()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{class_player}{Player}} Player.\+Create\+Player\+From\+J\+S\+ON (\begin{DoxyParamCaption}\item[{string}]{json }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Create a \mbox{\hyperlink{class_player}{Player}} object from J\+S\+ON. 
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{class_player_ae49bfbaba1583b695d12235263841f96}\label{class_player_ae49bfbaba1583b695d12235263841f96}} 
+\index{Player@{Player}!agility@{agility}}
+\index{agility@{agility}!Player@{Player}}
+\subsubsection{\texorpdfstring{agility}{agility}}
+{\footnotesize\ttfamily int Player.\+agility\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_player_a51ccca43f3c0a2549e95bacf1b71e504}\label{class_player_a51ccca43f3c0a2549e95bacf1b71e504}} 
+\index{Player@{Player}!armour@{armour}}
+\index{armour@{armour}!Player@{Player}}
+\subsubsection{\texorpdfstring{armour}{armour}}
+{\footnotesize\ttfamily int Player.\+armour\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_player_a9912e57826c51a067ab34db854f31562}\label{class_player_a9912e57826c51a067ab34db854f31562}} 
+\index{Player@{Player}!attack@{attack}}
+\index{attack@{attack}!Player@{Player}}
+\subsubsection{\texorpdfstring{attack}{attack}}
+{\footnotesize\ttfamily int Player.\+attack\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_player_ade3562b0b9a88c192f0349ac2cafce76}\label{class_player_ade3562b0b9a88c192f0349ac2cafce76}} 
+\index{Player@{Player}!characterName@{characterName}}
+\index{characterName@{characterName}!Player@{Player}}
+\subsubsection{\texorpdfstring{characterName}{characterName}}
+{\footnotesize\ttfamily string Player.\+character\+Name\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_player_a5e3cf6dab1263ca2b4b6b94bbcddc788}\label{class_player_a5e3cf6dab1263ca2b4b6b94bbcddc788}} 
+\index{Player@{Player}!critical\_strike@{critical\_strike}}
+\index{critical\_strike@{critical\_strike}!Player@{Player}}
+\subsubsection{\texorpdfstring{critical\_strike}{critical\_strike}}
+{\footnotesize\ttfamily int Player.\+critical\+\_\+strike\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_player_a63ed43151a54b62e9d59d8ef4edc0165}\label{class_player_a63ed43151a54b62e9d59d8ef4edc0165}} 
+\index{Player@{Player}!defense@{defense}}
+\index{defense@{defense}!Player@{Player}}
+\subsubsection{\texorpdfstring{defense}{defense}}
+{\footnotesize\ttfamily int Player.\+defense\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_player_a99cc9f5c9fad23b0ddab68ba4eb8eee4}\label{class_player_a99cc9f5c9fad23b0ddab68ba4eb8eee4}} 
+\index{Player@{Player}!experience@{experience}}
+\index{experience@{experience}!Player@{Player}}
+\subsubsection{\texorpdfstring{experience}{experience}}
+{\footnotesize\ttfamily int Player.\+experience\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_player_af0a031857f4ade770c6f6688b0c41dc7}\label{class_player_af0a031857f4ade770c6f6688b0c41dc7}} 
+\index{Player@{Player}!exptolevel@{exptolevel}}
+\index{exptolevel@{exptolevel}!Player@{Player}}
+\subsubsection{\texorpdfstring{exptolevel}{exptolevel}}
+{\footnotesize\ttfamily int Player.\+exptolevel\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_player_a1d8f77afde9a68f34917561d915a5656}\label{class_player_a1d8f77afde9a68f34917561d915a5656}} 
+\index{Player@{Player}!factor@{factor}}
+\index{factor@{factor}!Player@{Player}}
+\subsubsection{\texorpdfstring{factor}{factor}}
+{\footnotesize\ttfamily double Player.\+factor}
+
+\mbox{\Hypertarget{class_player_a9159a0bdf10845c484a41823fe3c101e}\label{class_player_a9159a0bdf10845c484a41823fe3c101e}} 
+\index{Player@{Player}!hp@{hp}}
+\index{hp@{hp}!Player@{Player}}
+\subsubsection{\texorpdfstring{hp}{hp}}
+{\footnotesize\ttfamily int Player.\+hp\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_player_a4133cf7ecb22b0ae16ee457c46eacc08}\label{class_player_a4133cf7ecb22b0ae16ee457c46eacc08}} 
+\index{Player@{Player}!id@{id}}
+\index{id@{id}!Player@{Player}}
+\subsubsection{\texorpdfstring{id}{id}}
+{\footnotesize\ttfamily string Player.\+id}
+
+\mbox{\Hypertarget{class_player_a400a72423db730ee29977227c4860cfd}\label{class_player_a400a72423db730ee29977227c4860cfd}} 
+\index{Player@{Player}!level@{level}}
+\index{level@{level}!Player@{Player}}
+\subsubsection{\texorpdfstring{level}{level}}
+{\footnotesize\ttfamily int Player.\+level}
+
+\mbox{\Hypertarget{class_player_abbb49fe572e8c86068fe4f9d326ab07c}\label{class_player_abbb49fe572e8c86068fe4f9d326ab07c}} 
+\index{Player@{Player}!lose@{lose}}
+\index{lose@{lose}!Player@{Player}}
+\subsubsection{\texorpdfstring{lose}{lose}}
+{\footnotesize\ttfamily int Player.\+lose\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_player_aed37167e4117c2518a154e73fbfc103c}\label{class_player_aed37167e4117c2518a154e73fbfc103c}} 
+\index{Player@{Player}!money@{money}}
+\index{money@{money}!Player@{Player}}
+\subsubsection{\texorpdfstring{money}{money}}
+{\footnotesize\ttfamily int Player.\+money\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_player_af31f60ef7eedd89486623f26edb2b990}\label{class_player_af31f60ef7eedd89486623f26edb2b990}} 
+\index{Player@{Player}!shield@{shield}}
+\index{shield@{shield}!Player@{Player}}
+\subsubsection{\texorpdfstring{shield}{shield}}
+{\footnotesize\ttfamily int Player.\+shield\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_player_aa6c1d9c5753ea9a365f28eac36238d1f}\label{class_player_aa6c1d9c5753ea9a365f28eac36238d1f}} 
+\index{Player@{Player}!sword@{sword}}
+\index{sword@{sword}!Player@{Player}}
+\subsubsection{\texorpdfstring{sword}{sword}}
+{\footnotesize\ttfamily int Player.\+sword}
+
+\mbox{\Hypertarget{class_player_a9abe91f5084f15d7a11c7a77f345e517}\label{class_player_a9abe91f5084f15d7a11c7a77f345e517}} 
+\index{Player@{Player}!win@{win}}
+\index{win@{win}!Player@{Player}}
+\subsubsection{\texorpdfstring{win}{win}}
+{\footnotesize\ttfamily int Player.\+win\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+U\+O\+N\+\_\+\+I\+B\+M\+\_\+\+A\+I\+G\+A\+M\+E2018/\+Unity/\+Group15/\+Assets/\+Scripts/\+Session Objects/\mbox{\hyperlink{_player_8cs}{Player.\+cs}}\end{DoxyCompactItemize}

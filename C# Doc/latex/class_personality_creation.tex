@@ -1,0 +1,215 @@
+\hypertarget{class_personality_creation}{}\section{Personality\+Creation Class Reference}
+\label{class_personality_creation}\index{PersonalityCreation@{PersonalityCreation}}
+
+
+Ideal Personality Creation management.  
+
+
+Inheritance diagram for Personality\+Creation\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_personality_creation}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_personality_creation_a464be274e82be75bab0899f8756c9562}{Submit}} ()
+\begin{DoxyCompactList}\small\item\em Create J\+S\+ON to pass to server. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+Slider \mbox{\hyperlink{class_personality_creation_aa951821515495d458db8fc1b4a83ea4f}{trait1\+Slider}}
+\item 
+Button \mbox{\hyperlink{class_personality_creation_a4b841ca4b3004940300135d79365beac}{submit\+Button}}
+\item 
+Text \mbox{\hyperlink{class_personality_creation_ac4714076ddafa535821be12ec0669692}{percent\+T1\+Text}}
+\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+float \mbox{\hyperlink{class_personality_creation_a60f9fca99fc7cf87fe6db7778684776e}{Handle\+Attribute}} (Slider slider, Text display)
+\begin{DoxyCompactList}\small\item\em Take the value of the slider for that attribute. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_personality_creation_a42a823afe83e0b59d3c4119a9a58574c}{Update}} ()
+\begin{DoxyCompactList}\small\item\em Keep actual attribute values up-\/to-\/date with sliders. \end{DoxyCompactList}\item 
+I\+Enumerator \mbox{\hyperlink{class_personality_creation_aa8e27efd53fd6cbc698c84a863fbcafa}{Put\+Ideals}} (string json)
+\begin{DoxyCompactList}\small\item\em P\+UT ideals into server for comparisons. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+Slider \mbox{\hyperlink{class_personality_creation_a66385732bf27dc80b0eb6cd4f3b772d2}{trait2\+Slider}}
+\item 
+Slider \mbox{\hyperlink{class_personality_creation_a0a447917a912ebfc05710ab066670de3}{trait3\+Slider}}
+\item 
+Slider \mbox{\hyperlink{class_personality_creation_a263a2a66b417754deb2aa63f1e0b73b1}{trait4\+Slider}}
+\item 
+Slider \mbox{\hyperlink{class_personality_creation_a21048043717bf28208f3dd28180d2521}{trait5\+Slider}}
+\item 
+Text \mbox{\hyperlink{class_personality_creation_ab602b8a8beefd098fefa2d6182194da7}{percent\+T2\+Text}}
+\item 
+Text \mbox{\hyperlink{class_personality_creation_a66e92793d59bdd9375183bb0507b1ffa}{percent\+T3\+Text}}
+\item 
+Text \mbox{\hyperlink{class_personality_creation_ac4e1810fe90838e0c7da67a793e2ee67}{percent\+T4\+Text}}
+\item 
+Text \mbox{\hyperlink{class_personality_creation_a569dddd291ecb6ad0df7ce8ad58280a4}{percent\+T5\+Text}}
+\item 
+float \mbox{\hyperlink{class_personality_creation_ac1035e316841bd1f8c3efb39fe8fa169}{trait1}}
+\item 
+float \mbox{\hyperlink{class_personality_creation_a578fba175bbebcadf5ac80e425d5a5a6}{trait2}}
+\item 
+float \mbox{\hyperlink{class_personality_creation_a6016c2ed1dbdbfb65209899ea630def7}{trait3}}
+\item 
+float \mbox{\hyperlink{class_personality_creation_ad2dad285fa04cae8b305a0258625f6fe}{trait4}}
+\item 
+float \mbox{\hyperlink{class_personality_creation_a30b74c5f0348b95255194ba01d22747e}{trait5}}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Ideal Personality Creation management. 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_personality_creation_a60f9fca99fc7cf87fe6db7778684776e}\label{class_personality_creation_a60f9fca99fc7cf87fe6db7778684776e}} 
+\index{PersonalityCreation@{PersonalityCreation}!HandleAttribute@{HandleAttribute}}
+\index{HandleAttribute@{HandleAttribute}!PersonalityCreation@{PersonalityCreation}}
+\subsubsection{\texorpdfstring{HandleAttribute()}{HandleAttribute()}}
+{\footnotesize\ttfamily float Personality\+Creation.\+Handle\+Attribute (\begin{DoxyParamCaption}\item[{Slider}]{slider,  }\item[{Text}]{display }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Take the value of the slider for that attribute. 
+
+\mbox{\Hypertarget{class_personality_creation_aa8e27efd53fd6cbc698c84a863fbcafa}\label{class_personality_creation_aa8e27efd53fd6cbc698c84a863fbcafa}} 
+\index{PersonalityCreation@{PersonalityCreation}!PutIdeals@{PutIdeals}}
+\index{PutIdeals@{PutIdeals}!PersonalityCreation@{PersonalityCreation}}
+\subsubsection{\texorpdfstring{PutIdeals()}{PutIdeals()}}
+{\footnotesize\ttfamily I\+Enumerator Personality\+Creation.\+Put\+Ideals (\begin{DoxyParamCaption}\item[{string}]{json }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+P\+UT ideals into server for comparisons. 
+
+\mbox{\Hypertarget{class_personality_creation_a464be274e82be75bab0899f8756c9562}\label{class_personality_creation_a464be274e82be75bab0899f8756c9562}} 
+\index{PersonalityCreation@{PersonalityCreation}!Submit@{Submit}}
+\index{Submit@{Submit}!PersonalityCreation@{PersonalityCreation}}
+\subsubsection{\texorpdfstring{Submit()}{Submit()}}
+{\footnotesize\ttfamily void Personality\+Creation.\+Submit (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Create J\+S\+ON to pass to server. 
+
+\mbox{\Hypertarget{class_personality_creation_a42a823afe83e0b59d3c4119a9a58574c}\label{class_personality_creation_a42a823afe83e0b59d3c4119a9a58574c}} 
+\index{PersonalityCreation@{PersonalityCreation}!Update@{Update}}
+\index{Update@{Update}!PersonalityCreation@{PersonalityCreation}}
+\subsubsection{\texorpdfstring{Update()}{Update()}}
+{\footnotesize\ttfamily void Personality\+Creation.\+Update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Keep actual attribute values up-\/to-\/date with sliders. 
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{class_personality_creation_ac4714076ddafa535821be12ec0669692}\label{class_personality_creation_ac4714076ddafa535821be12ec0669692}} 
+\index{PersonalityCreation@{PersonalityCreation}!percentT1Text@{percentT1Text}}
+\index{percentT1Text@{percentT1Text}!PersonalityCreation@{PersonalityCreation}}
+\subsubsection{\texorpdfstring{percentT1Text}{percentT1Text}}
+{\footnotesize\ttfamily Text Personality\+Creation.\+percent\+T1\+Text}
+
+\mbox{\Hypertarget{class_personality_creation_ab602b8a8beefd098fefa2d6182194da7}\label{class_personality_creation_ab602b8a8beefd098fefa2d6182194da7}} 
+\index{PersonalityCreation@{PersonalityCreation}!percentT2Text@{percentT2Text}}
+\index{percentT2Text@{percentT2Text}!PersonalityCreation@{PersonalityCreation}}
+\subsubsection{\texorpdfstring{percentT2Text}{percentT2Text}}
+{\footnotesize\ttfamily Text Personality\+Creation.\+percent\+T2\+Text\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_personality_creation_a66e92793d59bdd9375183bb0507b1ffa}\label{class_personality_creation_a66e92793d59bdd9375183bb0507b1ffa}} 
+\index{PersonalityCreation@{PersonalityCreation}!percentT3Text@{percentT3Text}}
+\index{percentT3Text@{percentT3Text}!PersonalityCreation@{PersonalityCreation}}
+\subsubsection{\texorpdfstring{percentT3Text}{percentT3Text}}
+{\footnotesize\ttfamily Text Personality\+Creation.\+percent\+T3\+Text\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_personality_creation_ac4e1810fe90838e0c7da67a793e2ee67}\label{class_personality_creation_ac4e1810fe90838e0c7da67a793e2ee67}} 
+\index{PersonalityCreation@{PersonalityCreation}!percentT4Text@{percentT4Text}}
+\index{percentT4Text@{percentT4Text}!PersonalityCreation@{PersonalityCreation}}
+\subsubsection{\texorpdfstring{percentT4Text}{percentT4Text}}
+{\footnotesize\ttfamily Text Personality\+Creation.\+percent\+T4\+Text\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_personality_creation_a569dddd291ecb6ad0df7ce8ad58280a4}\label{class_personality_creation_a569dddd291ecb6ad0df7ce8ad58280a4}} 
+\index{PersonalityCreation@{PersonalityCreation}!percentT5Text@{percentT5Text}}
+\index{percentT5Text@{percentT5Text}!PersonalityCreation@{PersonalityCreation}}
+\subsubsection{\texorpdfstring{percentT5Text}{percentT5Text}}
+{\footnotesize\ttfamily Text Personality\+Creation.\+percent\+T5\+Text\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_personality_creation_a4b841ca4b3004940300135d79365beac}\label{class_personality_creation_a4b841ca4b3004940300135d79365beac}} 
+\index{PersonalityCreation@{PersonalityCreation}!submitButton@{submitButton}}
+\index{submitButton@{submitButton}!PersonalityCreation@{PersonalityCreation}}
+\subsubsection{\texorpdfstring{submitButton}{submitButton}}
+{\footnotesize\ttfamily Button Personality\+Creation.\+submit\+Button}
+
+\mbox{\Hypertarget{class_personality_creation_ac1035e316841bd1f8c3efb39fe8fa169}\label{class_personality_creation_ac1035e316841bd1f8c3efb39fe8fa169}} 
+\index{PersonalityCreation@{PersonalityCreation}!trait1@{trait1}}
+\index{trait1@{trait1}!PersonalityCreation@{PersonalityCreation}}
+\subsubsection{\texorpdfstring{trait1}{trait1}}
+{\footnotesize\ttfamily float Personality\+Creation.\+trait1\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_personality_creation_aa951821515495d458db8fc1b4a83ea4f}\label{class_personality_creation_aa951821515495d458db8fc1b4a83ea4f}} 
+\index{PersonalityCreation@{PersonalityCreation}!trait1Slider@{trait1Slider}}
+\index{trait1Slider@{trait1Slider}!PersonalityCreation@{PersonalityCreation}}
+\subsubsection{\texorpdfstring{trait1Slider}{trait1Slider}}
+{\footnotesize\ttfamily Slider Personality\+Creation.\+trait1\+Slider}
+
+\mbox{\Hypertarget{class_personality_creation_a578fba175bbebcadf5ac80e425d5a5a6}\label{class_personality_creation_a578fba175bbebcadf5ac80e425d5a5a6}} 
+\index{PersonalityCreation@{PersonalityCreation}!trait2@{trait2}}
+\index{trait2@{trait2}!PersonalityCreation@{PersonalityCreation}}
+\subsubsection{\texorpdfstring{trait2}{trait2}}
+{\footnotesize\ttfamily float Personality\+Creation.\+trait2\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_personality_creation_a66385732bf27dc80b0eb6cd4f3b772d2}\label{class_personality_creation_a66385732bf27dc80b0eb6cd4f3b772d2}} 
+\index{PersonalityCreation@{PersonalityCreation}!trait2Slider@{trait2Slider}}
+\index{trait2Slider@{trait2Slider}!PersonalityCreation@{PersonalityCreation}}
+\subsubsection{\texorpdfstring{trait2Slider}{trait2Slider}}
+{\footnotesize\ttfamily Slider Personality\+Creation.\+trait2\+Slider\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_personality_creation_a6016c2ed1dbdbfb65209899ea630def7}\label{class_personality_creation_a6016c2ed1dbdbfb65209899ea630def7}} 
+\index{PersonalityCreation@{PersonalityCreation}!trait3@{trait3}}
+\index{trait3@{trait3}!PersonalityCreation@{PersonalityCreation}}
+\subsubsection{\texorpdfstring{trait3}{trait3}}
+{\footnotesize\ttfamily float Personality\+Creation.\+trait3\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_personality_creation_a0a447917a912ebfc05710ab066670de3}\label{class_personality_creation_a0a447917a912ebfc05710ab066670de3}} 
+\index{PersonalityCreation@{PersonalityCreation}!trait3Slider@{trait3Slider}}
+\index{trait3Slider@{trait3Slider}!PersonalityCreation@{PersonalityCreation}}
+\subsubsection{\texorpdfstring{trait3Slider}{trait3Slider}}
+{\footnotesize\ttfamily Slider Personality\+Creation.\+trait3\+Slider\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_personality_creation_ad2dad285fa04cae8b305a0258625f6fe}\label{class_personality_creation_ad2dad285fa04cae8b305a0258625f6fe}} 
+\index{PersonalityCreation@{PersonalityCreation}!trait4@{trait4}}
+\index{trait4@{trait4}!PersonalityCreation@{PersonalityCreation}}
+\subsubsection{\texorpdfstring{trait4}{trait4}}
+{\footnotesize\ttfamily float Personality\+Creation.\+trait4\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_personality_creation_a263a2a66b417754deb2aa63f1e0b73b1}\label{class_personality_creation_a263a2a66b417754deb2aa63f1e0b73b1}} 
+\index{PersonalityCreation@{PersonalityCreation}!trait4Slider@{trait4Slider}}
+\index{trait4Slider@{trait4Slider}!PersonalityCreation@{PersonalityCreation}}
+\subsubsection{\texorpdfstring{trait4Slider}{trait4Slider}}
+{\footnotesize\ttfamily Slider Personality\+Creation.\+trait4\+Slider\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_personality_creation_a30b74c5f0348b95255194ba01d22747e}\label{class_personality_creation_a30b74c5f0348b95255194ba01d22747e}} 
+\index{PersonalityCreation@{PersonalityCreation}!trait5@{trait5}}
+\index{trait5@{trait5}!PersonalityCreation@{PersonalityCreation}}
+\subsubsection{\texorpdfstring{trait5}{trait5}}
+{\footnotesize\ttfamily float Personality\+Creation.\+trait5\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_personality_creation_a21048043717bf28208f3dd28180d2521}\label{class_personality_creation_a21048043717bf28208f3dd28180d2521}} 
+\index{PersonalityCreation@{PersonalityCreation}!trait5Slider@{trait5Slider}}
+\index{trait5Slider@{trait5Slider}!PersonalityCreation@{PersonalityCreation}}
+\subsubsection{\texorpdfstring{trait5Slider}{trait5Slider}}
+{\footnotesize\ttfamily Slider Personality\+Creation.\+trait5\+Slider\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+U\+O\+N\+\_\+\+I\+B\+M\+\_\+\+A\+I\+G\+A\+M\+E2018/\+Unity/\+Group15/\+Assets/\+Scripts/\+Personality/\mbox{\hyperlink{_personality_creation_8cs}{Personality\+Creation.\+cs}}\end{DoxyCompactItemize}

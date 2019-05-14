@@ -1,0 +1,150 @@
+\hypertarget{class_bot_screen}{}\section{Bot\+Screen Class Reference}
+\label{class_bot_screen}\index{BotScreen@{BotScreen}}
+
+
+PvE screen and difficulty management.  
+
+
+Inheritance diagram for Bot\+Screen\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_bot_screen}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_bot_screen_a0d4926b1ac8cb0e45f72b127cd297f94}{Change\+Difficulty}} (string given\+\_\+difficulty)
+\begin{DoxyCompactList}\small\item\em Update the difficulty to the selected one. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_bot_screen_a594089f360bedf3ae9aff037401a504c}{Play}} ()
+\begin{DoxyCompactList}\small\item\em Initiate the PvE match sequence. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+Game\+Object \mbox{\hyperlink{class_bot_screen_a6bfbc4fa0fb32c1eaddab0d8f4a696a7}{selected\+\_\+easy}}
+\item 
+Audio\+Source \mbox{\hyperlink{class_bot_screen_ad005dc3b790b271432c1a7146acd1057}{audiosrc}}
+\end{DoxyCompactItemize}
+\subsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static string \mbox{\hyperlink{class_bot_screen_a290ac499ce563b31c96862a68d02f562}{difficulty}}
+\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_bot_screen_a3ffff8c4a3c08bfc13dde5e3a7af702f}{Start}} ()
+\begin{DoxyCompactList}\small\item\em Pre-\/select the stored difficulty setting, play sounds. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_bot_screen_a4a3fe27c63d7539549cd01b2f7176ed5}{Update}} ()
+\begin{DoxyCompactList}\small\item\em Keep the difficulty updated. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_bot_screen_a4d2d8d3ba5b06b185ee0ee039dbdcdd4}{Play\+Delayed}} ()
+\begin{DoxyCompactList}\small\item\em Forward to the Battle scene. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+Game\+Object \mbox{\hyperlink{class_bot_screen_af79faac4fee58c76b8630e8c04194b1e}{selected\+\_\+medium}}
+\item 
+Game\+Object \mbox{\hyperlink{class_bot_screen_a262f5baad010eaff48025e5121de8399}{selected\+\_\+hard}}
+\item 
+Game\+Object \mbox{\hyperlink{class_bot_screen_a233b5c70a27ea041ec3485282b95dedf}{loading}}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+PvE screen and difficulty management. 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_bot_screen_a0d4926b1ac8cb0e45f72b127cd297f94}\label{class_bot_screen_a0d4926b1ac8cb0e45f72b127cd297f94}} 
+\index{BotScreen@{BotScreen}!ChangeDifficulty@{ChangeDifficulty}}
+\index{ChangeDifficulty@{ChangeDifficulty}!BotScreen@{BotScreen}}
+\subsubsection{\texorpdfstring{ChangeDifficulty()}{ChangeDifficulty()}}
+{\footnotesize\ttfamily void Bot\+Screen.\+Change\+Difficulty (\begin{DoxyParamCaption}\item[{string}]{given\+\_\+difficulty }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Update the difficulty to the selected one. 
+
+\mbox{\Hypertarget{class_bot_screen_a594089f360bedf3ae9aff037401a504c}\label{class_bot_screen_a594089f360bedf3ae9aff037401a504c}} 
+\index{BotScreen@{BotScreen}!Play@{Play}}
+\index{Play@{Play}!BotScreen@{BotScreen}}
+\subsubsection{\texorpdfstring{Play()}{Play()}}
+{\footnotesize\ttfamily void Bot\+Screen.\+Play (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Initiate the PvE match sequence. 
+
+\mbox{\Hypertarget{class_bot_screen_a4d2d8d3ba5b06b185ee0ee039dbdcdd4}\label{class_bot_screen_a4d2d8d3ba5b06b185ee0ee039dbdcdd4}} 
+\index{BotScreen@{BotScreen}!PlayDelayed@{PlayDelayed}}
+\index{PlayDelayed@{PlayDelayed}!BotScreen@{BotScreen}}
+\subsubsection{\texorpdfstring{PlayDelayed()}{PlayDelayed()}}
+{\footnotesize\ttfamily void Bot\+Screen.\+Play\+Delayed (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Forward to the Battle scene. 
+
+\mbox{\Hypertarget{class_bot_screen_a3ffff8c4a3c08bfc13dde5e3a7af702f}\label{class_bot_screen_a3ffff8c4a3c08bfc13dde5e3a7af702f}} 
+\index{BotScreen@{BotScreen}!Start@{Start}}
+\index{Start@{Start}!BotScreen@{BotScreen}}
+\subsubsection{\texorpdfstring{Start()}{Start()}}
+{\footnotesize\ttfamily void Bot\+Screen.\+Start (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Pre-\/select the stored difficulty setting, play sounds. 
+
+\mbox{\Hypertarget{class_bot_screen_a4a3fe27c63d7539549cd01b2f7176ed5}\label{class_bot_screen_a4a3fe27c63d7539549cd01b2f7176ed5}} 
+\index{BotScreen@{BotScreen}!Update@{Update}}
+\index{Update@{Update}!BotScreen@{BotScreen}}
+\subsubsection{\texorpdfstring{Update()}{Update()}}
+{\footnotesize\ttfamily void Bot\+Screen.\+Update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Keep the difficulty updated. 
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{class_bot_screen_ad005dc3b790b271432c1a7146acd1057}\label{class_bot_screen_ad005dc3b790b271432c1a7146acd1057}} 
+\index{BotScreen@{BotScreen}!audiosrc@{audiosrc}}
+\index{audiosrc@{audiosrc}!BotScreen@{BotScreen}}
+\subsubsection{\texorpdfstring{audiosrc}{audiosrc}}
+{\footnotesize\ttfamily Audio\+Source Bot\+Screen.\+audiosrc}
+
+\mbox{\Hypertarget{class_bot_screen_a290ac499ce563b31c96862a68d02f562}\label{class_bot_screen_a290ac499ce563b31c96862a68d02f562}} 
+\index{BotScreen@{BotScreen}!difficulty@{difficulty}}
+\index{difficulty@{difficulty}!BotScreen@{BotScreen}}
+\subsubsection{\texorpdfstring{difficulty}{difficulty}}
+{\footnotesize\ttfamily string Bot\+Screen.\+difficulty\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{class_bot_screen_a233b5c70a27ea041ec3485282b95dedf}\label{class_bot_screen_a233b5c70a27ea041ec3485282b95dedf}} 
+\index{BotScreen@{BotScreen}!loading@{loading}}
+\index{loading@{loading}!BotScreen@{BotScreen}}
+\subsubsection{\texorpdfstring{loading}{loading}}
+{\footnotesize\ttfamily Game\+Object Bot\+Screen.\+loading\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_bot_screen_a6bfbc4fa0fb32c1eaddab0d8f4a696a7}\label{class_bot_screen_a6bfbc4fa0fb32c1eaddab0d8f4a696a7}} 
+\index{BotScreen@{BotScreen}!selected\_easy@{selected\_easy}}
+\index{selected\_easy@{selected\_easy}!BotScreen@{BotScreen}}
+\subsubsection{\texorpdfstring{selected\_easy}{selected\_easy}}
+{\footnotesize\ttfamily Game\+Object Bot\+Screen.\+selected\+\_\+easy}
+
+\mbox{\Hypertarget{class_bot_screen_a262f5baad010eaff48025e5121de8399}\label{class_bot_screen_a262f5baad010eaff48025e5121de8399}} 
+\index{BotScreen@{BotScreen}!selected\_hard@{selected\_hard}}
+\index{selected\_hard@{selected\_hard}!BotScreen@{BotScreen}}
+\subsubsection{\texorpdfstring{selected\_hard}{selected\_hard}}
+{\footnotesize\ttfamily Game\+Object Bot\+Screen.\+selected\+\_\+hard\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_bot_screen_af79faac4fee58c76b8630e8c04194b1e}\label{class_bot_screen_af79faac4fee58c76b8630e8c04194b1e}} 
+\index{BotScreen@{BotScreen}!selected\_medium@{selected\_medium}}
+\index{selected\_medium@{selected\_medium}!BotScreen@{BotScreen}}
+\subsubsection{\texorpdfstring{selected\_medium}{selected\_medium}}
+{\footnotesize\ttfamily Game\+Object Bot\+Screen.\+selected\+\_\+medium\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+U\+O\+N\+\_\+\+I\+B\+M\+\_\+\+A\+I\+G\+A\+M\+E2018/\+Unity/\+Group15/\+Assets/\+Scripts/\+Battle/\mbox{\hyperlink{_bot_screen_8cs}{Bot\+Screen.\+cs}}\end{DoxyCompactItemize}

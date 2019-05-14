@@ -1,0 +1,184 @@
+\hypertarget{class_win_lose_popup}{}\section{Win\+Lose\+Popup Class Reference}
+\label{class_win_lose_popup}\index{WinLosePopup@{WinLosePopup}}
+
+
+Visualize the rewards gained from winning/losing a match.  
+
+
+Inheritance diagram for Win\+Lose\+Popup\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_win_lose_popup}
+\end{center}
+\end{figure}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+Text \mbox{\hyperlink{class_win_lose_popup_a96b5a5d480b14cdae7e5a882bee30757}{win\+Money\+Text}}
+\item 
+Text \mbox{\hyperlink{class_win_lose_popup_adbe5b4c1578b28ae3a6bc4993407a739}{lose\+Money\+Text}}
+\item 
+Slider \mbox{\hyperlink{class_win_lose_popup_a68c25472f6b7101d6995dd57b6aa6803}{win\+Exp\+Slider}}
+\item 
+Audio\+Source \mbox{\hyperlink{class_win_lose_popup_a7f104ba616010ea3714c5abc1306e6de}{soundsrc}}
+\item 
+Audio\+Clip \mbox{\hyperlink{class_win_lose_popup_a1f35c7e6dea70e8dba042d4703768d8d}{levelup\+\_\+\+Sound}}
+\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_win_lose_popup_a9f1909bfd129a06cb0ff7048ccf19d0f}{Update}} ()
+\begin{DoxyCompactList}\small\item\em When battle ends, display the Win/\+Lose popup and animate the E\+XP and money gain. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_win_lose_popup_a93530da059106189d5c41afff35bca9d}{Setup}} ()
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+Text \mbox{\hyperlink{class_win_lose_popup_ae36d60eb365ca9331d068e354a13eb00}{win\+Next\+Level\+Text}}
+\item 
+Text \mbox{\hyperlink{class_win_lose_popup_a2d14509aafa2672bffa70812b7fd8feb}{lose\+Next\+Lvl\+Text}}
+\item 
+Slider \mbox{\hyperlink{class_win_lose_popup_ab14cf5e3153f0c51bacc94f0dc7de77e}{lose\+Exp\+Slider}}
+\item 
+Text \mbox{\hyperlink{class_win_lose_popup_adbc1922aff99c3b3fa585a4e7f124e13}{money\+Gained}}
+\item 
+Text \mbox{\hyperlink{class_win_lose_popup_a3b0146c33af33ccf52b4404052896bb9}{current\+Level}}
+\item 
+Slider \mbox{\hyperlink{class_win_lose_popup_afef81efb95018e4cbe2505da1c5a3ab3}{exp\+Slider}}
+\item 
+\mbox{\hyperlink{class_player}{Player}} \mbox{\hyperlink{class_win_lose_popup_a7201ba527ce8ca90adf383224c89c2d3}{before}}
+\item 
+\mbox{\hyperlink{class_player}{Player}} \mbox{\hyperlink{class_win_lose_popup_a5da1387cc4bb2efb52708a85b5a70685}{after}}
+\item 
+bool \mbox{\hyperlink{class_win_lose_popup_adaa6d1028fb44efd4fe50993ae35c9f1}{did\+Setup}} = false
+\item 
+bool \mbox{\hyperlink{class_win_lose_popup_adf087a11d92bb33525095c666db98b15}{gained\+Level}} = false
+\item 
+float \mbox{\hyperlink{class_win_lose_popup_a24495c1926e8cf1d2284204629e8ce78}{added\+Exp}} = 0
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Visualize the rewards gained from winning/losing a match. 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_win_lose_popup_a93530da059106189d5c41afff35bca9d}\label{class_win_lose_popup_a93530da059106189d5c41afff35bca9d}} 
+\index{WinLosePopup@{WinLosePopup}!Setup@{Setup}}
+\index{Setup@{Setup}!WinLosePopup@{WinLosePopup}}
+\subsubsection{\texorpdfstring{Setup()}{Setup()}}
+{\footnotesize\ttfamily void Win\+Lose\+Popup.\+Setup (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_win_lose_popup_a9f1909bfd129a06cb0ff7048ccf19d0f}\label{class_win_lose_popup_a9f1909bfd129a06cb0ff7048ccf19d0f}} 
+\index{WinLosePopup@{WinLosePopup}!Update@{Update}}
+\index{Update@{Update}!WinLosePopup@{WinLosePopup}}
+\subsubsection{\texorpdfstring{Update()}{Update()}}
+{\footnotesize\ttfamily void Win\+Lose\+Popup.\+Update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+When battle ends, display the Win/\+Lose popup and animate the E\+XP and money gain. 
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{class_win_lose_popup_a24495c1926e8cf1d2284204629e8ce78}\label{class_win_lose_popup_a24495c1926e8cf1d2284204629e8ce78}} 
+\index{WinLosePopup@{WinLosePopup}!addedExp@{addedExp}}
+\index{addedExp@{addedExp}!WinLosePopup@{WinLosePopup}}
+\subsubsection{\texorpdfstring{addedExp}{addedExp}}
+{\footnotesize\ttfamily float Win\+Lose\+Popup.\+added\+Exp = 0\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_win_lose_popup_a5da1387cc4bb2efb52708a85b5a70685}\label{class_win_lose_popup_a5da1387cc4bb2efb52708a85b5a70685}} 
+\index{WinLosePopup@{WinLosePopup}!after@{after}}
+\index{after@{after}!WinLosePopup@{WinLosePopup}}
+\subsubsection{\texorpdfstring{after}{after}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_player}{Player}} Win\+Lose\+Popup.\+after\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_win_lose_popup_a7201ba527ce8ca90adf383224c89c2d3}\label{class_win_lose_popup_a7201ba527ce8ca90adf383224c89c2d3}} 
+\index{WinLosePopup@{WinLosePopup}!before@{before}}
+\index{before@{before}!WinLosePopup@{WinLosePopup}}
+\subsubsection{\texorpdfstring{before}{before}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_player}{Player}} Win\+Lose\+Popup.\+before\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_win_lose_popup_a3b0146c33af33ccf52b4404052896bb9}\label{class_win_lose_popup_a3b0146c33af33ccf52b4404052896bb9}} 
+\index{WinLosePopup@{WinLosePopup}!currentLevel@{currentLevel}}
+\index{currentLevel@{currentLevel}!WinLosePopup@{WinLosePopup}}
+\subsubsection{\texorpdfstring{currentLevel}{currentLevel}}
+{\footnotesize\ttfamily Text Win\+Lose\+Popup.\+current\+Level\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_win_lose_popup_adaa6d1028fb44efd4fe50993ae35c9f1}\label{class_win_lose_popup_adaa6d1028fb44efd4fe50993ae35c9f1}} 
+\index{WinLosePopup@{WinLosePopup}!didSetup@{didSetup}}
+\index{didSetup@{didSetup}!WinLosePopup@{WinLosePopup}}
+\subsubsection{\texorpdfstring{didSetup}{didSetup}}
+{\footnotesize\ttfamily bool Win\+Lose\+Popup.\+did\+Setup = false\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_win_lose_popup_afef81efb95018e4cbe2505da1c5a3ab3}\label{class_win_lose_popup_afef81efb95018e4cbe2505da1c5a3ab3}} 
+\index{WinLosePopup@{WinLosePopup}!expSlider@{expSlider}}
+\index{expSlider@{expSlider}!WinLosePopup@{WinLosePopup}}
+\subsubsection{\texorpdfstring{expSlider}{expSlider}}
+{\footnotesize\ttfamily Slider Win\+Lose\+Popup.\+exp\+Slider\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_win_lose_popup_adf087a11d92bb33525095c666db98b15}\label{class_win_lose_popup_adf087a11d92bb33525095c666db98b15}} 
+\index{WinLosePopup@{WinLosePopup}!gainedLevel@{gainedLevel}}
+\index{gainedLevel@{gainedLevel}!WinLosePopup@{WinLosePopup}}
+\subsubsection{\texorpdfstring{gainedLevel}{gainedLevel}}
+{\footnotesize\ttfamily bool Win\+Lose\+Popup.\+gained\+Level = false\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_win_lose_popup_a1f35c7e6dea70e8dba042d4703768d8d}\label{class_win_lose_popup_a1f35c7e6dea70e8dba042d4703768d8d}} 
+\index{WinLosePopup@{WinLosePopup}!levelup\_Sound@{levelup\_Sound}}
+\index{levelup\_Sound@{levelup\_Sound}!WinLosePopup@{WinLosePopup}}
+\subsubsection{\texorpdfstring{levelup\_Sound}{levelup\_Sound}}
+{\footnotesize\ttfamily Audio\+Clip Win\+Lose\+Popup.\+levelup\+\_\+\+Sound}
+
+\mbox{\Hypertarget{class_win_lose_popup_ab14cf5e3153f0c51bacc94f0dc7de77e}\label{class_win_lose_popup_ab14cf5e3153f0c51bacc94f0dc7de77e}} 
+\index{WinLosePopup@{WinLosePopup}!loseExpSlider@{loseExpSlider}}
+\index{loseExpSlider@{loseExpSlider}!WinLosePopup@{WinLosePopup}}
+\subsubsection{\texorpdfstring{loseExpSlider}{loseExpSlider}}
+{\footnotesize\ttfamily Slider Win\+Lose\+Popup.\+lose\+Exp\+Slider\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_win_lose_popup_adbe5b4c1578b28ae3a6bc4993407a739}\label{class_win_lose_popup_adbe5b4c1578b28ae3a6bc4993407a739}} 
+\index{WinLosePopup@{WinLosePopup}!loseMoneyText@{loseMoneyText}}
+\index{loseMoneyText@{loseMoneyText}!WinLosePopup@{WinLosePopup}}
+\subsubsection{\texorpdfstring{loseMoneyText}{loseMoneyText}}
+{\footnotesize\ttfamily Text Win\+Lose\+Popup.\+lose\+Money\+Text}
+
+\mbox{\Hypertarget{class_win_lose_popup_a2d14509aafa2672bffa70812b7fd8feb}\label{class_win_lose_popup_a2d14509aafa2672bffa70812b7fd8feb}} 
+\index{WinLosePopup@{WinLosePopup}!loseNextLvlText@{loseNextLvlText}}
+\index{loseNextLvlText@{loseNextLvlText}!WinLosePopup@{WinLosePopup}}
+\subsubsection{\texorpdfstring{loseNextLvlText}{loseNextLvlText}}
+{\footnotesize\ttfamily Text Win\+Lose\+Popup.\+lose\+Next\+Lvl\+Text\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_win_lose_popup_adbc1922aff99c3b3fa585a4e7f124e13}\label{class_win_lose_popup_adbc1922aff99c3b3fa585a4e7f124e13}} 
+\index{WinLosePopup@{WinLosePopup}!moneyGained@{moneyGained}}
+\index{moneyGained@{moneyGained}!WinLosePopup@{WinLosePopup}}
+\subsubsection{\texorpdfstring{moneyGained}{moneyGained}}
+{\footnotesize\ttfamily Text Win\+Lose\+Popup.\+money\+Gained\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_win_lose_popup_a7f104ba616010ea3714c5abc1306e6de}\label{class_win_lose_popup_a7f104ba616010ea3714c5abc1306e6de}} 
+\index{WinLosePopup@{WinLosePopup}!soundsrc@{soundsrc}}
+\index{soundsrc@{soundsrc}!WinLosePopup@{WinLosePopup}}
+\subsubsection{\texorpdfstring{soundsrc}{soundsrc}}
+{\footnotesize\ttfamily Audio\+Source Win\+Lose\+Popup.\+soundsrc}
+
+\mbox{\Hypertarget{class_win_lose_popup_a68c25472f6b7101d6995dd57b6aa6803}\label{class_win_lose_popup_a68c25472f6b7101d6995dd57b6aa6803}} 
+\index{WinLosePopup@{WinLosePopup}!winExpSlider@{winExpSlider}}
+\index{winExpSlider@{winExpSlider}!WinLosePopup@{WinLosePopup}}
+\subsubsection{\texorpdfstring{winExpSlider}{winExpSlider}}
+{\footnotesize\ttfamily Slider Win\+Lose\+Popup.\+win\+Exp\+Slider}
+
+\mbox{\Hypertarget{class_win_lose_popup_a96b5a5d480b14cdae7e5a882bee30757}\label{class_win_lose_popup_a96b5a5d480b14cdae7e5a882bee30757}} 
+\index{WinLosePopup@{WinLosePopup}!winMoneyText@{winMoneyText}}
+\index{winMoneyText@{winMoneyText}!WinLosePopup@{WinLosePopup}}
+\subsubsection{\texorpdfstring{winMoneyText}{winMoneyText}}
+{\footnotesize\ttfamily Text Win\+Lose\+Popup.\+win\+Money\+Text}
+
+\mbox{\Hypertarget{class_win_lose_popup_ae36d60eb365ca9331d068e354a13eb00}\label{class_win_lose_popup_ae36d60eb365ca9331d068e354a13eb00}} 
+\index{WinLosePopup@{WinLosePopup}!winNextLevelText@{winNextLevelText}}
+\index{winNextLevelText@{winNextLevelText}!WinLosePopup@{WinLosePopup}}
+\subsubsection{\texorpdfstring{winNextLevelText}{winNextLevelText}}
+{\footnotesize\ttfamily Text Win\+Lose\+Popup.\+win\+Next\+Level\+Text\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+U\+O\+N\+\_\+\+I\+B\+M\+\_\+\+A\+I\+G\+A\+M\+E2018/\+Unity/\+Group15/\+Assets/\+Scripts/\+Battle/\mbox{\hyperlink{_win_lose_popup_8cs}{Win\+Lose\+Popup.\+cs}}\end{DoxyCompactItemize}

@@ -1,0 +1,109 @@
+\hypertarget{class_turn}{}\section{Turn Class Reference}
+\label{class_turn}\index{Turn@{Turn}}
+
+
+Calculate damage, who plays and outcome of one \mbox{\hyperlink{class_turn}{Turn}}.  
+
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_turn_a573bc57fc636b4699b476aed4c1278ba}{Turn}} (bool \+\_\+turn, \mbox{\hyperlink{class_player}{Player}} \+\_\+player, \mbox{\hyperlink{class_player}{Player}} \+\_\+enemy)
+\begin{DoxyCompactList}\small\item\em Basic Constructor. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_turn_abc3ccf0218afc2904a2dbd37561a56b2}{Play\+Turn}} ()
+\begin{DoxyCompactList}\small\item\em Calculate the result of this \mbox{\hyperlink{class_turn}{Turn}}, including damage dealth, each \mbox{\hyperlink{class_player}{Player}}\textquotesingle{}s remaining HP etc. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_player}{Player}} \mbox{\hyperlink{class_turn_abcef0253137bf6c75965b66e5f7a4d5e}{player}}
+\item 
+\mbox{\hyperlink{class_player}{Player}} \mbox{\hyperlink{class_turn_a4ceac3369c1d8eb19b2ad8ac4925b9a7}{enemy}}
+\item 
+bool \mbox{\hyperlink{class_turn_ae3877d2983475bd0123819bfb1ad3fa9}{player\+\_\+turn}}
+\item 
+float \mbox{\hyperlink{class_turn_a1bd13f96a59a1f958d2e8c98657d860d}{damage}}
+\item 
+int \mbox{\hyperlink{class_turn_adee435c5c71d7bfe0c701e11dea8c365}{crit\+\_\+landed}}
+\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_player}{Player}} \mbox{\hyperlink{class_turn_a5dca683e4c9687227519db8872af3830}{Plays\+Now}} (bool player\+Plays)
+\begin{DoxyCompactList}\small\item\em Choose whose \mbox{\hyperlink{class_turn}{Turn}} this is, alternating every \mbox{\hyperlink{class_turn}{Turn}}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Calculate damage, who plays and outcome of one \mbox{\hyperlink{class_turn}{Turn}}. 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_turn_a573bc57fc636b4699b476aed4c1278ba}\label{class_turn_a573bc57fc636b4699b476aed4c1278ba}} 
+\index{Turn@{Turn}!Turn@{Turn}}
+\index{Turn@{Turn}!Turn@{Turn}}
+\subsubsection{\texorpdfstring{Turn()}{Turn()}}
+{\footnotesize\ttfamily Turn.\+Turn (\begin{DoxyParamCaption}\item[{bool}]{\+\_\+turn,  }\item[{\mbox{\hyperlink{class_player}{Player}}}]{\+\_\+player,  }\item[{\mbox{\hyperlink{class_player}{Player}}}]{\+\_\+enemy }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Basic Constructor. 
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_turn_a5dca683e4c9687227519db8872af3830}\label{class_turn_a5dca683e4c9687227519db8872af3830}} 
+\index{Turn@{Turn}!PlaysNow@{PlaysNow}}
+\index{PlaysNow@{PlaysNow}!Turn@{Turn}}
+\subsubsection{\texorpdfstring{PlaysNow()}{PlaysNow()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_player}{Player}} Turn.\+Plays\+Now (\begin{DoxyParamCaption}\item[{bool}]{player\+Plays }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Choose whose \mbox{\hyperlink{class_turn}{Turn}} this is, alternating every \mbox{\hyperlink{class_turn}{Turn}}. 
+
+\mbox{\Hypertarget{class_turn_abc3ccf0218afc2904a2dbd37561a56b2}\label{class_turn_abc3ccf0218afc2904a2dbd37561a56b2}} 
+\index{Turn@{Turn}!PlayTurn@{PlayTurn}}
+\index{PlayTurn@{PlayTurn}!Turn@{Turn}}
+\subsubsection{\texorpdfstring{PlayTurn()}{PlayTurn()}}
+{\footnotesize\ttfamily int Turn.\+Play\+Turn (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Calculate the result of this \mbox{\hyperlink{class_turn}{Turn}}, including damage dealth, each \mbox{\hyperlink{class_player}{Player}}\textquotesingle{}s remaining HP etc. 
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{class_turn_adee435c5c71d7bfe0c701e11dea8c365}\label{class_turn_adee435c5c71d7bfe0c701e11dea8c365}} 
+\index{Turn@{Turn}!crit\_landed@{crit\_landed}}
+\index{crit\_landed@{crit\_landed}!Turn@{Turn}}
+\subsubsection{\texorpdfstring{crit\_landed}{crit\_landed}}
+{\footnotesize\ttfamily int Turn.\+crit\+\_\+landed}
+
+\mbox{\Hypertarget{class_turn_a1bd13f96a59a1f958d2e8c98657d860d}\label{class_turn_a1bd13f96a59a1f958d2e8c98657d860d}} 
+\index{Turn@{Turn}!damage@{damage}}
+\index{damage@{damage}!Turn@{Turn}}
+\subsubsection{\texorpdfstring{damage}{damage}}
+{\footnotesize\ttfamily float Turn.\+damage}
+
+\mbox{\Hypertarget{class_turn_a4ceac3369c1d8eb19b2ad8ac4925b9a7}\label{class_turn_a4ceac3369c1d8eb19b2ad8ac4925b9a7}} 
+\index{Turn@{Turn}!enemy@{enemy}}
+\index{enemy@{enemy}!Turn@{Turn}}
+\subsubsection{\texorpdfstring{enemy}{enemy}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_player}{Player}} Turn.\+enemy}
+
+\mbox{\Hypertarget{class_turn_abcef0253137bf6c75965b66e5f7a4d5e}\label{class_turn_abcef0253137bf6c75965b66e5f7a4d5e}} 
+\index{Turn@{Turn}!player@{player}}
+\index{player@{player}!Turn@{Turn}}
+\subsubsection{\texorpdfstring{player}{player}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_player}{Player}} Turn.\+player}
+
+\mbox{\Hypertarget{class_turn_ae3877d2983475bd0123819bfb1ad3fa9}\label{class_turn_ae3877d2983475bd0123819bfb1ad3fa9}} 
+\index{Turn@{Turn}!player\_turn@{player\_turn}}
+\index{player\_turn@{player\_turn}!Turn@{Turn}}
+\subsubsection{\texorpdfstring{player\_turn}{player\_turn}}
+{\footnotesize\ttfamily bool Turn.\+player\+\_\+turn}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+U\+O\+N\+\_\+\+I\+B\+M\+\_\+\+A\+I\+G\+A\+M\+E2018/\+Unity/\+Group15/\+Assets/\+Scripts/\+Battle/\mbox{\hyperlink{_turn_8cs}{Turn.\+cs}}\end{DoxyCompactItemize}
