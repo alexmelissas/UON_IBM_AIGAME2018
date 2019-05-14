@@ -72,7 +72,8 @@ public class BattleService {
 
 		player1.checklevelUp();
 		playerService.updatePlayer(id1, player1);
-
+		
+		redisService.addBattleCount(id1);
 		return player1;
 	}
 
@@ -111,8 +112,6 @@ public class BattleService {
 			player = playerList.get(randomIndex);
 		}
 
-		redisService.addBattleCount(id, "");
-		logger.info(">>>Left number of battles: {}", 10 - redisService.getBattleCount(id, ""));
 		return player;
 	}
 
@@ -234,11 +233,20 @@ public class BattleService {
 	 * Get the number of battles of a player
 	 * 
 	 * @param id  the id
-	 * @param str indicate the battle is ranked or unranked
 	 * @return the number of battles
 	 */
-	public int getBattleCount(String id, String str) {
-		return redisService.getBattleCount(id, str);
+	public int getBattleCount(String id) {
+		return redisService.getBattleCount(id);
+	}
+	
+	/**
+	 * Get the number of ranked battles of a player
+	 * 
+	 * @param id  the id
+	 * @return the number of battles
+	 */
+	public int getRankedBattleCount(String id) {
+		return redisService.getRankedBattleCount(id);
 	}
 
 	/**
@@ -295,7 +303,7 @@ public class BattleService {
 
 		// update individual score
 		redisService.setRankedScore(id1, score);
-		redisService.addBattleCount(id1, "ranked_");
+		redisService.addRankedBattleCount(id1);
 
 		// update group score
 		redisService.setGroupScore(groupNum, groupScore);

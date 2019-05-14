@@ -75,7 +75,7 @@ public class BattleController {
 		if (!battleService.isExist(id)) {
 			return -1;
 		}
-		return battleService.getBattleCount(id, "");
+		return battleService.getBattleCount(id);
 	}
 
 	/**
@@ -89,7 +89,7 @@ public class BattleController {
 		if (!battleService.isExist(id)) {
 			return -1;
 		}
-		return battleService.getBattleCount(id, "ranked_");
+		return battleService.getRankedBattleCount(id);
 	}
 
 	/**

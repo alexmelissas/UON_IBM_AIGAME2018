@@ -39,7 +39,8 @@ public class PlayerController {
 
 	/**
 	 * Update the player
-	 * @param id the id
+	 * 
+	 * @param id     the id
 	 * @param player the updated player
 	 * @return the result
 	 */
@@ -56,6 +57,7 @@ public class PlayerController {
 
 	/**
 	 * Get the player with input id
+	 * 
 	 * @param id the id
 	 * @return the player with the id
 	 */
@@ -65,7 +67,12 @@ public class PlayerController {
 		return player;
 	}
 
-	// TODO keep?
+	/**
+	 * Get the rank of a player
+	 * 
+	 * @param id the id
+	 * @return the rank
+	 */
 	@GetMapping("/players/rank/{id}")
 	public int getPlayerRankById(@PathVariable String id) {
 		return playerService.getRankById(id);

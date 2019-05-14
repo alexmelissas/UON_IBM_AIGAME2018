@@ -50,6 +50,9 @@ public class Player extends BasicCharacter implements Serializable {
 	@Column(name = "groupnum", columnDefinition = "INT")
 	private int group = -1;
 
+	@Column(name = "rankScore", columnDefinition = "INT")
+	private int rankScore = 0;
+
 	/**
 	 * Constructor
 	 */
@@ -89,7 +92,7 @@ public class Player extends BasicCharacter implements Serializable {
 	 */
 	public Player(String id, String characterName, int level, int hp, int attack, int defense, int agility,
 			int criticalStrike, int money, int experience, int exptolevel, double factor, int sword, int shield,
-			int armour, int win, int lose, int group) {
+			int armour, int win, int lose, int group, int rankScore) {
 		super(characterName, level, hp, attack, defense, agility, criticalStrike, factor, sword, shield, armour);
 		this.id = id;
 		this.money = money;
@@ -98,6 +101,7 @@ public class Player extends BasicCharacter implements Serializable {
 		this.win = win;
 		this.lose = lose;
 		this.group = group;
+		this.rankScore = rankScore;
 	}
 
 	/**
@@ -217,6 +221,20 @@ public class Player extends BasicCharacter implements Serializable {
 		this.group = group;
 	}
 
+	/**
+	 * @return the rankScore
+	 */
+	public int getRankScore() {
+		return rankScore;
+	}
+
+	/**
+	 * @param rankScore the rankScore to set
+	 */
+	public void setRankScore(int rankScore) {
+		this.rankScore = rankScore;
+	}
+
 	/*
 	 * (non-Javadoc)
 	 * 
@@ -230,6 +248,6 @@ public class Player extends BasicCharacter implements Serializable {
 				+ getLevel() + ", getHp()=" + getHp() + ", getAttack()=" + getAttack() + ", getDefense()="
 				+ getDefense() + ", getAgility()=" + getAgility() + ", getCriticalStrike()=" + getCriticalStrike()
 				+ ", getFactor()=" + getFactor() + ", getSword()=" + getSword() + ", getShield()=" + getShield()
-				+ ", getArmour()=" + getArmour() + "]";
+				+ ", getArmour()=" + getArmour() + ", getRankScore()" + getRankScore() + "]";
 	}
 }
