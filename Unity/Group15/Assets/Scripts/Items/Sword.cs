@@ -24,7 +24,7 @@ public class Sword : Item {
                 item_icon_location = "s2";
                 break;
             case 3:
-                name = "Zeus' ThunderSlasher";
+                name = "Zeus' Diamondcarver";
                 attribute = 30;
                 price = 519;
                 item_icon_location = "s3";

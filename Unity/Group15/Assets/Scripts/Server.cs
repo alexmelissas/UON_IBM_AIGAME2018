@@ -8,7 +8,7 @@ using VoxelBusters.NativePlugins;
 public class Server {
 
     //! Server's home directory IP address/URL.
-    private static readonly string address = "http://35.178.2.5:8080";//"http://10.154.169.206:8080";
+    private static readonly string address = "http://35.178.2.5:8080";
     
 
     //! General success response (eg. For confirming Twitter linkage)

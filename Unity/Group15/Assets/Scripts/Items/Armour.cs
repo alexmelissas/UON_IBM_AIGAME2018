@@ -18,13 +18,13 @@ public class Armour : Item {
                 item_icon_location = "a1";
                 break;
             case 2:
-                name = "Theseus' Jacket";
+                name = "Zeus' Thundercap";
                 attribute = 48;
                 price = 259;
                 item_icon_location = "a2";
                 break;
             case 3:
-                name = "Hephaestus' Chains";
+                name = "Hephaestus' Flame";
                 attribute = 79;
                 price = 489;
                 item_icon_location = "a3";
