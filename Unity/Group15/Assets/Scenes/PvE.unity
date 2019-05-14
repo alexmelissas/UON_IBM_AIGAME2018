@@ -582,6 +582,11 @@ Prefab:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 987e4e47dae6f41dca193d106b133a46, type: 2}
   m_IsPrefabAsset: 0
+--- !u!1 &454334525 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100002, guid: 987e4e47dae6f41dca193d106b133a46,
+    type: 2}
+  m_PrefabInternal: {fileID: 454334524}
 --- !u!1 &542234430
 GameObject:
   m_ObjectHideFlags: 0
@@ -1056,7 +1061,7 @@ MonoBehaviour:
   selected_easy: {fileID: 1483793664}
   selected_medium: {fileID: 542234430}
   selected_hard: {fileID: 621582924}
-  loading: {fileID: 0}
+  loading: {fileID: 454334525}
   audiosrc: {fileID: 893967403}
 --- !u!82 &893967403
 AudioSource:

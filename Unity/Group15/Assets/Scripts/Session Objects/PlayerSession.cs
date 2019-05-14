@@ -33,10 +33,11 @@ public class PlayerSession : MonoBehaviour
     //! Place player in rank according to rank points
     public void PlaceInRank(int points)
     {
-        Debug.Log(points);
         if (points == 0) rank = "unranked";
         else if (points < 100) rank = "bronze";
         else if (points < 200) rank = "silver";
         else rank = "gold";
+
+        rank_points = points;
     }
 }

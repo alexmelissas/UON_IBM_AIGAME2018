@@ -39,7 +39,7 @@ public class Stats {
             + "<color=black> (</color>"
             + "<color=yellow>" + hp_base + "</color>"
             + "<color=black>+</color>"
-            + "<color=purple>" + hp_factor + "</color>"
+            + "<color=green>" + hp_factor + "</color>"
             + "<color=black>+</color>"
             + "<color=red>" + hp_item + "</color>"
             + "<color=black>)</color>";
@@ -48,7 +48,7 @@ public class Stats {
             + "<color=black> (</color>"
             + "<color=yellow>" + attack_base + "</color>"
             + "<color=black>+</color>"
-            + "<color=purple>" + attack_factor + "</color>"
+            + "<color=green>" + attack_factor + "</color>"
             + "<color=black>+</color>"
             + "<color=red>" + attack_item + "</color>"
             + "<color=black>)</color>";
@@ -57,7 +57,7 @@ public class Stats {
             + "<color=black> (</color>"
             + "<color=yellow>" + defense_base + "</color>"
             + "<color=black>+</color>"
-            + "<color=purple>" + defense_factor + "</color>"
+            + "<color=green>" + defense_factor + "</color>"
             + "<color=black>+</color>"
             + "<color=red>" + defense_item + "</color>"
             + "<color=black>)</color>";

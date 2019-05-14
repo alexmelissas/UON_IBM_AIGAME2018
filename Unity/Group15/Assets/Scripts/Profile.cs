@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class Profile: MonoBehaviour {
 
     public Text hpText, atkText, defText, agilityText, critText;
-    public Text factorTagText, lvlText, nextLevelText, expText;
+    public Text rpText, rpTitleText, factorTagText, lvlText, nextLevelText, expText;
     public Slider expSlider, factorSlider;
     public GameObject rankImage;
 
@@ -19,6 +19,7 @@ public class Profile: MonoBehaviour {
     void Start()
     {
         p = new Player();
+        gameObject.AddComponent<UpdateSessions>().U_Player();
         hpText.supportRichText = true;
         atkText.supportRichText = true;
         defText.supportRichText = true;
@@ -44,6 +45,14 @@ public class Profile: MonoBehaviour {
                 case "gold": rankIcon = goldIcon; break;
             }
             rankImage.GetComponent<RawImage>().texture = rankIcon;
+            
+            if(PlayerSession.player_session.rank == "unranked")
+            {
+                rpTitleText.text = "";
+                rpText.text = "";
+            }
+            else
+                rpText.text = "" + PlayerSession.player_session.rank_points;
 
             hpText.text = stats.StatsToStrings()[0];
             atkText.text = stats.StatsToStrings()[1];

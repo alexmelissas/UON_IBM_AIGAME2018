@@ -13,17 +13,22 @@ public class AuthenticateUser : MonoBehaviour {
 
     public string authType;
     public static bool display_loginAnimation;
+    private bool lock_register; //avoid duplicate register requests
 
     // Setup the screen
     void Start()
     {
         loading_spin_Animation.SetActive(false);
         display_loginAnimation = false;
+        lock_register = false;
         passwordInputField.onEndEdit.AddListener(delegate { CheckUserPass(); });
     }
 
     //! Toggle the loading circle to be active/not
     private void Toggle(bool input) { display_loginAnimation = input; }
+
+    //! Allow request for registration - avoid clashes
+    private void UnlockRegister() { lock_register = false; }
 
     //! Try to login with given credentials.
     IEnumerator TryLogin(bool firstLogin, string json, User user)
@@ -90,17 +95,21 @@ public class AuthenticateUser : MonoBehaviour {
 
         yield return uwr.SendWebRequest();
 
-        if (uwr.isNetworkError) {
+        if (uwr.isNetworkError)
+        {
             Debug.Log("Error While Sending: " + uwr.error);
             NPBinding.UI.ShowToast("Communication Error. Please try again later.", eToastMessageLength.SHORT);
+            UnlockRegister();
         }
-        else { 
+        else
+        { 
             int response = Server.CheckRegistration(uwr.downloadHandler.text);
             if (response == 1)
             {
                 UserSession.user_session.user = user;
                 Debug.Log("Account created");
                 NPBinding.UI.ShowToast("Account Created.", eToastMessageLength.SHORT);
+                yield return StartCoroutine(TryLogin(true, json, user));
             }
             else
             {
@@ -109,9 +118,9 @@ public class AuthenticateUser : MonoBehaviour {
                 if (response == 0) Debug.Log("Username taken.");
                 usernameInputField.text = "";
                 usernameInputField.Select();
+                UnlockRegister();
             }
         }
-        yield return StartCoroutine(TryLogin(true,json,user));
         uwr.Dispose();
         StopCoroutine(TryRegister(json, user));
     }
@@ -119,6 +128,10 @@ public class AuthenticateUser : MonoBehaviour {
     //! Check format of username/password, pass them to Login/Register if valid
     public void CheckUserPass()
     {
+        Debug.Log("HI FELICIA");
+        if (lock_register) { Debug.Log("BYE FELICIA"); return; }
+        lock_register = true;
+
         string username = usernameInputField.text;
         string password = passwordInputField.text;
         
@@ -126,18 +139,21 @@ public class AuthenticateUser : MonoBehaviour {
         {
             Debug.Log("Enter username.");
             NPBinding.UI.ShowToast("Need a username.", eToastMessageLength.SHORT);
+            UnlockRegister();
             return;
         }
         else if (password == "")
         {
             Debug.Log("Enter password.");
             NPBinding.UI.ShowToast("Need a password.", eToastMessageLength.SHORT);
+            UnlockRegister();
             return;
         }
         else if (username.Length > 25)
         {
             Debug.Log("Username max length 25 characters.");
             NPBinding.UI.ShowToast("Username max length 25 characters.", eToastMessageLength.SHORT);
+            UnlockRegister();
             return;
         }
         else

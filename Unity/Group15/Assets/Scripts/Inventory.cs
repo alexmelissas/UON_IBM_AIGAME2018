@@ -8,7 +8,6 @@ public class Inventory : MonoBehaviour {
 
     public Text hpText, atkText, defText, moneyText;
     public GameObject upgradePanel;
-    public GameObject player_bop_Animation;
     public Text itemNameText, statText, priceText, balanceText;
     public GameObject itemIconImage, swordIconImage, statIconImage;
     public GameObject currentSwordImage, currentShieldImage, currentArmourImage;
@@ -28,7 +27,6 @@ public class Inventory : MonoBehaviour {
     private void Start()
     {
         p = new Player();
-        player_bop_Animation.SetActive(false);
         hpText.supportRichText = true;
         atkText.supportRichText = true;
         defText.supportRichText = true;

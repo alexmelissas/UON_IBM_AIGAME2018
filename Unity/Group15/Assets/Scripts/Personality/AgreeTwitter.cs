@@ -14,6 +14,11 @@ public class AgreeTwitter : MonoBehaviour {
         nextButton.GetComponent<Image>().color = Color.grey;
     }
 
+    private void Start()
+    {
+        LoginTwitter.allowNextForSkip = false;
+    }
+
     //! Keep checking whether to display the Twitter consent option
     void Update() {
 
